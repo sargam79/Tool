@@ -1,122 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit Converter</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      margin: 0;
-    }
+<!-- SEO -->
+<title>Free Unit Converter Tool - Length, Weight, Temperature</title>
+<meta name="description" content="Convert units instantly. Free online tool for length, weight, temperature and more. Fast and accurate converter.">
+<meta name="keywords" content="unit converter, length converter, weight converter, temperature converter online">
 
-    .container {
-      margin-top: 60px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    input, select {
-      padding: 10px;
-      margin: 8px;
-      width: 80%;
-      max-width: 250px;
-      border-radius: 8px;
-      border: none;
-    }
+<style>
 
-    button {
-      padding: 12px 25px;
-      margin-top: 10px;
-      background: #38bdf8;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    button:hover {
-      background: #0ea5e9;
-    }
+body{
+    font-family:'Outfit',sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:#fff;
+}
 
-    #result {
-      margin-top: 20px;
-      font-size: 22px;
-    }
+.container{
+    width:100%;
+    max-width:500px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(20px);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    animation:fadeIn 0.5s ease;
+}
 
-    a {
-      display: block;
-      margin-top: 20px;
-      color: #38bdf8;
-      text-decoration: none;
-    }
-  </style>
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    font-size:28px;
+    background:linear-gradient(45deg,#818cf8,#a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+label{
+    font-size:13px;
+    margin-bottom:5px;
+    display:block;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    font-size:14px;
+}
+
+.result{
+    text-align:center;
+    margin-top:20px;
+    font-size:32px;
+    font-weight:700;
+    color:#a78bfa;
+}
+
+.quick{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:20px;
+}
+
+.box{
+    background:rgba(255,255,255,0.05);
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.box span{
+    display:block;
+    font-size:12px;
+    color:#ccc;
+}
+
+.box b{
+    font-size:18px;
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>Unit Converter 🔄</h1>
+<div class="container">
 
-    <input type="number" id="value" placeholder="Enter value">
+<h1>Unit Converter</h1>
 
-    <br>
+<div class="input-group">
+<label>Value</label>
+<input type="number" id="value" value="100">
+</div>
 
-    <select id="from">
-      <option value="m">Meters</option>
-      <option value="km">Kilometers</option>
-      <option value="cm">Centimeters</option>
-    </select>
+<div class="input-group">
+<label>Type</label>
+<select id="type" onchange="loadUnits()">
+<option value="length">Length</option>
+<option value="weight">Weight</option>
+<option value="temp">Temperature</option>
+</select>
+</div>
 
-    <br>
+<div class="input-group">
+<label>From</label>
+<select id="from"></select>
+</div>
 
-    <select id="to">
-      <option value="km">Kilometers</option>
-      <option value="m">Meters</option>
-      <option value="cm">Centimeters</option>
-    </select>
+<div class="input-group">
+<label>To</label>
+<select id="to"></select>
+</div>
 
-    <br>
+<div class="result" id="result">0</div>
 
-    <button onclick="convert()">Convert</button>
+<div class="quick">
+<div class="box"><span>Primary</span><b id="primary">0</b></div>
+<div class="box"><span>Alt 1</span><b id="alt1">0</b></div>
+<div class="box"><span>Alt 2</span><b id="alt2">0</b></div>
+<div class="box"><span>Alt 3</span><b id="alt3">0</b></div>
+</div>
 
-    <h2 id="result"></h2>
+</div>
 
-    <a href="index.html">⬅ Back to Home</a>
-  </div>
+<script>
 
-  <script>
-    function convert() {
-      let val = document.getElementById("value").value;
-      let from = document.getElementById("from").value;
-      let to = document.getElementById("to").value;
+const units = {
+length:{meter:1, km:1000, cm:0.01, inch:0.0254},
+weight:{kg:1, gram:0.001, pound:0.453592},
+};
 
-      if (val === "") {
-        document.getElementById("result").innerHTML = "Enter a value";
-        return;
-      }
+function loadUnits(){
+    const type=document.getElementById("type").value;
+    const from=document.getElementById("from");
+    const to=document.getElementById("to");
 
-      // Convert to meters first
-      let meters;
+    from.innerHTML="";
+    to.innerHTML="";
 
-      if (from === "m") meters = val;
-      if (from === "km") meters = val * 1000;
-      if (from === "cm") meters = val / 100;
-
-      // Convert from meters to target
-      let result;
-
-      if (to === "m") result = meters;
-      if (to === "km") result = meters / 1000;
-      if (to === "cm") result = meters * 100;
-
-      document.getElementById("result").innerHTML =
-        "Result: " + result;
+    if(type==="temp"){
+        ["C","F","K"].forEach(u=>{
+            from.innerHTML+=`<option>${u}</option>`;
+            to.innerHTML+=`<option>${u}</option>`;
+        });
+    }else{
+        for(let u in units[type]){
+            from.innerHTML+=`<option>${u}</option>`;
+            to.innerHTML+=`<option>${u}</option>`;
+        }
     }
-  </script>
+
+    convert();
+}
+
+function convert(){
+    const val=parseFloat(document.getElementById("value").value)||0;
+    const type=document.getElementById("type").value;
+    const from=document.getElementById("from").value;
+    const to=document.getElementById("to").value;
+
+    let result=0;
+
+    if(type==="temp"){
+        let c;
+        if(from==="C") c=val;
+        if(from==="F") c=(val-32)*5/9;
+        if(from==="K") c=val-273;
+
+        if(to==="C") result=c;
+        if(to==="F") result=(c*9/5)+32;
+        if(to==="K") result=c+273;
+    }else{
+        const base=val*units[type][from];
+        result=base/units[type][to];
+    }
+
+    document.getElementById("result").innerText=result.toFixed(3);
+    document.getElementById("primary").innerText=result.toFixed(2);
+
+    document.getElementById("alt1").innerText=(result*2).toFixed(2);
+    document.getElementById("alt2").innerText=(result/2).toFixed(2);
+    document.getElementById("alt3").innerText=(result*10).toFixed(2);
+}
+
+document.getElementById("value").addEventListener("input",convert);
+document.getElementById("from").addEventListener("change",convert);
+document.getElementById("to").addEventListener("change",convert);
+
+loadUnits();
+
+</script>
 
 </body>
 </html>
