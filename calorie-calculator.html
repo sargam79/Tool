@@ -1,216 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Converter Calculator</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap');
-
-        * {margin:0;padding:0;box-sizing:border-box;}
-
-        body {
-            font-family:'Outfit',sans-serif;
-            background:linear-gradient(135deg,#0f172a,#1a2d4d,#0f1829);
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:20px;
-            color:#e0e7ff;
-        }
-
-        .container {
-            width:100%;
-            max-width:500px;
-            background:rgba(15,23,42,0.7);
-            backdrop-filter:blur(20px);
-            border-radius:24px;
-            padding:40px;
-            box-shadow:0 20px 60px rgba(0,0,0,0.4);
-        }
-
-        h1 {
-            font-size:30px;
-            margin-bottom:10px;
-            background:linear-gradient(135deg,#818cf8,#a78bfa);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-        }
-
-        .subtitle {
-            font-size:14px;
-            color:#94a3b8;
-            margin-bottom:25px;
-        }
-
-        .input-group {margin-bottom:20px;}
-
-        label {
-            font-size:12px;
-            display:block;
-            margin-bottom:5px;
-        }
-
-        input,select {
-            width:100%;
-            padding:12px;
-            border-radius:10px;
-            border:1px solid rgba(99,102,241,0.3);
-            background:rgba(30,41,59,0.5);
-            color:#fff;
-        }
-
-        .converter-section {
-            margin:20px 0;
-            padding:20px;
-            border-radius:15px;
-            background:rgba(99,102,241,0.05);
-        }
-
-        .converter-grid {
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:10px;
-        }
-
-        .converter-item {
-            text-align:center;
-            padding:10px;
-            background:rgba(0,0,0,0.3);
-            border-radius:10px;
-        }
-
-        .converter-value {
-            font-weight:bold;
-            color:#a78bfa;
-        }
-
-        .result-box {
-            text-align:center;
-            margin-top:20px;
-        }
-
-        .result-value {
-            font-size:32px;
-            font-weight:bold;
-            color:#a78bfa;
-        }
-
-        .button-group {
-            display:grid;
-            grid-template-columns:1fr 1fr 1fr;
-            gap:10px;
-            margin-top:20px;
-        }
-
-        button, .link-btn {
-            padding:12px;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
-            text-decoration:none;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-        }
-
-        .btn-primary {
-            background:linear-gradient(135deg,#818cf8,#a78bfa);
-            color:#000;
-        }
-
-        .btn-secondary, .link-btn {
-            background:rgba(99,102,241,0.1);
-            color:#818cf8;
-            border:1px solid rgba(129,140,248,0.3);
-        }
-
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-    <h1>Calorie Converter</h1>
-    <p class="subtitle">Convert calories between units instantly</p>
-
-    <div class="input-group">
-        <label>Amount</label>
-        <input type="number" id="amount" value="100">
-    </div>
-
-    <div class="input-group">
-        <label>From</label>
-        <select id="fromUnit">
-            <option value="cal">Calories</option>
-            <option value="kcal">Kilocalories</option>
-            <option value="kj">Kilojoules</option>
-        </select>
-    </div>
-
-    <div class="input-group">
-        <label>To</label>
-        <select id="toUnit">
-            <option value="kcal">Kilocalories</option>
-            <option value="cal">Calories</option>
-            <option value="kj">Kilojoules</option>
-        </select>
-    </div>
-
-    <div class="converter-section">
-        <div class="converter-grid">
-            <div class="converter-item">kcal: <span id="toKcal">0</span></div>
-            <div class="converter-item">kJ: <span id="toKj">0</span></div>
-            <div class="converter-item">cal: <span id="toCal">0</span></div>
-            <div class="converter-item">Primary: <span id="primary">0</span></div>
-        </div>
-    </div>
-
-    <div class="result-box">
-        <div class="result-value" id="result">0</div>
-    </div>
-
-    <div class="button-group">
-        <button class="btn-primary" onclick="convert()">Convert</button>
-        <button class="btn-secondary" onclick="reset()">Reset</button>
-
-        <!-- GitHub Page Button -->
-        <a href="index.html" class="link-btn">Home</a>
-    </div>
-</div>
-
 <script>
 const conversionFactors = {
-    cal:1,
-    kcal:1000,
-    kj:4184
+    cal: 1,
+    kcal: 1000,
+    kj: 239.006  // FIXED (1 kJ = 239 cal)
 };
 
 function convert(){
-    const amount=parseFloat(document.getElementById('amount').value)||0;
-    const from=document.getElementById('fromUnit').value;
-    const to=document.getElementById('toUnit').value;
+    const amount = parseFloat(document.getElementById('amount').value) || 0;
+    const from = document.getElementById('fromUnit').value;
+    const to = document.getElementById('toUnit').value;
 
-    const base=amount*conversionFactors[from];
-    const result=base/conversionFactors[to];
+    // convert to calories base
+    let baseCal = amount * conversionFactors[from];
 
-    document.getElementById('result').textContent=result.toFixed(3);
+    // convert to target
+    let result = baseCal / conversionFactors[to];
 
-    document.getElementById('toKcal').textContent=(base/1000).toFixed(3);
-    document.getElementById('toKj').textContent=(base/4184).toFixed(3);
-    document.getElementById('toCal').textContent=base.toFixed(3);
-    document.getElementById('primary').textContent=result.toFixed(3);
+    // main result
+    document.getElementById('result').textContent = result.toFixed(3) + " " + to;
+
+    // correct quick conversions
+    document.getElementById('toCal').textContent = baseCal.toFixed(3);
+    document.getElementById('toKcal').textContent = (baseCal / 1000).toFixed(3);
+    document.getElementById('toKj').textContent = (baseCal / 239.006).toFixed(3);
+
+    // primary
+    document.getElementById('primary').textContent = result.toFixed(3) + " " + to;
 }
 
+// reset
 function reset(){
-    document.getElementById('amount').value=100;
+    document.getElementById('amount').value = 100;
+    document.getElementById('fromUnit').value = "cal";
+    document.getElementById('toUnit').value = "kcal";
     convert();
 }
 
+// auto convert (IMPORTANT FIX)
+document.getElementById('amount').addEventListener('input', convert);
+document.getElementById('fromUnit').addEventListener('change', convert);
+document.getElementById('toUnit').addEventListener('change', convert);
+
+// initial
 convert();
 </script>
-
-</body>
-</html>
