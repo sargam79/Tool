@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .container {
+      margin-top: 60px;
+    }
+
+    input, select {
+      padding: 10px;
+      margin: 8px;
+      width: 80%;
+      max-width: 250px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin-top: 10px;
+      background: #38bdf8;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 22px;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Unit Converter 🔄</h1>
+
+    <input type="number" id="value" placeholder="Enter value">
+
+    <br>
+
+    <select id="from">
+      <option value="m">Meters</option>
+      <option value="km">Kilometers</option>
+      <option value="cm">Centimeters</option>
+    </select>
+
+    <br>
+
+    <select id="to">
+      <option value="km">Kilometers</option>
+      <option value="m">Meters</option>
+      <option value="cm">Centimeters</option>
+    </select>
+
+    <br>
+
+    <button onclick="convert()">Convert</button>
+
+    <h2 id="result"></h2>
+
+    <a href="index.html">⬅ Back to Home</a>
+  </div>
+
+  <script>
+    function convert() {
+      let val = document.getElementById("value").value;
+      let from = document.getElementById("from").value;
+      let to = document.getElementById("to").value;
+
+      if (val === "") {
+        document.getElementById("result").innerHTML = "Enter a value";
+        return;
+      }
+
+      // Convert to meters first
+      let meters;
+
+      if (from === "m") meters = val;
+      if (from === "km") meters = val * 1000;
+      if (from === "cm") meters = val / 100;
+
+      // Convert from meters to target
+      let result;
+
+      if (to === "m") result = meters;
+      if (to === "km") result = meters / 1000;
+      if (to === "cm") result = meters * 100;
+
+      document.getElementById("result").innerHTML =
+        "Result: " + result;
+    }
+  </script>
+
+</body>
+</html>
