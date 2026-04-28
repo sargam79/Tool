@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Converter Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1a2d4d 50%, #0f1829 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #e0e7ff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+            animation: fadeIn 0.6s ease-out 0.1s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 8px;
+        }
+
+        input,
+        select {
+            flex: 1;
+            padding: 12px 14px;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            color: #e0e7ff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #818cf8;
+            box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        .converter-section {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 28px 0;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+
+        .converter-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #818cf8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .converter-item {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .converter-item:hover {
+            border-color: rgba(129, 140, 248, 0.4);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .converter-label {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .converter-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: #a78bfa;
+        }
+
+        .result-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-out 0.3s both;
+            margin-top: 24px;
+        }
+
+        .result-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+            animation: fadeIn 0.6s ease-out 0.4s both;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+            color: #0f172a;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(129, 140, 248, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+            border: 1px solid rgba(129, 140, 248, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(129, 140, 248, 0.5);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .info-card {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 12px;
+            padding: 12px;
+            animation: fadeIn 0.6s ease-out both;
+        }
+
+        .info-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .info-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .info-card:nth-child(4) {
+            animation-delay: 0.7s;
+        }
+
+        .info-title {
+            font-size: 11px;
+            color: #818cf8;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .info-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            color: #e0e7ff;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-value {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calorie Converter</h1>
+        <p class="subtitle">Convert calories between units instantly</p>
+
+        <div class="input-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="Enter amount" value="100" min="0" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="fromUnit">From Unit</label>
+            <select id="fromUnit">
+                <option value="cal">Calories (cal)</option>
+                <option value="kcal">Kilocalories (kcal)</option>
+                <option value="kj">Kilojoules (kJ)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="toUnit">To Unit</label>
+            <select id="toUnit">
+                <option value="kcal">Kilocalories (kcal)</option>
+                <option value="cal">Calories (cal)</option>
+                <option value="kj">Kilojoules (kJ)</option>
+            </select>
+        </div>
+
+        <div class="converter-section">
+            <div class="converter-title">Quick Conversions</div>
+            <div class="converter-grid">
+                <div class="converter-item">
+                    <div class="converter-label">to kcal</div>
+                    <div class="converter-value" id="toKcal">0</div>
+                </div>
+                <div class="converter-item">
+                    <div class="converter-label">to kJ</div>
+                    <div class="converter-value" id="toKj">0</div>
+                </div>
+                <div class="converter-item">
+                    <div class="converter-label">to cal</div>
+                    <div class="converter-value" id="toCal">0</div>
+                </div>
+                <div class="converter-item">
+                    <div class="converter-label">Primary</div>
+                    <div class="converter-value" id="primary">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-box">
+            <div class="result-label">Your Conversion</div>
+            <div class="result-value" id="result">0</div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-title">1 cal</div>
+                <div class="info-value">0.001 kcal</div>
+            </div>
+            <div class="info-card">
+                <div class="info-title">1 kcal</div>
+                <div class="info-value">4.184 kJ</div>
+            </div>
+            <div class="info-card">
+                <div class="info-title">1 kJ</div>
+                <div class="info-value">0.239 kcal</div>
+            </div>
+            <div class="info-card">
+                <div class="info-title">1 cal</div>
+                <div class="info-value">4.184 J</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="convert()">Convert</button>
+            <button class="btn-secondary" onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        const conversionFactors = {
+            cal: 1,
+            kcal: 1000,
+            kj: 4184
+        };
+
+        function convert() {
+            const amount = parseFloat(document.getElementById('amount').value) || 0;
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            const amountInCalories = amount * conversionFactors[fromUnit];
+            const result = amountInCalories / conversionFactors[toUnit];
+
+            document.getElementById('result').textContent = result.toFixed(3);
+
+            const toKcal = (amountInCalories / conversionFactors['kcal']).toFixed(3);
+            const toKj = (amountInCalories / conversionFactors['kj']).toFixed(3);
+            const toCal = (amountInCalories / conversionFactors['cal']).toFixed(3);
+
+            document.getElementById('toKcal').textContent = toKcal;
+            document.getElementById('toKj').textContent = toKj;
+            document.getElementById('toCal').textContent = toCal;
+
+            const unitLabel = toUnit === 'kcal' ? 'kcal' : toUnit === 'kj' ? 'kJ' : 'cal';
+            if (toUnit === document.getElementById('toUnit').value) {
+                document.getElementById('primary').textContent = result.toFixed(3) + ' ' + unitLabel;
+            }
+        }
+
+        function reset() {
+            document.getElementById('amount').value = '100';
+            document.getElementById('fromUnit').value = 'cal';
+            document.getElementById('toUnit').value = 'kcal';
+            document.getElementById('result').textContent = '0';
+            document.getElementById('toKcal').textContent = '0';
+            document.getElementById('toKj').textContent = '0';
+            document.getElementById('toCal').textContent = '0';
+            document.getElementById('primary').textContent = '0';
+        }
+
+        document.getElementById('amount').addEventListener('input', convert);
+        document.getElementById('fromUnit').addEventListener('change', convert);
+        document.getElementById('toUnit').addEventListener('change', convert);
+
+        convert();
+    </script>
+</body>
+</html>
