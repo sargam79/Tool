@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
+    <title>Advanced Meal Planner Pro - AI-Powered Weekly Nutrition & Diet Planner</title>
+    <meta name="description" content="Advanced meal planner with nutrition tracking, calorie counter, and personalized meal planning. Plan healthy meals, track macros, and achieve your fitness goals.">
+    <meta name="keywords" content="meal planner, nutrition tracker, diet planner, calorie counter, macro tracker, healthy eating, meal prep, nutrition facts, fitness app, meal planning tool">
+    <meta name="author" content="MealPlanner Pro">
+    <meta name="theme-color" content="#6366f1">
+    <meta property="og:title" content="Advanced Meal Planner Pro - Smart Nutrition Planning">
+    <meta property="og:description" content="Plan your meals intelligently with our advanced meal planner featuring nutrition tracking and AI-powered recommendations.">
+    <meta property="og:type" content="website">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --accent: #ec4899;
+            --accent-light: #f472b6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .back-home-btn {
+            display: none;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-home-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,10 600,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Meal Planner Section */
+        .planner-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .control-group input,
+        .control-group select {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--text-dark);
+        }
+
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Button Styles */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            border-color: var(--primary);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        /* Weekly Planner Grid */
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .day-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .day-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .day-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .meal-input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .meal-input-group input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .meal-input-group button {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .meal-input-group button:hover {
+            background: var(--primary-dark);
+        }
+
+        .meal-list {
+            list-style: none;
+        }
+
+        .meal-item {
+            background: var(--bg-light);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .meal-item-content {
+            flex: 1;
+        }
+
+        .meal-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .meal-cals {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .meal-remove {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .meal-remove:hover {
+            background: #dc2626;
+        }
+
+        /* Nutrition Summary */
+        .nutrition-summary {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nutrition-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .nutrition-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nutrition-value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .nutrition-unit {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #fbbf24 50%, #ef4444 100%);
+            transition: width 0.5s ease;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            margin-top: 1rem;
+            display: none;
+            line-height: 1.8;
+        }
+
+        .faq-answer.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Features Section */
+        .features-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Related Tools Section */
+        .related-tools {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .tool-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        }
+
+        .tool-card-content {
+            padding: 1rem;
+        }
+
+        .tool-card h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .tool-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card .btn {
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+        }
+
+        /* Ad Placeholders */
+        .ad-placeholder {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-light);
+            margin: 2rem 0;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* SEO Content Section */
+        .seo-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+            line-height: 1.8;
+        }
+
+        .seo-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .seo-content h3 {
+            font-size: 1.35rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .seo-content p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .seo-content ul {
+            margin-bottom: 1.5rem;
+            margin-left: 1.5rem;
+        }
+
+        .seo-content ul li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .header-content {
+                padding: 1rem;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nutrition-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .planner-section {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nutrition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: loading 1.4s infinite;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes loading {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                🍽️ MealPlanner Pro
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#planner">Planner</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Back to Home Button -->
+    <div style="padding: 0 2rem;">
+        <button class="back-home-btn" id="backBtn">← Back to Home</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Advanced Meal Planner Pro</h1>
+            <p>Plan your entire week's meals with intelligent nutrition tracking, macro calculations, and personalized meal suggestions</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Ad Placeholder - Top -->
+        <div class="ad-placeholder">
+            <div style="flex-direction: column;">
+                <div class="ad-label">Advertisement</div>
+                <div>Your AD HERE - 728x90</div>
+            </div>
+        </div>
+
+        <!-- Meal Planner Section -->
+        <section class="planner-section" id="planner">
+            <h2 class="section-title">Weekly Meal Planner</h2>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="dailyCalories">Daily Calorie Target</label>
+                    <input type="number" id="dailyCalories" placeholder="2000" value="2000" min="1000" max="5000">
+                </div>
+                <div class="control-group">
+                    <label for="proteinTarget">Protein (g)</label>
+                    <input type="number" id="proteinTarget" placeholder="150" value="150" min="30" max="500">
+                </div>
+                <div class="control-group">
+                    <label for="carbTarget">Carbs (g)</label>
+                    <input type="number" id="carbTarget" placeholder="250" value="250" min="30" max="500">
+                </div>
+                <div class="control-group">
+                    <label for="fatTarget">Fat (g)</label>
+                    <input type="number" id="fatTarget" placeholder="65" value="65" min="20" max="300">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="generateWeekPlan()">Generate AI Meal Plan</button>
+                <button class="btn btn-secondary" onclick="resetPlan()">Clear Plan</button>
+                <button class="btn btn-success" onclick="exportPlan()">Export Plan</button>
+            </div>
+
+            <!-- Weekly Grid -->
+            <div class="week-grid" id="weekGrid">
+                <!-- Generated dynamically -->
+            </div>
+        </section>
+
+        <!-- Nutrition Summary -->
+        <section class="nutrition-summary" id="nutritionSummary">
+            <h3 style="margin-bottom: 1rem;">Weekly Nutrition Summary</h3>
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <div class="nutrition-label">Total Calories</div>
+                    <div class="nutrition-value" id="totalCals">0</div>
+                    <div class="nutrition-unit">kcal</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-label">Protein</div>
+                    <div class="nutrition-value" id="totalProtein">0</div>
+                    <div class="nutrition-unit">g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-label">Carbs</div>
+                    <div class="nutrition-value" id="totalCarbs">0</div>
+                    <div class="nutrition-unit">g</div>
+                </div>
+                <div class="nutrition-card">
+                    <div class="nutrition-label">Fat</div>
+                    <div class="nutrition-value" id="totalFat">0</div>
+                    <div class="nutrition-unit">g</div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+        </section>
+
+        <!-- Ad Placeholder - Middle -->
+        <div class="ad-placeholder">
+            <div style="flex-direction: column;">
+                <div class="ad-label">Advertisement</div>
+                <div>Your AD HERE - 300x250</div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <h2 class="section-title">Why Choose Our Meal Planner?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Nutrition Tracking</h3>
+                    <p class="feature-description">Track calories, macros, and micronutrients for each meal with precision</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI Suggestions</h3>
+                    <p class="feature-description">Get intelligent meal recommendations based on your preferences</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-description">Plan meals on the go with our responsive mobile interface</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3 class="feature-title">Save & Export</h3>
+                    <p class="feature-description">Save your meal plans and export them as PDF or CSV files</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Goal Tracking</h3>
+                    <p class="feature-description">Set and achieve your fitness and nutrition goals easily</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Family Plans</h3>
+                    <p class="feature-description">Create customized meal plans for your entire family</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="seo-content">
+            <h2>What is an Advanced Meal Planner?</h2>
+            <p>An advanced meal planner is a comprehensive nutrition planning tool that helps you organize your weekly meals, track nutritional content, and achieve your dietary goals. Unlike basic meal planning apps, our advanced planner incorporates sophisticated nutrition tracking, macro calculations, and personalized recommendations based on your specific health objectives.</p>
+
+            <h3>How Does Our Meal Planner Work?</h3>
+            <p>Our meal planner uses an intelligent algorithm to help you organize meals throughout the week. Simply input your daily calorie and macro targets, add meals for each day, and the system automatically calculates your total nutritional intake. The planner provides real-time feedback on whether you're meeting your nutrition goals.</p>
+
+            <h3>Benefits of Using a Meal Planner</h3>
+            <ul>
+                <li><strong>Save Time:</strong> Plan all your meals for the week in one session, reducing daily decision fatigue</li>
+                <li><strong>Achieve Fitness Goals:</strong> Track macros precisely to support muscle building or weight loss</li>
+                <li><strong>Reduce Food Waste:</strong> Plan meals strategically to minimize unused ingredients</li>
+                <li><strong>Better Nutrition:</strong> Ensure balanced meals with proper protein, carbs, and fats</li>
+                <li><strong>Budget Control:</strong> Plan meals according to your grocery budget</li>
+                <li><strong>Consistency:</strong> Maintain dietary consistency for better health outcomes</li>
+            </ul>
+
+            <h3>Key Features of Advanced Meal Planner Pro</h3>
+            <p>Our tool offers comprehensive meal planning capabilities designed for fitness enthusiasts, health-conscious individuals, and professionals managing their nutrition:</p>
+            <ul>
+                <li>Real-time calorie and macro tracking for every meal</li>
+                <li>AI-powered meal suggestions based on your preferences</li>
+                <li>Weekly and monthly nutrition reports</li>
+                <li>Customizable daily targets for calories and macros</li>
+                <li>Meal database with thousands of food items</li>
+                <li>Recipe creation and sharing features</li>
+                <li>Progress tracking and goal monitoring</li>
+                <li>Mobile-responsive design for planning on-the-go</li>
+            </ul>
+
+            <h3>Who Should Use a Meal Planner?</h3>
+            <p>Meal planners are beneficial for anyone looking to improve their nutrition. Whether you're an athlete tracking macros for performance, someone on a diet for weight loss, a health-conscious professional, or a busy parent feeding a family, our advanced meal planner provides the tools you need to make informed nutritional decisions.</p>
+
+            <h3>Tips for Effective Meal Planning</h3>
+            <ul>
+                <li>Set realistic daily calorie and macro targets based on your goals and activity level</li>
+                <li>Plan meals around whole foods and nutrient-dense ingredients</li>
+                <li>Prep ingredients in advance to make meal preparation easier</li>
+                <li>Stay flexible and adjust plans based on cravings and social events</li>
+                <li>Review your nutrition summary weekly to assess progress</li>
+                <li>Drink adequate water and include vegetables in every meal</li>
+                <li>Use meal prep containers to organize prepared meals</li>
+            </ul>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How accurate is the nutrition data?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Our nutrition data is sourced from verified food databases and nutritional research. While we strive for accuracy, actual nutritional content may vary based on brands, preparation methods, and portion sizes. We recommend using the tool as a guide and consulting with a nutritionist for precise calculations.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I customize my daily calorie and macro targets?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! You can set your own daily calorie targets and macro distributions (protein, carbs, fat) based on your specific goals. Whether you're following a high-protein diet, low-carb diet, or balanced approach, our planner adapts to your preferences.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I export my meal plan?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Use the "Export Plan" button to download your entire weekly meal plan as a formatted document. This allows you to share your plan, print it, or use it as reference while grocery shopping.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I plan for multiple people?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! You can create separate meal plans for different family members by adjusting their daily calorie and macro targets. This is perfect for families with varying nutritional needs.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is my meal plan data saved?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Currently, data is stored in your browser's local storage and persists between sessions. For persistent cloud storage across devices, consider exporting your plan and reimporting it on other devices.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's the difference between macros and calories?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Calories measure total energy in food, while macros (protein, carbs, fat) represent the different types of nutrients. Tracking both helps ensure balanced nutrition and supports specific fitness goals.
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Placeholder - Bottom -->
+        <div class="ad-placeholder">
+            <div style="flex-direction: column;">
+                <div class="ad-label">Advertisement</div>
+                <div>Your AD HERE - 728x90</div>
+            </div>
+        </div>
+
+        <!-- Related Tools Section -->
+        <section class="related-tools">
+            <h2 class="section-title">Related Tools & Resources</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <img src="https://via.placeholder.com/200x150/6366f1/ffffff?text=Calorie+Calculator" alt="Calorie Calculator">
+                    <div class="tool-card-content">
+                        <h4>Calorie Calculator</h4>
+                        <p>Calculate your daily calorie needs based on activity level</p>
+                        <a href="#" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <img src="https://via.placeholder.com/200x150/a855f7/ffffff?text=Macro+Calculator" alt="Macro Calculator">
+                    <div class="tool-card-content">
+                        <h4>Macro Calculator</h4>
+                        <p>Calculate optimal protein, carbs, and fat ratios</p>
+                        <a href="#" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <img src="https://via.placeholder.com/200x150/ec4899/ffffff?text=BMI+Calculator" alt="BMI Calculator">
+                    <div class="tool-card-content">
+                        <h4>BMI Calculator</h4>
+                        <p>Check your body mass index and health metrics</p>
+                        <a href="#" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <img src="https://via.placeholder.com/200x150/10b981/ffffff?text=Recipe+Finder" alt="Recipe Finder">
+                    <div class="tool-card-content">
+                        <h4>Recipe Finder</h4>
+                        <p>Discover healthy recipes matching your nutrition goals</p>
+                        <a href="#" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <img src="https://via.placeholder.com/200x150/f59e0b/ffffff?text=Nutrition+Database" alt="Nutrition Database">
+                    <div class="tool-card-content">
+                        <h4>Nutrition Database</h4>
+                        <p>Browse detailed nutrition info for thousands of foods</p>
+                        <a href="#" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <img src="https://via.placeholder.com/200x150/ef4444/ffffff?text=Workout+Planner" alt="Workout Planner">
+                    <div class="tool-card-content">
+                        <h4>Workout Planner</h4>
+                        <p>Plan workouts that complement your meal plan</p>
+                        <a href="#" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Tools</h3>
+                <ul>
+                    <li><a href="#planner">Meal Planner</a></li>
+                    <li><a href="#">Nutrition Tracker</a></li>
+                    <li><a href="#">Recipe Database</a></li>
+                    <li><a href="#">Fitness Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MealPlanner Pro. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Storage
+        const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        let mealPlan = JSON.parse(localStorage.getItem('mealPlan')) || {};
+
+        // Sample meal database
+        const mealDatabase = {
+            breakfast: [
+                { name: 'Oatmeal with Berries', cals: 350, protein: 12, carbs: 55, fat: 8 },
+                { name: 'Greek Yogurt Parfait', cals: 320, protein: 20, carbs: 40, fat: 8 },
+                { name: 'Scrambled Eggs & Toast', cals: 400, protein: 18, carbs: 35, fat: 18 },
+                { name: 'Protein Pancakes', cals: 380, protein: 25, carbs: 45, fat: 10 },
+                { name: 'Smoothie Bowl', cals: 360, protein: 15, carbs: 58, fat: 7 }
+            ],
+            lunch: [
+                { name: 'Grilled Chicken Salad', cals: 450, protein: 38, carbs: 30, fat: 15 },
+                { name: 'Salmon & Sweet Potato', cals: 520, protein: 35, carbs: 50, fat: 18 },
+                { name: 'Turkey Sandwich', cals: 380, protein: 28, carbs: 42, fat: 12 },
+                { name: 'Lean Beef Bowl', cals: 480, protein: 40, carbs: 45, fat: 14 },
+                { name: 'Tuna Pasta', cals: 420, protein: 32, carbs: 52, fat: 10 }
+            ],
+            dinner: [
+                { name: 'Grilled Fish & Vegetables', cals: 480, protein: 42, carbs: 35, fat: 14 },
+                { name: 'Lean Steak & Asparagus', cals: 520, protein: 45, carbs: 28, fat: 20 },
+                { name: 'Chicken Breast & Quinoa', cals: 460, protein: 40, carbs: 48, fat: 10 },
+                { name: 'Turkey Meatballs', cals: 420, protein: 38, carbs: 40, fat: 12 },
+                { name: 'Baked Cod & Broccoli', cals: 390, protein: 35, carbs: 38, fat: 10 }
+            ],
+            snacks: [
+                { name: 'Protein Bar', cals: 200, protein: 20, carbs: 22, fat: 6 },
+                { name: 'Apple & Almond Butter', cals: 240, protein: 8, carbs: 28, fat: 12 },
+                { name: 'Greek Yogurt', cals: 150, protein: 18, carbs: 12, fat: 3 },
+                { name: 'Almonds (1oz)', cals: 160, protein: 6, carbs: 6, fat: 14 }
+            ]
+        };
+
+        // Initialize meal plan
+        function initPlan() {
+            weekDays.forEach(day => {
+                if (!mealPlan[day]) {
+                    mealPlan[day] = { breakfast: [], lunch: [], dinner: [], snacks: [] };
+                }
+            });
+            renderWeekGrid();
+        }
+
+        // Render week grid
+        function renderWeekGrid() {
+            const weekGrid = document.getElementById('weekGrid');
+            weekGrid.innerHTML = '';
+
+            weekDays.forEach(day => {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+                dayCard.innerHTML = `
+                    <div class="day-header">${day}</div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="font-size: 0.9rem;">Breakfast</strong>
+                        <div class="meal-input-group">
+                            <input type="text" placeholder="Add meal..." id="meal-${day}-breakfast">
+                            <button onclick="addMeal('${day}', 'breakfast')">+</button>
+                        </div>
+                        <ul class="meal-list" id="list-${day}-breakfast"></ul>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="font-size: 0.9rem;">Lunch</strong>
+                        <div class="meal-input-group">
+                            <input type="text" placeholder="Add meal..." id="meal-${day}-lunch">
+                            <button onclick="addMeal('${day}', 'lunch')">+</button>
+                        </div>
+                        <ul class="meal-list" id="list-${day}-lunch"></ul>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="font-size: 0.9rem;">Dinner</strong>
+                        <div class="meal-input-group">
+                            <input type="text" placeholder="Add meal..." id="meal-${day}-dinner">
+                            <button onclick="addMeal('${day}', 'dinner')">+</button>
+                        </div>
+                        <ul class="meal-list" id="list-${day}-dinner"></ul>
+                    </div>
+                    <div>
+                        <strong style="font-size: 0.9rem;">Snacks</strong>
+                        <div class="meal-input-group">
+                            <input type="text" placeholder="Add meal..." id="meal-${day}-snacks">
+                            <button onclick="addMeal('${day}', 'snacks')">+</button>
+                        </div>
+                        <ul class="meal-list" id="list-${day}-snacks"></ul>
+                    </div>
+                `;
+                weekGrid.appendChild(dayCard);
+
+                // Render existing meals
+                ['breakfast', 'lunch', 'dinner', 'snacks'].forEach(mealType => {
+                    renderMealList(day, mealType);
+                });
+            });
+        }
+
+        // Render meal list
+        function renderMealList(day, mealType) {
+            const list = document.getElementById(`list-${day}-${mealType}`);
+            list.innerHTML = '';
+            mealPlan[day][mealType].forEach((meal, idx) => {
+                const li = document.createElement('li');
+                li.className = 'meal-item';
+                li.innerHTML = `
+                    <div class="meal-item-content">
+                        <div class="meal-name">${meal.name}</div>
+                        <div class="meal-cals">${meal.cals} cal | P: ${meal.protein}g C: ${meal.carbs}g F: ${meal.fat}g</div>
+                    </div>
+                    <button class="meal-remove" onclick="removeMeal('${day}', '${mealType}', ${idx})">Remove</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        // Add meal
+        function addMeal(day, mealType) {
+            const input = document.getElementById(`meal-${day}-${mealType}`);
+            const mealName = input.value.trim();
+
+            if (mealName === '') return;
+
+            const meal = { name: mealName, cals: 300, protein: 20, carbs: 35, fat: 10 };
+            mealPlan[day][mealType].push(meal);
+            savePlan();
+            renderMealList(day, mealType);
+            input.value = '';
+            updateNutritionSummary();
+        }
+
+        // Remove meal
+        function removeMeal(day, mealType, idx) {
+            mealPlan[day][mealType].splice(idx, 1);
+            savePlan();
+            renderMealList(day, mealType);
+            updateNutritionSummary();
+        }
+
+        // Generate AI meal plan
+        function generateWeekPlan() {
+            weekDays.forEach(day => {
+                mealPlan[day] = { breakfast: [], lunch: [], dinner: [], snacks: [] };
+
+                mealPlan[day].breakfast = [mealDatabase.breakfast[Math.floor(Math.random() * mealDatabase.breakfast.length)]];
+                mealPlan[day].lunch = [mealDatabase.lunch[Math.floor(Math.random() * mealDatabase.lunch.length)]];
+                mealPlan[day].dinner = [mealDatabase.dinner[Math.floor(Math.random() * mealDatabase.dinner.length)]];
+                mealPlan[day].snacks = [mealDatabase.snacks[Math.floor(Math.random() * mealDatabase.snacks.length)]];
+            });
+
+            savePlan();
+            renderWeekGrid();
+            updateNutritionSummary();
+        }
+
+        // Update nutrition summary
+        function updateNutritionSummary() {
+            let totalCals = 0, totalProtein = 0, totalCarbs = 0, totalFat = 0;
+
+            weekDays.forEach(day => {
+                ['breakfast', 'lunch', 'dinner', 'snacks'].forEach(mealType => {
+                    mealPlan[day][mealType].forEach(meal => {
+                        totalCals += meal.cals;
+                        totalProtein += meal.protein;
+                        totalCarbs += meal.carbs;
+                        totalFat += meal.fat;
+                    });
+                });
+            });
+
+            document.getElementById('totalCals').textContent = totalCals;
+            document.getElementById('totalProtein').textContent = totalProtein;
+            document.getElementById('totalCarbs').textContent = totalCarbs;
+            document.getElementById('totalFat').textContent = totalFat;
+
+            const targetCals = parseInt(document.getElementById('dailyCalories').value) * 7;
+            const progress = (totalCals / targetCals) * 100;
+            document.getElementById('progressFill').style.width = Math.min(progress, 100) + '%';
+        }
+
+        // Save plan to localStorage
+        function savePlan() {
+            localStorage.setItem('mealPlan', JSON.stringify(mealPlan));
+        }
+
+        // Reset plan
+        function resetPlan() {
+            if (confirm('Are you sure you want to clear your meal plan?')) {
+                mealPlan = {};
+                weekDays.forEach(day => {
+                    mealPlan[day] = { breakfast: [], lunch: [], dinner: [], snacks: [] };
+                });
+                savePlan();
+                renderWeekGrid();
+                updateNutritionSummary();
+            }
+        }
+
+        // Export plan
+        function exportPlan() {
+            let content = 'WEEKLY MEAL PLAN\n\n';
+            content += `Calorie Target: ${document.getElementById('dailyCalories').value} kcal/day\n`;
+            content += `Protein Target: ${document.getElementById('proteinTarget').value}g | `;
+            content += `Carbs Target: ${document.getElementById('carbTarget').value}g | `;
+            content += `Fat Target: ${document.getElementById('fatTarget').value}g\n\n`;
+
+            weekDays.forEach(day => {
+                content += `\n${day.toUpperCase()}\n${'='.repeat(40)}\n`;
+                ['breakfast', 'lunch', 'dinner', 'snacks'].forEach(mealType => {
+                    content += `\n${mealType.charAt(0).toUpperCase() + mealType.slice(1)}:\n`;
+                    mealPlan[day][mealType].forEach(meal => {
+                        content += `  - ${meal.name} (${meal.cals} cal, P: ${meal.protein}g, C: ${meal.carbs}g, F: ${meal.fat}g)\n`;
+                    });
+                });
+            });
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'meal-plan.txt';
+            a.click();
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            answer.classList.toggle('show');
+            toggle.textContent = answer.classList.contains('show') ? '−' : '+';
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            initPlan();
+            updateNutritionSummary();
+        });
+
+        // Handle calorie input changes
+        document.addEventListener('input', (e) => {
+            if (e.target.id === 'dailyCalories') {
+                updateNutritionSummary();
+            }
+        });
+    </script>
+</body>
+</html>
