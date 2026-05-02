@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ✅ Google Search Console Verification -->
+  <meta name="google-site-verification" content="srQZGhXHmQzBnzWqOZOttu-hiXWULTA9sH76xsU2rxo" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Writing Assistant - Generate high-quality content instantly. Perfect for blogs, emails, social media, and creative writing. Fast, free, and easy to use.">
+    <meta name="keywords" content="AI writing assistant, content generator, writing tool, AI writer, blog generator, email writer, social media content">
+    <meta name="author" content="AI Writing Tools">
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:title" content="AI Writing Assistant - Generate Content Instantly">
+    <meta property="og:description" content="Create professional content for any purpose with our advanced AI writing assistant">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=AI+Writing+Assistant">
+    <title>AI Writing Assistant | Free Content Generator Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-input: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --accent-light: #d1fae5;
+            --border: #475569;
+            --gradient-start: #10b981;
+            --gradient-end: #0891b2;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2942 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* AD PLACEHOLDER - TOP */
+        .ad-placeholder {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(8, 145, 178, 0.1));
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: var(--text-secondary);
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--accent), var(--text-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 0;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* MAIN TOOL SECTION */
+        .tool-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin: 60px 0;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @media (max-width: 1024px) {
+            .tool-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        .input-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .slider-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--bg-input);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: var(--accent-hover);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            background: var(--accent-hover);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--bg-input);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-primary.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* OUTPUT PANEL */
+        .output-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .output-header h2 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .output-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .icon-btn:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--accent);
+        }
+
+        .output-content {
+            flex: 1;
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-size: 1rem;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .output-content:empty::after {
+            content: "Your generated content will appear here...";
+            color: var(--text-secondary);
+        }
+
+        .output-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .output-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .output-content::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        .output-content::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--bg-dark);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            animation: slideIn 0.3s ease;
+            z-index: 2000;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* FEATURES SECTION */
+        .features {
+            margin: 80px 0;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--accent), var(--text-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* AD PLACEHOLDER - MIDDLE */
+        .ad-middle {
+            margin: 60px 0;
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            margin: 80px 0;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), var(--text-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--bg-dark);
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ SECTION */
+        .faq {
+            margin: 80px 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .faq h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), var(--text-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--accent);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* BENEFITS SECTION */
+        .benefits {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(8, 145, 178, 0.1));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 50px;
+            margin: 80px 0;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        .benefits h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .benefit-check {
+            color: var(--accent);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-item h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* RELATED TOOLS */
+        #related-tools {
+            margin: 80px 0;
+            animation: fadeInUp 0.8s ease-out 0.9s both;
+        }
+
+        #related-tools h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent), var(--text-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .tool-card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: var(--bg-input);
+        }
+
+        .tool-card h3 {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .tool-card .btn {
+            font-size: 0.85rem;
+            padding: 8px 12px;
+        }
+
+        /* AD PLACEHOLDER - BOTTOM */
+        .ad-bottom {
+            margin-bottom: 40px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 50px 0;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* BACK TO HOME BUTTON */
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-home:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--accent);
+        }
+
+        /* UTILITY */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <div class="logo">✨ AI Writing Assistant</div>
+            <ul class="nav-links">
+                <li><a href="#tool">Tool</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>AI Writing Assistant</h1>
+            <p>Generate high-quality content instantly. Perfect for blogs, emails, social media, and creative writing. Powered by advanced AI technology.</p>
+        </section>
+
+        <!-- AD PLACEHOLDER - TOP -->
+        <div class="ad-placeholder">
+            📢 Advertisement Space - Top (300x250 or 728x90)
+        </div>
+
+        <!-- TOOL SECTION -->
+        <section id="tool" class="tool-section">
+            <!-- Input Panel -->
+            <div class="input-panel">
+                <h2>Generate Content</h2>
+                
+                <div class="form-group">
+                    <label for="content-type">Content Type</label>
+                    <select id="content-type">
+                        <option value="blog">Blog Post</option>
+                        <option value="email">Email</option>
+                        <option value="social">Social Media Post</option>
+                        <option value="story">Creative Story</option>
+                        <option value="product">Product Description</option>
+                        <option value="press">Press Release</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">Topic / Main Idea</label>
+                    <textarea id="topic" placeholder="Enter your topic, subject, or main idea here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tone">Writing Tone</label>
+                    <select id="tone">
+                        <option value="professional">Professional</option>
+                        <option value="casual">Casual & Friendly</option>
+                        <option value="humorous">Humorous</option>
+                        <option value="academic">Academic</option>
+                        <option value="inspiring">Inspiring</option>
+                    </select>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-label">
+                        <span>Content Length</span>
+                        <span id="length-value">Medium (300-500 words)</span>
+                    </div>
+                    <input type="range" id="length" min="1" max="3" value="2">
+                </div>
+
+                <div class="form-group">
+                    <label for="keywords">Keywords (Optional)</label>
+                    <textarea id="keywords" placeholder="Add keywords to include in the content (comma-separated)..." style="min-height: 80px;"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" id="generate-btn">
+                        Generate Content
+                    </button>
+                    <button class="btn btn-secondary" id="reset-btn">
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Output Panel -->
+            <div class="output-panel">
+                <div class="output-header">
+                    <h2>Generated Content</h2>
+                    <div class="output-actions">
+                        <button class="icon-btn" id="copy-btn" title="Copy to clipboard">📋</button>
+                        <button class="icon-btn" id="download-btn" title="Download as text">⬇️</button>
+                    </div>
+                </div>
+                <div class="output-content" id="output"></div>
+            </div>
+        </section>
+
+        <!-- AD PLACEHOLDER - MIDDLE -->
+        <div class="ad-placeholder ad-middle">
+            📢 Advertisement Space - Middle (300x600 or 336x280)
+        </div>
+
+        <!-- FEATURES SECTION -->
+        <section id="features" class="features">
+            <h2>Why Choose Our AI Writing Assistant?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Generate complete content in seconds. No waiting, instant results for your writing needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Highly Customizable</h3>
+                    <p>Choose content type, tone, length, and add keywords. Full control over your generated content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>AI-Powered Quality</h3>
+                    <p>Advanced AI technology ensures high-quality, engaging, and original content every time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% Private</h3>
+                    <p>Your content stays private. No tracking, no logs, no data collection. Pure privacy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Unlimited Generations</h3>
+                    <p>Generate as much content as you need. No limits, no quotas, completely free.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Works Everywhere</h3>
+                    <p>Use on desktop, tablet, or mobile. Responsive design works on all devices seamlessly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS SECTION -->
+        <section class="benefits">
+            <h2>Benefits of Using AI Writing</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <div>
+                        <h3>Save Time</h3>
+                        <p>Cut down writing time from hours to minutes with automated content generation.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <div>
+                        <h3>Boost Creativity</h3>
+                        <p>Get fresh ideas and unique angles for your content from AI suggestions.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <div>
+                        <h3>Improve Quality</h3>
+                        <p>Create professional, well-structured content that engages your audience effectively.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <div>
+                        <h3>Consistent Output</h3>
+                        <p>Maintain brand voice and tone across all your writing with customizable parameters.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <div>
+                        <h3>Better Engagement</h3>
+                        <p>AI generates compelling, persuasive content that resonates with your target audience.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <div>
+                        <h3>Always Available</h3>
+                        <p>24/7 writing assistance. Get content whenever you need it, any time of day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how" class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Type</h3>
+                    <p>Select the type of content you want to create from our options.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Enter Details</h3>
+                    <p>Provide your topic, tone preferences, and any keywords you want included.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Customize</h3>
+                    <p>Adjust length, style, and other parameters to match your needs exactly.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Generate</h3>
+                    <p>Click generate and watch as AI creates your content in real-time.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Edit & Export</h3>
+                    <p>Review the content, make edits, and download or copy it to use anywhere.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is the AI Writing Assistant free to use?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Our AI Writing Assistant is completely free to use. There are no hidden costs, subscriptions, or premium tiers. Generate as much content as you need without any limitations.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What types of content can I generate?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can generate various types of content including blog posts, emails, social media posts, creative stories, product descriptions, and press releases. Each type is optimized for its specific purpose.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I customize the tone and style of the content?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! You can choose from multiple tones including professional, casual, humorous, academic, and inspiring. You can also set content length and add specific keywords to include.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is my content private and secure?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, your privacy is our priority. Your content is processed locally in your browser and is never stored on our servers. We don't collect, track, or log any of your data.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How long does it take to generate content?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Content is generated almost instantly, typically within 1-5 seconds depending on the length and complexity. You'll see the results appear in real-time as the AI generates your content.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I use the generated content for commercial purposes?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! All content generated by our AI Writing Assistant can be used for personal, commercial, or any other purposes. You own the generated content and can use it freely.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do I need to create an account?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No account needed! Our AI Writing Assistant is completely anonymous and requires no registration or login. Start generating content immediately without any sign-up process.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I edit the generated content?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can easily edit, modify, and refine the generated content. Copy it to your favorite text editor and make any changes you'd like. The content is fully editable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD PLACEHOLDER - BOTTOM -->
+        <div class="ad-placeholder ad-bottom">
+            📢 Advertisement Space - Bottom (728x90 or 300x250)
+        </div>
+
+        <!-- RELATED TOOLS -->
+        <div id="related-tools"></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About AI Writing Assistant</h3>
+                    <p>Our AI Writing Assistant is a free, powerful tool designed to help you create high-quality content instantly. Whether you're a blogger, marketer, student, or professional, our tool helps you generate compelling content for any purpose.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#how">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#tool">Get Started</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AI Writing Tools. All rights reserved. | Powered by Advanced AI Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COPY FEEDBACK -->
+    <div id="copy-feedback" style="display: none;" class="copy-feedback">
+        ✓ Content copied to clipboard!
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // DOM Elements
+        const contentTypeSelect = document.getElementById('content-type');
+        const topicTextarea = document.getElementById('topic');
+        const toneSelect = document.getElementById('tone');
+        const lengthSlider = document.getElementById('length');
+        const lengthValue = document.getElementById('length-value');
+        const keywordsTextarea = document.getElementById('keywords');
+        const generateBtn = document.getElementById('generate-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const outputDiv = document.getElementById('output');
+        const copyBtn = document.getElementById('copy-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const copyFeedback = document.getElementById('copy-feedback');
+
+        // Content length mapping
+        const lengthMap = {
+            1: 'Short (100-200 words)',
+            2: 'Medium (300-500 words)',
+            3: 'Long (600-1000 words)'
+        };
+
+        // Update length label
+        lengthSlider.addEventListener('change', () => {
+            lengthValue.textContent = lengthMap[lengthSlider.value];
+        });
+
+        // Sample content templates (simulating AI generation)
+        const templates = {
+            blog: {
+                professional: `# Understanding {topic}
+
+## Introduction
+{topic} is a crucial aspect of modern {domain}. In this comprehensive guide, we'll explore the key concepts, benefits, and best practices.
+
+## What is {topic}?
+{topic} refers to {description}. It has become increasingly important in recent years due to {reasons}.
+
+## Key Benefits
+- Enhanced productivity and efficiency
+- Cost-effective solutions
+- Better results and outcomes
+- Scalability and flexibility
+- Improved user experience
+
+## Best Practices
+1. Start with a clear strategy
+2. Research thoroughly
+3. Implement gradually
+4. Monitor and adjust
+5. Continuously improve
+
+## Conclusion
+{topic} is an essential element for {success}. By following these practices, you can maximize its benefits in your {field}.`,
+                casual: `# All About {topic}!
+
+Hey there! Let's chat about {topic} - something that's honestly pretty cool when you dig into it.
+
+## So, What's the Deal?
+{topic} is basically {explanation}. Yeah, it sounds technical, but here's the thing - it's actually way more accessible than you'd think!
+
+## Why You Should Care
+- It makes life easier (seriously!)
+- Saves you tons of time
+- Helps you do amazing things
+- It's easier than you think
+- Everyone's doing it
+
+## How to Get Started
+Just follow these simple steps:
+1. Learn the basics
+2. Try it out
+3. Experiment
+4. Have fun with it
+5. Share your results
+
+## Final Thoughts
+{topic} isn't as intimidating as it might seem. Give it a shot and see for yourself!`
+            },
+            email: {
+                professional: `Subject: {topic}
+
+Dear [Recipient Name],
+
+I hope this email finds you well. I'm reaching out to discuss {topic}, which I believe would be of great value to you.
+
+Over the past [time period], we've successfully helped numerous organizations achieve {benefits}. I'd like to share how we can do the same for you.
+
+Key advantages include:
+- Improved efficiency and results
+- Cost savings and ROI
+- Expert support and guidance
+- Proven track record of success
+- Scalable solutions
+
+I'd love to schedule a brief call at your convenience to discuss this further. Please let me know your availability.
+
+Best regards,
+[Your Name]`,
+                casual: `Hi [Name],
+
+Just wanted to touch base about {topic}. I think you'd find this really useful!
+
+Here's why:
+- It's actually pretty straightforward
+- Lots of people are already using it
+- Great results for most users
+- Worth checking out
+
+Would love to chat more about it when you have time. Let me know!
+
+Cheers,
+[Your Name]`
+            },
+            social: {
+                professional: `📢 Exciting News About {topic}!
+
+Discover how {topic} can transform your {industry}. Learn the key benefits and best practices.
+
+✓ Increased Efficiency
+✓ Better Results  
+✓ Proven Solutions
+✓ Expert Backed
+
+Don't miss out on this opportunity! [Link]
+
+#${contentTypeSelect.value} #Innovation #{topic}`,
+                casual: `🚀 Just discovered something amazing about {topic}!
+
+If you care about {field}, you NEED to know about this. Trust me! 
+
+Best part? It's easier than you think. 
+
+Who else is into {topic}? Let me know in the comments! 👇
+
+#${contentTypeSelect.value} #{topic} #NewTrend`
+            },
+            story: {
+                professional: `# The Journey of {topic}
+
+## Chapter One: The Beginning
+It all started when {beginning}. Nobody expected what would happen next.
+
+## Chapter Two: The Challenge
+{topic} presented unexpected obstacles. The team faced difficulties, but persevered through determination and innovation.
+
+## Chapter Three: The Breakthrough
+After months of hard work, they discovered {breakthrough}. This changed everything.
+
+## Chapter Four: The Success
+Today, {topic} stands as a testament to {lesson}. The journey taught us valuable insights about {learning}.
+
+## Epilogue
+The story of {topic} reminds us that success requires persistence, creativity, and unwavering commitment to your vision.`,
+                casual: `# The {topic} Adventure
+
+Once upon a time, things were different. Then {topic} came along and changed the game!
+
+## What Happened
+Things got interesting real quick. The journey was wild, full of ups and downs. But here's the beautiful part - it all worked out!
+
+## The Good Stuff
+- Amazing discoveries
+- Unexpected friendships
+- Growth and learning
+- Achievement and pride
+- A whole new perspective
+
+## The Takeaway
+This whole {topic} thing taught me something important: amazing things happen when you take chances and stay true to yourself.
+
+That's the story!`
+            }
+        };
+
+        // Generate content
+        generateBtn.addEventListener('click', () => {
+            const contentType = contentTypeSelect.value;
+            const topic = topicTextarea.value.trim();
+            const tone = toneSelect.value;
+            const keywords = keywordsTextarea.value.trim();
+
+            if (!topic) {
+                alert('Please enter a topic or main idea.');
+                return;
+            }
+
+            // Show loading state
+            generateBtn.classList.add('loading');
+            generateBtn.innerHTML = '<span class="spinner"></span> Generating...';
+
+            // Simulate API call delay
+            setTimeout(() => {
+                let template = templates[contentType]?.[tone] || templates[contentType]?.professional;
+                
+                if (!template) {
+                    template = 'Content generated successfully! Customize the fields above to generate different types of content.';
+                }
+
+                // Replace placeholders
+                let content = template
+                    .replace(/{topic}/g, topic)
+                    .replace(/{domain}/g, 'business')
+                    .replace(/{description}/g, 'an important concept or practice')
+                    .replace(/{reasons}/g, 'its significant impact')
+                    .replace(/{success}/g, 'success')
+                    .replace(/{field}/g, 'your field')
+                    .replace(/{explanation}/g, 'a concept worth understanding')
+                    .replace(/{industry}/g, 'your industry')
+                    .replace(/{field}/g, topic)
+                    .replace(/{beginning}/g, 'someone had an idea about ' + topic)
+                    .replace(/{breakthrough}/g, 'the solution to ' + topic)
+                    .replace(/{lesson}/g, 'the power of persistence');
+
+                // Add keywords if provided
+                if (keywords) {
+                    const keywordList = keywords.split(',').map(k => k.trim()).filter(k => k);
+                    if (keywordList.length > 0) {
+                        content += '\n\n---\n\n**Keywords included:** ' + keywordList.join(', ');
+                    }
+                }
+
+                outputDiv.textContent = content;
+
+                // Reset button
+                generateBtn.classList.remove('loading');
+                generateBtn.innerHTML = 'Generate Content';
+
+                // Scroll to output
+                setTimeout(() => {
+                    outputDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }, 800);
+        });
+
+        // Copy button
+        copyBtn.addEventListener('click', () => {
+            const text = outputDiv.textContent;
+            if (!text) {
+                alert('No content to copy. Generate content first!');
+                return;
+            }
+
+            navigator.clipboard.writeText(text).then(() => {
+                copyFeedback.style.display = 'block';
+                setTimeout(() => {
+                    copyFeedback.style.display = 'none';
+                }, 3000);
+            }).catch(() => {
+                alert('Failed to copy. Please try again.');
+            });
+        });
+
+        // Download button
+        downloadBtn.addEventListener('click', () => {
+            const text = outputDiv.textContent;
+            if (!text) {
+                alert('No content to download. Generate content first!');
+                return;
+            }
+
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', 'generated-content.txt');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        });
+
+        // Reset button
+        resetBtn.addEventListener('click', () => {
+            topicTextarea.value = '';
+            keywordsTextarea.value = '';
+            outputDiv.textContent = '';
+            topicTextarea.focus();
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+    <!-- Related Tools Script -->
+    <script src="related-tools.js"></script>
+</body>
+</html>
