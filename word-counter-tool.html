@@ -273,6 +273,50 @@
             font-family: 'Courier New', monospace;
         }
 
+        /* More Tools Section */
+        .more-tools-section {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .more-tools-section h2 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .tool-link {
+            display: inline-block;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(56, 189, 248, 0.05) 100%);
+            border: 1.5px solid rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.1);
+        }
+
+        .tool-link:hover {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3) 0%, rgba(56, 189, 248, 0.15) 100%);
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
         /* SEO Content Section */
         .content-section {
             background: rgba(30, 41, 59, 0.5);
@@ -449,6 +493,10 @@
             button {
                 width: 100%;
             }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Mobile optimization */
@@ -472,6 +520,14 @@
 
             .stat-value {
                 font-size: 24px;
+            }
+
+            .more-tools-section {
+                padding: 20px;
+            }
+
+            .more-tools-section h2 {
+                font-size: 22px;
             }
         }
 
@@ -565,6 +621,20 @@
                  data-ad-format="horizontal"
                  data-full-width-responsive="true"></ins>
         </div>
+
+        <!-- More Tools Section -->
+        <section class="more-tools-section">
+            <h2>🛠️ More Tools You'll Love</h2>
+            <div class="tools-grid">
+                <a class="tool-link" href="json-schema-generator-pro.html">📝 JSON Schema Generator</a>
+                <a class="tool-link" href="hashtag-generator.html">🏷️ Hashtag Generator</a>
+                <a class="tool-link" href="converter-png.html">🖼️ Image to PNG Converter</a>
+                <a class="tool-link" href="background-remover.html">✂️ Background Remover</a>
+                <a class="tool-link" href="meal-planner.html">🍽️ Meal Planner</a>
+                <a class="tool-link" href="color-palette-generator.html">🎨 Color Palette Generator</a>
+                <a class="tool-link" href="ai-writing-assistant.html">✍️ AI Writing Assistant</a>
+            </div>
+        </section>
 
         <!-- SEO Content Section -->
         <section class="content-section" id="about">
@@ -689,9 +759,6 @@
                 </div>
             </div>
         </section>
-        </div>
-        </section>
-        
 
         <!-- Ad Slot - Bottom -->
         <div class="ad-slot" style="margin-bottom: 40px;">
