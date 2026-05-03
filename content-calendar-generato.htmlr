@@ -257,6 +257,7 @@
 
         button.danger {
             background: var(--danger);
+            color: white;
         }
 
         button.danger:hover {
@@ -502,6 +503,30 @@
             font-size: 0.9rem;
         }
 
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.8rem;
@@ -523,6 +548,14 @@
             th, td {
                 padding: 0.75rem;
             }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -534,20 +567,6 @@
                 width: 100%;
             }
         }
-
-        .success-message {
-            background: rgba(16, 185, 129, 0.1);
-            border-left: 4px solid var(--success);
-            color: var(--success);
-            padding: 1rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        .success-message.show {
-            display: block;
-        }
     </style>
 </head>
 <body>
@@ -556,7 +575,7 @@
             <nav>
                 <div class="logo">📅 Content Calendar</div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
@@ -566,8 +585,6 @@
 
     <main>
         <div class="container">
-            <a href="index.html" class="back-home">← Back to Home</a>
-
             <div class="hero">
                 <h1>Content Calendar Generator</h1>
                 <p class="subtitle">Plan, organize, and manage your content strategy with ease</p>
@@ -578,6 +595,12 @@
             </div>
 
             <div class="tool-section">
+                <h2>📝 Create Your Content Calendar</h2>
+                
+                <div class="success-message" id="successMessage">
+                    ✓ Post added successfully!
+                </div>
+
                 <div class="button-group">
                     <button onclick="addPost()">➕ Add New Post</button>
                     <button class="secondary" onclick="exportCalendar()">📥 Export as CSV</button>
@@ -587,11 +610,11 @@
 
                 <div class="controls">
                     <div class="form-group">
-                        <label for="postTitle">Post Title</label>
+                        <label for="postTitle">Post Title *</label>
                         <input type="text" id="postTitle" placeholder="Enter post title">
                     </div>
                     <div class="form-group">
-                        <label for="postDate">Publish Date</label>
+                        <label for="postDate">Publish Date *</label>
                         <input type="date" id="postDate">
                     </div>
                     <div class="form-group">
@@ -603,12 +626,13 @@
                             <option value="LinkedIn">LinkedIn</option>
                             <option value="Blog">Blog</option>
                             <option value="TikTok">TikTok</option>
+                            <option value="YouTube">YouTube</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="postContent">Post Content / Description</label>
+                    <label for="postContent">Post Content / Description *</label>
                     <textarea id="postContent" placeholder="Write your post content or description here..." rows="4"></textarea>
                 </div>
 
@@ -625,10 +649,6 @@
                         <label for="postCategory">Category</label>
                         <input type="text" id="postCategory" placeholder="e.g., Marketing, News, Tutorial">
                     </div>
-                </div>
-
-                <div class="success-message" id="successMessage">
-                    ✓ Post added successfully!
                 </div>
 
                 <div class="calendar-container">
@@ -661,20 +681,21 @@
 
             <div class="tool-section content-section" id="features">
                 <h2>What is the Content Calendar Generator?</h2>
-                <p>The Content Calendar Generator is a free, easy-to-use tool designed for content creators, social media managers, and marketers. It helps you plan, organize, and schedule your content across multiple platforms including Instagram, Twitter, Facebook, LinkedIn, TikTok, and personal blogs.</p>
+                <p>The Content Calendar Generator is a free, easy-to-use tool designed for content creators, social media managers, and marketers. It helps you plan, organize, and schedule your content across multiple platforms including Instagram, Twitter, Facebook, LinkedIn, TikTok, YouTube, and personal blogs.</p>
 
                 <p>Whether you're managing a single social media account or coordinating content across multiple channels, this tool provides a centralized platform to keep track of all your scheduled posts, deadlines, and content ideas.</p>
 
                 <h2>How Does It Work?</h2>
-                <p>Using our Content Calendar Generator is simple:</p>
-                <ol style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1rem;">
-                    <li>Enter your post title and content in the form fields</li>
+                <p>Using our Content Calendar Generator is simple and intuitive:</p>
+                <ol>
+                    <li>Enter your post title and content in the form fields at the top</li>
                     <li>Select the publish date and social media platform</li>
                     <li>Choose the post status (Draft, Scheduled, or Published)</li>
-                    <li>Add a category to organize your content</li>
+                    <li>Add a category to organize your content by type</li>
                     <li>Click "Add New Post" to add it to your calendar</li>
-                    <li>View all posts in the calendar table</li>
-                    <li>Edit or delete posts as needed</li>
+                    <li>View all posts in the calendar table below</li>
+                    <li>Use the edit (✏️) button to modify any post</li>
+                    <li>Use the delete (🗑️) button to remove posts</li>
                     <li>Export your calendar as CSV or JSON for further analysis</li>
                 </ol>
 
@@ -690,7 +711,7 @@
                     </div>
                     <div class="benefit-card">
                         <h4>📊 Multi-Platform Support</h4>
-                        <p>Manage content for Instagram, Twitter, Facebook, LinkedIn, TikTok, and blogs in one place.</p>
+                        <p>Manage content for Instagram, Twitter, Facebook, LinkedIn, TikTok, YouTube and blogs in one place.</p>
                     </div>
                     <div class="benefit-card">
                         <h4>💾 Easy Export</h4>
@@ -708,7 +729,7 @@
 
                 <h2>Why Use a Content Calendar?</h2>
                 <p>A well-organized content calendar is essential for successful content marketing. It helps you:</p>
-                <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1rem;">
+                <ul>
                     <li><strong>Stay Organized:</strong> Keep all your content ideas and schedules in one place</li>
                     <li><strong>Save Time:</strong> Plan multiple posts at once instead of creating them as you go</li>
                     <li><strong>Maintain Consistency:</strong> Ensure regular posting frequency across all platforms</li>
@@ -719,8 +740,8 @@
                 </ul>
             </div>
 
-            <div class="tool-section faq-section">
-                <h2 id="faq">Frequently Asked Questions</h2>
+            <div class="tool-section faq-section" id="faq">
+                <h2>Frequently Asked Questions</h2>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
@@ -738,7 +759,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! Each post in the calendar has an Edit button (pencil icon) and a Delete button (trash icon). Click Edit to modify the post details, or Delete to remove it from your calendar. Changes are saved to your browser's local storage.</p>
+                        <p>Yes! Each post in the calendar has an Edit button (pencil icon ✏️) and a Delete button (trash icon 🗑️). Click Edit to modify the post details, or Delete to remove it from your calendar. Changes are saved to your browser's local storage automatically.</p>
                     </div>
                 </div>
 
@@ -748,7 +769,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>The Content Calendar Generator supports all major social media platforms including Instagram, Twitter, Facebook, LinkedIn, and TikTok. You can also track blog posts and other custom content types.</p>
+                        <p>The Content Calendar Generator supports all major social media platforms including Instagram, Twitter, Facebook, LinkedIn, TikTok, and YouTube. You can also track blog posts and other custom content types.</p>
                     </div>
                 </div>
 
@@ -809,7 +830,23 @@
 
             <div class="tool-section">
                 <h2>Related Tools & Resources</h2>
-                <div id="related-tools"></div>
+                <div id="related-tools" class="tools-grid">
+                    <div class="tool-card">
+                        <h4>📊 Analytics Tracker</h4>
+                        <p>Track your social media metrics and performance</p>
+                        <a href="#" class="btn">Coming Soon</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>🎨 Image Resizer</h4>
+                        <p>Resize images for all social media platforms</p>
+                        <a href="#" class="btn">Coming Soon</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>✍️ Caption Generator</h4>
+                        <p>Generate creative captions for your posts</p>
+                        <a href="#" class="btn">Coming Soon</a>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -819,7 +856,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>📅 Content Tools</h4>
-                    <a href="index.html">Home</a>
+                    <a href="#home">Home</a>
                     <a href="#features">Features</a>
                     <a href="#faq">FAQ</a>
                 </div>
@@ -843,7 +880,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Content Calendar Generator. All rights reserved. | <a href="privacy-policy.html" style="color: var(--accent);">Privacy Policy</a></p>
+                <p>&copy; 2026 Content Calendar Generator. All rights reserved. | <a href="privacy-policy.html" style="color: var(--accent);">Privacy Policy</a></p>
             </div>
         </div>
     </footer>
@@ -857,8 +894,13 @@
         function loadPosts() {
             const stored = localStorage.getItem(storageKey);
             if (stored) {
-                posts = JSON.parse(stored);
-                renderCalendar();
+                try {
+                    posts = JSON.parse(stored);
+                    renderCalendar();
+                } catch (e) {
+                    console.error('Error loading posts:', e);
+                    posts = [];
+                }
             }
         }
 
@@ -877,7 +919,7 @@
             const category = document.getElementById('postCategory').value.trim();
 
             if (!title || !date || !content) {
-                alert('Please fill in title, date, and content fields.');
+                alert('Please fill in all required fields: Title, Date, and Content.');
                 return;
             }
 
@@ -949,19 +991,32 @@
                 return;
             }
 
-            tbody.innerHTML = posts.map(post => `
-                <tr>
-                    <td>${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
-                    <td><strong>${post.title}</strong></td>
-                    <td>${post.platform}</td>
-                    <td>${post.category}</td>
-                    <td><span class="status-badge status-${post.status.toLowerCase()}">${post.status}</span></td>
-                    <td>
-                        <button style="padding: 0.5rem; margin-right: 0.5rem;" onclick="editPost(${post.id})" title="Edit">✏️</button>
-                        <button class="danger" style="padding: 0.5rem;" onclick="deletePost(${post.id})" title="Delete">🗑️</button>
-                    </td>
-                </tr>
-            `).join('');
+            tbody.innerHTML = posts.map(post => {
+                const dateObj = new Date(post.date);
+                const dateStr = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                const statusClass = `status-${post.status.toLowerCase()}`;
+                
+                return `
+                    <tr>
+                        <td>${dateStr}</td>
+                        <td><strong>${escapeHtml(post.title)}</strong></td>
+                        <td>${escapeHtml(post.platform)}</td>
+                        <td>${escapeHtml(post.category)}</td>
+                        <td><span class="status-badge ${statusClass}">${post.status}</span></td>
+                        <td>
+                            <button style="padding: 0.5rem; margin-right: 0.5rem; background: var(--accent);" onclick="editPost(${post.id})" title="Edit">✏️</button>
+                            <button class="danger" style="padding: 0.5rem;" onclick="deletePost(${post.id})" title="Delete">🗑️</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Escape HTML function
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         // Export as CSV
@@ -1037,13 +1092,16 @@
         }
 
         // Set today's date as default
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('postDate').value = today;
+        function setDefaultDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('postDate').value = today;
+        }
 
         // Load posts on page load
-        loadPosts();
+        window.addEventListener('DOMContentLoaded', function() {
+            setDefaultDate();
+            loadPosts();
+        });
     </script>
-
-    <script src="related-tools.js"></script>
 </body>
 </html>
