@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
+    <meta name="title" content="Content Calendar Generator - Plan Your Social Media & Blog Content">
+    <meta name="description" content="Create a professional content calendar for your social media and blog. Plan posts, manage deadlines, export schedules. Free content planning tool.">
+    <meta name="keywords" content="content calendar, social media planner, editorial calendar, content planning tool, blog scheduler, post planner, free content calendar">
+    <meta name="author" content="Content Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Content Calendar Generator - Plan Your Content Strategy">
+    <meta property="og:description" content="Create, manage, and export your content calendar. Perfect for social media managers and content creators.">
+    <meta property="og:type" content="website">
+    <title>Content Calendar Generator | Free Social Media & Blog Planner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --bg-light: #1e293b;
+            --bg-lighter: #334155;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-light: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #475569;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2942 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .back-home {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent);
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .back-home:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .ad-placeholder {
+            background: rgba(52, 65, 84, 0.5);
+            border: 2px dashed var(--border);
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .tool-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button, .btn {
+            background: var(--accent);
+            color: var(--bg-dark);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        button:hover, .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary {
+            background: var(--bg-light);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        button.secondary:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        button.danger {
+            background: var(--danger);
+        }
+
+        button.danger:hover {
+            background: #dc2626;
+        }
+
+        .calendar-container {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: var(--bg-lighter);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        tbody tr:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-published {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .status-scheduled {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .status-draft {
+            background: rgba(107, 114, 128, 0.2);
+            color: #9ca3af;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .content-section {
+            margin-bottom: 2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateX(5px);
+        }
+
+        .benefit-card h4 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-section {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: var(--bg-lighter);
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        .faq-question:hover {
+            background: var(--border);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: var(--text-secondary);
+        }
+
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        .tool-card {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .tool-card img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: var(--bg-dark);
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .tool-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--accent-light);
+        }
+
+        .tool-card .btn {
+            display: block;
+            background: var(--accent);
+            color: var(--bg-dark);
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .tool-card .btn:hover {
+            background: var(--accent-hover);
+        }
+
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button-group {
+                flex-direction: column;
+            }
+
+            button, .btn {
+                width: 100%;
+            }
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">📅 Content Calendar</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="index.html" class="back-home">← Back to Home</a>
+
+            <div class="hero">
+                <h1>Content Calendar Generator</h1>
+                <p class="subtitle">Plan, organize, and manage your content strategy with ease</p>
+            </div>
+
+            <div class="ad-placeholder">
+                [Advertisement Space - Top Banner]
+            </div>
+
+            <div class="tool-section">
+                <div class="button-group">
+                    <button onclick="addPost()">➕ Add New Post</button>
+                    <button class="secondary" onclick="exportCalendar()">📥 Export as CSV</button>
+                    <button class="secondary" onclick="exportJSON()">📄 Export as JSON</button>
+                    <button class="danger" onclick="clearAllPosts()">🗑️ Clear All</button>
+                </div>
+
+                <div class="controls">
+                    <div class="form-group">
+                        <label for="postTitle">Post Title</label>
+                        <input type="text" id="postTitle" placeholder="Enter post title">
+                    </div>
+                    <div class="form-group">
+                        <label for="postDate">Publish Date</label>
+                        <input type="date" id="postDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="postPlatform">Platform</label>
+                        <select id="postPlatform">
+                            <option value="Instagram">Instagram</option>
+                            <option value="Twitter">Twitter</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Blog">Blog</option>
+                            <option value="TikTok">TikTok</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="postContent">Post Content / Description</label>
+                    <textarea id="postContent" placeholder="Write your post content or description here..." rows="4"></textarea>
+                </div>
+
+                <div class="controls">
+                    <div class="form-group">
+                        <label for="postStatus">Status</label>
+                        <select id="postStatus">
+                            <option value="Draft">Draft</option>
+                            <option value="Scheduled">Scheduled</option>
+                            <option value="Published">Published</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="postCategory">Category</label>
+                        <input type="text" id="postCategory" placeholder="e.g., Marketing, News, Tutorial">
+                    </div>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    ✓ Post added successfully!
+                </div>
+
+                <div class="calendar-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Title</th>
+                                <th>Platform</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendarBody">
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    <div class="empty-state-icon">📭</div>
+                                    <p>No posts yet. Add your first post to get started!</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ad-placeholder">
+                [Advertisement Space - Middle Banner]
+            </div>
+
+            <div class="tool-section content-section" id="features">
+                <h2>What is the Content Calendar Generator?</h2>
+                <p>The Content Calendar Generator is a free, easy-to-use tool designed for content creators, social media managers, and marketers. It helps you plan, organize, and schedule your content across multiple platforms including Instagram, Twitter, Facebook, LinkedIn, TikTok, and personal blogs.</p>
+
+                <p>Whether you're managing a single social media account or coordinating content across multiple channels, this tool provides a centralized platform to keep track of all your scheduled posts, deadlines, and content ideas.</p>
+
+                <h2>How Does It Work?</h2>
+                <p>Using our Content Calendar Generator is simple:</p>
+                <ol style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Enter your post title and content in the form fields</li>
+                    <li>Select the publish date and social media platform</li>
+                    <li>Choose the post status (Draft, Scheduled, or Published)</li>
+                    <li>Add a category to organize your content</li>
+                    <li>Click "Add New Post" to add it to your calendar</li>
+                    <li>View all posts in the calendar table</li>
+                    <li>Edit or delete posts as needed</li>
+                    <li>Export your calendar as CSV or JSON for further analysis</li>
+                </ol>
+
+                <h2>Key Benefits</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h4>📅 Time Management</h4>
+                        <p>Plan your content weeks or months in advance and never miss a posting deadline.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🎯 Consistent Publishing</h4>
+                        <p>Maintain a regular posting schedule across all your social media channels.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>📊 Multi-Platform Support</h4>
+                        <p>Manage content for Instagram, Twitter, Facebook, LinkedIn, TikTok, and blogs in one place.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>💾 Easy Export</h4>
+                        <p>Export your calendar data in CSV or JSON format for backup and analysis.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🎨 Status Tracking</h4>
+                        <p>Track posts as drafts, scheduled, or published with visual status indicators.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🏷️ Content Organization</h4>
+                        <p>Categorize your posts for better organization and content strategy planning.</p>
+                    </div>
+                </div>
+
+                <h2>Why Use a Content Calendar?</h2>
+                <p>A well-organized content calendar is essential for successful content marketing. It helps you:</p>
+                <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li><strong>Stay Organized:</strong> Keep all your content ideas and schedules in one place</li>
+                    <li><strong>Save Time:</strong> Plan multiple posts at once instead of creating them as you go</li>
+                    <li><strong>Maintain Consistency:</strong> Ensure regular posting frequency across all platforms</li>
+                    <li><strong>Collaborate Better:</strong> Share your content calendar with team members</li>
+                    <li><strong>Track Performance:</strong> Monitor what content types perform best</li>
+                    <li><strong>Meet Deadlines:</strong> Never miss important publishing dates or campaigns</li>
+                    <li><strong>Reduce Stress:</strong> Know exactly what content is coming next</li>
+                </ul>
+            </div>
+
+            <div class="tool-section faq-section">
+                <h2 id="faq">Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I add a new post to my calendar?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To add a new post, fill in the post title, content, date, platform, status, and category fields at the top of the page. Then click the "Add New Post" button. Your post will immediately appear in the calendar table below.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I edit or delete posts?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Each post in the calendar has an Edit button (pencil icon) and a Delete button (trash icon). Click Edit to modify the post details, or Delete to remove it from your calendar. Changes are saved to your browser's local storage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What platforms are supported?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Content Calendar Generator supports all major social media platforms including Instagram, Twitter, Facebook, LinkedIn, and TikTok. You can also track blog posts and other custom content types.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I export my calendar data?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Click the "Export as CSV" button to download your calendar in CSV format (opens in Excel), or "Export as JSON" to get a JSON file format. Both exports include all your posts and their details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is my data saved?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Your content calendar is automatically saved to your browser's local storage. This means your data persists even after you close the page and return later. However, it's stored locally on your device, so clearing your browser cache will delete the data.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I use this for team collaboration?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can export your calendar as CSV or JSON and share it with team members. They can then import it or use the exported data in their own calendar tools. For real-time team collaboration, consider using tools like Google Calendar or specialized content management systems.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is this tool free to use?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, the Content Calendar Generator is completely free to use! No registration or payment required. You can create unlimited posts and export your calendar data without any restrictions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What's the best way to organize content with categories?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Consider using categories like "Marketing," "Educational," "Entertainment," "Promotional," "News," or "User-Generated Content." Consistent categorization helps you analyze which types of content perform best and maintain a balanced content mix.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ad-placeholder">
+                [Advertisement Space - Bottom Banner]
+            </div>
+
+            <div class="tool-section">
+                <h2>Related Tools & Resources</h2>
+                <div id="related-tools"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>📅 Content Tools</h4>
+                    <a href="index.html">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="index.html">All Tools</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Content Calendar Generator. All rights reserved. | <a href="privacy-policy.html" style="color: var(--accent);">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize
+        let posts = [];
+        const storageKey = 'contentCalendarPosts';
+
+        // Load posts from localStorage
+        function loadPosts() {
+            const stored = localStorage.getItem(storageKey);
+            if (stored) {
+                posts = JSON.parse(stored);
+                renderCalendar();
+            }
+        }
+
+        // Save posts to localStorage
+        function savePosts() {
+            localStorage.setItem(storageKey, JSON.stringify(posts));
+        }
+
+        // Add new post
+        function addPost() {
+            const title = document.getElementById('postTitle').value.trim();
+            const date = document.getElementById('postDate').value;
+            const platform = document.getElementById('postPlatform').value;
+            const content = document.getElementById('postContent').value.trim();
+            const status = document.getElementById('postStatus').value;
+            const category = document.getElementById('postCategory').value.trim();
+
+            if (!title || !date || !content) {
+                alert('Please fill in title, date, and content fields.');
+                return;
+            }
+
+            const post = {
+                id: Date.now(),
+                title,
+                date,
+                platform,
+                content,
+                status,
+                category: category || 'General'
+            };
+
+            posts.push(post);
+            posts.sort((a, b) => new Date(a.date) - new Date(b.date));
+            savePosts();
+            renderCalendar();
+            clearForm();
+            showSuccessMessage();
+        }
+
+        // Clear form
+        function clearForm() {
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postDate').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('postStatus').value = 'Draft';
+            document.getElementById('postCategory').value = '';
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const msg = document.getElementById('successMessage');
+            msg.classList.add('show');
+            setTimeout(() => msg.classList.remove('show'), 3000);
+        }
+
+        // Delete post
+        function deletePost(id) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                posts = posts.filter(p => p.id !== id);
+                savePosts();
+                renderCalendar();
+            }
+        }
+
+        // Edit post
+        function editPost(id) {
+            const post = posts.find(p => p.id === id);
+            if (post) {
+                document.getElementById('postTitle').value = post.title;
+                document.getElementById('postDate').value = post.date;
+                document.getElementById('postPlatform').value = post.platform;
+                document.getElementById('postContent').value = post.content;
+                document.getElementById('postStatus').value = post.status;
+                document.getElementById('postCategory').value = post.category;
+                deletePost(id);
+                document.getElementById('postTitle').focus();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Render calendar
+        function renderCalendar() {
+            const tbody = document.getElementById('calendarBody');
+            
+            if (posts.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><div class="empty-state-icon">📭</div><p>No posts yet. Add your first post to get started!</p></td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = posts.map(post => `
+                <tr>
+                    <td>${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
+                    <td><strong>${post.title}</strong></td>
+                    <td>${post.platform}</td>
+                    <td>${post.category}</td>
+                    <td><span class="status-badge status-${post.status.toLowerCase()}">${post.status}</span></td>
+                    <td>
+                        <button style="padding: 0.5rem; margin-right: 0.5rem;" onclick="editPost(${post.id})" title="Edit">✏️</button>
+                        <button class="danger" style="padding: 0.5rem;" onclick="deletePost(${post.id})" title="Delete">🗑️</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Export as CSV
+        function exportCalendar() {
+            if (posts.length === 0) {
+                alert('No posts to export. Add some posts first!');
+                return;
+            }
+
+            let csv = 'Date,Title,Platform,Category,Status,Content\n';
+            posts.forEach(post => {
+                const dateStr = new Date(post.date).toLocaleDateString('en-US');
+                const contentEscaped = `"${post.content.replace(/"/g, '""')}"`;
+                csv += `"${dateStr}","${post.title}","${post.platform}","${post.category}","${post.status}",${contentEscaped}\n`;
+            });
+
+            downloadFile(csv, 'content-calendar.csv', 'text/csv');
+        }
+
+        // Export as JSON
+        function exportJSON() {
+            if (posts.length === 0) {
+                alert('No posts to export. Add some posts first!');
+                return;
+            }
+
+            const json = JSON.stringify(posts, null, 2);
+            downloadFile(json, 'content-calendar.json', 'application/json');
+        }
+
+        // Download file helper
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Clear all posts
+        function clearAllPosts() {
+            if (confirm('Are you sure you want to delete ALL posts? This cannot be undone.')) {
+                posts = [];
+                savePosts();
+                renderCalendar();
+                alert('All posts have been deleted.');
+            }
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(element) {
+            const question = element;
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+
+            document.querySelectorAll('.faq-answer').forEach(a => {
+                if (a !== answer) {
+                    a.classList.remove('active');
+                }
+            });
+            document.querySelectorAll('.faq-toggle').forEach(t => {
+                if (t !== toggle) {
+                    t.classList.remove('active');
+                }
+            });
+
+            answer.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Set today's date as default
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('postDate').value = today;
+
+        // Load posts on page load
+        loadPosts();
+    </script>
+
+    <script src="related-tools.js"></script>
+</body>
+</html>
