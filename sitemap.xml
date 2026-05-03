@@ -3,46 +3,62 @@
 
   <url>
     <loc>https://sargam79.github.io/Tool/</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/index.html</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/bmi.html</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/nutrition-calculator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/converter.html</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/qr-code-generator.html</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/word-counter-tool.html</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/resume-score-ai.html</loc>
-  </url>
-
-  <url>
-    <loc>https://sargam79.github.io/Tool/hashtag-generator.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://sargam79.github.io/Tool/all-tools.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://sargam79.github.io/Tool/word-counter-tool.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://sargam79.github.io/Tool/json-schema-generator-pro.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sargam79.github.io/Tool/qr-code-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sargam79.github.io/Tool/hashtag-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sargam79.github.io/Tool/resume-score-ai.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sargam79.github.io/Tool/converter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sargam79.github.io/Tool/nutrition-calculator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://sargam79.github.io/Tool/bmi.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
