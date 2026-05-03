@@ -240,6 +240,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -570,57 +572,6 @@
             box-shadow: var(--shadow-md);
         }
 
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .tool-card {
-            background: var(--bg-light);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .tool-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-
-        .tool-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-        }
-
-        .tool-card-content {
-            padding: 1rem;
-        }
-
-        .tool-card h4 {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .tool-card p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .tool-card .btn {
-            width: 100%;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            padding: 0.5rem;
-        }
-
         /* Ad Placeholders */
         .ad-placeholder {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -767,6 +718,15 @@
             .section-title {
                 font-size: 1.5rem;
             }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -788,10 +748,6 @@
 
             .btn {
                 width: 100%;
-            }
-
-            .tools-grid {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -1083,61 +1039,15 @@
 
         <!-- Related Tools Section -->
         <section class="related-tools">
-            <h2 class="section-title">Related Tools & Resources</h2>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <img src="https://via.placeholder.com/200x150/6366f1/ffffff?text=Calorie+Calculator" alt="Calorie Calculator">
-                    <div class="tool-card-content">
-                        <h4>Calorie Calculator</h4>
-                        <p>Calculate your daily calorie needs based on activity level</p>
-                        <a href="#" class="btn btn-primary">Open Tool</a>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <img src="https://via.placeholder.com/200x150/a855f7/ffffff?text=Macro+Calculator" alt="Macro Calculator">
-                    <div class="tool-card-content">
-                        <h4>Macro Calculator</h4>
-                        <p>Calculate optimal protein, carbs, and fat ratios</p>
-                        <a href="#" class="btn btn-primary">Open Tool</a>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <img src="https://via.placeholder.com/200x150/ec4899/ffffff?text=BMI+Calculator" alt="BMI Calculator">
-                    <div class="tool-card-content">
-                        <h4>BMI Calculator</h4>
-                        <p>Check your body mass index and health metrics</p>
-                        <a href="#" class="btn btn-primary">Open Tool</a>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <img src="https://via.placeholder.com/200x150/10b981/ffffff?text=Recipe+Finder" alt="Recipe Finder">
-                    <div class="tool-card-content">
-                        <h4>Recipe Finder</h4>
-                        <p>Discover healthy recipes matching your nutrition goals</p>
-                        <a href="#" class="btn btn-primary">Open Tool</a>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <img src="https://via.placeholder.com/200x150/f59e0b/ffffff?text=Nutrition+Database" alt="Nutrition Database">
-                    <div class="tool-card-content">
-                        <h4>Nutrition Database</h4>
-                        <p>Browse detailed nutrition info for thousands of foods</p>
-                        <a href="#" class="btn btn-primary">Open Tool</a>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <img src="https://via.placeholder.com/200x150/ef4444/ffffff?text=Workout+Planner" alt="Workout Planner">
-                    <div class="tool-card-content">
-                        <h4>Workout Planner</h4>
-                        <p>Plan workouts that complement your meal plan</p>
-                        <a href="#" class="btn btn-primary">Open Tool</a>
-                    </div>
-                </div>
+            <h2 class="section-title">Our Other Helpful Tools</h2>
+            <div class="btn-group" style="justify-content: center; flex-wrap: wrap; gap: 1rem;">
+                <a class="btn btn-primary" href="bmi.html">📏 BMI Calculator</a>
+                <a class="btn btn-primary" href="nutrition-calculator.html">📊 Nutrition Calculator</a>
+                <a class="btn btn-primary" href="converter.html">🔄 Unit Converter</a>
+                <a class="btn btn-primary" href="resume-score-ai.html">📝 Resume Score AI</a>
+                <a class="btn btn-primary" href="word-counter-tool.html">📈 Word Counter Tool</a>
+                <a class="btn btn-primary" href="qr-code-generator.html">🔲 QR Code Generator</a>
+                <a class="btn btn-primary" href="json-schema-generator-pro.html">📋 JSON Schema Generator</a>
             </div>
         </section>
     </main>
