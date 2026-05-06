@@ -1,33 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Contact - Tools Hub Online</title>
-
-  <!-- SEO Meta Description -->
-  <meta name="description" content="Contact Tools Hub Online for support, feedback, or business inquiries. We are here to help you with our free online tools.">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact ToolBox Pro - Send us your feedback, suggestions, or inquiries about our free online tools.">
+    <meta name="keywords" content="contact, feedback, support, ToolBox Pro">
+    <meta property="og:title" content="Contact ToolBox Pro">
+    <link rel="canonical" href="https://yourdomain.com/contact.html">
+    <title>Contact ToolBox Pro - Get in Touch</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#6366f1;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:var(--text);background:var(--light);overflow-x:hidden}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1000px;margin:0 auto;padding:0 2rem}.page-header{background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;padding:3rem 2rem;text-align:center}.page-header h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}.page-content{padding:3rem 2rem;background:#fff}.contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin:2rem 0}@media (max-width:768px){.contact-wrapper{grid-template-columns:1fr}}.form-group{margin-bottom:1.5rem}.form-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark)}.form-input,.form-textarea{width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:1rem}.form-input:focus,.form-textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}.form-textarea{min-height:120px;resize:vertical}.form-submit{background:var(--primary);color:#fff;padding:0.75rem 2rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:all 0.3s;width:100%}.form-submit:hover{background:#4f46e5;transform:translateY(-2px)}.contact-info{background:var(--light);padding:2rem;border-radius:8px}.contact-info h3{color:var(--dark);margin-bottom:1.5rem}.contact-item{margin-bottom:1.5rem}.contact-item h4{color:var(--primary);margin-bottom:0.5rem}.contact-item p{color:#6b7280}footer{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.footer-links{margin-bottom:1.5rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}
+    </style>
 </head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ToolBox Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<body style="font-family:Arial;background:#0f172a;color:white;text-align:center;">
+    <div class="page-header">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you</p>
+        </div>
+    </div>
 
-  <h1>Contact Us 📩</h1>
+    <div class="container">
+        <div class="page-content">
+            <div class="contact-wrapper">
+                <div>
+                    <h2 style="color:var(--dark);margin-bottom:1.5rem">Send us a Message</h2>
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Your Name</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea id="message" class="form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+                </div>
 
-  <p>If you have any questions, suggestions, or feedback, feel free to contact us.</p>
+                <div>
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <h4>📧 Email</h4>
+                            <p>support@toolboxpro.com</p>
+                        </div>
 
-  <p>
-    📧 Email: <a href="mailto:hellosargam079@gmail.com" style="color:#38bdf8;">
-      hellosargam079@gmail.com
-    </a>
-  </p>
+                        <div class="contact-item">
+                            <h4>🌐 Website</h4>
+                            <p>https://yourdomain.com</p>
+                        </div>
 
-  <p>We usually respond within 24–48 hours.</p>
+                        <div class="contact-item">
+                            <h4>📱 Phone</h4>
+                            <p>Available via email</p>
+                        </div>
 
-  <br>
+                        <div class="contact-item">
+                            <h4>⏰ Response Time</h4>
+                            <p>We typically respond within 24 hours</p>
+                        </div>
 
-  <a href="index.html" style="color:#38bdf8;">⬅ Back to Home</a>
+                        <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)">
+                            <h3>What We're Here For</h3>
+                            <p style="font-size:0.95rem;color:#6b7280;margin-top:1rem">
+                                ✓ Feature requests<br>
+                                ✓ Bug reports<br>
+                                ✓ Feedback<br>
+                                ✓ Partnership inquiries<br>
+                                ✓ General questions
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy</a>
+        </div>
+        <p>&copy; 2026 ToolBox Pro. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:support@toolboxpro.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Reset form
+            document.querySelector('form').reset();
+            alert('Thank you for your message! If you don\'t have an email client configured, please email us directly at support@toolboxpro.com');
+        }
+    </script>
 </body>
 </html>
