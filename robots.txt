@@ -8,4 +8,4 @@ Disallow: /temp/
 Crawl-delay: 0
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://sargam79.github.io/Tool/sitemap.xml
