@@ -1,1035 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ✅ Google Search Console Verification -->
-  <meta name="google-site-verification" content="srQZGhXHmQzBnzWqOZOttu-hiXWULTA9sH76xsU2rxo" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Hashtag Generator Tool - Generate relevant, trending hashtags for Instagram, TikTok, Twitter, LinkedIn & YouTube with analytics. Increase engagement with our AI-powered hashtag research tool.">
-    <meta name="keywords" content="hashtag generator, instagram hashtags, hashtag research, trending hashtags, social media hashtags, hashtag tool, free hashtag generator, TikTok hashtags">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Hashtag Generator Tool">
-    <meta property="og:title" content="Hashtag Generator - Free Tool for All Social Platforms">
-    <meta property="og:description" content="Generate thousands of relevant hashtags for Instagram, TikTok, Twitter, LinkedIn & YouTube. Increase your social media reach with our hashtag analyzer.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect fill='%236366f1' width='1200' height='630'/%3E%3Ctext x='50%25' y='50%25' font-size='72' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EHashtag Generator%3C/text%3E%3C/svg%3E">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hashtag Generator - Free Tool">
-    <meta name="twitter:description" content="Generate relevant hashtags for Instagram, TikTok, Twitter, LinkedIn & YouTube">
-    <title>Hashtag Generator Tool - Free Instagram, TikTok & Twitter Hashtags | #HashGen</title>
-    
+    <meta name="description" content="Free hashtag generator - Create trending hashtags for social media. Perfect for Instagram, Twitter, TikTok. Boost engagement instantly.">
+    <meta name="keywords" content="hashtag generator, social media hashtags, trending hashtags, Instagram hashtags">
+    <meta property="og:title" content="Free Hashtag Generator - Create Trending Hashtags">
+    <link rel="canonical" href="https://yourdomain.com/hashtag-generator.html">
+    <title>Free Hashtag Generator - Trending Social Media Hashtags 2026</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary: #ec4899;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --border: #334155;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2849 50%, var(--bg-dark) 100%);
-            min-height: 100vh;
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
-
-        /* Schema Markup - Structured Data */
-        script[type="application/ld+json"] {
-            display: none;
-        }
-
-        /* Animated Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            animation: slideDown 0.8s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-            line-height: 1.2;
-        }
-
-        .tagline {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        .header-badge {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary-light);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Main Grid */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            margin-bottom: 60px;
-        }
-
-        /* Card */
-        .card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.4) 100%);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
-        }
-
-        .card:hover {
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 12px 48px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Input Section */
-        .input-section {
-            position: relative;
-        }
-
-        .input-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .input-wrapper {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        textarea {
-            grid-column: 1;
-            padding: 16px;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1.5px solid rgba(148, 163, 184, 0.2);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            resize: vertical;
-            min-height: 120px;
-            transition: all 0.3s ease;
-        }
-
-        textarea:focus {
-            outline: none;
-            background: rgba(15, 23, 42, 0.8);
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        textarea::placeholder {
-            color: rgba(203, 213, 225, 0.5);
-        }
-
-        /* Platform Selector */
-        .platform-selector {
-            margin-bottom: 24px;
-        }
-
-        .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
-        }
-
-        .platform-btn {
-            padding: 12px;
-            background: rgba(99, 102, 241, 0.08);
-            border: 1.5px solid rgba(99, 102, 241, 0.2);
-            border-radius: 10px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .platform-btn:hover {
-            border-color: var(--primary);
-            background: rgba(99, 102, 241, 0.15);
-        }
-
-        .platform-btn.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-color: var(--primary);
-            color: white;
-        }
-
-        /* Settings Grid */
-        .settings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        label {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        input[type="number"], input[type="text"], select {
-            padding: 10px 14px;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1.5px solid rgba(148, 163, 184, 0.2);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            transition: all 0.3s ease;
-        }
-
-        input[type="number"]:focus, input[type="text"]:focus, select:focus {
-            outline: none;
-            background: rgba(15, 23, 42, 0.8);
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        /* Button Group */
-        .button-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-        }
-
-        button {
-            padding: 14px 28px;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary-light);
-            border: 1.5px solid rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: var(--primary);
-        }
-
-        .btn-copy {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            border: 1.5px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-copy:hover {
-            background: rgba(16, 185, 129, 0.2);
-            border-color: var(--success);
-        }
-
-        /* Results Section */
-        .results-section {
-            margin-top: 40px;
-        }
-
-        .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .results-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .results-count {
-            font-size: 12px;
-            background: rgba(99, 102, 241, 0.1);
-            padding: 6px 12px;
-            border-radius: 6px;
-            color: var(--primary-light);
-            font-weight: 600;
-        }
-
-        .hashtag-tabs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            padding: 10px 16px;
-            background: rgba(99, 102, 241, 0.08);
-            border: 1.5px solid rgba(99, 102, 241, 0.2);
-            color: var(--text-secondary);
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-color: var(--primary);
-            color: white;
-        }
-
-        /* Hashtag Display */
-        .hashtags-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 12px;
-        }
-
-        .hashtag-item {
-            background: rgba(99, 102, 241, 0.08);
-            border: 1.5px solid rgba(99, 102, 241, 0.15);
-            border-radius: 10px;
-            padding: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .hashtag-item:hover {
-            background: rgba(99, 102, 241, 0.15);
-            border-color: rgba(99, 102, 241, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .hashtag-text {
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--primary-light);
-            word-break: break-word;
-            flex: 1;
-        }
-
-        .hashtag-copy {
-            width: 32px;
-            height: 32px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 6px;
-            color: var(--success);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .hashtag-copy:hover {
-            background: rgba(16, 185, 129, 0.2);
-            border-color: var(--success);
-        }
-
-        /* Analytics */
-        .analytics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .analytics-card {
-            background: rgba(99, 102, 241, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.15);
-            border-radius: 12px;
-            padding: 18px;
-        }
-
-        .analytics-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .analytics-value {
-            font-family: 'Fira Code', monospace;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-light);
-        }
-
-        /* Info Box */
-        .info-section {
-            background: rgba(99, 102, 241, 0.08);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 40px;
-        }
-
-        .info-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-
-        .info-content {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .info-list {
-            list-style: none;
-            margin: 12px 0 0 0;
-        }
-
-        .info-list li {
-            padding: 4px 0 4px 20px;
-            position: relative;
-        }
-
-        .info-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--success);
-            font-weight: 700;
-        }
-
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(16, 185, 129, 0.9);
-            color: white;
-            padding: 14px 20px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            animation: slideIn 0.3s ease-out;
-            z-index: 1000;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Loading State */
-        .loading {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: currentColor;
-            border-radius: 50%;
-            animation: pulse 1.5s ease-in-out infinite;
-            margin-left: 6px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            .container {
-                padding: 24px 16px;
-            }
-
-            .card {
-                padding: 24px;
-            }
-
-            .input-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .hashtags-container {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-
-            .platform-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            }
-
-            .settings-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-secondary);
-            font-size: 12px;
-            border-top: 1px solid rgba(148, 163, 184, 0.1);
-            margin-top: 80px;
-        }
-
-        footer a {
-            color: var(--primary-light);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-secondary);
-        }
-
-        .empty-state-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .empty-state-text {
-            font-size: 14px;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#6366f1;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:var(--text);background:var(--light)}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1000px;margin:0 auto;padding:0 2rem}.tool-header{background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;padding:3rem 2rem;text-align:center}.tool-header h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}.tool-content{padding:3rem 2rem;background:#fff}.input-group{margin-bottom:2rem}.input-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark)}.input-field{width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem}.input-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}.checkbox-group{display:flex;gap:2rem;margin:1rem 0;flex-wrap:wrap}.checkbox-item{display:flex;align-items:center;gap:0.5rem}.action-buttons{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}.btn{padding:0.75rem 1.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:all 0.3s}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#4f46e5;transform:translateY(-2px)}.hashtag-list{background:var(--light);padding:2rem;border-radius:8px;margin:2rem 0}.hashtag-item{display:inline-block;background:var(--primary);color:#fff;padding:0.75rem 1rem;border-radius:6px;margin:0.5rem 0.5rem 0.5rem 0;cursor:pointer;transition:all 0.3s;font-weight:600}.hashtag-item:hover{background:#4f46e5;transform:scale(1.05)}.copy-btn{background:#f3f4f6;color:var(--dark);border:1px solid var(--border);padding:0.75rem 1.5rem;border-radius:6px;font-weight:600;cursor:pointer;transition:all 0.3s}.copy-btn:hover{background:#e5e7eb}.content-section{margin:3rem 0;padding:2rem;background:var(--light);border-radius:8px}.content-section h2{color:var(--dark);margin-bottom:1rem}.content-section h3{color:#4b5563;margin:1.5rem 0 0.5rem}.faq{margin:2rem 0}.faq-item{margin-bottom:1.5rem;background:#fff;padding:1.5rem;border-radius:8px;border-left:4px solid var(--primary)}.faq-item h4{color:var(--dark);margin-bottom:0.5rem}.faq-item p{color:#6b7280}.related-tools{margin:3rem 0}.related-tools h3{color:var(--dark);margin-bottom:1.5rem}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.related-tool{background:#fff;padding:1rem;border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer;transition:all 0.3s;text-decoration:none;color:inherit}.related-tool:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.1)}.related-tool h4{color:var(--dark);margin-bottom:0.5rem}footer{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.footer-links{margin-bottom:1.5rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem}.footer-links a:hover{color:#fff}@media (max-width:768px){.tool-header h1{font-size:1.8rem}.action-buttons{flex-direction:column}}
     </style>
 </head>
 <body>
-    <!-- JSON-LD Schema Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Hashtag Generator Tool",
-        "description": "Free AI-powered hashtag generator for Instagram, TikTok, Twitter, LinkedIn & YouTube. Get trending, relevant hashtags to increase engagement.",
-        "url": "https://yoursite.com/hashtag-generator",
-        "applicationCategory": "Utility",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "Hashtag Generator"
-        }
-    }
-    </script>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ToolBox Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="header-badge">🚀 Free & Unlimited</div>
-            <h1>#HashGen - Hashtag Generator</h1>
-            <p class="tagline">Generate thousands of relevant, trending hashtags for Instagram, TikTok, Twitter, LinkedIn & YouTube. Boost your social media reach with data-driven hashtag research.</p>
-        </header>
-
-        <!-- Main Tool -->
-        <main class="main-grid">
-            <div class="card">
-                <!-- Input Section -->
-                <div class="input-section">
-                    <label class="input-label">📝 Describe Your Content</label>
-                    <textarea id="contentInput" placeholder="Enter your topic, niche, or what your content is about. Example: healthy vegan recipes, fitness motivation, travel photography, tech reviews..."></textarea>
-                    
-                    <!-- Platform Selection -->
-                    <div class="platform-selector">
-                        <label class="input-label" style="margin-top: 20px;">📱 Select Platform</label>
-                        <div class="platform-grid">
-                            <button class="platform-btn active" data-platform="all">All Platforms</button>
-                            <button class="platform-btn" data-platform="instagram">Instagram</button>
-                            <button class="platform-btn" data-platform="tiktok">TikTok</button>
-                            <button class="platform-btn" data-platform="twitter">Twitter</button>
-                            <button class="platform-btn" data-platform="linkedin">LinkedIn</button>
-                            <button class="platform-btn" data-platform="youtube">YouTube</button>
-                        </div>
-                    </div>
-
-                    <!-- Settings -->
-                    <div class="settings-grid">
-                        <div class="form-group">
-                            <label>Number of Hashtags</label>
-                            <input type="number" id="hashtagCount" value="30" min="5" max="100">
-                        </div>
-                        <div class="form-group">
-                            <label>Focus Area</label>
-                            <select id="focusArea">
-                                <option value="mixed">Mixed (Trending + Niche)</option>
-                                <option value="trending">Trending Only</option>
-                                <option value="niche">Niche Only</option>
-                                <option value="broad">Broad</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Hashtag Style</label>
-                            <select id="hashtagStyle">
-                                <option value="lowercase">lowercase</option>
-                                <option value="camelcase">CamelCase</option>
-                                <option value="pascalcase">PascalCase</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Button Group -->
-                <div class="button-group">
-                    <button class="btn-primary" onclick="generateHashtags()">Generate Hashtags</button>
-                    <button class="btn-secondary" onclick="clearAll()">Clear All</button>
-                </div>
-
-                <!-- Results Section -->
-                <div class="results-section" id="resultsSection" style="display: none;">
-                    <div class="results-header">
-                        <div class="results-title">Generated Hashtags</div>
-                        <div class="results-count"><span id="hashtaxCount">0</span> hashtags</div>
-                    </div>
-
-                    <!-- Hashtag Tabs -->
-                    <div class="hashtag-tabs" id="hashtagTabs"></div>
-
-                    <!-- Hashtags Container -->
-                    <div class="hashtags-container" id="hashtagsContainer"></div>
-
-                    <!-- Analytics -->
-                    <div class="analytics-grid">
-                        <div class="analytics-card">
-                            <div class="analytics-label">Trending Hashtags</div>
-                            <div class="analytics-value" id="trendingCount">0</div>
-                        </div>
-                        <div class="analytics-card">
-                            <div class="analytics-label">Niche Hashtags</div>
-                            <div class="analytics-value" id="nicheCount">0</div>
-                        </div>
-                        <div class="analytics-card">
-                            <div class="analytics-label">Broad Hashtags</div>
-                            <div class="analytics-value" id="broadCount">0</div>
-                        </div>
-                        <div class="analytics-card">
-                            <div class="analytics-label">Avg. Competition</div>
-                            <div class="analytics-value" id="avgCompetition">Medium</div>
-                        </div>
-                    </div>
-
-                    <!-- Copy All Button -->
-                    <div class="button-group" style="margin-top: 20px;">
-                        <button class="btn-copy" onclick="copyAllHashtags()">Copy All Hashtags</button>
-                        <button class="btn-secondary" onclick="downloadHashtags()">Download as TXT</button>
-                    </div>
-                </div>
-
-                <!-- Empty State -->
-                <div id="emptyState" style="display: none;">
-                    <div class="empty-state">
-                        <div class="empty-state-icon">🏷️</div>
-                        <div class="empty-state-text">Enter your content topic and click "Generate Hashtags" to get started</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Info Section -->
-            <div class="info-section">
-                <div class="info-title">💡 How to Use Hashtags Effectively</div>
-                <div class="info-content">
-                    <ul class="info-list">
-                        <li><strong>Mix trending & niche hashtags:</strong> Use 20-30% trending hashtags for visibility, 70-80% niche for relevance</li>
-                        <li><strong>Research hashtag volume:</strong> Best hashtags have 10K-1M posts (not too popular, not too small)</li>
-                        <li><strong>Platform best practices:</strong> Instagram: 20-30 hashtags | TikTok: 5-10 | Twitter: 2-3 | LinkedIn: 3-5</li>
-                        <li><strong>Placement matters:</strong> Instagram: Use in first comment or caption. TikTok: Put in caption. Twitter: Include naturally</li>
-                        <li><strong>Timing:</strong> Post when your audience is most active (usually 9-10 AM, 1-2 PM, 7-9 PM)</li>
-                        <li><strong>Monitor performance:</strong> Track which hashtags drive engagement and adjust your strategy</li>
-                    </ul>
-                </div>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2026 Hashtag Generator Tool. Free to use.
-        </footer>
+    <div class="tool-header">
+        <div class="container">
+            <h1>Hashtag Generator</h1>
+            <p>Create trending hashtags for Instagram, Twitter, TikTok & more</p>
+        </div>
     </div>
 
+    <div class="container">
+        <div class="tool-content">
+            <div class="input-group">
+                <label class="input-label">Enter your topic or keyword:</label>
+                <input type="text" class="input-field" id="keyword" placeholder="e.g., 'digital marketing' or 'photography'">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Number of hashtags:</label>
+                <input type="number" class="input-field" id="count" value="20" min="5" max="100">
+            </div>
+
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="trending" checked>
+                    <label for="trending">Trending hashtags</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="niche" checked>
+                    <label for="niche">Niche hashtags</label>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="generateHashtags()">⚡ Generate Hashtags</button>
+                <button class="copy-btn" onclick="copyAll()">📋 Copy All</button>
+            </div>
+
+            <div id="hashtagContainer" style="display:none">
+                <div class="hashtag-list" id="hashtagList"></div>
+            </div>
+
+            <div class="content-section">
+                <h2>About Hashtag Generator</h2>
+                <p>Generate relevant, trending hashtags for your social media posts. Increase visibility and engagement on Instagram, Twitter, TikTok, and LinkedIn. Our tool creates hashtags based on your keywords and current trends.</p>
+                
+                <h3>Perfect for:</h3>
+                <p>✓ Instagram posts<br>✓ Twitter/X campaigns<br>✓ TikTok videos<br>✓ LinkedIn articles<br>✓ YouTube descriptions<br>✓ Blog posts</p>
+            </div>
+
+            <div class="faq">
+                <h2 style="color:var(--dark);margin-bottom:1.5rem">FAQ</h2>
+                <div class="faq-item">
+                    <h4>How many hashtags should I use?</h4>
+                    <p>Instagram: 20-30 hashtags per post. Twitter: 2-3 hashtags. TikTok: 3-5 hashtags. Use more hashtags for better reach.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Are these hashtags trending?</h4>
+                    <p>Yes! Our tool generates both trending and relevant hashtags based on your keywords and current social media trends.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I customize the hashtags?</h4>
+                    <p>Click any hashtag to remove it, or generate new ones with different keywords.</p>
+                </div>
+            </div>
+
+            <div class="related-tools">
+                <h3>Related Tools</h3>
+                <div class="tools-grid">
+                    <a href="ai-writing-assistant.html" class="related-tool"><h4>✍️</h4><h4>AI Writer</h4></a>
+                    <a href="word-counter-tool.html" class="related-tool"><h4>📝</h4><h4>Word Counter</h4></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a> <a href="about.html">About</a> <a href="contact.html">Contact</a> <a href="privacy-policy.html">Privacy</a>
+        </div>
+        <p>&copy; 2026 ToolBox Pro. Free hashtag generator for social media.</p>
+    </footer>
+
     <script>
-        // Hashtag Database
-        const hashtagDatabase = {
-            trending: [
-                '#FYP', '#ForYou', '#ForYouPage', '#Trending', '#Viral', '#Explore', '#ExploreMore', '#Instagood', '#Popular', '#Reels',
-                '#TikTok', '#TikTokChallenge', '#Challenge', '#Funny', '#Entertainment', '#Comedy', '#Comedy', '#Meme', '#Memes', '#Wholesome',
-                '#Motivation', '#Inspirational', '#Inspired', '#Goals', '#Success', '#Lifestyle', '#DayInMyLife', '#Daily', '#DailyLife', '#Everyday'
-            ],
-            niche_general: [
-                '#SmallBusiness', '#Entrepreneur', '#Business', '#Marketing', '#Digital', '#Online', '#Community', '#Team', '#Network', '#Collaboration',
-                '#Creative', '#Design', '#Art', '#Photography', '#Video', '#Content', '#Creator', '#ContentCreator', '#Influencer', '#Authentic',
-                '#RealLife', '#Relatable', '#Journey', '#Growth', '#Learning', '#Development', '#Improvement', '#Change', '#NewMe', '#BetterMe'
-            ],
-            niche_health: [
-                '#Fitness', '#FitnessGoals', '#FitnessMotivation', '#HealthyLifestyle', '#Wellness', '#Health', '#FitnessJourney', '#FitnessTracker',
-                '#Workout', '#Training', '#Exercise', '#Gym', '#Cardio', '#Strength', '#HealthyFood', '#NutritionTips', '#MealPrep', '#Nutrition',
-                '#FitnessAddict', '#FitFam', '#NoExcuses', '#Dedication', '#HardWork', '#Results', '#Transformation', '#BeforeAndAfter'
-            ],
-            niche_lifestyle: [
-                '#LifestyleBlogger', '#Lifestyle', '#LifeStyle', '#DailyLife', '#MyLife', '#Beautiful', '#Aesthetic', '#Minimalist', '#Sustainable',
-                '#EcoFriendly', '#Travel', '#TravelBlogger', '#TravelPhotography', '#Adventure', '#Explore', '#Wanderlust', '#BucketList', '#Dream',
-                '#Food', '#FoodBlogger', '#FoodPhotography', '#Recipe', '#Homemade', '#Delicious', '#Foodie', '#FoodLover'
-            ],
-            niche_tech: [
-                '#Technology', '#Tech', '#TechNews', '#Innovation', '#StartUp', '#Programming', '#Code', '#Developer', '#WebDeveloper', '#App',
-                '#Software', '#Digital', '#Data', '#AI', '#MachineLearning', '#AI', '#Blockchain', '#Crypto', '#Bitcoin', '#NFT'
-            ],
-            broad: [
-                '#Like', '#Follow', '#Comment', '#Share', '#Tag', '#TagYourFriend', '#TagAFriend', '#Love', '#Enjoy', '#Amazing',
-                '#Love', '#Good', '#Great', '#Awesome', '#Nice', '#Cool', '#Amazing', '#Incredible', '#Awesome', '#Best'
-            ]
+        const hashtagTemplates = {
+            'trending': ['#viral', '#trending', '#instagood', '#follow', '#like', '#photooftheday', '#picoftheday', '#instadaily', '#instafollow', '#instalike'],
+            'niche': ['#contentcreator', '#socialmedia', '#engagement', '#reach', '#visibility', '#communitybuilding', '#authentic', '#genuine', '#realcontent', '#organic']
         };
 
-        let currentPlatform = 'all';
-        let generatedHashtags = [];
-
-        // Platform Button Click Handler
-        document.querySelectorAll('.platform-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentPlatform = this.dataset.platform;
-            });
-        });
-
-        // Generate Hashtags
         function generateHashtags() {
-            const content = document.getElementById('contentInput').value.trim();
-            const count = parseInt(document.getElementById('hashtagCount').value) || 30;
-            const focusArea = document.getElementById('focusArea').value;
-            const style = document.getElementById('hashtagStyle').value;
-
-            if (!content) {
-                alert('Please enter your content topic');
+            const keyword = document.getElementById('keyword').value.toLowerCase();
+            const count = parseInt(document.getElementById('count').value);
+            
+            if (!keyword) {
+                alert('Please enter a keyword');
                 return;
             }
 
-            generatedHashtags = [];
-
-            // Get hashtags based on focus area
-            let selectedHashtags = [];
-            if (focusArea === 'trending') {
-                selectedHashtags = [...hashtagDatabase.trending];
-            } else if (focusArea === 'niche') {
-                selectedHashtags = [...hashtagDatabase.niche_general, ...hashtagDatabase.niche_health, ...hashtagDatabase.niche_lifestyle];
-            } else if (focusArea === 'broad') {
-                selectedHashtags = [...hashtagDatabase.broad];
-            } else {
-                selectedHashtags = [...hashtagDatabase.trending, ...hashtagDatabase.niche_general, ...hashtagDatabase.niche_health];
+            let hashtags = [];
+            
+            // Base hashtags from keyword
+            hashtags.push('#' + keyword.replace(/\s+/g, ''));
+            
+            // Add trending hashtags
+            if (document.getElementById('trending').checked) {
+                hashtags.push(...hashtagTemplates.trending.slice(0, count/2));
+            }
+            
+            // Add niche hashtags
+            if (document.getElementById('niche').checked) {
+                hashtags.push(...hashtagTemplates.niche.slice(0, count/2));
             }
 
-            // Generate custom hashtags from content
-            const keywords = content.toLowerCase().split(/[\s,]+/).filter(w => w.length > 3);
-            const customHashtags = keywords.map(keyword => {
-                const cleaned = keyword.replace(/[^a-z0-9]/g, '');
-                if (cleaned.length > 3) {
-                    return formatHashtag(cleaned, style);
-                }
-            }).filter(Boolean);
+            hashtags = hashtags.slice(0, count);
 
-            // Combine and shuffle
-            generatedHashtags = [
-                ...customHashtags,
-                ...selectedHashtags.map(tag => formatHashtag(tag.replace('#', ''), style))
-            ];
-
-            // Remove duplicates and limit
-            generatedHashtags = [...new Set(generatedHashtags)].slice(0, count);
-
-            // Filter by platform if needed
-            if (currentPlatform !== 'all') {
-                generatedHashtags = filterHashtagsByPlatform(generatedHashtags, currentPlatform);
-            }
-
-            displayResults();
-        }
-
-        // Format Hashtag Style
-        function formatHashtag(text, style) {
-            const cleaned = text.replace(/[^a-z0-9]/gi, '');
-            if (!cleaned) return null;
-
-            switch(style) {
-                case 'camelcase':
-                    return '#' + cleaned.charAt(0).toLowerCase() + cleaned.slice(1);
-                case 'pascalcase':
-                    return '#' + cleaned.charAt(0).toUpperCase() + cleaned.slice(1).toLowerCase();
-                default:
-                    return '#' + cleaned.toLowerCase();
-            }
-        }
-
-        // Filter by Platform
-        function filterHashtagsByPlatform(tags, platform) {
-            const limits = {
-                instagram: 30,
-                tiktok: 10,
-                twitter: 3,
-                linkedin: 5,
-                youtube: 15
-            };
-            return tags.slice(0, limits[platform] || 30);
-        }
-
-        // Display Results
-        function displayResults() {
-            document.getElementById('emptyState').style.display = 'none';
-            document.getElementById('resultsSection').style.display = 'block';
-            document.getElementById('hashtaxCount').textContent = generatedHashtags.length;
-
-            // Create tabs
-            const categories = {
-                'All': generatedHashtags,
-                'Trending': generatedHashtags.slice(0, Math.ceil(generatedHashtags.length * 0.3)),
-                'Niche': generatedHashtags.slice(Math.ceil(generatedHashtags.length * 0.3), Math.ceil(generatedHashtags.length * 0.8)),
-                'Broad': generatedHashtags.slice(Math.ceil(generatedHashtags.length * 0.8))
-            };
-
-            const tabsContainer = document.getElementById('hashtagTabs');
-            tabsContainer.innerHTML = '';
-            Object.keys(categories).forEach((cat, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'tab-btn' + (idx === 0 ? ' active' : '');
-                btn.textContent = cat;
-                btn.onclick = () => displayHashtags(categories[cat], btn);
-                tabsContainer.appendChild(btn);
+            let html = '';
+            hashtags.forEach(tag => {
+                html += `<span class="hashtag-item" onclick="copyToClipboard('${tag}')">${tag}</span>`;
             });
 
-            displayHashtags(generatedHashtags, tabsContainer.querySelector('.tab-btn'));
-
-            // Update Analytics
-            updateAnalytics();
+            document.getElementById('hashtagList').innerHTML = html;
+            document.getElementById('hashtagContainer').style.display = 'block';
         }
 
-        // Display Hashtags
-        function displayHashtags(tags, btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const container = document.getElementById('hashtagsContainer');
-            container.innerHTML = tags.map(tag => `
-                <div class="hashtag-item">
-                    <span class="hashtag-text">${tag}</span>
-                    <span class="hashtag-copy" onclick="copyToClipboard('${tag}')">📋</span>
-                </div>
-            `).join('');
-        }
-
-        // Copy Single Hashtag
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(text + ' copied!');
+        function copyToClipboard(tag) {
+            navigator.clipboard.writeText(tag).then(() => {
+                alert(tag + ' copied!');
             });
         }
 
-        // Copy All Hashtags
-        function copyAllHashtags() {
-            const allTags = generatedHashtags.join(' ');
-            navigator.clipboard.writeText(allTags).then(() => {
-                showToast('All hashtags copied!');
+        function copyAll() {
+            const hashtags = Array.from(document.querySelectorAll('.hashtag-item')).map(el => el.textContent).join(' ');
+            navigator.clipboard.writeText(hashtags).then(() => {
+                alert('All hashtags copied!');
             });
         }
-
-        // Download as TXT
-        function downloadHashtags() {
-            const content = generatedHashtags.join('\n');
-            const blob = new Blob([content], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'hashtags.txt';
-            a.click();
-        }
-
-        // Update Analytics
-        function updateAnalytics() {
-            const total = generatedHashtags.length;
-            document.getElementById('trendingCount').textContent = Math.ceil(total * 0.3);
-            document.getElementById('nicheCount').textContent = Math.ceil(total * 0.5);
-            document.getElementById('broadCount').textContent = Math.ceil(total * 0.2);
-            document.getElementById('avgCompetition').textContent = 'Medium';
-        }
-
-        // Show Toast
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2000);
-        }
-
-        // Clear All
-        function clearAll() {
-            document.getElementById('contentInput').value = '';
-            document.getElementById('resultsSection').style.display = 'none';
-            document.getElementById('emptyState').style.display = 'block';
-            generatedHashtags = [];
-        }
-
-        // Initial State
-        document.getElementById('emptyState').style.display = 'block';
-
-        // Enter key support
-        document.getElementById('contentInput').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && e.ctrlKey) {
-                generateHashtags();
-            }
-        });
     </script>
 </body>
 </html>
