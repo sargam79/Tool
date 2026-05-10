@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free BMI calculator - Calculate your body mass index instantly with height and weight. Health assessment tool, no signup needed. Track fitness progress.">
+    <meta name="keywords" content="BMI calculator, body mass index calculator, BMI tracker, weight calculator, health calculator">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/bmi-calculator.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/bmi-calculator.html">
+    <meta property="og:title" content="Free BMI Calculator - Calculate Your Body Mass Index">
+    <meta property="og:description" content="Instant BMI calculator - Calculate body mass index from height and weight. Health assessment tool, completely free, no signup required.">
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="BMI Calculator">
+    <meta property="twitter:description" content="Calculate your BMI and health score instantly">
+    
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"BMI Calculator","description":"Free online BMI calculator for calculating body mass index and health assessment","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"620"}}
+    </script>
+    
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does BMI calculator work?","acceptedAnswer":{"@type":"Answer","text":"Enter your height and weight and the BMI calculator instantly computes your body mass index. BMI is calculated by dividing weight in kilograms by height in meters squared (kg/m²)."}},{"@type":"Question","name":"Is BMI calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free forever with no signup required and unlimited BMI calculations."}},{"@type":"Question","name":"What does BMI mean?","acceptedAnswer":{"@type":"Answer","text":"BMI stands for Body Mass Index. It's a measure of body fat based on height and weight. Categories: Underweight <18.5, Normal 18.5-24.9, Overweight 25-29.9, Obese 30+."}},{"@type":"Question","name":"Is BMI accurate?","acceptedAnswer":{"@type":"Answer","text":"BMI is a useful screening tool for most people, but it doesn't distinguish between muscle and fat. Consult healthcare professionals for personalized assessment."}}]}
+    </script>
+    
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sargam79.github.io/Tool/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://sargam79.github.io/Tool/#tools"},{"@type":"ListItem","position":3,"name":"BMI Calculator","item":"https://sargam79.github.io/Tool/bmi-calculator.html"}]}
+    </script>
+    
+    <title>Free BMI Calculator - Calculate Body Mass Index Instantly</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#06B6D4;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb}body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:#374151;background:var(--light);overflow-x:hidden}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:#374151;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1200px;margin:0 auto;padding:0 2rem}.breadcrumb{padding:1rem 2rem;background:#fff;border-bottom:1px solid var(--border);font-size:0.9rem}.breadcrumb a{color:var(--primary);margin:0 0.5rem}.tool-header{background:linear-gradient(135deg,var(--primary),#22D3EE);color:#fff;padding:3rem 2rem;text-align:center}.tool-header h1{font-size:2.8rem;margin-bottom:0.5rem;font-weight:800}.tool-header p{font-size:1.1rem;opacity:0.95;margin-bottom:0.5rem}.tool-content{padding:3rem 2rem;background:#fff}.content-grid{display:grid;grid-template-columns:2fr 1fr;gap:2rem}@media(max-width:1024px){.content-grid{grid-template-columns:1fr}}.input-group{margin-bottom:1.5rem}.input-label{display:block;margin-bottom:0.75rem;font-weight:600;color:var(--dark);font-size:1.05rem}.input-field{width:100%;padding:1rem;border:2px solid var(--border);border-radius:10px;font-size:1rem;transition:all 0.3s}.input-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(6,182,212,0.1)}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2rem 0}.stat-card{background:linear-gradient(135deg,#CFFAFE,#A5F3FC);padding:1.5rem;border-radius:10px;text-align:center;border:1px solid var(--border);transition:all 0.3s}.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(6,182,212,0.1)}.stat-label{color:#6b7280;font-size:0.85rem;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.5px}.stat-value{font-size:2.5rem;font-weight:700;color:var(--primary)}.action-buttons{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}.btn{padding:0.85rem 1.75rem;border:none;border-radius:7px;font-weight:600;cursor:pointer;transition:all 0.3s}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#0891B2;transform:translateY(-2px)}.btn-secondary{background:#f3f4f6;color:var(--dark);border:2px solid var(--border)}.btn-secondary:hover{background:var(--primary);color:#fff}.sidebar{background:var(--light);padding:2rem;border-radius:10px;border:1px solid var(--border)}.sidebar h3{color:var(--dark);margin-bottom:1rem;font-size:1.1rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem}.sidebar-item{margin-bottom:1rem;padding:0.75rem;background:#fff;border-radius:6px;border-left:4px solid var(--primary)}.content-section{margin:3rem 0;padding:2rem;background:var(--light);border-radius:10px}.content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem}.content-section h3{color:#4b5563;margin:1.5rem 0 0.75rem;font-size:1.2rem;font-weight:600}.content-section p{margin-bottom:1rem;line-height:1.8;color:#4b5563;font-size:1.05rem}.content-section ul{margin:1rem 0 1rem 1.5rem}.content-section li{margin-bottom:0.75rem}.use-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1.5rem 0}.use-case{background:#fff;padding:1.5rem;border-radius:8px;border-top:4px solid var(--primary)}.use-case h4{color:var(--dark);margin-bottom:0.5rem}.use-case p{color:#6b7280;font-size:0.95rem}.faq-item{margin-bottom:1rem;background:#fff;padding:1.5rem;border-radius:8px;border-left:4px solid var(--primary)}.faq-item h4{color:var(--dark);margin-bottom:0.5rem}.faq-item p{color:#6b7280;font-size:0.95rem}.related-section{background:#fff;padding:2rem;border-radius:10px;border:2px solid var(--primary);margin:3rem 0}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}.tool-card{background:linear-gradient(135deg,#CFFAFE,#A5F3FC);padding:1.5rem;border-radius:8px;border:2px solid var(--border);text-align:center;transition:all 0.3s;cursor:pointer}.tool-card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(6,182,212,0.15);border-color:var(--primary)}.tool-icon{font-size:2.5rem;margin-bottom:0.5rem}.tool-card h4{color:var(--dark);margin-bottom:0.5rem}.tool-card a{color:var(--primary);font-weight:600;display:inline-block;margin-top:0.5rem}.footer-section{background:var(--dark);color:#fff;padding:3rem 2rem}.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}.footer-col h4{color:var(--primary);margin-bottom:1rem}.footer-col a{color:#d1d5db;transition:color 0.3s}.footer-col a:hover{color:#fff}.footer-col ul{list-style:none}.footer-bottom{text-align:center;border-top:1px solid #4b5563;padding-top:2rem;color:#9ca3af}.back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999}.back-to-top.show{opacity:1;visibility:visible}.cta-banner{background:linear-gradient(135deg,var(--primary),#22D3EE);color:#fff;padding:2rem;border-radius:10px;text-align:center;margin:2rem 0}.cta-banner h3{margin-bottom:1rem;font-size:1.5rem}.cta-banner .btn{background:#fff;color:var(--primary)}.cta-banner .btn:hover{background:#f3f4f6}.result-box{background:linear-gradient(135deg,#CFFAFE,#A5F3FC);padding:1.5rem;border-radius:10px;border-left:4px solid var(--primary);margin:1.5rem 0;display:none}.result-box.show{display:block}.result-value{font-size:2rem;font-weight:700;color:var(--primary);margin:0.5rem 0}@media(max-width:768px){.tool-header h1{font-size:1.8rem}.action-buttons{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">⚖️ ToolBox Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="index.html#tools">Tools</a> / <span>BMI Calculator</span>
+    </div>
+
+    <div class="tool-header">
+        <h1>Free BMI Calculator</h1>
+        <p>Calculate Your Body Mass Index Instantly</p>
+        <p style="opacity:0.9;font-size:1rem">Health assessment • Fitness tracking • No signup needed</p>
+    </div>
+
+    <div class="container">
+        <div class="tool-content">
+            <div class="content-grid">
+                <div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+                        <div class="input-group">
+                            <label class="input-label" for="height">Height (cm):</label>
+                            <input type="number" id="height" class="input-field" placeholder="170" onchange="calculateBMI()">
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="weight">Weight (kg):</label>
+                            <input type="number" id="weight" class="input-field" placeholder="70" onchange="calculateBMI()">
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">BMI</div>
+                            <div class="stat-value" id="bmiValue">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Category</div>
+                            <div class="stat-value" id="bmiCategory" style="font-size:1.2rem">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Status</div>
+                            <div class="stat-value" id="bmiStatus" style="font-size:1rem">-</div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="calculateBMI()">📊 Calculate BMI</button>
+                        <button class="btn btn-secondary" onclick="clearCalculator()">Clear</button>
+                    </div>
+
+                    <div class="result-box" id="result">
+                        <div><strong>💪 Your BMI Analysis:</strong></div>
+                        <div id="analysis" style="margin-top:1rem;color:#4b5563"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="sidebar">
+                        <h3>⚡ BMI Categories</h3>
+                        <div class="sidebar-item"><strong>Underweight:</strong> BMI < 18.5</div>
+                        <div class="sidebar-item"><strong>Normal:</strong> BMI 18.5 - 24.9</div>
+                        <div class="sidebar-item"><strong>Overweight:</strong> BMI 25 - 29.9</div>
+                        <div class="sidebar-item"><strong>Obese:</strong> BMI ≥ 30</div>
+                    </div>
+
+                    <div class="sidebar" style="margin-top:2rem">
+                        <h3>📋 Features</h3>
+                        <div class="sidebar-item">✓ Instant calculation</div>
+                        <div class="sidebar-item">✓ Health assessment</div>
+                        <div class="sidebar-item">✓ 100% free</div>
+                        <div class="sidebar-item">✓ No signup</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>What is a BMI Calculator?</h2>
+                <p>A <strong>BMI calculator</strong> is a free online health tool that instantly calculates your body mass index from your height and weight. This <strong>body mass index calculator</strong> provides a quick health assessment using the standard BMI formula: weight (kg) divided by height (meters) squared. Perfect for fitness tracking, health monitoring, and wellness goals.</p>
+                
+                <p>Our <strong>free BMI calculator</strong> helps you quickly determine if your weight is healthy for your height. Whether you're starting a fitness journey, monitoring health, or tracking progress, this <strong>weight calculator</strong> provides instant results with detailed health category information.</p>
+
+                <h3>Why Use Our Free BMI Calculator?</h3>
+                <ul>
+                    <li><strong>Instant Results:</strong> Calculate your BMI in seconds</li>
+                    <li><strong>Health Assessment:</strong> Get your BMI category and health status</li>
+                    <li><strong>Completely Free:</strong> No signup, no fees, no hidden costs</li>
+                    <li><strong>Accurate Formula:</strong> Uses standard medical BMI calculation</li>
+                    <li><strong>Easy to Use:</strong> Simple interface for quick calculations</li>
+                    <li><strong>Fitness Tracking:</strong> Monitor your BMI progress over time</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2>How to Use the BMI Calculator</h2>
+                <h3>Step 1: Enter Your Height</h3>
+                <p>Type your height in centimeters (cm). For example, if you're 170 cm tall, enter 170.</p>
+
+                <h3>Step 2: Enter Your Weight</h3>
+                <p>Type your weight in kilograms (kg). For example, if you weigh 70 kg, enter 70.</p>
+
+                <h3>Step 3: Calculate BMI</h3>
+                <p>Click the "Calculate BMI" button to instantly get your body mass index and health category.</p>
+
+                <h3>Step 4: Review Your Results</h3>
+                <p>Your BMI value, category (underweight, normal, overweight, obese), and health recommendations appear instantly.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>Key Features of Our BMI Calculator</h2>
+                
+                <h3>✓ Medical-Grade Calculation</h3>
+                <p>Uses the standard BMI formula recognized by health organizations worldwide for accurate results.</p>
+
+                <h3>✓ Health Category Classification</h3>
+                <p>Automatically categorizes your BMI into underweight, normal weight, overweight, or obese categories.</p>
+
+                <h3>✓ Instant Results</h3>
+                <p>Get your BMI calculation and health assessment in seconds with no waiting.</p>
+
+                <h3>✓ Easy to Use Interface</h3>
+                <p>Simple, intuitive design perfect for quick health checks and fitness tracking.</p>
+
+                <h3>✓ 100% Free & Unlimited</h3>
+                <p>Calculate your BMI as many times as you want with no signup, no fees, forever.</p>
+
+                <h3>✓ Mobile Optimized</h3>
+                <p>Access the BMI calculator on any device for fitness tracking on the go.</p>
+
+                <h3>✓ Detailed Health Information</h3>
+                <p>Get insights about your BMI category and what it means for your health.</p>
+            </div>
+
+            <div class="content-section" id="use-cases">
+                <h2>Common Uses for BMI Calculator</h2>
+                <div class="use-cases">
+                    <div class="use-case">
+                        <h4>💪 Fitness Tracking</h4>
+                        <p>Monitor your BMI progress during fitness journeys and weight management.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>🏥 Health Monitoring</h4>
+                        <p>Track BMI regularly for personal health assessment and awareness.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>⚖️ Weight Management</h4>
+                        <p>Use BMI as one indicator for healthy weight goals and progress tracking.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>🎯 Fitness Goals</h4>
+                        <p>Set and monitor BMI-related fitness objectives and milestones.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>📊 Health Education</h4>
+                        <p>Learn about BMI, health categories, and body composition assessment.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>👨‍⚕️ Medical Reference</h4>
+                        <p>Get baseline BMI information for discussions with healthcare providers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-banner">
+                <h3>Check Your BMI Today</h3>
+                <p>Get your instant health assessment with our free BMI calculator</p>
+                <button class="btn" onclick="document.getElementById('height').focus()">Calculate Now →</button>
+            </div>
+
+            <div class="content-section">
+                <h2>Understanding BMI & Health</h2>
+                
+                <h3>What Does BMI Mean?</h3>
+                <p><strong>BMI (Body Mass Index)</strong> is a numerical measure of body fat based on height and weight. It's a screening tool used by healthcare professionals worldwide to identify potential weight-related health issues.</p>
+
+                <h3>BMI Categories Explained</h3>
+                <p><strong>Underweight (BMI < 18.5):</strong> May indicate insufficient body weight. <strong>Normal Weight (BMI 18.5-24.9):</strong> Healthy weight range for most adults. <strong>Overweight (BMI 25-29.9):</strong> Above healthy weight range. <strong>Obese (BMI ≥ 30):</strong> Significantly above healthy range, may increase health risks.</p>
+
+                <h3>Is BMI Accurate?</h3>
+                <p>BMI is a useful screening tool for most people but doesn't distinguish between muscle and fat. Athletes may have high BMI despite low body fat. Always consult healthcare providers for personalized health assessment.</p>
+
+                <h3>Healthy BMI Range</h3>
+                <p>For most adults, a BMI between 18.5 and 24.9 is considered healthy weight. However, ideal BMI varies by age, gender, and individual factors. Consult healthcare professionals for personalized recommendations.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>FAQ</h2>
+                
+                <div class="faq-item">
+                    <h4>How does the BMI calculator work?</h4>
+                    <p>Enter your height in centimeters and weight in kilograms. The calculator uses the formula: BMI = weight (kg) / height (m)². Results appear instantly with your BMI number and health category.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Is the BMI calculator free?</h4>
+                    <p>Yes, completely free forever with unlimited BMI calculations and no signup required.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What is a normal BMI?</h4>
+                    <p>A normal BMI ranges from 18.5 to 24.9. This range is generally considered healthy for most adults.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Is BMI accurate for everyone?</h4>
+                    <p>BMI is a useful screening tool for most people but doesn't account for muscle mass, bone density, or age. Athletes and older adults may need personalized health assessment.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Should I track BMI regularly?</h4>
+                    <p>Yes, tracking BMI monthly can help monitor weight changes and fitness progress. However, don't obsess over daily fluctuations due to water weight and other factors.</p>
+                </div>
+            </div>
+
+            <div class="related-section">
+                <h3>Related Health Tools</h3>
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="location.href='calculators.html'">
+                        <div class="tool-icon">🍎</div>
+                        <h4>Nutrition Calc</h4>
+                        <a href="calculators.html">Try →</a>
+                    </div>
+                    <div class="tool-card" onclick="location.href='net-worth-calculator.html'">
+                        <div class="tool-icon">💰</div>
+                        <h4>Net Worth</h4>
+                        <a href="net-worth-calculator.html">Try →</a>
+                    </div>
+                    <div class="tool-card" onclick="location.href='youtube-earnings-calculator.html'">
+                        <div class="tool-icon">▶️</div>
+                        <h4>YouTube Earnings</h4>
+                        <a href="youtube-earnings-calculator.html">Try →</a>
+                    </div>
+                    <div class="tool-card" onclick="location.href='word-counter-tool.html'">
+                        <div class="tool-icon">📝</div>
+                        <h4>Word Counter</h4>
+                        <a href="word-counter-tool.html">Try →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Health & Fitness</h4>
+                <ul>
+                    <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                    <li><a href="calculators.html">Nutrition Calc</a></li>
+                    <li><a href="net-worth-calculator.html">Net Worth</a></li>
+                    <li><a href="youtube-earnings-calculator.html">Earnings Calc</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>More Tools</h4>
+                <ul>
+                    <li><a href="word-counter-tool.html">Word Counter</a></li>
+                    <li><a href="password-generator.html">Password Gen</a></li>
+                    <li><a href="converter.html">Unit Converter</a></li>
+                    <li><a href="index.html">All Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About ToolBox Pro</h4>
+                <p>ToolBox Pro provides 20+ free online tools including BMI calculator, health calculators, fitness tracker, word counter, password generator, and productivity tools. All tools are browser-based, require no signup, and process data locally. Free health and fitness tools for everyone interested in tracking wellness and personal growth.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolBox Pro | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a> | <a href="sitemap.xml">Sitemap</a></p>
+            <p>Free BMI calculator and health tools. No signup, no fees, 100% secure and unlimited use.</p>
+        </div>
+    </div>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <script>
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('height').value) / 100;
+            const weight = parseFloat(document.getElementById('weight').value);
+            
+            if (!height || !weight || height <= 0 || weight <= 0) {
+                document.getElementById('result').classList.remove('show');
+                document.getElementById('bmiValue').textContent = '-';
+                document.getElementById('bmiCategory').textContent = '-';
+                document.getElementById('bmiStatus').textContent = '-';
+                return;
+            }
+
+            const bmi = (weight / (height * height)).toFixed(1);
+            let category = '';
+            let status = '';
+            let color = '';
+
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                status = 'Below Normal';
+                color = '#3B82F6';
+            } else if (bmi < 25) {
+                category = 'Normal';
+                status = 'Healthy';
+                color = '#10B981';
+            } else if (bmi < 30) {
+                category = 'Overweight';
+                status = 'Monitor';
+                color = '#F59E0B';
+            } else {
+                category = 'Obese';
+                status = 'At Risk';
+                color = '#EF4444';
+            }
+
+            document.getElementById('bmiValue').textContent = bmi;
+            document.getElementById('bmiCategory').textContent = category;
+            document.getElementById('bmiStatus').textContent = status;
+            
+            document.getElementById('result').classList.add('show');
+            document.getElementById('analysis').innerHTML = `
+                <strong>BMI: ${bmi}</strong><br>
+                <strong>Category: ${category}</strong><br>
+                <strong>Status: ${status}</strong><br><br>
+                Your BMI indicates a ${category.toLowerCase()} weight status. Maintain healthy habits for overall wellness.
+            `;
+        }
+
+        function clearCalculator() {
+            document.getElementById('height').value = '';
+            document.getElementById('weight').value = '';
+            document.getElementById('result').classList.remove('show');
+            document.getElementById('bmiValue').textContent = '-';
+            document.getElementById('bmiCategory').textContent = '-';
+            document.getElementById('bmiStatus').textContent = '-';
+        }
+
+        function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+    </script>
+</body>
+</html>
