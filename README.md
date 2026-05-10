@@ -8,3 +8,4 @@
 
 ## 📢 Explore More
 👉 [View All Tools](https://sargam79.github.io/Tool/)
+ [Word Counter free Online Tool](https://sargam79.github.io/Tool/Word-counter.html)
