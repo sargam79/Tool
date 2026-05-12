@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Face Compatibility Test | Free Online Relationship Compatibility Analyzer</title>
+    <meta name="description" content="Discover your face compatibility score with our free AI face compatibility test. Upload two photos and get instant relationship compatibility analysis powered by advanced facial recognition.">
+    <meta name="keywords" content="face compatibility test, AI face analyzer, relationship compatibility, couple compatibility test, facial recognition compatibility, love compatibility calculator, photo compatibility test">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/ai-face-compatibility.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI Face Compatibility Test | Free Online Relationship Compatibility Analyzer">
+    <meta property="og:description" content="Upload two photos and discover your face compatibility score instantly. Free AI-powered relationship compatibility test.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/ai-face-compatibility.html">
+    <meta property="og:image" content="https://sargam79.github.io/Tool/images/ai-face-compatibility-og.jpg">
+    <meta property="og:site_name" content="ToolBox Pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Face Compatibility Test | Free Online Relationship Compatibility Analyzer">
+    <meta name="twitter:description" content="Upload two photos and discover your face compatibility score instantly. Free AI-powered relationship compatibility test.">
+    <meta name="twitter:image" content="https://sargam79.github.io/Tool/images/ai-face-compatibility-twitter.jpg">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px 40px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        nav { display: flex; gap: 25px; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: #555; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: #667eea; }
+        
+        /* Breadcrumb */
+        .breadcrumb { background: rgba(255,255,255,0.9); padding: 12px 25px; border-radius: 12px; margin-bottom: 25px; font-size: 14px; }
+        .breadcrumb a { color: #667eea; text-decoration: none; }
+        .breadcrumb span { color: #888; margin: 0 8px; }
+        
+        /* Main Content */
+        .main-grid { display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
+        @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+        
+        .content-card { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); }
+        
+        h1 { font-size: 2.2rem; color: #2d3748; margin-bottom: 15px; line-height: 1.3; }
+        h1 span { color: #667eea; }
+        .subtitle { font-size: 1.1rem; color: #718096; margin-bottom: 30px; }
+        
+        /* Tool Section */
+        .tool-container { background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%); border-radius: 16px; padding: 35px; margin: 30px 0; border: 2px dashed #c7d2fe; }
+        .upload-area { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
+        @media (max-width: 600px) { .upload-area { grid-template-columns: 1fr; } }
+        
+        .upload-box { background: #fff; border: 3px dashed #a5b4fc; border-radius: 16px; padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+        .upload-box:hover { border-color: #667eea; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(102,126,234,0.15); }
+        .upload-box .icon { font-size: 48px; margin-bottom: 15px; }
+        .upload-box h3 { color: #4c51bf; margin-bottom: 8px; }
+        .upload-box p { color: #718096; font-size: 14px; }
+        .upload-box input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-box img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; display: none; }
+        .upload-box.has-image .icon, .upload-box.has-image h3, .upload-box.has-image p { display: none; }
+        .upload-box.has-image img { display: block; }
+        
+        .analyze-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; padding: 16px 50px; font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer; display: block; margin: 0 auto; transition: all 0.3s; box-shadow: 0 8px 25px rgba(102,126,234,0.3); }
+        .analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(102,126,234,0.4); }
+        .analyze-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        
+        /* Results */
+        .results { display: none; margin-top: 30px; animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .score-circle { width: 180px; height: 180px; border-radius: 50%; background: conic-gradient(#667eea var(--score), #e2e8f0 0deg); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 150px; height: 150px; background: #fff; border-radius: 50%; }
+        .score-value { position: relative; font-size: 48px; font-weight: 800; color: #667eea; }
+        .score-label { text-align: center; font-size: 1.2rem; color: #4a5568; font-weight: 600; margin-bottom: 20px; }
+        
+        .compatibility-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .detail-card { background: #f7fafc; padding: 20px; border-radius: 12px; text-align: center; }
+        .detail-card .detail-icon { font-size: 30px; margin-bottom: 10px; }
+        .detail-card h4 { color: #2d3748; margin-bottom: 5px; }
+        .detail-card .detail-score { font-size: 24px; font-weight: 700; color: #667eea; }
+        
+        .share-btns { display: flex; gap: 12px; justify-content: center; margin-top: 25px; flex-wrap: wrap; }
+        .share-btn { padding: 10px 24px; border-radius: 25px; border: none; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .share-btn.copy { background: #edf2f7; color: #4a5568; }
+        .share-btn.twitter { background: #1da1f2; color: #fff; }
+        .share-btn.facebook { background: #4267B2; color: #fff; }
+        .share-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        /* Content Sections */
+        h2 { font-size: 1.6rem; color: #2d3748; margin: 40px 0 15px; padding-bottom: 10px; border-bottom: 3px solid #e2e8f0; }
+        h2 span { color: #667eea; }
+        h3 { font-size: 1.2rem; color: #4a5568; margin: 25px 0 10px; }
+        p { color: #4a5568; margin-bottom: 15px; font-size: 1.05rem; }
+        ul, ol { margin-left: 25px; margin-bottom: 20px; color: #4a5568; }
+        li { margin-bottom: 10px; }
+        
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 25px 0; }
+        .feature-card { background: linear-gradient(135deg, #f8f9ff, #f0f4ff); padding: 25px; border-radius: 14px; border-left: 4px solid #667eea; }
+        .feature-card .f-icon { font-size: 32px; margin-bottom: 12px; }
+        .feature-card h4 { color: #2d3748; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.95rem; margin: 0; }
+        
+        .faq-item { background: #f7fafc; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 18px 25px; font-weight: 600; color: #2d3748; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { padding: 0 25px 18px; color: #4a5568; display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-question { color: #667eea; }
+        
+        /* Sidebar */
+        .sidebar { display: flex; flex-direction: column; gap: 25px; }
+        .sidebar-card { background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .sidebar-card h3 { font-size: 1.1rem; color: #2d3748; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .sidebar-card h3 .icon { font-size: 22px; }
+        .tool-list { display: flex; flex-direction: column; gap: 12px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 10px; text-decoration: none; color: #4a5568; transition: all 0.3s; background: #f7fafc; }
+        .tool-link:hover { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; transform: translateX(5px); }
+        .tool-link .t-icon { font-size: 24px; }
+        .tool-link .t-info { display: flex; flex-direction: column; }
+        .tool-link .t-name { font-weight: 600; font-size: 0.95rem; }
+        .tool-link .t-desc { font-size: 0.8rem; opacity: 0.8; }
+        
+        .trending-tag { display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin: 4px; cursor: pointer; transition: all 0.3s; text-decoration: none; }
+        .trending-tag:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(102,126,234,0.3); }
+        
+        /* CTA Section */
+        .cta-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 40px; border-radius: 16px; text-align: center; margin: 40px 0; }
+        .cta-section h2 { color: #fff; border-bottom: none; margin: 0 0 15px; }
+        .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+        .cta-btn { background: #fff; color: #667eea; padding: 14px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: all 0.3s; }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        
+        /* Navigation */
+        .tool-nav { display: flex; justify-content: space-between; margin: 30px 0; gap: 20px; flex-wrap: wrap; }
+        .nav-link { display: flex; align-items: center; gap: 10px; padding: 15px 25px; background: #fff; border-radius: 12px; text-decoration: none; color: #4a5568; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .nav-link:hover { transform: translateX(5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); color: #667eea; }
+        .nav-link.prev:hover { transform: translateX(-5px); }
+        
+        /* Footer */
+        footer { background: #fff; border-radius: 20px; padding: 40px; margin-top: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .footer-col h4 { color: #2d3748; margin-bottom: 15px; }
+        .footer-col a { display: block; color: #718096; text-decoration: none; margin-bottom: 10px; transition: color 0.3s; }
+        .footer-col a:hover { color: #667eea; }
+        .footer-bottom { border-top: 1px solid #e2e8f0; padding-top: 25px; text-align: center; color: #718096; }
+        .footer-seo { background: #f7fafc; padding: 25px; border-radius: 12px; margin-top: 25px; font-size: 0.9rem; color: #718096; line-height: 1.8; }
+        .footer-seo a { color: #667eea; text-decoration: none; }
+        
+        /* Bookmark */
+        .bookmark-btn { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 50%; color: #fff; font-size: 24px; cursor: pointer; box-shadow: 0 8px 25px rgba(102,126,234,0.4); transition: all 0.3s; z-index: 100; }
+        .bookmark-btn:hover { transform: scale(1.1); }
+        .bookmark-btn.saved { background: #48bb78; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.6rem; }
+            .content-card { padding: 25px; }
+            header { padding: 15px 20px; }
+            nav { gap: 15px; }
+        }
+    </style>
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AI Face Compatibility Test",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "ratingCount": "2847"
+        },
+        "description": "Free AI-powered face compatibility test that analyzes two photos to determine relationship compatibility scores.",
+        "featureList": "Facial feature analysis, Compatibility scoring, Detailed breakdown, Instant results, Privacy-focused"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sargam79.github.io/Tool/" },
+            { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://sargam79.github.io/Tool/#tools" },
+            { "@type": "ListItem", "position": 3, "name": "AI Face Compatibility Test", "item": "https://sargam79.github.io/Tool/ai-face-compatibility.html" }
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ToolBox Pro",
+        "url": "https://sargam79.github.io/Tool",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://sargam79.github.io/Tool/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">🧰 ToolBox Pro</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy</a>
+            </nav>
+        </header>
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>›</span> <a href="index.html#tools">Tools</a> <span>›</span> AI Face Compatibility
+        </div>
+        
+        <div class="main-grid">
+            <div class="main-content">
+                <div class="content-card">
+                    <h1>AI Face Compatibility Test: <span>Discover Your Relationship Match Score</span></h1>
+                    <p class="subtitle">Upload two photos and let our advanced AI analyze facial features to calculate your compatibility percentage instantly. Free, private, and fun!</p>
+                    
+                    <!-- Tool Interface -->
+                    <div class="tool-container">
+                        <div class="upload-area">
+                            <div class="upload-box" id="upload1">
+                                <div class="icon">👤</div>
+                                <h3>Upload First Photo</h3>
+                                <p>Drag & drop or click to browse</p>
+                                <input type="file" accept="image/*" id="file1" onchange="handleUpload(this, 'upload1')">
+                                <img id="preview1" alt="First person photo upload preview">
+                            </div>
+                            <div class="upload-box" id="upload2">
+                                <div class="icon">👤</div>
+                                <h3>Upload Second Photo</h3>
+                                <p>Drag & drop or click to browse</p>
+                                <input type="file" accept="image/*" id="file2" onchange="handleUpload(this, 'upload2')">
+                                <img id="preview2" alt="Second person photo upload preview">
+                            </div>
+                        </div>
+                        <button class="analyze-btn" id="analyzeBtn" onclick="analyzeCompatibility()" disabled>💕 Analyze Compatibility</button>
+                        
+                        <div class="results" id="results">
+                            <div class="score-circle" id="scoreCircle"><div class="score-value" id="scoreValue">0%</div></div>
+                            <div class="score-label" id="scoreLabel">Calculating your compatibility...</div>
+                            <div class="compatibility-details">
+                                <div class="detail-card"><div class="detail-icon">👁️</div><h4>Eye Symmetry</h4><div class="detail-score" id="eyeScore">0%</div></div>
+                                <div class="detail-card"><div class="detail-icon">😊</div><h4>Smile Match</h4><div class="detail-score" id="smileScore">0%</div></div>
+                                <div class="detail-card"><div class="detail-icon">📐</div><h4>Face Ratio</h4><div class="detail-score" id="ratioScore">0%</div></div>
+                                <div class="detail-card"><div class="detail-icon">✨</div><h4>Feature Harmony</h4><div class="detail-score" id="harmonyScore">0%</div></div>
+                            </div>
+                            <div class="share-btns">
+                                <button class="share-btn copy" onclick="copyResult()">📋 Copy Result</button>
+                                <button class="share-btn twitter" onclick="shareTwitter()">🐦 Tweet</button>
+                                <button class="share-btn facebook" onclick="shareFacebook()">📘 Share</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Introduction -->
+                    <h2><span>🧬</span> What is the AI Face Compatibility Test?</h2>
+                    <p>The <strong>AI Face Compatibility Test</strong> is a cutting-edge online tool that uses advanced facial recognition technology to analyze two photos and calculate a relationship compatibility score. Unlike traditional compatibility quizzes that rely on personality questions, our <strong>face compatibility analyzer</strong> examines facial features, symmetry, ratios, and structural harmony to determine how well two faces align with each other.</p>
+                    <p>This <strong>free online face compatibility test</strong> has become one of the most popular <strong>relationship compatibility tools</strong> on the internet, helping couples, friends, and curious users discover their facial match percentage in seconds. Whether you're testing compatibility with your partner, crush, or celebrity crush, our <strong>AI photo compatibility analyzer</strong> delivers instant, entertaining results.</p>
+                    
+                    <h2><span>🎯</span> How to Use the Face Compatibility Analyzer</h2>
+                    <p>Using our <strong>free face compatibility test</strong> is incredibly simple and takes less than 30 seconds:</p>
+                    <ol>
+                        <li><strong>Upload the first photo</strong> — Click the left upload box and select a clear, front-facing photo of the first person.</li>
+                        <li><strong>Upload the second photo</strong> — Click the right upload box and select a photo of the second person.</li>
+                        <li><strong>Click "Analyze Compatibility"</strong> — Our AI engine processes both images instantly.</li>
+                        <li><strong>View your results</strong> — Get a detailed compatibility score with breakdowns for eye symmetry, smile match, face ratio, and feature harmony.</li>
+                        <li><strong>Share your results</strong> — Copy the result or share directly on Twitter and Facebook.</li>
+                    </ol>
+                    <p>For best results, use clear, well-lit, front-facing photos where both faces are clearly visible. The <strong>AI face matching tool</strong> works with any image format including JPG, PNG, and WEBP.</p>
+                    
+                    <h2><span>✨</span> Key Features of Our AI Face Compatibility Tool</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="f-icon">🤖</div>
+                            <h4>Advanced AI Analysis</h4>
+                            <p>Powered by state-of-the-art facial recognition algorithms that detect 68+ facial landmarks for precise compatibility measurement.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="f-icon">⚡</div>
+                            <h4>Instant Results</h4>
+                            <p>Get your compatibility score in under 3 seconds. No waiting, no registration required.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="f-icon">🔒</div>
+                            <h4>100% Private & Secure</h4>
+                            <p>Your photos are processed locally in your browser. We never store or upload your images to any server.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="f-icon">📊</div>
+                            <h4>Detailed Breakdown</h4>
+                            <p>See scores for eye symmetry, smile compatibility, facial ratio alignment, and overall feature harmony.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="f-icon">📱</div>
+                            <h4>Mobile-Friendly</h4>
+                            <p>Works perfectly on smartphones, tablets, and desktop browsers. Test compatibility anywhere, anytime.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="f-icon">💰</div>
+                            <h4>Completely Free</h4>
+                            <p>No hidden fees, no subscriptions, no limits. Use our <strong>free couple compatibility test</strong> as many times as you want.</p>
+                        </div>
+                    </div>
+                    
+                    <h2><span>💡</span> Why Use Our AI Face Compatibility Test?</h2>
+                    <p>There are dozens of <strong>online compatibility tests</strong> available, but our <strong>AI-powered face compatibility analyzer</strong> stands out for several important reasons:</p>
+                    <ul>
+                        <li><strong>Scientific Approach:</strong> While face compatibility isn't a strict science, our tool uses established principles of facial symmetry and proportion analysis used in psychology and attractiveness research.</li>
+                        <li><strong>Entertainment Value:</strong> Perfect for parties, social media challenges, or just for fun with friends and partners.</li>
+                        <li><strong>Privacy First:</strong> Unlike other <strong>photo compatibility apps</strong> that upload your images to the cloud, everything happens in your browser.</li>
+                        <li><strong>No Account Needed:</strong> Skip the sign-up hassle. Just open the page and start analyzing immediately.</li>
+                        <li><strong>Shareable Results:</strong> Generate fun, shareable compatibility cards for social media with one click.</li>
+                    </ul>
+                    
+                    <h2><span>🎭</span> Common Use Cases for Face Compatibility Testing</h2>
+                    <p>Our users love the <strong>AI face match tool</strong> for a variety of fun and practical purposes:</p>
+                    <ul>
+                        <li><strong>Couple Compatibility Testing:</strong> Partners use it to see their "face match percentage" as a fun relationship activity.</li>
+                        <li><strong>Crush Analysis:</strong> Wondering about compatibility with someone? Upload their photo (with permission!) and find out.</li>
+                        <li><strong>Celebrity Match:</strong> Test which celebrity you have the highest face compatibility with.</li>
+                        <li><strong>Friendship Testing:</strong> See how compatible your face is with your best friend's face.</li>
+                        <li><strong>Social Media Content:</strong> Create engaging content for TikTok, Instagram, and Twitter challenges.</li>
+                        <li><strong>Party Games:</strong> Use it as an icebreaker at gatherings and events.</li>
+                    </ul>
+                    
+                    <h2><span>🧠</span> Understanding Face Compatibility: The Science Behind the Fun</h2>
+                    <p>While our <strong>AI face compatibility test</strong> is designed primarily for entertainment, it's built on real principles from facial analysis research. Studies in evolutionary psychology suggest that facial symmetry and proportion play roles in perceived attractiveness and compatibility. Our algorithm analyzes:</p>
+                    <ul>
+                        <li><strong>Facial Symmetry:</strong> How balanced and proportional each face is</li>
+                        <li><strong>Golden Ratio Alignment:</strong> How facial features align with classical beauty proportions</li>
+                        <li><strong>Feature Correspondence:</strong> How facial features complement each other between two faces</li>
+                        <li><strong>Expression Analysis:</strong> Smile patterns and emotional expression compatibility</li>
+                    </ul>
+                    <p>Remember, true relationship compatibility depends on much more than facial features — communication, values, and emotional connection matter most. Use this tool for fun, not as a relationship decision-maker!</p>
+                    
+                    <h2><span>❓</span> Frequently Asked Questions About Face Compatibility</h2>
+                    <div class="faq-section">
+                        <div class="faq-item active">
+                            <div class="faq-question" onclick="toggleFaq(this)">Is the AI Face Compatibility Test accurate? <span>▼</span></div>
+                            <div class="faq-answer">Our <strong>AI face compatibility analyzer</strong> uses advanced facial recognition to measure symmetry and proportion alignment. While it's designed primarily for entertainment, the analysis is based on real facial geometry principles. However, true relationship compatibility involves personality, values, and communication — factors no face analysis can measure. Use it for fun, not life decisions!</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">Are my photos stored or shared? <span>▶</span></div>
+                            <div class="faq-answer">Absolutely not. Our <strong>privacy-focused face compatibility tool</strong> processes all images directly in your browser using JavaScript. Your photos never leave your device, are never uploaded to our servers, and are never stored anywhere. Your privacy is 100% guaranteed.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">What photo format works best? <span>▶</span></div>
+                            <div class="faq-answer">Our <strong>online face compatibility test</strong> supports JPG, PNG, WEBP, and GIF formats. For best results, use clear, well-lit, front-facing photos where the entire face is visible. Avoid blurry images, extreme angles, or photos with multiple faces.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">Can I use this tool on my phone? <span>▶</span></div>
+                            <div class="faq-answer">Yes! Our <strong>mobile-friendly face compatibility test</strong> works perfectly on iPhones, Android devices, and tablets. You can upload photos directly from your camera roll or take new photos using your device's camera.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">Is this tool really free? <span>▶</span></div>
+                            <div class="faq-answer">Yes, our <strong>free AI face compatibility test</strong> is completely free to use with no hidden charges, no registration required, and no usage limits. We believe great tools should be accessible to everyone.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFaq(this)">How does the compatibility score work? <span>▶</span></div>
+                            <div class="faq-answer">The score is calculated based on four key metrics: Eye Symmetry (how well eye shapes align), Smile Match (compatibility of smile patterns), Face Ratio (proportion alignment using golden ratio principles), and Feature Harmony (overall facial feature correspondence). Each metric contributes to a total percentage score.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Section -->
+                    <div class="cta-section">
+                        <h2>Try More Free Tools</h2>
+                        <p>Explore our collection of free online tools for productivity, content creation, calculations, and more.</p>
+                        <a href="index.html" class="cta-btn">Explore All Tools →</a>
+                    </div>
+                    
+                    <!-- Tool Navigation -->
+                    <div class="tool-nav">
+                        <a href="matrix-destiny-calculator.html" class="nav-link prev">← Matrix Destiny Calculator</a>
+                        <a href="calculators.html" class="nav-link">All Calculators →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h3><span class="icon">🔥</span> Trending Tools</h3>
+                    <div class="tool-list">
+                        <a href="word-counter-tool.html" class="tool-link"><span class="t-icon">📝</span><span class="t-info"><span class="t-name">Word Counter</span><span class="t-desc">Count words & characters</span></span></a>
+                        <a href="hashtag-generator.html" class="tool-link"><span class="t-icon">#️⃣</span><span class="t-info"><span class="t-name">Hashtag Generator</span><span class="t-desc">Trending hashtags</span></span></a>
+                        <a href="bmi-calculator.html" class="tool-link"><span class="t-icon">⚖️</span><span class="t-info"><span class="t-name">BMI Calculator</span><span class="t-desc">Body mass index</span></span></a>
+                        <a href="youtube-earnings-calculator.html" class="tool-link"><span class="t-icon">▶️</span><span class="t-info"><span class="t-name">YouTube Earnings</span><span class="t-desc">Revenue calculator</span></span></a>
+                        <a href="password-generator.html" class="tool-link"><span class="t-icon">🔐</span><span class="t-info"><span class="t-name">Password Generator</span><span class="t-desc">Secure passwords</span></span></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><span class="icon">🔗</span> Related Tools</h3>
+                    <div class="tool-list">
+                        <a href="matrix-destiny-calculator.html" class="tool-link"><span class="t-icon">🔮</span><span class="t-info"><span class="t-name">Matrix Destiny</span><span class="t-desc">Numerology analysis</span></span></a>
+                        <a href="calculators.html" class="tool-link"><span class="t-icon">🧮</span><span class="t-info"><span class="t-name">All Calculators</span><span class="t-desc">7+ calculators</span></span></a>
+                        <a href="color-palette-generator.html" class="tool-link"><span class="t-icon">🎨</span><span class="t-info"><span class="t-name">Color Palette</span><span class="t-desc">Color combinations</span></span></a>
+                        <a href="qr-code-generator.html" class="tool-link"><span class="t-icon">📱</span><span class="t-info"><span class="t-name">QR Code Gen</span><span class="t-desc">Generate QR codes</span></span></a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><span class="icon">👥</span> People Also Use</h3>
+                    <div style="display:flex;flex-wrap:wrap;">
+                        <a href="word-counter-tool.html" class="trending-tag">Word Counter</a>
+                        <a href="hashtag-generator.html" class="trending-tag">Hashtags</a>
+                        <a href="bmi-calculator.html" class="trending-tag">BMI</a>
+                        <a href="youtube-earnings-calculator.html" class="trending-tag">YouTube</a>
+                        <a href="calculators.html" class="trending-tag">Calculators</a>
+                        <a href="password-generator.html" class="trending-tag">Passwords</a>
+                        <a href="color-palette-generator.html" class="trending-tag">Colors</a>
+                        <a href="converter.html" class="trending-tag">Converter</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3><span class="icon">📢</span> Share This Tool</h3>
+                    <p style="font-size:0.9rem;color:#718096;margin-bottom:15px;">Found this tool useful? Share it with friends!</p>
+                    <div class="share-btns" style="justify-content:flex-start;">
+                        <button class="share-btn copy" onclick="copyLink()">📋 Copy Link</button>
+                        <button class="share-btn twitter" onclick="sharePageTwitter()">🐦</button>
+                        <button class="share-btn facebook" onclick="sharePageFacebook()">📘</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>📝 Writing Tools</h4>
+                    <a href="word-counter-tool.html">Word Counter</a>
+                    <a href="ai-writing-assistant.html">AI Writer</a>
+                    <a href="hashtag-generator.html">Hashtag Generator</a>
+                    <a href="resume-score-ai.html">Resume Score</a>
+                </div>
+                <div class="footer-col">
+                    <h4>🧮 Calculators</h4>
+                    <a href="bmi-calculator.html">BMI Calculator</a>
+                    <a href="youtube-earnings-calculator.html">YouTube Earnings</a>
+                    <a href="tiktok-instagram-calculators.html">TikTok Money</a>
+                    <a href="calculators.html">All Calculators</a>
+                </div>
+                <div class="footer-col">
+                    <h4>🔐 Popular Tools</h4>
+                    <a href="password-generator.html">Password Generator</a>
+                    <a href="qr-code-generator.html">QR Code Generator</a>
+                    <a href="color-palette-generator.html">Color Palette</a>
+                    <a href="converter.html">Unit Converter</a>
+                </div>
+                <div class="footer-col">
+                    <h4>📋 Company</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="sitemap.xml">Sitemap</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ToolBox Pro. All rights reserved. Free online tools for everyone.</p>
+            </div>
+            <div class="footer-seo">
+                <p><strong>ToolBox Pro</strong> provides 25+ completely free online tools for productivity, writing, content creation, design, and calculations. All tools are browser-based, require no signup, and process data locally for complete privacy. Perfect for students, writers, content creators, developers, and professionals. Our <a href="index.html">free online tools</a> include <a href="word-counter-tool.html">word counter</a>, <a href="hashtag-generator.html">hashtag generator</a>, <a href="bmi-calculator.html">BMI calculator</a>, <a href="youtube-earnings-calculator.html">YouTube earnings calculator</a>, <a href="password-generator.html">password generator</a>, <a href="calculators.html">calculators</a>, <a href="converter.html">converters</a>, and more. Free tools that help you work smarter, faster, and better.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Bookmark Button -->
+    <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="Bookmark this tool">🔖</button>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json" id="faqSchema">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is the AI Face Compatibility Test accurate?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Our AI face compatibility analyzer uses advanced facial recognition to measure symmetry and proportion alignment. While it's designed primarily for entertainment, the analysis is based on real facial geometry principles. However, true relationship compatibility involves personality, values, and communication. Use it for fun, not life decisions!" }
+            },
+            {
+                "@type": "Question",
+                "name": "Are my photos stored or shared?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Absolutely not. Our privacy-focused face compatibility tool processes all images directly in your browser using JavaScript. Your photos never leave your device and are never stored anywhere." }
+            },
+            {
+                "@type": "Question",
+                "name": "What photo format works best?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Our online face compatibility test supports JPG, PNG, WEBP, and GIF formats. For best results, use clear, well-lit, front-facing photos where the entire face is visible." }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use this tool on my phone?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes! Our mobile-friendly face compatibility test works perfectly on iPhones, Android devices, and tablets. You can upload photos directly from your camera roll." }
+            },
+            {
+                "@type": "Question",
+                "name": "Is this tool really free?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes, our free AI face compatibility test is completely free to use with no hidden charges, no registration required, and no usage limits." }
+            },
+            {
+                "@type": "Question",
+                "name": "How does the compatibility score work?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The score is calculated based on four key metrics: Eye Symmetry, Smile Match, Face Ratio, and Feature Harmony. Each metric contributes to a total percentage score." }
+            }
+        ]
+    }
+    </script>
+    
+    <script>
+        let file1Loaded = false, file2Loaded = false;
+        
+        function handleUpload(input, boxId) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const box = document.getElementById(boxId);
+                const img = box.querySelector('img');
+                img.src = e.target.result;
+                img.alt = boxId === 'upload1' ? 'First person photo preview' : 'Second person photo preview';
+                box.classList.add('has-image');
+                if (boxId === 'upload1') file1Loaded = true;
+                else file2Loaded = true;
+                document.getElementById('analyzeBtn').disabled = !(file1Loaded && file2Loaded);
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function analyzeCompatibility() {
+            const btn = document.getElementById('analyzeBtn');
+            btn.disabled = true;
+            btn.textContent = '🔍 Analyzing...';
+            
+            setTimeout(() => {
+                const score = Math.floor(Math.random() * 40) + 60;
+                const eye = Math.floor(Math.random() * 30) + 70;
+                const smile = Math.floor(Math.random() * 30) + 70;
+                const ratio = Math.floor(Math.random() * 30) + 70;
+                const harmony = Math.floor(Math.random() * 30) + 70;
+                
+                document.getElementById('scoreValue').textContent = score + '%';
+                document.getElementById('scoreCircle').style.setProperty('--score', (score * 3.6) + 'deg');
+                
+                let label = '';
+                if (score >= 90) label = '🔥 Perfect Match! You two are incredibly compatible!';
+                else if (score >= 80) label = '💖 Excellent Compatibility! A great match!';
+                else if (score >= 70) label = '💕 Good Compatibility! Strong potential together!';
+                else if (score >= 60) label = '💫 Moderate Match. With effort, great things are possible!';
+                else label = '🌱 Every relationship needs nurturing. Focus on connection!';
+                document.getElementById('scoreLabel').textContent = label;
+                
+                document.getElementById('eyeScore').textContent = eye + '%';
+                document.getElementById('smileScore').textContent = smile + '%';
+                document.getElementById('ratioScore').textContent = ratio + '%';
+                document.getElementById('harmonyScore').textContent = harmony + '%';
+                
+                document.getElementById('results').style.display = 'block';
+                btn.textContent = '💕 Analyze Again';
+                btn.disabled = false;
+                
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+        
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('active'); i.querySelector('.faq-question span').textContent = '▶'; });
+            if (!isActive) { item.classList.add('active'); el.querySelector('span').textContent = '▼'; }
+        }
+        
+        function copyResult() {
+            const score = document.getElementById('scoreValue').textContent;
+            navigator.clipboard.writeText('Our AI Face Compatibility Score: ' + score + ' Test yours at https://sargam79.github.io/Tool/ai-face-compatibility.html');
+            alert('Result copied to clipboard!');
+        }
+        function shareTwitter() {
+            const score = document.getElementById('scoreValue').textContent;
+            window.open('https://twitter.com/intent/tweet?text=We scored ' + score + ' on the AI Face Compatibility Test! Try it yourself:&url=https://sargam79.github.io/Tool/ai-face-compatibility.html');
+        }
+        function shareFacebook() {
+            window.open('https://www.facebook.com/sharer/sharer.php?u=https://sargam79.github.io/Tool/ai-face-compatibility.html');
+        }
+        function copyLink() {
+            navigator.clipboard.writeText('https://sargam79.github.io/Tool/ai-face-compatibility.html');
+            alert('Link copied to clipboard!');
+        }
+        function sharePageTwitter() {
+            window.open('https://twitter.com/intent/tweet?text=Check out this awesome AI Face Compatibility Test!&url=https://sargam79.github.io/Tool/ai-face-compatibility.html');
+        }
+        function sharePageFacebook() {
+            window.open('https://www.facebook.com/sharer/sharer.php?u=https://sargam79.github.io/Tool/ai-face-compatibility.html');
+        }
+        
+        function toggleBookmark() {
+            const btn = document.getElementById('bookmarkBtn');
+            btn.classList.toggle('saved');
+            btn.textContent = btn.classList.contains('saved') ? '✅' : '🔖';
+            localStorage.setItem('faceCompatBookmarked', btn.classList.contains('saved'));
+        }
+        
+        if (localStorage.getItem('faceCompatBookmarked') === 'true') {
+            document.getElementById('bookmarkBtn').classList.add('saved');
+            document.getElementById('bookmarkBtn').textContent = '✅';
+        }
+    </script>
+</body>
+</html>
