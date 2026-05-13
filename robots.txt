@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /private/
-Disallow: /temp/
+Allow: /
 
 Sitemap: https://sargam79.github.io/Tool/sitemap.xml
