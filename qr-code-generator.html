@@ -1,22 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="srQZGhXHmQzBnzWqOZOttu-hiXWULTA9sH76xsU2rxo" />
+    <meta name="msvalidate.01" content="3EBE223AA61B4AE987184F8F4F12353F" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free QR code generator - Create QR codes from text, URLs, and more. Download as image. Fast, secure, no signup.">
-    <meta name="keywords" content="QR code generator, create QR codes, free QR code, QR code maker">
-    <meta property="og:title" content="Free QR Code Generator - Create QR Codes Online">
-    <link rel="canonical" href="<link rel="canonical" href="https://sargam79.github.io/Tool/">/qr-code-generator.html">
+    <meta name="description" content="Create QR codes from URLs, text, phone numbers, or WiFi credentials. Download as PNG. Works in your browser — no data is uploaded.">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/qr-code-generator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/qr-code-generator.html">
+    <meta property="og:title" content="QR Code Generator — Create Codes from URLs & Text">
+    <meta property="og:description" content="Create QR codes from URLs, text, phone numbers, or WiFi credentials. Download as PNG. Free, no signup, works in your browser.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="QR Code Generator — Create Codes from URLs & Text">
+    <meta property="twitter:description" content="Create QR codes from URLs, text, phone numbers, or WiFi credentials. Download as PNG. Free, no signup.">
+
+    <!-- Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QR Code Generator",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "A browser-based tool that generates QR codes from URLs, text, phone numbers, email addresses, and WiFi credentials using the QRCode.js library. All processing happens locally — no data is uploaded to any server.",
+      "url": "https://sargam79.github.io/Tool/qr-code-generator.html",
+      "featureList": "URL QR codes, Text QR codes, Phone number QR codes, Email QR codes, WiFi QR codes, PNG download, Local browser processing"
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What can I encode in a QR code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This tool supports URLs (websites), plain text, phone numbers (tel: links), email addresses (mailto: links), and WiFi credentials (WPA/WEP formats). Any text under 4,296 characters can be encoded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the QR codes permanent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "QR codes themselves do not expire. However, they only work as long as the encoded content remains valid. A QR code linking to a URL will break if that webpage is deleted. A QR code with plain text will always display that text."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data secure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. QR codes are generated entirely in your browser using the QRCode.js library. Your text or URLs are never uploaded, stored, or transmitted to any server. You can verify this by checking the browser's Network tab — no requests are made."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sargam79.github.io/Tool/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://sargam79.github.io/Tool/#tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QR Code Generator",
+          "item": "https://sargam79.github.io/Tool/qr-code-generator.html"
+        }
+      ]
+    }
+    </script>
+
+    <title>QR Code Generator — Create Codes from URLs & Text</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <title>Free QR Code Generator - Create QR Codes Online 2026</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#6366f1;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:var(--text);background:var(--light);overflow-x:hidden}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1000px;margin:0 auto;padding:0 2rem}.tool-header{background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;padding:3rem 2rem;text-align:center}.tool-header h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}.tool-content{padding:3rem 2rem;background:#fff}.input-group{margin-bottom:2rem}.input-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark)}.input-field{width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem}input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}.qr-display{background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:2rem 0}.qr-container{display:inline-block;padding:1rem;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}#qrCode{margin:0 auto}.action-buttons{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}.btn{padding:0.75rem 1.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:all 0.3s}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#4f46e5}.btn-secondary{background:#f3f4f6;color:var(--dark);border:1px solid var(--border)}.btn-secondary:hover{background:#e5e7eb}.content-section{margin:3rem 0;padding:2rem;background:var(--light);border-radius:8px}.content-section h2{color:var(--dark);margin-bottom:1rem}.content-section h3{color:#4b5563;margin:1.5rem 0 0.5rem}.faq{margin:2rem 0}.faq-item{margin-bottom:1.5rem;background:#fff;padding:1.5rem;border-radius:8px;border-left:4px solid var(--primary)}.faq-item h4{color:var(--dark);margin-bottom:0.5rem}.faq-item p{color:#6b7280}.related-tools{margin:3rem 0}.related-tools h3{color:var(--dark);margin-bottom:1.5rem}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.related-tool{background:#fff;padding:1rem;border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer;transition:all 0.3s;text-decoration:none;color:inherit}.related-tool:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.1)}.related-tool h4{color:var(--dark);margin-bottom:0.5rem}footer{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.footer-links{margin-bottom:1.5rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}@media (max-width:768px){.tool-header h1{font-size:1.8rem}.action-buttons{flex-direction:column}}
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#6366f1;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:var(--text);background:var(--light);padding-top:70px}nav{background:#fff;border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1000px;margin:0 auto;padding:0 2rem}.tool-header{background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;padding:3rem 2rem;text-align:center}.tool-header h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}.tool-content{padding:3rem 2rem;background:#fff}.input-group{margin-bottom:2rem}.input-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark)}.input-field{width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem}input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}.qr-display{background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:2rem 0}.qr-container{display:inline-block;padding:1rem;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}#qrCode{margin:0 auto}.action-buttons{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}.btn{padding:0.75rem 1.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:all 0.3s}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#4f46e5;transform:translateY(-2px)}.btn-secondary{background:#f3f4f6;color:var(--dark);border:1px solid var(--border)}.btn-secondary:hover{background:#e5e7eb}.content-section{margin:3rem 0;padding:2rem;background:var(--light);border-radius:8px}.content-section h2{color:var(--dark);margin-bottom:1rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem}.content-section h3{color:#4b5563;margin:1.5rem 0 0.5rem;font-size:1.2rem;font-weight:600}.content-section p{margin-bottom:1rem;color:#4b5563;line-height:1.8}.content-section ul{margin:1rem 0 1rem 1.5rem}.content-section li{margin-bottom:0.75rem;color:#4b5563;line-height:1.6}.use-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1.5rem 0}.use-case{background:#fff;padding:1.5rem;border-radius:8px;border-top:4px solid var(--primary)}.use-case h4{color:var(--dark);margin-bottom:0.5rem}.use-case p{color:#6b7280;font-size:0.95rem}.faq{margin:2rem 0}.faq-item{margin-bottom:1rem;background:#fff;padding:1.5rem;border-radius:8px;border-left:4px solid var(--primary)}.faq-item h4{color:var(--dark);margin-bottom:0.5rem}.faq-item p{color:#6b7280;font-size:0.95rem}.related-tools{margin:3rem 0}.related-tools h3{color:var(--dark);margin-bottom:1.5rem}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.related-tool{background:#fff;padding:1rem;border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer;transition:all 0.3s;text-decoration:none;color:inherit}.related-tool:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.1)}.related-tool h4{color:var(--dark);margin-bottom:0.5rem}footer{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.footer-links{margin-bottom:1.5rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}.back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999}.back-to-top.show{opacity:1;visibility:visible}@media(max-width:768px){.tool-header h1{font-size:1.8rem}.action-buttons{flex-direction:column}}
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">ToolBox Pro</div>
+            <div class="logo">🔲 ToolBox Pro</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -29,15 +125,16 @@
     <div class="tool-header">
         <div class="container">
             <h1>QR Code Generator</h1>
-            <p>Create QR codes from text and URLs instantly</p>
+            <p>Create QR codes from URLs, text, phone numbers, or WiFi credentials</p>
+            <p style="opacity:0.9">Download as PNG • No signup • Works in your browser</p>
         </div>
     </div>
 
     <div class="container">
         <div class="tool-content">
             <div class="input-group">
-                <label class="input-label" for="qrInput">Enter text or URL:</label>
-                <input type="text" id="qrInput" class="input-field" placeholder="https://example.com or any text..." oninput="generateQR()">
+                <label class="input-label" for="qrInput">Enter text, URL, or contact info:</label>
+                <input type="text" id="qrInput" class="input-field" placeholder="https://example.com, phone number, email, or any text..." oninput="generateQR()">
             </div>
 
             <div class="qr-display">
@@ -47,39 +144,97 @@
             </div>
 
             <div class="action-buttons">
-                <button class="btn btn-primary" onclick="downloadQR()">⬇️ Download QR Code</button>
+                <button class="btn btn-primary" onclick="downloadQR()">⬇️ Download PNG</button>
                 <button class="btn btn-secondary" onclick="copyQRImage()">📋 Copy Image</button>
             </div>
 
             <div class="content-section">
-                <h2>About QR Code Generator</h2>
-                <p>Generate professional QR codes from any text or URL instantly. Perfect for marketing, business cards, product packaging, and more. Download as PNG or share directly.</p>
-                
-                <h3>Features:</h3>
-                <p>✓ Instant QR code generation<br>✓ Works with URLs and text<br>✓ Download as image<br>✓ Customizable sizes<br>✓ Completely free<br>✓ No signup required</p>
+                <h2>What This Tool Does</h2>
+                <p>Type any text and this tool generates a <strong>scannable QR code</strong> instantly. QR codes can encode URLs, plain text, phone numbers, email addresses, WiFi credentials, and more — up to 4,296 characters.</p>
+
+                <p>Anyone with a smartphone camera can scan the code. iPhones and most Android phones scan QR codes natively through the camera app. Older devices may need a dedicated QR scanner app.</p>
+
+                <h3>Supported Content Types</h3>
+                <ul>
+                    <li><strong>URLs:</strong> https://yourwebsite.com — opens directly in the browser</li>
+                    <li><strong>Plain text:</strong> Any message under 4,296 characters</li>
+                    <li><strong>Phone numbers:</strong> tel:+1234567890 — prompts to call</li>
+                    <li><strong>Email:</strong> mailto:email@example.com — opens compose window</li>
+                    <li><strong>WiFi:</strong> WIFI:T:WPA;S:NetworkName;P:Password;; — connects automatically</li>
+                </ul>
+
+                <h3>How It Works</h3>
+                <p>This tool uses the <strong>QRCode.js</strong> library to generate codes directly in your browser. Your input is processed locally using JavaScript — nothing is uploaded to a server. The generated code is rendered as a canvas element that you can download as PNG or copy to your clipboard.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>When to Use QR Codes</h2>
+                <div class="use-cases">
+                    <div class="use-case">
+                        <h4>🛒 Business Cards</h4>
+                        <p>Add a QR code linking to your LinkedIn profile, portfolio, or contact vCard. Recipients scan once instead of manually typing your details.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>📦 Product Packaging</h4>
+                        <p>Link to product manuals, warranty registration, or customer support. Reduces printed material and provides updatable digital content.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>🍽️ Restaurants & Menus</h4>
+                        <p>Replace physical menus with QR codes linking to digital menus. Easy to update prices and items without reprinting.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>📱 App Downloads</h4>
+                        <p>Link directly to App Store or Google Play listings. Users scan and install without searching.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>🎫 Events & Tickets</h4>
+                        <p>Embed ticket details, venue maps, or check-in links. Event staff scan to verify attendance.</p>
+                    </div>
+                    <div class="use-case">
+                        <h4>🏠 WiFi Sharing</h4>
+                        <p>Generate a WiFi QR code with your network name and password. Guests scan to connect without typing credentials.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>QR Code Best Practices</h2>
+                <ul>
+                    <li><strong>Test before printing:</strong> Always scan the code yourself to verify it works correctly.</li>
+                    <li><strong>Minimum size:</strong> QR codes should be at least 2 x 2 cm (0.8 x 0.8 inches) for reliable scanning.</li>
+                    <li><strong>High contrast:</strong> Dark codes on light backgrounds scan best. Avoid inverted colors (white on black).</li>
+                    <li><strong>Quiet zone:</strong> Leave blank space around the code equal to at least 4 modules (the small squares) on all sides.</li>
+                    <li><strong>Error correction:</strong> This tool uses Level H (30% error correction), meaning the code still works even if 30% is damaged or covered by a logo.</li>
+                    <li><strong>Short URLs:</strong> Long URLs create dense, harder-to-scan codes. Use a URL shortener for complex links.</li>
+                </ul>
             </div>
 
             <div class="faq">
-                <h2 style="color:var(--dark);margin-bottom:1.5rem">FAQ</h2>
-                
+                <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
+
                 <div class="faq-item">
-                    <h4>How do I use a QR code?</h4>
-                    <p>Users can scan QR codes with any smartphone camera or QR code reader app. The code redirects to your URL or displays your text.</p>
+                    <h4>What can I encode in a QR code?</h4>
+                    <p>This tool supports URLs (websites), plain text, phone numbers (tel: links), email addresses (mailto: links), and WiFi credentials (WPA/WEP formats). Any text under 4,296 characters can be encoded.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>Can I customize the QR code?</h4>
-                    <p>Our tool generates standard QR codes that work with all scanners. Size adjustments can be made by right-clicking the image and saving at desired dimensions.</p>
+                    <h4>Are the QR codes permanent?</h4>
+                    <p>QR codes themselves do not expire. However, they only work as long as the encoded content remains valid. A QR code linking to a URL will break if that webpage is deleted. A QR code with plain text will always display that text.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>How long do QR codes last?</h4>
-                    <p>QR codes are permanent. As long as the destination exists, the QR code will work indefinitely.</p>
+                    <h4>Is my data secure?</h4>
+                    <p>Yes. QR codes are generated entirely in your browser using the QRCode.js library. Your text or URLs are never uploaded, stored, or transmitted to any server. You can verify this by checking the browser's Network tab — no requests are made.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>Is this secure?</h4>
-                    <p>Yes! QR codes are generated locally in your browser. We never store or transmit your data.</p>
+                    <h4>Why won't my QR code scan?</h4>
+                    <p>Common issues: low contrast (use black on white), too small (minimum 2cm), damaged quiet zone (blank border), or overly complex content (long URLs create dense codes). Try shortening URLs or increasing print size.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I add a logo to the QR code?</h4>
+                    <p>This tool generates standard QR codes without logos. To add a logo, download the PNG and use an image editor (Photoshop, GIMP, Canva) to overlay your logo in the center. Keep the logo under 30% of the code area so error correction still works.</p>
                 </div>
             </div>
 
@@ -94,6 +249,14 @@
                         <h4>📝</h4>
                         <h4>Word Counter</h4>
                     </a>
+                    <a href="converter.html" class="related-tool">
+                        <h4>⚙️</h4>
+                        <h4>Unit Converter</h4>
+                    </a>
+                    <a href="color-palette-generator.html" class="related-tool">
+                        <h4>🎨</h4>
+                        <h4>Color Palette</h4>
+                    </a>
                 </div>
             </div>
         </div>
@@ -106,8 +269,10 @@
             <a href="contact.html">Contact</a>
             <a href="privacy-policy.html">Privacy</a>
         </div>
-        <p>&copy; 2026 ToolBox Pro. Free QR code generator.</p>
+        <p>&copy; 2026 ToolBox Pro. Free online tools.</p>
     </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
         let qrInstance = null;
@@ -154,6 +319,11 @@
                 ]).then(() => alert('QR code copied!')).catch(() => alert('Copy failed'));
             });
         }
+
+        function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
     </script>
 </body>
 </html>
