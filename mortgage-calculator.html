@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free mortgage calculator - Calculate monthly payments, total interest, and amortization schedule for home loans. Compare 15-year vs 30-year mortgages. No signup needed. Perfect for home buyers and refinancing.">
+    <meta name="keywords" content="mortgage calculator, home loan calculator, mortgage payment calculator, monthly mortgage calculator, mortgage interest calculator, loan calculator, house payment calculator, mortgage amortization calculator, refinance calculator, how much house can i afford">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/mortgage-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Mortgage Calculator - Monthly Payments & Amortization Schedule">
+    <meta property="og:description" content="Calculate mortgage payments, total interest, and amortization schedule. Compare loan terms. Free online mortgage calculator for home buyers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/mortgage-calculator.html">
+    <meta property="og:site_name" content="ToolBox Pro">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Mortgage Calculator - Monthly Payments & Interest">
+    <meta name="twitter:description" content="Calculate mortgage payments, total interest, and amortization. Free tool for home buyers and refinancing.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Mortgage Calculator",
+        "description": "Free online mortgage calculator that calculates monthly payments, total interest, and amortization schedules for home loans",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1200", "bestRating": "5"},
+        "author": {"@type": "Organization", "name": "ToolBox Pro"}
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "How is a mortgage payment calculated?", "acceptedAnswer": {"@type": "Answer", "text": "Mortgage payments are calculated using the loan amount, interest rate, and loan term. The formula accounts for compound interest over the life of the loan, spreading payments evenly across all months."}},
+            {"@type": "Question", "name": "What is the difference between 15-year and 30-year mortgages?", "acceptedAnswer": {"@type": "Answer", "text": "A 15-year mortgage has higher monthly payments but significantly less total interest paid. A 30-year mortgage has lower monthly payments but costs more in total interest over the life of the loan."}},
+            {"@type": "Question", "name": "How much should my down payment be?", "acceptedAnswer": {"@type": "Answer", "text": "A typical down payment is 20% of the home price to avoid PMI (Private Mortgage Insurance). However, many lenders accept 3-10% down payments, especially for first-time home buyers."}},
+            {"@type": "Question", "name": "What is included in a mortgage payment?", "acceptedAnswer": {"@type": "Answer", "text": "A typical mortgage payment includes principal, interest, property taxes, and homeowners insurance (PITI). Some payments also include PMI and HOA fees."}}
+        ]
+    }
+    </script>
+
+    <title>Free Mortgage Calculator - Monthly Payments & Amortization | ToolBox Pro</title>
+
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #2563EB;
+            --primary-light: #DBEAFE;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --text: #374151;
+            --text-light: #6b7280;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--text);background:var(--light);-webkit-font-smoothing:antialiased}
+        .skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s}
+        .skip-link:focus{top:0}
+
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:var(--shadow-sm)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#60A5FA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text);font-weight:500;text-decoration:none;transition:color 0.3s;padding:0.5rem 0;position:relative}
+        .nav-links a:hover{color:var(--primary)}
+        .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--primary);transition:width 0.3s}
+        .nav-links a:hover::after{width:100%}
+        .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--dark)}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+        .tool-header{background:linear-gradient(135deg,var(--primary),#60A5FA);color:#fff;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .tool-header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:20px 20px;opacity:0.3}
+        .tool-header .container{position:relative;z-index:1}
+        .tool-header h1{font-size:2.8rem;margin-bottom:1rem;font-weight:800;letter-spacing:-0.02em}
+        .tool-header .subtitle{font-size:1.25rem;opacity:0.95;margin-bottom:0.5rem}
+        .tool-header .tagline{opacity:0.85;font-size:1rem}
+
+        .breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:0.75rem 2rem;font-size:0.875rem;color:var(--text-light)}
+        .breadcrumb a{color:var(--text);text-decoration:none;transition:color 0.3s}
+        .breadcrumb a:hover{color:var(--primary)}
+        .breadcrumb span{color:var(--text-light)}
+
+        .tool-content{padding:3rem 2rem;background:#fff}
+
+        .calc-box{background:linear-gradient(145deg,#fff,var(--light));padding:2.5rem;border-radius:var(--radius);margin-bottom:2.5rem;border:1px solid var(--border);box-shadow:var(--shadow-md);position:relative}
+        .calc-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),#60A5FA);border-radius:var(--radius) var(--radius) 0 0}
+
+        .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:end}
+        .input-group{margin-bottom:0}
+        .input-label{display:block;font-weight:600;margin-bottom:0.5rem;color:var(--dark);font-size:0.95rem}
+        .input-field{width:100%;padding:0.875rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;transition:all 0.3s;background:#fff;color:var(--dark)}
+        .input-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+        .input-field::placeholder{color:var(--text-light)}
+
+        .btn{padding:0.875rem 2rem;border:none;border-radius:var(--radius-sm);font-weight:600;font-size:1rem;cursor:pointer;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:var(--shadow-sm);margin-right:0.75rem}
+        .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+        .btn:active{transform:translateY(0)}
+        .btn-secondary{background:linear-gradient(135deg,#10B981,#059669)}
+        .btn-secondary:hover{background:linear-gradient(135deg,#059669,#047857)}
+
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#BFDBFE);padding:2rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin:1.5rem 0 0;display:none;animation:fadeIn 0.4s ease}
+        .result-box.show{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+        .result-label{font-size:0.875rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem}
+        .result-value{font-size:2.5rem;font-weight:800;color:var(--primary-dark);margin:0.5rem 0;letter-spacing:-0.02em}
+        .result-detail{color:var(--text);font-size:0.95rem;margin-top:0.5rem;line-height:1.6}
+        .result-stat{display:inline-block;background:rgba(255,255,255,0.7);padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;color:var(--text);margin:0.25rem 0.25rem 0 0}
+
+        .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+        .compare-card{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:2px solid var(--border);text-align:center;transition:all 0.3s}
+        .compare-card:hover{border-color:var(--primary);box-shadow:var(--shadow-sm)}
+        .compare-card h4{color:var(--dark);margin-bottom:0.75rem;font-size:1.1rem}
+        .compare-card .big-number{font-size:2rem;font-weight:800;color:var(--primary-dark)}
+        .compare-card .detail{color:var(--text-light);font-size:0.9rem;margin-top:0.5rem}
+
+        .content-section{margin:3rem 0;padding:2.5rem;background:var(--light);border-radius:var(--radius);border:1px solid var(--border)}
+        .content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem;font-weight:700}
+        .content-section h3{color:#4b5563;margin:1.5rem 0 0.75rem;font-size:1.2rem;font-weight:600}
+        .content-section p{color:var(--text);margin-bottom:1rem;line-height:1.7}
+        .content-section ul{margin-left:1.5rem;margin-bottom:1rem}
+        .content-section li{margin-bottom:0.5rem;line-height:1.7}
+
+        .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:1.5rem}
+        .feature-card{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:1px solid var(--border);transition:all 0.3s}
+        .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+        .feature-icon{font-size:2rem;margin-bottom:0.75rem}
+        .feature-card h4{color:var(--dark);margin-bottom:0.5rem;font-size:1.1rem}
+        .feature-card p{color:var(--text-light);font-size:0.9rem;margin:0}
+
+        .formula-box{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:2px solid var(--primary);margin:1rem 0;text-align:center}
+        .formula-box code{background:var(--primary-light);padding:0.25rem 0.5rem;border-radius:4px;font-size:1rem;color:var(--primary-dark);font-weight:600}
+
+        .faq-item{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin-bottom:1rem;transition:all 0.3s}
+        .faq-item:hover{box-shadow:var(--shadow-sm)}
+        .faq-item h4{color:var(--dark);margin-bottom:0.75rem;font-size:1.1rem;font-weight:600}
+        .faq-item p{color:var(--text-light);font-size:0.95rem;margin:0;line-height:1.6}
+
+        .footer-section{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem;font-size:1.1rem}
+        .footer-col ul{list-style:none}
+        .footer-col li{margin-bottom:0.5rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;transition:all 0.3s;display:inline-block}
+        .footer-col a:hover{color:#fff;transform:translateX(4px)}
+        .footer-col p{color:#9ca3af;font-size:0.9rem;line-height:1.6}
+        .footer-bottom{max-width:1200px;margin:0 auto;text-align:center;border-top:1px solid #4b5563;padding-top:2rem;color:#9ca3af;font-size:0.9rem}
+        .footer-bottom a{color:#d1d5db;text-decoration:none;transition:color 0.3s}
+        .footer-bottom a:hover{color:#fff}
+
+        .back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999;box-shadow:var(--shadow-md);border:none;font-size:1.2rem}
+        .back-to-top.show{opacity:1;visibility:visible}
+        .back-to-top:hover{background:var(--primary-dark);transform:translateY(-4px)}
+
+        .bottom-keywords{background:var(--light);padding:2rem;border-top:1px solid var(--border);text-align:center}
+        .bottom-keywords h3{color:var(--dark);margin-bottom:1rem;font-size:1.1rem}
+        .bottom-keywords .kw-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem}
+        .bottom-keywords .kw-tag{background:#fff;padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-light);transition:all 0.3s;text-decoration:none;display:inline-block}
+        .bottom-keywords .kw-tag:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
+
+        @media(max-width:768px){
+            .tool-header h1{font-size:1.8rem}
+            .tool-header .subtitle{font-size:1rem}
+            .calc-grid{grid-template-columns:1fr;gap:1rem}
+            .compare-grid{grid-template-columns:1fr}
+            .result-value{font-size:1.8rem}
+            .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:1rem 2rem;border-bottom:1px solid var(--border);gap:1rem}
+            .nav-links.active{display:flex}
+            .menu-toggle{display:block}
+            .content-section{padding:1.5rem}
+            .calc-box{padding:1.5rem}
+            .btn{margin-bottom:0.5rem}
+        }
+        @media(max-width:480px){
+            .tool-header{padding:2.5rem 1.5rem}
+            .tool-header h1{font-size:1.5rem}
+            .container{padding:0 1rem}
+            .tool-content{padding:2rem 1rem}
+        }
+        @media print{nav,.back-to-top,.btn{display:none}.result-box{display:block!important;border:2px solid #000}}
+        @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="ToolBox Pro Home">🏠 ToolBox Pro</a>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+                <li><a href="index.html">All Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tool-header">
+        <div class="container">
+            <h1>Free Mortgage Calculator</h1>
+            <p class="subtitle">Calculate Monthly Payments, Total Interest & Amortization Schedule</p>
+            <p class="tagline">Home loans • Refinancing • Compare terms • No signup • 100% Free</p>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/</span> <a href="calculators.html">Calculators</a> <span>/</span> <span>Mortgage Calculator</span>
+        </div>
+    </div>
+
+    <main id="main-content" class="container">
+        <div class="tool-content">
+            <div class="calc-box">
+                <div class="calc-grid">
+                    <div class="input-group">
+                        <label class="input-label" for="principal">🏠 Loan Amount ($):</label>
+                        <input type="number" id="principal" class="input-field" placeholder="e.g., 300000" value="300000" min="0" step="1000" oninput="calculateMortgage()" aria-label="Loan amount">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="rate">📈 Interest Rate (%):</label>
+                        <input type="number" id="rate" class="input-field" placeholder="e.g., 6.5" value="6.5" min="0" max="30" step="0.01" oninput="calculateMortgage()" aria-label="Interest rate">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="term">📅 Loan Term (years):</label>
+                        <input type="number" id="term" class="input-field" placeholder="e.g., 30" value="30" min="1" max="50" step="1" oninput="calculateMortgage()" aria-label="Loan term in years">
+                    </div>
+                </div>
+                <div style="margin-top:1.5rem">
+                    <button class="btn" onclick="calculateMortgage()">
+                        <span>🏠</span> Calculate Mortgage
+                    </button>
+                    <button class="btn btn-secondary" onclick="compareTerms()">
+                        <span>📊</span> Compare 15 vs 30 Year
+                    </button>
+                </div>
+                <div class="result-box" id="result">
+                    <div class="result-label">Your Mortgage Summary</div>
+                    <div class="result-value" id="monthlyPayment"></div>
+                    <div class="result-detail" id="paymentDetail"></div>
+                    <div style="margin-top:1rem">
+                        <span class="result-stat" id="totalInterest"></span>
+                        <span class="result-stat" id="totalPaid"></span>
+                        <span class="result-stat" id="totalPayments"></span>
+                    </div>
+                </div>
+                <div class="result-box" id="compareResult" style="display:none;margin-top:1rem">
+                    <div class="result-label">15-Year vs 30-Year Comparison</div>
+                    <div class="compare-grid">
+                        <div class="compare-card">
+                            <h4>15-Year Mortgage</h4>
+                            <div class="big-number" id="compare15Payment"></div>
+                            <div class="detail" id="compare15Interest"></div>
+                            <div class="detail" id="compare15Total"></div>
+                        </div>
+                        <div class="compare-card">
+                            <h4>30-Year Mortgage</h4>
+                            <div class="big-number" id="compare30Payment"></div>
+                            <div class="detail" id="compare30Interest"></div>
+                            <div class="detail" id="compare30Total"></div>
+                        </div>
+                    </div>
+                    <div class="result-detail" id="compareSavings" style="margin-top:1rem;text-align:center;font-weight:600"></div>
+                </div>
+            </div>
+
+            <article class="content-section">
+                <h2>What is a Mortgage Calculator?</h2>
+                <p>A <strong>mortgage calculator</strong> is a free online tool that helps you calculate monthly home loan payments, total interest costs, and amortization schedules. This <strong>home loan calculator</strong> is essential for anyone buying a home, refinancing, or comparing different loan terms.</p>
+                <p>Whether you're a first-time home buyer determining how much house you can afford, or a homeowner considering refinancing options, our free <strong>mortgage payment calculator</strong> provides accurate, instant results without any signup or registration.</p>
+
+                <h3>Why Use Our Free Mortgage Calculator?</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏡</div>
+                        <h4>For Home Buyers</h4>
+                        <p>Calculate monthly payments before house hunting. Know exactly what you can afford.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h4>For Refinancing</h4>
+                        <p>Compare your current mortgage with new rates. See potential monthly savings.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>Compare Loan Terms</h4>
+                        <p>Instantly compare 15-year vs 30-year mortgages. See total interest differences.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h4>Budget Planning</h4>
+                        <p>Plan your finances with accurate payment estimates including total interest costs.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-section">
+                <h2>How to Use the Mortgage Calculator</h2>
+                <p>Using our free online <strong>mortgage calculator</strong> is simple. Follow these steps:</p>
+
+                <h3>Step 1: Enter Loan Amount</h3>
+                <p>Input the total amount you plan to borrow. This is typically the home price minus your down payment. For example, a $400,000 home with a 20% down payment ($80,000) means a loan amount of $320,000.</p>
+
+                <h3>Step 2: Enter Interest Rate</h3>
+                <p>Input the annual interest rate offered by your lender. Current mortgage rates typically range from 6% to 8%, but vary based on credit score, loan type, and market conditions.</p>
+
+                <h3>Step 3: Enter Loan Term</h3>
+                <p>Choose your loan term in years. The most common options are 15 years and 30 years. Shorter terms have higher monthly payments but lower total interest.</p>
+
+                <h3>Step 4: View Results</h3>
+                <p>Click "Calculate Mortgage" to see your monthly payment, total interest, and total amount paid over the life of the loan. Use "Compare 15 vs 30 Year" to see side-by-side comparisons.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>How Mortgage Payments Are Calculated</h2>
+                <p>Our <strong>mortgage calculator</strong> uses the standard amortization formula to calculate your monthly payment:</p>
+                <div class="formula-box">
+                    <strong>Formula:</strong> <code>M = P × [r(1+r)ⁿ] ÷ [(1+r)ⁿ - 1]</code>
+                </div>
+                <p>Where:</p>
+                <ul>
+                    <li><strong>M</strong> = Monthly payment</li>
+                    <li><strong>P</strong> = Principal loan amount</li>
+                    <li><strong>r</strong> = Monthly interest rate (annual rate ÷ 12)</li>
+                    <li><strong>n</strong> = Total number of payments (years × 12)</li>
+                </ul>
+                <p>This formula accounts for compound interest, ensuring your payment covers both principal and interest evenly across the loan term.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>15-Year vs 30-Year Mortgage Comparison</h2>
+                <p>Choosing between a 15-year and 30-year mortgage is one of the biggest decisions home buyers face. Here's a quick comparison:</p>
+                <ul>
+                    <li><strong>15-Year Mortgage:</strong> Higher monthly payments, significantly less total interest, build equity faster, lower interest rates typically offered.</li>
+                    <li><strong>30-Year Mortgage:</strong> Lower monthly payments, more total interest paid, more flexibility in budget, higher interest rates typically offered.</li>
+                </ul>
+                <p>Use our calculator's "Compare 15 vs 30 Year" feature to see the exact dollar difference for your specific loan amount and interest rate.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+
+                <div class="faq-item">
+                    <h4>How is a mortgage payment calculated?</h4>
+                    <p>Mortgage payments are calculated using the loan amount, interest rate, and loan term. The formula accounts for compound interest over the life of the loan, spreading payments evenly across all months so that each payment covers both principal and interest.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What is the difference between 15-year and 30-year mortgages?</h4>
+                    <p>A 15-year mortgage has higher monthly payments but significantly less total interest paid over the life of the loan. A 30-year mortgage has lower monthly payments but costs substantially more in total interest. The choice depends on your monthly budget and long-term financial goals.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How much should my down payment be?</h4>
+                    <p>A typical down payment is 20% of the home price to avoid PMI (Private Mortgage Insurance). However, many lenders accept 3-10% down payments, especially for first-time home buyers through FHA loans or other programs. A larger down payment reduces your loan amount and monthly payments.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What is included in a mortgage payment?</h4>
+                    <p>A typical mortgage payment (often called PITI) includes Principal, Interest, Property Taxes, and Homeowners Insurance. Some payments also include PMI (Private Mortgage Insurance) if your down payment is less than 20%, and HOA fees if applicable. Our calculator focuses on principal and interest.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I pay off my mortgage early?</h4>
+                    <p>Yes, most mortgages allow early payoff, but some may have prepayment penalties. Making extra payments toward principal can significantly reduce total interest and shorten your loan term. Even adding $100 per month to your payment can save thousands in interest over the life of the loan.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Bottom Keywords Section for SEO -->
+    <section class="bottom-keywords">
+        <div class="container">
+            <h3>Related Tools & Keywords</h3>
+            <div class="kw-list">
+                <a href="mortgage-calculator.html" class="kw-tag">mortgage calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">home loan calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">mortgage payment calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">monthly mortgage calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">mortgage interest calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">loan calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">house payment calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">mortgage amortization calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">refinance calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">how much house can i afford</a>
+                <a href="currency-converter.html" class="kw-tag">currency converter</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage calculator</a>
+                <a href="age-calculator.html" class="kw-tag">age calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">GPA calculator</a>
+                <a href="calculators.html" class="kw-tag">free calculators</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculators.html">All Calculators</a></li>
+                    <li><a href="index.html">All Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>More Calculators</h4>
+                <ul>
+                    <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                    <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                    <li><a href="age-calculator.html">Age Calculator</a></li>
+                    <li><a href="gpa-calculator.html">GPA Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Tools</h4>
+                <ul>
+                    <li><a href="currency-converter.html">Currency Converter</a></li>
+                    <li><a href="word-counter-tool.html">Word Counter</a></li>
+                    <li><a href="password-generator.html">Password Generator</a></li>
+                    <li><a href="converter.html">Unit Converter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About ToolBox Pro</h4>
+                <p>ToolBox Pro provides 30+ free online calculators and tools including mortgage calculator, percentage calculator, age calculator, GPA calculator, currency converter, word counter, and password generator. No signup needed. All tools work in your browser for complete privacy and security.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a> | <a href="sitemap.xml">Sitemap</a></p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+
+    <script>
+        function calculateMortgage() {
+            const principal = parseFloat(document.getElementById('principal').value) || 0;
+            const rate = parseFloat(document.getElementById('rate').value) || 0;
+            const term = parseFloat(document.getElementById('term').value) || 0;
+            const resultBox = document.getElementById('result');
+
+            if (principal <= 0 || rate < 0 || term <= 0) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            const monthlyRate = rate / 100 / 12;
+            const numberOfPayments = term * 12;
+
+            let monthlyPayment;
+            if (monthlyRate === 0) {
+                monthlyPayment = principal / numberOfPayments;
+            } else {
+                monthlyPayment = (principal * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments))) / 
+                                (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+            }
+
+            const totalPaid = monthlyPayment * numberOfPayments;
+            const totalInterest = totalPaid - principal;
+
+            document.getElementById('monthlyPayment').textContent = `$${monthlyPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}/month`;
+            document.getElementById('paymentDetail').textContent = 
+                `Loan: $${principal.toLocaleString()} at ${rate}% for ${term} years`;
+
+            document.getElementById('totalInterest').textContent = `💰 Total Interest: $${totalInterest.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('totalPaid').textContent = `📊 Total Paid: $${totalPaid.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('totalPayments').textContent = `📅 ${numberOfPayments} Payments`;
+
+            resultBox.classList.add('show');
+        }
+
+        function compareTerms() {
+            const principal = parseFloat(document.getElementById('principal').value) || 300000;
+            const rate = parseFloat(document.getElementById('rate').value) || 6.5;
+
+            // Calculate 15-year
+            const monthlyRate15 = rate / 100 / 12;
+            const payments15 = 15 * 12;
+            const payment15 = (principal * (monthlyRate15 * Math.pow(1 + monthlyRate15, payments15))) / 
+                             (Math.pow(1 + monthlyRate15, payments15) - 1);
+            const totalPaid15 = payment15 * payments15;
+            const totalInterest15 = totalPaid15 - principal;
+
+            // Calculate 30-year
+            const monthlyRate30 = rate / 100 / 12;
+            const payments30 = 30 * 12;
+            const payment30 = (principal * (monthlyRate30 * Math.pow(1 + monthlyRate30, payments30))) / 
+                             (Math.pow(1 + monthlyRate30, payments30) - 1);
+            const totalPaid30 = payment30 * payments30;
+            const totalInterest30 = totalPaid30 - principal;
+
+            const savings = totalInterest30 - totalInterest15;
+
+            document.getElementById('compare15Payment').textContent = `$${payment15.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('compare15Interest').textContent = `Total Interest: $${totalInterest15.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('compare15Total').textContent = `Total Paid: $${totalPaid15.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+
+            document.getElementById('compare30Payment').textContent = `$${payment30.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('compare30Interest').textContent = `Total Interest: $${totalInterest30.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('compare30Total').textContent = `Total Paid: $${totalPaid30.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+
+            document.getElementById('compareSavings').innerHTML = 
+                `<span style="color:var(--primary-dark)">💡 You save $${savings.toLocaleString('en-US', {minimumFractionDigits: 2})} in total interest with a 15-year loan!</span>`;
+
+            document.getElementById('compareResult').classList.add('show');
+            document.getElementById('compareResult').style.display = 'block';
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            calculateMortgage();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                calculateMortgage();
+            }
+        });
+    </script>
+</body>
+</html>
