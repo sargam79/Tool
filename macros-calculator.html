@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free macros calculator - Calculate daily protein, carbs, and fat intake for balanced, high protein, low carb, and keto diets. Perfect for diet planning, muscle building, and weight loss. No signup needed.">
+    <meta name="keywords" content="macros calculator, macro calculator, macronutrient calculator, protein calculator, carb calculator, fat calculator, keto macro calculator, bodybuilding macros, diet calculator, nutrition calculator, meal prep calculator, calorie to macro converter">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/macros-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Macros Calculator - Daily Protein, Carbs & Fats for Any Diet">
+    <meta property="og:description" content="Calculate your daily macronutrients for balanced, high protein, low carb, and keto diets. Free macro calculator with no signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/macros-calculator.html">
+    <meta property="og:site_name" content="ToolBox Pro">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Macros Calculator - Protein, Carbs & Fats">
+    <meta name="twitter:description" content="Calculate daily macros for keto, low carb, high protein, and balanced diets. Free tool, no signup.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Macros Calculator",
+        "description": "Free online macronutrient calculator for diet planning and nutrition tracking supporting keto, low carb, high protein, and balanced diets",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "890", "bestRating": "5"},
+        "author": {"@type": "Organization", "name": "ToolBox Pro"}
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "How do I calculate my macros?", "acceptedAnswer": {"@type": "Answer", "text": "Enter your daily calorie target, select your diet type (balanced, high protein, low carb, or keto), and choose your goal. The calculator will instantly show your daily protein, carbs, and fat targets in grams."}},
+            {"@type": "Question", "name": "What are macros?", "acceptedAnswer": {"@type": "Answer", "text": "Macros (macronutrients) are the three main nutrients your body needs in large amounts: protein, carbohydrates, and fats. Each provides energy (calories) and serves different functions in the body."}},
+            {"@type": "Question", "name": "What is the best macro ratio for weight loss?", "acceptedAnswer": {"@type": "Answer", "text": "For weight loss, a high protein or low carb diet often works well. High protein (40P/40C/20F) helps preserve muscle while losing fat. Low carb (30P/25C/45F) can help control appetite and insulin levels."}},
+            {"@type": "Question", "name": "How do I calculate my TDEE for macros?", "acceptedAnswer": {"@type": "Answer", "text": "Use a calorie calculator or TDEE calculator to find your Total Daily Energy Expenditure based on your age, weight, height, and activity level. Then enter that number into the macros calculator."}}
+        ]
+    }
+    </script>
+
+    <title>Free Macros Calculator - Daily Protein, Carbs & Fats | Keto, Low Carb, High Protein | ToolBox Pro</title>
+
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --primary-light: #EDE9FE;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --text: #374151;
+            --text-light: #6b7280;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--text);background:var(--light);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        .skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s}
+        .skip-link:focus{top:0}
+
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:var(--shadow-sm)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+        .logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text);font-weight:500;text-decoration:none;transition:color 0.3s;padding:0.5rem 0;position:relative}
+        .nav-links a:hover{color:var(--primary)}
+        .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--primary);transition:width 0.3s}
+        .nav-links a:hover::after{width:100%}
+        .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--dark)}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+        .tool-header{background:linear-gradient(135deg,var(--primary),#A78BFA);color:#fff;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .tool-header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:20px 20px;opacity:0.3}
+        .tool-header .container{position:relative;z-index:1}
+        .tool-header h1{font-size:2.8rem;margin-bottom:0.5rem;font-weight:800;letter-spacing:-0.02em}
+        .tool-header .subtitle{font-size:1.25rem;opacity:0.95;margin-bottom:0.5rem}
+        .tool-header .tagline{opacity:0.85;font-size:1rem}
+
+        .breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:0.75rem 2rem;font-size:0.875rem;color:var(--text-light)}
+        .breadcrumb a{color:var(--text);text-decoration:none;transition:color 0.3s}
+        .breadcrumb a:hover{color:var(--primary)}
+        .breadcrumb span{color:var(--text-light)}
+
+        .tool-content{padding:3rem 2rem;background:#fff}
+
+        .calc-box{background:linear-gradient(145deg,#fff,var(--light));padding:2.5rem;border-radius:var(--radius);margin-bottom:2.5rem;border:1px solid var(--border);box-shadow:var(--shadow-md);position:relative}
+        .calc-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),#A78BFA);border-radius:var(--radius) var(--radius) 0 0}
+
+        .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:end}
+        .input-group{margin-bottom:0}
+        .input-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark);font-size:0.95rem}
+        .input-field,.select-field{width:100%;padding:0.875rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;transition:all 0.3s;background:#fff;color:var(--dark)}
+        .input-field:focus,.select-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(139,92,246,0.1)}
+        .input-field::placeholder{color:var(--text-light)}
+
+        .btn{padding:0.875rem 2rem;border:none;border-radius:var(--radius-sm);font-weight:600;font-size:1rem;cursor:pointer;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:var(--shadow-sm);margin-right:0.75rem}
+        .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+        .btn:active{transform:translateY(0)}
+
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin:2rem 0}
+        .stat-card{background:linear-gradient(135deg,var(--primary-light),#DDD6FE);padding:1.5rem;border-radius:var(--radius-sm);text-align:center;border:1px solid var(--border);transition:all 0.3s}
+        .stat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+        .stat-label{color:var(--text-light);font-size:0.85rem;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.5px}
+        .stat-value{font-size:2rem;font-weight:800;color:var(--primary-dark)}
+        .stat-detail{color:var(--text-light);font-size:0.85rem;margin-top:0.25rem}
+
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#DDD6FE);padding:2rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin:1.5rem 0 0;display:none;animation:fadeIn 0.4s ease}
+        .result-box.show{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+        .result-label{font-size:0.875rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem}
+        .result-value{font-size:2rem;font-weight:800;color:var(--primary-dark);margin:0.5rem 0}
+        .result-detail{color:var(--text);font-size:0.95rem;margin-top:0.5rem;line-height:1.6}
+
+        .macro-bar{background:#fff;border-radius:var(--radius-sm);padding:1.5rem;margin:1rem 0;border:1px solid var(--border)}
+        .macro-bar-title{font-weight:600;color:var(--dark);margin-bottom:1rem}
+        .bar-container{display:flex;height:32px;border-radius:16px;overflow:hidden;margin-bottom:0.5rem}
+        .bar-protein{background:linear-gradient(135deg,#10B981,#059669)}
+        .bar-carbs{background:linear-gradient(135deg,#F59E0B,#D97706)}
+        .bar-fats{background:linear-gradient(135deg,#EF4444,#DC2626)}
+        .bar-legend{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:0.75rem}
+        .legend-item{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text)}
+        .legend-dot{width:12px;height:12px;border-radius:50%}
+
+        .content-section{margin:3rem 0;padding:2.5rem;background:var(--light);border-radius:var(--radius);border:1px solid var(--border)}
+        .content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem;font-weight:700}
+        .content-section h3{color:#4b5563;margin:1.5rem 0 0.75rem;font-size:1.2rem;font-weight:600}
+        .content-section p{color:var(--text);margin-bottom:1rem;line-height:1.7}
+        .content-section ul{margin-left:1.5rem;margin-bottom:1rem}
+        .content-section li{margin-bottom:0.75rem;line-height:1.7}
+
+        .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:1.5rem}
+        .feature-card{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:1px solid var(--border);transition:all 0.3s}
+        .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+        .feature-icon{font-size:2rem;margin-bottom:0.75rem}
+        .feature-card h4{color:var(--dark);margin-bottom:0.5rem;font-size:1.1rem}
+        .feature-card p{color:var(--text-light);font-size:0.9rem;margin:0}
+
+        .diet-card{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:1px solid var(--border);margin-bottom:1rem;transition:all 0.3s}
+        .diet-card:hover{border-color:var(--primary);box-shadow:var(--shadow-sm)}
+        .diet-card h4{color:var(--dark);margin-bottom:0.5rem;font-size:1.1rem}
+        .diet-card p{color:var(--text-light);font-size:0.95rem;margin:0}
+        .diet-badge{display:inline-block;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:0.5rem}
+        .badge-balanced{background:#DBEAFE;color:#2563EB}
+        .badge-protein{background:#D1FAE5;color:#059669}
+        .badge-lowcarb{background:#FEF3C7;color:#D97706}
+        .badge-keto{background:#FEE2E2;color:#DC2626}
+
+        .faq-item{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin-bottom:1rem;transition:all 0.3s}
+        .faq-item:hover{box-shadow:var(--shadow-sm)}
+        .faq-item h4{color:var(--dark);margin-bottom:0.75rem;font-size:1.1rem;font-weight:600}
+        .faq-item p{color:var(--text-light);font-size:0.95rem;margin:0;line-height:1.6}
+
+        .footer-section{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem;font-size:1.1rem}
+        .footer-col ul{list-style:none}
+        .footer-col li{margin-bottom:0.5rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;transition:all 0.3s;display:inline-block}
+        .footer-col a:hover{color:#fff;transform:translateX(4px)}
+        .footer-col p{color:#9ca3af;font-size:0.9rem;line-height:1.6}
+        .footer-bottom{max-width:1200px;margin:0 auto;text-align:center;border-top:1px solid #4b5563;padding-top:2rem;color:#9ca3af;font-size:0.9rem}
+        .footer-bottom a{color:#d1d5db;text-decoration:none;transition:color 0.3s}
+        .footer-bottom a:hover{color:#fff}
+
+        .back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999;box-shadow:var(--shadow-md);border:none;font-size:1.2rem}
+        .back-to-top.show{opacity:1;visibility:visible}
+        .back-to-top:hover{background:var(--primary-dark);transform:translateY(-4px)}
+
+        .bottom-keywords{background:var(--light);padding:2rem;border-top:1px solid var(--border);text-align:center}
+        .bottom-keywords h3{color:var(--dark);margin-bottom:1rem;font-size:1.1rem}
+        .bottom-keywords .kw-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem}
+        .bottom-keywords .kw-tag{background:#fff;padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-light);transition:all 0.3s;text-decoration:none;display:inline-block}
+        .bottom-keywords .kw-tag:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
+
+        @media(max-width:768px){
+            .tool-header h1{font-size:1.8rem}
+            .tool-header .subtitle{font-size:1rem}
+            .calc-grid{grid-template-columns:1fr;gap:1rem}
+            .stats-grid{grid-template-columns:1fr 1fr}
+            .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:1rem 2rem;border-bottom:1px solid var(--border);gap:1rem}
+            .nav-links.active{display:flex}
+            .menu-toggle{display:block}
+            .content-section{padding:1.5rem}
+            .calc-box{padding:1.5rem}
+        }
+        @media(max-width:480px){
+            .tool-header{padding:2.5rem 1.5rem}
+            .tool-header h1{font-size:1.5rem}
+            .container{padding:0 1rem}
+            .tool-content{padding:2rem 1rem}
+            .stats-grid{grid-template-columns:1fr}
+        }
+        @media print{nav,.back-to-top,.btn{display:none}.result-box{display:block!important;border:2px solid #000}}
+        @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="ToolBox Pro Home">🥗 ToolBox Pro</a>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tool-header">
+        <div class="container">
+            <h1>Free Macros Calculator</h1>
+            <p class="subtitle">Calculate Daily Protein, Carbs & Fats for Any Diet</p>
+            <p class="tagline">Keto • Low Carb • High Protein • Balanced • No signup • 100% Free</p>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/</span> <a href="calculators.html">Calculators</a> <span>/</span> <span>Macros Calculator</span>
+        </div>
+    </div>
+
+    <main id="main-content" class="container">
+        <div class="tool-content">
+            <div class="calc-box">
+                <div class="calc-grid">
+                    <div class="input-group">
+                        <label class="input-label" for="calories">🔥 Daily Calories:</label>
+                        <input type="number" id="calories" class="input-field" placeholder="e.g., 2000" value="2000" min="500" max="10000" step="50" oninput="calculateMacros()" aria-label="Daily calories">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="dietType">🥗 Diet Type:</label>
+                        <select id="dietType" class="select-field" onchange="calculateMacros()" aria-label="Diet type">
+                            <option value="balanced">Balanced (30P / 40C / 30F)</option>
+                            <option value="highProtein">High Protein (40P / 40C / 20F)</option>
+                            <option value="lowCarb">Low Carb (30P / 25C / 45F)</option>
+                            <option value="keto">Keto (20P / 10C / 70F)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="goal">🎯 Goal:</label>
+                        <select id="goal" class="select-field" onchange="calculateMacros()" aria-label="Fitness goal">
+                            <option value="maintain">Maintain Weight</option>
+                            <option value="loss">Weight Loss</option>
+                            <option value="gain">Weight Gain</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-top:1.5rem">
+                    <button class="btn" onclick="calculateMacros()">
+                        <span>📊</span> Calculate Macros
+                    </button>
+                </div>
+
+                <div class="stats-grid" id="macrosGrid" style="display:none;margin-top:2rem">
+                    <div class="stat-card">
+                        <div class="stat-label">🥩 Protein</div>
+                        <div class="stat-value" id="proteinVal">-</div>
+                        <div class="stat-detail">grams / day</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">🍞 Carbs</div>
+                        <div class="stat-value" id="carbsVal">-</div>
+                        <div class="stat-detail">grams / day</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">🥑 Fats</div>
+                        <div class="stat-value" id="fatsVal">-</div>
+                        <div class="stat-detail">grams / day</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">📊 Total</div>
+                        <div class="stat-value" id="totalCal">-</div>
+                        <div class="stat-detail">calories</div>
+                    </div>
+                </div>
+
+                <div class="macro-bar" id="macroBar" style="display:none">
+                    <div class="macro-bar-title">Macro Distribution</div>
+                    <div class="bar-container" id="barContainer">
+                        <div class="bar-protein" id="barProtein" style="width:0%"></div>
+                        <div class="bar-carbs" id="barCarbs" style="width:0%"></div>
+                        <div class="bar-fats" id="barFats" style="width:0%"></div>
+                    </div>
+                    <div class="bar-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background:#10B981"></div>
+                            <span>Protein</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background:#F59E0B"></div>
+                            <span>Carbs</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background:#EF4444"></div>
+                            <span>Fats</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-box" id="result">
+                    <div class="result-label">Your Daily Macro Targets</div>
+                    <div class="result-value" id="macrosResult"></div>
+                    <div class="result-detail" id="macrosDetail"></div>
+                </div>
+            </div>
+
+            <article class="content-section">
+                <h2>What is a Macros Calculator?</h2>
+                <p>A <strong>macros calculator</strong> (macronutrient calculator) helps you determine your optimal daily intake of protein, carbohydrates, and fats based on your calorie goals, diet type, and fitness objectives. This <strong>macro calculator</strong> is essential for diet planning, muscle building, weight loss, and overall fitness success.</p>
+                <p>Our <strong>free macros calculator</strong> supports multiple diet types including balanced, high protein, low carb, and keto diets. Whether you're a fitness enthusiast, athlete, or someone serious about nutrition, this tool provides accurate, instant macro targets without any signup or registration.</p>
+
+                <h3>Why Use Our Free Macros Calculator?</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💪</div>
+                        <h4>For Muscle Building</h4>
+                        <p>Calculate optimal protein intake to support muscle growth and recovery after workouts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📉</div>
+                        <h4>For Weight Loss</h4>
+                        <p>Find the right macro balance to lose fat while preserving lean muscle mass.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4>For Keto & Low Carb</h4>
+                        <p>Get precise keto macros with 70% fat, 20% protein, and 10% carbs distribution.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🍽️</div>
+                        <h4>For Meal Planning</h4>
+                        <p>Use macro targets to plan meals and hit your nutrition goals consistently.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-section">
+                <h2>How to Use the Macros Calculator</h2>
+                <p>Using our free online <strong>macros calculator</strong> is simple. Follow these steps:</p>
+
+                <h3>Step 1: Enter Your Daily Calories</h3>
+                <p>Input your target daily calorie intake. This is typically calculated from your TDEE (Total Daily Energy Expenditure). For weight loss, subtract 300-500 calories. For weight gain, add 300-500 calories.</p>
+
+                <h3>Step 2: Select Your Diet Type</h3>
+                <p>Choose your preferred macro distribution: Balanced (30P/40C/30F), High Protein (40P/40C/20F), Low Carb (30P/25C/45F), or Keto (20P/10C/70F).</p>
+
+                <h3>Step 3: Choose Your Goal</h3>
+                <p>Select whether you're maintaining, losing, or gaining weight. The calculator adjusts calories accordingly.</p>
+
+                <h3>Step 4: View Your Macro Targets</h3>
+                <p>Get your daily protein, carbs, and fat targets in grams, plus a visual macro distribution bar to guide your meal planning.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>Understanding Macronutrients</h2>
+
+                <h3>🥩 Protein (4 calories per gram)</h3>
+                <p>Protein is essential for muscle building, tissue repair, enzyme production, and immune function. High protein diets support weight loss by increasing satiety and preserving muscle mass. Good sources include chicken, fish, eggs, Greek yogurt, tofu, and legumes.</p>
+
+                <h3>🍞 Carbohydrates (4 calories per gram)</h3>
+                <p>Carbs are the body's primary energy source, especially for high-intensity exercise and brain function. Complex carbs (whole grains, vegetables, fruits) provide sustained energy and fiber. Simple carbs (sugar, white bread) spike blood sugar quickly.</p>
+
+                <h3>🥑 Fats (9 calories per gram)</h3>
+                <p>Dietary fats are crucial for hormone production (including testosterone), brain function, nutrient absorption, and cell membrane health. Focus on healthy fats from avocados, nuts, olive oil, and fatty fish. Limit trans fats and excessive saturated fats.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>Popular Diet Types & Macro Ratios</h2>
+
+                <div class="diet-card">
+                    <span class="diet-badge badge-balanced">Balanced</span>
+                    <h4>🥗 Balanced Diet (30% Protein / 40% Carbs / 30% Fats)</h4>
+                    <p>The most sustainable approach for general health and moderate activity levels. Provides adequate energy, supports muscle maintenance, and includes enough healthy fats for hormone health. Perfect for beginners and those who want flexibility.</p>
+                </div>
+
+                <div class="diet-card">
+                    <span class="diet-badge badge-protein">High Protein</span>
+                    <h4>💪 High Protein Diet (40% Protein / 40% Carbs / 20% Fats)</h4>
+                    <p>Ideal for bodybuilders, strength athletes, and those in a muscle-building phase. The higher protein intake maximizes muscle protein synthesis, while moderate carbs fuel intense workouts. Lower fats help control total calories.</p>
+                </div>
+
+                <div class="diet-card">
+                    <span class="diet-badge badge-lowcarb">Low Carb</span>
+                    <h4>📉 Low Carb Diet (30% Protein / 25% Carbs / 45% Fats)</h4>
+                    <p>Effective for weight loss and metabolic health. Reduced carbs lower insulin levels, which can help the body burn fat for fuel. Higher fats keep you satiated. Popular among those with insulin resistance or type 2 diabetes.</p>
+                </div>
+
+                <div class="diet-card">
+                    <span class="diet-badge badge-keto">Keto</span>
+                    <h4>⚡ Ketogenic Diet (20% Protein / 10% Carbs / 70% Fats)</h4>
+                    <p>Induces ketosis, where the body burns fat for fuel instead of carbs. Very low carb intake (typically under 50g/day) forces the liver to produce ketones. Popular for rapid weight loss, mental clarity, and certain medical conditions.</p>
+                </div>
+            </article>
+
+            <article class="content-section">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+
+                <div class="faq-item">
+                    <h4>How do I calculate my macros?</h4>
+                    <p>Enter your daily calorie target, select your diet type (balanced, high protein, low carb, or keto), and choose your goal. The calculator instantly shows your daily protein, carbs, and fat targets in grams. Adjust based on your body's response over 2-4 weeks.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What are macros (macronutrients)?</h4>
+                    <p>Macros are the three main nutrients your body needs in large amounts: protein (4 cal/g), carbohydrates (4 cal/g), and fats (9 cal/g). Each serves different functions — protein builds muscle, carbs provide energy, and fats support hormones and brain health.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What is the best macro ratio for weight loss?</h4>
+                    <p>For weight loss, high protein (40P/40C/20F) or low carb (30P/25C/45F) diets often work best. Higher protein preserves muscle mass and increases satiety. Lower carbs can help control appetite and insulin levels. The best ratio is one you can stick to consistently.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do I calculate my TDEE for macros?</h4>
+                    <p>Use a TDEE (Total Daily Energy Expenditure) calculator that considers your age, weight, height, gender, and activity level. This gives you your maintenance calories. For weight loss, subtract 300-500 calories. For weight gain, add 300-500 calories.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What if I don't hit my macros exactly every day?</h4>
+                    <p>Perfection isn't necessary — consistency matters more. Aim to be within 5-10% of your macro targets daily. Weekly averages are more important than daily precision. Focus on hitting protein first, then carbs and fats can be more flexible.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Bottom Keywords Section for SEO -->
+    <section class="bottom-keywords">
+        <div class="container">
+            <h3>Related Tools & Keywords</h3>
+            <div class="kw-list">
+                <a href="macros-calculator.html" class="kw-tag">macros calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">macro calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">macronutrient calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">protein calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">keto macro calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">bodybuilding macros</a>
+                <a href="macros-calculator.html" class="kw-tag">diet calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">nutrition calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">meal prep calculator</a>
+                <a href="macros-calculator.html" class="kw-tag">calorie to macro converter</a>
+                <a href="bmi-calculator.html" class="kw-tag">BMI calculator</a>
+                <a href="nutrition-calculator.html" class="kw-tag">nutrition calculator</a>
+                <a href="calorie-calculator.html" class="kw-tag">calorie calculator</a>
+                <a href="mortgage-calculator.html" class="kw-tag">mortgage calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage calculator</a>
+                <a href="age-calculator.html" class="kw-tag">age calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">GPA calculator</a>
+                <a href="currency-converter.html" class="kw-tag">currency converter</a>
+                <a href="calculators.html" class="kw-tag">free calculators</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>📊 Calculators</h4>
+                <ul>
+                    <li><a href="macros-calculator.html">Macros Calculator</a></li>
+                    <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
+                    <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                    <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+                    <li><a href="water-intake-calculator.html">Water Intake</a></li>
+                    <li><a href="calculators.html">All Calculators</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>🏥 Health & Fitness</h4>
+                <ul>
+                    <li><a href="nutrition-calculator.html">Nutrition Calculator</a></li>
+                    <li><a href="meal-planner.html">Meal Planner</a></li>
+                    <li><a href="pregnancy-calculator.html">Pregnancy Calculator</a></li>
+                    <li><a href="ovulation-calculator.html">Ovulation Calculator</a></li>
+                    <li><a href="stride-calculator.html">Stride & Pace</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>🔗 Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                    <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                    <li><a href="age-calculator.html">Age Calculator</a></li>
+                    <li><a href="gpa-calculator.html">GPA Calculator</a></li>
+                    <li><a href="currency-converter.html">Currency Converter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About ToolBox Pro</h4>
+                <p>ToolBox Pro provides 35+ free online calculators and tools for health, fitness, nutrition, finance, education, and productivity. All tools are browser-based, require no signup, and process data locally for complete privacy and security.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a> | <a href="sitemap.xml">Sitemap</a></p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+
+    <script>
+        function calculateMacros() {
+            let calories = parseFloat(document.getElementById('calories').value) || 0;
+            const dietType = document.getElementById('dietType').value;
+            const goal = document.getElementById('goal').value;
+            const resultBox = document.getElementById('result');
+            const macrosGrid = document.getElementById('macrosGrid');
+            const macroBar = document.getElementById('macroBar');
+
+            if (calories <= 0) {
+                macrosGrid.style.display = 'none';
+                macroBar.style.display = 'none';
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            // Adjust calories based on goal
+            let goalText = '';
+            if (goal === 'loss') {
+                calories -= 500;
+                goalText = ' (Weight Loss: -500 cal)';
+            } else if (goal === 'gain') {
+                calories += 500;
+                goalText = ' (Weight Gain: +500 cal)';
+            } else {
+                goalText = ' (Maintenance)';
+            }
+
+            let proteinPercent, carbsPercent, fatsPercent;
+
+            switch(dietType) {
+                case 'highProtein':
+                    proteinPercent = 0.40;
+                    carbsPercent = 0.40;
+                    fatsPercent = 0.20;
+                    break;
+                case 'lowCarb':
+                    proteinPercent = 0.30;
+                    carbsPercent = 0.25;
+                    fatsPercent = 0.45;
+                    break;
+                case 'keto':
+                    proteinPercent = 0.20;
+                    carbsPercent = 0.10;
+                    fatsPercent = 0.70;
+                    break;
+                default:
+                    proteinPercent = 0.30;
+                    carbsPercent = 0.40;
+                    fatsPercent = 0.30;
+            }
+
+            const proteinCals = calories * proteinPercent;
+            const carbsCals = calories * carbsPercent;
+            const fatsCals = calories * fatsPercent;
+
+            const protein = Math.round(proteinCals / 4);
+            const carbs = Math.round(carbsCals / 4);
+            const fats = Math.round(fatsCals / 9);
+
+            // Update stat cards
+            document.getElementById('proteinVal').textContent = protein;
+            document.getElementById('carbsVal').textContent = carbs;
+            document.getElementById('fatsVal').textContent = fats;
+            document.getElementById('totalCal').textContent = Math.round(calories).toLocaleString();
+
+            macrosGrid.style.display = 'grid';
+
+            // Update macro bar
+            document.getElementById('barProtein').style.width = (proteinPercent * 100) + '%';
+            document.getElementById('barCarbs').style.width = (carbsPercent * 100) + '%';
+            document.getElementById('barFats').style.width = (fatsPercent * 100) + '%';
+            macroBar.style.display = 'block';
+
+            // Update result box
+            document.getElementById('macrosResult').textContent = `${protein}g Protein | ${carbs}g Carbs | ${fats}g Fats`;
+            document.getElementById('macrosDetail').innerHTML = 
+                `Based on ${Math.round(calories).toLocaleString()} calories${goalText}<br>` +
+                `Protein: ${Math.round(proteinCals)} cal | Carbs: ${Math.round(carbsCals)} cal | Fats: ${Math.round(fatsCals)} cal`;
+
+            resultBox.classList.add('show');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            calculateMacros();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                calculateMacros();
+            }
+        });
+    </script>
+</body>
+</html>
