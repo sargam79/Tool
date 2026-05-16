@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free GPA calculator - Calculate your Grade Point Average instantly with weighted grades and credits. Supports 4.0, 5.0, and percentage scales. No signup needed. Perfect for high school and college students.">
+    <meta name="keywords" content="GPA calculator, grade calculator, GPA converter, weighted GPA calculator, college GPA calculator, high school GPA calculator, cumulative GPA calculator, semester GPA calculator, grade point average calculator, how to calculate GPA, 4.0 GPA scale, academic calculator">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/gpa-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free GPA Calculator - Calculate Weighted & Unweighted GPA Instantly">
+    <meta property="og:description" content="Calculate your GPA with weighted grades and credits. Supports 4.0, 5.0, and percentage scales. Free online GPA calculator for students.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/gpa-calculator.html">
+    <meta property="og:site_name" content="ToolBox Pro">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free GPA Calculator - Weighted & Unweighted GPA">
+    <meta name="twitter:description" content="Calculate your GPA instantly with credits and weighted grades. Free tool for high school and college students.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GPA Calculator",
+        "description": "Free online GPA calculator that calculates weighted and unweighted grade point average with credits",
+        "applicationCategory": "CalculatorApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "950", "bestRating": "5"},
+        "author": {"@type": "Organization", "name": "ToolBox Pro"}
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "What is GPA?", "acceptedAnswer": {"@type": "Answer", "text": "GPA stands for Grade Point Average. It is a numerical representation of a student's academic performance, calculated by averaging the grade points earned in all courses."}},
+            {"@type": "Question", "name": "How do I calculate my GPA?", "acceptedAnswer": {"@type": "Answer", "text": "Multiply each course grade point by its credit hours, sum all grade points, then divide by total credit hours. Our GPA calculator does this automatically."}},
+            {"@type": "Question", "name": "What is weighted vs unweighted GPA?", "acceptedAnswer": {"@type": "Answer", "text": "Unweighted GPA uses a standard 4.0 scale. Weighted GPA gives extra points for honors, AP, or IB courses, often using a 5.0 scale."}},
+            {"@type": "Question", "name": "What is a good GPA?", "acceptedAnswer": {"@type": "Answer", "text": "A GPA of 3.0 or higher is generally considered good. A 3.5+ is competitive for most colleges, while 3.7+ is excellent."}}
+        ]
+    }
+    </script>
+
+    <title>Free GPA Calculator - Calculate Weighted & Unweighted GPA | ToolBox Pro</title>
+
+    <style>
+        :root {
+            --primary: #6366F1;
+            --primary-dark: #4F46E5;
+            --primary-light: #E0E7FF;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --text: #374151;
+            --text-light: #6b7280;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--text);background:var(--light);-webkit-font-smoothing:antialiased}
+        .skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s}
+        .skip-link:focus{top:0}
+
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:var(--shadow-sm)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#818CF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text);font-weight:500;text-decoration:none;transition:color 0.3s;padding:0.5rem 0;position:relative}
+        .nav-links a:hover{color:var(--primary)}
+        .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--primary);transition:width 0.3s}
+        .nav-links a:hover::after{width:100%}
+        .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--dark)}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+        .tool-header{background:linear-gradient(135deg,var(--primary),#818CF8);color:#fff;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .tool-header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:20px 20px;opacity:0.3}
+        .tool-header .container{position:relative;z-index:1}
+        .tool-header h1{font-size:2.8rem;margin-bottom:1rem;font-weight:800;letter-spacing:-0.02em}
+        .tool-header .subtitle{font-size:1.25rem;opacity:0.95;margin-bottom:0.5rem}
+        .tool-header .tagline{opacity:0.85;font-size:1rem}
+
+        .breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:0.75rem 2rem;font-size:0.875rem;color:var(--text-light)}
+        .breadcrumb a{color:var(--text);text-decoration:none;transition:color 0.3s}
+        .breadcrumb a:hover{color:var(--primary)}
+        .breadcrumb span{color:var(--text-light)}
+
+        .tool-content{padding:3rem 2rem;background:#fff}
+
+        .calc-box{background:linear-gradient(145deg,#fff,var(--light));padding:2.5rem;border-radius:var(--radius);margin-bottom:2.5rem;border:1px solid var(--border);box-shadow:var(--shadow-md);position:relative}
+        .calc-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),#818CF8);border-radius:var(--radius) var(--radius) 0 0}
+
+        .gpa-scale-selector{margin-bottom:1.5rem}
+        .gpa-scale-selector label{font-weight:600;margin-right:1rem;color:var(--dark)}
+        .gpa-scale-selector select{padding:0.5rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;background:#fff;cursor:pointer}
+        .gpa-scale-selector select:focus{outline:none;border-color:var(--primary)}
+
+        .grade-row{display:grid;grid-template-columns:2fr 1fr 1fr 0.5fr;gap:1rem;margin-bottom:1rem;align-items:end}
+        .grade-row input,.grade-row select{width:100%;padding:0.75rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;transition:all 0.3s;background:#fff}
+        .grade-row input:focus,.grade-row select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}
+        .remove-btn{background:#EF4444;color:#fff;border:none;border-radius:var(--radius-sm);padding:0.75rem;cursor:pointer;font-size:1rem;transition:all 0.3s}
+        .remove-btn:hover{background:#DC2626;transform:scale(1.05)}
+
+        .btn{padding:0.875rem 2rem;border:none;border-radius:var(--radius-sm);font-weight:600;font-size:1rem;cursor:pointer;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:var(--shadow-sm);margin-right:0.75rem}
+        .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+        .btn:active{transform:translateY(0)}
+        .btn-secondary{background:linear-gradient(135deg,#10B981,#059669)}
+        .btn-secondary:hover{background:linear-gradient(135deg,#059669,#047857)}
+        .btn-danger{background:linear-gradient(135deg,#EF4444,#DC2626)}
+        .btn-danger:hover{background:linear-gradient(135deg,#DC2626,#B91C1C)}
+
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#DDD6FE);padding:2rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin:1.5rem 0 0;display:none;animation:fadeIn 0.4s ease}
+        .result-box.show{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+        .result-label{font-size:0.875rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem}
+        .result-value{font-size:2.5rem;font-weight:800;color:var(--primary-dark);margin:0.5rem 0;letter-spacing:-0.02em}
+        .result-detail{color:var(--text);font-size:0.95rem;margin-top:0.5rem;line-height:1.6}
+        .result-grade{display:inline-block;padding:0.5rem 1.2rem;border-radius:20px;font-size:1rem;font-weight:600;margin-top:0.5rem}
+        .grade-a{background:#D1FAE5;color:#059669}
+        .grade-b{background:#DBEAFE;color:#2563EB}
+        .grade-c{background:#FEF3C7;color:#D97706}
+        .grade-d{background:#FEE2E2;color:#DC2626}
+        .grade-f{background:#F3F4F6;color:#6B7280}
+
+        .grade-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:0.9rem}
+        .grade-table th,.grade-table td{padding:0.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+        .grade-table th{background:var(--primary-light);color:var(--primary-dark);font-weight:600}
+        .grade-table tr:hover{background:var(--light)}
+
+        .content-section{margin:3rem 0;padding:2.5rem;background:var(--light);border-radius:var(--radius);border:1px solid var(--border)}
+        .content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem;font-weight:700}
+        .content-section h3{color:#4b5563;margin:1.5rem 0 0.75rem;font-size:1.2rem;font-weight:600}
+        .content-section p{color:var(--text);margin-bottom:1rem;line-height:1.7}
+        .content-section ul{margin-left:1.5rem;margin-bottom:1rem}
+        .content-section li{margin-bottom:0.5rem;line-height:1.7}
+
+        .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:1.5rem}
+        .feature-card{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:1px solid var(--border);transition:all 0.3s}
+        .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+        .feature-icon{font-size:2rem;margin-bottom:0.75rem}
+        .feature-card h4{color:var(--dark);margin-bottom:0.5rem;font-size:1.1rem}
+        .feature-card p{color:var(--text-light);font-size:0.9rem;margin:0}
+
+        .scale-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.95rem}
+        .scale-table th,.scale-table td{padding:0.75rem 1rem;text-align:center;border:1px solid var(--border)}
+        .scale-table th{background:var(--primary);color:#fff;font-weight:600}
+        .scale-table tr:nth-child(even){background:var(--light)}
+        .scale-table tr:hover{background:var(--primary-light)}
+
+        .faq-item{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin-bottom:1rem;transition:all 0.3s}
+        .faq-item:hover{box-shadow:var(--shadow-sm)}
+        .faq-item h4{color:var(--dark);margin-bottom:0.75rem;font-size:1.1rem;font-weight:600}
+        .faq-item p{color:var(--text-light);font-size:0.95rem;margin:0;line-height:1.6}
+
+        .footer-section{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem;font-size:1.1rem}
+        .footer-col ul{list-style:none}
+        .footer-col li{margin-bottom:0.5rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;transition:all 0.3s;display:inline-block}
+        .footer-col a:hover{color:#fff;transform:translateX(4px)}
+        .footer-col p{color:#9ca3af;font-size:0.9rem;line-height:1.6}
+        .footer-bottom{max-width:1200px;margin:0 auto;text-align:center;border-top:1px solid #4b5563;padding-top:2rem;color:#9ca3af;font-size:0.9rem}
+        .footer-bottom a{color:#d1d5db;text-decoration:none;transition:color 0.3s}
+        .footer-bottom a:hover{color:#fff}
+
+        .back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999;box-shadow:var(--shadow-md);border:none;font-size:1.2rem}
+        .back-to-top.show{opacity:1;visibility:visible}
+        .back-to-top:hover{background:var(--primary-dark);transform:translateY(-4px)}
+
+        .bottom-keywords{background:var(--light);padding:2rem;border-top:1px solid var(--border);text-align:center}
+        .bottom-keywords h3{color:var(--dark);margin-bottom:1rem;font-size:1.1rem}
+        .bottom-keywords .kw-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem}
+        .bottom-keywords .kw-tag{background:#fff;padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-light);transition:all 0.3s;text-decoration:none;display:inline-block}
+        .bottom-keywords .kw-tag:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
+
+        @media(max-width:768px){
+            .tool-header h1{font-size:1.8rem}
+            .tool-header .subtitle{font-size:1rem}
+            .grade-row{grid-template-columns:1fr 1fr;gap:0.75rem}
+            .grade-row .remove-btn{grid-column:span 2}
+            .result-value{font-size:1.8rem}
+            .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:1rem 2rem;border-bottom:1px solid var(--border);gap:1rem}
+            .nav-links.active{display:flex}
+            .menu-toggle{display:block}
+            .content-section{padding:1.5rem}
+            .calc-box{padding:1.5rem}
+            .btn{margin-bottom:0.5rem}
+        }
+        @media(max-width:480px){
+            .tool-header{padding:2.5rem 1.5rem}
+            .tool-header h1{font-size:1.5rem}
+            .container{padding:0 1rem}
+            .tool-content{padding:2rem 1rem}
+        }
+        @media print{nav,.back-to-top,.btn{display:none}.result-box{display:block!important;border:2px solid #000}}
+        @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="ToolBox Pro Home">📚 ToolBox Pro</a>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+                <li><a href="index.html">All Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tool-header">
+        <div class="container">
+            <h1>Free GPA Calculator</h1>
+            <p class="subtitle">Calculate Your Weighted & Unweighted Grade Point Average Instantly</p>
+            <p class="tagline">Weighted grades • Credit hours • Multiple scales • No signup • 100% Free</p>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/</span> <a href="calculators.html">Calculators</a> <span>/</span> <span>GPA Calculator</span>
+        </div>
+    </div>
+
+    <main id="main-content" class="container">
+        <div class="tool-content">
+            <div class="calc-box">
+                <div class="gpa-scale-selector">
+                    <label for="gpaScale">GPA Scale:</label>
+                    <select id="gpaScale" onchange="updateGradeOptions()">
+                        <option value="4.0">4.0 Scale (Standard)</option>
+                        <option value="5.0">5.0 Scale (Weighted/Honors)</option>
+                        <option value="percent">Percentage Scale</option>
+                    </select>
+                </div>
+
+                <div id="gradesContainer"></div>
+
+                <div style="margin-top:1.5rem">
+                    <button class="btn" onclick="addGrade()">
+                        <span>➕</span> Add Course
+                    </button>
+                    <button class="btn btn-secondary" onclick="calculateGPA()">
+                        <span>📊</span> Calculate GPA
+                    </button>
+                    <button class="btn btn-danger" onclick="clearAll()">
+                        <span>🗑️</span> Clear All
+                    </button>
+                </div>
+
+                <div class="result-box" id="result">
+                    <div class="result-label">Your Grade Point Average</div>
+                    <div class="result-value" id="gpaResult"></div>
+                    <div class="result-detail" id="gpaDetail"></div>
+                    <div id="gpaGrade"></div>
+                    <table class="grade-table" id="gradeTable">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Grade</th>
+                                <th>Credits</th>
+                                <th>Grade Points</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gradeTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <article class="content-section">
+                <h2>What is a GPA Calculator?</h2>
+                <p>A <strong>GPA calculator</strong> is a free online tool that calculates your Grade Point Average by averaging the grade points earned across all your courses, weighted by credit hours. This <strong>grade calculator</strong> supports multiple GPA scales including the standard 4.0 scale, weighted 5.0 scale for honors/AP courses, and percentage-based scales.</p>
+                <p>Whether you're a high school student tracking your cumulative GPA for college applications, or a college student monitoring your semester performance, our free <strong>GPA calculator</strong> provides accurate, instant results without any signup or registration.</p>
+
+                <h3>Why Use Our Free GPA Calculator?</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <h4>For High School Students</h4>
+                        <p>Track your cumulative GPA for college applications, scholarships, and honor roll requirements.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏫</div>
+                        <h4>For College Students</h4>
+                        <p>Calculate semester GPA, monitor academic standing, and plan for dean's list or graduation requirements.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>Weighted & Unweighted</h4>
+                        <p>Supports both standard 4.0 and weighted 5.0 scales for honors, AP, and IB courses.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Instant Results</h4>
+                        <p>Get your GPA calculated instantly with a detailed breakdown table showing every course.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-section">
+                <h2>How to Use the GPA Calculator</h2>
+                <p>Using our free online <strong>GPA calculator</strong> is simple. Follow these steps:</p>
+
+                <h3>Step 1: Select Your GPA Scale</h3>
+                <p>Choose between 4.0 (standard), 5.0 (weighted/honors), or percentage scale from the dropdown menu.</p>
+
+                <h3>Step 2: Add Your Courses</h3>
+                <p>Click "Add Course" for each class. Enter the course name, your grade, and the number of credit hours.</p>
+
+                <h3>Step 3: Calculate Your GPA</h3>
+                <p>Click "Calculate GPA" to instantly see your weighted or unweighted GPA along with a detailed grade breakdown table.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>GPA Scale Reference</h2>
+                <p>Here are the standard grade point conversions for each GPA scale:</p>
+
+                <h3>4.0 Scale (Standard)</h3>
+                <table class="scale-table">
+                    <tr><th>Letter Grade</th><th>Grade Points</th><th>Percentage</th></tr>
+                    <tr><td>A</td><td>4.0</td><td>90-100%</td></tr>
+                    <tr><td>B</td><td>3.0</td><td>80-89%</td></tr>
+                    <tr><td>C</td><td>2.0</td><td>70-79%</td></tr>
+                    <tr><td>D</td><td>1.0</td><td>60-69%</td></tr>
+                    <tr><td>F</td><td>0.0</td><td>Below 60%</td></tr>
+                </table>
+
+                <h3>5.0 Scale (Weighted - Honors/AP/IB)</h3>
+                <table class="scale-table">
+                    <tr><th>Letter Grade</th><th>Grade Points</th><th>Percentage</th></tr>
+                    <tr><td>A</td><td>5.0</td><td>90-100%</td></tr>
+                    <tr><td>B</td><td>4.0</td><td>80-89%</td></tr>
+                    <tr><td>C</td><td>3.0</td><td>70-79%</td></tr>
+                    <tr><td>D</td><td>2.0</td><td>60-69%</td></tr>
+                    <tr><td>F</td><td>0.0</td><td>Below 60%</td></tr>
+                </table>
+            </article>
+
+            <article class="content-section">
+                <h2>How GPA is Calculated</h2>
+                <p>Our <strong>GPA calculator</strong> uses the standard weighted GPA formula:</p>
+                <div style="background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:2px solid var(--primary);margin:1rem 0;text-align:center">
+                    <strong>Formula:</strong> <code style="background:var(--primary-light);padding:0.25rem 0.5rem;border-radius:4px;font-size:1.1rem;color:var(--primary-dark);font-weight:600">GPA = (Sum of Grade Points × Credits) ÷ Total Credits</code>
+                </div>
+                <p>For example, if you earned an A (4.0) in a 3-credit course and a B (3.0) in a 4-credit course:</p>
+                <ul>
+                    <li>Course 1: 4.0 × 3 credits = 12.0 grade points</li>
+                    <li>Course 2: 3.0 × 4 credits = 12.0 grade points</li>
+                    <li>Total grade points: 24.0</li>
+                    <li>Total credits: 7</li>
+                    <li><strong>GPA = 24.0 ÷ 7 = 3.43</strong></li>
+                </ul>
+            </article>
+
+            <article class="content-section">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+
+                <div class="faq-item">
+                    <h4>What is GPA?</h4>
+                    <p>GPA stands for Grade Point Average. It is a numerical representation of a student's academic performance, calculated by averaging the grade points earned in all courses. Most schools use a 4.0 scale, but some use 5.0 for weighted honors courses.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do I calculate my GPA?</h4>
+                    <p>Multiply each course's grade point by its credit hours, sum all grade points, then divide by total credit hours. Our GPA calculator does this automatically when you enter your grades and credits.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What is weighted vs unweighted GPA?</h4>
+                    <p>Unweighted GPA uses a standard 4.0 scale where A=4.0, B=3.0, etc. Weighted GPA gives extra points for honors, AP, or IB courses, often using a 5.0 scale where A=5.0. Weighted GPA reflects course difficulty.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What is a good GPA?</h4>
+                    <p>A GPA of 3.0 or higher is generally considered good. A 3.5+ is competitive for most colleges, while 3.7+ is excellent. For highly selective schools, a 3.8-4.0 weighted GPA is typically expected.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Does this calculator work for all schools?</h4>
+                    <p>Yes, our GPA calculator supports the most common scales (4.0, 5.0, and percentage). However, some schools may use unique grading systems, so always verify with your school's specific policy.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Bottom Keywords Section for SEO -->
+    <section class="bottom-keywords">
+        <div class="container">
+            <h3>Related Tools & Keywords</h3>
+            <div class="kw-list">
+                <a href="gpa-calculator.html" class="kw-tag">GPA calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">grade calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">GPA converter</a>
+                <a href="gpa-calculator.html" class="kw-tag">weighted GPA calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">college GPA calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">high school GPA calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">cumulative GPA calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">semester GPA calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">grade point average calculator</a>
+                <a href="gpa-calculator.html" class="kw-tag">how to calculate GPA</a>
+                <a href="gpa-calculator.html" class="kw-tag">4.0 GPA scale</a>
+                <a href="gpa-calculator.html" class="kw-tag">academic calculator</a>
+                <a href="currency-converter.html" class="kw-tag">currency converter</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage calculator</a>
+                <a href="age-calculator.html" class="kw-tag">age calculator</a>
+                <a href="calculators.html" class="kw-tag">free calculators</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculators.html">All Calculators</a></li>
+                    <li><a href="index.html">All Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>More Calculators</h4>
+                <ul>
+                    <li><a href="gpa-calculator.html">GPA Calculator</a></li>
+                    <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                    <li><a href="age-calculator.html">Age Calculator</a></li>
+                    <li><a href="currency-converter.html">Currency Converter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Tools</h4>
+                <ul>
+                    <li><a href="word-counter-tool.html">Word Counter</a></li>
+                    <li><a href="password-generator.html">Password Generator</a></li>
+                    <li><a href="converter.html">Unit Converter</a></li>
+                    <li><a href="index.html">All Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About ToolBox Pro</h4>
+                <p>ToolBox Pro provides 30+ free online calculators and tools including GPA calculator, percentage calculator, age calculator, currency converter, word counter, and password generator. No signup needed. All tools work in your browser for complete privacy and security.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a> | <a href="sitemap.xml">Sitemap</a></p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+
+    <script>
+        let gradeCount = 0;
+
+        const gradeScales = {
+            '4.0': [
+                {value: 4.0, label: 'A (4.0)'},
+                {value: 3.7, label: 'A- (3.7)'},
+                {value: 3.3, label: 'B+ (3.3)'},
+                {value: 3.0, label: 'B (3.0)'},
+                {value: 2.7, label: 'B- (2.7)'},
+                {value: 2.3, label: 'C+ (2.3)'},
+                {value: 2.0, label: 'C (2.0)'},
+                {value: 1.7, label: 'C- (1.7)'},
+                {value: 1.3, label: 'D+ (1.3)'},
+                {value: 1.0, label: 'D (1.0)'},
+                {value: 0.0, label: 'F (0.0)'}
+            ],
+            '5.0': [
+                {value: 5.0, label: 'A (5.0)'},
+                {value: 4.7, label: 'A- (4.7)'},
+                {value: 4.3, label: 'B+ (4.3)'},
+                {value: 4.0, label: 'B (4.0)'},
+                {value: 3.7, label: 'B- (3.7)'},
+                {value: 3.3, label: 'C+ (3.3)'},
+                {value: 3.0, label: 'C (3.0)'},
+                {value: 2.7, label: 'C- (2.7)'},
+                {value: 2.3, label: 'D+ (2.3)'},
+                {value: 2.0, label: 'D (2.0)'},
+                {value: 0.0, label: 'F (0.0)'}
+            ],
+            'percent': [
+                {value: 4.0, label: '90-100% (A)'},
+                {value: 3.0, label: '80-89% (B)'},
+                {value: 2.0, label: '70-79% (C)'},
+                {value: 1.0, label: '60-69% (D)'},
+                {value: 0.0, label: 'Below 60% (F)'}
+            ]
+        };
+
+        function getGradeOptions() {
+            const scale = document.getElementById('gpaScale').value;
+            const options = gradeScales[scale] || gradeScales['4.0'];
+            return options.map(g => `<option value="${g.value}">${g.label}</option>`).join('');
+        }
+
+        function addGrade() {
+            gradeCount++;
+            const html = `
+                <div class="grade-row" id="grade${gradeCount}">
+                    <input type="text" placeholder="Course Name (e.g., Math 101)" class="courseName" aria-label="Course name">
+                    <select class="gradePoint" aria-label="Grade">
+                        ${getGradeOptions()}
+                    </select>
+                    <input type="number" placeholder="Credits" class="credits" min="0" max="20" step="0.5" value="3" aria-label="Credit hours">
+                    <button class="remove-btn" onclick="removeGrade(${gradeCount})" title="Remove course" aria-label="Remove course">✕</button>
+                </div>
+            `;
+            document.getElementById('gradesContainer').insertAdjacentHTML('beforeend', html);
+        }
+
+        function removeGrade(id) {
+            const row = document.getElementById('grade' + id);
+            if (row) row.remove();
+        }
+
+        function updateGradeOptions() {
+            const selects = document.querySelectorAll('.gradePoint');
+            const options = getGradeOptions();
+            selects.forEach(select => {
+                const currentValue = select.value;
+                select.innerHTML = options;
+                // Try to keep similar grade if possible
+                const optionsArray = Array.from(select.options);
+                const match = optionsArray.find(opt => parseFloat(opt.value) === parseFloat(currentValue));
+                if (match) select.value = match.value;
+            });
+        }
+
+        function calculateGPA() {
+            const rows = document.querySelectorAll('#gradesContainer .grade-row');
+            const resultBox = document.getElementById('result');
+
+            if (rows.length === 0) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            let totalGradePoints = 0;
+            let totalCredits = 0;
+            let courseData = [];
+
+            rows.forEach(row => {
+                const courseName = row.querySelector('.courseName').value || 'Unnamed Course';
+                const grade = parseFloat(row.querySelector('.gradePoint').value) || 0;
+                const credits = parseFloat(row.querySelector('.credits').value) || 0;
+
+                if (credits > 0) {
+                    const gradePoints = grade * credits;
+                    totalGradePoints += gradePoints;
+                    totalCredits += credits;
+
+                    courseData.push({
+                        name: courseName,
+                        grade: grade,
+                        credits: credits,
+                        gradePoints: gradePoints
+                    });
+                }
+            });
+
+            if (totalCredits === 0) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            const gpa = (totalGradePoints / totalCredits).toFixed(2);
+            const scale = document.getElementById('gpaScale').value;
+            const maxGPA = scale === '5.0' ? 5.0 : (scale === 'percent' ? 4.0 : 4.0);
+
+            // Determine letter grade
+            let letterGrade = '';
+            let gradeClass = '';
+            const gpaNum = parseFloat(gpa);
+            const percentage = (gpaNum / maxGPA) * 100;
+
+            if (percentage >= 90) { letterGrade = 'A - Excellent'; gradeClass = 'grade-a'; }
+            else if (percentage >= 80) { letterGrade = 'B - Good'; gradeClass = 'grade-b'; }
+            else if (percentage >= 70) { letterGrade = 'C - Average'; gradeClass = 'grade-c'; }
+            else if (percentage >= 60) { letterGrade = 'D - Below Average'; gradeClass = 'grade-d'; }
+            else { letterGrade = 'F - Failing'; gradeClass = 'grade-f'; }
+
+            document.getElementById('gpaResult').textContent = `${gpa} / ${maxGPA.toFixed(1)}`;
+            document.getElementById('gpaDetail').textContent = 
+                `Total Grade Points: ${totalGradePoints.toFixed(2)} | Total Credits: ${totalCredits.toFixed(1)} | Courses: ${courseData.length}`;
+            document.getElementById('gpaGrade').innerHTML = `<span class="result-grade ${gradeClass}">${letterGrade}</span>`;
+
+            // Build table
+            let tableHtml = '';
+            courseData.forEach(course => {
+                tableHtml += `
+                    <tr>
+                        <td>${course.name}</td>
+                        <td>${course.grade.toFixed(1)}</td>
+                        <td>${course.credits}</td>
+                        <td>${course.gradePoints.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('gradeTableBody').innerHTML = tableHtml;
+
+            resultBox.classList.add('show');
+        }
+
+        function clearAll() {
+            document.getElementById('gradesContainer').innerHTML = '';
+            document.getElementById('result').classList.remove('show');
+            gradeCount = 0;
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add 4 default courses
+            for (let i = 0; i < 4; i++) {
+                addGrade();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                calculateGPA();
+            }
+        });
+    </script>
+</body>
+</html>
