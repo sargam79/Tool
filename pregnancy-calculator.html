@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free pregnancy calculator - Calculate due date, pregnancy week, and gestational age. No signup needed. Accurate Naegele's Rule calculation for expecting mothers.">
+    <meta name="keywords" content="pregnancy calculator, due date calculator, pregnancy week calculator, gestational age calculator, Naegele's rule, LMP calculator, estimated due date, trimester calculator, pregnancy timeline, fetal development tracker">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Pregnancy Calculator - Calculate Due Date & Pregnancy Week">
+    <meta property="og:description" content="Free pregnancy calculator - Calculate due date and pregnancy week. No signup needed.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/pregnancy-calculator.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Pregnancy Calculator - Calculate Due Date & Pregnancy Week">
+    <meta name="twitter:description" content="Free pregnancy calculator - Calculate due date and pregnancy week. No signup needed.">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/pregnancy-calculator.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Free Pregnancy Calculator - Calculate Due Date & Pregnancy Week | ToolBox Pro</title>
+    <style>
+        :root {
+            --primary: #EC4899;
+            --primary-light: #F472B6;
+            --primary-dark: #DB2777;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --text: #374151;
+            --text-light: #6b7280;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.25rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== Hero Section ===== */
+        .tool-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light), #F9A8D4);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .tool-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.03em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tool-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        /* ===== Breadcrumb ===== */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--border);
+        }
+
+        /* ===== Main Content ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .tool-content {
+            padding: 2rem 0;
+        }
+
+        /* ===== Calculator Box ===== */
+        .calc-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .calc-box {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .calc-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .calc-box h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: #fff;
+            color: var(--text);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-light);
+        }
+
+        .btn {
+            padding: 0.95rem 2rem;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* ===== Result Box ===== */
+        .result-box {
+            background: linear-gradient(135deg, #FCE7F3, #FBCFE8);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            display: none;
+            animation: slideDown 0.4s ease-out;
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-detail {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .result-detail strong {
+            color: var(--primary-dark);
+        }
+
+        /* ===== Quick Stats ===== */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            background: #fff;
+            padding: 1rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* ===== Info Panel ===== */
+        .info-panel {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-panel h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .info-panel p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .info-panel ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-panel ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .info-panel ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== Content Sections ===== */
+        .content-section {
+            margin: 2.5rem 0;
+            padding: 2.5rem;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .content-section:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .content-section h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .content-section h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .content-section h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .content-section strong {
+            color: var(--primary-dark);
+        }
+
+        .content-section ul {
+            margin-left: 1.5rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .content-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== Trimester Cards ===== */
+        .trimester-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .trimester-card {
+            background: linear-gradient(135deg, #fff, #FDF2F8);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trimester-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, transparent 50%, rgba(236, 72, 153, 0.05) 50%);
+            border-radius: 0 0 0 var(--radius);
+        }
+
+        .trimester-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .trimester-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+        }
+
+        .trimester-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .trimester-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== FAQ Section ===== */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .faq-answer.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        /* ===== Related Tools ===== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #fff, #FDF2F8);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .tool-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tool-card-icon {
+            font-size: 2rem;
+        }
+
+        .tool-card h4 {
+            color: var(--dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .tool-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .tool-card .tool-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* ===== Keywords Section ===== */
+        .keywords-section {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #FDF2F8, #FCE7F3);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .keywords-section h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .keywords-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--primary-light);
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .keyword-tag:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Footer ===== */
+        .footer-section {
+            background: var(--dark);
+            color: #fff;
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-top: 1px solid #4b5563;
+            padding-top: 2rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-light);
+        }
+
+        /* ===== Scroll to Top ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 2rem;
+            }
+
+            .calc-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .trimester-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .calc-box {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ===== Print Styles ===== */
+        @media print {
+            nav, .scroll-top, .keywords-section {
+                display: none;
+            }
+
+            .tool-header {
+                background: #fff;
+                color: #000;
+                padding: 1rem;
+            }
+
+            .content-section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Free Pregnancy Calculator",
+        "description": "Free pregnancy calculator - Calculate due date and pregnancy week. No signup needed.",
+        "url": "https://sargam79.github.io/Tool/pregnancy-calculator.html",
+        "mainEntity": {
+            "@type": "MedicalWebPage",
+            "about": {
+                "@type": "MedicalCondition",
+                "name": "Pregnancy"
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">👶 ToolBox Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tool-header">
+        <h1>Free Pregnancy Calculator</h1>
+        <p>Calculate Your Due Date, Pregnancy Week & Gestational Age Instantly</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="calculators.html">Calculators</a>
+        <span>/</span>
+        <span>Pregnancy Calculator</span>
+    </div>
+
+    <div class="container">
+        <div class="tool-content">
+            <!-- Calculator Section -->
+            <div class="calc-wrapper">
+                <div class="calc-box">
+                    <h2>📅 Due Date Calculator</h2>
+                    <div class="input-group">
+                        <label class="input-label" for="lmp">Last Menstrual Period (LMP):</label>
+                        <input type="date" id="lmp" class="input-field" onchange="calculateDueDate()" aria-label="Enter your last menstrual period date">
+                    </div>
+                    <button class="btn" onclick="calculateDueDate()" aria-label="Calculate pregnancy due date">
+                        👶 Calculate Due Date
+                    </button>
+                    <div class="result-box" id="result">
+                        <div class="result-value" id="dueDateResult"></div>
+                        <div class="result-detail" id="pregnancyResult"></div>
+                        <div class="quick-stats" id="quickStats"></div>
+                    </div>
+                </div>
+
+                <div class="info-panel">
+                    <h3>How It Works</h3>
+                    <p>Our pregnancy calculator uses <strong>Naegele's Rule</strong> to estimate your due date based on your Last Menstrual Period (LMP). Pregnancy typically lasts <strong>280 days (40 weeks)</strong> from the first day of your LMP.</p>
+                    <ul>
+                        <li>Enter the first day of your last period</li>
+                        <li>We add 280 days to calculate your EDD</li>
+                        <li>Track your current pregnancy week and day</li>
+                        <li>See which trimester you're in</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- What is Section -->
+            <div class="content-section">
+                <h2>What is a Pregnancy Calculator?</h2>
+                <p>A <strong>pregnancy calculator</strong> (also known as a <strong>due date calculator</strong> or <strong>gestational age calculator</strong>) is an essential online tool that estimates your expected delivery date based on your Last Menstrual Period (LMP). It helps expecting mothers track their pregnancy timeline, understand fetal development stages, and prepare for each trimester.</p>
+
+                <h3>How Naegele's Rule Works:</h3>
+                <p>Pregnancy is typically calculated as <strong>280 days (40 weeks)</strong> from the first day of your last normal menstrual period. Our free pregnancy calculator adds 280 days to your LMP to estimate your due date. This method, known as Naegele's Rule, is based on a standard 28-day menstrual cycle and is widely used by healthcare providers worldwide.</p>
+
+                <h3>Why Use Our Pregnancy Week Calculator?</h3>
+                <ul>
+                    <li><strong>Instant Results:</strong> Get your estimated due date in seconds</li>
+                    <li><strong>Trimester Tracking:</strong> Know exactly which trimester you're in</li>
+                    <li><strong>Gestational Age:</strong> Track weeks and days of pregnancy</li>
+                    <li><strong>No Signup Required:</strong> Completely free and private</li>
+                    <li><strong>Mobile Friendly:</strong> Works perfectly on all devices</li>
+                </ul>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="content-section">
+                <h2>Important Notes About Due Date Calculation</h2>
+                <ul>
+                    <li><strong>Due dates are estimates, not exact dates.</strong> Only about 5% of babies are born on their exact due date.</li>
+                    <li><strong>Consult your healthcare provider</strong> for accurate dating, especially if you have irregular cycles.</li>
+                    <li><strong>Ultrasounds can provide more precise dating</strong> in early pregnancy (first trimester).</li>
+                    <li><strong>Most babies arrive within 2 weeks</strong> of the estimated due date (between 38-42 weeks).</li>
+                    <li><strong>Cycle length matters:</strong> If your cycle is longer or shorter than 28 days, your due date may need adjustment.</li>
+                    <li><strong>IVF pregnancies</strong> use the embryo transfer date rather than LMP for dating.</li>
+                </ul>
+            </div>
+
+            <!-- Trimester Guide -->
+            <div class="content-section">
+                <h2>Pregnancy Trimester Guide</h2>
+                <p>Understanding your pregnancy trimesters helps you track fetal development and prepare for each stage. Use our pregnancy week calculator to determine which trimester you're currently in.</p>
+                <div class="trimester-grid">
+                    <div class="trimester-card">
+                        <span class="trimester-badge">Weeks 1-13</span>
+                        <h4>First Trimester</h4>
+                        <p>Rapid fetal development begins. Morning sickness, fatigue, and breast tenderness are common. First ultrasound and prenatal visits typically occur. The baby's major organs begin forming.</p>
+                    </div>
+                    <div class="trimester-card">
+                        <span class="trimester-badge">Weeks 14-27</span>
+                        <h4>Second Trimester</h4>
+                        <p>Often called the "golden period." Quickening (feeling baby move) begins around week 18-20. Energy returns, and the baby bump becomes more visible. Anatomy scan usually done at week 20.</p>
+                    </div>
+                    <div class="trimester-card">
+                        <span class="trimester-badge">Weeks 28-40</span>
+                        <h4>Third Trimester</h4>
+                        <p>Baby descends into position for birth. Frequent kicks and movements felt. Preparation for delivery with breathing exercises and hospital bag packing. Final weeks bring anticipation and nesting instincts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="content-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How accurate is a pregnancy calculator?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Pregnancy calculators using Naegele's Rule are generally accurate for women with regular 28-day cycles. However, due dates are estimates, and only about 5% of babies are born on their exact due date. Factors like irregular cycles, IVF conception, or unknown LMP can affect accuracy.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What if I don't know my last menstrual period?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        If you don't know your LMP, your healthcare provider can estimate your due date using an early ultrasound. The first-trimester ultrasound (between weeks 8-13) is the most accurate method for dating a pregnancy when the LMP is unknown.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I use this calculator for IVF pregnancies?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        For IVF pregnancies, due dates are calculated differently based on the embryo transfer date rather than LMP. Consult your fertility specialist for accurate dating, as IVF pregnancies often use the transfer date plus 266 days for blastocyst transfers.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is gestational age vs. fetal age?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Gestational age is calculated from the first day of your LMP (typically 2 weeks before conception), while fetal age is calculated from the actual date of conception. Our pregnancy week calculator shows gestational age, which is the standard measurement used by healthcare providers.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>When should I take a pregnancy test?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Most home pregnancy tests can detect pregnancy about 1 week after a missed period (approximately 3-4 weeks gestational age). For the most accurate results, wait until at least the first day of your missed period and use first-morning urine.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <div class="content-section">
+                <h2>Related Tools & Calculators</h2>
+                <p>Explore our collection of free online tools. All calculators work instantly with no signup required.</p>
+                <div class="tools-grid">
+                    <a href="https://sargam79.github.io/Tool/bmi-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">⚖️</span>
+                        <h4>BMI Calculator</h4>
+                        <p>Calculate your Body Mass Index and understand your weight category for a healthy pregnancy.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/password-generator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">🔐</span>
+                        <h4>Password Generator</h4>
+                        <p>Create strong, secure passwords instantly. Customizable length and character options.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/youtube-earnings-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">📺</span>
+                        <h4>YouTube Earnings Calculator</h4>
+                        <p>Estimate your YouTube channel revenue based on views, CPM, and engagement metrics.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/tiktok-instagram-calculators.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">📱</span>
+                        <h4>TikTok & Instagram Money Calculator</h4>
+                        <p>Calculate potential earnings from TikTok and Instagram based on followers and engagement.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/ai-face-compatibility.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">🤖</span>
+                        <h4>AI Face Compatibility</h4>
+                        <p>Analyze face compatibility using AI technology. Fun and insightful compatibility scoring.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/matrix-destiny-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">🔮</span>
+                        <h4>Matrix Destiny Calculator</h4>
+                        <p>Discover your destiny matrix based on numerology and birth date analysis.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Keywords Section -->
+            <div class="keywords-section">
+                <h3>Related Keywords</h3>
+                <div class="keywords-cloud">
+                    <span class="keyword-tag">pregnancy calculator</span>
+                    <span class="keyword-tag">due date calculator</span>
+                    <span class="keyword-tag">pregnancy week calculator</span>
+                    <span class="keyword-tag">gestational age calculator</span>
+                    <span class="keyword-tag">Naegele's rule</span>
+                    <span class="keyword-tag">LMP calculator</span>
+                    <span class="keyword-tag">estimated due date</span>
+                    <span class="keyword-tag">trimester calculator</span>
+                    <span class="keyword-tag">pregnancy timeline</span>
+                    <span class="keyword-tag">fetal development tracker</span>
+                    <span class="keyword-tag">pregnancy symptoms</span>
+                    <span class="keyword-tag">early pregnancy signs</span>
+                    <span class="keyword-tag">prenatal vitamins</span>
+                    <span class="keyword-tag">ultrasound schedule</span>
+                    <span class="keyword-tag">pregnancy week by week</span>
+                    <span class="keyword-tag">first trimester</span>
+                    <span class="keyword-tag">second trimester</span>
+                    <span class="keyword-tag">third trimester</span>
+                    <span class="keyword-tag">conception calculator</span>
+                    <span class="keyword-tag">ovulation calculator</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>👶 ToolBox Pro</h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; line-height: 1.6;">Free online tools for health, fitness, and daily life. No signup required.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculators.html">All Calculators</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Tools</h4>
+                <ul>
+                    <li><a href="pregnancy-calculator.html">Pregnancy Calculator</a></li>
+                    <li><a href="https://sargam79.github.io/Tool/bmi-calculator.html">BMI Calculator</a></li>
+                    <li><a href="https://sargam79.github.io/Tool/password-generator.html">Password Generator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolBox Pro | <a href="privacy-policy.html">Privacy Policy</a> | <a href="calculators.html">All Calculators</a></p>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">↑</button>
+
+    <script>
+        function calculateDueDate() {
+            const lmpStr = document.getElementById('lmp').value;
+            const resultBox = document.getElementById('result');
+            const dueDateResult = document.getElementById('dueDateResult');
+            const pregnancyResult = document.getElementById('pregnancyResult');
+            const quickStats = document.getElementById('quickStats');
+
+            if (!lmpStr) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            const lmp = new Date(lmpStr);
+            const dueDate = new Date(lmp);
+            dueDate.setDate(dueDate.getDate() + 280);
+
+            const today = new Date();
+            const diffTime = today - lmp;
+            const totalDays = Math.floor(diffTime / (24 * 60 * 60 * 1000));
+            const weeksPregnant = Math.floor(totalDays / 7);
+            const daysRemainder = totalDays % 7;
+
+            // Determine trimester
+            let trimester = '';
+            let trimesterClass = '';
+            if (weeksPregnant < 14) {
+                trimester = 'First Trimester';
+                trimesterClass = 'first';
+            } else if (weeksPregnant < 28) {
+                trimester = 'Second Trimester';
+                trimesterClass = 'second';
+            } else if (weeksPregnant <= 40) {
+                trimester = 'Third Trimester';
+                trimesterClass = 'third';
+            } else {
+                trimester = 'Post Due Date';
+                trimesterClass = 'overdue';
+            }
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dueDateStr = dueDate.toLocaleDateString('en-US', options);
+
+            // Days remaining
+            const daysRemaining = Math.max(0, Math.floor((dueDate - today) / (24 * 60 * 60 * 1000)));
+            const weeksRemaining = Math.floor(daysRemaining / 7);
+            const daysRem = daysRemaining % 7;
+
+            dueDateResult.innerHTML = `📅 ${dueDateStr}`;
+            pregnancyResult.innerHTML = `
+                <strong>Current Pregnancy:</strong> ${weeksPregnant} weeks ${daysRemainder} days<br>
+                <strong>Trimester:</strong> ${trimester}<br>
+                <strong>Days Until Due Date:</strong> ${daysRemaining} days (${weeksRemaining} weeks ${daysRem} days)
+            `;
+
+            quickStats.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${weeksPregnant}</div>
+                    <div class="stat-label">Weeks Pregnant</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${daysRemainder}</div>
+                    <div class="stat-label">Days</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${daysRemaining}</div>
+                    <div class="stat-label">Days to Go</div>
+                </div>
+            `;
+
+            resultBox.classList.add('show');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            answer.classList.toggle('show');
+            icon.textContent = answer.classList.contains('show') ? '−' : '+';
+        }
+
+        // Scroll to Top
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
