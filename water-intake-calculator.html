@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free water intake calculator - Calculate your optimal daily hydration needs based on weight and activity level. No signup needed. Perfect for health and fitness tracking.">
+    <meta name="keywords" content="water intake calculator, daily water calculator, hydration calculator, how much water should I drink, water consumption calculator, daily hydration needs, water tracker, fitness hydration, weight based water calculator, activity level water needs">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Water Intake Calculator - Calculate Daily Hydration Needs">
+    <meta property="og:description" content="Calculate your optimal daily water intake based on weight and activity level. Free tool with no signup required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/water-intake-calculator.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Water Intake Calculator - Calculate Daily Hydration Needs">
+    <meta name="twitter:description" content="Calculate your optimal daily water intake based on weight and activity level. Free tool with no signup required.">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/water-intake-calculator.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Free Water Intake Calculator - Calculate Daily Hydration Needs | ToolBox Pro</title>
+    <style>
+        :root {
+            --primary: #06B6D4;
+            --primary-light: #22D3EE;
+            --primary-dark: #0891B2;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --text: #374151;
+            --text-light: #6b7280;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.25rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== Hero Section ===== */
+        .tool-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light), #67E8F9);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .tool-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.03em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tool-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        /* ===== Breadcrumb ===== */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--border);
+        }
+
+        /* ===== Main Content ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .tool-content {
+            padding: 2rem 0;
+        }
+
+        /* ===== Calculator Box ===== */
+        .calc-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .calc-box {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .calc-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .calc-box h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .input-field, .select-field {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: #fff;
+            color: var(--text);
+        }
+
+        .input-field:focus, .select-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-light);
+        }
+
+        .btn {
+            padding: 0.95rem 2rem;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.3);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* ===== Result Box ===== */
+        .result-box {
+            background: linear-gradient(135deg, #CFFAFE, #A5F3FC);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            display: none;
+            animation: slideDown 0.4s ease-out;
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0.5rem 0;
+        }
+
+        .result-detail {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .result-detail strong {
+            color: var(--primary-dark);
+        }
+
+        /* ===== Quick Stats ===== */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            background: #fff;
+            padding: 1rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* ===== Info Panel ===== */
+        .info-panel {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-panel h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .info-panel p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .info-panel ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-panel ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .info-panel ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== Content Sections ===== */
+        .content-section {
+            margin: 2.5rem 0;
+            padding: 2.5rem;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .content-section:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .content-section h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .content-section h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .content-section h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .content-section strong {
+            color: var(--primary-dark);
+        }
+
+        .content-section ul {
+            margin-left: 1.5rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .content-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== FAQ Section ===== */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .faq-answer.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        /* ===== Related Tools ===== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #fff, #ECFEFF);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .tool-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tool-card-icon {
+            font-size: 2rem;
+        }
+
+        .tool-card h4 {
+            color: var(--dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .tool-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .tool-card .tool-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* ===== Keywords Section ===== */
+        .keywords-section {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #ECFEFF, #CFFAFE);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .keywords-section h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .keywords-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--primary-light);
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .keyword-tag:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Footer ===== */
+        .footer-section {
+            background: var(--dark);
+            color: #fff;
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-top: 1px solid #4b5563;
+            padding-top: 2rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-light);
+        }
+
+        /* ===== Scroll to Top ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.3);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 2rem;
+            }
+
+            .calc-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .calc-box {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ===== Print Styles ===== */
+        @media print {
+            nav, .scroll-top, .keywords-section {
+                display: none;
+            }
+
+            .tool-header {
+                background: #fff;
+                color: #000;
+                padding: 1rem;
+            }
+
+            .content-section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Free Water Intake Calculator",
+        "description": "Free water intake calculator - Calculate daily water needs based on weight and activity level. No signup needed.",
+        "url": "https://sargam79.github.io/Tool/water-intake-calculator.html",
+        "mainEntity": {
+            "@type": "HowTo",
+            "name": "Calculate Daily Water Intake",
+            "step": [
+                {
+                    "@type": "HowToStep",
+                    "name": "Enter Your Weight",
+                    "text": "Input your body weight in kilograms"
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Select Activity Level",
+                    "text": "Choose your daily activity level from sedentary to very active"
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Get Results",
+                    "text": "Click calculate to see your optimal daily water intake in liters and cups"
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">💧 ToolBox Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tool-header">
+        <h1>Free Water Intake Calculator</h1>
+        <p>Calculate Your Optimal Daily Hydration Needs Based on Weight & Activity</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="calculators.html">Calculators</a>
+        <span>/</span>
+        <span>Water Intake Calculator</span>
+    </div>
+
+    <div class="container">
+        <div class="tool-content">
+            <!-- Calculator Section -->
+            <div class="calc-wrapper">
+                <div class="calc-box">
+                    <h2>💧 Daily Water Calculator</h2>
+                    <div class="input-group">
+                        <label class="input-label" for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" class="input-field" placeholder="e.g., 70" onchange="calculateWater()" aria-label="Enter your weight in kilograms">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="activity">Activity Level:</label>
+                        <select id="activity" class="select-field" onchange="calculateWater()" aria-label="Select your activity level">
+                            <option value="sedentary">Sedentary (little/no exercise)</option>
+                            <option value="light">Lightly Active (1-3 days/week)</option>
+                            <option value="moderate">Moderately Active (3-5 days/week)</option>
+                            <option value="very">Very Active (6-7 days/week)</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="calculateWater()" aria-label="Calculate daily water intake">
+                        💧 Calculate Water Intake
+                    </button>
+                    <div class="result-box" id="result">
+                        <div class="result-value" id="waterLiters"></div>
+                        <div class="result-detail" id="waterDetail"></div>
+                        <div class="quick-stats" id="quickStats"></div>
+                    </div>
+                </div>
+
+                <div class="info-panel">
+                    <h3>How It Works</h3>
+                    <p>Our <strong>water intake calculator</strong> uses a scientifically-backed formula based on your body weight and physical activity level. The base recommendation is <strong>30ml per kg of body weight</strong>, adjusted upward for higher activity levels.</p>
+                    <ul>
+                        <li>Enter your weight in kilograms</li>
+                        <li>Select your typical activity level</li>
+                        <li>Get your personalized daily water target</li>
+                        <li>Results shown in liters and cups</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- What is Section -->
+            <div class="content-section">
+                <h2>What is a Water Intake Calculator?</h2>
+                <p>A <strong>water intake calculator</strong> (also called a <strong>hydration calculator</strong> or <strong>daily water calculator</strong>) is a free online tool that determines your optimal daily fluid consumption based on your body weight and physical activity level. Proper hydration is crucial for maintaining energy levels, supporting digestion, regulating body temperature, and promoting overall health.</p>
+
+                <h3>Why Use Our Daily Water Calculator?</h3>
+                <ul>
+                    <li><strong>Personalized Results:</strong> Tailored to your specific weight and activity level</li>
+                    <li><strong>Instant Calculation:</strong> Get your hydration target in seconds</li>
+                    <li><strong>Multiple Units:</strong> Results displayed in liters and cups for convenience</li>
+                    <li><strong>No Signup Required:</strong> Completely free and private</li>
+                    <li><strong>Mobile Friendly:</strong> Works perfectly on smartphones and tablets</li>
+                </ul>
+
+                <h3>The Science Behind Hydration</h3>
+                <p>Water makes up approximately <strong>60% of your body weight</strong> and is essential for virtually every bodily function. The general recommendation of drinking <strong>8 glasses (2 liters) per day</strong> is a rough estimate. Our calculator provides a more accurate, personalized target by factoring in your body mass and how much you sweat during exercise.</p>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="content-section">
+                <h2>Benefits of Proper Hydration</h2>
+                <p>Staying adequately hydrated offers numerous health benefits. Use our water consumption calculator to ensure you're drinking enough water every day.</p>
+                <ul>
+                    <li><strong>Regulates Body Temperature:</strong> Water helps maintain stable body temperature through sweating and respiration</li>
+                    <li><strong>Supports Nutrient Absorption:</strong> Proper hydration aids in the transport and absorption of vitamins and minerals</li>
+                    <li><strong>Aids Waste Elimination:</strong> Water is essential for kidney function and flushing toxins from the body</li>
+                    <li><strong>Boosts Workout Performance:</strong> Even mild dehydration (1-2% body weight) can impair physical performance</li>
+                    <li><strong>Improves Mental Clarity:</strong> The brain is 73% water; dehydration affects concentration and mood</li>
+                    <li><strong>Maintains Skin Health:</strong> Adequate hydration keeps skin elastic, plump, and glowing</li>
+                    <li><strong>Supports Digestion:</strong> Water is necessary for saliva production and preventing constipation</li>
+                    <li><strong>Lubricates Joints:</strong> Synovial fluid, which cushions joints, is primarily water</li>
+                </ul>
+            </div>
+
+            <!-- Hydration Tips -->
+            <div class="content-section">
+                <h2>Hydration Tips for Better Health</h2>
+                <p>Meeting your daily water goal doesn't have to be difficult. Here are practical tips to stay hydrated throughout the day:</p>
+                <ul>
+                    <li><strong>Drink water throughout the day</strong> rather than chugging large amounts at once</li>
+                    <li><strong>Increase intake on workout days</strong> — add an extra 500ml per hour of exercise</li>
+                    <li><strong>Monitor urine color</strong> — pale yellow indicates good hydration; dark yellow means drink more</li>
+                    <li><strong>Include water-rich foods</strong> like cucumbers, watermelon, oranges, and strawberries</li>
+                    <li><strong>Drink before, during, and after exercise</strong> to replace fluids lost through sweat</li>
+                    <li><strong>Carry a reusable water bottle</strong> to track your intake throughout the day</li>
+                    <li><strong>Set reminders</strong> on your phone if you tend to forget to drink water</li>
+                    <li><strong>Start your day with water</strong> — drink a glass immediately after waking up</li>
+                </ul>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="content-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How much water should I drink per day?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        The amount of water you should drink depends on your weight and activity level. As a general rule, aim for 30-35ml per kg of body weight. Our water intake calculator provides a personalized recommendation based on your specific metrics. For a 70kg person with moderate activity, this equals approximately 2.5 liters per day.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I drink too much water?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, excessive water intake can lead to a condition called <strong>hyponatremia</strong> (water intoxication), where sodium levels in the blood become dangerously diluted. This is rare but can occur when drinking more than 1 liter per hour consistently. Follow our calculator's recommendations and listen to your body's thirst signals. If you're not thirsty and your urine is clear, you may be drinking enough.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do coffee and tea count toward my daily water intake?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, coffee and tea do contribute to your daily fluid intake, despite their mild diuretic effects. However, <strong>water should remain your primary hydration source</strong>. Caffeinated beverages can increase urine output slightly, but the fluid they provide still counts toward your total. For optimal hydration, aim to get at least 50% of your fluids from plain water.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I know if I'm drinking enough water?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        The easiest way to check your hydration status is by observing your <strong>urine color</strong>. Pale yellow or straw-colored urine indicates good hydration. Dark yellow or amber urine suggests you need to drink more. Other signs of adequate hydration include: rarely feeling thirsty, having moist lips, and maintaining steady energy levels throughout the day.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Should I drink more water during pregnancy?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, pregnant women need additional fluids to support increased blood volume, amniotic fluid, and fetal circulation. The Institute of Medicine recommends approximately <strong>2.3 liters (10 cups) of total beverages per day</strong> during pregnancy. Use our pregnancy calculator alongside this water intake tool for comprehensive health tracking during pregnancy.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Does the water calculator work for athletes?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, our calculator includes a "Very Active" option for athletes and highly active individuals. However, athletes may need even more water depending on workout intensity, duration, and climate. As a rule of thumb, add an extra <strong>400-800ml of water per hour of intense exercise</strong>. For precise recommendations, consider consulting a sports nutritionist.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Tools -->
+            <div class="content-section">
+                <h2>Related Health & Fitness Calculators</h2>
+                <p>Explore our collection of free online health tools. All calculators work instantly with no signup required.</p>
+                <div class="tools-grid">
+                    <a href="https://sargam79.github.io/Tool/macros-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">🥗</span>
+                        <h4>Macros Calculator</h4>
+                        <p>Calculate your daily macronutrient needs (protein, carbs, fats) based on your fitness goals and body composition.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/pregnancy-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">👶</span>
+                        <h4>Pregnancy Calculator</h4>
+                        <p>Calculate your due date and track pregnancy weeks using Naegele's Rule based on your last menstrual period.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/ovulation-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">🌙</span>
+                        <h4>Ovulation Calculator</h4>
+                        <p>Track your fertile window and predict ovulation dates to plan or prevent pregnancy naturally.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/body-fat-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">📊</span>
+                        <h4>Body Fat Calculator</h4>
+                        <p>Estimate your body fat percentage using multiple methods including Navy, BMI, and skinfold formulas.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="https://sargam79.github.io/Tool/stride-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">🏃</span>
+                        <h4>Stride & Pace Calculator</h4>
+                        <p>Calculate your running stride length, pace per mile/km, and optimal cadence for better performance.</p>
+                        <span class="tool-link">Try It →</span>
+                    </a>
+                    <a href="water-intake-calculator.html" class="tool-card" rel="noopener">
+                        <span class="tool-card-icon">💧</span>
+                        <h4>Water Intake Calculator</h4>
+                        <p>Calculate your optimal daily hydration needs based on weight and activity level. You're here now!</p>
+                        <span class="tool-link">Current Tool</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Keywords Section -->
+            <div class="keywords-section">
+                <h3>Related Keywords</h3>
+                <div class="keywords-cloud">
+                    <span class="keyword-tag">water intake calculator</span>
+                    <span class="keyword-tag">daily water calculator</span>
+                    <span class="keyword-tag">hydration calculator</span>
+                    <span class="keyword-tag">how much water should I drink</span>
+                    <span class="keyword-tag">water consumption calculator</span>
+                    <span class="keyword-tag">daily hydration needs</span>
+                    <span class="keyword-tag">water tracker</span>
+                    <span class="keyword-tag">fitness hydration</span>
+                    <span class="keyword-tag">weight based water calculator</span>
+                    <span class="keyword-tag">activity level water needs</span>
+                    <span class="keyword-tag">optimal water intake</span>
+                    <span class="keyword-tag">hydration for athletes</span>
+                    <span class="keyword-tag">pregnancy hydration</span>
+                    <span class="keyword-tag">water per kg body weight</span>
+                    <span class="keyword-tag">liters to cups converter</span>
+                    <span class="keyword-tag">dehydration symptoms</span>
+                    <span class="keyword-tag">water rich foods</span>
+                    <span class="keyword-tag">healthy hydration habits</span>
+                    <span class="keyword-tag">morning water routine</span>
+                    <span class="keyword-tag">exercise hydration</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="color: var(--primary-light)">💧 ToolBox Pro</h4>
+                <p style="color: #9ca3af; font-size: 0.9rem; line-height: 1.6;">Free online tools for health, fitness, and daily life. No signup required.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculators.html">All Calculators</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Health Tools</h4>
+                <ul>
+                    <li><a href="water-intake-calculator.html">Water Intake Calculator</a></li>
+                    <li><a href="https://sargam79.github.io/Tool/macros-calculator.html">Macros Calculator</a></li>
+                    <li><a href="https://sargam79.github.io/Tool/body-fat-calculator.html">Body Fat Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Tools</h4>
+                <ul>
+                    <li><a href="https://sargam79.github.io/Tool/pregnancy-calculator.html">Pregnancy Calculator</a></li>
+                    <li><a href="https://sargam79.github.io/Tool/ovulation-calculator.html">Ovulation Calculator</a></li>
+                    <li><a href="https://sargam79.github.io/Tool/stride-calculator.html">Stride Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolBox Pro | <a href="privacy-policy.html">Privacy Policy</a> | <a href="calculators.html">All Calculators</a></p>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">↑</button>
+
+    <script>
+        function calculateWater() {
+            const weight = parseFloat(document.getElementById('weight').value) || 0;
+            const activity = document.getElementById('activity').value;
+            const resultBox = document.getElementById('result');
+            const waterLiters = document.getElementById('waterLiters');
+            const waterDetail = document.getElementById('waterDetail');
+            const quickStats = document.getElementById('quickStats');
+
+            if (weight <= 0) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            let multiplier = 30;
+            if (activity === 'light') multiplier = 33;
+            else if (activity === 'moderate') multiplier = 35;
+            else if (activity === 'very') multiplier = 40;
+
+            const mlTotal = weight * multiplier;
+            const liters = (mlTotal / 1000).toFixed(1);
+            const cups = Math.round(mlTotal / 240);
+            const glasses = Math.round(mlTotal / 250);
+
+            waterLiters.innerHTML = `${liters} Liters`;
+            waterDetail.innerHTML = `
+                <strong>Daily Target:</strong> ${mlTotal} ml<br>
+                <strong>Equivalent to:</strong> ~${cups} cups (8oz) or ~${glasses} glasses
+            `;
+
+            quickStats.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${liters}L</div>
+                    <div class="stat-label">Daily Target</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${cups}</div>
+                    <div class="stat-label">Cups (8oz)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${glasses}</div>
+                    <div class="stat-label">Glasses</div>
+                </div>
+            `;
+
+            resultBox.classList.add('show');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            answer.classList.toggle('show');
+            icon.textContent = answer.classList.contains('show') ? '−' : '+';
+        }
+
+        // Scroll to Top
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
