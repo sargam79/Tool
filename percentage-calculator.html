@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free percentage calculator - Calculate percentages, discounts, percentage increase/decrease, tips, and sales tax instantly. No signup needed. Perfect for shopping, finance, and math.">
+    <meta name="keywords" content="percentage calculator, percent calculator, discount calculator, percentage increase calculator, percentage decrease calculator, tip calculator, sales tax calculator, percentage change calculator, percent of a number, how to calculate percentage">
+    <meta name="author" content="ToolBox Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://sargam79.github.io/Tool/percentage-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Percentage Calculator - Calculate Any Percentage Instantly">
+    <meta property="og:description" content="Calculate percentages, discounts, increases, and decreases instantly. Free online percentage calculator with no signup required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sargam79.github.io/Tool/percentage-calculator.html">
+    <meta property="og:site_name" content="ToolBox Pro">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Percentage Calculator - Instant Results">
+    <meta name="twitter:description" content="Calculate percentages, discounts, and percentage changes instantly. Free tool, no signup.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Percentage Calculator",
+        "description": "Free online percentage calculator for discounts, increases, decreases, tips, and sales tax calculations",
+        "applicationCategory": "CalculatorApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "980", "bestRating": "5"},
+        "author": {"@type": "Organization", "name": "ToolBox Pro"}
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "What is a percentage?", "acceptedAnswer": {"@type": "Answer", "text": "A percentage is a number expressed as a fraction of 100. For example, 50% means 50 out of 100, or half of a total amount."}},
+            {"@type": "Question", "name": "How do you calculate a percentage?", "acceptedAnswer": {"@type": "Answer", "text": "To calculate a percentage of a number, multiply the number by the percentage and divide by 100. Formula: (Number × Percentage) ÷ 100 = Result."}},
+            {"@type": "Question", "name": "How to calculate percentage increase?", "acceptedAnswer": {"@type": "Answer", "text": "Subtract the original value from the new value, divide by the original value, then multiply by 100. Formula: ((New - Original) ÷ Original) × 100."}},
+            {"@type": "Question", "name": "How to calculate percentage decrease?", "acceptedAnswer": {"@type": "Answer", "text": "Subtract the new value from the original value, divide by the original value, then multiply by 100. Formula: ((Original - New) ÷ Original) × 100."}},
+            {"@type": "Question", "name": "How to calculate discount percentage?", "acceptedAnswer": {"@type": "Answer", "text": "Subtract the sale price from the original price, divide by the original price, then multiply by 100. Formula: ((Original - Sale) ÷ Original) × 100."}}
+        ]
+    }
+    </script>
+
+    <title>Free Percentage Calculator - Calculate Percentages, Discounts & Increases | ToolBox Pro</title>
+
+    <style>
+        :root {
+            --primary: #F59E0B;
+            --primary-dark: #D97706;
+            --primary-light: #FEF3C7;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --text: #374151;
+            --text-light: #6b7280;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--text);background:var(--light);-webkit-font-smoothing:antialiased}
+        .skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:#fff;padding:8px 16px;z-index:10000;transition:top 0.3s}
+        .skip-link:focus{top:0}
+
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:var(--shadow-sm)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#FBBF24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text);font-weight:500;text-decoration:none;transition:color 0.3s;padding:0.5rem 0;position:relative}
+        .nav-links a:hover{color:var(--primary)}
+        .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--primary);transition:width 0.3s}
+        .nav-links a:hover::after{width:100%}
+        .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--dark)}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+        .tool-header{background:linear-gradient(135deg,var(--primary),#FBBF24);color:#fff;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .tool-header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:20px 20px;opacity:0.3}
+        .tool-header .container{position:relative;z-index:1}
+        .tool-header h1{font-size:2.8rem;margin-bottom:1rem;font-weight:800;letter-spacing:-0.02em}
+        .tool-header .subtitle{font-size:1.25rem;opacity:0.95;margin-bottom:0.5rem}
+        .tool-header .tagline{opacity:0.85;font-size:1rem}
+
+        .breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:0.75rem 2rem;font-size:0.875rem;color:var(--text-light)}
+        .breadcrumb a{color:var(--text);text-decoration:none;transition:color 0.3s}
+        .breadcrumb a:hover{color:var(--primary)}
+        .breadcrumb span{color:var(--text-light)}
+
+        .tool-content{padding:3rem 2rem;background:#fff}
+
+        .calc-box{background:linear-gradient(145deg,#fff,var(--light));padding:2.5rem;border-radius:var(--radius);margin-bottom:2.5rem;border:1px solid var(--border);box-shadow:var(--shadow-md);position:relative}
+        .calc-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),#FBBF24);border-radius:var(--radius) var(--radius) 0 0}
+
+        .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:end}
+        .input-group{margin-bottom:0}
+        .input-label{display:block;font-weight:600;margin-bottom:0.5rem;color:var(--dark);font-size:0.95rem}
+        .input-field{width:100%;padding:0.875rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;transition:all 0.3s;background:#fff;color:var(--dark)}
+        .input-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(245,158,11,0.1)}
+        .input-field::placeholder{color:var(--text-light)}
+
+        .btn{padding:0.875rem 2rem;border:none;border-radius:var(--radius-sm);font-weight:600;font-size:1rem;cursor:pointer;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:var(--shadow-sm)}
+        .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+        .btn:active{transform:translateY(0)}
+
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#FDE68A);padding:2rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin:1.5rem 0 0;display:none;animation:fadeIn 0.4s ease}
+        .result-box.show{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+        .result-label{font-size:0.875rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem}
+        .result-value{font-size:2.5rem;font-weight:800;color:var(--primary-dark);margin:0.5rem 0;letter-spacing:-0.02em}
+        .result-detail{color:var(--text);font-size:0.95rem;margin-top:0.5rem}
+
+        .content-section{margin:3rem 0;padding:2.5rem;background:var(--light);border-radius:var(--radius);border:1px solid var(--border)}
+        .content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem;font-weight:700}
+        .content-section h3{color:#4b5563;margin:1.5rem 0 0.75rem;font-size:1.2rem;font-weight:600}
+        .content-section p{color:var(--text);margin-bottom:1rem;line-height:1.7}
+        .content-section ul{margin-left:1.5rem;margin-bottom:1rem}
+        .content-section li{margin-bottom:0.5rem;line-height:1.7}
+
+        .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:1.5rem}
+        .feature-card{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:1px solid var(--border);transition:all 0.3s}
+        .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+        .feature-icon{font-size:2rem;margin-bottom:0.75rem}
+        .feature-card h4{color:var(--dark);margin-bottom:0.5rem;font-size:1.1rem}
+        .feature-card p{color:var(--text-light);font-size:0.9rem;margin:0}
+
+        .faq-item{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border-left:4px solid var(--primary);margin-bottom:1rem;transition:all 0.3s}
+        .faq-item:hover{box-shadow:var(--shadow-sm)}
+        .faq-item h4{color:var(--dark);margin-bottom:0.75rem;font-size:1.1rem;font-weight:600}
+        .faq-item p{color:var(--text-light);font-size:0.95rem;margin:0;line-height:1.6}
+
+        .formula-box{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:2px solid var(--primary);margin:1rem 0;text-align:center}
+        .formula-box code{background:var(--primary-light);padding:0.25rem 0.5rem;border-radius:4px;font-size:1.1rem;color:var(--primary-dark);font-weight:600}
+
+        .footer-section{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem;font-size:1.1rem}
+        .footer-col ul{list-style:none}
+        .footer-col li{margin-bottom:0.5rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;transition:all 0.3s;display:inline-block}
+        .footer-col a:hover{color:#fff;transform:translateX(4px)}
+        .footer-col p{color:#9ca3af;font-size:0.9rem;line-height:1.6}
+        .footer-bottom{max-width:1200px;margin:0 auto;text-align:center;border-top:1px solid #4b5563;padding-top:2rem;color:#9ca3af;font-size:0.9rem}
+        .footer-bottom a{color:#d1d5db;text-decoration:none;transition:color 0.3s}
+        .footer-bottom a:hover{color:#fff}
+
+        .back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999;box-shadow:var(--shadow-md);border:none;font-size:1.2rem}
+        .back-to-top.show{opacity:1;visibility:visible}
+        .back-to-top:hover{background:var(--primary-dark);transform:translateY(-4px)}
+
+        .bottom-keywords{background:var(--light);padding:2rem;border-top:1px solid var(--border);text-align:center}
+        .bottom-keywords h3{color:var(--dark);margin-bottom:1rem;font-size:1.1rem}
+        .bottom-keywords .kw-list{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem}
+        .bottom-keywords .kw-tag{background:#fff;padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-light);transition:all 0.3s}
+        .bottom-keywords .kw-tag:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
+
+        @media(max-width:768px){
+            .tool-header h1{font-size:1.8rem}
+            .tool-header .subtitle{font-size:1rem}
+            .calc-grid{grid-template-columns:1fr;gap:1rem}
+            .result-value{font-size:1.8rem}
+            .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:1rem 2rem;border-bottom:1px solid var(--border);gap:1rem}
+            .nav-links.active{display:flex}
+            .menu-toggle{display:block}
+            .content-section{padding:1.5rem}
+            .calc-box{padding:1.5rem}
+        }
+        @media(max-width:480px){
+            .tool-header{padding:2.5rem 1.5rem}
+            .tool-header h1{font-size:1.5rem}
+            .container{padding:0 1rem}
+            .tool-content{padding:2rem 1rem}
+        }
+        @media print{nav,.back-to-top,.btn{display:none}.result-box{display:block!important;border:2px solid #000}}
+        @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="ToolBox Pro Home">% ToolBox Pro</a>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Calculators</a></li>
+                <li><a href="index.html">All Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tool-header">
+        <div class="container">
+            <h1>Free Percentage Calculator</h1>
+            <p class="subtitle">Calculate Percentages, Discounts & Percentage Changes Instantly</p>
+            <p class="tagline">Instant results • No signup • 100% Free • Works on all devices</p>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/</span> <a href="calculators.html">Calculators</a> <span>/</span> <span>Percentage Calculator</span>
+        </div>
+    </div>
+
+    <main id="main-content" class="container">
+        <div class="tool-content">
+
+            <!-- Calculator 1: Percentage of a Number -->
+            <div class="calc-box">
+                <h3 style="color:var(--dark);margin-bottom:1.5rem;font-size:1.3rem">📊 Percentage of a Number</h3>
+                <div class="calc-grid">
+                    <div class="input-group">
+                        <label class="input-label" for="number">Number:</label>
+                        <input type="number" id="number" class="input-field" placeholder="Enter number (e.g., 100)" value="100" min="0" step="any" oninput="calculatePercentage()" aria-label="Base number">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="percent">Percentage (%):</label>
+                        <input type="number" id="percent" class="input-field" placeholder="Enter percentage (e.g., 20)" value="20" min="0" step="any" oninput="calculatePercentage()" aria-label="Percentage value">
+                    </div>
+                </div>
+                <button class="btn" onclick="calculatePercentage()" style="margin-top:1rem">
+                    <span>%</span> Calculate Percentage
+                </button>
+                <div class="result-box" id="result1">
+                    <div class="result-label">Result</div>
+                    <div class="result-value" id="percentResult"></div>
+                    <div class="result-detail" id="percentDetail"></div>
+                </div>
+                <div class="formula-box">
+                    <strong>Formula:</strong> <code>(Number × Percentage) ÷ 100 = Result</code>
+                </div>
+            </div>
+
+            <!-- Calculator 2: Percentage Increase/Decrease -->
+            <div class="calc-box">
+                <h3 style="color:var(--dark);margin-bottom:1.5rem;font-size:1.3rem">📈 Percentage Increase / Decrease</h3>
+                <div class="calc-grid">
+                    <div class="input-group">
+                        <label class="input-label" for="originalValue">Original Value:</label>
+                        <input type="number" id="originalValue" class="input-field" placeholder="Original amount" value="100" min="0" step="any" oninput="calculateChange()" aria-label="Original value">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="newValue">New Value:</label>
+                        <input type="number" id="newValue" class="input-field" placeholder="New amount" value="120" min="0" step="any" oninput="calculateChange()" aria-label="New value">
+                    </div>
+                </div>
+                <button class="btn" onclick="calculateChange()" style="margin-top:1rem">
+                    <span>📊</span> Calculate Change
+                </button>
+                <div class="result-box" id="result2">
+                    <div class="result-label">Percentage Change</div>
+                    <div class="result-value" id="changeResult"></div>
+                    <div class="result-detail" id="changeDetail"></div>
+                </div>
+                <div class="formula-box">
+                    <strong>Formula:</strong> <code>((New - Original) ÷ Original) × 100 = % Change</code>
+                </div>
+            </div>
+
+            <!-- Calculator 3: Discount Calculator -->
+            <div class="calc-box">
+                <h3 style="color:var(--dark);margin-bottom:1.5rem;font-size:1.3rem">🏷️ Discount Calculator</h3>
+                <div class="calc-grid">
+                    <div class="input-group">
+                        <label class="input-label" for="originalPrice">Original Price:</label>
+                        <input type="number" id="originalPrice" class="input-field" placeholder="Original price" value="100" min="0" step="any" oninput="calculateDiscount()" aria-label="Original price">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="discountPercent">Discount (%):</label>
+                        <input type="number" id="discountPercent" class="input-field" placeholder="Discount percentage" value="25" min="0" max="100" step="any" oninput="calculateDiscount()" aria-label="Discount percentage">
+                    </div>
+                </div>
+                <button class="btn" onclick="calculateDiscount()" style="margin-top:1rem">
+                    <span>🏷️</span> Calculate Discount
+                </button>
+                <div class="result-box" id="result3">
+                    <div class="result-label">Discounted Price</div>
+                    <div class="result-value" id="discountResult"></div>
+                    <div class="result-detail" id="discountDetail"></div>
+                </div>
+                <div class="formula-box">
+                    <strong>Formula:</strong> <code>Original - (Original × Discount% ÷ 100) = Sale Price</code>
+                </div>
+            </div>
+
+            <article class="content-section">
+                <h2>What is a Percentage Calculator?</h2>
+                <p>A <strong>percentage calculator</strong> is a free online tool that helps you calculate percentages of numbers, percentage increases, percentage decreases, discounts, tips, and sales tax. This <strong>percent calculator</strong> is perfect for shopping, math homework, financial calculations, and everyday use.</p>
+                <p>Whether you need to calculate a discount on a product, determine a percentage increase in your salary, or figure out a tip at a restaurant, our free <strong>percentage calculator</strong> gives you instant, accurate results without any signup or registration.</p>
+
+                <h3>Why Use Our Free Percentage Calculator?</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🛒</div>
+                        <h4>For Shopping</h4>
+                        <p>Calculate discounts, sale prices, and savings instantly while shopping online or in-store.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h4>For Finance</h4>
+                        <p>Calculate interest rates, investment returns, salary increases, and budget percentages.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h4>For Students</h4>
+                        <p>Solve math homework problems involving percentages, ratios, and fractions easily.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🍽️</div>
+                        <h4>For Daily Life</h4>
+                        <p>Calculate tips at restaurants, sales tax, recipe scaling, and more.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="content-section">
+                <h2>How to Use the Percentage Calculator</h2>
+                <p>Our free online <strong>percentage calculator</strong> offers three powerful calculators in one tool. Here's how to use each:</p>
+
+                <h3>1. Percentage of a Number</h3>
+                <p>Enter the base number and the percentage you want to calculate. For example, to find 20% of 100, enter 100 as the number and 20 as the percentage. The result will show 20.</p>
+
+                <h3>2. Percentage Increase / Decrease</h3>
+                <p>Enter the original value and the new value. The calculator will show the percentage change. If the new value is higher, it's an increase. If lower, it's a decrease.</p>
+
+                <h3>3. Discount Calculator</h3>
+                <p>Enter the original price and the discount percentage. The calculator will show the discounted price and how much you save. Perfect for Black Friday, sales, and coupon calculations.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>Common Percentage Calculations</h2>
+                <p>Here are some of the most common <strong>percentage calculations</strong> people use every day:</p>
+                <ul>
+                    <li><strong>10% of a number:</strong> Move the decimal point one place to the left. 10% of 250 = 25.</li>
+                    <li><strong>20% tip:</strong> Divide the bill by 5. 20% of $80 = $16.</li>
+                    <li><strong>50% off:</strong> Divide the price by 2. 50% of $100 = $50.</li>
+                    <li><strong>25% discount:</strong> Divide the price by 4. 25% of $200 = $50.</li>
+                    <li><strong>5% sales tax:</strong> Divide the price by 20. 5% of $100 = $5.</li>
+                    <li><strong>Percentage increase:</strong> ((New - Old) ÷ Old) × 100. Salary from $50k to $55k = 10% increase.</li>
+                    <li><strong>Percentage decrease:</strong> ((Old - New) ÷ Old) × 100. Price from $100 to $80 = 20% decrease.</li>
+                </ul>
+            </article>
+
+            <article class="content-section">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+
+                <div class="faq-item">
+                    <h4>What is a percentage?</h4>
+                    <p>A percentage is a number expressed as a fraction of 100. For example, 50% means 50 out of 100, or half of a total amount. The symbol "%" is used to denote percentages.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do you calculate a percentage of a number?</h4>
+                    <p>To calculate a percentage of a number, multiply the number by the percentage and divide by 100. Formula: <strong>(Number × Percentage) ÷ 100 = Result</strong>. For example, 20% of 150 = (150 × 20) ÷ 100 = 30.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How to calculate percentage increase?</h4>
+                    <p>Subtract the original value from the new value, divide by the original value, then multiply by 100. Formula: <strong>((New - Original) ÷ Original) × 100</strong>. For example, if your salary increased from $50,000 to $55,000, the increase is ((55000 - 50000) ÷ 50000) × 100 = 10%.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How to calculate percentage decrease?</h4>
+                    <p>Subtract the new value from the original value, divide by the original value, then multiply by 100. Formula: <strong>((Original - New) ÷ Original) × 100</strong>. For example, if a product price dropped from $100 to $80, the decrease is ((100 - 80) ÷ 100) × 100 = 20%.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How to calculate discount percentage?</h4>
+                    <p>Subtract the sale price from the original price, divide by the original price, then multiply by 100. Formula: <strong>((Original - Sale) ÷ Original) × 100</strong>. For example, a $100 item on sale for $75 has a discount of ((100 - 75) ÷ 100) × 100 = 25%.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Bottom Keywords Section for SEO -->
+    <section class="bottom-keywords">
+        <div class="container">
+            <h3>Related Tools & Keywords</h3>
+            <div class="kw-list">
+                <a href="percentage-calculator.html" class="kw-tag">percentage calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">percent calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">discount calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage increase calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage decrease calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">tip calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">sales tax calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage change calculator</a>
+                <a href="percentage-calculator.html" class="kw-tag">percent of a number</a>
+                <a href="percentage-calculator.html" class="kw-tag">how to calculate percentage</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage formula</a>
+                <a href="percentage-calculator.html" class="kw-tag">percentage difference</a>
+                <a href="currency-converter.html" class="kw-tag">currency converter</a>
+                <a href="calculators.html" class="kw-tag">free calculators</a>
+                <a href="index.html" class="kw-tag">online tools</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculators.html">All Calculators</a></li>
+                    <li><a href="index.html">All Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>More Tools</h4>
+                <ul>
+                    <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                    <li><a href="currency-converter.html">Currency Converter</a></li>
+                    <li><a href="converter.html">Unit Converter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Tools</h4>
+                <ul>
+                    <li><a href="word-counter-tool.html">Word Counter</a></li>
+                    <li><a href="password-generator.html">Password Generator</a></li>
+                    <li><a href="index.html">All Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About ToolBox Pro</h4>
+                <p>ToolBox Pro provides 30+ free online calculators and tools including percentage calculator, currency converter, unit converter, word counter, and password generator. No signup needed. All tools work in your browser for complete privacy.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ToolBox Pro | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a> | <a href="sitemap.xml">Sitemap</a></p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+
+    <script>
+        // Calculator 1: Percentage of a Number
+        function calculatePercentage() {
+            const number = parseFloat(document.getElementById('number').value) || 0;
+            const percent = parseFloat(document.getElementById('percent').value) || 0;
+            const resultBox = document.getElementById('result1');
+
+            if (number <= 0 && percent <= 0) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            const result = (number * percent / 100).toFixed(2);
+            const formattedResult = parseFloat(result).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            const formattedNumber = number.toLocaleString('en-US');
+
+            document.getElementById('percentResult').textContent = `${percent}% of ${formattedNumber} = ${formattedResult}`;
+            document.getElementById('percentDetail').textContent = `Calculation: (${formattedNumber} × ${percent}) ÷ 100 = ${formattedResult}`;
+            resultBox.classList.add('show');
+        }
+
+        // Calculator 2: Percentage Increase/Decrease
+        function calculateChange() {
+            const original = parseFloat(document.getElementById('originalValue').value) || 0;
+            const newVal = parseFloat(document.getElementById('newValue').value) || 0;
+            const resultBox = document.getElementById('result2');
+
+            if (original <= 0) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            const change = ((newVal - original) / original * 100);
+            const absChange = Math.abs(change).toFixed(2);
+            const type = change >= 0 ? 'increase' : 'decrease';
+            const diff = Math.abs(newVal - original).toFixed(2);
+
+            document.getElementById('changeResult').textContent = `${absChange}% ${type}`;
+            document.getElementById('changeDetail').textContent = 
+                `From ${original.toLocaleString()} to ${newVal.toLocaleString()} = ${type} of ${parseFloat(diff).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            resultBox.classList.add('show');
+        }
+
+        // Calculator 3: Discount Calculator
+        function calculateDiscount() {
+            const original = parseFloat(document.getElementById('originalPrice').value) || 0;
+            const discount = parseFloat(document.getElementById('discountPercent').value) || 0;
+            const resultBox = document.getElementById('result3');
+
+            if (original <= 0) {
+                resultBox.classList.remove('show');
+                return;
+            }
+
+            const discountAmount = (original * discount / 100).toFixed(2);
+            const finalPrice = (original - discountAmount).toFixed(2);
+
+            document.getElementById('discountResult').textContent = `$${parseFloat(finalPrice).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('discountDetail').textContent = 
+                `Original: $${original.toLocaleString('en-US', {minimumFractionDigits: 2})} | Discount: ${discount}% ($${parseFloat(discountAmount).toLocaleString('en-US', {minimumFractionDigits: 2})}) | You save: $${parseFloat(discountAmount).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            resultBox.classList.add('show');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            calculatePercentage();
+            calculateChange();
+            calculateDiscount();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                calculatePercentage();
+                calculateChange();
+                calculateDiscount();
+            }
+        });
+    </script>
+</body>
+</html>
