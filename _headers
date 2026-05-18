@@ -1,0 +1,17 @@
+/sitemap.xml
+  Content-Type: application/xml
+
+/sitemap.html
+  Content-Type: text/html
+
+/*.html
+  Content-Type: text/html; charset=utf-8
+
+/*.json
+  Content-Type: application/json
+
+/*.js
+  Content-Type: application/javascript
+
+/*.css
+  Content-Type: text/css
