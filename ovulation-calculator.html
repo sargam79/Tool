@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Ovulation Calculator & Fertility Tracker | Toolpond Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        primary: '#ec4899',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4',
+                        rose: '#f43f5e',
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a8edea 75%, #fed6e3 100%); background-attachment: fixed; min-height: 100vh; }
+        .glass { background: rgba(255,255,255,0.2); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.3); }
+        .glass-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+        .input-glow:focus { box-shadow: 0 0 0 4px rgba(236,72,153,0.3); border-color: #ec4899; }
+        .gradient-text { background: linear-gradient(135deg, #ec4899, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .fertile-window { background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(139,92,246,0.15)); border: 2px solid #ec4899; }
+        .ovulation-day { background: linear-gradient(135deg, #ec4899, #8b5cf6); color: white; transform: scale(1.1); box-shadow: 0 10px 25px rgba(236,72,153,0.4); }
+        .fertile-day { background: linear-gradient(135deg, rgba(236,72,153,0.2), rgba(139,92,246,0.2)); border: 2px solid rgba(236,72,153,0.4); color: #be185d; }
+        .calendar-day { transition: all 0.3s ease; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 16px; cursor: pointer; }
+        .calendar-day:hover:not(.ovulation-day):not(.fertile-day) { background: rgba(236,72,153,0.1); transform: scale(1.05); }
+        .shimmer { position: relative; overflow: hidden; }
+        .shimmer::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shimmer 2s infinite; }
+        @keyframes shimmer { 100% { left: 100%; } }
+        .pulse-ring { animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+        @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
+        .timeline-dot { width: 16px; height: 16px; border-radius: 50%; position: relative; }
+        .timeline-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid currentColor; animation: pulse-ring 2s infinite; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="glass sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="https://toolpond.org/" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl">T</div>
+                    <span class="text-xl font-bold text-gray-800">Toolpond<span class="text-primary">Pro</span></span>
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="https://toolpond.org/" class="text-gray-700 hover:text-primary font-medium transition">Home</a>
+                    <a href="https://toolpond.org/calculators.html" class="text-gray-700 hover:text-primary font-medium transition">Calculators</a>
+                    <a href="https://toolpond.org/converter.html" class="text-gray-700 hover:text-primary font-medium transition">Converters</a>
+                    <a href="https://toolpond.org/about.html" class="text-gray-700 hover:text-primary font-medium transition">About</a>
+                    <a href="https://toolpond.org/contact.html" class="text-gray-700 hover:text-primary font-medium transition">Contact</a>
+                </nav>
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-gray-800 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/20">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="https://toolpond.org/" class="block text-gray-700 py-2">Home</a>
+                <a href="https://toolpond.org/calculators.html" class="block text-gray-700 py-2">Calculators</a>
+                <a href="https://toolpond.org/converter.html" class="block text-gray-700 py-2">Converters</a>
+                <a href="https://toolpond.org/about.html" class="block text-gray-700 py-2">About</a>
+                <a href="https://toolpond.org/contact.html" class="block text-gray-700 py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="pt-12 pb-8 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center px-4 py-2 rounded-full glass text-rose-700 text-sm font-semibold mb-6">
+                <i class="fas fa-heart text-primary mr-2 animate-pulse"></i> Women's Health Tool
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 mb-4 leading-tight">
+                Advanced <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Ovulation</span> Calculator
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Predict your fertile window, ovulation date, and next period with precision. 
+                Track your cycle with our interactive calendar and personalized fertility insights.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 pb-16">
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <!-- Input Panel -->
+            <div class="lg:col-span-1">
+                <div class="glass-card p-6 md:p-8 sticky top-24">
+                    <h3 class="text-xl font-bold mb-6 gradient-text">Cycle Details</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-calendar-day text-primary mr-2"></i>First Day of Last Period
+                            </label>
+                            <input type="date" id="lastPeriod" class="input-glow w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-lg font-semibold transition-all" onchange="calculateOvulation()">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-sync-alt text-secondary mr-2"></i>Cycle Length (days)
+                            </label>
+                            <div class="relative">
+                                <input type="range" id="cycleLength" min="21" max="45" value="28" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary" oninput="updateCycleDisplay(); calculateOvulation()">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>21</span>
+                                    <span id="cycleValue" class="font-bold text-primary text-base">28 days</span>
+                                    <span>45</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-hourglass-half text-accent mr-2"></i>Period Duration (days)
+                            </label>
+                            <div class="flex gap-2">
+                                <button onclick="setPeriod(3)" class="period-btn flex-1 py-2 rounded-lg border-2 border-gray-200 text-sm font-medium hover:border-primary transition" data-days="3">3</button>
+                                <button onclick="setPeriod(4)" class="period-btn flex-1 py-2 rounded-lg border-2 border-gray-200 text-sm font-medium hover:border-primary transition" data-days="4">4</button>
+                                <button onclick="setPeriod(5)" class="period-btn flex-1 py-2 rounded-lg border-2 border-primary bg-primary/10 text-primary text-sm font-medium transition" data-days="5">5</button>
+                                <button onclick="setPeriod(6)" class="period-btn flex-1 py-2 rounded-lg border-2 border-gray-200 text-sm font-medium hover:border-primary transition" data-days="6">6</button>
+                                <button onclick="setPeriod(7)" class="period-btn flex-1 py-2 rounded-lg border-2 border-gray-200 text-sm font-medium hover:border-primary transition" data-days="7">7</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-4 border border-pink-100">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-lightbulb text-primary mt-1"></i>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800 mb-1">Tip</p>
+                                    <p class="text-xs text-gray-600">For best accuracy, track your cycle for at least 3 months. The average cycle is 28 days, but normal ranges are 21-35 days.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateOvulation()" class="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-primary via-secondary to-accent text-white font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 shimmer">
+                        <i class="fas fa-magic mr-2"></i> Calculate Fertility
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="summaryCards">
+                    <div class="glass-card p-4 text-center">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-droplet text-blue-500"></i>
+                        </div>
+                        <div class="text-xs text-gray-500 font-medium">Next Period</div>
+                        <div id="nextPeriod" class="text-lg font-bold text-gray-800 mt-1">--</div>
+                    </div>
+                    <div class="glass-card p-4 text-center">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-egg text-primary"></i>
+                        </div>
+                        <div class="text-xs text-gray-500 font-medium">Ovulation</div>
+                        <div id="ovulationDate" class="text-lg font-bold text-primary mt-1">--</div>
+                    </div>
+                    <div class="glass-card p-4 text-center">
+                        <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-heart text-secondary"></i>
+                        </div>
+                        <div class="text-xs text-gray-500 font-medium">Fertile Window</div>
+                        <div id="fertileWindow" class="text-lg font-bold text-secondary mt-1">--</div>
+                    </div>
+                    <div class="glass-card p-4 text-center">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-baby text-green-500"></i>
+                        </div>
+                        <div class="text-xs text-gray-500 font-medium">Best Days</div>
+                        <div id="bestDays" class="text-lg font-bold text-green-600 mt-1">--</div>
+                    </div>
+                </div>
+
+                <!-- Calendar -->
+                <div class="glass-card p-6 md:p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold gradient-text">Fertility Calendar</h3>
+                        <div class="flex gap-4 text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
+                                <span class="text-gray-600">Ovulation</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 rounded-full bg-pink-200 border-2 border-primary"></div>
+                                <span class="text-gray-600">Fertile</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2 mb-2">
+                        <div class="text-center text-xs font-semibold text-gray-400 py-2">SUN</div>
+                        <div class="text-center text-xs font-semibold text-gray-400 py-2">MON</div>
+                        <div class="text-center text-xs font-semibold text-gray-400 py-2">TUE</div>
+                        <div class="text-center text-xs font-semibold text-gray-400 py-2">WED</div>
+                        <div class="text-center text-xs font-semibold text-gray-400 py-2">THU</div>
+                        <div class="text-center text-xs font-semibold text-gray-400 py-2">FRI</div>
+                        <div class="text-center text-xs font-semibold text-gray-400 py-2">SAT</div>
+                    </div>
+                    <div id="calendarGrid" class="grid grid-cols-7 gap-2">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="glass-card p-6 md:p-8">
+                    <h3 class="text-xl font-bold mb-6 gradient-text">Cycle Timeline</h3>
+                    <div class="relative">
+                        <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                        <div id="timelineContent" class="space-y-6">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fertility Chart -->
+                <div class="glass-card p-6 md:p-8">
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Hormone & Fertility Probability</h3>
+                    <canvas id="fertilityChart" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="mt-12 glass-card p-8">
+            <h2 class="text-2xl font-bold mb-6 gradient-text">Understanding Your Fertility</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-pink-50 to-rose-50 border border-pink-100">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                        <i class="fas fa-egg text-primary text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Ovulation</h3>
+                    <p class="text-sm text-gray-600">Ovulation typically occurs 14 days before your next period. The egg lives for 12-24 hours after release.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-100">
+                    <div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-3">
+                        <i class="fas fa-window-maximize text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Fertile Window</h3>
+                    <p class="text-sm text-gray-600">Your fertile window includes 5 days before ovulation plus the ovulation day. Sperm can survive up to 5 days.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-cyan-50 to-teal-50 border border-cyan-100">
+                    <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-3">
+                        <i class="fas fa-thermometer-half text-accent text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Signs to Watch</h3>
+                    <p class="text-sm text-gray-600">Basal body temperature rise, egg-white cervical mucus, mild cramping (mittelschmerz), and increased libido.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass border-t border-white/20 mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">T</div>
+                        <span class="text-lg font-bold text-gray-800">Toolpond<span class="text-primary">Pro</span></span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Advanced calculators and tools for everyday life. Accurate, fast, and completely free.</p>
+                </div>
+                <div>
+                    <h4 class="text-gray-800 font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://toolpond.org/" class="text-gray-600 hover:text-primary transition">Home</a></li>
+                        <li><a href="https://toolpond.org/calculators.html" class="text-gray-600 hover:text-primary transition">All Calculators</a></li>
+                        <li><a href="https://toolpond.org/converter.html" class="text-gray-600 hover:text-primary transition">Converters</a></li>
+                        <li><a href="https://toolpond.org/sitemap.html" class="text-gray-600 hover:text-primary transition">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-800 font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://toolpond.org/privacy-policy.html" class="text-gray-600 hover:text-primary transition">Privacy Policy</a></li>
+                        <li><a href="https://toolpond.org/about.html" class="text-gray-600 hover:text-primary transition">About Us</a></li>
+                        <li><a href="https://toolpond.org/contact.html" class="text-gray-600 hover:text-primary transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-800 font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-gray-500 text-sm">
+                <p> 2026 Toolpond Pro. All rights reserved. | <a href="https://toolpond.org/privacy-policy.html" class="hover:text-primary transition">Privacy</a> | <a href="https://toolpond.org/contact.html" class="hover:text-primary transition">Contact</a></p>
+                <p class="mt-2 text-xs text-gray-400">This calculator is for educational purposes only. Consult a healthcare provider for medical advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let periodDuration = 5;
+        let fertilityChart;
+
+        // Set default date to today minus 14 days
+        const today = new Date();
+        const defaultDate = new Date(today.getTime() - (14 * 24 * 60 * 60 * 1000));
+        document.getElementById('lastPeriod').valueAsDate = defaultDate;
+
+        function setPeriod(days) {
+            periodDuration = days;
+            document.querySelectorAll('.period-btn').forEach(btn => {
+                if (parseInt(btn.dataset.days) === days) {
+                    btn.classList.add('border-primary', 'bg-primary/10', 'text-primary');
+                    btn.classList.remove('border-gray-200');
+                } else {
+                    btn.classList.remove('border-primary', 'bg-primary/10', 'text-primary');
+                    btn.classList.add('border-gray-200');
+                }
+            });
+            calculateOvulation();
+        }
+
+        function updateCycleDisplay() {
+            document.getElementById('cycleValue').textContent = document.getElementById('cycleLength').value + ' days';
+        }
+
+        function calculateOvulation() {
+            const lastPeriodInput = document.getElementById('lastPeriod').value;
+            if (!lastPeriodInput) return;
+            
+            const cycleLength = parseInt(document.getElementById('cycleLength').value);
+            const lastPeriod = new Date(lastPeriodInput);
+            
+            // Calculate key dates
+            const ovulationDate = new Date(lastPeriod.getTime() + ((cycleLength - 14) * 24 * 60 * 60 * 1000));
+            const fertileStart = new Date(ovulationDate.getTime() - (5 * 24 * 60 * 60 * 1000));
+            const fertileEnd = new Date(ovulationDate.getTime() + (1 * 24 * 60 * 60 * 1000));
+            const nextPeriod = new Date(lastPeriod.getTime() + (cycleLength * 24 * 60 * 60 * 1000));
+            const bestDay1 = new Date(ovulationDate.getTime() - (1 * 24 * 60 * 60 * 1000));
+            const bestDay2 = new Date(ovulationDate.getTime() - (2 * 24 * 60 * 60 * 1000));
+            
+            // Update summary cards
+            document.getElementById('nextPeriod').textContent = formatDateShort(nextPeriod);
+            document.getElementById('ovulationDate').textContent = formatDateShort(ovulationDate);
+            document.getElementById('fertileWindow').textContent = formatDateShort(fertileStart) + ' - ' + formatDateShort(fertileEnd);
+            document.getElementById('bestDays').textContent = formatDateShort(bestDay2) + ' & ' + formatDateShort(bestDay1);
+            
+            // Generate calendar
+            generateCalendar(lastPeriod, cycleLength, ovulationDate, fertileStart, fertileEnd);
+            
+            // Generate timeline
+            generateTimeline(lastPeriod, cycleLength, ovulationDate, fertileStart, fertileEnd, nextPeriod);
+            
+            // Update chart
+            updateFertilityChart(cycleLength);
+        }
+
+        function formatDateShort(date) {
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        function formatDateFull(date) {
+            return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+        }
+
+        function generateCalendar(lastPeriod, cycleLength, ovulationDate, fertileStart, fertileEnd) {
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+            
+            // Show 35 days from last period
+            const startDate = new Date(lastPeriod);
+            startDate.setDate(startDate.getDate() - startDate.getDay()); // Start from Sunday
+            
+            for (let i = 0; i < 35; i++) {
+                const currentDate = new Date(startDate.getTime() + (i * 24 * 60 * 60 * 1000));
+                const dayEl = document.createElement('div');
+                dayEl.className = 'calendar-day text-sm';
+                dayEl.textContent = currentDate.getDate();
+                
+                const isPeriod = currentDate >= lastPeriod && currentDate < new Date(lastPeriod.getTime() + (periodDuration * 24 * 60 * 60 * 1000));
+                const isOvulation = isSameDay(currentDate, ovulationDate);
+                const isFertile = currentDate >= fertileStart && currentDate <= fertileEnd && !isOvulation;
+                
+                if (isOvulation) {
+                    dayEl.classList.add('ovulation-day');
+                    dayEl.innerHTML = currentDate.getDate() + '<div class="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full"></div>';
+                    dayEl.style.position = 'relative';
+                } else if (isFertile) {
+                    dayEl.classList.add('fertile-day');
+                } else if (isPeriod) {
+                    dayEl.style.background = 'rgba(59, 130, 246, 0.15)';
+                    dayEl.style.color = '#1e40af';
+                } else {
+                    dayEl.classList.add('bg-gray-50', 'text-gray-600');
+                }
+                
+                // Highlight today
+                if (isSameDay(currentDate, new Date())) {
+                    dayEl.style.boxShadow = '0 0 0 2px #6366f1';
+                }
+                
+                grid.appendChild(dayEl);
+            }
+        }
+
+        function generateTimeline(lastPeriod, cycleLength, ovulationDate, fertileStart, fertileEnd, nextPeriod) {
+            const timeline = document.getElementById('timelineContent');
+            timeline.innerHTML = '';
+            
+            const events = [
+                { date: lastPeriod, title: 'Period Starts', desc: `Day 1 of your cycle. ${periodDuration} days expected.`, icon: 'droplet', color: 'text-blue-500', bg: 'bg-blue-100' },
+                { date: new Date(lastPeriod.getTime() + (periodDuration * 24 * 60 * 60 * 1000)), title: 'Period Ends', desc: 'Follicular phase begins. Estrogen starts rising.', icon: 'check-circle', color: 'text-blue-400', bg: 'bg-blue-50' },
+                { date: fertileStart, title: 'Fertile Window Opens', desc: 'Sperm can survive up to 5 days. Start trying!', icon: 'heart', color: 'text-primary', bg: 'bg-pink-100' },
+                { date: new Date(ovulationDate.getTime() - (2 * 24 * 60 * 60 * 1000)), title: 'Peak Fertility Begins', desc: 'Best days to conceive. High estrogen levels.', icon: 'star', color: 'text-secondary', bg: 'bg-purple-100' },
+                { date: ovulationDate, title: 'Ovulation Day', desc: 'Egg released! Most fertile day of your cycle.', icon: 'egg', color: 'text-primary', bg: 'bg-primary' },
+                { date: nextPeriod, title: 'Expected Next Period', desc: `If not pregnant, period starts in ~${cycleLength} days.`, icon: 'calendar', color: 'text-gray-500', bg: 'bg-gray-100' }
+            ];
+            
+            events.forEach(event => {
+                const div = document.createElement('div');
+                div.className = 'flex items-start gap-4 relative';
+                div.innerHTML = `
+                    <div class="relative z-10">
+                        <div class="timeline-dot ${event.bg} ${event.color === 'text-primary' ? 'text-white' : event.color} flex items-center justify-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-${event.icon} ${event.color === 'text-primary' ? 'text-white' : ''}"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1 pb-2">
+                        <div class="text-xs font-semibold ${event.color} mb-1">${formatDateFull(event.date)}</div>
+                        <h4 class="font-bold text-gray-800">${event.title}</h4>
+                        <p class="text-sm text-gray-600">${event.desc}</p>
+                    </div>
+                `;
+                timeline.appendChild(div);
+            });
+        }
+
+        function updateFertilityChart(cycleLength) {
+            const ctx = document.getElementById('fertilityChart').getContext('2d');
+            
+            if (fertilityChart) fertilityChart.destroy();
+            
+            // Generate probability curve
+            const labels = [];
+            const data = [];
+            for (let i = 1; i <= cycleLength; i++) {
+                labels.push('Day ' + i);
+                // Simulate fertility probability curve
+                const ovDay = cycleLength - 14;
+                let prob = 5;
+                if (i >= ovDay - 5 && i <= ovDay + 1) {
+                    const dist = Math.abs(i - ovDay);
+                    prob = dist === 0 ? 95 : dist === 1 ? 85 : dist === 2 ? 70 : dist === 3 ? 50 : dist === 4 ? 30 : 15;
+                }
+                data.push(prob);
+            }
+            
+            fertilityChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets [{
+                        label: 'Conception Probability (%)',
+                        data: data,
+                        borderColor: '#ec4899',
+                        backgroundColor: 'rgba(236,72,153,0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#ec4899',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            ticks: { callback: v => v + '%' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        function isSameDay(d1, d2) {
+            return d1.getFullYear() === d2.getFullYear() &&
+                   d1.getMonth() === d2.getMonth() &&
+                   d1.getDate() === d2.getDate();
+        }
+
+        // Initialize
+        window.onload = () => {
+            calculateOvulation();
+        };
+    </script>
+</body>
+</html>
