@@ -1208,3 +1208,181 @@
             </div>
         </div>
     </footer>
+
+<script>
+    // ========================
+    // CALORIE CALCULATOR LOGIC
+    // ========================
+
+    let currentMacroRatio = 'balanced';
+
+    function syncInput(id) {
+        const slider = document.getElementById(id);
+        const valueDisplay = document.getElementById(id + 'Value');
+        if (slider && valueDisplay) {
+            valueDisplay.textContent = slider.value;
+        }
+    }
+
+    function getGender() {
+        const el = document.querySelector('input[name="gender"]:checked');
+        return el ? el.value : 'male';
+    }
+
+    function getActivity() {
+        const el = document.querySelector('input[name="activity"]:checked');
+        return el ? parseFloat(el.value) : 1.375;
+    }
+
+    function getGoal() {
+        const el = document.querySelector('input[name="goal"]:checked');
+        return el ? el.value : 'maintain';
+    }
+
+    function getAge() {
+        const el = document.getElementById('age');
+        return el ? parseInt(el.value) || 30 : 30;
+    }
+
+    function getHeight() {
+        const el = document.getElementById('height');
+        return el ? parseInt(el.value) || 175 : 175;
+    }
+
+    function getWeight() {
+        const el = document.getElementById('weight');
+        return el ? parseInt(el.value) || 70 : 70;
+    }
+
+    function calculateBMR(gender, weight, height, age) {
+        // Mifflin-St Jeor Equation
+        let bmr;
+        if (gender === 'male') {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+        } else {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        }
+        return Math.round(bmr);
+    }
+
+    function calculateBMI(weight, height) {
+        const heightM = height / 100;
+        return (weight / (heightM * heightM)).toFixed(1);
+    }
+
+    function getBMICategory(bmi) {
+        if (bmi < 18.5) return { category: 'Underweight', color: '#3b82f6', description: 'Your BMI is below the healthy range. Consider consulting a healthcare provider about gaining weight safely.' };
+        if (bmi < 25) return { category: 'Normal Weight', color: '#10b981', description: 'Your BMI is within the healthy range. Maintain your current lifestyle for optimal health.' };
+        if (bmi < 30) return { category: 'Overweight', color: '#f59e0b', description: 'Your BMI is slightly above the healthy range. A moderate calorie deficit and increased activity can help.' };
+        return { category: 'Obese', color: '#ef4444', description: 'Your BMI is above the healthy range. Consider consulting a healthcare provider for a personalized weight management plan.' };
+    }
+
+    function getBMIMarkerPosition(bmi) {
+        if (bmi <= 18.5) return 12.5;
+        if (bmi <= 25) return 37.5;
+        if (bmi <= 30) return 62.5;
+        return 87.5;
+    }
+
+    function getMacroRatios() {
+        switch (currentMacroRatio) {
+            case 'lowCarb': return { protein: 40, carbs: 20, fat: 40 };
+            case 'highProtein': return { protein: 40, carbs: 35, fat: 25 };
+            case 'keto': return { protein: 25, carbs: 5, fat: 70 };
+            default: return { protein: 30, carbs: 40, fat: 30 };
+        }
+    }
+
+    function calculateAll() {
+        const gender = getGender();
+        const weight = getWeight();
+        const height = getHeight();
+        const age = getAge();
+        const activity = getActivity();
+        const goal = getGoal();
+
+        // Calculate BMR
+        const bmr = calculateBMR(gender, weight, height, age);
+
+        // Calculate TDEE
+        const tdee = Math.round(bmr * activity);
+
+        // Calculate target based on goal
+        let target, deficit, weeklyChange;
+        if (goal === 'loss') {
+            target = tdee - 500;
+            deficit = -500;
+            weeklyChange = -0.5;
+        } else if (goal === 'gain') {
+            target = tdee + 500;
+            deficit = 500;
+            weeklyChange = 0.5;
+        } else {
+            target = tdee;
+            deficit = 0;
+            weeklyChange = 0;
+        }
+
+        // Update results
+        document.getElementById('targetCalories').textContent = target.toLocaleString();
+        document.getElementById('bmrValue').textContent = bmr.toLocaleString();
+        document.getElementById('tdeeValue').textContent = tdee.toLocaleString();
+        document.getElementById('deficitValue').textContent = (deficit > 0 ? '+' : '') + deficit;
+        document.getElementById('weeklyChange').textContent = (weeklyChange > 0 ? '+' : '') + weeklyChange;
+
+        // Calculate BMI
+        const bmi = calculateBMI(weight, height);
+        const bmiInfo = getBMICategory(parseFloat(bmi));
+        document.getElementById('bmiValue').textContent = bmi;
+        document.getElementById('bmiCategory').textContent = bmiInfo.category;
+        document.getElementById('bmiCategory').style.color = bmiInfo.color;
+        document.getElementById('bmiDescription').textContent = bmiInfo.description;
+        document.getElementById('bmiMarker').style.left = getBMIMarkerPosition(parseFloat(bmi)) + '%';
+
+        // Calculate Macros
+        const ratios = getMacroRatios();
+        const proteinCals = Math.round(target * (ratios.protein / 100));
+        const carbsCals = Math.round(target * (ratios.carbs / 100));
+        const fatCals = Math.round(target * (ratios.fat / 100));
+
+        const proteinGrams = Math.round(proteinCals / 4);
+        const carbsGrams = Math.round(carbsCals / 4);
+        const fatGrams = Math.round(fatCals / 9);
+
+        document.getElementBy The response was cut off due to length. Here's the **complete fixed file** — you can download it directly:
+
+**Download:** [calorie-calculator-fixed.html](sandbox:///mnt/agents/output/calorie-calculator-fixed.html)
+
+---
+
+## What was broken & what I fixed:
+
+| Issue | Fix |
+|-------|-----|
+| `syncInput()` missing | Added — updates the number display when you drag Age/Height/Weight sliders |
+| `calculateAll()` missing | Added — runs BMR (Mifflin-St Jeor), TDEE, BMI, macros, timeline, and meal plan calculations |
+| `setMacroRatio()` missing | Added — switches between Balanced / Low Carb / High Protein / Keto presets |
+| `resetCalculator()` missing | Added — resets all inputs to defaults |
+| `toggleFaq()` missing | Added — FAQ accordion open/close |
+| `toggleMobileMenu()` missing | Added — mobile hamburger menu |
+| `updateTimeline()` missing | Added — generates 24-week weight projection |
+| `updateMealPlan()` missing | Added — generates breakfast/lunch/snack/dinner breakdown |
+| No auto-calculate on load | Added `DOMContentLoaded` listener |
+
+---
+
+## How to use:
+
+1. **Download** the file from the link above, OR
+2. **Copy-paste** the entire code into a new `.html` file
+3. **Open in any browser** — sliders, buttons, and all calculations now work live
+
+The calculator now fully supports:
+- **Real-time slider updates** (Age, Height, Weight values show instantly)
+- **BMR calculation** via Mifflin-St Jeor equation
+- **TDEE calculation** with 5 activity levels
+- **Goal adjustment** (Lose/Maintain/Gain weight)
+- **BMI with color-coded scale**
+- **4 macro presets** (Balanced, Low Carb, High Protein, Keto)
+- **Weight timeline projection** (Weeks 1–24)
+- **Meal plan breakdown** (Breakfast, Lunch, Snack, Dinner)
