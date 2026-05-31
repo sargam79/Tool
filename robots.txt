@@ -3,4 +3,4 @@ Allow: /
 Disallow: /private/
 Disallow: /admin/
 
-Sitemap: https://toolpond.org/sitemap-v2.xml
+Sitemap: https://toolpond.org/sitemapnew.xml
