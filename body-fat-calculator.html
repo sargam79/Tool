@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free body fat calculator - Calculate your exact body fat percentage using Navy method, BMI method & Jackson Pollock formula. Get accurate results instantly. No signup required.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Free body fat calculator 2026 - Calculate your exact body fat percentage using Navy method, BMI method & Jackson Pollock formula. Get accurate results instantly. No signup required.">
     <meta name="keywords" content="body fat calculator, body fat percentage calculator, body composition calculator, navy body fat calculator, body fat calculator for women, body fat calculator for men, calculate body fat, body fat percentage, lean body mass calculator, fat loss calculator">
     <meta name="author" content="ToolPond Pro">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
     <meta name="revisit-after" content="7 days">
@@ -15,29 +15,25 @@
     <meta name="rating" content="general">
     <meta name="theme-color" content="#667eea">
     <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Body Fat Calculator">
 
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://toolpond.org/body-fat-calculator.html">
 
-    <!-- Open Graph -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Free Body Fat Calculator - Accurate Body Composition Analysis">
+    <meta property="og:title" content="Free Body Fat Calculator 2026 - Accurate Body Composition Analysis">
     <meta property="og:description" content="Calculate your body fat percentage instantly using the Navy method, BMI formula, or Jackson Pollock method. Completely free body composition calculator with no signup.">
     <meta property="og:url" content="https://toolpond.org/body-fat-calculator.html">
     <meta property="og:site_name" content="ToolPond Pro">
-    <meta property="og:image" content="https://toolpond.org/images/body-fat-calculator-og.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@toolpond">
-    <meta name="twitter:title" content="Free Body Fat Calculator - Calculate Body Composition">
+    <meta name="twitter:title" content="Free Body Fat Calculator 2026 - Calculate Body Composition">
     <meta name="twitter:description" content="Get your body fat percentage instantly. Free calculator using Navy method, BMI, and Jackson Pollock formula.">
-    <meta name="twitter:image" content="https://toolpond.org/images/body-fat-calculator-twitter.jpg">
 
-    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -83,7 +79,6 @@
     }
     </script>
 
-    <!-- FAQ Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -126,20 +121,22 @@
                 "name": "What measurements do I need for the body fat calculator?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "For accurate results, you'll need: age, gender, height, weight, and body measurements. The Navy method requires neck and waist measurements. Jackson Pollock uses additional measurements like chest, abdomen, and triceps. All measurements should be taken accurately using a measuring tape."
+                    "text": "For accurate results, you will need: age, gender, height, weight, and body measurements. The Navy method requires neck and waist measurements. Jackson Pollock uses additional measurements like chest, abdomen, and triceps. All measurements should be taken accurately using a measuring tape."
                 }
             }
         ]
     }
     </script>
 
-    <title>Free Body Fat Calculator - Calculate Body Fat Percentage Accurately</title>
+    <title>Free Body Fat Calculator 2026 - Calculate Body Fat Percentage Accurately</title>
 
     <style>
         :root {
             --primary: #667eea;
             --primary-dark: #5568d3;
             --primary-light: #f0f4ff;
+            --secondary: #764ba2;
+            --accent: #f093fb;
             --dark: #1f2937;
             --light: #f9fafb;
             --border: #e5e7eb;
@@ -147,384 +144,632 @@
             --text-light: #6b7280;
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
             --success: #10b981;
             --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text);
-            background: var(--light);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
 
         nav {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow-sm);
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), #764ba2);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 800;
+            background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
-
         .nav-links a {
             color: var(--text);
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
-
         .nav-links a:hover {
             color: var(--primary);
+            background: var(--primary-light);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 0.5rem;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary), #764ba2);
+            background: var(--gradient-1);
             color: white;
-            padding: 4rem 2rem;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
             text-align: center;
-            margin-top: 0;
+            position: relative;
+            overflow: hidden;
         }
-
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            animation: float 20s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(20px, 20px); }
+        }
         .header h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
             margin-bottom: 1rem;
             font-weight: 800;
+            position: relative;
+            z-index: 1;
         }
-
         .header p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             opacity: 0.95;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 1;
         }
 
         .breadcrumb {
             background: #fff;
             border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
+            padding: 1rem clamp(1rem, 3vw, 2rem);
             font-size: 0.9rem;
             color: var(--text-light);
         }
-
         .breadcrumb a {
-            color: var(--text);
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
             color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
         }
+        .breadcrumb a:hover { text-decoration: underline; }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
         .content {
-            padding: 3rem 2rem;
-            background: #fff;
+            padding: clamp(1.5rem, 4vw, 3rem) 0;
         }
 
         .calculator-box {
             background: linear-gradient(145deg, #fff, var(--light));
-            padding: 2.5rem;
-            border-radius: 12px;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            border-radius: 20px;
             border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
         }
-
-        .input-group {
+        .calculator-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-2);
+        }
+        .calculator-title {
+            color: var(--dark);
             margin-bottom: 1.5rem;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .calculator-title::before {
+            content: '';
+            width: 4px;
+            height: 30px;
+            background: var(--gradient-1);
+            border-radius: 2px;
         }
 
+        .input-group { margin-bottom: 1.5rem; }
         .input-label {
             display: block;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--dark);
+            font-size: 0.95rem;
         }
-
         .input-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
         }
-
-        input[type="number"],
-        select {
+        input[type="number"], select {
             width: 100%;
-            padding: 0.875rem;
+            padding: 0.875rem 1rem;
             border: 2px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s;
+            background: #fff;
+            color: var(--text);
+            min-height: 48px;
         }
-
-        input[type="number"]:focus,
-        select:focus {
+        input[type="number"]:focus, select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+            transform: translateY(-1px);
+        }
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2rem;
+            padding-right: 3rem;
+        }
+        .unit-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
         }
 
         .button-group {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
-
         button {
             flex: 1;
-            padding: 1rem;
+            min-width: 140px;
+            padding: 1rem 1.5rem;
             border: none;
-            border-radius: 8px;
-            font-weight: 600;
+            border-radius: 12px;
+            font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 48px;
+            touch-action: manipulation;
         }
-
         .btn-calculate {
-            background: linear-gradient(135deg, var(--primary), #764ba2);
+            background: var(--gradient-1);
             color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
-
         .btn-calculate:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
         }
-
+        .btn-calculate:active { transform: translateY(0); }
         .btn-reset {
-            background: var(--light);
+            background: #fff;
             color: var(--text);
             border: 2px solid var(--border);
         }
-
         .btn-reset:hover {
-            background: var(--border);
+            background: var(--light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .btn-save {
+            background: var(--gradient-4);
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 233, 123, 0.4);
+        }
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(67, 233, 123, 0.5);
         }
 
         .results {
             display: none;
-            background: var(--primary-light);
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
             margin-top: 2rem;
+            animation: slideUp 0.5s ease;
         }
-
-        .results.show {
-            display: block;
-            animation: slideUp 0.4s ease;
-        }
-
+        .results.show { display: block; }
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .result-item {
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
             margin-bottom: 1.5rem;
         }
-
+        .result-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        .result-card:nth-child(1)::before { background: var(--gradient-1); }
+        .result-card:nth-child(2)::before { background: var(--gradient-2); }
+        .result-card:nth-child(3)::before { background: var(--gradient-3); }
+        .result-card:nth-child(4)::before { background: var(--gradient-4); }
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
         .result-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-
         .result-value {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             color: var(--primary-dark);
+            line-height: 1.2;
         }
-
         .result-interpretation {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text);
-            margin-top: 0.5rem;
+            margin-top: 0.75rem;
             padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            border-left: 3px solid var(--primary);
+            background: var(--light);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            text-align: left;
         }
-
         .category-badge {
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.85rem;
             margin-top: 0.5rem;
         }
-
         .category-badge.essential {
-            background: #fee2e2;
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
             color: #991b1b;
         }
-
         .category-badge.athletes {
-            background: #dbeafe;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
             color: #1e40af;
         }
-
         .category-badge.fitness {
-            background: #dcfce7;
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
             color: #166534;
         }
-
         .category-badge.average {
-            background: #fef3c7;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
             color: #92400e;
         }
-
         .category-badge.obese {
-            background: #fecaca;
+            background: linear-gradient(135deg, #fecaca, #fca5a5);
             color: #7f1d1d;
+        }
+
+        .gauge-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .gauge-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .gauge-bar {
+            width: 100%;
+            height: 24px;
+            background: linear-gradient(90deg, 
+                #3b82f6 0%, #3b82f6 13%,
+                #10b981 13%, #10b981 37%,
+                #f59e0b 37%, #f59e0b 62%,
+                #f97316 62%, #f97316 87%,
+                #ef4444 87%, #ef4444 100%
+            );
+            border-radius: 12px;
+            position: relative;
+            margin: 1rem 0;
+        }
+        .gauge-marker {
+            position: absolute;
+            top: -8px;
+            width: 4px;
+            height: 40px;
+            background: var(--dark);
+            border-radius: 2px;
+            transform: translateX(-50%);
+            transition: left 0.5s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .gauge-marker::after {
+            content: attr(data-value);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .gauge-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .history-section {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .history-section.show {
+            display: block;
+            animation: slideUp 0.4s ease;
+        }
+        .history-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .history-table th, .history-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .history-table th {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        .history-table tr:hover { background: var(--light); }
+
+        .info-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 4px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            color: #92400e;
+            font-size: 0.95rem;
+        }
+        .info-box strong {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .section {
             margin: 3rem 0;
-            padding: 2.5rem;
-            background: var(--light);
-            border-radius: 12px;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            background: #fff;
+            border-radius: 20px;
             border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
         }
-
         .section h2 {
             color: var(--dark);
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 0.75rem;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 30px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
         .section h3 {
             color: var(--dark);
             margin: 1.5rem 0 0.75rem;
             font-size: 1.2rem;
+            font-weight: 700;
         }
-
         .section p {
             color: var(--text);
             margin-bottom: 1rem;
             line-height: 1.8;
         }
-
         .section ul {
             margin-left: 1.5rem;
             margin-bottom: 1rem;
         }
-
         .section li {
             margin-bottom: 0.75rem;
             line-height: 1.7;
         }
+        .section a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .section a:hover { text-decoration: underline; }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
-
         .feature-card {
-            background: white;
+            background: linear-gradient(145deg, #fff, var(--light));
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
         .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
-
+        .feature-card:hover::before { opacity: 1; }
         .feature-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.75rem;
+            display: block;
         }
-
         .feature-card h4 {
             color: var(--dark);
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
-
         .feature-card p {
             color: var(--text-light);
             font-size: 0.9rem;
             margin: 0;
         }
 
-        .faq-section {
-            margin: 3rem 0;
-        }
-
+        .faq-section { margin: 3rem 0; }
         .faq-item {
-            background: white;
+            background: #fff;
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             border-left: 4px solid var(--primary);
             margin-bottom: 1rem;
             transition: all 0.3s;
+            cursor: pointer;
         }
-
         .faq-item:hover {
             box-shadow: var(--shadow-md);
+            transform: translateX(5px);
         }
-
         .faq-item h4 {
             color: var(--dark);
             margin-bottom: 0.75rem;
             font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-
         .faq-item p {
             color: var(--text-light);
             font-size: 0.95rem;
@@ -533,135 +778,295 @@
         }
 
         .related-tools {
-            background: var(--primary-light);
+            background: linear-gradient(145deg, var(--primary-light), #fff);
             padding: 2rem;
-            border-radius: 12px;
+            border-radius: 20px;
             margin: 3rem 0;
             border: 1px solid var(--border);
         }
-
         .related-tools h2 {
             color: var(--dark);
             margin-bottom: 1.5rem;
+            font-size: 1.5rem;
         }
-
         .tool-links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
         }
-
         .tool-link {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background: #fff;
+            padding: 1.25rem;
+            border-radius: 12px;
             text-decoration: none;
             color: var(--primary);
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
             border: 2px solid var(--primary);
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            min-height: 48px;
         }
-
         .tool-link:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .keywords-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(145deg, var(--primary-light), #fff);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+        .keywords-section h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        .keywords-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .keyword-tag {
+            background: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .keyword-tag:hover {
+            background: var(--primary);
+            color: white;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         .footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             color: white;
-            padding: 3rem 2rem;
+            padding: 3rem clamp(1rem, 3vw, 2rem);
             margin-top: 3rem;
         }
-
         .footer-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
-
         .footer-col h4 {
             color: var(--primary);
             margin-bottom: 1rem;
             font-size: 1.1rem;
+            font-weight: 700;
         }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 0.75rem;
-        }
-
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.75rem; }
         .footer-col a {
             color: #d1d5db;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            display: inline-block;
         }
-
         .footer-col a:hover {
             color: white;
+            transform: translateX(3px);
         }
-
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            border-top: 1px solid #4b5563;
+            border-top: 1px solid #374151;
             padding-top: 2rem;
             color: #9ca3af;
             font-size: 0.9rem;
         }
-
         .footer-bottom a {
             color: #d1d5db;
             text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
         }
-
         .footer-bottom a:hover {
             color: white;
+            text-decoration: underline;
         }
 
-        .info-box {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 1.5rem;
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .mobile-nav.active {
+            display: block;
+            opacity: 1;
+        }
+        .mobile-nav-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: #fff;
+            padding: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.3s;
+            overflow-y: auto;
+        }
+        .mobile-nav.active .mobile-nav-content {
+            transform: translateX(0);
+        }
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            margin-bottom: 1rem;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        .mobile-nav-links { list-style: none; }
+        .mobile-nav-links li { margin-bottom: 0.5rem; }
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
             border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .mobile-nav-links a:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 100;
+            min-width: 50px;
+            min-height: 50px;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
             margin: 1.5rem 0;
-            color: #92400e;
+            font-size: 0.95rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .comparison-table thead {
+            background: var(--gradient-1);
+            color: white;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .comparison-table tbody tr:hover { background: var(--light); }
+        .comparison-table td:first-child {
+            font-weight: 700;
+            color: var(--dark);
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .input-row {
-                grid-template-columns: 1fr;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .result-value {
-                font-size: 2rem;
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .header h1 { font-size: 1.8rem; }
+            .input-row { grid-template-columns: 1fr; }
+            .button-group { flex-direction: column; }
+            button { width: 100%; }
+            .results-grid { grid-template-columns: 1fr 1fr; }
+            .result-value { font-size: 1.8rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; text-align: center; }
+            .comparison-table { font-size: 0.85rem; }
+            .comparison-table th, .comparison-table td { padding: 0.75rem 0.5rem; }
+        }
+        @media (max-width: 480px) {
+            .results-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .tool-links { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+        @media print {
+            nav, .breadcrumb, .footer, .scroll-top, .mobile-menu-btn { display: none !important; }
+            .calculator-box, .section { box-shadow: none; border: 1px solid #ccc; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
+
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-content">
+            <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+            <ul class="mobile-nav-links">
+                <li><a href="https://toolpond.org/">🏠 Home</a></li>
+                <li><a href="https://toolpond.org/calculators.html">📊 Calculators</a></li>
+                <li><a href="https://toolpond.org/bmi-calculator.html">⚖️ BMI Calculator</a></li>
+                <li><a href="https://toolpond.org/age-calculator.html">🎂 Age Calculator</a></li>
+                <li><a href="https://toolpond.org/loan-calculator.html">💰 Loan Calculator</a></li>
+                <li><a href="https://toolpond.org/mortgage-calculator.html">🏠 Mortgage Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
     <nav>
         <div class="nav-container">
             <a href="https://toolpond.org/" class="logo">💪 ToolPond Pro</a>
@@ -671,6 +1076,7 @@
                 <li><a href="https://toolpond.org/bmi-calculator.html">BMI Calculator</a></li>
                 <li><a href="https://toolpond.org/age-calculator.html">Age Calculator</a></li>
             </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Open menu">☰</button>
         </div>
     </nav>
 
@@ -678,7 +1084,9 @@
         <div class="container">
             <h1>💪 Body Fat Calculator</h1>
             <p>Calculate Your Body Fat Percentage Instantly Using Multiple Methods</p>
-            <p style="font-size: 1rem; opacity: 0.9;">Free • Accurate • No Signup Required</p>
+            <div class="header-badge">
+                <span>✓</span> Free • Accurate • No Signup Required
+            </div>
         </div>
     </div>
 
@@ -691,86 +1099,121 @@
     <div class="content">
         <div class="container">
             <div class="calculator-box">
-                <h2 style="color: var(--dark); margin-bottom: 1.5rem;">Enter Your Information</h2>
+                <h2 class="calculator-title">Enter Your Information</h2>
                 
                 <div class="input-group">
                     <label class="input-label">Gender:</label>
                     <select id="gender" onchange="updateInputs()">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="male">👨 Male</option>
+                        <option value="female">👩 Female</option>
                     </select>
                 </div>
 
                 <div class="input-row">
                     <div class="input-group">
-                        <label class="input-label">Age (years):</label>
-                        <input type="number" id="age" min="1" max="120" value="30" placeholder="Enter your age">
+                        <label class="input-label">Age <span class="unit-badge">years</span></label>
+                        <input type="number" id="age" min="1" max="120" value="30" placeholder="Enter your age" inputmode="numeric">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">Height (inches):</label>
-                        <input type="number" id="height" min="36" max="120" value="70" placeholder="Enter height">
-                    </div>
-                </div>
-
-                <div class="input-row">
-                    <div class="input-group">
-                        <label class="input-label">Weight (lbs):</label>
-                        <input type="number" id="weight" min="50" max="500" value="180" placeholder="Enter weight">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Neck (inches):</label>
-                        <input type="number" id="neck" min="6" max="25" step="0.1" value="15" placeholder="Measure below larynx">
+                        <label class="input-label">Height <span class="unit-badge">inches</span></label>
+                        <input type="number" id="height" min="36" max="120" value="70" placeholder="Enter height" inputmode="numeric">
                     </div>
                 </div>
 
                 <div class="input-row">
                     <div class="input-group">
-                        <label class="input-label">Waist (inches):</label>
-                        <input type="number" id="waist" min="10" max="60" step="0.1" value="32" placeholder="Measure at navel level">
+                        <label class="input-label">Weight <span class="unit-badge">lbs</span></label>
+                        <input type="number" id="weight" min="50" max="500" value="180" placeholder="Enter weight" inputmode="numeric">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Neck <span class="unit-badge">inches</span></label>
+                        <input type="number" id="neck" min="6" max="25" step="0.1" value="15" placeholder="Measure below larynx" inputmode="decimal">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label class="input-label">Waist <span class="unit-badge">inches</span></label>
+                        <input type="number" id="waist" min="10" max="60" step="0.1" value="32" placeholder="Measure at navel level" inputmode="decimal">
                     </div>
                     <div class="input-group" id="hipGroup" style="display: none;">
-                        <label class="input-label">Hip (inches):</label>
-                        <input type="number" id="hip" min="20" max="80" step="0.1" value="38" placeholder="Measure at widest point">
+                        <label class="input-label">Hip <span class="unit-badge">inches</span></label>
+                        <input type="number" id="hip" min="20" max="80" step="0.1" value="38" placeholder="Measure at widest point" inputmode="decimal">
                     </div>
                 </div>
 
                 <div class="button-group">
                     <button class="btn-calculate" onclick="calculateBodyFat()">📊 Calculate Body Fat</button>
                     <button class="btn-reset" onclick="resetCalculator()">🔄 Reset</button>
+                    <button class="btn-save" onclick="saveResult()">💾 Save Result</button>
                 </div>
 
                 <div class="results" id="results">
-                    <div class="result-item">
-                        <div class="result-label">Body Fat Percentage (Navy Method)</div>
-                        <div class="result-value" id="bodyFatNav">0%</div>
-                        <div class="result-interpretation" id="interpretNav"></div>
+                    <h3 style="color: var(--dark); margin-bottom: 1rem; font-size: 1.3rem;">📈 Your Results</h3>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <div class="result-label">Navy Method</div>
+                            <div class="result-value" id="bodyFatNav">0%</div>
+                            <div id="interpretNav"></div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">BMI Method</div>
+                            <div class="result-value" id="bodyFatBMI">0%</div>
+                            <div id="interpretBMI"></div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Lean Body Mass</div>
+                            <div class="result-value" id="leanMass">0 lbs</div>
+                            <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem;">Muscle, bone & organs</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Fat Mass</div>
+                            <div class="result-value" id="fatMass">0 lbs</div>
+                            <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem;">Total body fat</div>
+                        </div>
                     </div>
 
-                    <div class="result-item">
-                        <div class="result-label">Body Fat Percentage (BMI Method)</div>
-                        <div class="result-value" id="bodyFatBMI">0%</div>
-                        <div class="result-interpretation" id="interpretBMI"></div>
+                    <div class="gauge-container">
+                        <div class="gauge-title">Body Fat Percentage Visual Guide</div>
+                        <div class="gauge-bar">
+                            <div class="gauge-marker" id="gaugeMarker" style="left: 0%;" data-value="0%"></div>
+                        </div>
+                        <div class="gauge-labels">
+                            <span>Essential</span>
+                            <span>Athletes</span>
+                            <span>Fitness</span>
+                            <span>Average</span>
+                            <span>Obese</span>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="result-item">
-                        <div class="result-label">Lean Body Mass</div>
-                        <div class="result-value" id="leanMass">0 lbs</div>
-                        <div class="result-interpretation" id="interpretLean"></div>
-                    </div>
-
-                    <div class="result-item">
-                        <div class="result-label">Fat Mass</div>
-                        <div class="result-value" id="fatMass">0 lbs</div>
-                        <div class="result-interpretation" id="interpretFat"></div>
+                <div class="history-section" id="historySection">
+                    <div class="history-title">📋 Saved Results History</div>
+                    <div style="overflow-x: auto;">
+                        <table class="history-table" id="historyTable">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    <th>Weight</th>
+                                    <th>Navy %</th>
+                                    <th>BMI %</th>
+                                    <th>Lean Mass</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyBody"></tbody>
+                        </table>
                     </div>
                 </div>
 
                 <div class="info-box">
-                    <strong>💡 Tip:</strong> For most accurate measurements, use a soft measuring tape and measure in the morning before eating. Keep the tape snug but not tight against your skin.
+                    <strong>💡 Pro Tip</strong>
+                    For most accurate measurements, use a soft measuring tape and measure in the morning before eating. Keep the tape snug but not tight against your skin.
                 </div>
             </div>
 
-            <!-- What is Body Fat Calculator Section -->
             <section class="section">
                 <h2>What is a Body Fat Calculator?</h2>
                 <p>A <strong>body fat calculator</strong> is a free online tool that calculates your <strong>body fat percentage</strong> based on your physical measurements. Unlike a <a href="https://toolpond.org/bmi-calculator.html">BMI calculator</a>, which only considers height and weight, a body fat percentage calculator provides a more accurate assessment of your body composition by distinguishing between muscle mass and fat mass.</p>
@@ -780,29 +1223,28 @@
                 <h3>Why Use Our Free Body Fat Calculator?</h3>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">📊</div>
+                        <span class="feature-icon">📊</span>
                         <h4>Multiple Methods</h4>
                         <p>Compare results using Navy formula and BMI method for comprehensive body composition analysis.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
+                        <span class="feature-icon">🎯</span>
                         <h4>Fitness Tracking</h4>
                         <p>Monitor body composition changes during workouts and diet adjustments more accurately than weight alone.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">⚕️</div>
+                        <span class="feature-icon">⚕️</span>
                         <h4>Health Insights</h4>
                         <p>Understand your body composition categories and what they mean for your overall health and fitness.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🏋️</div>
+                        <span class="feature-icon">🏋️</span>
                         <h4>Muscle vs Fat</h4>
                         <p>See your lean body mass and fat mass separately to better understand your body composition.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- How It Works Section -->
             <section class="section">
                 <h2>How to Use the Body Fat Calculator</h2>
                 
@@ -821,7 +1263,6 @@
                 <p>Our calculator instantly computes your body fat percentage using the Navy formula and BMI method, showing you your lean body mass and fat mass in pounds.</p>
             </section>
 
-            <!-- Calculation Methods Section -->
             <section class="section">
                 <h2>Body Fat Calculation Methods Explained</h2>
                 
@@ -831,18 +1272,26 @@
                 <h3>BMI-Based Method</h3>
                 <p>This method uses the BMI formula combined with age and gender to estimate body fat percentage. While less precise than the Navy method, it provides a quick estimation using only height and weight.</p>
 
-                <h3>Interpretation of Results</h3>
-                <p>Body fat percentages are categorized into ranges:</p>
-                <ul>
-                    <li><strong>Essential Fat:</strong> 2-5% (men), 10-13% (women) - Minimum for basic biological functions</li>
-                    <li><strong>Athletes:</strong> 6-13% (men), 14-20% (women) - Fit individuals with regular training</li>
-                    <li><strong>Fitness:</strong> 14-17% (men), 21-24% (women) - Health-conscious individuals</li>
-                    <li><strong>Average:</strong> 18-24% (men), 25-31% (women) - Typical for most adults</li>
-                    <li><strong>Obese:</strong> 25%+ (men), 32%+ (women) - May indicate health concerns</li>
-                </ul>
+                <h3>Body Fat Percentage Categories</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Men</th>
+                            <th>Women</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Essential Fat</td><td>2-5%</td><td>10-13%</td><td>Minimum for basic biological functions</td></tr>
+                        <tr><td>Athletes</td><td>6-13%</td><td>14-20%</td><td>Fit individuals with regular training</td></tr>
+                        <tr><td>Fitness</td><td>14-17%</td><td>21-24%</td><td>Health-conscious individuals</td></tr>
+                        <tr><td>Average</td><td>18-24%</td><td>25-31%</td><td>Typical for most adults</td></tr>
+                        <tr><td>Obese</td><td>25%+</td><td>32%+</td><td>May indicate health concerns</td></tr>
+                    </tbody>
+                </table>
             </section>
 
-            <!-- Related Calculators -->
             <div class="related-tools">
                 <h2>Related Health & Fitness Tools</h2>
                 <p style="margin-bottom: 1.5rem; color: var(--text);">Check out these other useful calculators for comprehensive health tracking:</p>
@@ -856,65 +1305,72 @@
                 </div>
             </div>
 
-            <!-- FAQ Section -->
             <section class="faq-section">
-                <h2 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.8rem; border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem;">Frequently Asked Questions</h2>
+                <h2 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.8rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <span style="width: 4px; height: 30px; background: var(--gradient-1); border-radius: 2px; display: inline-block;"></span>
+                    Frequently Asked Questions
+                </h2>
 
                 <div class="faq-item">
-                    <h4>How is body fat percentage calculated?</h4>
+                    <h4>❓ How is body fat percentage calculated?</h4>
                     <p>Body fat percentage is calculated using formulas that consider your age, gender, height, weight, and body measurements (neck, waist, and hip). The Navy formula uses regression equations based on these measurements to estimate the percentage of your total body weight that is fat tissue.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>What is a healthy body fat percentage?</h4>
+                    <h4>❓ What is a healthy body fat percentage?</h4>
                     <p>Healthy body fat percentages vary by age and gender. For men, 10-20% is generally considered healthy; for women, 18-25% is healthy. However, optimal ranges depend on individual fitness goals, age, and overall health status. Athletes typically have lower percentages (6-13% for men, 14-20% for women).</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>Which body fat calculation method is most accurate?</h4>
+                    <h4>❓ Which body fat calculation method is most accurate?</h4>
                     <p>While DEXA scans and hydrostatic weighing are most accurate, they're expensive and not practical for regular use. The Navy formula is considered highly accurate and reliable for estimating body fat using simple measurements. Our calculator provides multiple methods so you can compare results.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>Can I use this body fat calculator for fitness tracking?</h4>
+                    <h4>❓ Can I use this body fat calculator for fitness tracking?</h4>
                     <p>Absolutely! Our body fat calculator is perfect for fitness tracking. Regular measurements (monthly or quarterly) show changes in body composition during weight loss or muscle-building programs. Unlike scale weight, body fat percentage distinguishes between muscle gains and fat loss.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>How do I take accurate body measurements?</h4>
+                    <h4>❓ How do I take accurate body measurements?</h4>
                     <p>Use a soft measuring tape and measure in the morning before eating if possible. For neck: measure just below your larynx. For waist: measure at your navel level, not where pants sit. For hips: measure at the widest point. Keep the tape snug but not tight, and take measurements consistently.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>What's the difference between body fat percentage and BMI?</h4>
+                    <h4>❓ What's the difference between body fat percentage and BMI?</h4>
                     <p>BMI only considers height and weight, so it can't distinguish between muscle and fat. Two people with the same BMI might have very different body compositions. Body fat percentage directly measures the amount of fat tissue, making it a better indicator of fitness and health than BMI alone.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>Is body fat calculator accurate for everyone?</h4>
+                    <h4>❓ Is body fat calculator accurate for everyone?</h4>
                     <p>The Navy formula is highly accurate for most people with body fat percentages between 10-50%. It may be less accurate for very muscular individuals or those with extremely low body fat. Multiple estimation methods are provided for comparison and better assessment.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>How often should I measure my body fat percentage?</h4>
+                    <h4>❓ How often should I measure my body fat percentage?</h4>
                     <p>For most people, monthly measurements are ideal for tracking progress. Weekly measurements may show false variations due to water retention and daily fluctuations. Keep consistent measurement times and techniques for accurate comparison over time.</p>
                 </div>
             </section>
 
-            <!-- Keywords Section -->
-            <section style="margin: 3rem 0; padding: 2rem; background: var(--primary-light); border-radius: 12px; border: 1px solid var(--border);">
-                <h2 style="color: var(--dark); margin-bottom: 1.5rem;">Related Body Fat Calculator Searches</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">body fat calculator</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">body fat percentage calculator</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">navy body fat calculator</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">body composition calculator</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">calculate body fat</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">body fat formula</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">lean body mass calculator</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">body fat percentage women</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">healthy body fat percentage</span>
-                    <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--border);">calculate lean mass</span>
+            <section class="keywords-section">
+                <h2>Related Body Fat Calculator Searches</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Find the right calculator for your needs:</p>
+                <div class="keywords-list">
+                    <span class="keyword-tag">body fat calculator</span>
+                    <span class="keyword-tag">body fat percentage calculator</span>
+                    <span class="keyword-tag">navy body fat calculator</span>
+                    <span class="keyword-tag">body composition calculator</span>
+                    <span class="keyword-tag">calculate body fat</span>
+                    <span class="keyword-tag">body fat formula</span>
+                    <span class="keyword-tag">lean body mass calculator</span>
+                    <span class="keyword-tag">body fat percentage women</span>
+                    <span class="keyword-tag">healthy body fat percentage</span>
+                    <span class="keyword-tag">calculate lean mass</span>
+                    <span class="keyword-tag">fat loss calculator</span>
+                    <span class="keyword-tag">body fat calculator for men</span>
+                    <span class="keyword-tag">body fat calculator for women</span>
+                    <span class="keyword-tag">jackson pollock body fat</span>
+                    <span class="keyword-tag">body fat measurement</span>
                 </div>
             </section>
         </div>
@@ -954,15 +1410,43 @@
             </div>
             <div class="footer-col">
                 <h4>About ToolPond Pro</h4>
-                <p>ToolPond Pro provides 28+ free online calculators and tools including body fat calculator, BMI calculator, calorie calculator, and more. All tools are 100% free, require no signup, and work entirely in your browser for complete privacy.</p>
+                <p style="color: #d1d5db; font-size: 0.9rem;">ToolPond Pro provides 28+ free online calculators and tools including body fat calculator, BMI calculator, calorie calculator, and more. All tools are 100% free, require no signup, and work entirely in your browser for complete privacy.</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 ToolPond Pro. All rights reserved. | <a href="https://toolpond.org/privacy-policy.html">Privacy Policy</a> | <a href="https://toolpond.org/contact.html">Contact</a> | <a href="https://toolpond.org/sitemap.html">Sitemap</a></p>
+            <p>&copy; 2026 ToolPond Pro. All rights reserved. | 
+            <a href="https://toolpond.org/privacy-policy.html">Privacy Policy</a> | 
+            <a href="https://toolpond.org/contact.html">Contact</a> | 
+            <a href="https://toolpond.org/about.html">About</a></p>
         </div>
     </footer>
 
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">↑</button>
+
     <script>
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        document.getElementById('mobileNav').addEventListener('click', function(e) {
+            if (e.target === this) toggleMobileNav();
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
         function updateInputs() {
             const gender = document.getElementById('gender').value;
             const hipGroup = document.getElementById('hipGroup');
@@ -988,16 +1472,13 @@
             }
 
             let bodyFatNav = 0;
-
             if (gender === 'male') {
                 bodyFatNav = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
             } else {
                 bodyFatNav = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
             }
-
             bodyFatNav = Math.max(0, Math.min(100, bodyFatNav));
 
-            // BMI Method
             const bmi = (weight / (height * height)) * 703;
             let bodyFatBMI = 1.20 * bmi + 0.23 * age - 5.4;
             if (gender === 'female') {
@@ -1008,73 +1489,90 @@
             const fatMass = weight * (bodyFatNav / 100);
             const leanMass = weight - fatMass;
 
-            // Display results
             document.getElementById('bodyFatNav').textContent = bodyFatNav.toFixed(1) + '%';
             document.getElementById('bodyFatBMI').textContent = bodyFatBMI.toFixed(1) + '%';
             document.getElementById('fatMass').textContent = fatMass.toFixed(1) + ' lbs';
             document.getElementById('leanMass').textContent = leanMass.toFixed(1) + ' lbs';
 
-            // Interpretations
             document.getElementById('interpretNav').innerHTML = getInterpretation(bodyFatNav, gender);
             document.getElementById('interpretBMI').innerHTML = getInterpretation(bodyFatBMI, gender);
-            document.getElementById('interpretLean').innerHTML = '<strong>Lean Body Mass:</strong> This is your muscle, bone, organs, and other non-fat tissue. It\'s important for strength and metabolism.';
-            document.getElementById('interpretFat').innerHTML = '<strong>Fat Mass:</strong> This is your total body fat in pounds. Monitor this during fitness goals rather than total weight.';
+
+            const gaugeMarker = document.getElementById('gaugeMarker');
+            const gaugePercent = Math.min(100, Math.max(0, bodyFatNav));
+            gaugeMarker.style.left = gaugePercent + '%';
+            gaugeMarker.setAttribute('data-value', bodyFatNav.toFixed(1) + '%');
 
             document.getElementById('results').classList.add('show');
+
+            if (window.innerWidth <= 768) {
+                document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function getInterpretation(bodyFat, gender) {
-            let category = '';
-            let badge = '';
-            let description = '';
-
+            let category = '', badge = '', description = '';
             if (gender === 'male') {
-                if (bodyFat < 5) {
-                    category = 'Essential Fat';
-                    badge = 'essential';
-                    description = 'Minimum fat for basic biological functions. Not recommended for general population.';
-                } else if (bodyFat < 13) {
-                    category = 'Athletes';
-                    badge = 'athletes';
-                    description = 'Typical for fitness athletes and fit individuals with regular training.';
-                } else if (bodyFat < 17) {
-                    category = 'Fitness';
-                    badge = 'fitness';
-                    description = 'Good level of fitness with visible muscle definition.';
-                } else if (bodyFat < 24) {
-                    category = 'Average';
-                    badge = 'average';
-                    description = 'Typical for average adults. Still within acceptable health range.';
-                } else {
-                    category = 'Obese';
-                    badge = 'obese';
-                    description = 'Higher body fat may indicate health concerns. Consider fitness improvements.';
-                }
+                if (bodyFat < 5) { category = 'Essential Fat'; badge = 'essential'; description = 'Minimum fat for basic biological functions. Not recommended for general population.'; }
+                else if (bodyFat < 13) { category = 'Athletes'; badge = 'athletes'; description = 'Typical for fitness athletes and fit individuals with regular training.'; }
+                else if (bodyFat < 17) { category = 'Fitness'; badge = 'fitness'; description = 'Good level of fitness with visible muscle definition.'; }
+                else if (bodyFat < 24) { category = 'Average'; badge = 'average'; description = 'Typical for average adults. Still within acceptable health range.'; }
+                else { category = 'Obese'; badge = 'obese'; description = 'Higher body fat may indicate health concerns. Consider fitness improvements.'; }
             } else {
-                if (bodyFat < 13) {
-                    category = 'Essential Fat';
-                    badge = 'essential';
-                    description = 'Minimum fat for basic biological functions. Not recommended for general population.';
-                } else if (bodyFat < 20) {
-                    category = 'Athletes';
-                    badge = 'athletes';
-                    description = 'Typical for fitness athletes and fit individuals with regular training.';
-                } else if (bodyFat < 24) {
-                    category = 'Fitness';
-                    badge = 'fitness';
-                    description = 'Good level of fitness with visible muscle definition.';
-                } else if (bodyFat < 31) {
-                    category = 'Average';
-                    badge = 'average';
-                    description = 'Typical for average adults. Still within acceptable health range.';
-                } else {
-                    category = 'Obese';
-                    badge = 'obese';
-                    description = 'Higher body fat may indicate health concerns. Consider fitness improvements.';
-                }
+                if (bodyFat < 13) { category = 'Essential Fat'; badge = 'essential'; description = 'Minimum fat for basic biological functions. Not recommended for general population.'; }
+                else if (bodyFat < 20) { category = 'Athletes'; badge = 'athletes'; description = 'Typical for fitness athletes and fit individuals with regular training.'; }
+                else if (bodyFat < 24) { category = 'Fitness'; badge = 'fitness'; description = 'Good level of fitness with visible muscle definition.'; }
+                else if (bodyFat < 31) { category = 'Average'; badge = 'average'; description = 'Typical for average adults. Still within acceptable health range.'; }
+                else { category = 'Obese'; badge = 'obese'; description = 'Higher body fat may indicate health concerns. Consider fitness improvements.'; }
+            }
+            return '<strong>' + category + ':</strong> ' + description + ' <span class="category-badge ' + badge + '">' + category + '</span>';
+        }
+
+        let savedResults = [];
+        function saveResult() {
+            const gender = document.getElementById('gender').value;
+            const age = document.getElementById('age').value;
+            const weight = document.getElementById('weight').value;
+            const bodyFatNav = document.getElementById('bodyFatNav').textContent;
+            const bodyFatBMI = document.getElementById('bodyFatBMI').textContent;
+            const leanMass = document.getElementById('leanMass').textContent;
+
+            if (bodyFatNav === '0%') {
+                alert('Please calculate your body fat first before saving!');
+                return;
             }
 
-            return `<strong>${category}:</strong> ${description} <span class="category-badge ${badge}">${category}</span>`;
+            const result = {
+                date: new Date().toLocaleDateString(),
+                gender: gender,
+                age: age,
+                weight: weight,
+                navy: bodyFatNav,
+                bmi: bodyFatBMI,
+                lean: leanMass
+            };
+
+            savedResults.push(result);
+            updateHistoryTable();
+            document.getElementById('historySection').classList.add('show');
+
+            const btn = document.querySelector('.btn-save');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✓ Saved!';
+            btn.style.background = 'var(--gradient-5)';
+            setTimeout(function() {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+            }, 1500);
+        }
+
+        function updateHistoryTable() {
+            const tbody = document.getElementById('historyBody');
+            tbody.innerHTML = '';
+            savedResults.forEach(function(result) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td>' + result.date + '</td><td>' + result.gender + '</td><td>' + result.age + '</td><td>' + result.weight + ' lbs</td><td>' + result.navy + '</td><td>' + result.bmi + '</td><td>' + result.lean + '</td>';
+                tbody.appendChild(row);
+            });
         }
 
         function resetCalculator() {
@@ -1086,10 +1584,17 @@
             document.getElementById('waist').value = 32;
             document.getElementById('hip').value = 38;
             document.getElementById('results').classList.remove('show');
+            document.getElementById('historySection').classList.remove('show');
+            savedResults = [];
             updateInputs();
         }
 
-        // Initialize
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+                calculateBodyFat();
+            }
+        });
+
         updateInputs();
     </script>
 </body>
