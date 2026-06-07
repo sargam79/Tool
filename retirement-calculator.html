@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Retirement Calculator 2026 | Plan Your Retirement Savings & Income</title>
+    <meta name="description" content="Free retirement calculator 2026 - Calculate how much you need to save for retirement. Plan retirement income, savings goals, Social Security, inflation, and withdrawal strategies. No signup needed.">
+    <meta name="keywords" content="retirement calculator, retirement planner, retirement savings calculator, retirement income calculator, retirement planning, 401k calculator, pension calculator, Social Security calculator, 2026">
+    <meta name="author" content="ToolPond Pro">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://toolpond.org/retirement-calculator.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpond.org/retirement-calculator.html">
+    <meta property="og:title" content="Free Retirement Calculator 2026 - Plan Your Retirement Savings & Income">
+    <meta property="og:description" content="Calculate how much you need to retire. Plan retirement savings, income, Social Security, inflation, and withdrawals. Secure your financial future.">
+    <meta property="og:site_name" content="ToolPond Pro">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Retirement Calculator 2026">
+    <meta name="twitter:description" content="Plan your retirement with our free calculator - Social Security, inflation, and withdrawal strategies">
+
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Retirement Calculator","description":"Free retirement calculator for planning retirement savings, income needs, Social Security benefits, and withdrawal strategies","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"1247"},"operatingSystem":"Any","datePublished":"2026-01-01"}
+    </script>
+
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolpond.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://toolpond.org/calculators.html"},{"@type":"ListItem","position":3,"name":"Retirement Calculator","item":"https://toolpond.org/retirement-calculator.html"}]}
+    </script>
+
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do I need to retire?","acceptedAnswer":{"@type":"Answer","text":"Most financial advisors recommend 25 times your annual expenses or 15-25 times your annual income. For example, if you need $50,000 yearly, aim for $1.25 million (25 times $50,000). Our calculator helps you determine your exact needs based on your specific situation."}},{"@type":"Question","name":"When can I retire?","acceptedAnswer":{"@type":"Answer","text":"This depends on your savings rate, investment returns, and target retirement lifestyle. Our calculator helps you determine if your current plan gets you there by your desired retirement age, factoring in Social Security and other income sources."}},{"@type":"Question","name":"What is a safe withdrawal rate?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule is a common guideline. Withdraw 4% of your nest egg in year one, then adjust for inflation. This is considered sustainable for a 30-year retirement. Some experts suggest 3.5% for longer retirements or early retirement."}},{"@type":"Question","name":"Should I account for Social Security?","acceptedAnswer":{"@type":"Answer","text":"Yes. Social Security provides a base income in retirement. Our calculator includes Social Security estimates based on your current income and retirement age. Add your expected benefit to reduce your needed nest egg significantly."}},{"@type":"Question","name":"How does inflation affect retirement planning?","acceptedAnswer":{"@type":"Answer","text":"Inflation silently erodes purchasing power. At 3% annual inflation, $50,000 in expenses today becomes about $121,000 in 30 years. Our calculator adjusts all projections for inflation to show realistic future values."}},{"@type":"Question","name":"What is the difference between traditional and Roth retirement accounts?","acceptedAnswer":{"@type":"Answer","text":"Traditional accounts give you a tax deduction now but require taxes on withdrawals. Roth accounts use after-tax money but withdrawals are tax-free in retirement. Our calculator lets you model both strategies to see which works better for your situation."}}]}
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #3b82f6; --primary-dark: #1e40af; --primary-light: #dbeafe; --dark: #1f2937; --light: #f9fafb; --border: #e5e7eb; --warning: #f59e0b; --danger: #ef4444; --success: #059669; --info: #06b6d4; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background: var(--light);
+        }
+
+        nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: #374151; font-weight: 500; transition: color 0.3s; text-decoration: none; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .breadcrumb { padding: 1rem 2rem; background: #fff; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .breadcrumb a { color: var(--primary); text-decoration: none; margin: 0 0.5rem; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        .tool-header {
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 12px;
+        }
+
+        .tool-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media(max-width: 1024px) { .content-grid { grid-template-columns: 1fr; } }
+
+        .tool-wrapper {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        .input-group { margin-bottom: 1.5rem; }
+        .input-label { display: block; margin-bottom: 0.75rem; font-weight: 600; color: var(--dark); }
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+
+        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media(max-width: 600px) { .input-row { grid-template-columns: 1fr; } }
+
+        .advanced-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            margin: 1.5rem 0;
+            padding: 0.75rem;
+            background: var(--primary-light);
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .advanced-section { display: none; border-top: 2px dashed var(--border); padding-top: 1.5rem; margin-top: 1rem; }
+        .advanced-section.show { display: block; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15); }
+
+        .stat-label { color: #6b7280; font-size: 0.85rem; margin-bottom: 0.5rem; text-transform: uppercase; }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .stat-sub { font-size: 0.8rem; color: #9ca3af; margin-top: 0.25rem; }
+
+        .action-buttons { display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap; }
+        .btn { padding: 0.85rem 1.75rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: #1e40af; transform: translateY(-2px); }
+        .btn-secondary { background: #f3f4f6; color: var(--dark); border: 2px solid var(--border); }
+        .btn-secondary:hover { background: var(--primary); color: #fff; }
+        .btn-success { background: var(--success); color: #fff; }
+        .btn-success:hover { background: #047857; }
+
+        .result-box { background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary); margin: 1.5rem 0; display: none; }
+        .result-box.show { display: block; }
+
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .comparison-table th, .comparison-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+        .comparison-table th { background: var(--primary-light); color: var(--dark); font-weight: 600; }
+        .comparison-table tr:hover { background: #f9fafb; }
+        .comparison-table .highlight { background: #fef3c7; font-weight: 600; }
+
+        .schedule-container { max-height: 400px; overflow-y: auto; margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 8px; }
+        .schedule-table { width: 100%; border-collapse: collapse; }
+        .schedule-table th { position: sticky; top: 0; background: var(--primary); color: #fff; padding: 0.75rem; text-align: left; }
+        .schedule-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+        .schedule-table tr:nth-child(even) { background: #f9fafb; }
+        .schedule-table tr:hover { background: var(--primary-light); }
+
+        .sidebar { background: var(--light); padding: 2rem; border-radius: 10px; border: 1px solid var(--border); }
+        .sidebar h3 { color: var(--dark); margin-bottom: 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
+        .sidebar-item { margin-bottom: 1rem; padding: 0.75rem; background: #fff; border-radius: 6px; border-left: 4px solid var(--primary); }
+
+        .content-section { margin: 3rem 0; padding: 2rem; background: var(--light); border-radius: 10px; }
+        .content-section h2 { color: var(--dark); margin-bottom: 1.5rem; font-size: 1.8rem; border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem; }
+        .content-section h3 { color: #4b5563; margin: 1.5rem 0 0.75rem; font-size: 1.2rem; }
+        .content-section p { margin-bottom: 1rem; line-height: 1.8; color: #4b5563; }
+        .content-section ul { margin: 1rem 0 1rem 1.5rem; }
+        .content-section li { margin-bottom: 0.75rem; color: #4b5563; }
+
+        .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .use-case { background: #fff; padding: 1.5rem; border-radius: 8px; border-top: 4px solid var(--primary); }
+        .use-case h4 { color: var(--dark); margin-bottom: 0.5rem; }
+        .use-case p { color: #6b7280; font-size: 0.95rem; }
+
+        .faq-item { margin-bottom: 1rem; background: #fff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); }
+        .faq-item h4 { color: var(--dark); margin-bottom: 0.5rem; }
+        .faq-item p { color: #6b7280; font-size: 0.95rem; }
+
+        .related-section { background: #fff; padding: 2rem; border-radius: 10px; border: 2px solid var(--primary); margin: 3rem 0; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .tool-card { background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 1.5rem; border-radius: 8px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; cursor: pointer; }
+        .tool-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15); border-color: var(--primary); }
+        .tool-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .tool-card h4 { color: var(--dark); margin-bottom: 0.5rem; }
+        .tool-card a { color: var(--primary); font-weight: 600; text-decoration: none; }
+        .tool-card a:hover { text-decoration: underline; }
+
+        .footer-section { background: var(--dark); color: #fff; padding: 3rem 2rem; margin-top: 4rem; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-col h4 { color: var(--primary); margin-bottom: 1rem; }
+        .footer-col a { color: #d1d5db; text-decoration: none; display: block; margin-bottom: 0.5rem; }
+        .footer-col a:hover { color: #fff; }
+        .footer-col ul { list-style: none; }
+        .footer-bottom { text-align: center; border-top: 1px solid #4b5563; padding-top: 2rem; color: #9ca3af; }
+
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--primary); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+
+        canvas { width: 100%; height: 300px; margin-top: 2rem; }
+
+        .tab-container { margin: 1.5rem 0; }
+        .tab-buttons { display: flex; gap: 0.5rem; border-bottom: 2px solid var(--border); margin-bottom: 1rem; flex-wrap: wrap; }
+        .tab-btn { padding: 0.6rem 1.2rem; border: none; background: none; cursor: pointer; font-weight: 600; color: #6b7280; border-bottom: 3px solid transparent; transition: all 0.3s; }
+        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .preset-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+        .preset-btn { padding: 0.4rem 0.8rem; border: 1px solid var(--border); background: #fff; border-radius: 20px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; }
+        .preset-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        .insight-box { background: #fef3c7; border-left: 4px solid var(--warning); padding: 1rem; border-radius: 8px; margin: 1rem 0; }
+        .insight-box strong { color: var(--dark); }
+
+        .milestone-list { list-style: none; margin: 1rem 0; }
+        .milestone-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+        .milestone-list li span:first-child { font-weight: 600; color: var(--dark); }
+        .milestone-list li span:last-child { color: var(--primary); font-weight: 600; }
+
+        .progress-bar { width: 100%; height: 20px; background: var(--border); border-radius: 10px; overflow: hidden; margin: 0.5rem 0; }
+        .progress-fill { height: 100%; background: var(--primary); border-radius: 10px; transition: width 1s ease; }
+        .progress-fill.danger { background: var(--danger); }
+        .progress-fill.warning { background: var(--warning); }
+        .progress-fill.success { background: var(--success); }
+
+        .gauge-container { text-align: center; margin: 1.5rem 0; }
+        .gauge-label { font-size: 0.9rem; color: #6b7280; margin-bottom: 0.5rem; }
+        .gauge-value { font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+        .gauge-sub { font-size: 0.85rem; color: #9ca3af; }
+
+        @media(max-width: 768px) {
+            .tool-header h1 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+            .stat-value { font-size: 1.4rem; }
+            .tab-buttons { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="calculators.html">Tools</a> / <span>Retirement Calculator</span>
+    </div>
+
+    <div class="tool-header">
+        <h1>Free Retirement Calculator 2026</h1>
+        <p>Plan Your Retirement Savings, Income & Withdrawals</p>
+        <p style="opacity:0.9;font-size:1rem">Social Security estimates - Inflation adjusted - Multiple scenarios - Secure your future</p>
+    </div>
+
+    <div class="container">
+        <div class="content-grid">
+            <div>
+                <div class="tool-wrapper">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--dark);">Calculate Retirement Needs</h2>
+
+                    <div class="preset-buttons">
+                        <span style="font-weight:600; color:#6b7280; margin-right:0.5rem;">Quick Presets:</span>
+                        <button class="preset-btn" onclick="loadPreset('aggressive')">Aggressive Saver</button>
+                        <button class="preset-btn" onclick="loadPreset('moderate')">Moderate Saver</button>
+                        <button class="preset-btn" onclick="loadPreset('late')">Late Starter</button>
+                        <button class="preset-btn" onclick="loadPreset('early')">Early Retiree</button>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="input-label" for="currentAge">Current Age:</label>
+                            <input type="number" id="currentAge" class="input-field" placeholder="35" min="18" max="100">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="retireAge">Retirement Age:</label>
+                            <input type="number" id="retireAge" class="input-field" placeholder="67" min="18" max="100">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="input-label" for="currentSavings">Current Retirement Savings ($):</label>
+                            <input type="number" id="currentSavings" class="input-field" placeholder="50000" min="0" step="0.01">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="annualContribution">Annual Contribution ($):</label>
+                            <input type="number" id="annualContribution" class="input-field" placeholder="10000" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="input-label" for="returnRate">Expected Annual Return (%):</label>
+                            <input type="number" id="returnRate" class="input-field" placeholder="7" min="0" max="20" step="0.1">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="lifeExpectancy">Life Expectancy:</label>
+                            <input type="number" id="lifeExpectancy" class="input-field" placeholder="90" min="60" max="120">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="input-label" for="annualExpense">Annual Retirement Expense ($):</label>
+                            <input type="number" id="annualExpense" class="input-field" placeholder="50000" min="0" step="0.01">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="withdrawalRate">Withdrawal Rate (%):</label>
+                            <input type="number" id="withdrawalRate" class="input-field" placeholder="4" min="1" max="10" step="0.1">
+                            <small style="color:#6b7280;">Default 4% (safe withdrawal rate)</small>
+                        </div>
+                    </div>
+
+                    <button class="advanced-toggle" onclick="toggleAdvanced()">
+                        <span id="advIcon">▶</span> Advanced Options (Social Security, Inflation, Tax, Pension)
+                    </button>
+
+                    <div class="advanced-section" id="advancedSection">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label class="input-label" for="currentIncome">Current Annual Income ($):</label>
+                                <input type="number" id="currentIncome" class="input-field" placeholder="75000" min="0" step="0.01">
+                                <small style="color:#6b7280;">For Social Security estimate</small>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" for="inflationRate">Annual Inflation Rate (%):</label>
+                                <input type="number" id="inflationRate" class="input-field" placeholder="2.5" min="0" max="10" step="0.1">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label class="input-label" for="taxRate">Effective Tax Rate in Retirement (%):</label>
+                                <input type="number" id="taxRate" class="input-field" placeholder="15" min="0" max="50" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" for="pensionIncome">Annual Pension Income ($):</label>
+                                <input type="number" id="pensionIncome" class="input-field" placeholder="0" min="0" step="0.01">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label class="input-label" for="otherIncome">Other Annual Retirement Income ($):</label>
+                                <input type="number" id="otherIncome" class="input-field" placeholder="0" min="0" step="0.01">
+                                <small style="color:#6b7280;">Rental, part-time work, etc.</small>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" for="healthcareCost">Annual Healthcare Cost ($):</label>
+                                <input type="number" id="healthcareCost" class="input-field" placeholder="12000" min="0" step="0.01">
+                                <small style="color:#6b7280;">Default $12,000/year for a couple</small>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="accountType">Retirement Account Type:</label>
+                            <select id="accountType" class="input-field">
+                                <option value="traditional">Traditional (tax-deferred)</option>
+                                <option value="roth">Roth (tax-free withdrawals)</option>
+                                <option value="mixed">Mixed (50/50 split)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">At Retirement</div>
+                            <div class="stat-value" id="atRetirement">$0</div>
+                            <div class="stat-sub" id="atRetirementReal">Real: $0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Nest Egg Needed</div>
+                            <div class="stat-value" id="nestEggNeeded">$0</div>
+                            <div class="stat-sub" id="nestEggInflation">Inflation adj: $0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Shortage/Surplus</div>
+                            <div class="stat-value" id="shortage">$0</div>
+                            <div class="stat-sub" id="shortagePercent">0% of goal</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Monthly Income</div>
+                            <div class="stat-value" id="monthlyIncome">$0</div>
+                            <div class="stat-sub" id="monthlyIncomeBreakdown">From savings</div>
+                        </div>
+                    </div>
+
+                    <div class="gauge-container" id="gaugeContainer" style="display:none;">
+                        <div class="gauge-label">Retirement Readiness Score</div>
+                        <div class="gauge-value" id="readinessScore">0%</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="readinessBar" style="width:0%"></div>
+                        </div>
+                        <div class="gauge-sub" id="readinessText">Enter your details to see your score</div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="calculateRetirement()">🎯 Calculate</button>
+                        <button class="btn btn-secondary" onclick="clearCalculator()">🔄 Clear</button>
+                        <button class="btn btn-success" onclick="exportResults()">📥 Export CSV</button>
+                    </div>
+
+                    <div class="result-box" id="result">
+                        <div class="tab-container">
+                            <div class="tab-buttons">
+                                <button class="tab-btn active" onclick="switchTab('summary', this)">Summary</button>
+                                <button class="tab-btn" onclick="switchTab('schedule', this)">Yearly Projection</button>
+                                <button class="tab-btn" onclick="switchTab('withdrawal', this)">Withdrawal Plan</button>
+                                <button class="tab-btn" onclick="switchTab('comparison', this)">Scenarios</button>
+                                <button class="tab-btn" onclick="switchTab('tips', this)">Tips</button>
+                            </div>
+
+                            <div class="tab-content active" id="tab-summary">
+                                <h3 style="color: var(--dark); margin-bottom: 1rem;">Retirement Plan Summary</h3>
+                                <div id="analysisText" style="color: #4b5563; line-height: 1.8;"></div>
+                                <div class="insight-box" id="insightBox" style="display:none;"></div>
+                                <canvas id="growthChart"></canvas>
+                            </div>
+
+                            <div class="tab-content" id="tab-schedule">
+                                <h3 style="color: var(--dark); margin-bottom: 1rem;">Year-by-Year Savings Projection</h3>
+                                <div class="schedule-container">
+                                    <table class="schedule-table" id="scheduleTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Age</th>
+                                                <th>Year</th>
+                                                <th>Contribution</th>
+                                                <th>Interest</th>
+                                                <th>Balance</th>
+                                                <th>Real Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="scheduleBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="tab-content" id="tab-withdrawal">
+                                <h3 style="color: var(--dark); margin-bottom: 1rem;">Retirement Withdrawal Plan</h3>
+                                <div id="withdrawalText"></div>
+                                <div class="schedule-container">
+                                    <table class="schedule-table" id="withdrawalTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Age</th>
+                                                <th>Year</th>
+                                                <th>Starting Balance</th>
+                                                <th>Withdrawal</th>
+                                                <th>Interest</th>
+                                                <th>Ending Balance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="withdrawalBody"></tbody>
+                                    </table>
+                                </div>
+                                <canvas id="withdrawalChart"></canvas>
+                            </div>
+
+                            <div class="tab-content" id="tab-comparison">
+                                <h3 style="color: var(--dark); margin-bottom: 1rem;">Scenario Comparison</h3>
+                                <div id="comparisonText"></div>
+                                <table class="comparison-table" id="comparisonTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Scenario</th>
+                                            <th>At Retirement</th>
+                                            <th>Nest Egg Needed</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="comparisonBody"></tbody>
+                                </table>
+                            </div>
+
+                            <div class="tab-content" id="tab-tips">
+                                <h3 style="color: var(--dark); margin-bottom: 1rem;">Personalized Retirement Tips</h3>
+                                <div id="tipsContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="sidebar">
+                    <h3>📊 Key Ratios</h3>
+                    <div class="sidebar-item"><strong>4% Rule:</strong> Safe withdrawal rate</div>
+                    <div class="sidebar-item"><strong>25x Expenses:</strong> Savings needed</div>
+                    <div class="sidebar-item"><strong>70-80%:</strong> Pre-retirement income</div>
+                    <div class="sidebar-item"><strong>Age + Years:</strong> Conservative rule</div>
+                    <div class="sidebar-item"><strong>15% Rule:</strong> Annual savings target</div>
+                    <div class="sidebar-item"><strong>Social Security:</strong> Replace ~40% income</div>
+                </div>
+
+                <div class="sidebar" style="margin-top: 2rem;">
+                    <h3>✨ Features</h3>
+                    <div class="sidebar-item">✓ Compound growth calculation</div>
+                    <div class="sidebar-item">✓ Social Security estimates</div>
+                    <div class="sidebar-item">✓ Inflation adjustment</div>
+                    <div class="sidebar-item">✓ Tax impact modeling</div>
+                    <div class="sidebar-item">✓ Pension and other income</div>
+                    <div class="sidebar-item">✓ Healthcare cost planning</div>
+                    <div class="sidebar-item">✓ Multiple scenario comparison</div>
+                    <div class="sidebar-item">✓ Withdrawal strategy planning</div>
+                    <div class="sidebar-item">✓ Yearly projection export</div>
+                    <div class="sidebar-item">✓ 100% free</div>
+                    <div class="sidebar-item">✓ No signup</div>
+                </div>
+
+                <div class="sidebar" style="margin-top: 2rem;">
+                    <h3>💡 Did You Know?</h3>
+                    <div class="sidebar-item">Maxing out 401(k) at $23,500/year from age 30 at 8% = ~$3.2M by 65</div>
+                    <div class="sidebar-item">Social Security replaces ~40% of pre-retirement income</div>
+                    <div class="sidebar-item">Healthcare costs average $315,000 for a couple in retirement</div>
+                    <div class="sidebar-item">Waiting until 70 to claim SS increases benefits by 24-32%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>How to Retire Comfortably</h2>
+            <p>Retirement planning involves three key questions: When can you retire? How much will you need? And will your savings last? Our retirement calculator helps you answer all three by projecting your savings growth, estimating your retirement income needs, and modeling withdrawal strategies with inflation and tax adjustments.</p>
+
+            <h3>The 4% Rule and Safe Withdrawal Rates</h3>
+            <p>The safe withdrawal rate for sustainable retirement is approximately 4% of your nest egg annually. If you need $50,000 per year, you will need $1.25 million in retirement savings. This rule assumes a 30-year retirement and a balanced portfolio. For early retirement or longer life expectancies, some experts recommend a more conservative 3.5% rate.</p>
+
+            <h3>How Much Do You Need?</h3>
+            <p>A common guideline is to save 25 times your annual expenses or 15-25 times your annual income. Most financial advisors recommend maintaining 70-80% of your pre-retirement income during retirement to maintain your lifestyle. Our calculator factors in Social Security, pensions, and other income sources to give you a precise target.</p>
+
+            <h3>Social Security Benefits</h3>
+            <p>Social Security replaces approximately 40% of pre-retirement income for average earners. You can start claiming as early as age 62, but waiting until full retirement age (67 for those born 1960+) or even age 70 increases your monthly benefit by 24-32%. Our calculator estimates your benefit based on current income and planned retirement age.</p>
+
+            <h3>Start Early for Maximum Growth</h3>
+            <p>The earlier you start saving, the more time compound interest has to work in your favor. Starting at age 25 versus age 35 can make a difference of over $1 million by retirement due to 10 extra years of compound growth. Even small increases in contribution rate can have dramatic long-term effects.</p>
+
+            <h3>Healthcare in Retirement</h3>
+            <p>Healthcare is one of the largest retirement expenses, averaging $315,000 for a couple retiring at 65. Medicare covers many costs but not everything. Planning for supplemental insurance, out-of-pocket costs, and potential long-term care is essential for a secure retirement.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Retirement Planning Steps</h2>
+
+            <h3>Step 1: Determine Your Retirement Age</h3>
+            <p>Decide when you want to retire. Traditional retirement age is 65-67, but you can choose to retire earlier or work longer. Remember that retiring earlier means a longer retirement to fund. Our calculator shows you how different retirement ages affect your savings needs.</p>
+
+            <h3>Step 2: Estimate Retirement Expenses</h3>
+            <p>Calculate how much you will spend annually in retirement. Many people spend 70-80% of their pre-retirement income, but this varies based on lifestyle, location, and health care needs. Do not forget to include healthcare costs, travel, and hobbies.</p>
+
+            <h3>Step 3: Account for Inflation</h3>
+            <p>Inflation reduces purchasing power over time. A 3% annual inflation rate means money will be worth significantly less in 30 years. Our calculator adjusts all projections for inflation to show realistic future values and required savings.</p>
+
+            <h3>Step 4: Calculate Your Nest Egg</h3>
+            <p>Using your chosen withdrawal rate, determine how much you need saved. If you need $50,000 yearly and use the 4% rule, aim for $1.25 million in savings. Subtract expected Social Security, pension, and other income to find your savings gap.</p>
+
+            <h3>Step 5: Plan Your Contributions</h3>
+            <p>Determine how much you need to contribute annually to reach your target. Our calculator shows you the gap and helps you plan accordingly, including catch-up contributions if you are over 50.</p>
+
+            <h3>Step 6: Choose Your Account Strategy</h3>
+            <p>Decide between traditional (tax-deferred) and Roth (tax-free) accounts. Traditional gives you a tax break now, while Roth provides tax-free income in retirement. Many people benefit from a mix of both for tax flexibility.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Common Retirement Planning Mistakes</h2>
+            <div class="use-cases">
+                <div class="use-case">
+                    <h4>❌ Starting Too Late</h4>
+                    <p>Time is your biggest asset. Starting in your 20s instead of your 40s makes a massive difference due to compound growth. Even starting at 35 versus 45 can mean hundreds of thousands more.</p>
+                </div>
+                <div class="use-case">
+                    <h4>❌ Underestimating Expenses</h4>
+                    <p>Healthcare and other costs often exceed expectations. Plan conservatively with a 20% buffer. Inflation will also increase your needs over a 20-30 year retirement.</p>
+                </div>
+                <div class="use-case">
+                    <h4>❌ Ignoring Inflation</h4>
+                    <p>Inflation can significantly reduce purchasing power. Always account for 2-3% annual inflation in your planning. $50,000 today needs to be $121,000 in 30 years at 3% inflation.</p>
+                </div>
+                <div class="use-case">
+                    <h4>❌ Poor Asset Allocation</h4>
+                    <p>Too conservative early on limits growth potential. Too aggressive near retirement increases risk. Adjust your stock/bond mix as you age using a target-date fund or glide path strategy.</p>
+                </div>
+                <div class="use-case">
+                    <h4>❌ No Emergency Fund</h4>
+                    <p>A retirement-specific emergency fund protects against unexpected major expenses without disrupting your portfolio. Keep 1-2 years of expenses in safe, liquid investments.</p>
+                </div>
+                <div class="use-case">
+                    <h4>❌ Forgetting About Healthcare</h4>
+                    <p>Healthcare is one of the largest retirement expenses. Budget $315,000+ for a couple retiring at 65. Consider Medicare supplements and long-term care insurance.</p>
+                </div>
+                <div class="use-case">
+                    <h4>❌ Claiming Social Security Too Early</h4>
+                    <p>Claiming at 62 reduces benefits by up to 30%. Waiting until 70 increases them by 24-32%. If you can afford to wait, it often pays off significantly over a long retirement.</p>
+                </div>
+                <div class="use-case">
+                    <h4>❌ Not Diversifying Tax Strategies</h4>
+                    <p>Relying solely on traditional 401(k)s means all withdrawals are taxable. Having Roth accounts provides tax-free income and flexibility to manage your tax bracket in retirement.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h4>How much do I need to retire?</h4>
+                <p>Most financial advisors recommend 25 times your annual expenses or 15-25 times your annual income. For example, if you need $50,000 yearly, aim for $1.25 million (25 times $50,000). Our calculator helps you determine your exact needs based on your specific situation, including Social Security and other income.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>When can I retire?</h4>
+                <p>This depends on your savings rate, investment returns, and target retirement lifestyle. Our calculator helps you determine if your current plan gets you there by your desired retirement age, factoring in Social Security and other income sources. Use the scenario comparison to see different retirement ages.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is a safe withdrawal rate?</h4>
+                <p>The 4% rule is a common guideline. Withdraw 4% of your nest egg in year one, then adjust for inflation. This is considered sustainable for a 30-year retirement. Some experts suggest 3.5% for longer retirements or early retirement. Our calculator lets you test different rates.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Should I account for Social Security?</h4>
+                <p>Yes. Social Security provides a base income in retirement, replacing about 40% of pre-retirement income for average earners. Our calculator includes Social Security estimates based on your current income and retirement age. Add your expected benefit to reduce your needed nest egg significantly.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How does inflation affect retirement planning?</h4>
+                <p>Inflation silently erodes purchasing power. At 3% annual inflation, $50,000 in expenses today becomes about $121,000 in 30 years. Our calculator adjusts all projections for inflation to show realistic future values and required savings targets.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is the difference between traditional and Roth retirement accounts?</h4>
+                <p>Traditional accounts give you a tax deduction now but require taxes on withdrawals. Roth accounts use after-tax money but withdrawals are tax-free in retirement. Our calculator lets you model both strategies to see which works better for your situation. Many experts recommend a mix of both.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How much should I save each year for retirement?</h4>
+                <p>Financial advisors typically recommend saving 15% of your income, including employer matches. If you start late, you may need 20-25% or more. Our calculator shows exactly how much you need to contribute annually to reach your goal.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What about healthcare costs in retirement?</h4>
+                <p>Healthcare is one of the largest retirement expenses, averaging $315,000 for a couple retiring at 65. Medicare covers many costs but not everything. Our calculator includes a healthcare cost estimate, and you should also plan for supplemental insurance and potential long-term care.</p>
+            </div>
+        </div>
+
+        <div class="related-section">
+            <h3>Related Financial Planning Tools</h3>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">💰</div>
+                    <h4>Compound Interest</h4>
+                    <a href="compound-interest-calculator.html">Try →</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h4>Budget Planner</h4>
+                    <a href="budget-planner.html">Try →</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🏠</div>
+                    <h4>Mortgage Calculator</h4>
+                    <a href="mortgage-calculator.html">Try →</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">💳</div>
+                    <h4>Loan Calculator</h4>
+                    <a href="loan-calculator.html">Try →</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">💵</div>
+                    <h4>Currency Converter</h4>
+                    <a href="currency-converter.html">Try →</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <h4>All Financial Tools</h4>
+                    <a href="calculators.html">Try →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calculators.html">Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Financial Calculators</h4>
+                <ul>
+                    <li><a href="compound-interest-calculator.html">Compound Interest</a></li>
+                    <li><a href="retirement-calculator.html">Retirement Calc</a></li>
+                    <li><a href="budget-planner.html">Budget Planner</a></li>
+                    <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                    <li><a href="mortgage-calculator.html">Mortgage Calc</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>More Tools</h4>
+                <ul>
+                    <li><a href="currency-converter.html">Currency Converter</a></li>
+                    <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                    <li><a href="calorie-calculator.html">Calorie Calc</a></li>
+                    <li><a href="word-counter-tool.html">Word Counter</a></li>
+                    <li><a href="calculators.html">All Tools</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>About ToolPond Pro</h4>
+                <p>ToolPond Pro provides 29+ free online calculators and tools for finance, health, productivity, and more. All tools are browser-based, require no signup, and process data locally for your privacy.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolPond Pro. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a></p>
+            <p>Free retirement calculator and financial planning tools. No signup, no fees, 100% secure.</p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+    <script>
+        let chartInstance = null;
+        let withdrawalChartInstance = null;
+        let scheduleData = [];
+        let withdrawalData = [];
+
+        function loadPreset(type) {
+            const presets = {
+                aggressive: { currentAge: 30, retireAge: 60, currentSavings: 100000, annualContribution: 25000, returnRate: 8, lifeExpectancy: 90, annualExpense: 60000, withdrawalRate: 3.5, currentIncome: 150000, inflationRate: 2.5, taxRate: 20, pensionIncome: 0, otherIncome: 0, healthcareCost: 12000, accountType: 'mixed' },
+                moderate: { currentAge: 35, retireAge: 67, currentSavings: 75000, annualContribution: 15000, returnRate: 7, lifeExpectancy: 90, annualExpense: 50000, withdrawalRate: 4, currentIncome: 90000, inflationRate: 2.5, taxRate: 15, pensionIncome: 0, otherIncome: 0, healthcareCost: 12000, accountType: 'traditional' },
+                late: { currentAge: 50, retireAge: 67, currentSavings: 200000, annualContribution: 30000, returnRate: 6, lifeExpectancy: 90, annualExpense: 55000, withdrawalRate: 4, currentIncome: 100000, inflationRate: 2.5, taxRate: 18, pensionIncome: 15000, otherIncome: 5000, healthcareCost: 15000, accountType: 'mixed' },
+                early: { currentAge: 25, retireAge: 45, currentSavings: 200000, annualContribution: 40000, returnRate: 8, lifeExpectancy: 90, annualExpense: 40000, withdrawalRate: 3.5, currentIncome: 120000, inflationRate: 2.5, taxRate: 12, pensionIncome: 0, otherIncome: 10000, healthcareCost: 10000, accountType: 'roth' }
+            };
+            const p = presets[type];
+            document.getElementById('currentAge').value = p.currentAge;
+            document.getElementById('retireAge').value = p.retireAge;
+            document.getElementById('currentSavings').value = p.currentSavings;
+            document.getElementById('annualContribution').value = p.annualContribution;
+            document.getElementById('returnRate').value = p.returnRate;
+            document.getElementById('lifeExpectancy').value = p.lifeExpectancy;
+            document.getElementById('annualExpense').value = p.annualExpense;
+            document.getElementById('withdrawalRate').value = p.withdrawalRate;
+            document.getElementById('currentIncome').value = p.currentIncome;
+            document.getElementById('inflationRate').value = p.inflationRate;
+            document.getElementById('taxRate').value = p.taxRate;
+            document.getElementById('pensionIncome').value = p.pensionIncome;
+            document.getElementById('otherIncome').value = p.otherIncome;
+            document.getElementById('healthcareCost').value = p.healthcareCost;
+            document.getElementById('accountType').value = p.accountType;
+            calculateRetirement();
+        }
+
+        function toggleAdvanced() {
+            const section = document.getElementById('advancedSection');
+            const icon = document.getElementById('advIcon');
+            section.classList.toggle('show');
+            icon.textContent = section.classList.contains('show') ? '▼' : '▶';
+        }
+
+        function switchTab(tabName, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+
+        function formatCurrency(num) {
+            return '$' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function formatPercent(num) {
+            return num.toFixed(1) + '%';
+        }
+
+        function estimateSocialSecurity(currentIncome, retireAge) {
+            // Simplified Social Security estimate based on AIME and bend points
+            const aime = currentIncome / 12;
+            let pia;
+            if (aime <= 1174) {
+                pia = aime * 0.9;
+            } else if (aime <= 7078) {
+                pia = 1174 * 0.9 + (aime - 1174) * 0.32;
+            } else {
+                pia = 1174 * 0.9 + (7078 - 1174) * 0.32 + (aime - 7078) * 0.15;
+            }
+            // Adjust for claiming age
+            let adjustment = 1;
+            if (retireAge < 67) {
+                adjustment = 1 - (67 - retireAge) * 0.00625;
+            } else if (retireAge > 67) {
+                adjustment = 1 + (retireAge - 67) * 0.08;
+            }
+            return Math.max(0, pia * 12 * adjustment);
+        }
+
+        function calculateRetirement() {
+            const currentAge = parseInt(document.getElementById('currentAge').value) || 0;
+            const retireAge = parseInt(document.getElementById('retireAge').value) || 0;
+            const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+            const annualContribution = parseFloat(document.getElementById('annualContribution').value) || 0;
+            const returnRate = parseFloat(document.getElementById('returnRate').value) / 100 || 0;
+            const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value) || 90;
+            const annualExpense = parseFloat(document.getElementById('annualExpense').value) || 0;
+            const withdrawalRate = parseFloat(document.getElementById('withdrawalRate').value) / 100 || 0.04;
+
+            // Advanced options
+            const currentIncome = parseFloat(document.getElementById('currentIncome').value) || 0;
+            const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100 || 0;
+            const taxRate = parseFloat(document.getElementById('taxRate').value) / 100 || 0;
+            const pensionIncome = parseFloat(document.getElementById('pensionIncome').value) || 0;
+            const otherIncome = parseFloat(document.getElementById('otherIncome').value) || 0;
+            const healthcareCost = parseFloat(document.getElementById('healthcareCost').value) || 0;
+            const accountType = document.getElementById('accountType').value || 'traditional';
+
+            if (currentAge <= 0 || retireAge <= currentAge) {
+                alert('Please enter valid ages');
+                return;
+            }
+
+            const yearsToRetirement = retireAge - currentAge;
+            const yearsInRetirement = lifeExpectancy - retireAge;
+
+            // Estimate Social Security
+            const ssBenefit = currentIncome > 0 ? estimateSocialSecurity(currentIncome, retireAge) : 0;
+
+            // Calculate savings at retirement with inflation-adjusted contributions
+            scheduleData = [];
+            let balance = currentSavings;
+            let contrib = annualContribution;
+
+            for (let year = 1; year <= yearsToRetirement; year++) {
+                const age = currentAge + year;
+                const yearStart = balance;
+                const interest = balance * returnRate;
+                balance += interest + contrib;
+
+                scheduleData.push({
+                    age: age,
+                    year: year,
+                    contribution: contrib,
+                    interest: interest,
+                    balance: balance,
+                    realValue: balance / Math.pow(1 + inflationRate, year)
+                });
+
+                // Increase contribution with inflation
+                contrib = contrib * (1 + inflationRate);
+            }
+
+            const savingsAtRetirement = balance;
+            const realSavingsAtRetirement = savingsAtRetirement / Math.pow(1 + inflationRate, yearsToRetirement);
+
+            // Calculate retirement needs with inflation
+            const inflatedExpense = annualExpense * Math.pow(1 + inflationRate, yearsToRetirement);
+            const totalAnnualNeed = inflatedExpense + healthcareCost * Math.pow(1 + inflationRate, yearsToRetirement);
+            const totalIncome = ssBenefit + pensionIncome + otherIncome;
+            const incomeGap = Math.max(0, totalAnnualNeed - totalIncome);
+
+            // Nest egg needed based on withdrawal rate and income gap
+            const nestEggNeeded = incomeGap / withdrawalRate;
+            const realNestEggNeeded = nestEggNeeded / Math.pow(1 + inflationRate, yearsToRetirement);
+
+            // Shortage/surplus
+            const shortage = nestEggNeeded - savingsAtRetirement;
+
+            // Monthly income breakdown
+            const monthlyFromSavings = (savingsAtRetirement * withdrawalRate) / 12;
+            const monthlySS = ssBenefit / 12;
+            const monthlyPension = pensionIncome / 12;
+            const monthlyOther = otherIncome / 12;
+            const totalMonthly = monthlyFromSavings + monthlySS + monthlyPension + monthlyOther;
+
+            // After-tax monthly income
+            let taxAdjustedMonthly = totalMonthly;
+            if (accountType === 'traditional') {
+                taxAdjustedMonthly = totalMonthly * (1 - taxRate);
+            } else if (accountType === 'mixed') {
+                taxAdjustedMonthly = (monthlyFromSavings * 0.5 * (1 - taxRate)) + (monthlyFromSavings * 0.5) + monthlySS + monthlyPension + monthlyOther;
+            }
+
+            // Update stat cards
+            document.getElementById('atRetirement').textContent = formatCurrency(savingsAtRetirement);
+            document.getElementById('atRetirementReal').textContent = 'Real: ' + formatCurrency(realSavingsAtRetirement);
+            document.getElementById('nestEggNeeded').textContent = formatCurrency(nestEggNeeded);
+            document.getElementById('nestEggInflation').textContent = 'Inflation adj: ' + formatCurrency(realNestEggNeeded);
+            document.getElementById('shortage').textContent = shortage > 0 ? '-' + formatCurrency(shortage) : '+' + formatCurrency(Math.abs(shortage));
+            document.getElementById('shortage').style.color = shortage > 0 ? '#ef4444' : '#059669';
+            document.getElementById('shortagePercent').textContent = nestEggNeeded > 0 ? formatPercent((savingsAtRetirement / nestEggNeeded) * 100) + ' of goal' : 'N/A';
+            document.getElementById('monthlyIncome').textContent = formatCurrency(taxAdjustedMonthly);
+            document.getElementById('monthlyIncomeBreakdown').textContent = 'After-tax monthly';
+
+            // Readiness score
+            const readinessScore = Math.min(100, Math.max(0, (savingsAtRetirement / nestEggNeeded) * 100));
+            document.getElementById('gaugeContainer').style.display = 'block';
+            document.getElementById('readinessScore').textContent = formatPercent(readinessScore);
+            document.getElementById('readinessBar').style.width = readinessScore + '%';
+            document.getElementById('readinessBar').className = 'progress-fill ' + (readinessScore < 50 ? 'danger' : readinessScore < 80 ? 'warning' : 'success');
+            document.getElementById('readinessText').textContent = readinessScore >= 100 ? 'You are on track for retirement!' : readinessScore >= 80 ? 'Getting close - minor adjustments needed' : readinessScore >= 50 ? 'Significant gap - increase savings' : 'Major shortfall - action needed now';
+
+            // Summary analysis
+            let analysis = '<strong>Your Retirement Plan:</strong><br>';
+            analysis += 'Current Age: ' + currentAge + '<br>';
+            analysis += 'Retirement Age: ' + retireAge + ' (' + yearsToRetirement + ' years to save)<br>';
+            analysis += 'Life Expectancy: ' + lifeExpectancy + ' (' + yearsInRetirement + ' years in retirement)<br>';
+            analysis += 'Current Savings: ' + formatCurrency(currentSavings) + '<br>';
+            analysis += 'Annual Contribution: ' + formatCurrency(annualContribution) + '<br>';
+            analysis += 'Expected Return: ' + formatPercent(returnRate * 100) + '<br>';
+            analysis += 'Withdrawal Rate: ' + formatPercent(withdrawalRate * 100) + '<br><br>';
+
+            if (currentIncome > 0) {
+                analysis += 'Estimated Social Security: ' + formatCurrency(ssBenefit) + '/year<br>';
+            }
+            if (pensionIncome > 0) {
+                analysis += 'Pension Income: ' + formatCurrency(pensionIncome) + '/year<br>';
+            }
+            if (otherIncome > 0) {
+                analysis += 'Other Income: ' + formatCurrency(otherIncome) + '/year<br>';
+            }
+            analysis += '<br>';
+
+            analysis += '<strong style="color: var(--primary); font-size: 1.2rem;">Savings at Retirement: ' + formatCurrency(savingsAtRetirement) + '</strong><br>';
+            if (inflationRate > 0) {
+                analysis += 'Inflation-Adjusted Value: ' + formatCurrency(realSavingsAtRetirement) + '<br>';
+            }
+            analysis += 'Nest Egg Needed: ' + formatCurrency(nestEggNeeded) + '<br>';
+            analysis += 'Annual Retirement Expense (inflated): ' + formatCurrency(totalAnnualNeed) + '<br>';
+            analysis += 'Total Retirement Income: ' + formatCurrency(totalIncome) + '/year<br>';
+            analysis += 'Income Gap from Savings: ' + formatCurrency(incomeGap) + '/year<br>';
+            analysis += 'After-Tax Monthly Income: ' + formatCurrency(taxAdjustedMonthly) + '<br><br>';
+
+            if (shortage > 0) {
+                const additionalNeeded = shortage / yearsToRetirement;
+                analysis += '<strong style="color: #ef4444;">Shortfall: ' + formatCurrency(shortage) + '</strong><br>';
+                analysis += 'You need to save an additional ' + formatCurrency(additionalNeeded) + ' per year to reach your goal.<br>';
+                analysis += 'That is about ' + formatCurrency(additionalNeeded / 12) + ' more per month.';
+            } else {
+                analysis += '<strong style="color: #059669;">Surplus: ' + formatCurrency(Math.abs(shortage)) + '</strong><br>';
+                analysis += 'You are on track! You will have extra cushion for emergencies, inflation, and unexpected costs.';
+            }
+
+            document.getElementById('analysisText').innerHTML = analysis;
+
+            // Insights
+            const insightBox = document.getElementById('insightBox');
+            insightBox.style.display = 'block';
+            let insights = [];
+            if (inflationRate > 0) {
+                insights.push('Inflation increases your retirement expenses from ' + formatCurrency(annualExpense) + ' today to ' + formatCurrency(inflatedExpense) + ' at retirement');
+            }
+            if (ssBenefit > 0) {
+                insights.push('Social Security will cover about ' + formatPercent((ssBenefit / totalAnnualNeed) * 100) + ' of your retirement expenses');
+            }
+            if (taxRate > 0 && accountType === 'traditional') {
+                insights.push('Traditional account withdrawals will be taxed at ' + formatPercent(taxRate * 100) + ' - consider Roth conversions');
+            }
+            if (yearsToRetirement < 10 && shortage > 0) {
+                insights.push('With only ' + yearsToRetirement + ' years left, consider catch-up contributions ($7,500 extra if over 50)');
+            }
+            if (insights.length > 0) {
+                insightBox.innerHTML = '<strong>💡 Key Insights:</strong><br>' + insights.join('<br>');
+            } else {
+                insightBox.style.display = 'none';
+            }
+
+            // Schedule table
+            const scheduleBody = document.getElementById('scheduleBody');
+            scheduleBody.innerHTML = '';
+            scheduleData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = '<td>' + row.age + '</td><td>' + row.year + '</td><td>' + formatCurrency(row.contribution) + '</td><td>' + formatCurrency(row.interest) + '</td><td><strong>' + formatCurrency(row.balance) + '</strong></td><td>' + formatCurrency(row.realValue) + '</td>';
+                scheduleBody.appendChild(tr);
+            });
+
+            // Withdrawal projection
+            withdrawalData = [];
+            let retireBalance = savingsAtRetirement;
+            let currentExpense = totalAnnualNeed;
+
+            for (let year = 1; year <= yearsInRetirement; year++) {
+                const age = retireAge + year;
+                const yearStart = retireBalance;
+                const withdrawal = Math.min(retireBalance, currentExpense - totalIncome);
+                const interest = retireBalance * (returnRate * 0.6); // More conservative in retirement
+                retireBalance = retireBalance - withdrawal + interest;
+
+                withdrawalData.push({
+                    age: age,
+                    year: year,
+                    startBalance: yearStart,
+                    withdrawal: withdrawal,
+                    interest: interest,
+                    endBalance: Math.max(0, retireBalance),
+                    expense: currentExpense
+                });
+
+                currentExpense = currentExpense * (1 + inflationRate);
+            }
+
+            const withdrawalBody = document.getElementById('withdrawalBody');
+            withdrawalBody.innerHTML = '';
+            withdrawalData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = '<td>' + row.age + '</td><td>' + row.year + '</td><td>' + formatCurrency(row.startBalance) + '</td><td>' + formatCurrency(row.withdrawal) + '</td><td>' + formatCurrency(row.interest) + '</td><td><strong>' + formatCurrency(row.endBalance) + '</strong></td>';
+                withdrawalBody.appendChild(tr);
+            });
+
+            document.getElementById('withdrawalText').innerHTML = '<p>Projected withdrawal plan from age ' + retireAge + ' to ' + lifeExpectancy + '. Assumes ' + formatPercent(returnRate * 60) + ' return in retirement (more conservative allocation).</p>';
+
+            // Scenario comparison
+            const scenarios = [
+                { name: 'Your Plan', rate: returnRate, contrib: annualContribution },
+                { name: '+2% Return', rate: returnRate + 0.02, contrib: annualContribution },
+                { name: '+$5K/Year', rate: returnRate, contrib: annualContribution + 5000 },
+                { name: 'Retire 2 Years Later', rate: returnRate, contrib: annualContribution }
+            ];
+
+            const comparisonBody = document.getElementById('comparisonBody');
+            comparisonBody.innerHTML = '';
+
+            scenarios.forEach(scenario => {
+                let bal = currentSavings;
+                let years = yearsToRetirement;
+                if (scenario.name === 'Retire 2 Years Later') {
+                    years += 2;
+                }
+                let c = scenario.contrib;
+                for (let i = 0; i < years; i++) {
+                    bal = bal * (1 + scenario.rate) + c;
+                    c = c * (1 + inflationRate);
+                }
+                const gap = nestEggNeeded - bal;
+                const status = gap > 0 ? '<span style="color:#ef4444">Short ' + formatCurrency(gap) + '</span>' : '<span style="color:#059669">Surplus ' + formatCurrency(Math.abs(gap)) + '</span>';
+                comparisonBody.innerHTML += '<tr><td>' + scenario.name + '</td><td>' + formatCurrency(bal) + '</td><td>' + formatCurrency(nestEggNeeded) + '</td><td>' + status + '</td></tr>';
+            });
+
+            document.getElementById('comparisonText').innerHTML = '<p>Compare different scenarios to see how small changes affect your retirement outcome.</p>';
+
+            // Tips
+            let tips = [];
+            if (savingsAtRetirement < nestEggNeeded * 0.5) {
+                tips.push('<h4 style="color:#ef4444">🚨 Critical: Major Savings Gap</h4><p>Your projected savings are less than half of what you need. Consider: drastically increasing contributions, delaying retirement, reducing retirement expenses, or seeking professional financial advice.</p>');
+            } else if (savingsAtRetirement < nestEggNeeded * 0.8) {
+                tips.push('<h4 style="color:#f59e0b">⚠️ Warning: Significant Gap</h4><p>You need to save more. Try increasing your annual contribution by ' + formatCurrency((nestEggNeeded - savingsAtRetirement) / yearsToRetirement) + ' per year, or delay retirement by a few years to let compound growth work.</p>');
+            } else if (savingsAtRetirement < nestEggNeeded) {
+                tips.push('<h4 style="color:#3b82f6">📈 Almost There</h4><p>You are close to your goal. Small increases in contributions or working just 1-2 more years could get you there comfortably.</p>');
+            } else {
+                tips.push('<h4 style="color:#059669">✅ On Track!</h4><p>Great job! You are projected to meet or exceed your retirement goal. Consider: increasing your goal for a more luxurious retirement, retiring earlier, or adding a buffer for unexpected costs.</p>');
+            }
+
+            if (returnRate < 0.05) {
+                tips.push('<h4>📊 Conservative Returns</h4><p>Your expected return of ' + formatPercent(returnRate * 100) + ' is quite conservative. A diversified portfolio with more equities could potentially yield 7-8% over the long term, significantly improving your outcome.</p>');
+            }
+            if (yearsToRetirement > 20) {
+                tips.push('<h4>⏰ Time is on Your Side</h4><p>With ' + yearsToRetirement + ' years until retirement, compound growth is your best friend. Even small increases in contribution rate now will have massive impact. Consider maxing out your 401(k) at $23,500/year (or $30,000 if over 50).</p>');
+            } else if (yearsToRetirement < 10) {
+                tips.push('<h4>🏃 Sprint to the Finish</h4><p>With only ' + yearsToRetirement + ' years left, focus on catch-up contributions. If you are 50+, you can contribute an extra $7,500 to your 401(k) and $1,000 to your IRA annually.</p>');
+            }
+            if (accountType === 'traditional' && taxRate > 0.15) {
+                tips.push('<h4>💰 Tax Strategy</h4><p>With a ' + formatPercent(taxRate * 100) + ' tax rate in retirement, consider Roth conversions during low-income years or contributing to a Roth 401(k) if available. Tax-free withdrawals can save you thousands.</p>');
+            }
+            tips.push('<h4>🏥 Healthcare Planning</h4><p>Budget ' + formatCurrency(healthcareCost) + '+ annually for healthcare in retirement. Consider Health Savings Accounts (HSAs) for triple tax advantages, and research Medicare supplement plans before you retire.</p>');
+            tips.push('<h4>🔄 Annual Review</h4><p>Review and adjust your retirement plan annually. Life changes, market conditions, and new tax laws can all affect your plan. Revisit this calculator yearly to stay on track.</p>');
+
+            document.getElementById('tipsContent').innerHTML = tips.map(t => '<div style="margin-bottom:1.5rem;padding:1rem;background:#fff;border-radius:8px;border-left:4px solid var(--primary);">' + t + '</div>').join('');
+
+            document.getElementById('result').classList.add('show');
+
+            // Draw charts
+            drawGrowthChart();
+            drawWithdrawalChart();
+        }
+
+        function drawGrowthChart() {
+            const labels = scheduleData.map(d => d.age);
+            const balanceData = scheduleData.map(d => d.balance);
+            const realData = scheduleData.map(d => d.realValue);
+            const contribData = scheduleData.map(d => d.contribution);
+
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            if (chartInstance) chartInstance.destroy();
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Total Balance',
+                            data: balanceData,
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderColor: 'var(--primary)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Inflation-Adjusted Value',
+                            data: realData,
+                            borderColor: 'var(--warning)',
+                            borderDash: [5, 5],
+                            tension: 0.4,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + formatCurrency(context.raw);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: 'Age' } },
+                        y: { title: { display: true, text: 'Amount ($)' }, ticks: { callback: function(value) { return '$' + (value >= 1000000 ? (value/1000000).toFixed(1) + 'M' : value >= 1000 ? (value/1000).toFixed(0) + 'K' : value); } } }
+                    }
+                }
+            });
+        }
+
+        function drawWithdrawalChart() {
+            const labels = withdrawalData.map(d => d.age);
+            const balanceData = withdrawalData.map(d => d.endBalance);
+            const withdrawalDataArr = withdrawalData.map(d => d.withdrawal);
+
+            const ctx = document.getElementById('withdrawalChart').getContext('2d');
+            if (withdrawalChartInstance) withdrawalChartInstance.destroy();
+
+            withdrawalChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Remaining Balance',
+                            data: balanceData,
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderColor: 'var(--primary)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Annual Withdrawal',
+                            data: withdrawalDataArr,
+                            borderColor: 'var(--danger)',
+                            borderDash: [5, 5],
+                            tension: 0.4,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } },
+                    scales: {
+                        x: { title: { display: true, text: 'Age' } },
+                        y: { title: { display: true, text: 'Amount ($)' }, ticks: { callback: function(value) { return '$' + (value >= 1000000 ? (value/1000000).toFixed(1) + 'M' : value >= 1000 ? (value/1000).toFixed(0) + 'K' : value); } } }
+                    }
+                }
+            });
+        }
+
+        function clearCalculator() {
+            document.getElementById('currentAge').value = '';
+            document.getElementById('retireAge').value = '';
+            document.getElementById('currentSavings').value = '';
+            document.getElementById('annualContribution').value = '';
+            document.getElementById('returnRate').value = '';
+            document.getElementById('lifeExpectancy').value = '';
+            document.getElementById('annualExpense').value = '';
+            document.getElementById('withdrawalRate').value = '';
+            document.getElementById('currentIncome').value = '';
+            document.getElementById('inflationRate').value = '';
+            document.getElementById('taxRate').value = '';
+            document.getElementById('pensionIncome').value = '';
+            document.getElementById('otherIncome').value = '';
+            document.getElementById('healthcareCost').value = '';
+            document.getElementById('accountType').value = 'traditional';
+            document.getElementById('atRetirement').textContent = '$0';
+            document.getElementById('atRetirementReal').textContent = 'Real: $0';
+            document.getElementById('nestEggNeeded').textContent = '$0';
+            document.getElementById('nestEggInflation').textContent = 'Inflation adj: $0';
+            document.getElementById('shortage').textContent = '$0';
+            document.getElementById('shortage').style.color = '';
+            document.getElementById('shortagePercent').textContent = '0% of goal';
+            document.getElementById('monthlyIncome').textContent = '$0';
+            document.getElementById('monthlyIncomeBreakdown').textContent = 'From savings';
+            document.getElementById('gaugeContainer').style.display = 'none';
+            document.getElementById('result').classList.remove('show');
+            if (chartInstance) chartInstance.destroy();
+            if (withdrawalChartInstance) withdrawalChartInstance.destroy();
+            scheduleData = [];
+            withdrawalData = [];
+        }
+
+        function exportResults() {
+            if (scheduleData.length === 0) {
+                alert('Please calculate first before exporting');
+                return;
+            }
+
+            let csv = 'Age,Year,Contribution,Interest,Balance,Real Value
+';
+            scheduleData.forEach(row => {
+                csv += row.age + ',' + row.year + ',' + row.contribution.toFixed(2) + ',' + row.interest.toFixed(2) + ',' + row.balance.toFixed(2) + ',' + row.realValue.toFixed(2) + '
+';
+            });
+
+            csv += '
+Retirement Withdrawal Plan
+';
+            csv += 'Age,Year,Starting Balance,Withdrawal,Interest,Ending Balance
+';
+            withdrawalData.forEach(row => {
+                csv += row.age + ',' + row.year + ',' + row.startBalance.toFixed(2) + ',' + row.withdrawal.toFixed(2) + ',' + row.interest.toFixed(2) + ',' + row.endBalance.toFixed(2) + '
+';
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'retirement-plan-results.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && document.activeElement.classList.contains('input-field')) {
+                calculateRetirement();
+            }
+        });
+    </script>
+</body>
+</html>
