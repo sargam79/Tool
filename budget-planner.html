@@ -4,33 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Budget Planner Calculator 2026 - Manage Your Finances</title>
-    <meta name="description" content="Free budget planner calculator 2026 - Create monthly budgets, track expenses, manage income, and set savings goals. Use the 50/30/20 budgeting rule. No signup needed. Download your budget report.">
-    <meta name="keywords" content="budget planner, budget calculator, expense tracker, personal budget, budgeting tool, 50/30/20 rule, savings calculator, monthly budget planner, financial planning tool, free budget app">
+    <meta name="description" content="Free budget planner calculator 2026 - Create monthly budgets, track expenses, manage income, and set savings goals. Use the 50/30/20 budgeting rule.">
+    <meta name="keywords" content="budget planner, budget calculator, expense tracker, personal budget, budgeting tool, 50/30/20 rule">
     <meta name="author" content="ToolPond Pro">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolpond.org/budget-planner.html">
-
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/budget-planner.html">
     <meta property="og:title" content="Free Budget Planner 2026 - Manage Your Monthly Budget">
-    <meta property="og:description" content="Create and track your monthly budget with our free budget planner. Allocate income to needs, wants, and savings using the 50/30/20 rule. Download reports and set goals.">
-    <meta property="og:site_name" content="ToolPond Pro">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Budget Planner Calculator 2026">
-    <meta name="twitter:description" content="Plan and track your monthly budget for free. Set goals, download reports, and get smart insights.">
-
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Budget Planner 2026","description":"Free personal budget planner for creating monthly budgets, tracking expenses, and setting savings goals","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"1243"}}
-    </script>
-
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolpond.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://toolpond.org/calculators.html"},{"@type":"ListItem","position":3,"name":"Budget Planner","item":"https://toolpond.org/budget-planner.html"}]}
-    </script>
-
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the 50/30/20 budgeting rule?","acceptedAnswer":{"@type":"Answer","text":"The 50/30/20 rule allocates 50% of income to needs, 30% to wants, and 20% to savings and debt repayment. It is a simple framework for balancing financial security with lifestyle enjoyment."}},{"@type":"Question","name":"How do I create a monthly budget?","acceptedAnswer":{"@type":"Answer","text":"Calculate your after-tax income, list all essential needs (50%), list discretionary wants (30%), allocate 20% to savings, and track spending monthly. Adjust as needed."}},{"@type":"Question","name":"What if my needs exceed 50% of income?","acceptedAnswer":{"@type":"Answer","text":"In high-cost areas, needs may exceed 50%. Adjust by reducing wants, increasing income, or modifying the ratio temporarily. Focus on increasing earnings or relocating if possible."}}]}
-    </script>
+    <meta property="og:description" content="Create and track your monthly budget with our free budget planner.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -193,44 +176,7 @@
         .sidebar h3 { color: var(--dark); margin-bottom: 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
         .sidebar-item { margin-bottom: 1rem; padding: 0.75rem; background: #fff; border-radius: 6px; border-left: 4px solid var(--primary); }
 
-        .content-section { margin: 3rem 0; padding: 2rem; background: var(--light); border-radius: 10px; }
-        .content-section h2 { color: var(--dark); margin-bottom: 1.5rem; font-size: 1.8rem; border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem; }
-        .content-section h3 { color: #4b5563; margin: 1.5rem 0 0.75rem; font-size: 1.2rem; }
-        .content-section p { margin-bottom: 1rem; line-height: 1.8; color: #4b5563; }
-        .content-section ul { margin: 1rem 0 1rem 1.5rem; }
-        .content-section li { margin-bottom: 0.75rem; color: #4b5563; }
-
-        .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .use-case { background: #fff; padding: 1.5rem; border-radius: 8px; border-top: 4px solid var(--primary); }
-        .use-case h4 { color: var(--dark); margin-bottom: 0.5rem; }
-        .use-case p { color: #6b7280; font-size: 0.95rem; }
-
-        .faq-item { margin-bottom: 1rem; background: #fff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); }
-        .faq-item h4 { color: var(--dark); margin-bottom: 0.5rem; }
-        .faq-item p { color: #6b7280; font-size: 0.95rem; }
-
-        .related-section { background: #fff; padding: 2rem; border-radius: 10px; border: 2px solid var(--primary); margin: 3rem 0; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-        .tool-card { background: linear-gradient(135deg, #fef3c7, #fed7aa); padding: 1.5rem; border-radius: 8px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; cursor: pointer; }
-        .tool-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(245, 158, 11, 0.15); border-color: var(--primary); }
-        .tool-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .tool-card h4 { color: var(--dark); margin-bottom: 0.5rem; }
-        .tool-card a { color: var(--primary); font-weight: 600; text-decoration: none; }
-        .tool-card a:hover { text-decoration: underline; }
-
-        .footer-section { background: var(--dark); color: #fff; padding: 3rem 2rem; margin-top: 4rem; }
-        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
-        .footer-col h4 { color: var(--primary); margin-bottom: 1rem; }
-        .footer-col a { color: #d1d5db; text-decoration: none; display: block; margin-bottom: 0.5rem; }
-        .footer-col a:hover { color: #fff; }
-        .footer-col ul { list-style: none; }
-        .footer-bottom { text-align: center; border-top: 1px solid #4b5563; padding-top: 2rem; color: #9ca3af; }
-
-        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--primary); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
-        .back-to-top.show { opacity: 1; visibility: visible; }
-
-        /* NEW FEATURES STYLES */
-        .chart-container { width: 100%; height: 300px; margin: 2rem 0; background: #fff; border-radius: 10px; padding: 1rem; border: 1px solid var(--border); }
+        .chart-container { width: 100%; height: 300px; margin: 2rem 0; background: #fff; border-radius: 10px; padding: 1rem; border: 1px solid var(--border); position: relative; }
 
         .progress-bar { width: 100%; height: 20px; background: #e5e7eb; border-radius: 10px; overflow: hidden; margin: 0.5rem 0; }
         .progress-fill { height: 100%; border-radius: 10px; transition: width 0.5s ease; }
@@ -240,18 +186,6 @@
         .progress-fill.over { background: linear-gradient(90deg, #ef4444, #f97316); }
 
         .progress-label { display: flex; justify-content: space-between; font-size: 0.85rem; color: #6b7280; margin-top: 0.25rem; }
-
-        .savings-goal { background: #fff; padding: 1.5rem; border-radius: 10px; border: 2px solid var(--border); margin-bottom: 1.5rem; }
-        .savings-goal h4 { color: var(--dark); margin-bottom: 1rem; }
-        .goal-input { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-
-        .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        .comparison-table th, .comparison-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
-        .comparison-table th { background: var(--light); font-weight: 600; color: var(--dark); }
-        .comparison-table tr:hover { background: #f9fafb; }
-        .comparison-table .good { color: var(--success); font-weight: 600; }
-        .comparison-table .bad { color: var(--danger); font-weight: 600; }
-        .comparison-table .warning { color: var(--primary); font-weight: 600; }
 
         .currency-selector { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .currency-btn { padding: 0.5rem 1rem; border: 2px solid var(--border); border-radius: 6px; background: #fff; cursor: pointer; font-weight: 600; transition: all 0.3s; }
@@ -263,52 +197,32 @@
         .month-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
         .month-btn:hover { border-color: var(--primary); }
 
-        .history-section { background: #fff; padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border); margin-top: 2rem; }
-        .history-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; border-bottom: 1px solid var(--border); }
-        .history-item:last-child { border-bottom: none; }
-        .history-item .date { font-weight: 600; color: var(--dark); }
-        .history-item .amount { color: var(--primary); font-weight: 700; }
-
-        .export-section { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .comparison-table th, .comparison-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+        .comparison-table th { background: var(--light); font-weight: 600; color: var(--dark); }
+        .comparison-table .good { color: var(--success); font-weight: 600; }
+        .comparison-table .bad { color: var(--danger); font-weight: 600; }
 
         .insight-card { background: #fff; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--info); margin-bottom: 0.75rem; }
         .insight-card.warning { border-left-color: var(--primary); }
         .insight-card.danger { border-left-color: var(--danger); }
         .insight-card.success { border-left-color: var(--success); }
-        .insight-card h5 { color: var(--dark); margin-bottom: 0.25rem; font-size: 0.95rem; }
-        .insight-card p { color: #6b7280; font-size: 0.9rem; }
 
-        .preset-budgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .preset-budgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .preset-card { background: #fff; padding: 1rem; border-radius: 8px; border: 2px solid var(--border); cursor: pointer; transition: all 0.3s; text-align: center; }
         .preset-card:hover { border-color: var(--primary); transform: translateY(-2px); }
         .preset-card h5 { color: var(--dark); margin-bottom: 0.5rem; }
-        .preset-card p { color: #6b7280; font-size: 0.85rem; }
 
         .toggle-section { margin-bottom: 1.5rem; }
         .toggle-btn { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 600; color: var(--dark); }
         .toggle-content { display: none; margin-top: 1rem; padding: 1rem; background: #fff; border-radius: 8px; border: 1px solid var(--border); }
         .toggle-content.show { display: block; }
-        .toggle-icon { transition: transform 0.3s; }
-        .toggle-icon.rotated { transform: rotate(180deg); }
-
-        .scenario-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
-        .scenario-card { background: #fff; padding: 1.5rem; border-radius: 10px; border: 2px solid var(--border); }
-        .scenario-card h4 { color: var(--dark); margin-bottom: 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
-
-        .annual-projection { background: linear-gradient(135deg, #fef3c7, #fed7aa); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary); margin: 1.5rem 0; }
-        .annual-projection h4 { color: var(--dark); margin-bottom: 1rem; }
-        .projection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
-        .projection-item { background: #fff; padding: 1rem; border-radius: 8px; text-align: center; }
-        .projection-item .label { font-size: 0.85rem; color: #6b7280; }
-        .projection-item .value { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-top: 0.5rem; }
 
         @media(max-width: 768px) {
             .tool-header h1 { font-size: 1.8rem; }
             .nav-links { display: none; }
             .budget-item { grid-template-columns: 1fr; }
-            .goal-input { grid-template-columns: 1fr; }
-            .scenario-comparison { grid-template-columns: 1fr; }
-            .projection-grid { grid-template-columns: repeat(2, 1fr); }
+            .content-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -321,7 +235,6 @@
                 <li><a href="calculators.html">Tools</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </nav>
@@ -333,7 +246,6 @@
     <div class="tool-header">
         <h1>Free Budget Planner Calculator 2026</h1>
         <p>Create, Track & Optimize Your Monthly Budget</p>
-        <p style="opacity:0.9;font-size:1rem">50/30/20 budgeting rule • Expense tracking • Savings goals • Annual projections • Download reports</p>
     </div>
 
     <div class="container">
@@ -348,59 +260,41 @@
                         <button class="currency-btn" onclick="setCurrency('€')" data-currency="€">EUR €</button>
                         <button class="currency-btn" onclick="setCurrency('£')" data-currency="£">GBP £</button>
                         <button class="currency-btn" onclick="setCurrency('¥')" data-currency="¥">JPY ¥</button>
-                        <button class="currency-btn" onclick="setCurrency('₹')" data-currency="₹">INR ₹</button>
-                        <button class="currency-btn" onclick="setCurrency('C$')" data-currency="C$">CAD C$</button>
-                        <button class="currency-btn" onclick="setCurrency('A$')" data-currency="A$">AUD A$</button>
                     </div>
 
                     <!-- Month Selector -->
                     <div class="month-selector">
-                        <button class="month-btn active" onclick="setMonth('January')" data-month="January">Jan</button>
-                        <button class="month-btn" onclick="setMonth('February')" data-month="February">Feb</button>
-                        <button class="month-btn" onclick="setMonth('March')" data-month="March">Mar</button>
-                        <button class="month-btn" onclick="setMonth('April')" data-month="April">Apr</button>
-                        <button class="month-btn" onclick="setMonth('May')" data-month="May">May</button>
-                        <button class="month-btn" onclick="setMonth('June')" data-month="June">Jun</button>
-                        <button class="month-btn" onclick="setMonth('July')" data-month="July">Jul</button>
-                        <button class="month-btn" onclick="setMonth('August')" data-month="August">Aug</button>
-                        <button class="month-btn" onclick="setMonth('September')" data-month="September">Sep</button>
-                        <button class="month-btn" onclick="setMonth('October')" data-month="October">Oct</button>
-                        <button class="month-btn" onclick="setMonth('November')" data-month="November">Nov</button>
-                        <button class="month-btn" onclick="setMonth('December')" data-month="December">Dec</button>
+                        <button class="month-btn active" onclick="setMonth('January')">Jan</button>
+                        <button class="month-btn" onclick="setMonth('February')">Feb</button>
+                        <button class="month-btn" onclick="setMonth('March')">Mar</button>
+                        <button class="month-btn" onclick="setMonth('April')">Apr</button>
+                        <button class="month-btn" onclick="setMonth('May')">May</button>
+                        <button class="month-btn" onclick="setMonth('June')">Jun</button>
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label" for="monthlyIncome">Monthly Income (<span class="currency-symbol">$</span>):</label>
+                        <label class="input-label">Monthly Income (<span class="currency-symbol">$</span>):</label>
                         <input type="number" id="monthlyIncome" class="input-field" placeholder="4000" min="0" step="0.01" onchange="calculateBudget()">
                     </div>
 
                     <!-- Preset Budgets -->
                     <div class="toggle-section">
                         <div class="toggle-btn" onclick="toggleSection('presetSection')">
-                            <span class="toggle-icon" id="presetIcon">▼</span>
                             <span>Quick Start: Load Preset Budgets</span>
                         </div>
                         <div class="toggle-content" id="presetSection">
                             <div class="preset-budgets">
                                 <div class="preset-card" onclick="loadPreset('student')">
                                     <h5>🎓 Student</h5>
-                                    <p>$1,500/mo income</p>
+                                    <p>$1,500/mo</p>
                                 </div>
                                 <div class="preset-card" onclick="loadPreset('entry')">
                                     <h5>💼 Entry Level</h5>
-                                    <p>$3,000/mo income</p>
+                                    <p>$3,000/mo</p>
                                 </div>
                                 <div class="preset-card" onclick="loadPreset('professional')">
                                     <h5>👔 Professional</h5>
-                                    <p>$5,000/mo income</p>
-                                </div>
-                                <div class="preset-card" onclick="loadPreset('family')">
-                                    <h5>👨‍👩‍👧 Family</h5>
-                                    <p>$7,000/mo income</p>
-                                </div>
-                                <div class="preset-card" onclick="loadPreset('highincome')">
-                                    <h5>💎 High Income</h5>
-                                    <p>$10,000/mo income</p>
+                                    <p>$5,000/mo</p>
                                 </div>
                             </div>
                         </div>
@@ -410,52 +304,23 @@
                     <div class="budget-category">
                         <h3>🏠 Needs (50%)</h3>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="housing">Housing/Rent</label>
-                                <input type="number" id="housing" class="input-field" placeholder="1200" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Housing/Rent</label>
+                            <input type="number" id="housing" class="input-field" placeholder="1200" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="utilities">Utilities</label>
-                                <input type="number" id="utilities" class="input-field" placeholder="200" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Utilities</label>
+                            <input type="number" id="utilities" class="input-field" placeholder="200" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="groceries">Groceries</label>
-                                <input type="number" id="groceries" class="input-field" placeholder="400" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Groceries</label>
+                            <input type="number" id="groceries" class="input-field" placeholder="400" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="transportation">Transportation</label>
-                                <input type="number" id="transportation" class="input-field" placeholder="300" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
-                            <div></div>
-                        </div>
-                        <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="insurance">Insurance</label>
-                                <input type="number" id="insurance" class="input-field" placeholder="150" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
-                            <div></div>
-                        </div>
-                        <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="healthcare">Healthcare</label>
-                                <input type="number" id="healthcare" class="input-field" placeholder="100" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
-                            <div></div>
-                        </div>
-                        <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="childcare">Childcare</label>
-                                <input type="number" id="childcare" class="input-field" placeholder="0" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Transportation</label>
+                            <input type="number" id="transportation" class="input-field" placeholder="300" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="category-total">
@@ -475,45 +340,23 @@
                     <div class="budget-category">
                         <h3>🎬 Wants (30%)</h3>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="entertainment">Entertainment</label>
-                                <input type="number" id="entertainment" class="input-field" placeholder="200" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Entertainment</label>
+                            <input type="number" id="entertainment" class="input-field" placeholder="200" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="dining">Dining Out</label>
-                                <input type="number" id="dining" class="input-field" placeholder="200" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Dining Out</label>
+                            <input type="number" id="dining" class="input-field" placeholder="200" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="subscriptions">Subscriptions</label>
-                                <input type="number" id="subscriptions" class="input-field" placeholder="50" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Subscriptions</label>
+                            <input type="number" id="subscriptions" class="input-field" placeholder="50" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="hobbies">Hobbies/Personal</label>
-                                <input type="number" id="hobbies" class="input-field" placeholder="150" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
-                            <div></div>
-                        </div>
-                        <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="shopping">Shopping/Clothing</label>
-                                <input type="number" id="shopping" class="input-field" placeholder="100" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
-                            <div></div>
-                        </div>
-                        <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="travel">Travel/Vacation</label>
-                                <input type="number" id="travel" class="input-field" placeholder="100" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Shopping</label>
+                            <input type="number" id="shopping" class="input-field" placeholder="100" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="category-total">
@@ -533,38 +376,23 @@
                     <div class="budget-category">
                         <h3>💰 Savings (20%)</h3>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="emergency">Emergency Fund</label>
-                                <input type="number" id="emergency" class="input-field" placeholder="300" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Emergency Fund</label>
+                            <input type="number" id="emergency" class="input-field" placeholder="300" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="retirement">Retirement</label>
-                                <input type="number" id="retirement" class="input-field" placeholder="400" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Retirement</label>
+                            <input type="number" id="retirement" class="input-field" placeholder="400" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="debtPayment">Debt Payment</label>
-                                <input type="number" id="debtPayment" class="input-field" placeholder="200" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Debt Payment</label>
+                            <input type="number" id="debtPayment" class="input-field" placeholder="200" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="investments">Investments</label>
-                                <input type="number" id="investments" class="input-field" placeholder="100" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
-                            <div></div>
-                        </div>
-                        <div class="budget-item">
-                            <div>
-                                <label class="input-label" for="education">Education Fund</label>
-                                <input type="number" id="education" class="input-field" placeholder="0" min="0" step="0.01" onchange="calculateBudget()">
-                            </div>
+                            <div><label class="input-label">Investments</label>
+                            <input type="number" id="investments" class="input-field" placeholder="100" min="0" onchange="calculateBudget()"></div>
                             <div></div>
                         </div>
                         <div class="category-total">
@@ -577,78 +405,6 @@
                         <div class="progress-label">
                             <span id="savingsPercent">0%</span>
                             <span id="savingsTarget">Target: 20%</span>
-                        </div>
-                    </div>
-
-                    <!-- Savings Goals -->
-                    <div class="toggle-section">
-                        <div class="toggle-btn" onclick="toggleSection('goalsSection')">
-                            <span class="toggle-icon" id="goalsIcon">▼</span>
-                            <span>Set Savings Goals</span>
-                        </div>
-                        <div class="toggle-content" id="goalsSection">
-                            <div class="savings-goal">
-                                <h4>🎯 Emergency Fund Goal</h4>
-                                <div class="goal-input">
-                                    <div>
-                                        <label class="input-label">Target Amount (<span class="currency-symbol">$</span>)</label>
-                                        <input type="number" id="emergencyGoal" class="input-field" placeholder="10000" min="0" step="0.01" onchange="calculateBudget()">
-                                    </div>
-                                    <div>
-                                        <label class="input-label">Current Saved (<span class="currency-symbol">$</span>)</label>
-                                        <input type="number" id="emergencyCurrent" class="input-field" placeholder="2000" min="0" step="0.01" onchange="calculateBudget()">
-                                    </div>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill savings" id="emergencyGoalProgress" style="width: 0%"></div>
-                                </div>
-                                <div class="progress-label">
-                                    <span id="emergencyGoalPercent">0% complete</span>
-                                    <span id="emergencyGoalMonths">Months to goal: --</span>
-                                </div>
-                            </div>
-
-                            <div class="savings-goal">
-                                <h4>🏖️ Vacation Goal</h4>
-                                <div class="goal-input">
-                                    <div>
-                                        <label class="input-label">Target Amount (<span class="currency-symbol">$</span>)</label>
-                                        <input type="number" id="vacationGoal" class="input-field" placeholder="3000" min="0" step="0.01" onchange="calculateBudget()">
-                                    </div>
-                                    <div>
-                                        <label class="input-label">Current Saved (<span class="currency-symbol">$</span>)</label>
-                                        <input type="number" id="vacationCurrent" class="input-field" placeholder="500" min="0" step="0.01" onchange="calculateBudget()">
-                                    </div>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill wants" id="vacationGoalProgress" style="width: 0%"></div>
-                                </div>
-                                <div class="progress-label">
-                                    <span id="vacationGoalPercent">0% complete</span>
-                                    <span id="vacationGoalMonths">Months to goal: --</span>
-                                </div>
-                            </div>
-
-                            <div class="savings-goal">
-                                <h4>🚗 Big Purchase Goal</h4>
-                                <div class="goal-input">
-                                    <div>
-                                        <label class="input-label">Target Amount (<span class="currency-symbol">$</span>)</label>
-                                        <input type="number" id="bigPurchaseGoal" class="input-field" placeholder="5000" min="0" step="0.01" onchange="calculateBudget()">
-                                    </div>
-                                    <div>
-                                        <label class="input-label">Current Saved (<span class="currency-symbol">$</span>)</label>
-                                        <input type="number" id="bigPurchaseCurrent" class="input-field" placeholder="0" min="0" step="0.01" onchange="calculateBudget()">
-                                    </div>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill needs" id="bigPurchaseGoalProgress" style="width: 0%"></div>
-                                </div>
-                                <div class="progress-label">
-                                    <span id="bigPurchaseGoalPercent">0% complete</span>
-                                    <span id="bigPurchaseGoalMonths">Months to goal: --</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -674,27 +430,23 @@
                     <div class="action-buttons">
                         <button class="btn btn-primary" onclick="calculateBudget()">📊 Calculate Budget</button>
                         <button class="btn btn-secondary" onclick="clearBudget()">🔄 Clear</button>
-                        <button class="btn btn-success" onclick="saveBudget()">💾 Save Budget</button>
-                        <button class="btn btn-info" onclick="downloadReport()">📥 Download Report</button>
+                        <button class="btn btn-success" onclick="downloadReport()">📥 Download Report</button>
                     </div>
 
                     <div class="result-box" id="result">
                         <h3 style="color: var(--dark); margin-bottom: 1rem;">Budget Summary & Smart Insights</h3>
 
-                        <!-- Visual Chart -->
                         <div class="chart-container">
                             <canvas id="budgetChart"></canvas>
                         </div>
 
-                        <!-- Comparison Table -->
                         <h4 style="color: var(--dark); margin: 1.5rem 0 0.75rem;">Budget vs. 50/30/20 Rule</h4>
                         <table class="comparison-table">
                             <thead>
                                 <tr>
                                     <th>Category</th>
                                     <th>Actual</th>
-                                    <th>Target (50/30/20)</th>
-                                    <th>Difference</th>
+                                    <th>Target</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -702,40 +454,8 @@
                             </tbody>
                         </table>
 
-                        <!-- Smart Insights -->
                         <h4 style="color: var(--dark); margin: 1.5rem 0 0.75rem;">💡 Smart Insights</h4>
                         <div id="insightsContainer"></div>
-
-                        <!-- Annual Projection -->
-                        <div class="annual-projection">
-                            <h4>📈 Annual Projection (12 Months)</h4>
-                            <div class="projection-grid" id="projectionGrid">
-                            </div>
-                        </div>
-
-                        <!-- Scenario Comparison -->
-                        <h4 style="color: var(--dark); margin: 1.5rem 0 0.75rem;">⚖️ Scenario Comparison</h4>
-                        <div class="scenario-comparison">
-                            <div class="scenario-card">
-                                <h4>Current Budget</h4>
-                                <div id="currentScenario"></div>
-                            </div>
-                            <div class="scenario-card">
-                                <h4>Optimized Budget</h4>
-                                <div id="optimizedScenario"></div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 1.5rem; padding: 1rem; background: #fff; border-radius: 8px; border-left: 4px solid var(--primary);">
-                            <h4 style="color: var(--dark); margin-bottom: 0.5rem;">💡 Budgeting Tips</h4>
-                            <ul id="tipsList" style="margin-left: 1.5rem; color: #4b5563;"></ul>
-                        </div>
-                    </div>
-
-                    <!-- Budget History -->
-                    <div class="history-section" id="historySection" style="display: none;">
-                        <h3 style="color: var(--dark); margin-bottom: 1rem;">📋 Saved Budget History</h3>
-                        <div id="historyList"></div>
                     </div>
                 </div>
             </div>
@@ -752,828 +472,261 @@
                     <h3>✨ Features</h3>
                     <div class="sidebar-item">✓ 50/30/20 framework</div>
                     <div class="sidebar-item">✓ Multi-currency support</div>
-                    <div class="sidebar-item">✓ Category tracking</div>
                     <div class="sidebar-item">✓ Real-time calculations</div>
-                    <div class="sidebar-item">✓ Visual progress bars</div>
-                    <div class="sidebar-item">✓ Savings goals tracker</div>
-                    <div class="sidebar-item">✓ Annual projections</div>
+                    <div class="sidebar-item">✓ Visual charts</div>
                     <div class="sidebar-item">✓ Smart insights</div>
                     <div class="sidebar-item">✓ Download reports</div>
                     <div class="sidebar-item">✓ 100% free</div>
-                    <div class="sidebar-item">✓ No signup</div>
-                </div>
-
-                <div class="sidebar" style="margin-top: 2rem;">
-                    <h3>🎯 Quick Stats</h3>
-                    <div class="sidebar-item"><strong>Users:</strong> 50,000+</div>
-                    <div class="sidebar-item"><strong>Budgets Created:</strong> 120,000+</div>
-                    <div class="sidebar-item"><strong>Avg. Savings:</strong> 18%</div>
-                    <div class="sidebar-item"><strong>Rating:</strong> ⭐ 4.8/5</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2>The 50/30/20 Budgeting Rule</h2>
-            <p>The 50/30/20 rule is a simple budgeting framework that allocates your after-tax income into three categories: 50% for needs, 30% for wants, and 20% for savings and debt repayment. This approach helps you balance financial security with lifestyle enjoyment.</p>
-
-            <h3>What are Needs?</h3>
-            <p>Needs are essential expenses required for survival and basic functioning. These include housing, utilities, groceries, transportation, insurance, healthcare, and childcare. Ideally, needs should not exceed 50% of your income.</p>
-
-            <h3>What are Wants?</h3>
-            <p>Wants are discretionary expenses that improve your quality of life but are not essential. Examples include entertainment, dining out, subscriptions, hobbies, shopping, and travel. The 50/30/20 rule allocates 30% of income to wants.</p>
-
-            <h3>What are Savings?</h3>
-            <p>Savings include emergency funds, retirement contributions, debt payoff, investments, and education funds. Allocating 20% of your income to savings ensures you are building financial security and working toward future goals.</p>
-        </div>
-
-        <div class="content-section">
-            <h2>How to Create Your Budget</h2>
-
-            <h3>Step 1: Calculate Your Income</h3>
-            <p>Determine your monthly after-tax income. This is the amount you actually receive in your bank account, not your gross salary. If your income varies, use an average or conservative estimate.</p>
-
-            <h3>Step 2: List Your Needs</h3>
-            <p>Write down all essential expenses: housing, utilities, groceries, transportation, insurance, healthcare, and childcare. Aim to keep these at or below 50% of your income.</p>
-
-            <h3>Step 3: List Your Wants</h3>
-            <p>List discretionary spending like entertainment, dining out, subscriptions, hobbies, shopping, and travel. Aim for 30% of income. Review subscriptions you have forgotten about—these are "money leaks."</p>
-
-            <h3>Step 4: Allocate Savings</h3>
-            <p>Reserve 20% for emergency fund, retirement, debt payoff, and investments. Start small if needed; even 10% initially is progress.</p>
-
-            <h3>Step 5: Set Goals & Track</h3>
-            <p>Set specific savings goals (emergency fund, vacation, big purchase). Use progress bars to track. Review your budget monthly and adjust as needed.</p>
-
-            <h3>Step 6: Optimize & Project</h3>
-            <p>Use annual projections to see long-term impact. Compare scenarios to find the best budget structure. Download reports for your records.</p>
-        </div>
-
-        <div class="content-section">
-            <h2>Common Budgeting Challenges</h2>
-            <div class="use-cases">
-                <div class="use-case">
-                    <h4>💳 Too Many Subscriptions</h4>
-                    <p>Review apps and services monthly. Cancel unused subscriptions—these "ghost" expenses add up quickly. Use our subscription tracker.</p>
-                </div>
-                <div class="use-case">
-                    <h4>🍔 Dining Out Costs</h4>
-                    <p>Eating out is convenient but expensive. Cook at home more often and pack lunch. Meal planning saves money.</p>
-                </div>
-                <div class="use-case">
-                    <h4>🛍️ Impulse Buying</h4>
-                    <p>Wait 24 hours before non-essential purchases. Most impulse buys lose appeal after a day. Set a "fun money" limit.</p>
-                </div>
-                <div class="use-case">
-                    <h4>💸 Lifestyle Inflation</h4>
-                    <p>As income increases, resist spending increases proportionally. Maintain your budget structure as you earn more.</p>
-                </div>
-                <div class="use-case">
-                    <h4>📊 Not Tracking</h4>
-                    <p>Use budget apps or spreadsheets to track spending. What gets measured gets managed. Review weekly, not just monthly.</p>
-                </div>
-                <div class="use-case">
-                    <h4>❌ Too Restrictive</h4>
-                    <p>Overly strict budgets lead to burnout. Include small treats in your wants category to stay motivated.</p>
-                </div>
-                <div class="use-case">
-                    <h4>🌍 Currency Confusion</h4>
-                    <p>Use our multi-currency support to budget in your local currency. Switch between USD, EUR, GBP, and more.</p>
-                </div>
-                <div class="use-case">
-                    <h4>📅 Irregular Income</h4>
-                    <p>For freelancers and gig workers, use a conservative average. Build a larger emergency fund (6-9 months).</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2>Frequently Asked Questions</h2>
-
-            <div class="faq-item">
-                <h4>What is the 50/30/20 budgeting rule?</h4>
-                <p>The 50/30/20 rule allocates 50% of income to needs, 30% to wants, and 20% to savings and debt repayment. It is a simple framework for balancing financial security with lifestyle enjoyment.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>How do I create a monthly budget?</h4>
-                <p>Calculate your after-tax income, list all essential needs (50%), list discretionary wants (30%), allocate 20% to savings, and track spending monthly. Adjust as needed.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>What if my needs exceed 50%?</h4>
-                <p>In expensive areas, needs may exceed 50%. Adjust by reducing wants, increasing income, or modifying the ratio temporarily. Focus on increasing earnings or relocating if possible.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>Should I adjust the 50/30/20 ratio?</h4>
-                <p>Yes, adjust based on your situation. If you are paying off debt, increase the savings percentage. If you are in a high-cost area, modify ratios as needed.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>How do I stick to my budget?</h4>
-                <p>Use cash envelopes, apps, or spreadsheets. Review weekly. Automate savings so it is prioritized. Make incremental changes rather than drastic cuts.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>What counts as savings?</h4>
-                <p>Emergency fund (3-6 months expenses), retirement accounts, debt payoff, investments, and education funds all count as savings.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>Can I download my budget report?</h4>
-                <p>Yes! Click the "Download Report" button to save your budget as a text file with all details, insights, and projections.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>Does this budget planner support multiple currencies?</h4>
-                <p>Yes, we support USD, EUR, GBP, JPY, INR, CAD, and AUD. Switch currencies anytime without losing your data.</p>
-            </div>
-        </div>
-
-        <div class="related-section">
-            <h3>Related Financial Tools</h3>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon">💰</div>
-                    <h4>Compound Interest</h4>
-                    <a href="compound-interest-calculator.html">Try →</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🎯</div>
-                    <h4>Retirement Calculator</h4>
-                    <a href="retirement-calculator.html">Try →</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🏠</div>
-                    <h4>Mortgage Calculator</h4>
-                    <a href="mortgage-calculator.html">Try →</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">💳</div>
-                    <h4>Loan Calculator</h4>
-                    <a href="loan-calculator.html">Try →</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">💵</div>
-                    <h4>Currency Converter</h4>
-                    <a href="currency-converter.html">Try →</a>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">📈</div>
-                    <h4>All Financial Tools</h4>
-                    <a href="calculators.html">Try →</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="footer-section">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="calculators.html">Tools</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy-policy.html">Privacy</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Financial Calculators</h4>
-                <ul>
-                    <li><a href="compound-interest-calculator.html">Compound Interest</a></li>
-                    <li><a href="retirement-calculator.html">Retirement Calc</a></li>
-                    <li><a href="budget-planner.html">Budget Planner</a></li>
-                    <li><a href="loan-calculator.html">Loan Calculator</a></li>
-                    <li><a href="mortgage-calculator.html">Mortgage Calc</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>More Tools</h4>
-                <ul>
-                    <li><a href="currency-converter.html">Currency Converter</a></li>
-                    <li><a href="bmi-calculator.html">BMI Calculator</a></li>
-                    <li><a href="calorie-calculator.html">Calorie Calc</a></li>
-                    <li><a href="word-counter-tool.html">Word Counter</a></li>
-                    <li><a href="calculators.html">All Tools</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>About ToolPond Pro</h4>
-                <p>ToolPond Pro provides 29+ free online calculators and tools for finance, health, productivity, and more. All tools are browser-based, require no signup, and process data locally for your privacy.</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 ToolPond Pro. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a></p>
-            <p>Free budget planner and financial management tools. No signup, no fees, 100% secure.</p>
-        </div>
-    </footer>
-
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
-
     <script>
         let currentCurrency = '$';
         let currentMonth = 'January';
-        let budgetHistory = JSON.parse(localStorage.getItem('budgetHistory')) || [];
+        let budgetChart = null;
 
         function setCurrency(symbol) {
             currentCurrency = symbol;
             document.querySelectorAll('.currency-symbol').forEach(el => el.textContent = symbol);
             document.querySelectorAll('.currency-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-currency="' + symbol + '"]').classList.add('active');
+            document.querySelector('[data-currency="' + symbol + '"]')?.classList.add('active');
             calculateBudget();
         }
 
         function setMonth(month) {
             currentMonth = month;
             document.querySelectorAll('.month-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-month="' + month + '"]').classList.add('active');
+            event.target.classList.add('active');
         }
 
         function toggleSection(id) {
             const section = document.getElementById(id);
-            const icon = document.getElementById(id.replace('Section', 'Icon'));
             section.classList.toggle('show');
-            icon.classList.toggle('rotated');
         }
 
         function loadPreset(type) {
             const presets = {
-                student: { income: 1500, housing: 500, utilities: 80, groceries: 250, transportation: 100, insurance: 50, healthcare: 30, childcare: 0, entertainment: 80, dining: 100, subscriptions: 30, hobbies: 50, shopping: 40, travel: 20, emergency: 100, retirement: 50, debtPayment: 50, investments: 20, education: 30 },
-                entry: { income: 3000, housing: 900, utilities: 150, groceries: 350, transportation: 200, insurance: 100, healthcare: 80, childcare: 0, entertainment: 150, dining: 200, subscriptions: 50, hobbies: 100, shopping: 80, travel: 50, emergency: 200, retirement: 200, debtPayment: 150, investments: 50, education: 0 },
-                professional: { income: 5000, housing: 1500, utilities: 200, groceries: 500, transportation: 300, insurance: 200, healthcare: 150, childcare: 0, entertainment: 250, dining: 300, subscriptions: 80, hobbies: 150, shopping: 150, travel: 100, emergency: 400, retirement: 400, debtPayment: 200, investments: 150, education: 0 },
-                family: { income: 7000, housing: 2000, utilities: 300, groceries: 700, transportation: 400, insurance: 300, healthcare: 200, childcare: 500, entertainment: 300, dining: 350, subscriptions: 100, hobbies: 150, shopping: 200, travel: 150, emergency: 500, retirement: 500, debtPayment: 300, investments: 200, education: 100 },
-                highincome: { income: 10000, housing: 2500, utilities: 400, groceries: 800, transportation: 500, insurance: 400, healthcare: 300, childcare: 0, entertainment: 500, dining: 500, subscriptions: 150, hobbies: 300, shopping: 300, travel: 250, emergency: 800, retirement: 1000, debtPayment: 400, investments: 500, education: 200 }
+                student: { income: 1500, housing: 600, utilities: 100, groceries: 200, transportation: 100, entertainment: 150, dining: 100, subscriptions: 30, shopping: 70, emergency: 100, retirement: 100, debtPayment: 50, investments: 0 },
+                entry: { income: 3000, housing: 1200, utilities: 150, groceries: 300, transportation: 200, entertainment: 300, dining: 200, subscriptions: 50, shopping: 100, emergency: 250, retirement: 350, debtPayment: 150, investments: 100 },
+                professional: { income: 5000, housing: 1800, utilities: 200, groceries: 400, transportation: 300, entertainment: 500, dining: 400, subscriptions: 75, shopping: 200, emergency: 500, retirement: 700, debtPayment: 300, investments: 200 }
             };
 
-            const p = presets[type];
-            if (!p) return;
-
-            document.getElementById('monthlyIncome').value = p.income;
-            document.getElementById('housing').value = p.housing;
-            document.getElementById('utilities').value = p.utilities;
-            document.getElementById('groceries').value = p.groceries;
-            document.getElementById('transportation').value = p.transportation;
-            document.getElementById('insurance').value = p.insurance;
-            document.getElementById('healthcare').value = p.healthcare;
-            document.getElementById('childcare').value = p.childcare;
-            document.getElementById('entertainment').value = p.entertainment;
-            document.getElementById('dining').value = p.dining;
-            document.getElementById('subscriptions').value = p.subscriptions;
-            document.getElementById('hobbies').value = p.hobbies;
-            document.getElementById('shopping').value = p.shopping;
-            document.getElementById('travel').value = p.travel;
-            document.getElementById('emergency').value = p.emergency;
-            document.getElementById('retirement').value = p.retirement;
-            document.getElementById('debtPayment').value = p.debtPayment;
-            document.getElementById('investments').value = p.investments;
-            document.getElementById('education').value = p.education;
-
-            calculateBudget();
+            const preset = presets[type];
+            if (preset) {
+                document.getElementById('monthlyIncome').value = preset.income;
+                document.getElementById('housing').value = preset.housing;
+                document.getElementById('utilities').value = preset.utilities;
+                document.getElementById('groceries').value = preset.groceries;
+                document.getElementById('transportation').value = preset.transportation;
+                document.getElementById('entertainment').value = preset.entertainment;
+                document.getElementById('dining').value = preset.dining;
+                document.getElementById('subscriptions').value = preset.subscriptions;
+                document.getElementById('shopping').value = preset.shopping;
+                document.getElementById('emergency').value = preset.emergency;
+                document.getElementById('retirement').value = preset.retirement;
+                document.getElementById('debtPayment').value = preset.debtPayment;
+                document.getElementById('investments').value = preset.investments;
+                calculateBudget();
+            }
         }
 
         function calculateBudget() {
             const income = parseFloat(document.getElementById('monthlyIncome').value) || 0;
 
-            if (income <= 0) {
-                alert('Please enter your monthly income');
-                return;
-            }
-
-            // Get all values
+            // Calculate totals
             const housing = parseFloat(document.getElementById('housing').value) || 0;
             const utilities = parseFloat(document.getElementById('utilities').value) || 0;
             const groceries = parseFloat(document.getElementById('groceries').value) || 0;
             const transportation = parseFloat(document.getElementById('transportation').value) || 0;
-            const insurance = parseFloat(document.getElementById('insurance').value) || 0;
-            const healthcare = parseFloat(document.getElementById('healthcare').value) || 0;
-            const childcare = parseFloat(document.getElementById('childcare').value) || 0;
+            const needs = housing + utilities + groceries + transportation;
 
             const entertainment = parseFloat(document.getElementById('entertainment').value) || 0;
             const dining = parseFloat(document.getElementById('dining').value) || 0;
             const subscriptions = parseFloat(document.getElementById('subscriptions').value) || 0;
-            const hobbies = parseFloat(document.getElementById('hobbies').value) || 0;
             const shopping = parseFloat(document.getElementById('shopping').value) || 0;
-            const travel = parseFloat(document.getElementById('travel').value) || 0;
+            const wants = entertainment + dining + subscriptions + shopping;
 
             const emergency = parseFloat(document.getElementById('emergency').value) || 0;
             const retirement = parseFloat(document.getElementById('retirement').value) || 0;
             const debtPayment = parseFloat(document.getElementById('debtPayment').value) || 0;
             const investments = parseFloat(document.getElementById('investments').value) || 0;
-            const education = parseFloat(document.getElementById('education').value) || 0;
-
-            // Calculate totals
-            const needs = housing + utilities + groceries + transportation + insurance + healthcare + childcare;
-            const wants = entertainment + dining + subscriptions + hobbies + shopping + travel;
-            const savings = emergency + retirement + debtPayment + investments + education;
+            const savings = emergency + retirement + debtPayment + investments;
 
             const totalSpent = needs + wants + savings;
             const remaining = income - totalSpent;
 
-            // Recommended amounts
-            const recommendedNeeds = income * 0.50;
-            const recommendedWants = income * 0.30;
-            const recommendedSavings = income * 0.20;
-
-            // Update UI totals
+            // Update UI
             document.getElementById('needsTotal').textContent = currentCurrency + needs.toFixed(2);
             document.getElementById('wantsTotal').textContent = currentCurrency + wants.toFixed(2);
             document.getElementById('savingsTotal').textContent = currentCurrency + savings.toFixed(2);
             document.getElementById('totalSpent').textContent = currentCurrency + totalSpent.toFixed(2);
-            document.getElementById('remaining').textContent = currentCurrency + Math.abs(remaining).toFixed(2);
+            document.getElementById('remaining').textContent = currentCurrency + remaining.toFixed(2);
+            document.getElementById('balance').textContent = currentCurrency + remaining.toFixed(2);
 
-            const balanceEl = document.getElementById('balance');
-            balanceEl.style.color = remaining >= 0 ? '#059669' : '#ef4444';
-            balanceEl.textContent = (remaining >= 0 ? '+' : '-') + currentCurrency + Math.abs(remaining).toFixed(2);
+            // Calculate percentages
+            const needsPercent = income > 0 ? (needs / income * 100).toFixed(1) : 0;
+            const wantsPercent = income > 0 ? (wants / income * 100).toFixed(1) : 0;
+            const savingsPercent = income > 0 ? (savings / income * 100).toFixed(1) : 0;
 
-            // Savings rate
-            const savingsRate = income > 0 ? ((savings / income) * 100).toFixed(1) : 0;
-            document.getElementById('savingsRate').textContent = savingsRate + '%';
+            document.getElementById('needsPercent').textContent = needsPercent + '%';
+            document.getElementById('wantsPercent').textContent = wantsPercent + '%';
+            document.getElementById('savingsPercent').textContent = savingsPercent + '%';
 
-            // Progress bars
-            const needsPct = income > 0 ? (needs / income) * 100 : 0;
-            const wantsPct = income > 0 ? (wants / income) * 100 : 0;
-            const savingsPct = income > 0 ? (savings / income) * 100 : 0;
+            // Update progress bars
+            document.getElementById('needsProgress').style.width = Math.min(needsPercent, 100) + '%';
+            document.getElementById('wantsProgress').style.width = Math.min(wantsPercent, 100) + '%';
+            document.getElementById('savingsProgress').style.width = Math.min(savingsPercent, 100) + '%';
 
-            document.getElementById('needsProgress').style.width = Math.min(needsPct, 100) + '%';
-            document.getElementById('needsProgress').className = 'progress-fill ' + (needsPct > 50 ? 'over' : 'needs');
-            document.getElementById('needsPercent').textContent = needsPct.toFixed(1) + '%';
+            document.getElementById('savingsRate').textContent = savingsPercent + '%';
 
-            document.getElementById('wantsProgress').style.width = Math.min(wantsPct, 100) + '%';
-            document.getElementById('wantsProgress').className = 'progress-fill ' + (wantsPct > 30 ? 'over' : 'wants');
-            document.getElementById('wantsPercent').textContent = wantsPct.toFixed(1) + '%';
-
-            document.getElementById('savingsProgress').style.width = Math.min(savingsPct, 100) + '%';
-            document.getElementById('savingsProgress').className = 'progress-fill ' + (savingsPct < 20 ? 'over' : 'savings');
-            document.getElementById('savingsPercent').textContent = savingsPct.toFixed(1) + '%';
-
-            // Savings Goals
-            updateGoal('emergency', emergency, income);
-            updateGoal('vacation', 0, income); // vacation is part of wants, not savings
-            updateGoal('bigPurchase', 0, income);
-
-            // Draw chart
-            drawChart(needs, wants, savings, income);
-
-            // Comparison table
-            updateComparisonTable(needs, wants, savings, income, recommendedNeeds, recommendedWants, recommendedSavings);
-
-            // Smart insights
-            generateInsights(needs, wants, savings, income, remaining, needsPct, wantsPct, savingsPct);
-
-            // Annual projections
-            updateProjections(income, needs, wants, savings, remaining);
-
-            // Scenario comparison
-            updateScenarioComparison(needs, wants, savings, income, recommendedNeeds, recommendedWants, recommendedSavings);
-
-            // Tips
-            generateTips(needs, wants, savings, income, remaining, needsPct, wantsPct, savingsPct);
-
-            // Show result
-            document.getElementById('result').classList.add('show');
+            // Show results
+            if (income > 0) {
+                document.getElementById('result').classList.add('show');
+                updateChart(needs, wants, savings);
+                updateComparison(needs, wants, savings, income);
+                generateInsights(needs, wants, savings, income);
+            }
         }
 
-        function updateGoal(type, monthlyContribution, income) {
-            const goal = parseFloat(document.getElementById(type + 'Goal').value) || 0;
-            const current = parseFloat(document.getElementById(type + 'Current').value) || 0;
+        function updateChart(needs, wants, savings) {
+            const ctx = document.getElementById('budgetChart').getContext('2d');
+            
+            if (budgetChart) {
+                budgetChart.destroy();
+            }
 
-            if (goal > 0) {
-                const progress = Math.min((current / goal) * 100, 100);
-                document.getElementById(type + 'GoalProgress').style.width = progress + '%';
-                document.getElementById(type + 'GoalPercent').textContent = progress.toFixed(1) + '% complete';
-
-                let monthly = 0;
-                if (type === 'emergency') monthly = parseFloat(document.getElementById('emergency').value) || 0;
-                else if (type === 'vacation') monthly = parseFloat(document.getElementById('travel').value) || 0;
-                else if (type === 'bigPurchase') monthly = parseFloat(document.getElementById('investments').value) || 0;
-
-                const remaining = goal - current;
-                if (monthly > 0) {
-                    const months = Math.ceil(remaining / monthly);
-                    document.getElementById(type + 'GoalMonths').textContent = 'Months to goal: ' + months;
-                } else {
-                    document.getElementById(type + 'GoalMonths').textContent = 'Months to goal: --';
+            budgetChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Needs', 'Wants', 'Savings'],
+                    datasets: [{
+                        data: [needs, wants, savings],
+                        backgroundColor: ['#f59e0b', '#3b82f6', '#059669'],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }
-            }
-        }
-
-        function drawChart(needs, wants, savings, income) {
-            const canvas = document.getElementById('budgetChart');
-            if (!canvas) return;
-
-            const ctx = canvas.getContext('2d');
-            const width = canvas.width = canvas.offsetWidth;
-            const height = canvas.height = canvas.offsetHeight;
-
-            ctx.clearRect(0, 0, width, height);
-
-            const total = needs + wants + savings;
-            if (total === 0) return;
-
-            const centerX = width / 2;
-            const centerY = height / 2;
-            const radius = Math.min(width, height) / 2 - 40;
-
-            // Pie chart
-            let startAngle = -Math.PI / 2;
-
-            const data = [
-                { value: needs, color: '#f59e0b', label: 'Needs' },
-                { value: wants, color: '#3b82f6', label: 'Wants' },
-                { value: savings, color: '#059669', label: 'Savings' }
-            ];
-
-            data.forEach(item => {
-                const sliceAngle = (item.value / total) * 2 * Math.PI;
-
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
-                ctx.closePath();
-                ctx.fillStyle = item.color;
-                ctx.fill();
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                // Label
-                const labelAngle = startAngle + sliceAngle / 2;
-                const labelX = centerX + Math.cos(labelAngle) * (radius * 0.7);
-                const labelY = centerY + Math.sin(labelAngle) * (radius * 0.7);
-
-                const pct = ((item.value / income) * 100).toFixed(1);
-                ctx.fillStyle = '#fff';
-                ctx.font = 'bold 14px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(item.label, labelX, labelY - 8);
-                ctx.font = '12px sans-serif';
-                ctx.fillText(pct + '%', labelX, labelY + 8);
-
-                startAngle += sliceAngle;
-            });
-
-            // Legend
-            const legendY = height - 20;
-            let legendX = 20;
-            data.forEach(item => {
-                ctx.fillStyle = item.color;
-                ctx.fillRect(legendX, legendY - 8, 12, 12);
-                ctx.fillStyle = '#374151';
-                ctx.font = '12px sans-serif';
-                ctx.textAlign = 'left';
-                ctx.fillText(item.label + ' (' + currentCurrency + item.value.toFixed(0) + ')', legendX + 18, legendY);
-                legendX += 100;
             });
         }
 
-        function updateComparisonTable(needs, wants, savings, income, recNeeds, recWants, recSavings) {
-            const tbody = document.getElementById('comparisonTableBody');
-            tbody.innerHTML = '';
+        function updateComparison(needs, wants, savings, income) {
+            const needsTarget = income * 0.5;
+            const wantsTarget = income * 0.3;
+            const savingsTarget = income * 0.2;
 
-            const categories = [
-                { name: 'Needs', actual: needs, target: recNeeds },
-                { name: 'Wants', actual: wants, target: recWants },
-                { name: 'Savings', actual: savings, target: recSavings }
-            ];
+            const needsStatus = needs <= needsTarget ? '<span class="good">✓ On Target</span>' : '<span class="bad">✗ Over</span>';
+            const wantsStatus = wants <= wantsTarget ? '<span class="good">✓ On Target</span>' : '<span class="bad">✗ Over</span>';
+            const savingsStatus = savings >= savingsTarget ? '<span class="good">✓ On Target</span>' : '<span class="bad">✗ Under</span>';
 
-            categories.forEach(cat => {
-                const diff = cat.actual - cat.target;
-                const diffStr = diff >= 0 ? '+' + currentCurrency + diff.toFixed(2) : '-' + currentCurrency + Math.abs(diff).toFixed(2);
-                const status = diff > 0 ? '<span class="bad">Over</span>' : (diff < 0 ? '<span class="warning">Under</span>' : '<span class="good">On Target</span>');
+            const html = `
+                <tr>
+                    <td>Needs</td>
+                    <td>${currentCurrency}${needs.toFixed(2)}</td>
+                    <td>${currentCurrency}${needsTarget.toFixed(2)}</td>
+                    <td>${needsStatus}</td>
+                </tr>
+                <tr>
+                    <td>Wants</td>
+                    <td>${currentCurrency}${wants.toFixed(2)}</td>
+                    <td>${currentCurrency}${wantsTarget.toFixed(2)}</td>
+                    <td>${wantsStatus}</td>
+                </tr>
+                <tr>
+                    <td>Savings</td>
+                    <td>${currentCurrency}${savings.toFixed(2)}</td>
+                    <td>${currentCurrency}${savingsTarget.toFixed(2)}</td>
+                    <td>${savingsStatus}</td>
+                </tr>
+            `;
 
-                const row = '<tr><td>' + cat.name + '</td><td>' + currentCurrency + cat.actual.toFixed(2) + '</td><td>' + currentCurrency + cat.target.toFixed(2) + '</td><td>' + diffStr + '</td><td>' + status + '</td></tr>';
-                tbody.innerHTML += row;
-            });
+            document.getElementById('comparisonTableBody').innerHTML = html;
         }
 
-        function generateInsights(needs, wants, savings, income, remaining, needsPct, wantsPct, savingsPct) {
-            const container = document.getElementById('insightsContainer');
-            container.innerHTML = '';
+        function generateInsights(needs, wants, savings, income) {
+            let insights = '';
 
-            const insights = [];
-
-            if (needsPct > 55) {
-                insights.push({ type: 'danger', title: '⚠️ Needs Too High', text: 'Your needs consume ' + needsPct.toFixed(1) + '% of income. Consider reducing housing costs or finding cheaper alternatives.' });
-            } else if (needsPct < 45) {
-                insights.push({ type: 'success', title: '✅ Needs Well Managed', text: 'Great job! Your needs are only ' + needsPct.toFixed(1) + '% of income, leaving room for savings and wants.' });
+            if (needs > income * 0.5) {
+                insights += '<div class="insight-card danger">Your needs exceed 50% of income. Consider reducing housing or transportation costs.</div>';
             }
 
-            if (wantsPct > 35) {
-                insights.push({ type: 'warning', title: '⚠️ Wants Exceeding Target', text: 'Your wants are ' + wantsPct.toFixed(1) + '% of income. Review subscriptions and discretionary spending.' });
+            if (wants > income * 0.3) {
+                insights += '<div class="insight-card warning">Your wants exceed 30%. Try cutting back on discretionary spending.</div>';
             }
 
-            if (savingsPct < 15) {
-                insights.push({ type: 'danger', title: '⚠️ Savings Too Low', text: 'You are only saving ' + savingsPct.toFixed(1) + '% of income. Aim for at least 20% for financial security.' });
-            } else if (savingsPct >= 20) {
-                insights.push({ type: 'success', title: '✅ Great Savings Rate', text: 'Excellent! You are saving ' + savingsPct.toFixed(1) + '% of income. Keep it up!' });
+            if (savings < income * 0.2) {
+                insights += '<div class="insight-card warning">Your savings is below 20%. Aim to increase your emergency fund and retirement contributions.</div>';
             }
 
-            if (remaining > 0) {
-                insights.push({ type: 'success', title: '💰 Surplus Available', text: 'You have ' + currentCurrency + remaining.toFixed(2) + ' surplus. Consider boosting your emergency fund or investments.' });
-            } else if (remaining < 0) {
-                insights.push({ type: 'danger', title: '❌ Overspending Alert', text: 'You are overspending by ' + currentCurrency + Math.abs(remaining).toFixed(2) + '. Reduce wants or increase income.' });
+            if (needs <= income * 0.5 && wants <= income * 0.3 && savings >= income * 0.2) {
+                insights += '<div class="insight-card success">Great! Your budget follows the 50/30/20 rule perfectly!</div>';
             }
 
-            if (savings > 0 && income > 0) {
-                const annualSavings = savings * 12;
-                insights.push({ type: 'info', title: '📊 Annual Savings Potential', text: 'At this rate, you will save ' + currentCurrency + annualSavings.toFixed(2) + ' per year.' });
-            }
-
-            insights.forEach(insight => {
-                const card = '<div class="insight-card ' + insight.type + '"><h5>' + insight.title + '</h5><p>' + insight.text + '</p></div>';
-                container.innerHTML += card;
-            });
+            document.getElementById('insightsContainer').innerHTML = insights || '<div class="insight-card">Enter your expenses to get personalized insights.</div>';
         }
 
-        function updateProjections(income, needs, wants, savings, remaining) {
-            const grid = document.getElementById('projectionGrid');
-            grid.innerHTML = '';
-
-            const annualIncome = income * 12;
-            const annualNeeds = needs * 12;
-            const annualWants = wants * 12;
-            const annualSavings = savings * 12;
-            const annualRemaining = remaining * 12;
-            const fiveYearSavings = annualSavings * 5;
-            const tenYearSavings = annualSavings * 10;
-
-            const projections = [
-                { label: 'Annual Income', value: annualIncome },
-                { label: 'Annual Needs', value: annualNeeds },
-                { label: 'Annual Wants', value: annualWants },
-                { label: 'Annual Savings', value: annualSavings },
-                { label: '5-Year Savings', value: fiveYearSavings },
-                { label: '10-Year Savings', value: tenYearSavings }
-            ];
-
-            projections.forEach(proj => {
-                const item = '<div class="projection-item"><div class="label">' + proj.label + '</div><div class="value">' + currentCurrency + proj.value.toFixed(0) + '</div></div>';
-                grid.innerHTML += item;
-            });
-        }
-
-        function updateScenarioComparison(needs, wants, savings, income, recNeeds, recWants, recSavings) {
-            const currentDiv = document.getElementById('currentScenario');
-            const optimizedDiv = document.getElementById('optimizedScenario');
-
-            const needsPct = income > 0 ? (needs / income) * 100 : 0;
-            const wantsPct = income > 0 ? (wants / income) * 100 : 0;
-            const savingsPct = income > 0 ? (savings / income) * 100 : 0;
-
-            currentDiv.innerHTML = '<p><strong>Needs:</strong> ' + currentCurrency + needs.toFixed(2) + ' (' + needsPct.toFixed(1) + '%)</p>' +
-                '<p><strong>Wants:</strong> ' + currentCurrency + wants.toFixed(2) + ' (' + wantsPct.toFixed(1) + '%)</p>' +
-                '<p><strong>Savings:</strong> ' + currentCurrency + savings.toFixed(2) + ' (' + savingsPct.toFixed(1) + '%)</p>';
-
-            const optNeeds = Math.min(needs, recNeeds);
-            const optWants = Math.min(wants, recWants);
-            const optSavings = Math.max(savings, recSavings);
-            const extra = income - optNeeds - optWants - optSavings;
-            const finalSavings = optSavings + extra;
-
-            optimizedDiv.innerHTML = '<p><strong>Needs:</strong> ' + currentCurrency + optNeeds.toFixed(2) + ' (50%)</p>' +
-                '<p><strong>Wants:</strong> ' + currentCurrency + optWants.toFixed(2) + ' (30%)</p>' +
-                '<p><strong>Savings:</strong> ' + currentCurrency + finalSavings.toFixed(2) + ' (' + ((finalSavings/income)*100).toFixed(1) + '%)</p>' +
-                '<p style="color: var(--success); margin-top: 0.5rem;"><strong>Extra saved: ' + currentCurrency + (finalSavings - savings).toFixed(2) + '/mo</strong></p>';
-        }
-
-        function generateTips(needs, wants, savings, income, remaining, needsPct, wantsPct, savingsPct) {
-            const tipsList = document.getElementById('tipsList');
-            const tips = [];
-
-            if (needsPct > 50) {
-                tips.push('Your needs are high - consider budgeting for housing alternatives or negotiating bills');
-            }
-            if (wantsPct > 30) {
-                tips.push('Your wants exceed 30% - review subscriptions and discretionary spending');
-            }
-            if (savingsPct < 20) {
-                tips.push('Increase savings allocation for better financial security');
-            }
-            if (remaining > 0) {
-                tips.push('You have surplus income - prioritize emergency fund or retirement');
-            }
-            if (remaining < 0) {
-                tips.push('You are overspending - cut wants first, then look for ways to increase income');
-            }
-            tips.push('Review your budget monthly and adjust as needed');
-            tips.push('Automate savings transfers to ensure consistency');
-            tips.push('Use the 24-hour rule for non-essential purchases');
-            tips.push('Track every expense for the first month to find hidden costs');
-
-            tipsList.innerHTML = tips.map(t => '<li>' + t + '</li>').join('');
-        }
-
-        function saveBudget() {
-            const income = parseFloat(document.getElementById('monthlyIncome').value) || 0;
-            if (income <= 0) {
-                alert('Please enter your monthly income first');
-                return;
-            }
-
-            const budget = {
-                date: new Date().toLocaleDateString(),
-                month: currentMonth,
-                currency: currentCurrency,
-                income: income,
-                needs: parseFloat(document.getElementById('needsTotal').textContent.replace(currentCurrency, '')) || 0,
-                wants: parseFloat(document.getElementById('wantsTotal').textContent.replace(currentCurrency, '')) || 0,
-                savings: parseFloat(document.getElementById('savingsTotal').textContent.replace(currentCurrency, '')) || 0
-            };
-
-            budgetHistory.unshift(budget);
-            if (budgetHistory.length > 10) budgetHistory.pop();
-            localStorage.setItem('budgetHistory', JSON.stringify(budgetHistory));
-
-            updateHistoryDisplay();
-            alert('Budget saved successfully!');
-        }
-
-        function updateHistoryDisplay() {
-            const section = document.getElementById('historySection');
-            const list = document.getElementById('historyList');
-
-            if (budgetHistory.length === 0) {
-                section.style.display = 'none';
-                return;
-            }
-
-            section.style.display = 'block';
-            list.innerHTML = '';
-
-            budgetHistory.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'history-item';
-                div.innerHTML = '<span class="date">' + item.month + ' - ' + item.date + '</span>' +
-                    '<span class="amount">' + item.currency + item.income.toFixed(2) + '</span>';
-                list.appendChild(div);
-            });
+        function clearBudget() {
+            document.querySelectorAll('input[type="number"]').forEach(input => input.value = '');
+            document.getElementById('result').classList.remove('show');
+            document.getElementById('monthlyIncome').focus();
         }
 
         function downloadReport() {
             const income = parseFloat(document.getElementById('monthlyIncome').value) || 0;
-            if (income <= 0) {
-                alert('Please calculate your budget first');
-                return;
-            }
+            const needs = (parseFloat(document.getElementById('housing').value) || 0) + 
+                         (parseFloat(document.getElementById('utilities').value) || 0) + 
+                         (parseFloat(document.getElementById('groceries').value) || 0) + 
+                         (parseFloat(document.getElementById('transportation').value) || 0);
+            const wants = (parseFloat(document.getElementById('entertainment').value) || 0) + 
+                         (parseFloat(document.getElementById('dining').value) || 0) + 
+                         (parseFloat(document.getElementById('subscriptions').value) || 0) + 
+                         (parseFloat(document.getElementById('shopping').value) || 0);
+            const savings = (parseFloat(document.getElementById('emergency').value) || 0) + 
+                           (parseFloat(document.getElementById('retirement').value) || 0) + 
+                           (parseFloat(document.getElementById('debtPayment').value) || 0) + 
+                           (parseFloat(document.getElementById('investments').value) || 0);
 
-            const needs = parseFloat(document.getElementById('needsTotal').textContent.replace(currentCurrency, '')) || 0;
-            const wants = parseFloat(document.getElementById('wantsTotal').textContent.replace(currentCurrency, '')) || 0;
-            const savings = parseFloat(document.getElementById('savingsTotal').textContent.replace(currentCurrency, '')) || 0;
-            const totalSpent = needs + wants + savings;
-            const remaining = income - totalSpent;
+            const report = `
+BUDGET PLANNER REPORT - ${currentMonth}
+=====================================
+Generated: ${new Date().toLocaleDateString()}
 
-            const report = '========================================
-' +
-                '   BUDGET PLANNER REPORT - 2026
-' +
-                '========================================
+INCOME
+------
+Monthly Income: ${currentCurrency}${income.toFixed(2)}
 
-' +
-                'Date: ' + new Date().toLocaleDateString() + '
-' +
-                'Month: ' + currentMonth + '
-' +
-                'Currency: ' + currentCurrency + '
+EXPENSES
+--------
+Needs (50%): ${currentCurrency}${needs.toFixed(2)} (${(needs/income*100).toFixed(1)}%)
+Wants (30%): ${currentCurrency}${wants.toFixed(2)} (${(wants/income*100).toFixed(1)}%)
+Savings (20%): ${currentCurrency}${savings.toFixed(2)} (${(savings/income*100).toFixed(1)}%)
 
-' +
-                '----------------------------------------
-' +
-                'MONTHLY INCOME
-' +
-                '----------------------------------------
-' +
-                'Total Income: ' + currentCurrency + income.toFixed(2) + '
+SUMMARY
+-------
+Total Spent: ${currentCurrency}${(needs+wants+savings).toFixed(2)}
+Remaining: ${currentCurrency}${(income-needs-wants-savings).toFixed(2)}
 
-' +
-                '----------------------------------------
-' +
-                'BUDGET BREAKDOWN
-' +
-                '----------------------------------------
-' +
-                'Needs (50% target):     ' + currentCurrency + needs.toFixed(2) + ' (' + ((needs/income)*100).toFixed(1) + '%)
-' +
-                'Wants (30% target):     ' + currentCurrency + wants.toFixed(2) + ' (' + ((wants/income)*100).toFixed(1) + '%)
-' +
-                'Savings (20% target):   ' + currentCurrency + savings.toFixed(2) + ' (' + ((savings/income)*100).toFixed(1) + '%)
+Generated by ToolPond Pro Budget Planner
+            `;
 
-' +
-                '----------------------------------------
-' +
-                'SUMMARY
-' +
-                '----------------------------------------
-' +
-                'Total Spent:    ' + currentCurrency + totalSpent.toFixed(2) + '
-' +
-                'Remaining:      ' + currentCurrency + Math.abs(remaining).toFixed(2) + '
-' +
-                'Balance:        ' + (remaining >= 0 ? '+' : '-') + currentCurrency + Math.abs(remaining).toFixed(2) + '
-
-' +
-                '----------------------------------------
-' +
-                'ANNUAL PROJECTION
-' +
-                '----------------------------------------
-' +
-                'Annual Income:  ' + currentCurrency + (income * 12).toFixed(2) + '
-' +
-                'Annual Needs:   ' + currentCurrency + (needs * 12).toFixed(2) + '
-' +
-                'Annual Wants:   ' + currentCurrency + (wants * 12).toFixed(2) + '
-' +
-                'Annual Savings: ' + currentCurrency + (savings * 12).toFixed(2) + '
-' +
-                '5-Year Savings: ' + currentCurrency + (savings * 60).toFixed(2) + '
-' +
-                '10-Year Savings:' + currentCurrency + (savings * 120).toFixed(2) + '
-
-' +
-                '========================================
-' +
-                'Generated by ToolPond Pro Budget Planner
-' +
-                'https://toolpond.org/budget-planner.html
-' +
-                '========================================';
-
-            const blob = new Blob([report], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'budget-report-' + currentMonth.toLowerCase() + '-2026.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(report));
+            element.setAttribute('download', 'budget-report.txt');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
         }
-
-        function clearBudget() {
-            document.getElementById('monthlyIncome').value = '';
-            document.getElementById('housing').value = '';
-            document.getElementById('utilities').value = '';
-            document.getElementById('groceries').value = '';
-            document.getElementById('transportation').value = '';
-            document.getElementById('insurance').value = '';
-            document.getElementById('healthcare').value = '';
-            document.getElementById('childcare').value = '';
-            document.getElementById('entertainment').value = '';
-            document.getElementById('dining').value = '';
-            document.getElementById('subscriptions').value = '';
-            document.getElementById('hobbies').value = '';
-            document.getElementById('shopping').value = '';
-            document.getElementById('travel').value = '';
-            document.getElementById('emergency').value = '';
-            document.getElementById('retirement').value = '';
-            document.getElementById('debtPayment').value = '';
-            document.getElementById('investments').value = '';
-            document.getElementById('education').value = '';
-            document.getElementById('emergencyGoal').value = '';
-            document.getElementById('emergencyCurrent').value = '';
-            document.getElementById('vacationGoal').value = '';
-            document.getElementById('vacationCurrent').value = '';
-            document.getElementById('bigPurchaseGoal').value = '';
-            document.getElementById('bigPurchaseCurrent').value = '';
-            document.getElementById('result').classList.remove('show');
-
-            // Reset progress bars
-            document.getElementById('needsProgress').style.width = '0%';
-            document.getElementById('wantsProgress').style.width = '0%';
-            document.getElementById('savingsProgress').style.width = '0%';
-            document.getElementById('needsPercent').textContent = '0%';
-            document.getElementById('wantsPercent').textContent = '0%';
-            document.getElementById('savingsPercent').textContent = '0%';
-            document.getElementById('needsTotal').textContent = currentCurrency + '0';
-            document.getElementById('wantsTotal').textContent = currentCurrency + '0';
-            document.getElementById('savingsTotal').textContent = currentCurrency + '0';
-            document.getElementById('totalSpent').textContent = currentCurrency + '0';
-            document.getElementById('remaining').textContent = currentCurrency + '0';
-            document.getElementById('balance').textContent = currentCurrency + '0';
-            document.getElementById('balance').style.color = 'var(--primary)';
-            document.getElementById('savingsRate').textContent = '0%';
-        }
-
-        function scrollToTop() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
-        window.addEventListener('scroll', () => {
-            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
-        });
-
-        // Load history on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateHistoryDisplay();
-        });
     </script>
 </body>
 </html>
