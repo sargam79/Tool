@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ToolPond Pro Sitemap - Complete list of all 29 free online tools including calculators, converters, generators, and productivity tools.">
-    <meta name="keywords" content="sitemap, tools directory, calculator tools, converter tools, generator tools">
-    <meta name="author" content="ToolPond Pro">
+    <title>Sitemap - ToolPond Pro | 32+ Free Online Tools</title>
+    <meta name="description" content="Complete sitemap of ToolPond Pro. Access all 32+ free online calculators, converters, generators, and productivity tools.">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolpond.org/sitemap.html">
-    <meta property="og:title" content="ToolPond Pro - Complete Sitemap">
-    <meta property="og:description" content="Browse all 29 free tools on ToolPond Pro including calculators, converters, and generators.">
+    
+    <meta property="og:title" content="Sitemap - ToolPond Pro">
+    <meta property="og:description" content="Full directory of all ToolPond Pro tools and calculators.">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/sitemap.html">
-    <title>ToolPond Pro Sitemap - All Tools Directory</title>
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
-            line-height: 1.6; 
-            color: #374151; 
-            background: #f9fafb;
+        :root { --primary: #6366f1; --dark: #1f2937; --light: #f9fafb; --border: #e5e7eb; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background: var(--light);
         }
+        
         nav {
             background: #fff;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
+        
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -34,180 +40,214 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
+        
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #6366f1, #ec4899);
+            background: linear-gradient(135deg, var(--primary), #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
         }
+        
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+            flex-wrap: wrap;
         }
+        
         .nav-links a {
             color: #374151;
             font-weight: 500;
-            text-decoration: none;
             transition: color 0.3s;
+            text-decoration: none;
         }
+        
         .nav-links a:hover {
-            color: #6366f1;
+            color: var(--primary);
         }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 2rem;
         }
-        .header {
-            background: linear-gradient(135deg, #6366f1, #ec4899);
-            color: white;
-            padding: 4rem 2rem;
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), #ec4899);
+            color: #fff;
+            padding: 3rem 2rem;
             text-align: center;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
             border-radius: 12px;
         }
-        .header h1 {
+        
+        .page-header h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
+            margin-bottom: 0.5rem;
         }
-        .header p {
+        
+        .page-header p {
             font-size: 1.1rem;
             opacity: 0.95;
         }
-        .breadcrumb {
-            padding: 1rem 0;
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-        .breadcrumb a {
-            color: #6366f1;
-            text-decoration: none;
-        }
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
+        
         .sitemap-section {
-            background: white;
+            background: #fff;
             padding: 2rem;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
             border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .section-title {
-            font-size: 1.8rem;
-            color: #1f2937;
+        
+        .sitemap-section h2 {
+            color: var(--dark);
             margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid #6366f1;
-            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        .tool-list {
+        
+        .sitemap-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .tool-item {
-            background: #f9fafb;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #6366f1;
-            transition: all 0.3s;
-        }
-        .tool-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
-            border-left-color: #ec4899;
-        }
-        .tool-item a {
-            display: inline-block;
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s;
-        }
-        .tool-item a:hover {
-            color: #ec4899;
-        }
-        .tool-description {
-            color: #6b7280;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        .page-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1rem;
         }
-        .page-item {
-            background: #f9fafb;
-            padding: 1.2rem;
-            border-radius: 8px;
-            border-left: 4px solid #10b981;
-            text-align: center;
+        
+        .sitemap-item {
+            padding: 0.75rem;
+            background: var(--light);
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s;
         }
-        .page-item a {
-            color: #6366f1;
+        
+        .sitemap-item:hover {
+            background: #fff;
+            transform: translateX(4px);
+        }
+        
+        .sitemap-item a {
+            color: var(--primary);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .page-item a:hover {
-            color: #ec4899;
+        
+        .sitemap-item a:hover {
+            text-decoration: underline;
         }
+        
+        .sitemap-item a::after {
+            content: '→';
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sitemap-item:hover a::after {
+            opacity: 1;
+        }
+        
         .footer {
-            background: #1f2937;
-            color: white;
+            background: var(--dark);
+            color: #fff;
             padding: 3rem 2rem;
             margin-top: 4rem;
             text-align: center;
         }
-        .footer a {
+        
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
             color: #d1d5db;
             text-decoration: none;
+            margin: 0 1rem;
             transition: color 0.3s;
         }
-        .footer a:hover {
-            color: white;
+        
+        .footer-links a:hover {
+            color: #fff;
         }
-        .stats {
-            background: linear-gradient(135deg, #6366f1, #ec4899);
-            color: white;
-            padding: 2rem;
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .stats-box {
+            background: var(--light);
+            padding: 1.5rem;
             border-radius: 12px;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
+            border: 2px solid var(--primary);
             text-align: center;
         }
+        
+        .stats-box h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
-            margin-top: 1rem;
         }
-        .stat-item {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
+        
+        .stat {
+            background: #fff;
+            padding: 1rem;
             border-radius: 8px;
+            border-left: 3px solid var(--primary);
         }
+        
         .stat-number {
             font-size: 2rem;
             font-weight: 800;
+            color: var(--primary);
         }
+        
         .stat-label {
             font-size: 0.9rem;
-            opacity: 0.9;
+            color: #6b7280;
             margin-top: 0.5rem;
         }
-        @media(max-width: 768px) {
-            .header h1 { font-size: 1.8rem; }
-            .nav-links { display: none; }
-            .tool-list { grid-template-columns: 1fr; }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .sitemap-list { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -217,238 +257,165 @@
             <a href="index.html" class="logo">🌊 ToolPond Pro</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="calculators.html">Calculators</a></li>
+                <li><a href="calculators.html">Tools</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <div class="breadcrumb">
-            <a href="index.html">Home</a> / <span>Sitemap</span>
+        <div class="page-header">
+            <h1>📍 ToolPond Pro Sitemap</h1>
+            <p>Complete directory of all 32+ free online tools and calculators</p>
         </div>
 
-        <div class="header">
-            <h1>ToolPond Pro Sitemap</h1>
-            <p>Complete directory of all 29 free online tools</p>
-        </div>
-
-        <div class="stats">
+        <div class="stats-box">
+            <h3>Site Statistics</h3>
             <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">29</div>
-                    <div class="stat-label">Free Tools</div>
+                <div class="stat">
+                    <div class="stat-number">32+</div>
+                    <div class="stat-label">Tools</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
                     <div class="stat-label">Free Forever</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">7</div>
-                    <div class="stat-label">Pages</div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Hidden Fees</div>
                 </div>
             </div>
         </div>
 
         <!-- Main Pages -->
         <div class="sitemap-section">
-            <h2 class="section-title">📋 Main Pages</h2>
-            <div class="page-list">
-                <div class="page-item">
-                    <a href="index.html">Home</a>
-                    <p style="color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem;">Main landing page with all tools</p>
-                </div>
-                <div class="page-item">
-                    <a href="calculators.html">Calculators</a>
-                    <p style="color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem;">All calculator tools directory</p>
-                </div>
-                <div class="page-item">
-                    <a href="about.html">About Us</a>
-                    <p style="color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem;">About ToolPond Pro</p>
-                </div>
-                <div class="page-item">
-                    <a href="contact.html">Contact</a>
-                    <p style="color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem;">Get in touch with us</p>
-                </div>
-                <div class="page-item">
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                    <p style="color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem;">Our privacy commitment</p>
-                </div>
-                <div class="page-item">
-                    <a href="sitemap.html">Sitemap</a>
-                    <p style="color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem;">This page</p>
-                </div>
+            <h2>📄 Main Pages</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="index.html">Home</a></div>
+                <div class="sitemap-item"><a href="calculators.html">All Calculators</a></div>
+                <div class="sitemap-item"><a href="about.html">About Us</a></div>
+                <div class="sitemap-item"><a href="contact.html">Contact</a></div>
+                <div class="sitemap-item"><a href="privacy-policy.html">Privacy Policy</a></div>
+                <div class="sitemap-item"><a href="sitemap.html">Sitemap HTML</a></div>
             </div>
         </div>
 
         <!-- Health & Fitness Calculators -->
         <div class="sitemap-section">
-            <h2 class="section-title">💪 Health & Fitness Calculators</h2>
-            <div class="tool-list">
-                <div class="tool-item">
-                    <a href="calorie-calculator.html">🔥 Calorie Calculator</a>
-                    <p class="tool-description">Calculate daily calorie needs for weight loss or gain</p>
-                </div>
-                <div class="tool-item">
-                    <a href="macros-calculator.html">🥗 Macros Calculator</a>
-                    <p class="tool-description">Protein, carbs & fats breakdown calculator</p>
-                </div>
-                <div class="tool-item">
-                    <a href="water-intake-calculator.html">💧 Water Intake Calculator</a>
-                    <p class="tool-description">Daily hydration recommendations</p>
-                </div>
-                <div class="tool-item">
-                    <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
-                    <p class="tool-description">Body Mass Index calculation and interpretation</p>
-                </div>
-                <div class="tool-item">
-                    <a href="body-fat-calculator.html">💪 Body Fat Calculator</a>
-                    <p class="tool-description">Calculate body fat percentage and composition</p>
-                </div>
-                <div class="tool-item">
-                    <a href="age-calculator.html">🎂 Age Calculator</a>
-                    <p class="tool-description">Calculate exact age in years, months, days</p>
-                </div>
-                <div class="tool-item">
-                    <a href="gpa-calculator.html">📚 GPA Calculator</a>
-                    <p class="tool-description">Track grade point average</p>
-                </div>
-                <div class="tool-item">
-                    <a href="percentage-calculator.html">% Percentage Calculator</a>
-                    <p class="tool-description">Calculate percentages instantly</p>
-                </div>
-                <div class="tool-item">
-                    <a href="pregnancy-calculator.html">👶 Pregnancy Calculator</a>
-                    <p class="tool-description">Calculate due date and pregnancy tracking</p>
-                </div>
-                <div class="tool-item">
-                    <a href="ovulation-calculator.html">🌕 Ovulation Calculator</a>
-                    <p class="tool-description">Fertility window calculation</p>
-                </div>
-                <div class="tool-item">
-                    <a href="stride-calculator.html">🏃 Stride Calculator</a>
-                    <p class="tool-description">Running stride and pace analysis</p>
-                </div>
+            <h2>💪 Health & Fitness Calculators (11 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="calorie-calculator.html">Calorie Calculator</a></div>
+                <div class="sitemap-item"><a href="macros-calculator.html">Macros Calculator</a></div>
+                <div class="sitemap-item"><a href="water-intake-calculator.html">Water Intake Calculator</a></div>
+                <div class="sitemap-item"><a href="bmi-calculator.html">BMI Calculator</a></div>
+                <div class="sitemap-item"><a href="body-fat-calculator.html">Body Fat Calculator</a></div>
+                <div class="sitemap-item"><a href="age-calculator.html">Age Calculator</a></div>
+                <div class="sitemap-item"><a href="gpa-calculator.html">GPA Calculator</a></div>
+                <div class="sitemap-item"><a href="percentage-calculator.html">Percentage Calculator</a></div>
+                <div class="sitemap-item"><a href="pregnancy-calculator.html">Pregnancy Calculator</a></div>
+                <div class="sitemap-item"><a href="ovulation-calculator.html">Ovulation Calculator</a></div>
+                <div class="sitemap-item"><a href="stride-calculator.html">Stride Calculator</a></div>
             </div>
         </div>
 
         <!-- Financial Calculators -->
         <div class="sitemap-section">
-            <h2 class="section-title">💰 Financial Calculators</h2>
-            <div class="tool-list">
-                <div class="tool-item">
-                    <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
-                    <p class="tool-description">Home loan payment and amortization calculator</p>
-                </div>
-                <div class="tool-item">
-                    <a href="loan-calculator.html">💳 Loan Calculator</a>
-                    <p class="tool-description">EMI and loan repayment calculator</p>
-                </div>
-                <div class="tool-item">
-                    <a href="currency-converter.html">💱 Currency Converter</a>
-                    <p class="tool-description">150+ currencies real-time conversion</p>
-                </div>
-                <div class="tool-item">
-                    <a href="youtube-earnings-calculator.html">▶️ YouTube Earnings Calculator</a>
-                    <p class="tool-description">Estimate YouTube ad revenue</p>
-                </div>
-                <div class="tool-item">
-                    <a href="tiktok-instagram-calculators.html">💰 Social Media Earnings</a>
-                    <p class="tool-description">TikTok and Instagram earnings calculator</p>
-                </div>
+            <h2>💰 Financial Calculators (8 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="compound-interest-calculator.html">Compound Interest Calculator</a></div>
+                <div class="sitemap-item"><a href="retirement-calculator.html">Retirement Calculator</a></div>
+                <div class="sitemap-item"><a href="budget-planner.html">Budget Planner</a></div>
+                <div class="sitemap-item"><a href="mortgage-calculator.html">Mortgage Calculator</a></div>
+                <div class="sitemap-item"><a href="loan-calculator.html">Loan Calculator</a></div>
+                <div class="sitemap-item"><a href="currency-converter.html">Currency Converter</a></div>
+                <div class="sitemap-item"><a href="youtube-earnings-calculator.html">YouTube Earnings Calculator</a></div>
+                <div class="sitemap-item"><a href="tiktok-instagram-calculators.html">Social Media Earnings</a></div>
             </div>
         </div>
 
         <!-- Converters & Generators -->
         <div class="sitemap-section">
-            <h2 class="section-title">🔄 Converters & Generators</h2>
-            <div class="tool-list">
-                <div class="tool-item">
-                    <a href="converter.html">📏 Unit Converter</a>
-                    <p class="tool-description">Convert length, weight, temperature & more</p>
-                </div>
-                <div class="tool-item">
-                    <a href="converter-png.html">🖼️ PNG Converter</a>
-                    <p class="tool-description">Convert images to PNG format</p>
-                </div>
-                <div class="tool-item">
-                    <a href="qr-code-generator.html">📱 QR Code Generator</a>
-                    <p class="tool-description">Create scannable QR codes instantly</p>
-                </div>
-                <div class="tool-item">
-                    <a href="color-palette-generator.html">🎨 Color Palette Generator</a>
-                    <p class="tool-description">Beautiful color scheme creation</p>
-                </div>
-                <div class="tool-item">
-                    <a href="password-generator.html">🔐 Password Generator</a>
-                    <p class="tool-description">Secure password generation tool</p>
-                </div>
-                <div class="tool-item">
-                    <a href="hashtag-generator.html">#️⃣ Hashtag Generator</a>
-                    <p class="tool-description">Trending hashtag finder</p>
-                </div>
+            <h2>🔄 Converters & Generators (6 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="converter.html">Unit Converter</a></div>
+                <div class="sitemap-item"><a href="converter-png.html">PNG Converter</a></div>
+                <div class="sitemap-item"><a href="qr-code-generator.html">QR Code Generator</a></div>
+                <div class="sitemap-item"><a href="color-palette-generator.html">Color Palette Generator</a></div>
+                <div class="sitemap-item"><a href="password-generator.html">Password Generator</a></div>
+                <div class="sitemap-item"><a href="hashtag-generator.html">Hashtag Generator</a></div>
             </div>
         </div>
 
         <!-- Writing & Content Tools -->
         <div class="sitemap-section">
-            <h2 class="section-title">✍️ Writing & Content Tools</h2>
-            <div class="tool-list">
-                <div class="tool-item">
-                    <a href="word-counter-tool.html">📝 Word Counter</a>
-                    <p class="tool-description">Count words and characters instantly</p>
-                </div>
-                <div class="tool-item">
-                    <a href="ai-writing-assistant.html">✍️ AI Writing Assistant</a>
-                    <p class="tool-description">Improve your writing with AI help</p>
-                </div>
-                <div class="tool-item">
-                    <a href="resume-score-ai.html">📄 Resume Score AI</a>
-                    <p class="tool-description">Analyze and improve your resume</p>
-                </div>
+            <h2>✍️ Writing & Content Tools (3 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="word-counter-tool.html">Word Counter</a></div>
+                <div class="sitemap-item"><a href="ai-writing-assistant.html">AI Writing Assistant</a></div>
+                <div class="sitemap-item"><a href="resume-score-ai.html">Resume Score AI</a></div>
             </div>
         </div>
 
         <!-- Entertainment & Fun -->
         <div class="sitemap-section">
-            <h2 class="section-title">🎮 Entertainment & Fun</h2>
-            <div class="tool-list">
-                <div class="tool-item">
-                    <a href="ai-face-compatibility.html">💘 Face Compatibility</a>
-                    <p class="tool-description">Fun face compatibility test</p>
-                </div>
-                <div class="tool-item">
-                    <a href="matrix-destiny-calculator.html">🔮 Destiny Calculator</a>
-                    <p class="tool-description">Numerology and destiny analysis</p>
-                </div>
+            <h2>🎮 Entertainment & Fun (2 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="ai-face-compatibility.html">Face Compatibility</a></div>
+                <div class="sitemap-item"><a href="matrix-destiny-calculator.html">Destiny Calculator</a></div>
             </div>
         </div>
 
-        <!-- Info Section -->
+        <!-- Utility Tools -->
         <div class="sitemap-section">
-            <h2 class="section-title">📌 About This Sitemap</h2>
-            <p style="margin-bottom: 1rem;">
-                This page lists all <strong>29 free tools</strong> available on ToolPond Pro. We provide calculators, converters, generators, and productivity tools—all completely free with no signup required.
-            </p>
-            <p style="margin-bottom: 1rem;">
-                Each tool is optimized for accuracy and ease of use. All calculations are done in your browser for maximum privacy and security.
-            </p>
-            <p>
-                Have a tool request? <a href="contact.html" style="color: #6366f1; text-decoration: none; font-weight: 600;">Contact us</a> to suggest new tools or features!
-            </p>
+            <h2>🛠️ Utility Tools (5 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="background-remover.html">Background Remover</a></div>
+                <div class="sitemap-item"><a href="json-schema-generator-pro.html">JSON Schema Generator</a></div>
+                <div class="sitemap-item"><a href="meal-planner.html">Meal Planner</a></div>
+                <div class="sitemap-item"><a href="nutrition-calculator.html">Nutrition Calculator</a></div>
+                <div class="sitemap-item"><a href="content-calendar-generator.html">Content Calendar Generator</a></div>
+            </div>
+        </div>
+
+        <!-- Sitemaps -->
+        <div class="sitemap-section">
+            <h2>🗺️ Sitemaps</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="sitemapnew.xml">XML Sitemap</a></div>
+                <div class="sitemap-item"><a href="sitemap.html">HTML Sitemap</a></div>
+            </div>
         </div>
     </div>
 
     <footer class="footer">
-        <p style="margin-bottom: 1rem;">
-            &copy; 2026 ToolPond Pro. All rights reserved. | 
-            <a href="privacy-policy.html">Privacy Policy</a> | 
-            <a href="contact.html">Contact Us</a>
-        </p>
-        <p style="font-size: 0.9rem; color: #9ca3af;">
-            Made with ❤️ for productivity and learning
-        </p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="calculators.html">All Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="sitemap.html">Sitemap</a>
+        </div>
+        <p>&copy; 2026 ToolPond Pro. All rights reserved. | <a href="privacy-policy.html" style="color: #d1d5db; text-decoration: none;">Privacy Policy</a></p>
+        <p style="margin-top: 1rem; color: #9ca3af; font-size: 0.9rem;">Free online tools and calculators. No signup, no fees, 100% secure and unlimited use.</p>
     </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+    
+    <script>
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+    </script>
 </body>
 </html>
