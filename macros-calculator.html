@@ -14,7 +14,6 @@
     <meta name="revisit-after" content="7 days">
     <link rel="canonical" href="https://toolpond.org/macros-calculator.html">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Free Macros Calculator - Daily Protein, Carbs & Fats for Any Diet">
     <meta property="og:description" content="Calculate your daily macronutrients for balanced, high protein, low carb, and keto diets. Free macro calculator with no signup.">
     <meta property="og:type" content="website">
@@ -22,12 +21,10 @@
     <meta property="og:site_name" content="ToolPond Pro">
     <meta property="og:locale" content="en_US">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free Macros Calculator - Protein, Carbs & Fats">
     <meta name="twitter:description" content="Calculate daily macros for keto, low carb, high protein, and balanced diets. Free tool, no signup.">
 
-    <!-- Schema.org -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -47,10 +44,11 @@
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-            {"@type": "Question", "name": "How do I calculate my macros?", "acceptedAnswer": {"@type": "Answer", "text": "Enter your daily calorie target, select your diet type (balanced, high protein, low carb, or keto), and choose your goal. The calculator will instantly show your daily protein, carbs, and fat targets in grams."}},
+            {"@type": "Question", "name": "How do I calculate my macros?", "acceptedAnswer": {"@type": "Answer", "text": "Enter your age, gender, weight, height, activity level, and goal. The calculator will compute your TDEE and BMR, then show your daily protein, carbs, and fat targets in grams."}},
             {"@type": "Question", "name": "What are macros?", "acceptedAnswer": {"@type": "Answer", "text": "Macros (macronutrients) are the three main nutrients your body needs in large amounts: protein, carbohydrates, and fats. Each provides energy (calories) and serves different functions in the body."}},
             {"@type": "Question", "name": "What is the best macro ratio for weight loss?", "acceptedAnswer": {"@type": "Answer", "text": "For weight loss, a high protein or low carb diet often works well. High protein (40P/40C/20F) helps preserve muscle while losing fat. Low carb (30P/25C/45F) can help control appetite and insulin levels."}},
-            {"@type": "Question", "name": "How do I calculate my TDEE for macros?", "acceptedAnswer": {"@type": "Answer", "text": "Use a calorie calculator or TDEE calculator to find your Total Daily Energy Expenditure based on your age, weight, height, and activity level. Then enter that number into the macros calculator."}}
+            {"@type": "Question", "name": "How do I calculate my TDEE for macros?", "acceptedAnswer": {"@type": "Answer", "text": "Use the built-in TDEE calculator by entering your age, weight, height, gender, and activity level. The calculator uses the Mifflin-St Jeor equation for BMR and multiplies by your activity factor."}},
+            {"@type": "Question", "name": "What is BMR and TDEE?", "acceptedAnswer": {"@type": "Answer", "text": "BMR (Basal Metabolic Rate) is the calories your body burns at rest. TDEE (Total Daily Energy Expenditure) is your BMR multiplied by an activity factor, representing your total daily calorie needs."}}
         ]
     }
     </script>
@@ -69,8 +67,13 @@
             --text-light: #6b7280;
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
             --radius: 12px;
             --radius-sm: 8px;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --info: #3B82F6;
         }
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--text);background:var(--light);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -106,16 +109,22 @@
         .calc-box{background:linear-gradient(145deg,#fff,var(--light));padding:2.5rem;border-radius:var(--radius);margin-bottom:2.5rem;border:1px solid var(--border);box-shadow:var(--shadow-md);position:relative}
         .calc-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),#A78BFA);border-radius:var(--radius) var(--radius) 0 0}
 
-        .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:end}
+        .section-title{font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem}
+        .section-title::before{content:'';width:4px;height:24px;background:linear-gradient(180deg,var(--primary),#A78BFA);border-radius:2px}
+
+        .calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;align-items:end}
         .input-group{margin-bottom:0}
         .input-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark);font-size:0.95rem}
         .input-field,.select-field{width:100%;padding:0.875rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:1rem;font-family:inherit;transition:all 0.3s;background:#fff;color:var(--dark)}
         .input-field:focus,.select-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(139,92,246,0.1)}
         .input-field::placeholder{color:var(--text-light)}
+        .input-hint{font-size:0.8rem;color:var(--text-light);margin-top:0.25rem}
 
         .btn{padding:0.875rem 2rem;border:none;border-radius:var(--radius-sm);font-weight:600;font-size:1rem;cursor:pointer;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:var(--shadow-sm);margin-right:0.75rem}
         .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
         .btn:active{transform:translateY(0)}
+        .btn-secondary{background:linear-gradient(135deg,#6B7280,#4B5563)}
+        .btn-success{background:linear-gradient(135deg,var(--success),#059669)}
 
         .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin:2rem 0}
         .stat-card{background:linear-gradient(135deg,var(--primary-light),#DDD6FE);padding:1.5rem;border-radius:var(--radius-sm);text-align:center;border:1px solid var(--border);transition:all 0.3s}
@@ -170,6 +179,15 @@
         .faq-item h4{color:var(--dark);margin-bottom:0.75rem;font-size:1.1rem;font-weight:600}
         .faq-item p{color:var(--text-light);font-size:0.95rem;margin:0;line-height:1.6}
 
+        .food-table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:#fff;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow-sm)}
+        .food-table th{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:0.75rem 1rem;text-align:left;font-weight:600}
+        .food-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border)}
+        .food-table tr:hover{background:#F9FAFB}
+
+        .formula-box{background:#fff;padding:1.5rem;border-radius:var(--radius-sm);border:1px solid var(--border);margin:1rem 0}
+        .formula-box h4{color:var(--dark);margin-bottom:0.5rem;font-size:1rem}
+        .formula-box code{background:#F3F4F6;padding:0.2rem 0.4rem;border-radius:4px;font-family:monospace;font-size:0.9rem;color:var(--primary-dark)}
+
         .footer-section{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
         .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
         .footer-col h4{color:var(--primary);margin-bottom:1rem;font-size:1.1rem}
@@ -192,6 +210,14 @@
         .bottom-keywords .kw-tag{background:#fff;padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-light);transition:all 0.3s;text-decoration:none;display:inline-block}
         .bottom-keywords .kw-tag:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
 
+        .tab-container{margin:1rem 0}
+        .tab-buttons{display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap}
+        .tab-btn{padding:0.5rem 1rem;border:2px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all 0.3s;background:#fff;font-weight:600}
+        .tab-btn.active{border-color:var(--primary);background:var(--primary);color:#fff}
+        .tab-btn:hover:not(.active){border-color:var(--primary);background:var(--primary-light)}
+        .tab-content{display:none;padding:1rem;background:#fff;border-radius:var(--radius-sm);border:1px solid var(--border)}
+        .tab-content.active{display:block;animation:fadeIn 0.3s ease}
+
         @media(max-width:768px){
             .tool-header h1{font-size:1.8rem}
             .tool-header .subtitle{font-size:1rem}
@@ -202,6 +228,8 @@
             .menu-toggle{display:block}
             .content-section{padding:1.5rem}
             .calc-box{padding:1.5rem}
+            .food-table{font-size:0.85rem}
+            .food-table th,.food-table td{padding:0.5rem}
         }
         @media(max-width:480px){
             .tool-header{padding:2.5rem 1.5rem}
@@ -246,33 +274,118 @@
     <main id="main-content" class="container">
         <div class="tool-content">
             <div class="calc-box">
+                <div class="section-title">Personal Information</div>
                 <div class="calc-grid">
                     <div class="input-group">
-                        <label class="input-label" for="calories">🔥 Daily Calories:</label>
-                        <input type="number" id="calories" class="input-field" placeholder="e.g., 2000" value="2000" min="500" max="10000" step="50" oninput="calculateMacros()" aria-label="Daily calories">
+                        <label class="input-label" for="age">📅 Age (years):</label>
+                        <input type="number" id="age" class="input-field" placeholder="e.g., 30" value="30" min="10" max="120" oninput="calculateAll()" aria-label="Age in years">
+                        <div class="input-hint">10-120 years</div>
                     </div>
                     <div class="input-group">
-                        <label class="input-label" for="dietType">🥗 Diet Type:</label>
-                        <select id="dietType" class="select-field" onchange="calculateMacros()" aria-label="Diet type">
-                            <option value="balanced">Balanced (30P / 40C / 30F)</option>
-                            <option value="highProtein">High Protein (40P / 40C / 20F)</option>
-                            <option value="lowCarb">Low Carb (30P / 25C / 45F)</option>
-                            <option value="keto">Keto (20P / 10C / 70F)</option>
+                        <label class="input-label" for="gender">⚧ Gender:</label>
+                        <select id="gender" class="select-field" onchange="calculateAll()" aria-label="Gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <label class="input-label" for="goal">🎯 Goal:</label>
-                        <select id="goal" class="select-field" onchange="calculateMacros()" aria-label="Fitness goal">
-                            <option value="maintain">Maintain Weight</option>
-                            <option value="loss">Weight Loss</option>
-                            <option value="gain">Weight Gain</option>
+                        <label class="input-label" for="weight">⚖️ Weight (kg):</label>
+                        <input type="number" id="weight" class="input-field" placeholder="e.g., 70" value="70" min="20" max="300" step="0.1" oninput="calculateAll()" aria-label="Weight in kg">
+                        <div class="input-hint">20-300 kg</div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="height">📏 Height (cm):</label>
+                        <input type="number" id="height" class="input-field" placeholder="e.g., 175" value="175" min="50" max="300" step="0.1" oninput="calculateAll()" aria-label="Height in cm">
+                        <div class="input-hint">50-300 cm</div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="bodyFat">📊 Body Fat % (optional):</label>
+                        <input type="number" id="bodyFat" class="input-field" placeholder="e.g., 20" min="1" max="60" step="0.1" oninput="calculateAll()" aria-label="Body fat percentage">
+                        <div class="input-hint">Leave empty for Mifflin-St Jeor</div>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="activity">🏃 Activity Level:</label>
+                        <select id="activity" class="select-field" onchange="calculateAll()" aria-label="Activity level">
+                            <option value="1.2">Sedentary (little/no exercise)</option>
+                            <option value="1.375">Lightly Active (1-3 days/week)</option>
+                            <option value="1.55" selected>Moderately Active (3-5 days/week)</option>
+                            <option value="1.725">Very Active (6-7 days/week)</option>
+                            <option value="1.9">Extra Active (very hard exercise)</option>
                         </select>
                     </div>
                 </div>
-                <div style="margin-top:1.5rem">
-                    <button class="btn" onclick="calculateMacros()">
+
+                <div style="margin-top:2rem">
+                    <div class="section-title">Diet & Goals</div>
+                    <div class="calc-grid">
+                        <div class="input-group">
+                            <label class="input-label" for="goal">🎯 Goal:</label>
+                            <select id="goal" class="select-field" onchange="calculateAll()" aria-label="Fitness goal">
+                                <option value="maintain">Maintain Weight</option>
+                                <option value="loss">Lose Weight (0.5 kg/week)</option>
+                                <option value="loss_fast">Lose Weight Fast (1 kg/week)</option>
+                                <option value="gain">Gain Weight (0.5 kg/week)</option>
+                                <option value="gain_fast">Gain Weight Fast (1 kg/week)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="dietType">🥗 Diet Type:</label>
+                            <select id="dietType" class="select-field" onchange="calculateAll()" aria-label="Diet type">
+                                <option value="balanced">Balanced (30P / 40C / 30F)</option>
+                                <option value="highProtein">High Protein (40P / 40C / 20F)</option>
+                                <option value="lowCarb">Low Carb (30P / 25C / 45F)</option>
+                                <option value="keto">Keto (20P / 10C / 70F)</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                        <div class="input-group" id="customMacros" style="display:none">
+                            <label class="input-label">Custom Ratios (%):</label>
+                            <div style="display:flex;gap:0.5rem">
+                                <input type="number" id="customProtein" class="input-field" placeholder="Protein %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1">
+                                <input type="number" id="customCarbs" class="input-field" placeholder="Carbs %" min="0" max="100" value="40" oninput="calculateAll()" style="flex:1">
+                                <input type="number" id="customFats" class="input-field" placeholder="Fats %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1">
+                            </div>
+                            <div class="input-hint" id="customHint">Total must equal 100%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+                    <button class="btn" onclick="calculateAll()">
                         <span>📊</span> Calculate Macros
                     </button>
+                    <button class="btn btn-secondary" onclick="resetForm()">
+                        <span>🔄</span> Reset
+                    </button>
+                    <button class="btn btn-success" onclick="printResults()">
+                        <span>🖨️</span> Print Results
+                    </button>
+                </div>
+
+                <div id="bmrSection" style="display:none;margin-top:2rem">
+                    <div class="section-title">Your Energy Expenditure</div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">🔥 BMR</div>
+                            <div class="stat-value" id="bmrVal">-</div>
+                            <div class="stat-detail">calories at rest</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">⚡ TDEE</div>
+                            <div class="stat-value" id="tdeeVal">-</div>
+                            <div class="stat-detail">calories with activity</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">🎯 Target</div>
+                            <div class="stat-value" id="targetVal">-</div>
+                            <div class="stat-detail">calories for goal</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">📉 BMI</div>
+                            <div class="stat-value" id="bmiVal">-</div>
+                            <div class="stat-detail" id="bmiCategory">-</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="stats-grid" id="macrosGrid" style="display:none;margin-top:2rem">
@@ -308,15 +421,15 @@
                     <div class="bar-legend">
                         <div class="legend-item">
                             <div class="legend-dot" style="background:#10B981"></div>
-                            <span>Protein</span>
+                            <span id="legendProtein">Protein</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-dot" style="background:#F59E0B"></div>
-                            <span>Carbs</span>
+                            <span id="legendCarbs">Carbs</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-dot" style="background:#EF4444"></div>
-                            <span>Fats</span>
+                            <span id="legendFats">Fats</span>
                         </div>
                     </div>
                 </div>
@@ -326,12 +439,143 @@
                     <div class="result-value" id="macrosResult"></div>
                     <div class="result-detail" id="macrosDetail"></div>
                 </div>
+
+                <div id="mealTiming" style="display:none;margin-top:2rem">
+                    <div class="section-title">Suggested Meal Distribution</div>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🌅</div>
+                            <h4>Breakfast (25%)</h4>
+                            <p id="breakfastMacros">-</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">☀️</div>
+                            <h4>Lunch (35%)</h4>
+                            <p id="lunchMacros">-</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌙</div>
+                            <h4>Dinner (30%)</h4>
+                            <p id="dinnerMacros">-</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🍎</div>
+                            <h4>Snacks (10%)</h4>
+                            <p id="snackMacros">-</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <article class="content-section">
+                <h2>Macronutrients in Common Foods</h2>
+                <p>Understanding the macro content of common foods helps you plan meals that hit your targets. Here is a comprehensive reference table:</p>
+
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="showTab('fruits')">🍎 Fruits</button>
+                        <button class="tab-btn" onclick="showTab('vegetables')">🥬 Vegetables</button>
+                        <button class="tab-btn" onclick="showTab('proteins')">🥩 Proteins</button>
+                        <button class="tab-btn" onclick="showTab('meals')">🍽️ Meals</button>
+                        <button class="tab-btn" onclick="showTab('beverages')">🥤 Beverages</button>
+                    </div>
+
+                    <div class="tab-content active" id="fruits">
+                        <table class="food-table">
+                            <thead>
+                                <tr><th>Food</th><th>Serving Size</th><th>Protein</th><th>Carbs</th><th>Fat</th><th>Calories</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Apple</td><td>1 medium (182g)</td><td>0.5g</td><td>25g</td><td>0.3g</td><td>95</td></tr>
+                                <tr><td>Banana</td><td>1 medium (118g)</td><td>1.3g</td><td>27g</td><td>0.4g</td><td>105</td></tr>
+                                <tr><td>Grapes</td><td>1 cup (151g)</td><td>1.1g</td><td>27g</td><td>0.2g</td><td>104</td></tr>
+                                <tr><td>Orange</td><td>1 medium (131g)</td><td>0.9g</td><td>15g</td><td>0.1g</td><td>62</td></tr>
+                                <tr><td>Strawberries</td><td>1 cup (152g)</td><td>1.0g</td><td>12g</td><td>0.5g</td><td>49</td></tr>
+                                <tr><td>Watermelon</td><td>1 cup (154g)</td><td>0.9g</td><td>12g</td><td>0.2g</td><td>46</td></tr>
+                                <tr><td>Pineapple</td><td>1 cup (165g)</td><td>0.9g</td><td>22g</td><td>0.2g</td><td>82</td></tr>
+                                <tr><td>Blueberries</td><td>1 cup (148g)</td><td>1.1g</td><td>21g</td><td>0.5g</td><td>84</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="vegetables">
+                        <table class="food-table">
+                            <thead>
+                                <tr><th>Food</th><th>Serving Size</th><th>Protein</th><th>Carbs</th><th>Fat</th><th>Calories</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Broccoli</td><td>1 cup (91g)</td><td>2.6g</td><td>6g</td><td>0.3g</td><td>31</td></tr>
+                                <tr><td>Spinach</td><td>1 cup (30g)</td><td>0.9g</td><td>1g</td><td>0.1g</td><td>7</td></tr>
+                                <tr><td>Carrots</td><td>1 cup (128g)</td><td>1.2g</td><td>12g</td><td>0.3g</td><td>52</td></tr>
+                                <tr><td>Lettuce</td><td>1 cup (36g)</td><td>0.5g</td><td>1.6g</td><td>0.1g</td><td>8</td></tr>
+                                <tr><td>Tomato</td><td>1 medium (123g)</td><td>1.1g</td><td>5g</td><td>0.2g</td><td>22</td></tr>
+                                <tr><td>Cucumber</td><td>1 cup (104g)</td><td>0.7g</td><td>4g</td><td>0.1g</td><td>16</td></tr>
+                                <tr><td>Bell Pepper</td><td>1 cup (149g)</td><td>1.5g</td><td>9g</td><td>0.4g</td><td>46</td></tr>
+                                <tr><td>Sweet Potato</td><td>1 medium (114g)</td><td>2.0g</td><td>24g</td><td>0.1g</td><td>103</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="proteins">
+                        <table class="food-table">
+                            <thead>
+                                <tr><th>Food</th><th>Serving Size</th><th>Protein</th><th>Carbs</th><th>Fat</th><th>Calories</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Chicken Breast</td><td>100g (cooked)</td><td>31g</td><td>0g</td><td>3.6g</td><td>165</td></tr>
+                                <tr><td>Salmon</td><td>100g (cooked)</td><td>25g</td><td>0g</td><td>14g</td><td>208</td></tr>
+                                <tr><td>Egg</td><td>1 large (50g)</td><td>6g</td><td>0.6g</td><td>5g</td><td>78</td></tr>
+                                <tr><td>Beef (lean)</td><td>100g (cooked)</td><td>26g</td><td>0g</td><td>15g</td><td>250</td></tr>
+                                <tr><td>Tofu</td><td>100g</td><td>8g</td><td>2g</td><td>4.8g</td><td>76</td></tr>
+                                <tr><td>Shrimp</td><td>100g (cooked)</td><td>24g</td><td>0.2g</td><td>0.3g</td><td>99</td></tr>
+                                <tr><td>Greek Yogurt</td><td>1 cup (227g)</td><td>20g</td><td>8g</td><td>0.7g</td><td>130</td></tr>
+                                <tr><td>Lentils</td><td>1 cup (198g)</td><td>18g</td><td>40g</td><td>0.8g</td><td>230</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="meals">
+                        <table class="food-table">
+                            <thead>
+                                <tr><th>Food</th><th>Serving Size</th><th>Protein</th><th>Carbs</th><th>Fat</th><th>Calories</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>White Rice (cooked)</td><td>1 cup (158g)</td><td>4.3g</td><td>45g</td><td>0.4g</td><td>205</td></tr>
+                                <tr><td>Brown Rice (cooked)</td><td>1 cup (195g)</td><td>5g</td><td>45g</td><td>1.8g</td><td>216</td></tr>
+                                <tr><td>Pasta (cooked)</td><td>1 cup (140g)</td><td>7g</td><td>43g</td><td>1g</td><td>220</td></tr>
+                                <tr><td>Bread (whole wheat)</td><td>1 slice (32g)</td><td>4g</td><td>12g</td><td>1g</td><td>81</td></tr>
+                                <tr><td>Pizza (cheese)</td><td>1 slice (107g)</td><td>12g</td><td>34g</td><td>10g</td><td>272</td></tr>
+                                <tr><td>Cheeseburger</td><td>1 sandwich</td><td>15g</td><td>32g</td><td>15g</td><td>303</td></tr>
+                                <tr><td>Caesar Salad</td><td>3 cups</td><td>16g</td><td>21g</td><td>46g</td><td>520</td></tr>
+                                <tr><td>Subway Turkey</td><td>6" sandwich</td><td>18g</td><td>46g</td><td>3.5g</td><td>280</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="beverages">
+                        <table class="food-table">
+                            <thead>
+                                <tr><th>Food</th><th>Serving Size</th><th>Protein</th><th>Carbs</th><th>Fat</th><th>Calories</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Milk (Whole)</td><td>1 cup (244g)</td><td>7.9g</td><td>11g</td><td>7.9g</td><td>149</td></tr>
+                                <tr><td>Milk (2%)</td><td>1 cup (244g)</td><td>8.1g</td><td>12g</td><td>4.8g</td><td>122</td></tr>
+                                <tr><td>Milk (Skim)</td><td>1 cup (245g)</td><td>8.3g</td><td>12g</td><td>0.2g</td><td>83</td></tr>
+                                <tr><td>Orange Juice</td><td>1 cup (248g)</td><td>1.7g</td><td>26g</td><td>0.5g</td><td>112</td></tr>
+                                <tr><td>Yogurt (low-fat)</td><td>1 cup (245g)</td><td>13g</td><td>17g</td><td>3.8g</td><td>154</td></tr>
+                                <tr><td>Beer</td><td>1 can (356g)</td><td>1.6g</td><td>13g</td><td>0g</td><td>153</td></tr>
+                                <tr><td>Coca-Cola</td><td>1 can (355g)</td><td>0g</td><td>39g</td><td>0g</td><td>140</td></tr>
+                                <tr><td>Almond Milk</td><td>1 cup (240g)</td><td>1g</td><td>2g</td><td>2.5g</td><td>39</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </article>
 
             <article class="content-section">
                 <h2>What is a Macros Calculator?</h2>
                 <p>A <strong>macros calculator</strong> (macronutrient calculator) helps you determine your optimal daily intake of protein, carbohydrates, and fats based on your calorie goals, diet type, and fitness objectives. This <strong>macro calculator</strong> is essential for diet planning, muscle building, weight loss, and overall fitness success.</p>
-                <p>Our <strong>free macros calculator</strong> supports multiple diet types including balanced, high protein, low carb, and keto diets. Whether you're a fitness enthusiast, athlete, or someone serious about nutrition, this tool provides accurate, instant macro targets without any signup or registration.</p>
+                <p>Our <strong>free macros calculator</strong> supports multiple diet types including balanced, high protein, low carb, and keto diets. Whether you are a fitness enthusiast, athlete, or someone serious about nutrition, this tool provides accurate, instant macro targets without any signup or registration.</p>
 
                 <h3>Why Use Our Free Macros Calculator?</h3>
                 <div class="feature-grid">
@@ -362,17 +606,57 @@
                 <h2>How to Use the Macros Calculator</h2>
                 <p>Using our free online <strong>macros calculator</strong> is simple. Follow these steps:</p>
 
-                <h3>Step 1: Enter Your Daily Calories</h3>
-                <p>Input your target daily calorie intake. This is typically calculated from your TDEE (Total Daily Energy Expenditure). For weight loss, subtract 300-500 calories. For weight gain, add 300-500 calories.</p>
+                <h3>Step 1: Enter Your Personal Information</h3>
+                <p>Input your age, gender, weight, height, and activity level. These factors determine your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE). If you know your body fat percentage, enter it for more accurate results using the Katch-McArdle formula.</p>
 
-                <h3>Step 2: Select Your Diet Type</h3>
-                <p>Choose your preferred macro distribution: Balanced (30P/40C/30F), High Protein (40P/40C/20F), Low Carb (30P/25C/45F), or Keto (20P/10C/70F).</p>
+                <h3>Step 2: Select Your Goal</h3>
+                <p>Choose whether you want to maintain, lose, or gain weight. The calculator adjusts your target calories accordingly (-500 for weight loss, +500 for weight gain).</p>
 
-                <h3>Step 3: Choose Your Goal</h3>
-                <p>Select whether you're maintaining, losing, or gaining weight. The calculator adjusts calories accordingly.</p>
+                <h3>Step 3: Choose Your Diet Type</h3>
+                <p>Select your preferred macro distribution: Balanced (30P/40C/30F), High Protein (40P/40C/20F), Low Carb (30P/25C/45F), or Keto (20P/10C/70F). You can also set custom ratios.</p>
 
-                <h3>Step 4: View Your Macro Targets</h3>
-                <p>Get your daily protein, carbs, and fat targets in grams, plus a visual macro distribution bar to guide your meal planning.</p>
+                <h3>Step 4: View Your Results</h3>
+                <p>Get your BMR, TDEE, target calories, BMI, and daily macro targets in grams. Use the meal distribution suggestions and food database to plan your meals.</p>
+            </article>
+
+            <article class="content-section">
+                <h2>Understanding the Science Behind Our Calculator</h2>
+
+                <h3>Basal Metabolic Rate (BMR)</h3>
+                <p>BMR is the number of calories your body burns at complete rest. We use the <strong>Mifflin-St Jeor Equation</strong>, which is considered the most accurate formula for estimating BMR:</p>
+
+                <div class="formula-box">
+                    <h4>Mifflin-St Jeor Equation</h4>
+                    <p><strong>For Men:</strong> <code>BMR = (10 x weight in kg) + (6.25 x height in cm) - (5 x age in years) + 5</code></p>
+                    <p><strong>For Women:</strong> <code>BMR = (10 x weight in kg) + (6.25 x height in cm) - (5 x age in years) - 161</code></p>
+                </div>
+
+                <p>If you enter your body fat percentage, we also calculate using the <strong>Katch-McArdle Formula</strong>, which is more accurate for lean individuals:</p>
+
+                <div class="formula-box">
+                    <h4>Katch-McArdle Formula</h4>
+                    <p><code>BMR = 370 + (21.6 x lean body mass in kg)</code></p>
+                    <p>Where lean body mass = total weight x (1 - body fat percentage)</p>
+                </div>
+
+                <h3>Total Daily Energy Expenditure (TDEE)</h3>
+                <p>TDEE is calculated by multiplying your BMR by an activity factor:</p>
+                <ul>
+                    <li><strong>Sedentary:</strong> BMR x 1.2 (little or no exercise)</li>
+                    <li><strong>Lightly Active:</strong> BMR x 1.375 (light exercise 1-3 days/week)</li>
+                    <li><strong>Moderately Active:</strong> BMR x 1.55 (moderate exercise 3-5 days/week)</li>
+                    <li><strong>Very Active:</strong> BMR x 1.725 (hard exercise 6-7 days/week)</li>
+                    <li><strong>Extra Active:</strong> BMR x 1.9 (very hard exercise, physical job)</li>
+                </ul>
+
+                <h3>Body Mass Index (BMI)</h3>
+                <p>BMI is calculated as <code>weight (kg) / height (m)^2</code> and provides a general indicator of body composition:</p>
+                <ul>
+                    <li>Underweight: BMI &lt; 18.5</li>
+                    <li>Normal weight: BMI 18.5 - 24.9</li>
+                    <li>Overweight: BMI 25 - 29.9</li>
+                    <li>Obese: BMI &gt;= 30</li>
+                </ul>
             </article>
 
             <article class="content-section">
@@ -380,12 +664,15 @@
 
                 <h3>🥩 Protein (4 calories per gram)</h3>
                 <p>Protein is essential for muscle building, tissue repair, enzyme production, and immune function. High protein diets support weight loss by increasing satiety and preserving muscle mass. Good sources include chicken, fish, eggs, Greek yogurt, tofu, and legumes.</p>
+                <p><strong>Recommended intake:</strong> 0.8-2.2g per kg of body weight depending on activity level and goals.</p>
 
                 <h3>🍞 Carbohydrates (4 calories per gram)</h3>
                 <p>Carbs are the body's primary energy source, especially for high-intensity exercise and brain function. Complex carbs (whole grains, vegetables, fruits) provide sustained energy and fiber. Simple carbs (sugar, white bread) spike blood sugar quickly.</p>
+                <p><strong>Recommended intake:</strong> 45-65% of total calories for balanced diets, 5-10% for keto.</p>
 
                 <h3>🥑 Fats (9 calories per gram)</h3>
                 <p>Dietary fats are crucial for hormone production (including testosterone), brain function, nutrient absorption, and cell membrane health. Focus on healthy fats from avocados, nuts, olive oil, and fatty fish. Limit trans fats and excessive saturated fats.</p>
+                <p><strong>Recommended intake:</strong> 20-35% of total calories for most diets, 70% for keto.</p>
             </article>
 
             <article class="content-section">
@@ -417,11 +704,26 @@
             </article>
 
             <article class="content-section">
+                <h2>Meal Planning Tips</h2>
+                <p>Hitting your macro targets consistently is key to success. Here are practical tips:</p>
+                <ul>
+                    <li><strong>Plan ahead:</strong> Meal prep on Sundays to ensure you have macro-friendly meals ready.</li>
+                    <li><strong>Prioritize protein:</strong> Build each meal around a protein source first, then add carbs and fats.</li>
+                    <li><strong>Use a food scale:</strong> Weighing food is more accurate than measuring cups for hitting macros.</li>
+                    <li><strong>Track consistently:</strong> Use a food diary app to log meals and stay on target.</li>
+                    <li><strong>Be flexible:</strong> Weekly averages matter more than daily perfection. Aim within 5-10% of targets.</li>
+                    <li><strong>Adjust as needed:</strong> If you are not seeing results after 2-4 weeks, adjust calories by 100-200.</li>
+                    <li><strong>Stay hydrated:</strong> Drink at least 8 glasses of water daily to support metabolism and satiety.</li>
+                    <li><strong>Include fiber:</strong> Aim for 25-35g of fiber daily from vegetables, fruits, and whole grains.</li>
+                </ul>
+            </article>
+
+            <article class="content-section">
                 <h2>Frequently Asked Questions (FAQ)</h2>
 
                 <div class="faq-item">
                     <h4>How do I calculate my macros?</h4>
-                    <p>Enter your daily calorie target, select your diet type (balanced, high protein, low carb, or keto), and choose your goal. The calculator instantly shows your daily protein, carbs, and fat targets in grams. Adjust based on your body's response over 2-4 weeks.</p>
+                    <p>Enter your age, gender, weight, height, activity level, and goal into the calculator. It will compute your BMR and TDEE, then show your daily protein, carbs, and fat targets in grams based on your chosen diet type.</p>
                 </div>
 
                 <div class="faq-item">
@@ -436,18 +738,27 @@
 
                 <div class="faq-item">
                     <h4>How do I calculate my TDEE for macros?</h4>
-                    <p>Use a TDEE (Total Daily Energy Expenditure) calculator that considers your age, weight, height, gender, and activity level. This gives you your maintenance calories. For weight loss, subtract 300-500 calories. For weight gain, add 300-500 calories.</p>
+                    <p>Our calculator automatically computes TDEE using the Mifflin-St Jeor equation for BMR, then multiplies by your activity level. If you know your body fat percentage, it uses the more accurate Katch-McArdle formula.</p>
                 </div>
 
                 <div class="faq-item">
                     <h4>What if I don't hit my macros exactly every day?</h4>
-                    <p>Perfection isn't necessary — consistency matters more. Aim to be within 5-10% of your macro targets daily. Weekly averages are more important than daily precision. Focus on hitting protein first, then carbs and fats can be more flexible.</p>
+                    <p>Perfection is not necessary — consistency matters more. Aim to be within 5-10% of your macro targets daily. Weekly averages are more important than daily precision. Focus on hitting protein first, then carbs and fats can be more flexible.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Should I use Mifflin-St Jeor or Katch-McArdle?</h4>
+                    <p>Mifflin-St Jeor is the standard and works well for most people. Katch-McArdle is more accurate if you know your body fat percentage, especially for lean or athletic individuals. Our calculator shows both when body fat is entered.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How much protein do I need per day?</h4>
+                    <p>The general recommendation is 0.8g per kg for sedentary adults, 1.2-1.6g for active individuals, and 1.6-2.2g for athletes or those building muscle. Our calculator adjusts protein based on your diet type selection.</p>
                 </div>
             </article>
         </div>
     </main>
 
-    <!-- Bottom Keywords Section for SEO -->
     <section class="bottom-keywords">
         <div class="container">
             <h3>Related Tools & Keywords</h3>
@@ -522,33 +833,79 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
-        function calculateMacros() {
-            let calories = parseFloat(document.getElementById('calories').value) || 0;
-            const dietType = document.getElementById('dietType').value;
+        function calculateAll() {
+            const age = parseFloat(document.getElementById('age').value) || 0;
+            const gender = document.getElementById('gender').value;
+            const weight = parseFloat(document.getElementById('weight').value) || 0;
+            const height = parseFloat(document.getElementById('height').value) || 0;
+            const bodyFat = parseFloat(document.getElementById('bodyFat').value);
+            const activity = parseFloat(document.getElementById('activity').value);
             const goal = document.getElementById('goal').value;
-            const resultBox = document.getElementById('result');
-            const macrosGrid = document.getElementById('macrosGrid');
-            const macroBar = document.getElementById('macroBar');
+            const dietType = document.getElementById('dietType').value;
 
-            if (calories <= 0) {
-                macrosGrid.style.display = 'none';
-                macroBar.style.display = 'none';
-                resultBox.classList.remove('show');
+            // Show/hide custom macros
+            document.getElementById('customMacros').style.display = dietType === 'custom' ? 'block' : 'none';
+
+            if (age <= 0 || weight <= 0 || height <= 0) {
+                document.getElementById('bmrSection').style.display = 'none';
+                document.getElementById('macrosGrid').style.display = 'none';
+                document.getElementById('macroBar').style.display = 'none';
+                document.getElementById('result').classList.remove('show');
+                document.getElementById('mealTiming').style.display = 'none';
                 return;
             }
 
-            // Adjust calories based on goal
-            let goalText = '';
-            if (goal === 'loss') {
-                calories -= 500;
-                goalText = ' (Weight Loss: -500 cal)';
-            } else if (goal === 'gain') {
-                calories += 500;
-                goalText = ' (Weight Gain: +500 cal)';
+            // Calculate BMI
+            const heightM = height / 100;
+            const bmi = weight / (heightM * heightM);
+            let bmiCategory = '';
+            if (bmi < 18.5) bmiCategory = 'Underweight';
+            else if (bmi < 25) bmiCategory = 'Normal weight';
+            else if (bmi < 30) bmiCategory = 'Overweight';
+            else bmiCategory = 'Obese';
+
+            // Calculate BMR using Mifflin-St Jeor
+            let bmr;
+            if (gender === 'male') {
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
             } else {
-                goalText = ' (Maintenance)';
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
             }
 
+            // If body fat provided, also calculate Katch-McArdle (more accurate)
+            let bmrKatch = null;
+            if (bodyFat > 0 && bodyFat < 100) {
+                const leanMass = weight * (1 - bodyFat / 100);
+                bmrKatch = 370 + (21.6 * leanMass);
+                // Use Katch-McArdle as primary if body fat is known
+                bmr = bmrKatch;
+            }
+
+            // Calculate TDEE
+            const tdee = bmr * activity;
+
+            // Adjust calories based on goal
+            let targetCalories = tdee;
+            let goalText = ' (Maintenance)';
+            if (goal === 'loss') {
+                targetCalories -= 500;
+                goalText = ' (Weight Loss: -500 cal)';
+            } else if (goal === 'loss_fast') {
+                targetCalories -= 1000;
+                goalText = ' (Fast Weight Loss: -1000 cal)';
+            } else if (goal === 'gain') {
+                targetCalories += 500;
+                goalText = ' (Weight Gain: +500 cal)';
+            } else if (goal === 'gain_fast') {
+                targetCalories += 1000;
+                goalText = ' (Fast Weight Gain: +1000 cal)';
+            }
+
+            // Ensure minimum safe calories
+            const minCalories = gender === 'male' ? 1500 : 1200;
+            if (targetCalories < minCalories) targetCalories = minCalories;
+
+            // Get macro ratios
             let proteinPercent, carbsPercent, fatsPercent;
 
             switch(dietType) {
@@ -567,41 +924,120 @@
                     carbsPercent = 0.10;
                     fatsPercent = 0.70;
                     break;
+                case 'custom':
+                    proteinPercent = (parseFloat(document.getElementById('customProtein').value) || 30) / 100;
+                    carbsPercent = (parseFloat(document.getElementById('customCarbs').value) || 40) / 100;
+                    fatsPercent = (parseFloat(document.getElementById('customFats').value) || 30) / 100;
+                    // Validate custom ratios
+                    const total = proteinPercent + carbsPercent + fatsPercent;
+                    if (Math.abs(total - 1) > 0.01) {
+                        document.getElementById('customHint').textContent = 'Warning: Total = ' + Math.round(total * 100) + '% (should be 100%)';
+                        document.getElementById('customHint').style.color = '#EF4444';
+                    } else {
+                        document.getElementById('customHint').textContent = 'Total = 100% ✓';
+                        document.getElementById('customHint').style.color = '#10B981';
+                    }
+                    break;
                 default:
                     proteinPercent = 0.30;
                     carbsPercent = 0.40;
                     fatsPercent = 0.30;
             }
 
-            const proteinCals = calories * proteinPercent;
-            const carbsCals = calories * carbsPercent;
-            const fatsCals = calories * fatsPercent;
+            const proteinCals = targetCalories * proteinPercent;
+            const carbsCals = targetCalories * carbsPercent;
+            const fatsCals = targetCalories * fatsPercent;
 
             const protein = Math.round(proteinCals / 4);
             const carbs = Math.round(carbsCals / 4);
             const fats = Math.round(fatsCals / 9);
 
+            // Update BMR/TDEE display
+            document.getElementById('bmrSection').style.display = 'block';
+            document.getElementById('bmrVal').textContent = Math.round(bmr).toLocaleString();
+            document.getElementById('tdeeVal').textContent = Math.round(tdee).toLocaleString();
+            document.getElementById('targetVal').textContent = Math.round(targetCalories).toLocaleString();
+            document.getElementById('bmiVal').textContent = bmi.toFixed(1);
+            document.getElementById('bmiCategory').textContent = bmiCategory;
+
             // Update stat cards
             document.getElementById('proteinVal').textContent = protein;
             document.getElementById('carbsVal').textContent = carbs;
             document.getElementById('fatsVal').textContent = fats;
-            document.getElementById('totalCal').textContent = Math.round(calories).toLocaleString();
+            document.getElementById('totalCal').textContent = Math.round(targetCalories).toLocaleString();
 
-            macrosGrid.style.display = 'grid';
+            document.getElementById('macrosGrid').style.display = 'grid';
 
             // Update macro bar
             document.getElementById('barProtein').style.width = (proteinPercent * 100) + '%';
             document.getElementById('barCarbs').style.width = (carbsPercent * 100) + '%';
             document.getElementById('barFats').style.width = (fatsPercent * 100) + '%';
-            macroBar.style.display = 'block';
+            document.getElementById('macroBar').style.display = 'block';
+
+            // Update legend with percentages
+            document.getElementById('legendProtein').textContent = 'Protein ' + Math.round(proteinPercent * 100) + '%';
+            document.getElementById('legendCarbs').textContent = 'Carbs ' + Math.round(carbsPercent * 100) + '%';
+            document.getElementById('legendFats').textContent = 'Fats ' + Math.round(fatsPercent * 100) + '%';
 
             // Update result box
-            document.getElementById('macrosResult').textContent = `${protein}g Protein | ${carbs}g Carbs | ${fats}g Fats`;
-            document.getElementById('macrosDetail').innerHTML = 
-                `Based on ${Math.round(calories).toLocaleString()} calories${goalText}<br>` +
-                `Protein: ${Math.round(proteinCals)} cal | Carbs: ${Math.round(carbsCals)} cal | Fats: ${Math.round(fatsCals)} cal`;
+            document.getElementById('macrosResult').textContent = protein + 'g Protein | ' + carbs + 'g Carbs | ' + fats + 'g Fats';
 
-            resultBox.classList.add('show');
+            let detailText = 'Based on ' + Math.round(targetCalories).toLocaleString() + ' calories' + goalText + '<br>';
+            detailText += 'Protein: ' + Math.round(proteinCals) + ' cal | Carbs: ' + Math.round(carbsCals) + ' cal | Fats: ' + Math.round(fatsCals) + ' cal<br>';
+            if (bmrKatch) {
+                detailText += 'BMR (Katch-McArdle): ' + Math.round(bmrKatch).toLocaleString() + ' cal | ';
+            }
+            detailText += 'BMI: ' + bmi.toFixed(1) + ' (' + bmiCategory + ')';
+            document.getElementById('macrosDetail').innerHTML = detailText;
+            document.getElementById('result').classList.add('show');
+
+            // Meal timing suggestions
+            document.getElementById('mealTiming').style.display = 'block';
+            document.getElementById('breakfastMacros').textContent = 
+                Math.round(protein * 0.25) + 'g P | ' + Math.round(carbs * 0.25) + 'g C | ' + Math.round(fats * 0.25) + 'g F';
+            document.getElementById('lunchMacros').textContent = 
+                Math.round(protein * 0.35) + 'g P | ' + Math.round(carbs * 0.35) + 'g C | ' + Math.round(fats * 0.35) + 'g F';
+            document.getElementById('dinnerMacros').textContent = 
+                Math.round(protein * 0.30) + 'g P | ' + Math.round(carbs * 0.30) + 'g C | ' + Math.round(fats * 0.30) + 'g F';
+            document.getElementById('snackMacros').textContent = 
+                Math.round(protein * 0.10) + 'g P | ' + Math.round(carbs * 0.10) + 'g C | ' + Math.round(fats * 0.10) + 'g F';
+        }
+
+        function resetForm() {
+            document.getElementById('age').value = 30;
+            document.getElementById('gender').value = 'male';
+            document.getElementById('weight').value = 70;
+            document.getElementById('height').value = 175;
+            document.getElementById('bodyFat').value = '';
+            document.getElementById('activity').value = '1.55';
+            document.getElementById('goal').value = 'maintain';
+            document.getElementById('dietType').value = 'balanced';
+            document.getElementById('customProtein').value = 30;
+            document.getElementById('customCarbs').value = 40;
+            document.getElementById('customFats').value = 30;
+            document.getElementById('customMacros').style.display = 'none';
+            document.getElementById('customHint').textContent = 'Total must equal 100%';
+            document.getElementById('customHint').style.color = '';
+            calculateAll();
+        }
+
+        function printResults() {
+            window.print();
+        }
+
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            // Add active to clicked button
+            event.target.classList.add('active');
         }
 
         function scrollToTop() {
@@ -617,12 +1053,12 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            calculateMacros();
+            calculateAll();
         });
 
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'Enter') {
-                calculateMacros();
+                calculateAll();
             }
         });
     </script>
