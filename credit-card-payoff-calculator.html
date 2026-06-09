@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ToolPond Pro Credit Card Payoff Calculator - Calculate your debt-free date, total interest, and savings with avalanche and snowball strategies. Free multiple credit card debt calculator.">
+    <meta name="keywords" content="ToolPond Pro, credit card payoff calculator, debt calculator, credit card interest calculator, minimum payment calculator, avalanche method, snowball method, debt free calculator, multiple credit card payoff">
+    <meta name="author" content="ToolPond Pro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ToolPond Pro | Credit Card Payoff Calculator">
+    <meta property="og:description" content="Calculate exactly when you'll be debt-free. Compare payoff strategies and save thousands in interest with ToolPond Pro.">
+    <meta property="og:type" content="website">
+    <title>ToolPond Pro | Credit Card Payoff Calculator - Debt Free Calculator 2026</title>
+    <link rel="canonical" href="https://toolpondpro.com/credit-card-payoff-calculator">
+    <style>
+        :root {
+            --tp-primary: #2563eb;
+            --tp-primary-dark: #1d4ed8;
+            --tp-primary-light: #dbeafe;
+            --tp-secondary: #059669;
+            --tp-accent: #dc2626;
+            --tp-warning: #d97706;
+            --tp-bg: #f8fafc;
+            --tp-card: #ffffff;
+            --tp-text: #1e293b;
+            --tp-text-light: #64748b;
+            --tp-border: #e2e8f0;
+            --tp-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.08);
+            --tp-shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --tp-radius: 16px;
+            --tp-radius-sm: 10px;
+            --tp-radius-xs: 6px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--tp-bg);
+            color: var(--tp-text);
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        .tp-header {
+            background: linear-gradient(135deg, var(--tp-primary) 0%, #1e40af 50%, #1e3a5f 100%);
+            color: white;
+            padding: 25px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tp-header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .tp-header::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 50%;
+        }
+
+        .tp-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tp-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tp-brand-logo {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .tp-brand-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .tp-brand-text span {
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .tp-header-title {
+            text-align: right;
+        }
+
+        .tp-header-title h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .tp-header-title p {
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+
+        /* ===== HERO ===== */
+        .tp-hero {
+            background: linear-gradient(135deg, var(--tp-primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 50px 30px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tp-hero h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .tp-hero p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tp-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.12);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .tp-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* ===== SECTIONS ===== */
+        .tp-section {
+            margin: 40px 0;
+        }
+
+        .tp-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--tp-text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tp-section-title .icon {
+            width: 36px;
+            height: 36px;
+            background: var(--tp-primary-light);
+            color: var(--tp-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        /* ===== CARD COMPONENT ===== */
+        .tp-card {
+            background: var(--tp-card);
+            border-radius: var(--tp-radius);
+            box-shadow: var(--tp-shadow);
+            padding: 28px;
+            margin-bottom: 20px;
+            border: 1px solid var(--tp-border);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .tp-card:hover {
+            box-shadow: var(--tp-shadow-lg);
+        }
+
+        .tp-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tp-card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--tp-primary);
+        }
+
+        /* ===== GRID LAYOUTS ===== */
+        .tp-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .tp-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tp-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .tp-grid-2, .tp-grid-3, .tp-grid-4 { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .tp-grid-2, .tp-grid-3, .tp-grid-4 { grid-template-columns: 1fr; }
+        }
+
+        /* ===== CALCULATOR LAYOUT ===== */
+        .tp-calc-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 25px;
+            align-items: start;
+        }
+
+        @media (max-width: 1100px) {
+            .tp-calc-layout { grid-template-columns: 1fr; }
+        }
+
+        /* ===== FORM ELEMENTS ===== */
+        .tp-form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0;
+        }
+
+        .tp-form-group label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--tp-text-light);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .tp-input {
+            padding: 12px 14px;
+            border: 2px solid var(--tp-border);
+            border-radius: var(--tp-radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            background: white;
+            width: 100%;
+        }
+
+        .tp-input:focus {
+            outline: none;
+            border-color: var(--tp-primary);
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
+        }
+
+        .tp-input-prefix {
+            position: relative;
+        }
+
+        .tp-input-prefix .prefix {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tp-text-light);
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .tp-input-prefix input {
+            padding-left: 32px;
+        }
+
+        .tp-select {
+            padding: 12px 14px;
+            border: 2px solid var(--tp-border);
+            border-radius: var(--tp-radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .tp-select:focus {
+            outline: none;
+            border-color: var(--tp-primary);
+        }
+
+        /* ===== CREDIT CARD INPUT ROW ===== */
+        .tp-cc-row {
+            background: #f8fafc;
+            border: 2px solid var(--tp-border);
+            border-radius: var(--tp-radius-sm);
+            padding: 20px;
+            margin-bottom: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tp-cc-row:hover {
+            border-color: var(--tp-primary);
+            box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+        }
+
+        .tp-cc-row-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .tp-cc-row-name {
+            font-weight: 700;
+            color: var(--tp-primary);
+            font-size: 1rem;
+        }
+
+        .tp-cc-remove {
+            background: #fef2f2;
+            color: var(--tp-accent);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tp-cc-remove:hover {
+            background: var(--tp-accent);
+            color: white;
+        }
+
+        .tp-cc-fields {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .tp-cc-fields { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ===== ADD CARD BUTTON ===== */
+        .tp-add-card {
+            width: 100%;
+            padding: 16px;
+            background: white;
+            border: 2px dashed var(--tp-primary);
+            color: var(--tp-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--tp-radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tp-add-card:hover {
+            background: var(--tp-primary-light);
+            border-style: solid;
+        }
+
+        /* ===== STRATEGY OPTIONS ===== */
+        .tp-strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .tp-strategy-grid { grid-template-columns: 1fr; }
+        }
+
+        .tp-strategy-option {
+            background: white;
+            border: 2px solid var(--tp-border);
+            border-radius: var(--tp-radius-sm);
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tp-strategy-option:hover {
+            border-color: var(--tp-primary);
+        }
+
+        .tp-strategy-option.selected {
+            border-color: var(--tp-primary);
+            background: var(--tp-primary-light);
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
+        }
+
+        .tp-strategy-option .check {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--tp-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .tp-strategy-option.selected .check {
+            background: var(--tp-primary);
+            border-color: var(--tp-primary);
+            color: white;
+        }
+
+        .tp-strategy-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            color: var(--tp-text);
+        }
+
+        .tp-strategy-desc {
+            font-size: 0.82rem;
+            color: var(--tp-text-light);
+            line-height: 1.5;
+        }
+
+        /* ===== PAYMENT INPUTS ===== */
+        .tp-payment-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .tp-payment-row { grid-template-columns: 1fr; }
+        }
+
+        /* ===== CALCULATE BUTTON ===== */
+        .tp-btn-calculate {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--tp-secondary) 0%, #047857 100%);
+            color: white;
+            border: none;
+            border-radius: var(--tp-radius-sm);
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(5,150,105,0.3);
+        }
+
+        .tp-btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(5,150,105,0.4);
+        }
+
+        .tp-btn-calculate:active {
+            transform: translateY(0);
+        }
+
+        /* ===== SIDEBAR STATS ===== */
+        .tp-sidebar {
+            position: sticky;
+            top: 20px;
+        }
+
+        .tp-stat-box {
+            background: var(--tp-card);
+            border-radius: var(--tp-radius);
+            padding: 22px;
+            margin-bottom: 15px;
+            box-shadow: var(--tp-shadow);
+            border: 1px solid var(--tp-border);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tp-stat-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .tp-stat-label {
+            font-size: 0.8rem;
+            color: var(--tp-text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .tp-stat-value {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--tp-primary);
+        }
+
+        .tp-stat-value.debt { color: var(--tp-accent); }
+        .tp-stat-value.interest { color: var(--tp-warning); }
+        .tp-stat-value.success { color: var(--tp-secondary); }
+
+        .tp-tips-box {
+            background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+            border: 1px solid #fde047;
+        }
+
+        .tp-tips-box h4 {
+            color: var(--tp-warning);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .tp-tips-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tp-tips-box li {
+            padding: 5px 0;
+            font-size: 0.88rem;
+            color: var(--tp-text);
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .tp-tips-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--tp-secondary);
+            font-weight: bold;
+        }
+
+        /* ===== RESULTS SECTION ===== */
+        .tp-results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .tp-results-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .tp-result-card {
+            background: var(--tp-card);
+            border-radius: var(--tp-radius);
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: var(--tp-shadow);
+            border: 1px solid var(--tp-border);
+            transition: all 0.3s ease;
+        }
+
+        .tp-result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--tp-shadow-lg);
+        }
+
+        .tp-result-card .label {
+            font-size: 0.82rem;
+            color: var(--tp-text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .tp-result-card .value {
+            font-size: 1.9rem;
+            font-weight: 800;
+        }
+
+        .tp-result-card .value.debt { color: var(--tp-accent); }
+        .tp-result-card .value.interest { color: var(--tp-warning); }
+        .tp-result-card .value.date { color: var(--tp-secondary); }
+        .tp-result-card .value.months { color: var(--tp-primary); }
+
+        /* ===== SAVINGS BANNER ===== */
+        .tp-savings {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 1px solid #6ee7b7;
+            border-radius: var(--tp-radius);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .tp-savings.show { display: block; animation: slideDown 0.5s ease; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tp-savings h3 {
+            color: #065f46;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .tp-savings .amount {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--tp-secondary);
+        }
+
+        .tp-savings p {
+            color: #065f46;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        /* ===== CHART & TABLE ===== */
+        .tp-split {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 1024px) {
+            .tp-split { grid-template-columns: 1fr; }
+        }
+
+        .tp-chart-wrap {
+            background: var(--tp-card);
+            border-radius: var(--tp-radius);
+            padding: 25px;
+            box-shadow: var(--tp-shadow);
+            border: 1px solid var(--tp-border);
+            height: 480px;
+        }
+
+        .tp-chart-wrap canvas {
+            width: 100%;
+            height: calc(100% - 40px);
+        }
+
+        .tp-table-wrap {
+            background: var(--tp-card);
+            border-radius: var(--tp-radius);
+            padding: 25px;
+            box-shadow: var(--tp-shadow);
+            border: 1px solid var(--tp-border);
+            max-height: 480px;
+            overflow: auto;
+        }
+
+        .tp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .tp-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .tp-table th {
+            background: var(--tp-primary);
+            color: white;
+            padding: 14px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .tp-table th:first-child { border-radius: 8px 0 0 0; }
+        .tp-table th:last-child { border-radius: 0 8px 0 0; }
+
+        .tp-table td {
+            padding: 11px 10px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .tp-table tr:hover { background: #f8fafc; }
+        .tp-table tr:nth-child(even) { background: #fafbfc; }
+        .tp-table tr:nth-child(even):hover { background: #f1f5f9; }
+
+        /* ===== FAQ ===== */
+        .tp-faq-item {
+            background: var(--tp-card);
+            border-radius: var(--tp-radius);
+            margin-bottom: 12px;
+            box-shadow: var(--tp-shadow);
+            border: 1px solid var(--tp-border);
+            overflow: hidden;
+        }
+
+        .tp-faq-question {
+            padding: 22px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--tp-text);
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .tp-faq-question:hover { background: #f8fafc; }
+
+        .tp-faq-question .icon {
+            color: var(--tp-primary);
+            font-size: 1.4rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .tp-faq-item.open .icon { transform: rotate(45deg); }
+
+        .tp-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .tp-faq-item.open .tp-faq-answer {
+            max-height: 600px;
+            padding: 0 25px 22px 25px;
+        }
+
+        .tp-faq-answer p {
+            color: var(--tp-text-light);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .tp-faq-answer strong { color: var(--tp-text); }
+
+        /* ===== FOOTER ===== */
+        .tp-footer {
+            background: var(--tp-text);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 35px 30px;
+            margin-top: 50px;
+        }
+
+        .tp-footer-brand {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .tp-footer p {
+            font-size: 0.9rem;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .tp-header-inner { flex-direction: column; gap: 15px; text-align: center; }
+            .tp-header-title { text-align: center; }
+            .tp-hero h2 { font-size: 2rem; }
+            .tp-container { padding: 0 15px; }
+            .tp-section { margin: 25px 0; }
+            .tp-card { padding: 20px; }
+            .tp-results-grid { grid-template-columns: 1fr; }
+            .tp-cc-fields { grid-template-columns: 1fr; }
+            .tp-strategy-grid { grid-template-columns: 1fr; }
+            .tp-payment-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="tp-header">
+        <div class="tp-header-inner">
+            <div class="tp-brand">
+                <div class="tp-brand-logo">🔧</div>
+                <div class="tp-brand-text">ToolPond <span>Pro</span></div>
+            </div>
+            <div class="tp-header-title">
+                <h1>Credit Card Payoff Calculator</h1>
+                <p>Plan your path to debt freedom</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="tp-hero">
+        <h2>Calculate Your Debt-Free Date</h2>
+        <p>Compare payoff strategies, see your amortization schedule, and discover how much you can save with ToolPond Pro's advanced calculator.</p>
+        <div class="tp-hero-badge">
+            <span>✓</span> Free & Private — All calculations run in your browser
+        </div>
+    </section>
+
+    <div class="tp-container">
+
+        <!-- CALCULATOR SECTION -->
+        <section class="tp-section" id="calculator">
+            <div class="tp-calc-layout">
+                <!-- LEFT: Inputs -->
+                <div class="tp-inputs">
+                    <!-- Credit Cards -->
+                    <div class="tp-card">
+                        <div class="tp-card-header">
+                            <div class="tp-card-title">💳 Your Credit Cards</div>
+                        </div>
+                        <div id="tp-cards-container"></div>
+                        <button class="tp-add-card" onclick="addCard()">
+                            <span>+</span> Add Another Credit Card
+                        </button>
+                    </div>
+
+                    <!-- Strategy -->
+                    <div class="tp-card">
+                        <div class="tp-card-header">
+                            <div class="tp-card-title">💡 Choose Your Payoff Strategy</div>
+                        </div>
+
+                        <div class="tp-strategy-grid">
+                            <div class="tp-strategy-option selected" onclick="selectStrategy(this, 'avalanche')">
+                                <div class="check">✓</div>
+                                <div class="tp-strategy-name">Avalanche Method</div>
+                                <div class="tp-strategy-desc">Pay highest interest first. Saves the most money overall — typically 10-20% more than other strategies.</div>
+                            </div>
+                            <div class="tp-strategy-option" onclick="selectStrategy(this, 'snowball')">
+                                <div class="check">✓</div>
+                                <div class="tp-strategy-name">Snowball Method</div>
+                                <div class="tp-strategy-desc">Pay smallest balance first. Quick wins build motivation and momentum to stay on track.</div>
+                            </div>
+                            <div class="tp-strategy-option" onclick="selectStrategy(this, 'minimum')">
+                                <div class="check">✓</div>
+                                <div class="tp-strategy-name">Minimum Payments</div>
+                                <div class="tp-strategy-desc">Baseline comparison. See how long minimum payments take and how much extra interest costs you.</div>
+                            </div>
+                        </div>
+
+                        <div class="tp-payment-row">
+                            <div class="tp-form-group">
+                                <label>Monthly Payment</label>
+                                <div class="tp-input-prefix">
+                                    <span class="prefix">$</span>
+                                    <input type="number" class="tp-input" id="monthly-payment" value="500" min="0" step="10">
+                                </div>
+                            </div>
+                            <div class="tp-form-group">
+                                <label>Extra Payment (Optional)</label>
+                                <div class="tp-input-prefix">
+                                    <span class="prefix">$</span>
+                                    <input type="number" class="tp-input" id="extra-payment" value="100" min="0" step="10">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="tp-btn-calculate" onclick="calculatePayoff()">
+                            <span>🚀</span> Calculate Payoff Plan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Sidebar -->
+                <div class="tp-sidebar">
+                    <div class="tp-stat-box">
+                        <div class="tp-stat-label">Total Debt</div>
+                        <div class="tp-stat-value debt" id="stat-debt">$0.00</div>
+                    </div>
+                    <div class="tp-stat-box">
+                        <div class="tp-stat-label">Est. Interest</div>
+                        <div class="tp-stat-value interest" id="stat-interest">$0.00</div>
+                    </div>
+                    <div class="tp-stat-box">
+                        <div class="tp-stat-label">Payoff Date</div>
+                        <div class="tp-stat-value success" id="stat-date">--</div>
+                    </div>
+                    <div class="tp-stat-box">
+                        <div class="tp-stat-label">Months to Go</div>
+                        <div class="tp-stat-value" id="stat-months">--</div>
+                    </div>
+                    <div class="tp-stat-box tp-tips-box">
+                        <h4>💰 Money Saving Tips</h4>
+                        <ul>
+                            <li>Pay more than minimum to cut interest</li>
+                            <li>Try a 0% balance transfer card</li>
+                            <li>Avalanche saves the most money</li>
+                            <li>Call and negotiate your APR</li>
+                            <li>Put windfalls toward principal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS SECTION -->
+        <section class="tp-section" id="results" style="display:none;">
+            <div class="tp-section-title">
+                <div class="icon">📊</div>
+                Your Payoff Results
+            </div>
+
+            <div class="tp-results-grid">
+                <div class="tp-result-card">
+                    <div class="label">Total Debt</div>
+                    <div class="value debt" id="res-debt">$0.00</div>
+                </div>
+                <div class="tp-result-card">
+                    <div class="label">Total Interest</div>
+                    <div class="value interest" id="res-interest">$0.00</div>
+                </div>
+                <div class="tp-result-card">
+                    <div class="label">Payoff Date</div>
+                    <div class="value date" id="res-date">--</div>
+                </div>
+                <div class="tp-result-card">
+                    <div class="label">Months to Payoff</div>
+                    <div class="value months" id="res-months">--</div>
+                </div>
+            </div>
+
+            <div class="tp-savings" id="savings-box">
+                <h3>🎉 You Could Save</h3>
+                <div class="amount" id="savings-amount">$0.00</div>
+                <p>compared to paying only minimum payments!</p>
+            </div>
+
+            <div class="tp-split">
+                <div class="tp-chart-wrap">
+                    <div class="tp-card-title">📈 Balance Over Time</div>
+                    <canvas id="balance-chart"></canvas>
+                </div>
+                <div class="tp-table-wrap">
+                    <div class="tp-card-title">📅 Amortization Schedule</div>
+                    <table class="tp-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Payment</th>
+                                <th>Principal</th>
+                                <th>Interest</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="amortization-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="tp-section" id="faq">
+            <div class="tp-section-title">
+                <div class="icon">❓</div>
+                Frequently Asked Questions
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>How is credit card payoff calculated?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p>Credit card payoff is calculated using your <strong>balance, APR (Annual Percentage Rate), and monthly payment</strong>. The calculator uses standard amortization where each payment first covers accrued interest, then reduces the principal. <strong>Higher monthly payments</strong> mean more goes toward principal, dramatically reducing both payoff time and total interest. ToolPond Pro's calculator supports multiple cards and different payoff strategies for the most accurate debt-free date.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>What is the best credit card payoff strategy?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p>The <strong>Avalanche Method</strong> (highest interest first) mathematically saves the most money — typically <strong>10-20% more</strong> than other strategies. The <strong>Snowball Method</strong> (lowest balance first) provides psychological wins by eliminating individual cards faster, helping many people stay motivated. Both work, but Avalanche is optimal for minimizing total interest. Use ToolPond Pro to compare both with your actual balances.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>How long will it take to pay off my credit card?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p>Use the calculator above! For example, a <strong>$5,000 balance at 18% APR</strong> with <strong>$200 monthly payments</strong> takes approximately <strong>32 months</strong>. Paying only the minimum (2-3% of balance) could take <strong>20+ years</strong> and cost thousands in extra interest. Enter your specific card details to get your exact payoff timeline and see how increasing payments accelerates your debt-free date.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>What is a good APR for a credit card?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p>A "good" APR depends on your credit score: <strong>Excellent credit (740+): 13-15% APR</strong>. Good credit (670-739): 16-19%. Average credit (580-669): 20-24%. If your APR is above 20%, consider a <strong>balance transfer card</strong> with 0% intro APR, or call your issuer to negotiate a lower rate. Even a 2-3% reduction can save hundreds over your payoff period.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>Should I pay off credit cards or save money first?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p>Generally, <strong>pay off high-interest cards first</strong> (APR > 15%) because they cost more than most savings accounts earn. However, keep a small <strong>emergency fund of $500-1,000</strong> first to avoid taking on new debt for unexpected expenses. For low-interest debt (APR < 5%), you can balance saving and paying down debt. ToolPond Pro shows exactly how much interest you'll pay, helping you make an informed decision.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>What happens if I only pay the minimum?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p>Paying only the minimum (typically <strong>1-3% of balance + interest</strong>) maximizes what the bank earns and what you pay. Example: A <strong>$5,000 balance at 18% APR</strong> with minimum payments takes approximately <strong>273 months (22+ years)</strong> and costs over <strong>$6,400 in interest alone</strong> — more than the original balance! Always pay more than the minimum. Even an extra $50-100 per month can cut years off your payoff time.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I negotiate my credit card interest rate?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p><strong>Yes!</strong> Call your credit card issuer and ask for a lower APR. Success rates are <strong>60-80%</strong> for those who simply ask. Mention competitor offers, your payment history, or temporary financial hardship. Even a small reduction of 2-3% can save hundreds over your payoff period. If they refuse, consider transferring your balance to a card with a promotional 0% APR period.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>What is credit utilization and why does it matter?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p><strong>Credit utilization</strong> = (Balance / Credit Limit) × 100. It accounts for <strong>30% of your credit score</strong> — the second biggest factor after payment history. Keep utilization under <strong>30%</strong> (ideally under 10%) for optimal scores. Paying down balances improves your score quickly, often within one billing cycle. ToolPond Pro helps you plan aggressive paydowns that boost both your financial health and credit score.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>How does ToolPond Pro's calculator work?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p>ToolPond Pro's advanced calculator supports <strong>multiple credit cards</strong>, different payoff strategies (Avalanche, Snowball, Minimum), extra payments, and generates a full <strong>amortization schedule</strong> with a visual balance chart. It uses industry-standard daily interest calculations (APR ÷ 365 × balance). <strong>All calculations run locally in your browser</strong> — no data is sent to any server, ensuring complete privacy and security.</p>
+                </div>
+            </div>
+
+            <div class="tp-faq-item">
+                <div class="tp-faq-question" onclick="toggleFAQ(this)">
+                    <span>Is ToolPond Pro's calculator free to use?</span>
+                    <span class="icon">+</span>
+                </div>
+                <div class="tp-faq-answer">
+                    <p><strong>Yes, completely free!</strong> ToolPond Pro's credit card payoff calculator is 100% free with no signup required, no ads, and no data collection. Use it as often as needed to plan your debt-free journey. Bookmark this page for quick access whenever you want to test different payment scenarios or track your progress toward becoming debt-free.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="tp-footer">
+        <div class="tp-footer-brand">ToolPond Pro</div>
+        <p>© 2026 ToolPond Pro | Credit Card Payoff Calculator | Free Debt Management Tool | Privacy-Focused — All calculations run in your browser</p>
+    </footer>
+
+    <script>
+        // ==================== STATE ====================
+        let cards = [];
+        let cardCounter = 0;
+        let currentStrategy = 'avalanche';
+        let calculationResult = null;
+
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            addCard();
+            updateSidebar();
+        });
+
+        // ==================== CARDS ====================
+        function addCard() {
+            cardCounter++;
+            const cardId = cardCounter;
+            cards.push({
+                id: cardId,
+                name: 'Card ' + cardId,
+                balance: 5000,
+                apr: 18.99,
+                minPayment: 150
+            });
+            renderCards();
+            updateSidebar();
+        }
+
+        function removeCard(id) {
+            cards = cards.filter(c => c.id !== id);
+            renderCards();
+            updateSidebar();
+        }
+
+        function updateCard(id, field, value) {
+            const card = cards.find(c => c.id === id);
+            if (card) {
+                if (field === 'name') card.name = value;
+                else card[field] = parseFloat(value) || 0;
+                updateSidebar();
+            }
+        }
+
+        function renderCards() {
+            const container = document.getElementById('tp-cards-container');
+            container.innerHTML = cards.map(card => `
+                <div class="tp-cc-row">
+                    <div class="tp-cc-row-header">
+                        <span class="tp-cc-row-name">💳 ${card.name}</span>
+                        ${cards.length > 1 ? `<button class="tp-cc-remove" onclick="removeCard(${card.id})" title="Remove">×</button>` : ''}
+                    </div>
+                    <div class="tp-cc-fields">
+                        <div class="tp-form-group">
+                            <label>Card Name</label>
+                            <input type="text" class="tp-input" value="${card.name}" onchange="updateCard(${card.id}, 'name', this.value)">
+                        </div>
+                        <div class="tp-form-group">
+                            <label>Balance</label>
+                            <div class="tp-input-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" class="tp-input" value="${card.balance}" min="0" step="100" onchange="updateCard(${card.id}, 'balance', this.value)">
+                            </div>
+                        </div>
+                        <div class="tp-form-group">
+                            <label>APR (%)</label>
+                            <input type="number" class="tp-input" value="${card.apr}" min="0" max="100" step="0.01" onchange="updateCard(${card.id}, 'apr', this.value)">
+                        </div>
+                        <div class="tp-form-group">
+                            <label>Min Payment</label>
+                            <div class="tp-input-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" class="tp-input" value="${card.minPayment}" min="0" step="10" onchange="updateCard(${card.id}, 'minPayment', this.value)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ==================== STRATEGY ====================
+        function selectStrategy(element, strategy) {
+            document.querySelectorAll('.tp-strategy-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            currentStrategy = strategy;
+        }
+
+        // ==================== SIDEBAR ====================
+        function updateSidebar() {
+            const totalDebt = cards.reduce((sum, c) => sum + c.balance, 0);
+            document.getElementById('stat-debt').textContent = formatCurrency(totalDebt);
+        }
+
+        // ==================== CALCULATE ====================
+        function calculatePayoff() {
+            if (cards.length === 0) {
+                alert('Please add at least one credit card.');
+                return;
+            }
+
+            const monthlyPayment = parseFloat(document.getElementById('monthly-payment').value) || 0;
+            const extraPayment = parseFloat(document.getElementById('extra-payment').value) || 0;
+            const totalMonthly = monthlyPayment + extraPayment;
+
+            if (totalMonthly <= 0) {
+                alert('Monthly payment must be greater than $0.');
+                return;
+            }
+
+            // Sort by strategy
+            let sortedCards = [...cards];
+            if (currentStrategy === 'avalanche') {
+                sortedCards.sort((a, b) => b.apr - a.apr);
+            } else if (currentStrategy === 'snowball') {
+                sortedCards.sort((a, b) => a.balance - b.balance);
+            }
+
+            const result = calculatePayoffPlan(sortedCards, totalMonthly);
+            calculationResult = result;
+
+            // Show results section
+            const resultsSection = document.getElementById('results');
+            resultsSection.style.display = 'block';
+            resultsSection.classList.add('animate-in');
+
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            updateResults(result);
+            setTimeout(() => drawChart(result), 150);
+        }
+
+        function calculatePayoffPlan(sortedCards, monthlyPayment) {
+            const schedule = [];
+            let totalInterest = 0;
+            let month = 0;
+            let totalBalance = sortedCards.reduce((sum, c) => sum + c.balance, 0);
+            const initialDebt = totalBalance;
+
+            const balances = sortedCards.map(c => c.balance);
+            const aprs = sortedCards.map(c => c.apr / 100);
+            const names = sortedCards.map(c => c.name);
+            const minPayments = sortedCards.map(c => c.minPayment);
+
+            while (totalBalance > 0.01 && month < 600) {
+                month++;
+                let monthInterest = 0;
+                let monthPrincipal = 0;
+
+                // Calculate interest
+                for (let i = 0; i < balances.length; i++) {
+                    if (balances[i] > 0) {
+                        const dailyRate = aprs[i] / 365;
+                        const interest = balances[i] * dailyRate * 30;
+                        balances[i] += interest;
+                        monthInterest += interest;
+                    }
+                }
+
+                // Apply payments
+                let remainingPayment = monthlyPayment;
+
+                if (currentStrategy === 'minimum') {
+                    for (let i = 0; i < balances.length && remainingPayment > 0.01; i++) {
+                        if (balances[i] > 0) {
+                            const payment = Math.min(balances[i], Math.min(minPayments[i], remainingPayment));
+                            balances[i] -= payment;
+                            remainingPayment -= payment;
+                            monthPrincipal += payment;
+                        }
+                    }
+                } else {
+                    const targetIndex = balances.findIndex(b => b > 0);
+                    for (let i = 0; i < balances.length && remainingPayment > 0.01; i++) {
+                        if (balances[i] > 0) {
+                            let payment;
+                            if (i === targetIndex) {
+                                payment = Math.min(balances[i], remainingPayment);
+                            } else {
+                                payment = Math.min(balances[i], Math.min(minPayments[i], remainingPayment));
+                            }
+                            balances[i] -= payment;
+                            remainingPayment -= payment;
+                            monthPrincipal += payment;
+                        }
+                    }
+                }
+
+                totalBalance = balances.reduce((sum, b) => sum + Math.max(0, b), 0);
+                totalInterest += monthInterest;
+
+                const activeCard = names[balances.findIndex(b => b > 0)] || 'Paid Off';
+
+                schedule.push({
+                    month,
+                    payment: monthlyPayment - remainingPayment,
+                    principal: monthPrincipal,
+                    interest: monthInterest,
+                    balance: totalBalance,
+                    card: activeCard
+                });
+
+                if (month >= 600) break;
+            }
+
+            return { schedule, totalInterest, months: month, totalPaid: initialDebt + totalInterest, initialDebt, strategy: currentStrategy };
+        }
+
+        // ==================== UPDATE RESULTS ====================
+        function updateResults(result) {
+            document.getElementById('res-debt').textContent = formatCurrency(result.initialDebt);
+            document.getElementById('res-interest').textContent = formatCurrency(result.totalInterest);
+            document.getElementById('res-months').textContent = result.months + ' months';
+
+            const payoffDate = new Date();
+            payoffDate.setMonth(payoffDate.getMonth() + result.months);
+            const dateStr = payoffDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            document.getElementById('res-date').textContent = dateStr;
+
+            // Sidebar
+            document.getElementById('stat-interest').textContent = formatCurrency(result.totalInterest);
+            document.getElementById('stat-date').textContent = dateStr;
+            document.getElementById('stat-months').textContent = result.months + ' months';
+
+            // Savings
+            const minInterest = calculateMinPaymentInterest(result.initialDebt, cards);
+            const savings = Math.max(0, minInterest - result.totalInterest);
+
+            if (savings > 0) {
+                document.getElementById('savings-box').classList.add('show');
+                document.getElementById('savings-amount').textContent = formatCurrency(savings);
+            } else {
+                document.getElementById('savings-box').classList.remove('show');
+            }
+
+            // Table
+            const tbody = document.getElementById('amortization-body');
+            tbody.innerHTML = result.schedule.map(row => `
+                <tr>
+                    <td>${row.month}</td>
+                    <td>${formatCurrency(row.payment)}</td>
+                    <td>${formatCurrency(row.principal)}</td>
+                    <td>${formatCurrency(row.interest)}</td>
+                    <td>${formatCurrency(row.balance)}</td>
+                </tr>
+            `).join('');
+        }
+
+        function calculateMinPaymentInterest(totalDebt, cardsList) {
+            let totalInterest = 0;
+            for (const card of cardsList) {
+                let balance = card.balance;
+                let apr = card.apr / 100;
+                let months = 0;
+                while (balance > 0 && months < 360) {
+                    months++;
+                    const interest = balance * (apr / 12);
+                    const minPayment = Math.max(balance * 0.02 + interest, 25);
+                    balance += interest - minPayment;
+                    totalInterest += interest;
+                    if (balance < 0) balance = 0;
+                }
+            }
+            return totalInterest;
+        }
+
+        // ==================== CHART ====================
+        function drawChart(result) {
+            const canvas = document.getElementById('balance-chart');
+            const ctx = canvas.getContext('2d');
+
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * 2;
+            canvas.height = rect.height * 2;
+            ctx.scale(2, 2);
+
+            const width = rect.width;
+            const height = rect.height;
+            const pad = { top: 20, right: 30, bottom: 45, left: 65 };
+            const cw = width - pad.left - pad.right;
+            const ch = height - pad.top - pad.bottom;
+
+            ctx.clearRect(0, 0, width, height);
+
+            // Background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(pad.left, pad.top, cw, ch);
+
+            // Grid
+            ctx.strokeStyle = '#f1f5f9';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = pad.top + ch - (ch * i / 5);
+                ctx.beginPath();
+                ctx.moveTo(pad.left, y);
+                ctx.lineTo(pad.left + cw, y);
+                ctx.stroke();
+
+                const maxBal = result.schedule[0]?.balance || 1;
+                const val = (maxBal * i / 5);
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '11px Inter, sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText(formatCompact(val), pad.left - 10, y + 4);
+            }
+
+            // Balance line
+            if (result.schedule.length > 0) {
+                const maxBal = result.schedule[0].balance;
+
+                // Fill
+                ctx.beginPath();
+                ctx.moveTo(pad.left, pad.top + ch);
+                result.schedule.forEach((p, i) => {
+                    const x = pad.left + (cw * i / Math.max(result.schedule.length - 1, 1));
+                    const y = pad.top + ch - ((p.balance / maxBal) * ch);
+                    ctx.lineTo(x, y);
+                });
+                ctx.lineTo(pad.left + cw, pad.top + ch);
+                ctx.closePath();
+                ctx.fillStyle = 'rgba(37, 99, 235, 0.08)';
+                ctx.fill();
+
+                // Line
+                ctx.beginPath();
+                ctx.strokeStyle = '#2563eb';
+                ctx.lineWidth = 3;
+                ctx.lineJoin = 'round';
+                result.schedule.forEach((p, i) => {
+                    const x = pad.left + (cw * i / Math.max(result.schedule.length - 1, 1));
+                    const y = pad.top + ch - ((p.balance / maxBal) * ch);
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+                ctx.stroke();
+
+                // Points
+                const step = Math.ceil(result.schedule.length / 12);
+                result.schedule.forEach((p, i) => {
+                    if (i % step === 0 || i === result.schedule.length - 1) {
+                        const x = pad.left + (cw * i / Math.max(result.schedule.length - 1, 1));
+                        const y = pad.top + ch - ((p.balance / maxBal) * ch);
+                        ctx.beginPath();
+                        ctx.arc(x, y, 4, 0, Math.PI * 2);
+                        ctx.fillStyle = '#2563eb';
+                        ctx.fill();
+                        ctx.strokeStyle = '#fff';
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                    }
+                });
+            }
+
+            // Axes
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(pad.left, pad.top);
+            ctx.lineTo(pad.left, pad.top + ch);
+            ctx.lineTo(pad.left + cw, pad.top + ch);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '11px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Start', pad.left, pad.top + ch + 22);
+            ctx.fillText('Month ' + result.months, pad.left + cw, pad.top + ch + 22);
+
+            ctx.save();
+            ctx.translate(18, pad.top + ch / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px Inter, sans-serif';
+            ctx.fillText('Balance ($)', 0, 0);
+            ctx.restore();
+        }
+
+        // ==================== FAQ ====================
+        function toggleFAQ(element) {
+            const item = element.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.tp-faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        // ==================== UTILS ====================
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency', currency: 'USD',
+                minimumFractionDigits: 2, maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function formatCompact(amount) {
+            if (amount >= 1000000) return '$' + (amount / 1000000).toFixed(1) + 'M';
+            if (amount >= 1000) return '$' + (amount / 1000).toFixed(1) + 'K';
+            return formatCurrency(amount);
+        }
+
+        window.addEventListener('resize', () => {
+            if (calculationResult) drawChart(calculationResult);
+        });
+    </script>
+</body>
+</html>
