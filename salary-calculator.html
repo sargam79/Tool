@@ -4,127 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Advanced Salary Calculator 2026 | Gross to Net, Tax, Hourly, Annual & Take-Home Pay</title>
-    <meta name="description" content="Free advanced salary calculator 2026 - Calculate gross to net salary, hourly to annual, annual to hourly, take-home pay, tax deductions, overtime pay, bonuses.">
-    <meta name="keywords" content="salary calculator, paycheck calculator, gross to net, hourly to annual, annual to hourly, take-home pay calculator, tax calculator">
+    <meta name="description" content="Free advanced salary calculator 2026 - Calculate gross to net salary, hourly to annual, annual to hourly, take-home pay, tax deductions, overtime pay, bonuses. Salary estimator, paycheck calculator, income calculator all-in-one.">
+    <meta name="keywords" content="salary calculator, paycheck calculator, gross to net, hourly to annual, annual to hourly, take-home pay calculator, tax calculator, income calculator, salary estimator, wage calculator, overtime calculator, bonus calculator">
     <meta name="author" content="ToolPond Pro">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolpond.org/salary-calculator.html">
-
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/salary-calculator.html">
-    <meta property="og:title" content="Free Advanced Salary Calculator 2026 - Gross to Net, Tax & Take-Home Pay">
-    <meta property="og:description" content="Calculate gross to net salary, hourly to annual conversions, take-home pay, tax deductions, overtime, bonuses, and compare salary scenarios.">
+    <meta property="og:title" content="Free Advanced Salary Calculator 2026">
+    <meta property="og:description" content="Calculate gross to net salary, hourly to annual conversions, take-home pay, tax deductions.">
     <meta property="og:site_name" content="ToolPond Pro">
-
+    <meta property="og:image" content="https://toolpond.org/og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Advanced Salary Calculator 2026">
-    <meta name="twitter:description" content="Free salary calculator - Gross to net, hourly to annual, tax deductions, overtime, bonuses, and salary comparisons">
+    <meta name="twitter:description" content="Free salary calculator - Gross to net, hourly to annual, tax deductions, overtime, bonuses">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { 
-            --primary: #0066cc; 
-            --primary-dark: #004999; 
-            --primary-light: #e6f2ff; 
-            --dark: #1f2937; 
-            --light: #f9fafb; 
-            --border: #e2e8f0;
-            --success: #22863a;
-            --warning: #d97706;
-            --danger: #dc2626;
-        }
-
-        body { 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
-            line-height: 1.6; 
-            color: #374151; 
-            background: var(--light); 
-        }
-
+        :root { --primary: #0066cc; --primary-dark: #004999; --primary-light: #e6f2ff; --dark: #1f2937; --light: #f9fafb; --border: #e2e8f0; --success: #22863a; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.6; color: #374151; background: var(--light); }
         nav { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { color: #374151; font-weight: 500; transition: color 0.3s; text-decoration: none; }
         .nav-links a:hover { color: var(--primary); }
-
         .breadcrumb { padding: 1rem 2rem; background: #fff; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
         .breadcrumb a { color: var(--primary); text-decoration: none; margin: 0 0.5rem; }
-
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .tool-header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 3rem 2rem; text-align: center; margin: 2rem 0; border-radius: 12px; }
         .tool-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-
         .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin: 2rem 0; }
         @media(max-width: 1024px) { .content-grid { grid-template-columns: 1fr; } }
-
         .card { background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.07); }
-
         .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .tab { flex: 1; padding: 1rem; cursor: pointer; background: none; border: none; color: #6b7280; font-weight: 600; border-bottom: 3px solid transparent; transition: all 0.3s; min-width: 140px; }
+        .tab { flex: 1; min-width: 100px; padding: 1rem; cursor: pointer; background: none; border: none; color: #6b7280; font-weight: 600; border-bottom: 3px solid transparent; transition: all 0.3s; }
         .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-
         .input-group { margin-bottom: 1.5rem; }
         .input-label { display: block; margin-bottom: 0.75rem; font-weight: 600; color: var(--dark); }
         .input-field { width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; transition: all 0.3s; }
         .input-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1); }
-
         .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         @media(max-width: 600px) { .input-row { grid-template-columns: 1fr; } }
-
-        .btn { padding: 0.85rem 1.75rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem; }
-        .btn-primary { background: var(--success); color: #fff; box-shadow: 0 4px 12px rgba(34, 134, 58, 0.3); }
+        .btn { padding: 0.85rem 1.75rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem; width: 100%; }
+        .btn-primary { background: var(--success); color: #fff; }
         .btn-primary:hover { background: #1a5e27; transform: translateY(-2px); }
-        .btn-secondary { background: #f3f4f6; color: var(--dark); border: 2px solid var(--border); }
+        .btn-secondary { background: #f3f4f6; color: var(--dark); border: 2px solid var(--border); margin-top: 0.5rem; }
         .btn-secondary:hover { background: var(--primary); color: #fff; }
-
-        .button-group { display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap; }
-
         .result-box { background: var(--primary-light); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary); margin: 1.5rem 0; display: none; }
         .result-box.show { display: block; }
-
-        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .result-card { background: #fff; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); text-align: center; }
         .result-label { color: #6b7280; font-size: 0.9rem; margin-bottom: 0.5rem; }
         .result-value { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
         .result-value.highlight { color: var(--success); }
-        .result-value.warning { color: var(--warning); }
-
-        .breakdown-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-        .breakdown-table th { background: var(--primary); color: #fff; padding: 0.75rem; text-align: left; }
-        .breakdown-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
-        .breakdown-table tr:nth-child(even) { background: #f9fafb; }
-        .breakdown-table .total-row { font-weight: 700; background: var(--primary-light) !important; }
-
         .sidebar { background: var(--light); padding: 2rem; border-radius: 10px; border: 1px solid var(--border); }
         .sidebar h3 { color: var(--dark); margin-bottom: 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
         .sidebar-item { margin-bottom: 1rem; padding: 0.75rem; background: #fff; border-radius: 6px; border-left: 4px solid var(--primary); font-size: 0.95rem; }
-
         .content-section { margin: 3rem 0; padding: 2rem; background: var(--light); border-radius: 10px; }
         .content-section h2 { color: var(--dark); margin-bottom: 1.5rem; font-size: 1.8rem; border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem; }
         .content-section h3 { color: #4b5563; margin: 1.5rem 0 0.75rem; font-size: 1.2rem; }
         .content-section p { margin-bottom: 1rem; line-height: 1.8; color: #4b5563; }
         .content-section ul { margin: 1rem 0 1rem 1.5rem; }
         .content-section li { margin-bottom: 0.75rem; color: #4b5563; }
-
         .faq-item { margin-bottom: 1rem; background: #fff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); cursor: pointer; transition: all 0.3s; }
         .faq-item:hover { box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1); }
         .faq-item h4 { color: var(--dark); margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
         .faq-toggle { font-size: 1.2rem; transition: transform 0.3s; }
         .faq-answer { color: #6b7280; font-size: 0.95rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
         .faq-item.open .faq-answer { max-height: 500px; margin-top: 1rem; }
-
-        .related-section { background: #fff; padding: 2rem; border-radius: 10px; border: 2px solid var(--primary); margin: 3rem 0; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-        .tool-card { background: var(--primary-light); padding: 1.5rem; border-radius: 8px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; }
-        .tool-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15); border-color: var(--primary); }
-        .tool-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .tool-card h4 { color: var(--dark); margin-bottom: 0.5rem; }
-        .tool-card a { color: var(--primary); font-weight: 600; text-decoration: none; }
-        .tool-card a:hover { text-decoration: underline; }
-
         .footer-section { background: var(--dark); color: #fff; padding: 3rem 2rem; margin-top: 4rem; }
         .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
         .footer-col h4 { color: var(--primary); margin-bottom: 1rem; }
@@ -133,35 +83,17 @@
         .footer-col ul { list-style: none; }
         .footer-col p { color: #d1d5db; font-size: 0.9rem; line-height: 1.6; }
         .footer-bottom { text-align: center; border-top: 1px solid #4b5563; padding-top: 2rem; color: #9ca3af; max-width: 1200px; margin: 0 auto; }
-
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--primary); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
         .back-to-top.show { opacity: 1; visibility: visible; }
-
         .info-box { background: rgba(0, 102, 204, 0.05); border-left: 4px solid var(--primary); padding: 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
         .info-box strong { color: var(--primary); }
-
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
-        .comparison-card { background: #fff; padding: 1.5rem; border-radius: 8px; border: 2px solid var(--border); }
-        .comparison-card.winner { border-color: var(--success); background: rgba(34, 134, 58, 0.05); }
-        .comparison-card h4 { color: var(--dark); margin-bottom: 1rem; text-align: center; }
-
-        .deductions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        @media(max-width: 600px) { .deductions-grid { grid-template-columns: 1fr; } }
-
-        .highlight-box { background: linear-gradient(135deg, var(--primary-light), #fff); padding: 1.5rem; border-radius: 10px; border: 2px solid var(--primary); margin: 1rem 0; text-align: center; }
-        .highlight-box .big-number { font-size: 2.5rem; font-weight: 800; color: var(--primary); }
-
-        @media(max-width: 768px) {
-            .tool-header h1 { font-size: 1.8rem; }
-            .nav-links { display: none; }
-            .comparison-grid { grid-template-columns: 1fr; }
-        }
+        @media(max-width: 768px) { .tool-header h1 { font-size: 1.8rem; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">ToolPond Pro</a>
+            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="calculators.html">Tools</a></li>
@@ -177,8 +109,8 @@
     </div>
 
     <div class="tool-header">
-        <h1>Advanced Salary Calculator 2026</h1>
-        <p>Calculate Gross to Net Salary, Hourly to Annual, Tax Deductions, Overtime, Bonuses & Compare Salary Scenarios</p>
+        <h1>💰 Advanced Salary Calculator 2026</h1>
+        <p>Calculate Gross to Net Salary, Hourly to Annual, Tax Deductions, Overtime & Take-Home Pay</p>
     </div>
 
     <div class="container">
@@ -188,369 +120,168 @@
                     <div class="tabs">
                         <button class="tab active" onclick="switchTab(0)">Gross to Net</button>
                         <button class="tab" onclick="switchTab(1)">Hourly/Annual</button>
-                        <button class="tab" onclick="switchTab(2)">Overtime & Bonus</button>
-                        <button class="tab" onclick="switchTab(3)">Compare Offers</button>
-                        <button class="tab" onclick="switchTab(4)">Reverse Calculator</button>
+                        <button class="tab" onclick="switchTab(2)">Overtime</button>
                     </div>
 
-                    <!-- Tab 1: Gross to Net -->
                     <div class="tab-content active" id="tab-0">
                         <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--dark);">Calculate Take-Home Pay</h2>
-
-                        <div class="info-box">
-                            <strong>Enter your gross salary and deductions to calculate your exact take-home pay after all taxes and contributions.</strong>
-                        </div>
+                        <div class="info-box"><strong>Enter your gross salary to calculate your exact take-home pay after all taxes and deductions.</strong></div>
 
                         <div class="input-row">
                             <div class="input-group">
-                                <label class="input-label" for="gnGrossSalary">Annual Gross Salary ($):</label>
-                                <input type="number" id="gnGrossSalary" class="input-field" placeholder="60000" min="0" step="1000" value="60000">
+                                <label class="input-label">Annual Gross Salary ($):</label>
+                                <input type="number" id="gnGross" class="input-field" placeholder="60000" min="0" step="1000" value="60000">
                             </div>
                             <div class="input-group">
-                                <label class="input-label" for="gnPayFrequency">Pay Frequency:</label>
-                                <select id="gnPayFrequency" class="input-field">
-                                    <option value="annual">Annual</option>
-                                    <option value="monthly">Monthly</option>
-                                    <option value="biweekly">Biweekly</option>
-                                    <option value="weekly">Weekly</option>
-                                    <option value="hourly">Hourly</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label class="input-label" for="gnFilingStatus">Filing Status:</label>
-                                <select id="gnFilingStatus" class="input-field">
+                                <label class="input-label">Filing Status:</label>
+                                <select id="gnFiling" class="input-field">
                                     <option value="single">Single</option>
                                     <option value="married">Married Filing Jointly</option>
-                                    <option value="head">Head of Household</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="input-row">
                             <div class="input-group">
-                                <label class="input-label" for="gnState">State (for state tax):</label>
+                                <label class="input-label">State Tax Rate:</label>
                                 <select id="gnState" class="input-field">
                                     <option value="0">No State Income Tax</option>
                                     <option value="0.03">Low Tax State (~3%)</option>
                                     <option value="0.05" selected>Average Tax State (~5%)</option>
                                     <option value="0.08">High Tax State (~8%)</option>
-                                    <option value="0.12">Very High Tax State (~12%)</option>
                                 </select>
                             </div>
-                        </div>
-
-                        <h3 style="font-size: 1.1rem; margin: 1.5rem 0 1rem; color: var(--dark);">Pre-Tax Deductions</h3>
-                        <div class="deductions-grid">
                             <div class="input-group">
-                                <label class="input-label" for="gn401k">401k Contribution (%):</label>
+                                <label class="input-label">401k Contribution (%):</label>
                                 <input type="number" id="gn401k" class="input-field" placeholder="6" min="0" max="100" step="1" value="6">
                             </div>
-                            <div class="input-group">
-                                <label class="input-label" for="gnHealth">Health Insurance ($/month):</label>
-                                <input type="number" id="gnHealth" class="input-field" placeholder="200" min="0" step="50" value="200">
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="gnHSA">HSA Contribution ($/year):</label>
-                                <input type="number" id="gnHSA" class="input-field" placeholder="0" min="0" step="100" value="0">
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="gnFSA">FSA Contribution ($/year):</label>
-                                <input type="number" id="gnFSA" class="input-field" placeholder="0" min="0" step="100" value="0">
-                            </div>
                         </div>
 
-                        <h3 style="font-size: 1.1rem; margin: 1.5rem 0 1rem; color: var(--dark);">Post-Tax Deductions</h3>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label class="input-label" for="gnOtherPre">Other Pre-Tax ($/year):</label>
-                                <input type="number" id="gnOtherPre" class="input-field" placeholder="0" min="0" step="100" value="0">
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="gnOtherPost">Other Post-Tax ($/year):</label>
-                                <input type="number" id="gnOtherPost" class="input-field" placeholder="0" min="0" step="100" value="0">
-                            </div>
-                        </div>
-
-                        <div class="button-group">
-                            <button class="btn btn-primary" onclick="calculateGrossToNet()" style="width: 100%;">Calculate Take-Home Pay</button>
-                            <button class="btn btn-secondary" onclick="clearAll()" style="width: 100%; margin-top: 0.5rem;">Clear</button>
-                        </div>
+                        <button class="btn btn-primary" onclick="calcGrossToNet()">💰 Calculate Take-Home</button>
+                        <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
                     </div>
 
-                    <!-- Tab 2: Hourly/Annual Converter -->
                     <div class="tab-content" id="tab-1">
-                        <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--dark);">Hourly to Annual Salary Converter</h2>
-
-                        <div class="info-box">
-                            <strong>Convert between hourly wage and annual salary, or see equivalent pay across all frequencies.</strong>
-                        </div>
+                        <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--dark);">Hourly to Annual Converter</h2>
+                        <div class="info-box"><strong>Convert between hourly wage and annual salary instantly.</strong></div>
 
                         <div class="input-row">
                             <div class="input-group">
-                                <label class="input-label" for="haInputType">Convert From:</label>
-                                <select id="haInputType" class="input-field" onchange="updateHourlyAnnualLabels()">
-                                    <option value="hourly">Hourly Wage</option>
-                                    <option value="annual">Annual Salary</option>
-                                </select>
+                                <label class="input-label">Hourly Wage ($):</label>
+                                <input type="number" id="haHourly" class="input-field" placeholder="25" min="0" step="0.5" value="25">
                             </div>
                             <div class="input-group">
-                                <label class="input-label" for="haAmount" id="haAmountLabel">Hourly Wage ($):</label>
-                                <input type="number" id="haAmount" class="input-field" placeholder="25" min="0" step="0.5" value="25">
+                                <label class="input-label">Hours Per Week:</label>
+                                <input type="number" id="haHours" class="input-field" placeholder="40" min="1" max="168" value="40">
                             </div>
                         </div>
 
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label class="input-label" for="haHoursPerWeek">Hours Per Week:</label>
-                                <input type="number" id="haHoursPerWeek" class="input-field" placeholder="40" min="1" max="168" value="40">
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="haWeeksPerYear">Weeks Per Year:</label>
-                                <input type="number" id="haWeeksPerYear" class="input-field" placeholder="52" min="1" max="52" value="52">
-                            </div>
-                        </div>
-
-                        <div class="button-group">
-                            <button class="btn btn-primary" onclick="calculateHourlyAnnual()" style="width: 100%;">Convert Salary</button>
-                            <button class="btn btn-secondary" onclick="clearAll()" style="width: 100%; margin-top: 0.5rem;">Clear</button>
-                        </div>
+                        <button class="btn btn-primary" onclick="calcHourlyAnnual()">🔄 Convert</button>
+                        <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
                     </div>
 
-                    <!-- Tab 3: Overtime & Bonus -->
                     <div class="tab-content" id="tab-2">
                         <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--dark);">Overtime & Bonus Calculator</h2>
-
-                        <div class="info-box">
-                            <strong>Calculate overtime earnings, bonus impact on taxes, and total compensation including variable pay.</strong>
-                        </div>
+                        <div class="info-box"><strong>Calculate total compensation including overtime pay and annual bonus.</strong></div>
 
                         <div class="input-row">
                             <div class="input-group">
-                                <label class="input-label" for="obHourlyRate">Regular Hourly Rate ($):</label>
-                                <input type="number" id="obHourlyRate" class="input-field" placeholder="25" min="0" step="0.5" value="25">
+                                <label class="input-label">Hourly Rate ($):</label>
+                                <input type="number" id="obRate" class="input-field" placeholder="25" min="0" step="0.5" value="25">
                             </div>
                             <div class="input-group">
-                                <label class="input-label" for="obRegularHours">Regular Hours/Week:</label>
-                                <input type="number" id="obRegularHours" class="input-field" placeholder="40" min="0" max="168" value="40">
+                                <label class="input-label">Overtime Hours/Week:</label>
+                                <input type="number" id="obOvertime" class="input-field" placeholder="5" min="0" max="80" value="5">
                             </div>
                         </div>
 
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label class="input-label" for="obOvertimeHours">Overtime Hours/Week:</label>
-                                <input type="number" id="obOvertimeHours" class="input-field" placeholder="5" min="0" max="80" value="5">
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="obOvertimeRate">Overtime Multiplier:</label>
-                                <select id="obOvertimeRate" class="input-field">
-                                    <option value="1.5">1.5x (Standard)</option>
-                                    <option value="2">2x (Double Time)</option>
-                                    <option value="1">1x (No Overtime Premium)</option>
-                                </select>
-                            </div>
+                        <div class="input-group">
+                            <label class="input-label">Annual Bonus ($):</label>
+                            <input type="number" id="obBonus" class="input-field" placeholder="5000" min="0" step="500" value="5000">
                         </div>
 
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label class="input-label" for="obBonus">Annual Bonus ($):</label>
-                                <input type="number" id="obBonus" class="input-field" placeholder="5000" min="0" step="500" value="5000">
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="obWeeks">Weeks Worked/Year:</label>
-                                <input type="number" id="obWeeks" class="input-field" placeholder="52" min="1" max="52" value="52">
-                            </div>
-                        </div>
-
-                        <div class="button-group">
-                            <button class="btn btn-primary" onclick="calculateOvertimeBonus()" style="width: 100%;">Calculate Total Compensation</button>
-                            <button class="btn btn-secondary" onclick="clearAll()" style="width: 100%; margin-top: 0.5rem;">Clear</button>
-                        </div>
+                        <button class="btn btn-primary" onclick="calcOvertime()">📊 Calculate Total Pay</button>
+                        <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
                     </div>
 
-                    <!-- Tab 4: Compare Offers -->
-                    <div class="tab-content" id="tab-3">
-                        <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--dark);">Compare Job Offers</h2>
-
-                        <div class="info-box">
-                            <strong>Compare two job offers side-by-side including base salary, benefits, bonuses, and total compensation.</strong>
-                        </div>
-
-                        <div class="comparison-grid">
-                            <div class="comparison-card" id="offer1Card">
-                                <h4>Offer 1</h4>
-                                <div class="input-group">
-                                    <label class="input-label" for="co1Salary">Base Salary ($):</label>
-                                    <input type="number" id="co1Salary" class="input-field" placeholder="60000" min="0" step="1000" value="60000">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co1Bonus">Annual Bonus ($):</label>
-                                    <input type="number" id="co1Bonus" class="input-field" placeholder="3000" min="0" step="500" value="3000">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co1Match">401k Match (%):</label>
-                                    <input type="number" id="co1Match" class="input-field" placeholder="4" min="0" max="100" step="1" value="4">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co1Health">Health Insurance Cost ($/mo):</label>
-                                    <input type="number" id="co1Health" class="input-field" placeholder="200" min="0" step="50" value="200">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co1PTO">PTO Days/Year:</label>
-                                    <input type="number" id="co1PTO" class="input-field" placeholder="15" min="0" max="365" value="15">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co1Other">Other Benefits ($/year):</label>
-                                    <input type="number" id="co1Other" class="input-field" placeholder="1000" min="0" step="500" value="1000">
-                                </div>
-                            </div>
-
-                            <div class="comparison-card" id="offer2Card">
-                                <h4>Offer 2</h4>
-                                <div class="input-group">
-                                    <label class="input-label" for="co2Salary">Base Salary ($):</label>
-                                    <input type="number" id="co2Salary" class="input-field" placeholder="65000" min="0" step="1000" value="65000">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co2Bonus">Annual Bonus ($):</label>
-                                    <input type="number" id="co2Bonus" class="input-field" placeholder="2000" min="0" step="500" value="2000">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co2Match">401k Match (%):</label>
-                                    <input type="number" id="co2Match" class="input-field" placeholder="3" min="0" max="100" step="1" value="3">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co2Health">Health Insurance Cost ($/mo):</label>
-                                    <input type="number" id="co2Health" class="input-field" placeholder="150" min="0" step="50" value="150">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co2PTO">PTO Days/Year:</label>
-                                    <input type="number" id="co2PTO" class="input-field" placeholder="20" min="0" max="365" value="20">
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label" for="co2Other">Other Benefits ($/year):</label>
-                                    <input type="number" id="co2Other" class="input-field" placeholder="500" min="0" step="500" value="500">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="button-group">
-                            <button class="btn btn-primary" onclick="compareOffers()" style="width: 100%;">Compare Offers</button>
-                            <button class="btn btn-secondary" onclick="clearAll()" style="width: 100%; margin-top: 0.5rem;">Clear</button>
-                        </div>
-                    </div>
-
-                    <!-- Tab 5: Reverse Calculator -->
-                    <div class="tab-content" id="tab-4">
-                        <h2 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--dark);">Reverse Salary Calculator</h2>
-
-                        <div class="info-box">
-                            <strong>Enter your desired take-home pay and see what gross salary you need to achieve it.</strong>
-                        </div>
-
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label class="input-label" for="rcNetPay">Desired Monthly Take-Home ($):</label>
-                                <input type="number" id="rcNetPay" class="input-field" placeholder="4000" min="0" step="100" value="4000">
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="rcFilingStatus">Filing Status:</label>
-                                <select id="rcFilingStatus" class="input-field">
-                                    <option value="single">Single</option>
-                                    <option value="married">Married Filing Jointly</option>
-                                    <option value="head">Head of Household</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label class="input-label" for="rcState">State Tax Rate:</label>
-                                <select id="rcState" class="input-field">
-                                    <option value="0">No State Income Tax</option>
-                                    <option value="0.03">Low Tax State (~3%)</option>
-                                    <option value="0.05" selected>Average Tax State (~5%)</option>
-                                    <option value="0.08">High Tax State (~8%)</option>
-                                    <option value="0.12">Very High Tax State (~12%)</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="rc401k">401k Contribution (%):</label>
-                                <input type="number" id="rc401k" class="input-field" placeholder="6" min="0" max="100" step="1" value="6">
-                            </div>
-                        </div>
-
-                        <div class="button-group">
-                            <button class="btn btn-primary" onclick="calculateReverse()" style="width: 100%;">Calculate Required Gross Salary</button>
-                            <button class="btn btn-secondary" onclick="clearAll()" style="width: 100%; margin-top: 0.5rem;">Clear</button>
-                        </div>
-                    </div>
-
-                    <!-- Results -->
                     <div class="result-box" id="resultBox">
-                        <h3 style="color: var(--dark); margin-bottom: 1rem;">Salary Calculation Results</h3>
-
-                        <div class="result-grid" id="resultGrid">
-                            <!-- Dynamic results inserted here -->
-                        </div>
-
-                        <div id="breakdownSection" style="display: none;">
-                            <h3 style="color: var(--dark); margin-top: 1.5rem; margin-bottom: 1rem;">Detailed Breakdown</h3>
-                            <div style="max-height: 400px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px;">
-                                <table class="breakdown-table" id="breakdownTable">
-                                    <!-- Dynamic breakdown inserted here -->
-                                </table>
-                            </div>
-                        </div>
-
-                        <div id="comparisonSection" style="display: none;">
-                            <h3 style="color: var(--dark); margin-top: 1.5rem; margin-bottom: 1rem;">Offer Comparison</h3>
-                            <div class="comparison-grid" id="comparisonResultGrid">
-                                <!-- Dynamic comparison inserted here -->
-                            </div>
-                        </div>
-
-                        <div id="frequencySection" style="display: none;">
-                            <h3 style="color: var(--dark); margin-top: 1.5rem; margin-bottom: 1rem;">Pay Frequency Breakdown</h3>
-                            <div class="result-grid" id="frequencyGrid">
-                                <!-- Dynamic frequency results inserted here -->
-                            </div>
-                        </div>
-
-                        <button class="btn btn-secondary" onclick="downloadResults()" style="width: 100%; margin-top: 1rem;">Download Results</button>
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">Calculation Results</h3>
+                        <div class="result-grid" id="resultGrid"></div>
+                        <button class="btn btn-secondary" onclick="downloadResults()" style="margin-top: 1rem;">📥 Download Results</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Sidebar -->
             <div>
                 <div class="sidebar">
                     <h3>Quick Info</h3>
-                    <div class="sidebar-item"><strong>Gross Salary:</strong> Total before deductions</div>
-                    <div class="sidebar-item"><strong>Net Salary:</strong> Take-home after taxes</div>
-                    <div class="sidebar-item"><strong>FICA:</strong> Social Security + Medicare</div>
-                    <div class="sidebar-item"><strong>Pre-Tax:</strong> Reduces taxable income</div>
-                    <div class="sidebar-item"><strong>Post-Tax:</strong> After tax deductions</div>
+                    <div class="sidebar-item"><strong>Gross:</strong> Total before deductions</div>
+                    <div class="sidebar-item"><strong>Net:</strong> Take-home after taxes</div>
+                    <div class="sidebar-item"><strong>FICA:</strong> Social Security + Medicare (7.65%)</div>
+                    <div class="sidebar-item"><strong>401k:</strong> Pre-tax retirement savings</div>
                 </div>
 
                 <div class="sidebar" style="margin-top: 2rem;">
-                    <h3>Calculator Features</h3>
-                    <div class="sidebar-item">Gross to net calculation</div>
-                    <div class="sidebar-item">Hourly/annual conversion</div>
-                    <div class="sidebar-item">Overtime & bonus analysis</div>
-                    <div class="sidebar-item">Job offer comparison</div>
-                    <div class="sidebar-item">Reverse salary finder</div>
-                    <div class="sidebar-item">Tax deduction breakdown</div>
-                    <div class="sidebar-item">Multiple pay frequencies</div>
-                    <div class="sidebar-item">100% free & no signup</div>
+                    <h3>Features</h3>
+                    <div class="sidebar-item">✓ Gross to net calculation</div>
+                    <div class="sidebar-item">✓ Hourly/annual conversion</div>
+                    <div class="sidebar-item">✓ Overtime calculation</div>
+                    <div class="sidebar-item">✓ Tax deduction breakdown</div>
+                    <div class="sidebar-item">✓ 100% free & private</div>
                 </div>
+            </div>
+        </div>
 
-                <div class="sidebar" style="margin-top: 2rem;">
-                    <h3>2026 Tax Rates</h3>
-                    <div class="sidebar-item"><strong>Federal:</strong> 10% - 37% brackets</div>
-                    <div class="sidebar-item"><strong>Social Security:</strong> 6.2% (up to $168,600)</div>
-                    <div class="sidebar-item"><strong>Medicare:</strong> 1.45% (2.35% above $200k)</div>
-                    <div class="sidebar-item"><strong>State:</strong> 0% - 13% (varies)</div>
-                </div>
+        <div class="content-section">
+            <h2>Salary Calculator Guide</h2>
+            <p>ToolPond Pro's salary calculator helps you understand your true take-home pay. Calculate how much you'll actually receive after federal income tax, state income tax, Social Security, Medicare, and other deductions like 401k contributions.</p>
+
+            <h3>What is Gross vs Net Salary?</h3>
+            <p><strong>Gross Salary:</strong> Your total earnings before any deductions. <strong>Net Salary:</strong> What you actually receive after taxes and deductions. For example, a $60,000 gross salary might result in $45,000-$48,000 net depending on your location and deductions.</p>
+
+            <h3>How to Use This Calculator</h3>
+            <ul>
+                <li><strong>Gross to Net Tab:</strong> Enter your gross salary, filing status, state, and 401k to see your exact take-home pay with tax breakdown.</li>
+                <li><strong>Hourly/Annual Tab:</strong> Convert between hourly wage and annual salary. Perfect for comparing job offers.</li>
+                <li><strong>Overtime Tab:</strong> Calculate overtime earnings at 1.5x rate and see impact of bonuses on total compensation.</li>
+            </ul>
+
+            <h3>Understanding Tax Deductions</h3>
+            <ul>
+                <li><strong>Federal Income Tax:</strong> Progressive tax from 10% to 37% based on income brackets</li>
+                <li><strong>State Income Tax:</strong> Varies from 0% to 13% depending on state</li>
+                <li><strong>Social Security:</strong> 6.2% of wages up to annual wage base</li>
+                <li><strong>Medicare:</strong> 1.45% of all wages</li>
+                <li><strong>401k Contributions:</strong> Pre-tax retirement savings (reduces taxable income)</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h4>What is a salary calculator? <span class="faq-toggle">+</span></h4>
+                <div class="faq-answer">A salary calculator converts between different pay formats (hourly, weekly, monthly, annual), calculates take-home pay after taxes and deductions, and helps you understand your true compensation.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h4>How do I calculate my annual salary from hourly wage? <span class="faq-toggle">+</span></h4>
+                <div class="faq-answer">Multiply your hourly wage by hours per week, then multiply by 52 weeks. Example: $25/hour × 40 hours × 52 weeks = $52,000 annual. Our calculator does this instantly.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h4>What is the difference between gross and net salary? <span class="faq-toggle">+</span></h4>
+                <div class="faq-answer">Gross salary is your total earnings before any deductions. Net salary (take-home pay) is what you actually receive after federal income tax, state income tax, Social Security, Medicare, and other deductions are subtracted.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h4>How much tax is deducted from my salary? <span class="faq-toggle">+</span></h4>
+                <div class="faq-answer">Tax deductions typically include federal income tax (10-37% based on brackets), state income tax (0-13%), Social Security (6.2%), and Medicare (1.45%). Our calculator estimates all these based on 2026 tax rates.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h4>Is this calculator accurate? <span class="faq-toggle">+</span></h4>
+                <div class="faq-answer">Yes! Our calculator uses current 2026 federal tax brackets. For precise figures, consult a tax professional, but our estimates are excellent for planning and comparison purposes.</div>
             </div>
         </div>
     </div>
@@ -562,20 +293,19 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="calculators.html">All Tools</a></li>
-                    <li><a href="about.html">About ToolPond</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4>Financial Calculators</h4>
+                <h4>Financial Tools</h4>
                 <ul>
                     <li><a href="salary-calculator.html">Salary Calculator</a></li>
                     <li><a href="payment-calculator.html">Payment Calculator</a></li>
-                    <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                    <li><a href="mortgage-calculator.html">Mortgage Calc</a></li>
                     <li><a href="loan-calculator.html">Loan Calculator</a></li>
-                    <li><a href="compound-interest-calculator.html">Compound Interest</a></li>
                     <li><a href="retirement-calculator.html">Retirement Planner</a></li>
                 </ul>
             </div>
@@ -583,95 +313,35 @@
             <div class="footer-col">
                 <h4>More Tools</h4>
                 <ul>
+                    <li><a href="budget-planner.html">Budget Planner</a></li>
                     <li><a href="currency-converter.html">Currency Converter</a></li>
                     <li><a href="bmi-calculator.html">BMI Calculator</a></li>
-                    <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
-                    <li><a href="word-counter-tool.html">Word Counter</a></li>
-                    <li><a href="qr-code-generator.html">QR Code Generator</a></li>
-                    <li><a href="calculators.html">View All Tools</a></li>
+                    <li><a href="calorie-calculator.html">Calorie Calc</a></li>
+                    <li><a href="calculators.html">View All</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>About ToolPond Pro</h4>
-                <p>ToolPond Pro provides 34+ free online calculators and financial tools for salary planning, loans, mortgages, investments, health, productivity, and more.</p>
+                <p>ToolPond Pro provides 34+ free online calculators for salary planning, loans, mortgages, investments, health, and productivity. All tools are browser-based, require no signup, and process data locally for your privacy.</p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>2026 ToolPond Pro. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a> | <a href="sitemap.html">Sitemap</a></p>
+            <p>&copy; 2026 ToolPond Pro. All rights reserved. | <a href="privacy-policy.html" style="color: #d1d5db;">Privacy Policy</a> | <a href="contact.html" style="color: #d1d5gb;">Contact</a> | <a href="sitemap.html" style="color: #d1d5gb;">Sitemap</a></p>
+            <p style="margin-top: 1rem;">Free advanced salary calculator, paycheck calculator, gross to net calculator, hourly wage calculator, annual salary calculator, tax calculator, overtime calculator, and bonus calculator. No signup, no fees, 100% secure.</p>
         </div>
     </footer>
 
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">^</div>
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        // 2026 Federal Tax Brackets
-        const taxBrackets = {
-            single: [
-                { limit: 11600, rate: 0.10 },
-                { limit: 47150, rate: 0.12 },
-                { limit: 100525, rate: 0.22 },
-                { limit: 191950, rate: 0.24 },
-                { limit: 243725, rate: 0.32 },
-                { limit: 609350, rate: 0.35 },
-                { limit: Infinity, rate: 0.37 }
-            ],
-            married: [
-                { limit: 23200, rate: 0.10 },
-                { limit: 94300, rate: 0.12 },
-                { limit: 201050, rate: 0.22 },
-                { limit: 383900, rate: 0.24 },
-                { limit: 487450, rate: 0.32 },
-                { limit: 731200, rate: 0.35 },
-                { limit: Infinity, rate: 0.37 }
-            ],
-            head: [
-                { limit: 16550, rate: 0.10 },
-                { limit: 63100, rate: 0.12 },
-                { limit: 100500, rate: 0.22 },
-                { limit: 191950, rate: 0.24 },
-                { limit: 243700, rate: 0.32 },
-                { limit: 609350, rate: 0.35 },
-                { limit: Infinity, rate: 0.37 }
-            ]
-        };
+        const TAX_BRACKETS = { single: [{ limit: 11600, rate: 0.10 }, { limit: 47150, rate: 0.12 }, { limit: 100525, rate: 0.22 }, { limit: 191950, rate: 0.24 }, { limit: 243725, rate: 0.32 }, { limit: 609350, rate: 0.35 }, { limit: Infinity, rate: 0.37 }], married: [{ limit: 23200, rate: 0.10 }, { limit: 94300, rate: 0.12 }, { limit: 201050, rate: 0.22 }, { limit: 383900, rate: 0.24 }, { limit: 487450, rate: 0.32 }, { limit: 731200, rate: 0.35 }, { limit: Infinity, rate: 0.37 }] };
+        const STANDARD_DEDUCTIONS = { single: 14600, married: 29200 };
 
-        const standardDeductions = { single: 14600, married: 29200, head: 21900 };
-        const socialSecurityWageBase = 168600;
-        const socialSecurityRate = 0.062;
-        const medicareRate = 0.0145;
-        const medicareAdditionalRate = 0.009;
-        const medicareThreshold = 200000;
-
-        let lastCalculationResults = {};
-
-        function switchTab(index) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
-            document.getElementById('tab-' + index).classList.add('active');
-            document.querySelectorAll('.tab')[index].classList.add('active');
-            document.getElementById('resultBox').classList.remove('show');
-        }
-
-        function toggleFAQ(element) {
-            element.classList.toggle('open');
-        }
-
-        function formatCurrency(num) {
-            return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        }
-
-        function formatPercent(num) {
-            return (num * 100).toFixed(1) + '%';
-        }
-
-        function calculateFederalTax(taxableIncome, filingStatus) {
-            let tax = 0;
-            let remaining = taxableIncome;
-            let prevLimit = 0;
-            const brackets = taxBrackets[filingStatus];
-
+        function calcFederalTax(taxable, filing) {
+            let tax = 0, remaining = taxable, prevLimit = 0;
+            const brackets = TAX_BRACKETS[filing];
             for (let bracket of brackets) {
                 if (remaining <= 0) break;
                 const taxableAtBracket = Math.min(remaining, bracket.limit - prevLimit);
@@ -679,355 +349,122 @@
                 remaining -= taxableAtBracket;
                 prevLimit = bracket.limit;
             }
-            return tax;
+            return Math.max(0, tax);
         }
 
-        function calculateGrossToNet() {
-            let grossSalary = parseFloat(document.getElementById('gnGrossSalary').value) || 0;
-            const frequency = document.getElementById('gnPayFrequency').value;
-            const filingStatus = document.getElementById('gnFilingStatus').value;
-            const stateRate = parseFloat(document.getElementById('gnState').value);
-            const k401 = parseFloat(document.getElementById('gn401k').value) || 0;
-            const healthMonthly = parseFloat(document.getElementById('gnHealth').value) || 0;
-            const hsa = parseFloat(document.getElementById('gnHSA').value) || 0;
-            const fsa = parseFloat(document.getElementById('gnFSA').value) || 0;
-            const otherPre = parseFloat(document.getElementById('gnOtherPre').value) || 0;
-            const otherPost = parseFloat(document.getElementById('gnOtherPost').value) || 0;
-
-            switch(frequency) {
-                case 'hourly': grossSalary *= 2080; break;
-                case 'weekly': grossSalary *= 52; break;
-                case 'biweekly': grossSalary *= 26; break;
-                case 'monthly': grossSalary *= 12; break;
-            }
-
-            const healthAnnual = healthMonthly * 12;
-            const totalPreTax = (grossSalary * (k401 / 100)) + healthAnnual + hsa + fsa + otherPre;
-            const taxableIncome = Math.max(0, grossSalary - standardDeductions[filingStatus] - totalPreTax);
-
-            const federalTax = calculateFederalTax(taxableIncome, filingStatus);
-            const stateTax = taxableIncome * stateRate;
-            const socialSecurity = Math.min(grossSalary, socialSecurityWageBase) * socialSecurityRate;
-            const medicare = grossSalary * medicareRate + (grossSalary > medicareThreshold ? (grossSalary - medicareThreshold) * medicareAdditionalRate : 0);
-            const totalFICA = socialSecurity + medicare;
-
-            const totalTax = federalTax + stateTax + totalFICA;
-            const netSalary = grossSalary - totalTax - totalPreTax - otherPost;
-            const effectiveTaxRate = totalTax / grossSalary;
-
-            lastCalculationResults = {
-                grossSalary, netSalary, federalTax, stateTax, socialSecurity, medicare, totalFICA, totalTax,
-                totalPreTax, otherPost, taxableIncome, effectiveTaxRate, k401, healthAnnual, hsa, fsa
-            };
-
-            document.getElementById('resultGrid').innerHTML = `
-                <div class="result-card">
-                    <div class="result-label">Annual Gross Salary</div>
-                    <div class="result-value">${formatCurrency(grossSalary)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Annual Net Salary</div>
-                    <div class="result-value highlight">${formatCurrency(netSalary)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Monthly Take-Home</div>
-                    <div class="result-value highlight">${formatCurrency(netSalary / 12)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Biweekly Paycheck</div>
-                    <div class="result-value">${formatCurrency(netSalary / 26)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Total Tax Paid</div>
-                    <div class="result-value warning">${formatCurrency(totalTax)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Effective Tax Rate</div>
-                    <div class="result-value warning">${formatPercent(effectiveTaxRate)}</div>
-                </div>
-            `;
-
-            document.getElementById('breakdownSection').style.display = 'block';
-            document.getElementById('breakdownTable').innerHTML = `
-                <thead><tr><th>Category</th><th>Annual</th><th>Monthly</th><th>% of Gross</th></tr></thead>
-                <tbody>
-                    <tr><td>Gross Salary</td><td>${formatCurrency(grossSalary)}</td><td>${formatCurrency(grossSalary/12)}</td><td>100.0%</td></tr>
-                    <tr><td>401(k) Contribution</td><td>-${formatCurrency(grossSalary * (k401/100))}</td><td>-${formatCurrency(grossSalary * (k401/100)/12)}</td><td>${formatPercent(k401/100)}</td></tr>
-                    <tr><td>Health Insurance</td><td>-${formatCurrency(healthAnnual)}</td><td>-${formatCurrency(healthMonthly)}</td><td>${formatPercent(healthAnnual/grossSalary)}</td></tr>
-                    <tr><td>HSA Contribution</td><td>-${formatCurrency(hsa)}</td><td>-${formatCurrency(hsa/12)}</td><td>${formatPercent(hsa/grossSalary)}</td></tr>
-                    <tr><td>FSA Contribution</td><td>-${formatCurrency(fsa)}</td><td>-${formatCurrency(fsa/12)}</td><td>${formatPercent(fsa/grossSalary)}</td></tr>
-                    <tr><td>Other Pre-Tax</td><td>-${formatCurrency(otherPre)}</td><td>-${formatCurrency(otherPre/12)}</td><td>${formatPercent(otherPre/grossSalary)}</td></tr>
-                    <tr class="total-row"><td>Taxable Income</td><td>${formatCurrency(taxableIncome)}</td><td>${formatCurrency(taxableIncome/12)}</td><td>${formatPercent(taxableIncome/grossSalary)}</td></tr>
-                    <tr><td>Federal Income Tax</td><td>-${formatCurrency(federalTax)}</td><td>-${formatCurrency(federalTax/12)}</td><td>${formatPercent(federalTax/grossSalary)}</td></tr>
-                    <tr><td>State Income Tax</td><td>-${formatCurrency(stateTax)}</td><td>-${formatCurrency(stateTax/12)}</td><td>${formatPercent(stateTax/grossSalary)}</td></tr>
-                    <tr><td>Social Security</td><td>-${formatCurrency(socialSecurity)}</td><td>-${formatCurrency(socialSecurity/12)}</td><td>${formatPercent(socialSecurity/grossSalary)}</td></tr>
-                    <tr><td>Medicare</td><td>-${formatCurrency(medicare)}</td><td>-${formatCurrency(medicare/12)}</td><td>${formatPercent(medicare/grossSalary)}</td></tr>
-                    <tr><td>Other Post-Tax</td><td>-${formatCurrency(otherPost)}</td><td>-${formatCurrency(otherPost/12)}</td><td>${formatPercent(otherPost/grossSalary)}</td></tr>
-                    <tr class="total-row"><td>NET SALARY</td><td>${formatCurrency(netSalary)}</td><td>${formatCurrency(netSalary/12)}</td><td>${formatPercent(netSalary/grossSalary)}</td></tr>
-                </tbody>
-            `;
-
-            document.getElementById('comparisonSection').style.display = 'none';
-            document.getElementById('frequencySection').style.display = 'none';
-            document.getElementById('resultBox').classList.add('show');
+        function formatCurrency(num) {
+            return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         }
 
-        function updateHourlyAnnualLabels() {
-            const type = document.getElementById('haInputType').value;
-            document.getElementById('haAmountLabel').textContent = type === 'hourly' ? 'Hourly Wage ($):' : 'Annual Salary ($):';
-            document.getElementById('haAmount').placeholder = type === 'hourly' ? '25' : '60000';
-        }
-
-        function calculateHourlyAnnual() {
-            const type = document.getElementById('haInputType').value;
-            const amount = parseFloat(document.getElementById('haAmount').value) || 0;
-            const hoursPerWeek = parseFloat(document.getElementById('haHoursPerWeek').value) || 40;
-            const weeksPerYear = parseFloat(document.getElementById('haWeeksPerYear').value) || 52;
-
-            let hourly, annual, weekly, biweekly, monthly, daily;
-
-            if (type === 'hourly') {
-                hourly = amount;
-                weekly = hourly * hoursPerWeek;
-                biweekly = weekly * 2;
-                monthly = (weekly * 52) / 12;
-                annual = weekly * weeksPerYear;
-                daily = hourly * (hoursPerWeek / 5);
-            } else {
-                annual = amount;
-                weekly = annual / weeksPerYear;
-                hourly = weekly / hoursPerWeek;
-                biweekly = weekly * 2;
-                monthly = annual / 12;
-                daily = hourly * (hoursPerWeek / 5);
-            }
-
-            document.getElementById('resultGrid').innerHTML = `
-                <div class="result-card">
-                    <div class="result-label">Hourly Rate</div>
-                    <div class="result-value">${formatCurrency(hourly)}/hr</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Daily Rate</div>
-                    <div class="result-value">${formatCurrency(daily)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Weekly Pay</div>
-                    <div class="result-value highlight">${formatCurrency(weekly)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Biweekly Pay</div>
-                    <div class="result-value highlight">${formatCurrency(biweekly)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Monthly Pay</div>
-                    <div class="result-value highlight">${formatCurrency(monthly)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Annual Salary</div>
-                    <div class="result-value">${formatCurrency(annual)}</div>
-                </div>
-            `;
-
-            document.getElementById('breakdownSection').style.display = 'none';
-            document.getElementById('comparisonSection').style.display = 'none';
-            document.getElementById('frequencySection').style.display = 'none';
-            document.getElementById('resultBox').classList.add('show');
-        }
-
-        function calculateOvertimeBonus() {
-            const hourlyRate = parseFloat(document.getElementById('obHourlyRate').value) || 0;
-            const regularHours = parseFloat(document.getElementById('obRegularHours').value) || 40;
-            const overtimeHours = parseFloat(document.getElementById('obOvertimeHours').value) || 0;
-            const overtimeRate = parseFloat(document.getElementById('obOvertimeRate').value) || 1.5;
-            const bonus = parseFloat(document.getElementById('obBonus').value) || 0;
-            const weeks = parseFloat(document.getElementById('obWeeks').value) || 52;
-
-            const regularPay = hourlyRate * regularHours * weeks;
-            const overtimePay = hourlyRate * overtimeRate * overtimeHours * weeks;
-            const totalBase = regularPay + overtimePay + bonus;
-
-            document.getElementById('resultGrid').innerHTML = `
-                <div class="result-card">
-                    <div class="result-label">Annual Regular Pay</div>
-                    <div class="result-value">${formatCurrency(regularPay)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Annual Overtime Pay</div>
-                    <div class="result-value highlight">${formatCurrency(overtimePay)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Annual Bonus</div>
-                    <div class="result-value warning">${formatCurrency(bonus)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Total Compensation</div>
-                    <div class="result-value highlight">${formatCurrency(totalBase)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Monthly Income</div>
-                    <div class="result-value">${formatCurrency(totalBase / 12)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Biweekly Income</div>
-                    <div class="result-value">${formatCurrency(totalBase / 26)}</div>
-                </div>
-            `;
-
-            document.getElementById('breakdownSection').style.display = 'none';
-            document.getElementById('comparisonSection').style.display = 'none';
-            document.getElementById('frequencySection').style.display = 'none';
-            document.getElementById('resultBox').classList.add('show');
-        }
-
-        function compareOffers() {
-            const s1 = parseFloat(document.getElementById('co1Salary').value) || 0;
-            const b1 = parseFloat(document.getElementById('co1Bonus').value) || 0;
-            const m1 = parseFloat(document.getElementById('co1Match').value) || 0;
-            const h1 = parseFloat(document.getElementById('co1Health').value) || 0;
-            const p1 = parseFloat(document.getElementById('co1PTO').value) || 0;
-            const o1 = parseFloat(document.getElementById('co1Other').value) || 0;
-
-            const s2 = parseFloat(document.getElementById('co2Salary').value) || 0;
-            const b2 = parseFloat(document.getElementById('co2Bonus').value) || 0;
-            const m2 = parseFloat(document.getElementById('co2Match').value) || 0;
-            const h2 = parseFloat(document.getElementById('co2Health').value) || 0;
-            const p2 = parseFloat(document.getElementById('co2PTO').value) || 0;
-            const o2 = parseFloat(document.getElementById('co2Other').value) || 0;
-
-            const match1 = s1 * (m1 / 100);
-            const match2 = s2 * (m2 / 100);
-            const health1 = h1 * 12;
-            const health2 = h2 * 12;
-            const ptoValue1 = (s1 / 260) * p1;
-            const ptoValue2 = (s2 / 260) * p2;
-            const total1 = s1 + b1 + match1 + health1 + ptoValue1 + o1;
-            const total2 = s2 + b2 + match2 + health2 + ptoValue2 + o2;
-
-            const winner1 = total1 >= total2;
-
-            document.getElementById('resultGrid').innerHTML = `
-                <div class="result-card">
-                    <div class="result-label">Offer 1 Total</div>
-                    <div class="result-value ${winner1 ? 'highlight' : ''}">${formatCurrency(total1)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Offer 2 Total</div>
-                    <div class="result-value ${!winner1 ? 'highlight' : ''}">${formatCurrency(total2)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Difference</div>
-                    <div class="result-value ${Math.abs(total1 - total2) > 0 ? (total1 > total2 ? 'highlight' : 'warning') : ''}">${formatCurrency(Math.abs(total1 - total2))}</div>
-                </div>
-            `;
-
-            document.getElementById('comparisonResultGrid').innerHTML = `
-                <div class="comparison-card ${winner1 ? 'winner' : ''}">
-                    <h4>Offer 1</h4>
-                    <p><strong>Base Salary:</strong> ${formatCurrency(s1)}</p>
-                    <p><strong>Bonus:</strong> ${formatCurrency(b1)}</p>
-                    <p><strong>401k Match:</strong> ${formatCurrency(match1)}</p>
-                    <p><strong>Health Insurance:</strong> ${formatCurrency(health1)}/yr</p>
-                    <p><strong>PTO Value:</strong> ${formatCurrency(ptoValue1)}</p>
-                    <p><strong>Other Benefits:</strong> ${formatCurrency(o1)}</p>
-                    <p><strong style="font-size: 1.2rem; color: var(--primary);">Total: ${formatCurrency(total1)}</strong></p>
-                </div>
-                <div class="comparison-card ${!winner1 ? 'winner' : ''}">
-                    <h4>Offer 2</h4>
-                    <p><strong>Base Salary:</strong> ${formatCurrency(s2)}</p>
-                    <p><strong>Bonus:</strong> ${formatCurrency(b2)}</p>
-                    <p><strong>401k Match:</strong> ${formatCurrency(match2)}</p>
-                    <p><strong>Health Insurance:</strong> ${formatCurrency(health2)}/yr</p>
-                    <p><strong>PTO Value:</strong> ${formatCurrency(ptoValue2)}</p>
-                    <p><strong>Other Benefits:</strong> ${formatCurrency(o2)}</p>
-                    <p><strong style="font-size: 1.2rem; color: var(--primary);">Total: ${formatCurrency(total2)}</strong></p>
-                </div>
-            `;
-
-            document.getElementById('breakdownSection').style.display = 'none';
-            document.getElementById('comparisonSection').style.display = 'block';
-            document.getElementById('frequencySection').style.display = 'none';
-            document.getElementById('resultBox').classList.add('show');
-        }
-
-        function calculateReverse() {
-            const netPay = parseFloat(document.getElementById('rcNetPay').value) || 0;
-            const filingStatus = document.getElementById('rcFilingStatus').value;
-            const stateRate = parseFloat(document.getElementById('rcState').value);
-            const k401 = parseFloat(document.getElementById('rc401k').value) || 0;
-
-            let grossSalary = netPay * 12;
-            for (let i = 0; i < 10; i++) {
-                const totalPreTax = (grossSalary * (k401 / 100));
-                const taxableIncome = Math.max(0, grossSalary - standardDeductions[filingStatus] - totalPreTax);
-                const federalTax = calculateFederalTax(taxableIncome, filingStatus);
-                const stateTax = taxableIncome * stateRate;
-                const socialSecurity = Math.min(grossSalary, socialSecurityWageBase) * socialSecurityRate;
-                const medicare = grossSalary * medicareRate + (grossSalary > medicareThreshold ? (grossSalary - medicareThreshold) * medicareAdditionalRate : 0);
-                const totalTax = federalTax + stateTax + socialSecurity + medicare;
-                const calculatedNet = (grossSalary - totalTax - totalPreTax) / 12;
-                
-                if (Math.abs(calculatedNet - netPay) < 1) break;
-                grossSalary += (netPay - calculatedNet) * 12 / 0.75;
-            }
-
-            const totalPreTax = (grossSalary * (k401 / 100));
-            const taxableIncome = Math.max(0, grossSalary - standardDeductions[filingStatus] - totalPreTax);
-            const federalTax = calculateFederalTax(taxableIncome, filingStatus);
-            const stateTax = taxableIncome * stateRate;
-            const socialSecurity = Math.min(grossSalary, socialSecurityWageBase) * socialSecurityRate;
-            const medicare = grossSalary * medicareRate;
-            const totalTax = federalTax + stateTax + socialSecurity + medicare;
-
-            document.getElementById('resultGrid').innerHTML = `
-                <div class="result-card">
-                    <div class="result-label">Required Gross Annual</div>
-                    <div class="result-value highlight">${formatCurrency(grossSalary)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Monthly Gross</div>
-                    <div class="result-value">${formatCurrency(grossSalary / 12)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">Total Annual Tax</div>
-                    <div class="result-value warning">${formatCurrency(totalTax)}</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-label">401k Contribution</div>
-                    <div class="result-value">${formatCurrency(totalPreTax)}</div>
-                </div>
-            `;
-
-            document.getElementById('breakdownSection').style.display = 'none';
-            document.getElementById('comparisonSection').style.display = 'none';
-            document.getElementById('frequencySection').style.display = 'none';
-            document.getElementById('resultBox').classList.add('show');
-        }
-
-        function clearAll() {
-            document.querySelectorAll('.input-field').forEach(el => {
-                if (el.type === 'text' || el.type === 'number') el.value = el.placeholder || '';
-            });
+        function switchTab(idx) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + idx).classList.add('active');
+            document.querySelectorAll('.tab')[idx].classList.add('active');
             document.getElementById('resultBox').classList.remove('show');
+        }
+
+        function toggleFAQ(el) {
+            el.classList.toggle('open');
+        }
+
+        function calcGrossToNet() {
+            const gross = parseFloat(document.getElementById('gnGross').value) || 0;
+            const filing = document.getElementById('gnFiling').value;
+            const stateRate = parseFloat(document.getElementById('gnState').value);
+            const k401percent = parseFloat(document.getElementById('gn401k').value) || 0;
+
+            const k401amt = gross * (k401percent / 100);
+            const standardDed = STANDARD_DEDUCTIONS[filing];
+            const taxable = Math.max(0, gross - standardDed - k401amt);
+
+            const fedTax = calcFederalTax(taxable, filing);
+            const stateTax = taxable * stateRate;
+            const ssTax = Math.min(gross, 168600) * 0.062;
+            const medTax = gross * 0.0145;
+            const totalTax = fedTax + stateTax + ssTax + medTax;
+
+            const net = gross - totalTax - k401amt;
+            const effectiveTaxRate = (totalTax / gross) * 100;
+
+            document.getElementById('resultGrid').innerHTML = `
+                <div class="result-card"><div class="result-label">Annual Gross</div><div class="result-value">${formatCurrency(gross)}</div></div>
+                <div class="result-card"><div class="result-label">Annual Net</div><div class="result-value highlight">${formatCurrency(net)}</div></div>
+                <div class="result-card"><div class="result-label">Monthly Take-Home</div><div class="result-value highlight">${formatCurrency(net/12)}</div></div>
+                <div class="result-card"><div class="result-label">Biweekly Paycheck</div><div class="result-value">${formatCurrency(net/26)}</div></div>
+                <div class="result-card"><div class="result-label">Federal Tax</div><div class="result-value">${formatCurrency(fedTax)}</div></div>
+                <div class="result-card"><div class="result-label">State Tax</div><div class="result-value">${formatCurrency(stateTax)}</div></div>
+                <div class="result-card"><div class="result-label">Social Security</div><div class="result-value">${formatCurrency(ssTax)}</div></div>
+                <div class="result-card"><div class="result-label">Medicare</div><div class="result-value">${formatCurrency(medTax)}</div></div>
+                <div class="result-card"><div class="result-label">401k Contribution</div><div class="result-value">${formatCurrency(k401amt)}</div></div>
+                <div class="result-card"><div class="result-label">Effective Tax Rate</div><div class="result-value">${effectiveTaxRate.toFixed(1)}%</div></div>
+            `;
+            document.getElementById('resultBox').classList.add('show');
+        }
+
+        function calcHourlyAnnual() {
+            const hourly = parseFloat(document.getElementById('haHourly').value) || 0;
+            const hours = parseFloat(document.getElementById('haHours').value) || 40;
+            const annual = hourly * hours * 52;
+            const monthly = annual / 12;
+            const biweekly = annual / 26;
+            const weekly = hourly * hours;
+
+            document.getElementById('resultGrid').innerHTML = `
+                <div class="result-card"><div class="result-label">Hourly Rate</div><div class="result-value">${formatCurrency(hourly)}</div></div>
+                <div class="result-card"><div class="result-label">Weekly Pay</div><div class="result-value">${formatCurrency(weekly)}</div></div>
+                <div class="result-card"><div class="result-label">Biweekly Pay</div><div class="result-value">${formatCurrency(biweekly)}</div></div>
+                <div class="result-card"><div class="result-label">Monthly Pay</div><div class="result-value">${formatCurrency(monthly)}</div></div>
+                <div class="result-card"><div class="result-label">Annual Salary</div><div class="result-value highlight">${formatCurrency(annual)}</div></div>
+            `;
+            document.getElementById('resultBox').classList.add('show');
+        }
+
+        function calcOvertime() {
+            const rate = parseFloat(document.getElementById('obRate').value) || 0;
+            const overtime = parseFloat(document.getElementById('obOvertime').value) || 0;
+            const bonus = parseFloat(document.getElementById('obBonus').value) || 0;
+
+            const regularPay = rate * 40 * 52;
+            const overtimePay = rate * 1.5 * overtime * 52;
+            const total = regularPay + overtimePay + bonus;
+
+            document.getElementById('resultGrid').innerHTML = `
+                <div class="result-card"><div class="result-label">Regular Pay</div><div class="result-value">${formatCurrency(regularPay)}</div></div>
+                <div class="result-card"><div class="result-label">Overtime Pay</div><div class="result-value">${formatCurrency(overtimePay)}</div></div>
+                <div class="result-card"><div class="result-label">Annual Bonus</div><div class="result-value">${formatCurrency(bonus)}</div></div>
+                <div class="result-card"><div class="result-label">Total Annual Pay</div><div class="result-value highlight">${formatCurrency(total)}</div></div>
+            `;
+            document.getElementById('resultBox').classList.add('show');
         }
 
         function downloadResults() {
             let csv = 'Salary Calculator Results\n\n';
-            
-            const rows = document.querySelectorAll('.breakdown-table tr, .result-card');
-            rows.forEach(row => {
-                if (row.tagName === 'TR') {
-                    const cells = row.querySelectorAll('td, th');
-                    csv += Array.from(cells).map(cell => cell.textContent.trim()).join(',') + '\n';
-                }
+            const cards = document.querySelectorAll('.result-card');
+            cards.forEach(card => {
+                const label = card.querySelector('.result-label').textContent;
+                const value = card.querySelector('.result-value').textContent;
+                csv += label + ',' + value + '\n';
             });
-
             const blob = new Blob([csv], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'salary-calculator-results.csv';
+            a.download = 'salary-results.csv';
             a.click();
+        }
+
+        function clearForm() {
+            document.getElementById('gnGross').value = 60000;
+            document.getElementById('gn401k').value = 6;
+            document.getElementById('gnFiling').value = 'single';
+            document.getElementById('gnState').value = '0.05';
+            document.getElementById('haHourly').value = 25;
+            document.getElementById('haHours').value = 40;
+            document.getElementById('obRate').value = 25;
+            document.getElementById('obOvertime').value = 5;
+            document.getElementById('obBonus').value = 5000;
+            document.getElementById('resultBox').classList.remove('show');
         }
 
         function scrollToTop() {
@@ -1035,12 +472,7 @@
         }
 
         window.addEventListener('scroll', () => {
-            const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
         });
     </script>
 </body>
