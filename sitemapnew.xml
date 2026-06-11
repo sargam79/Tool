@@ -176,7 +176,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- CONVERTERS & GENERATORS (7 tools) -->
+  <!-- CONVERTERS & GENERATORS (6 tools) -->
   <url>
     <loc>https://toolpond.org/converter.html</loc>
     <lastmod>2026-06-11</lastmod>
@@ -209,12 +209,6 @@
   </url>
   <url>
     <loc>https://toolpond.org/hashtag-generator.html</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolpond.org/translator-tool.html</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
