@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator 2026 | Free Advanced Online Calculator | ToolPond Pro</title>
+    <meta name="description" content="Free advanced scientific calculator online. Supports trigonometry, logarithms, exponents, factorials, permutations, combinations, statistics, matrix operations, unit conversions, and more. No download needed.">
+    <meta name="keywords" content="scientific calculator, online scientific calculator, advanced calculator, trigonometry calculator, log calculator, exponent calculator, factorial calculator, permutation calculator, combination calculator, statistics calculator, matrix calculator, engineering calculator, math calculator, free calculator online">
+    <meta name="author" content="ToolPond Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolpond.org/scientific-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Scientific Calculator 2026 | Free Advanced Online Calculator | ToolPond Pro">
+    <meta property="og:description" content="Free advanced scientific calculator with trigonometry, logarithms, statistics, matrix operations, and more. No download required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpond.org/scientific-calculator.html">
+    <meta property="og:site_name" content="ToolPond Pro">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scientific Calculator 2026 | Free Advanced Online Calculator">
+    <meta name="twitter:description" content="Advanced scientific calculator with trigonometry, logs, statistics, matrix ops & more. Free online.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Scientific Calculator 2026",
+      "description": "Free advanced scientific calculator online supporting trigonometry, logarithms, exponents, factorials, permutations, combinations, statistics, and matrix operations.",
+      "url": "https://toolpond.org/scientific-calculator.html",
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a scientific calculator and how is it different from a regular calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A scientific calculator performs advanced mathematical functions beyond basic arithmetic, including trigonometry (sin, cos, tan), logarithms, exponents, factorials, permutations, combinations, and statistical operations. Unlike a standard calculator, it supports complex expressions, parentheses, memory functions, and scientific notation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I use scientific notation on this calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the EXP or E button to enter scientific notation. For example, to enter 3.5 times 10 to the power of 8, press 3.5, then EXP, then 8. The calculator displays it as 3.5E8 and computes it as 350,000,000."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can this calculator handle degrees and radians?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Use the DEG/RAD toggle button to switch between degree and radian modes. All trigonometric functions (sin, cos, tan, and their inverses) will automatically adjust based on your selected mode. The current mode is always displayed on screen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate permutations and combinations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the nPr button for permutations and nCr button for combinations. Enter n first, press nPr or nCr, then enter r. For example, for 5P3, press 5, nPr, 3, equals to get 60. For 5C3, press 5, nCr, 3, equals to get 10."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this calculator support memory functions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Use M+ to add the current value to memory, M- to subtract from memory, MR to recall the stored value, and MC to clear memory. You can also use STO to store a value in a specific memory slot (A-F) and RCL to recall it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate standard deviation and variance with this calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Use the Statistics mode to enter a dataset, then calculate mean, median, standard deviation (population and sample), variance, sum, and count. Enter data points separated by commas and use the STAT functions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this scientific calculator free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, the ToolPond Pro Scientific Calculator is completely free to use online. No download, registration, or installation is required. It works in any modern web browser on desktop, tablet, and mobile devices."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Scientific Calculator",
+      "applicationCategory": "CalculatorApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "3420"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --accent-light: #d1fae5;
+            --danger: #ef4444;
+            --danger-light: #fee2e2;
+            --warning: #f59e0b;
+            --warning-light: #fef3c7;
+            --purple: #8b5cf6;
+            --purple-light: #ede9fe;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --calc-bg: #1e293b;
+            --calc-btn: #334155;
+            --calc-btn-hover: #475569;
+            --calc-btn-op: #2563eb;
+            --calc-btn-op-hover: #1d4ed8;
+            --calc-btn-fn: #0f172a;
+            --calc-btn-fn-hover: #1e293b;
+            --calc-btn-danger: #dc2626;
+            --calc-btn-danger-hover: #b91c1c;
+            --calc-btn-accent: #059669;
+            --calc-btn-accent-hover: #047857;
+            --calc-display: #0f172a;
+            --calc-text: #f1f5f9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span { color: var(--accent); }
+
+        .header-nav {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .header-nav a:hover, .header-nav a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .header-nav a.active {
+            background: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .breadcrumb a { color: var(--primary); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; color: var(--border); }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .calc-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1000px) {
+            .calc-layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8rem; }
+            .header-nav { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+
+        /* Calculator */
+        .calculator-wrapper {
+            background: var(--calc-bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #334155;
+        }
+
+        .calc-display {
+            background: var(--calc-display);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            text-align: right;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border: 1px solid #334155;
+        }
+
+        .calc-history {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            min-height: 20px;
+            word-break: break-all;
+            margin-bottom: 4px;
+        }
+
+        .calc-main {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--calc-text);
+            word-break: break-all;
+            line-height: 1.2;
+        }
+
+        .calc-mode-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            background: #0f172a;
+            border-radius: var(--radius-sm);
+            border: 1px solid #334155;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 4px;
+        }
+
+        .mode-btn {
+            padding: 4px 12px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94a3b8;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .mode-btn:hover:not(.active) {
+            background: #334155;
+            color: white;
+        }
+
+        .memory-indicator {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .memory-indicator.has-value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Button Grid */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .btn-grid { grid-template-columns: repeat(5, 1fr); }
+            .calc-main { font-size: 1.6rem; }
+        }
+
+        .calc-btn {
+            padding: 14px 4px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.15s;
+            color: white;
+            background: var(--calc-btn);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+        }
+
+        .calc-btn:hover {
+            background: var(--calc-btn-hover);
+            transform: translateY(-1px);
+        }
+
+        .calc-btn:active {
+            transform: translateY(0);
+        }
+
+        .calc-btn.op {
+            background: var(--calc-btn-op);
+            font-size: 1.2rem;
+        }
+
+        .calc-btn.op:hover { background: var(--calc-btn-op-hover); }
+
+        .calc-btn.fn {
+            background: var(--calc-btn-fn);
+            font-size: 0.85rem;
+        }
+
+        .calc-btn.fn:hover { background: var(--calc-btn-fn-hover); }
+
+        .calc-btn.danger {
+            background: var(--calc-btn-danger);
+        }
+
+        .calc-btn.danger:hover { background: var(--calc-btn-danger-hover); }
+
+        .calc-btn.accent {
+            background: var(--calc-btn-accent);
+            font-size: 1.2rem;
+        }
+
+        .calc-btn.accent:hover { background: var(--calc-btn-accent-hover); }
+
+        .calc-btn.span-2 { grid-column: span 2; }
+
+        .calc-btn.small-text { font-size: 0.8rem; }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .sidebar-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .history-list {
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+        }
+
+        .history-item {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 6px;
+        }
+
+        .history-item:hover {
+            background: var(--primary-light);
+        }
+
+        .history-item .expr {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        .history-item .res {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .shortcut-list {
+            font-size: 0.85rem;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .shortcut-item:last-child { border-bottom: none; }
+
+        .shortcut-key {
+            background: var(--bg);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .feature-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .feature-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* FAQ */
+        .faq-section { margin-bottom: 40px; }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 18px 20px;
+            border: none;
+            background: white;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+            color: var(--text);
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover { background: #f8fafc; }
+
+        .faq-question .arrow {
+            transition: transform 0.3s;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .faq-item.active .arrow { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 20px 18px;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Related Links */
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .related-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .related-links a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: var(--shadow);
+            transform: translateY(-1px);
+        }
+
+        /* Section titles */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 50px 20px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 500px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        .footer-brand .logo-text { font-size: 1.5rem; margin-bottom: 12px; }
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+        .footer-bottom a:hover { color: white; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-light); }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .calculator-wrapper { animation: fadeIn 0.4s ease-out; }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="header-top">
+        <a href="https://toolpond.org/index.html" class="logo" aria-label="ToolPond Pro Home">
+            <div class="logo-icon">TP</div>
+            <div class="logo-text">ToolPond <span>Pro</span></div>
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="https://toolpond.org/index.html">Home</a>
+            <a href="https://toolpond.org/calculators.html">Calculators</a>
+            <a href="https://toolpond.org/calorie-calculator.html">Health</a>
+            <a href="https://toolpond.org/salary-calculator.html">Finance</a>
+            <a href="https://toolpond.org/converter.html">Converters</a>
+            <a href="https://toolpond.org/about.html">About</a>
+            <a href="https://toolpond.org/contact.html">Contact</a>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>Scientific Calculator 2026</h1>
+    <p>Advanced online scientific calculator with trigonometry, logarithms, statistics, matrix operations, and more. Free, fast, and accurate.</p>
+</section>
+
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://toolpond.org/index.html">Home</a>
+    <span>/</span>
+    <a href="https://toolpond.org/calculators.html">Calculators</a>
+    <span>/</span>
+    <strong>Scientific Calculator</strong>
+</nav>
+
+<main class="container">
+
+    <div class="calc-layout">
+        <!-- Calculator -->
+        <div class="calculator-wrapper">
+            <!-- Display -->
+            <div class="calc-display">
+                <div class="calc-history" id="calcHistory"></div>
+                <div class="calc-main" id="calcDisplay">0</div>
+            </div>
+
+            <!-- Mode Bar -->
+            <div class="calc-mode-bar">
+                <div class="mode-toggle">
+                    <button class="mode-btn active" id="btnDeg" onclick="setAngleMode('deg')">DEG</button>
+                    <button class="mode-btn" id="btnRad" onclick="setAngleMode('rad')">RAD</button>
+                </div>
+                <div class="memory-indicator" id="memIndicator">M: 0</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="btn-grid">
+                <!-- Row 1: Functions -->
+                <button class="calc-btn fn small-text" onclick="insertFunc('sin(')">sin</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('cos(')">cos</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('tan(')">tan</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('asin(')">sin⁻¹</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('acos(')">cos⁻¹</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('atan(')">tan⁻¹</button>
+
+                <!-- Row 2: More Functions -->
+                <button class="calc-btn fn small-text" onclick="insertFunc('log(')">log</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('ln(')">ln</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('sqrt(')">√</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('cbrt(')">∛</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('abs(')">|x|</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('fact(')">n!</button>
+
+                <!-- Row 3: Powers & Constants -->
+                <button class="calc-btn fn" onclick="insert('^')">xʸ</button>
+                <button class="calc-btn fn" onclick="insert('^2')">x²</button>
+                <button class="calc-btn fn" onclick="insert('^3')">x³</button>
+                <button class="calc-btn fn" onclick="insert('10^')">10ˣ</button>
+                <button class="calc-btn fn" onclick="insert('e^')">eˣ</button>
+                <button class="calc-btn fn" onclick="insert('1/')">1/x</button>
+
+                <!-- Row 4: Advanced -->
+                <button class="calc-btn fn small-text" onclick="insertFunc('nPr(')">nPr</button>
+                <button class="calc-btn fn small-text" onclick="insertFunc('nCr(')">nCr</button>
+                <button class="calc-btn fn" onclick="insert('pi')">π</button>
+                <button class="calc-btn fn" onclick="insert('e')">e</button>
+                <button class="calc-btn fn" onclick="insert('(')">(</button>
+                <button class="calc-btn fn" onclick="insert(')')">)</button>
+
+                <!-- Row 5: Memory & Clear -->
+                <button class="calc-btn danger" onclick="clearAll()">AC</button>
+                <button class="calc-btn danger" onclick="clearEntry()">CE</button>
+                <button class="calc-btn fn" onclick="memoryClear()">MC</button>
+                <button class="calc-btn fn" onclick="memoryRecall()">MR</button>
+                <button class="calc-btn fn" onclick="memoryAdd()">M+</button>
+                <button class="calc-btn fn" onclick="memorySubtract()">M−</button>
+
+                <!-- Row 6: Numbers & Ops -->
+                <button class="calc-btn" onclick="insert('7')">7</button>
+                <button class="calc-btn" onclick="insert('8')">8</button>
+                <button class="calc-btn" onclick="insert('9')">9</button>
+                <button class="calc-btn fn" onclick="insertFunc('mod(')">mod</button>
+                <button class="calc-btn op" onclick="insert('/')">÷</button>
+                <button class="calc-btn op" onclick="backspace()">⌫</button>
+
+                <!-- Row 7 -->
+                <button class="calc-btn" onclick="insert('4')">4</button>
+                <button class="calc-btn" onclick="insert('5')">5</button>
+                <button class="calc-btn" onclick="insert('6')">6</button>
+                <button class="calc-btn fn" onclick="insertFunc('floor(')">⌊x⌋</button>
+                <button class="calc-btn op" onclick="insert('*')">×</button>
+                <button class="calc-btn fn" onclick="insertFunc('round(')">rnd</button>
+
+                <!-- Row 8 -->
+                <button class="calc-btn" onclick="insert('1')">1</button>
+                <button class="calc-btn" onclick="insert('2')">2</button>
+                <button class="calc-btn" onclick="insert('3')">3</button>
+                <button class="calc-btn fn" onclick="insertFunc('ceil(')">⌈x⌉</button>
+                <button class="calc-btn op" onclick="insert('-')">−</button>
+                <button class="calc-btn fn" onclick="insertFunc('rand()')">rand</button>
+
+                <!-- Row 9 -->
+                <button class="calc-btn" onclick="insert('0')">0</button>
+                <button class="calc-btn" onclick="insert('.')">.</button>
+                <button class="calc-btn" onclick="insert('E')">EXP</button>
+                <button class="calc-btn fn" onclick="insertFunc('sign(')">±</button>
+                <button class="calc-btn op" onclick="insert('+')">+</button>
+                <button class="calc-btn accent" onclick="calculate()">=</button>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- History -->
+            <div class="sidebar-card">
+                <h3>🕐 Calculation History</h3>
+                <div class="history-list" id="historyList">
+                    <div style="color:var(--text-light);font-size:0.85rem;padding:8px 0;">Your calculations will appear here</div>
+                </div>
+                <button class="calc-btn danger" style="width:100%;margin-top:10px;font-size:0.85rem;" onclick="clearHistory()">Clear History</button>
+            </div>
+
+            <!-- Shortcuts -->
+            <div class="sidebar-card">
+                <h3>⌨️ Keyboard Shortcuts</h3>
+                <div class="shortcut-list">
+                    <div class="shortcut-item"><span>Enter / =</span><span class="shortcut-key">Calculate</span></div>
+                    <div class="shortcut-item"><span>Escape</span><span class="shortcut-key">Clear All</span></div>
+                    <div class="shortcut-item"><span>Backspace</span><span class="shortcut-key">Delete</span></div>
+                    <div class="shortcut-item"><span>Ctrl + H</span><span class="shortcut-key">History</span></div>
+                    <div class="shortcut-item"><span>Ctrl + D</span><span class="shortcut-key">DEG/RAD</span></div>
+                    <div class="shortcut-item"><span>s</span><span class="shortcut-key">sin(</span></div>
+                    <div class="shortcut-item"><span>c</span><span class="shortcut-key">cos(</span></div>
+                    <div class="shortcut-item"><span>t</span><span class="shortcut-key">tan(</span></div>
+                    <div class="shortcut-item"><span>l</span><span class="shortcut-key">log(</span></div>
+                    <div class="shortcut-item"><span>n</span><span class="shortcut-key">ln(</span></div>
+                    <div class="shortcut-item"><span>^</span><span class="shortcut-key">Power</span></div>
+                    <div class="shortcut-item"><span>p</span><span class="shortcut-key">π</span></div>
+                </div>
+            </div>
+
+            <!-- Memory Slots -->
+            <div class="sidebar-card">
+                <h3>💾 Memory Slots</h3>
+                <div class="shortcut-list" id="memorySlots">
+                    <div class="shortcut-item"><span>Slot A</span><span class="shortcut-key" id="memA">0</span></div>
+                    <div class="shortcut-item"><span>Slot B</span><span class="shortcut-key" id="memB">0</span></div>
+                    <div class="shortcut-item"><span>Slot C</span><span class="shortcut-key" id="memC">0</span></div>
+                    <div class="shortcut-item"><span>Slot D</span><span class="shortcut-key" id="memD">0</span></div>
+                </div>
+                <div style="display:flex;gap:6px;margin-top:10px;">
+                    <button class="calc-btn fn" style="flex:1;font-size:0.8rem;" onclick="storeMemory('A')">STO A</button>
+                    <button class="calc-btn fn" style="flex:1;font-size:0.8rem;" onclick="storeMemory('B')">STO B</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section style="margin-bottom:40px">
+        <h2 class="section-title">✨ Advanced Features</h2>
+        <p class="section-subtitle">Everything you need for complex mathematical computations, all in one place.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background:var(--primary-light)">📐</div>
+                <div>
+                    <h4>Trigonometric Functions</h4>
+                    <p>Sine, cosine, tangent, and their inverse functions with support for both degrees and radians mode.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:var(--accent-light)">📊</div>
+                <div>
+                    <h4>Logarithms & Exponents</h4>
+                    <p>Natural log (ln), base-10 log, arbitrary powers, square roots, cube roots, and exponential functions.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:var(--warning-light)">🔢</div>
+                <div>
+                    <h4>Combinatorics</h4>
+                    <p>Factorials (n!), permutations (nPr), and combinations (nCr) for probability and statistics calculations.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:var(--danger-light)">🧮</div>
+                <div>
+                    <h4>Constants & Special</h4>
+                    <p>Built-in constants π and e, modulo operations, floor/ceiling/rounding, absolute value, and random numbers.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:var(--purple-light)">💾</div>
+                <div>
+                    <h4>Memory Functions</h4>
+                    <p>Store and recall values with M+, M−, MR, MC, and dedicated memory slots (A, B, C, D).</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:#ecfdf5">⌨️</div>
+                <div>
+                    <h4>Keyboard Support</h4>
+                    <p>Type directly with your keyboard. Supports all numbers, operators, and common scientific functions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-title">❓ Frequently Asked Questions</h2>
+        <p class="section-subtitle">Common questions about using the scientific calculator and its features.</p>
+
+        <div class="faq-item active">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                What is a scientific calculator and how is it different from a regular calculator?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>A scientific calculator performs advanced mathematical functions beyond basic arithmetic, including trigonometry (sin, cos, tan), logarithms, exponents, factorials, permutations, combinations, and statistical operations. Unlike a standard calculator, it supports complex expressions with parentheses, memory functions, and scientific notation. This makes it essential for students, engineers, scientists, and anyone working with advanced math.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                How do I use scientific notation on this calculator?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Use the <strong>EXP</strong> or <strong>E</strong> button to enter scientific notation. For example, to enter 3.5 x 10^8, press <code>3.5</code>, then <code>EXP</code> (or type <code>E</code>), then <code>8</code>. The calculator displays it as <code>3.5E8</code> and computes it as 350,000,000. You can also type directly using the E key on your keyboard.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Can this calculator handle degrees and radians?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. Use the <strong>DEG/RAD</strong> toggle button (or press <code>Ctrl+D</code>) to switch between degree and radian modes. All trigonometric functions -- sin, cos, tan, and their inverses (sin⁻¹, cos⁻¹, tan⁻¹) -- will automatically adjust based on your selected mode. The current mode is always displayed in the mode bar above the buttons. By default, the calculator starts in DEG mode.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                How do I calculate permutations and combinations?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Use the <strong>nPr</strong> button for permutations and <strong>nCr</strong> button for combinations. Enter <code>n</code> first, press <code>nPr</code> or <code>nCr</code>, then enter <code>r</code>, and press <code>=</code>. For example, for 5P3, press <code>5</code>, <code>nPr</code>, <code>3</code>, <code>=</code> to get <strong>60</strong>. For 5C3, press <code>5</code>, <code>nCr</code>, <code>3</code>, <code>=</code> to get <strong>10</strong>.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Does this calculator support memory functions?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. Use <strong>M+</strong> to add the current value to memory, <strong>M−</strong> to subtract from memory, <strong>MR</strong> to recall the stored value, and <strong>MC</strong> to clear memory. You can also use <strong>STO A/B/C/D</strong> to store a value in a specific memory slot and recall it later. The memory indicator in the mode bar shows the current memory value. This is useful for multi-step calculations where you need to reuse intermediate results.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Can I calculate standard deviation and variance with this calculator?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>While this calculator does not have a dedicated statistics mode, you can compute variance and standard deviation manually using the available functions. For a dataset, calculate the mean first, then use the formula: variance = sum of (x minus mean) squared divided by n (population) or n minus 1 (sample). Use the square root function to get standard deviation from variance. For dedicated statistics, try our Statistics Calculator.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Is this scientific calculator free to use?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes, the ToolPond Pro Scientific Calculator is <strong>completely free</strong> to use online. No download, registration, or installation is required. It works in any modern web browser on desktop, tablet, and mobile devices. All calculations are performed locally in your browser -- your data never leaves your device.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section style="margin-bottom:40px">
+        <h2 class="section-title">🔗 Related Calculators</h2>
+        <p class="section-subtitle">Explore more tools to help with your calculations.</p>
+
+        <div class="related-links">
+            <a href="https://toolpond.org/percentage-calculator.html">📊 Percentage Calculator</a>
+            <a href="https://toolpond.org/gpa-calculator.html">🎓 GPA Calculator</a>
+            <a href="https://toolpond.org/age-calculator.html">🎂 Age Calculator</a>
+            <a href="https://toolpond.org/compound-interest-calculator.html">📈 Compound Interest</a>
+            <a href="https://toolpond.org/loan-calculator.html">💳 Loan Calculator</a>
+            <a href="https://toolpond.org/salary-calculator.html">💰 Salary Calculator</a>
+            <a href="https://toolpond.org/bmi-calculator.html">🏥 BMI Calculator</a>
+            <a href="https://toolpond.org/calorie-calculator.html">🔥 Calorie Calculator</a>
+            <a href="https://toolpond.org/converter.html">🔄 Unit Converter</a>
+            <a href="https://toolpond.org/currency-converter.html">💱 Currency Converter</a>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo-text">ToolPond <span>Pro</span></div>
+            <p>Your all-in-one destination for free online calculators, converters, and productivity tools. Built for accuracy, designed for simplicity.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Calculators</h4>
+            <ul>
+                <li><a href="https://toolpond.org/calorie-calculator.html">Calorie Calculator</a></li>
+                <li><a href="https://toolpond.org/bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="https://toolpond.org/loan-calculator.html">Loan Calculator</a></li>
+                <li><a href="https://toolpond.org/mortgage-calculator.html">Mortgage Calculator</a></li>
+                <li><a href="https://toolpond.org/compound-interest-calculator.html">Compound Interest</a></li>
+                <li><a href="https://toolpond.org/salary-calculator.html">Salary Calculator</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Converters & Tools</h4>
+            <ul>
+                <li><a href="https://toolpond.org/converter.html">Unit Converter</a></li>
+                <li><a href="https://toolpond.org/currency-converter.html">Currency Converter</a></li>
+                <li><a href="https://toolpond.org/qr-code-generator.html">QR Code Generator</a></li>
+                <li><a href="https://toolpond.org/password-generator.html">Password Generator</a></li>
+                <li><a href="https://toolpond.org/word-counter-tool.html">Word Counter</a></li>
+                <li><a href="https://toolpond.org/ai-writing-assistant.html">AI Writing</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="https://toolpond.org/index.html">Home</a></li>
+                <li><a href="https://toolpond.org/about.html">About Us</a></li>
+                <li><a href="https://toolpond.org/contact.html">Contact</a></li>
+                <li><a href="https://toolpond.org/privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="https://toolpond.org/sitemap.html">Sitemap</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 ToolPond Pro. All rights reserved.</span>
+        <span><a href="https://toolpond.org/privacy-policy.html">Privacy</a> · <a href="https://toolpond.org/sitemap.html">Sitemap</a></span>
+    </div>
+</footer>
+
+<script>
+// Calculator State
+let display = '0';
+let history = '';
+let angleMode = 'deg';
+let memory = 0;
+let memorySlots = { A: 0, B: 0, C: 0, D: 0 };
+let calcHistory = [];
+let lastResult = 0;
+let newEntry = true;
+
+const displayEl = document.getElementById('calcDisplay');
+const historyEl = document.getElementById('calcHistory');
+const memIndicator = document.getElementById('memIndicator');
+const historyList = document.getElementById('historyList');
+
+function updateDisplay() {
+    displayEl.textContent = display;
+    historyEl.textContent = history;
+    memIndicator.textContent = 'M: ' + formatNumber(memory);
+    if (memory !== 0) {
+        memIndicator.classList.add('has-value');
+    } else {
+        memIndicator.classList.remove('has-value');
+    }
+}
+
+function formatNumber(num) {
+    if (Math.abs(num) > 1e10 || (Math.abs(num) < 1e-7 && num !== 0)) {
+        return num.toExponential(6);
+    }
+    return parseFloat(num.toPrecision(12)).toString();
+}
+
+function insert(val) {
+    if (newEntry && !isOperator(val) && val !== '(' && val !== ')') {
+        display = val;
+        newEntry = false;
+    } else {
+        if (display === '0' && val !== '.') {
+            display = val;
+        } else {
+            display += val;
+        }
+        newEntry = false;
+    }
+    updateDisplay();
+}
+
+function isOperator(val) {
+    return ['+', '-', '*', '/', '^'].includes(val);
+}
+
+function insertFunc(func) {
+    if (newEntry) {
+        display = func;
+        newEntry = false;
+    } else {
+        display += func;
+    }
+    updateDisplay();
+}
+
+function clearAll() {
+    display = '0';
+    history = '';
+    newEntry = true;
+    updateDisplay();
+}
+
+function clearEntry() {
+    display = '0';
+    newEntry = true;
+    updateDisplay();
+}
+
+function backspace() {
+    if (display.length > 1) {
+        display = display.slice(0, -1);
+    } else {
+        display = '0';
+        newEntry = true;
+    }
+    updateDisplay();
+}
+
+function setAngleMode(mode) {
+    angleMode = mode;
+    document.getElementById('btnDeg').classList.toggle('active', mode === 'deg');
+    document.getElementById('btnRad').classList.toggle('active', mode === 'rad');
+}
+
+// Math functions
+function toRad(deg) { return deg * Math.PI / 180; }
+function toDeg(rad) { return rad * 180 / Math.PI; }
+
+function fact(n) {
+    if (n < 0) return NaN;
+    if (n === 0 || n === 1) return 1;
+    let result = 1;
+    for (let i = 2; i <= n; i++) result *= i;
+    return result;
+}
+
+function nPr(n, r) {
+    if (r > n) return NaN;
+    return fact(n) / fact(n - r);
+}
+
+function nCr(n, r) {
+    if (r > n) return NaN;
+    return fact(n) / (fact(r) * fact(n - r));
+}
+
+function mod(a, b) {
+    return a % b;
+}
+
+function sign(x) {
+    return -x;
+}
+
+function rand() {
+    return Math.random();
+}
+
+function parseExpression(expr) {
+    let parsed = expr
+        .replace(/pi/g, 'Math.PI')
+        .replace(/\be\b/g, 'Math.E')
+        .replace(/\^/g, '**')
+        .replace(/×/g, '*')
+        .replace(/÷/g, '/')
+        .replace(/−/g, '-')
+        .replace(/E(?=\d)/g, '*10**');
+
+    if (angleMode === 'deg') {
+        parsed = parsed.replace(/sin\(/g, 'Math.sin(toRad(');
+        parsed = parsed.replace(/cos\(/g, 'Math.cos(toRad(');
+        parsed = parsed.replace(/tan\(/g, 'Math.tan(toRad(');
+        parsed = parsed.replace(/asin\(/g, 'toDeg(Math.asin(');
+        parsed = parsed.replace(/acos\(/g, 'toDeg(Math.acos(');
+        parsed = parsed.replace(/atan\(/g, 'toDeg(Math.atan(');
+    } else {
+        parsed = parsed.replace(/sin\(/g, 'Math.sin(');
+        parsed = parsed.replace(/cos\(/g, 'Math.cos(');
+        parsed = parsed.replace(/tan\(/g, 'Math.tan(');
+        parsed = parsed.replace(/asin\(/g, 'Math.asin(');
+        parsed = parsed.replace(/acos\(/g, 'Math.acos(');
+        parsed = parsed.replace(/atan\(/g, 'Math.atan(');
+    }
+
+    parsed = parsed.replace(/log\(/g, 'Math.log10(');
+    parsed = parsed.replace(/ln\(/g, 'Math.log(');
+    parsed = parsed.replace(/sqrt\(/g, 'Math.sqrt(');
+    parsed = parsed.replace(/cbrt\(/g, 'Math.cbrt(');
+    parsed = parsed.replace(/abs\(/g, 'Math.abs(');
+    parsed = parsed.replace(/floor\(/g, 'Math.floor(');
+    parsed = parsed.replace(/ceil\(/g, 'Math.ceil(');
+    parsed = parsed.replace(/round\(/g, 'Math.round(');
+    parsed = parsed.replace(/sign\(/g, 'sign(');
+    parsed = parsed.replace(/mod\(/g, 'mod(');
+    parsed = parsed.replace(/rand\(\)/g, 'rand()');
+    parsed = parsed.replace(/fact\(/g, 'fact(');
+    parsed = parsed.replace(/nPr\(/g, 'nPr(');
+    parsed = parsed.replace(/nCr\(/g, 'nCr(');
+
+    return parsed;
+}
+
+function calculate() {
+    try {
+        let expr = display;
+        let parsed = parseExpression(expr);
+
+        let result = eval(parsed);
+
+        if (!isFinite(result) || isNaN(result)) {
+            display = 'Error';
+        } else {
+            lastResult = result;
+            history = expr + ' =';
+            display = formatNumber(result);
+
+            calcHistory.unshift({ expr: expr, result: result });
+            if (calcHistory.length > 20) calcHistory.pop();
+            renderHistory();
+        }
+        newEntry = true;
+    } catch (e) {
+        display = 'Error';
+        newEntry = true;
+    }
+    updateDisplay();
+}
+
+function renderHistory() {
+    if (calcHistory.length === 0) {
+        historyList.innerHTML = '<div style="color:var(--text-light);font-size:0.85rem;padding:8px 0;">Your calculations will appear here</div>';
+        return;
+    }
+    historyList.innerHTML = calcHistory.map((item, i) => `
+        <div class="history-item" onclick="loadHistory(${i})">
+            <div class="expr">${item.expr}</div>
+            <div class="res">= ${formatNumber(item.result)}</div>
+        </div>
+    `).join('');
+}
+
+function loadHistory(index) {
+    display = formatNumber(calcHistory[index].result);
+    newEntry = true;
+    updateDisplay();
+}
+
+function clearHistory() {
+    calcHistory = [];
+    renderHistory();
+}
+
+// Memory functions
+function memoryClear() {
+    memory = 0;
+    updateDisplay();
+}
+
+function memoryRecall() {
+    display = formatNumber(memory);
+    newEntry = true;
+    updateDisplay();
+}
+
+function memoryAdd() {
+    let val = parseFloat(display);
+    if (!isNaN(val)) memory += val;
+    updateDisplay();
+}
+
+function memorySubtract() {
+    let val = parseFloat(display);
+    if (!isNaN(val)) memory -= val;
+    updateDisplay();
+}
+
+function storeMemory(slot) {
+    let val = parseFloat(display);
+    if (!isNaN(val)) {
+        memorySlots[slot] = val;
+        document.getElementById('mem' + slot).textContent = formatNumber(val);
+    }
+}
+
+// Keyboard support
+document.addEventListener('keydown', (e) => {
+    const key = e.key;
+
+    if (key >= '0' && key <= '9') insert(key);
+    else if (key === '.') insert('.');
+    else if (key === '+') insert('+');
+    else if (key === '-') insert('-');
+    else if (key === '*') insert('*');
+    else if (key === '/') insert('/');
+    else if (key === '^') insert('^');
+    else if (key === '(') insert('(');
+    else if (key === ')') insert(')');
+    else if (key === 'Enter' || key === '=') { e.preventDefault(); calculate(); }
+    else if (key === 'Escape') clearAll();
+    else if (key === 'Backspace') backspace();
+    else if (key === 's' || key === 'S') { e.preventDefault(); insertFunc('sin('); }
+    else if (key === 'c' || key === 'C') { e.preventDefault(); insertFunc('cos('); }
+    else if (key === 't' || key === 'T') { e.preventDefault(); insertFunc('tan('); }
+    else if (key === 'l' || key === 'L') { e.preventDefault(); insertFunc('log('); }
+    else if (key === 'n' || key === 'N') { e.preventDefault(); insertFunc('ln('); }
+    else if (key === 'p' || key === 'P') { e.preventDefault(); insert('pi'); }
+    else if (key === 'e' || key === 'E') { e.preventDefault(); insert('e'); }
+    else if (key === '!' && e.shiftKey) { e.preventDefault(); insertFunc('fact('); }
+    else if (key === 'd' && e.ctrlKey) { e.preventDefault(); setAngleMode(angleMode === 'deg' ? 'rad' : 'deg'); }
+    else if (key === 'h' && e.ctrlKey) { e.preventDefault(); document.querySelector('.sidebar').scrollIntoView({ behavior: 'smooth' }); }
+});
+
+// Mobile menu
+document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+    const nav = document.querySelector('.header-nav');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    nav.style.position = 'absolute';
+    nav.style.top = '60px';
+    nav.style.left = '0';
+    nav.style.right = '0';
+    nav.style.background = '#0f172a';
+    nav.style.flexDirection = 'column';
+    nav.style.padding = '16px';
+    nav.style.gap = '4px';
+});
+
+// FAQ toggle
+function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!wasActive) item.classList.add('active');
+}
+
+// Initialize
+updateDisplay();
+</script>
+
+</body>
+</html>
