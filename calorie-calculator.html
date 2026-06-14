@@ -2,1129 +2,127 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-adsense-account" content="ca-pub-7280526621945427">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
-     crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Calculator 2026 | Free Daily Calorie, BMI & BMR Calculator | ToolPond Pro</title>
-    <meta name="description" content="Free advanced calorie calculator 2026. Calculate daily calorie needs, BMI, BMR, TDEE, macro breakdown, and weight loss/gain targets. Accurate Mifflin-St Jeor formula. SEO optimized by ToolPond Pro.">
-    <meta name="keywords" content="calorie calculator, daily calorie needs, BMI calculator, BMR calculator, TDEE calculator, macro calculator, weight loss calculator">
-    <meta name="author" content="ToolPond Pro">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="theme-color" content="#10b981">
+    <meta name="description" content="Calorie Calculator - Estimate your daily calorie needs using the Mifflin-St Jeor equation. Learn about BMR, TDEE, and how to adjust calories for weight goals. Built by Shahid Abbas.">
+    <meta name="author" content="Shahid Abbas">
+    <link rel="canonical" href="https://toolpond.org/calorie-calculator.html">
+    <title>Calorie Calculator - Daily Calorie Needs Estimator</title>
     <style>
-        :root {
-            --primary: #10b981;
-            --primary-dark: #059669;
-            --primary-light: #d1fae5;
-            --secondary: #f59e0b;
-            --secondary-light: #fef3c7;
-            --danger: #ef4444;
-            --info: #3b82f6;
-            --info-light: #dbeafe;
-            --dark: #1f2937;
-            --gray: #6b7280;
-            --gray-light: #f3f4f6;
-            --white: #ffffff;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --radius: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f5f3ff 100%);
-            min-height: 100vh;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .top-nav {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 0 20px;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 800;
-            font-size: 1.3rem;
-        }
-
-        .nav-logo-icon {
-            width: 40px; height: 40px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.2rem;
-        }
-
-        .nav-links {
-            display: flex; gap: 8px; list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none; color: var(--gray);
-            font-weight: 500; font-size: 0.95rem;
-            padding: 8px 16px; border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover { color: var(--primary); background: var(--primary-light); }
-
-        .mobile-menu-btn {
-            display: none; background: none; border: none;
-            font-size: 1.5rem; cursor: pointer; color: var(--dark);
-        }
-
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-
-        .hero {
-            text-align: center; margin-bottom: 50px;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: var(--radius-xl);
-            color: white; position: relative; overflow: hidden;
-        }
-
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 12px; position: relative; z-index: 1; }
-        .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
-
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(255,255,255,0.2); padding: 6px 16px;
-            border-radius: 20px; font-size: 0.85rem; font-weight: 600;
-            margin-bottom: 20px; position: relative; z-index: 1;
-        }
-
-        .calculator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
-        @media (max-width: 900px) { .calculator-grid { grid-template-columns: 1fr; } }
-
-        .card {
-            background: var(--white); border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg); overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-xl); }
-
-        .card-header {
-            padding: 24px 28px; border-bottom: 1px solid var(--gray-light);
-            display: flex; align-items: center; gap: 12px;
-        }
-
-        .card-header-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem;
-        }
-
-        .card-header-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
-        .card-header-subtitle { font-size: 0.85rem; color: var(--gray); margin-top: 2px; }
-        .card-body { padding: 28px; }
-
-        .input-group { margin-bottom: 24px; }
-        .input-group:last-child { margin-bottom: 0; }
-
-        .input-label {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .input-label-text { font-weight: 600; font-size: 0.95rem; color: var(--dark); }
-        .input-label-hint {
-            font-size: 0.8rem; color: var(--gray);
-            background: var(--gray-light); padding: 2px 10px; border-radius: 10px;
-        }
-
-        input[type="number"], input[type="range"], select {
-            width: 100%; padding: 14px 16px;
-            border: 2px solid #e5e7eb; border-radius: var(--radius);
-            font-size: 1rem; font-family: inherit;
-            transition: all 0.3s ease; background: var(--white); color: var(--dark);
-        }
-
-        input[type="number"]:focus, select:focus {
-            outline: none; border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-light);
-        }
-
-        input[type="range"] {
-            padding: 0; height: 8px; border: none; border-radius: 4px;
-            background: #e5e7eb; cursor: pointer;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 24px; height: 24px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            cursor: pointer; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
-            border: 3px solid white;
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 24px; height: 24px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            cursor: pointer; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
-            border: 3px solid white;
-        }
-
-        .slider-container { margin-top: 12px; }
-        .slider-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--gray); margin-top: 8px; }
-        .slider-value { text-align: center; font-weight: 700; font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
-
-        .gender-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .gender-option { position: relative; cursor: pointer; }
-        .gender-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-
-        .gender-option-label {
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            padding: 20px 16px; border: 2px solid #e5e7eb; border-radius: var(--radius);
-            transition: all 0.3s ease; background: var(--white);
-        }
-
-        .gender-option input:checked + .gender-option-label {
-            border-color: var(--primary); background: var(--primary-light);
-        }
-
-        .gender-option-icon { font-size: 2rem; }
-        .gender-option-text { font-weight: 600; font-size: 0.95rem; }
-
-        .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        @media (max-width: 600px) { .activity-grid { grid-template-columns: 1fr 1fr; } }
-
-        .activity-option { position: relative; cursor: pointer; }
-        .activity-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-
-        .activity-option-label {
-            display: flex; flex-direction: column; align-items: center; text-align: center;
-            gap: 6px; padding: 14px 10px; border: 2px solid #e5e7eb;
-            border-radius: var(--radius); transition: all 0.3s ease;
-            background: var(--white); font-size: 0.85rem;
-        }
-
-        .activity-option input:checked + .activity-option-label {
-            border-color: var(--primary); background: var(--primary-light);
-        }
-
-        .activity-option-icon { font-size: 1.5rem; }
-        .activity-option-title { font-weight: 600; font-size: 0.8rem; }
-        .activity-option-desc { font-size: 0.7rem; color: var(--gray); line-height: 1.3; }
-
-        .goal-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .goal-option { position: relative; cursor: pointer; }
-        .goal-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-
-        .goal-option-label {
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            padding: 18px 14px; border: 2px solid #e5e7eb; border-radius: var(--radius);
-            transition: all 0.3s ease; background: var(--white); text-align: center;
-        }
-
-        .goal-option input:checked + .goal-option-label {
-            border-color: var(--primary); background: var(--primary-light);
-        }
-
-        .goal-option-icon { font-size: 1.8rem; }
-        .goal-option-text { font-weight: 700; font-size: 0.9rem; }
-
-        .results-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white; border-radius: var(--radius-lg); padding: 32px; margin-bottom: 24px;
-        }
-
-        .results-header { text-align: center; margin-bottom: 28px; }
-        .results-header h2 { font-size: 1.1rem; font-weight: 600; opacity: 0.9; margin-bottom: 8px; }
-        .results-main-value { font-size: 3.5rem; font-weight: 800; line-height: 1; }
-        .results-main-unit { font-size: 1.2rem; font-weight: 500; opacity: 0.8; }
-
-        .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-
-        .result-item {
-            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
-            border-radius: var(--radius); padding: 16px; text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .result-item-label {
-            font-size: 0.8rem; opacity: 0.8; margin-bottom: 6px;
-            text-transform: uppercase; letter-spacing: 0.5px;
-        }
-
-        .result-item-value { font-size: 1.6rem; font-weight: 700; }
-        .result-item-unit { font-size: 0.85rem; opacity: 0.7; }
-
-        .macro-card {
-            background: var(--white); border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg); padding: 28px; margin-bottom: 24px;
-        }
-
-        .macro-header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
-        }
-
-        .macro-header h3 { font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-
-        .macro-ratio-selector { display: flex; gap: 8px; flex-wrap: wrap; }
-
-        .macro-ratio-btn {
-            padding: 6px 14px; border: 2px solid #e5e7eb; border-radius: 20px;
-            background: var(--white); font-size: 0.8rem; font-weight: 600;
-            cursor: pointer; transition: all 0.3s ease; font-family: inherit;
-        }
-
-        .macro-ratio-btn.active {
-            border-color: var(--primary); background: var(--primary-light);
-            color: var(--primary-dark);
-        }
-
-        .macro-bars {
-            display: flex; height: 32px; border-radius: 16px;
-            overflow: hidden; margin-bottom: 24px; box-shadow: var(--shadow-sm);
-        }
-
-        .macro-bar {
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: 700; font-size: 0.85rem;
-            transition: width 0.5s ease;
-        }
-
-        .macro-bar-protein { background: linear-gradient(90deg, #f97316, #ea580c); }
-        .macro-bar-carbs { background: linear-gradient(90deg, #3b82f6, #2563eb); }
-        .macro-bar-fat { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
-
-        .macro-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-
-        .macro-detail {
-            text-align: center; padding: 20px; border-radius: var(--radius);
-            background: var(--gray-light); transition: transform 0.3s ease;
-        }
-
-        .macro-detail:hover { transform: translateY(-4px); }
-        .macro-detail-icon { font-size: 2rem; margin-bottom: 8px; }
-        .macro-detail-label { font-size: 0.85rem; font-weight: 600; color: var(--gray); margin-bottom: 4px; }
-        .macro-detail-value { font-size: 1.5rem; font-weight: 700; color: var(--dark); }
-        .macro-detail-unit { font-size: 0.8rem; color: var(--gray); }
-        .macro-detail-cal { font-size: 0.75rem; color: var(--primary); font-weight: 600; margin-top: 4px; }
-
-        .bmi-card {
-            background: var(--white); border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg); padding: 28px; margin-bottom: 24px;
-        }
-
-        .bmi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-        .bmi-header h3 { font-size: 1.2rem; font-weight: 700; }
-
-        .bmi-display { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
-
-        .bmi-value-circle {
-            width: 120px; height: 120px; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white; flex-shrink: 0; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
-        }
-
-        .bmi-value-number { font-size: 2.2rem; font-weight: 800; line-height: 1; }
-        .bmi-value-label { font-size: 0.75rem; opacity: 0.9; margin-top: 4px; }
-
-        .bmi-info { flex: 1; }
-        .bmi-category { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
-        .bmi-description { font-size: 0.9rem; color: var(--gray); line-height: 1.5; }
-
-        .bmi-scale {
-            display: flex; height: 24px; border-radius: 12px;
-            overflow: hidden; margin-bottom: 12px; position: relative;
-        }
-
-        .bmi-scale-segment {
-            flex: 1; display: flex; align-items: center; justify-content: center;
-            font-size: 0.65rem; font-weight: 700; color: white;
-        }
-
-        .bmi-scale-under { background: #3b82f6; }
-        .bmi-scale-normal { background: #10b981; }
-        .bmi-scale-over { background: #f59e0b; }
-        .bmi-scale-obese { background: #ef4444; }
-
-        .bmi-marker {
-            position: absolute; top: -6px; width: 0; height: 0;
-            border-left: 8px solid transparent; border-right: 8px solid transparent;
-            border-top: 10px solid var(--dark); transform: translateX(-50%);
-            transition: left 0.5s ease;
-        }
-
-        .bmi-legend { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gray); }
-
-        .timeline-card {
-            background: var(--white); border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg); padding: 28px; margin-bottom: 24px;
-        }
-
-        .timeline-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-        .timeline-header h3 { font-size: 1.2rem; font-weight: 700; }
-
-        .timeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-
-        .timeline-item {
-            background: var(--gray-light); border-radius: var(--radius);
-            padding: 16px; text-align: center; transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .timeline-item:hover { border-color: var(--primary); transform: translateY(-2px); }
-        .timeline-item-week { font-size: 0.8rem; font-weight: 600; color: var(--gray); margin-bottom: 8px; }
-        .timeline-item-weight { font-size: 1.3rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-        .timeline-item-change { font-size: 0.75rem; font-weight: 600; }
-        .timeline-item-change.loss { color: var(--info); }
-        .timeline-item-change.gain { color: var(--secondary); }
-
-        .meal-card {
-            background: var(--white); border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg); padding: 28px; margin-bottom: 24px;
-        }
-
-        .meal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-        .meal-header h3 { font-size: 1.2rem; font-weight: 700; }
-
-        .meal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-
-        .meal-item {
-            background: var(--gray-light); border-radius: var(--radius);
-            padding: 20px; border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .meal-item:hover { transform: translateX(4px); box-shadow: var(--shadow); }
-        .meal-item-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .meal-item-calories { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
-        .meal-item-macros { font-size: 0.8rem; color: var(--gray); line-height: 1.6; }
-
-        .faq-section {
-            background: var(--white); border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg); padding: 40px 32px; margin-bottom: 40px;
-        }
-
-        .faq-header { text-align: center; margin-bottom: 32px; }
-        .faq-header h2 { font-size: 1.8rem; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-        .faq-header p { color: var(--gray); font-size: 1rem; }
-
-        .faq-item { border-bottom: 1px solid #e5e7eb; padding: 20px 0; }
-        .faq-item:last-child { border-bottom: none; }
-
-        .faq-question {
-            display: flex; align-items: center; justify-content: space-between;
-            cursor: pointer; font-weight: 600; font-size: 1.05rem;
-            color: var(--dark); transition: color 0.3s ease;
-        }
-
-        .faq-question:hover { color: var(--primary); }
-        .faq-icon { font-size: 1.2rem; transition: transform 0.3s ease; flex-shrink: 0; margin-left: 12px; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-
-        .faq-answer {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            color: var(--gray); line-height: 1.7;
-        }
-
-        .faq-item.active .faq-answer { max-height: 500px; padding-top: 16px; }
-
-        .btn-group { display: flex; gap: 12px; margin-top: 28px; }
-
-        .btn {
-            flex: 1; padding: 14px 24px; border: none; border-radius: var(--radius);
-            font-size: 1rem; font-weight: 700; cursor: pointer;
-            transition: all 0.3s ease; font-family: inherit;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
-        }
-
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5); }
-
-        .btn-secondary {
-            background: var(--gray-light); color: var(--dark);
-        }
-
-        .btn-secondary:hover { background: #e5e7eb; transform: translateY(-2px); }
-
-        .info-box {
-            background: linear-gradient(135deg, var(--info-light) 0%, #eff6ff 100%);
-            border-left: 4px solid var(--info); padding: 20px;
-            border-radius: var(--radius); margin: 24px 0;
-            font-size: 0.95rem; color: #1e40af; line-height: 1.7;
-        }
-
-        .site-footer {
-            background: linear-gradient(135deg, var(--dark) 0%, #111827 100%);
-            color: white; padding: 60px 20px 30px; margin-top: 60px;
-        }
-
-        .footer-container { max-width: 1200px; margin: 0 auto; }
-
-        .footer-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px; margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;
-            color: white; display: flex; align-items: center; gap: 8px;
-        }
-
-        .footer-section ul { list-style: none; }
-        .footer-section ul li { margin-bottom: 12px; }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7); text-decoration: none;
-            transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
-        }
-
-        .footer-section a:hover { color: var(--primary); transform: translateX(4px); }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 24px; text-align: center;
-            font-size: 0.9rem; color: rgba(255, 255, 255, 0.5);
-        }
-
-        .footer-bottom a {
-            color: rgba(255, 255, 255, 0.7); text-decoration: none;
-            margin: 0 8px; transition: color 0.3s ease;
-        }
-
-        .footer-bottom a:hover { color: var(--primary); }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .results-main-value { font-size: 2.5rem; }
-            .results-grid { grid-template-columns: 1fr; }
-            .macro-details { grid-template-columns: 1fr; }
-            .bmi-display { flex-direction: column; text-align: center; }
-            .goal-toggle { grid-template-columns: 1fr; }
-            .activity-grid { grid-template-columns: 1fr 1fr; }
-            .timeline-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#0066cc;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--light)}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.page-header{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.page-header h1{font-size:2.2rem;margin-bottom:0.5rem}.page-header p{font-size:1rem;opacity:0.9;max-width:700px;margin:0 auto}.container{max-width:900px;margin:0 auto;padding:0 2rem}.content-section{background:#fff;padding:2.5rem;margin:2rem 0;border-radius:8px;border:1px solid var(--border)}.content-section h2{color:var(--dark);margin-bottom:1rem;font-size:1.4rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem;display:inline-block}.content-section h3{color:var(--dark);margin:1.5rem 0 0.75rem 0;font-size:1.1rem}.content-section p{color:#4b5563;margin-bottom:1rem;line-height:1.8}.content-section ul{margin-left:1.5rem;color:#4b5563;margin-bottom:1rem}.content-section li{margin-bottom:0.5rem}.content-section table{width:100%;border-collapse:collapse;margin:1rem 0}.content-section th,.content-section td{border:1px solid var(--border);padding:0.75rem;text-align:left}.content-section th{background:var(--light);font-weight:600;color:var(--dark)}.highlight{background:#f0f9ff;border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.highlight p{color:#4b5563;margin:0}.warning{background:#fff7ed;border-left:4px solid #f97316;padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.warning p{color:#7c2d12;margin:0}.author-footer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);color:#6b7280;font-size:0.9rem}footer{background:var(--dark);color:#fff;padding:2rem;text-align:center}.footer-links{margin-bottom:1rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}@media(max-width:768px){.page-header h1{font-size:1.8rem}}
     </style>
 </head>
 <body>
-    <nav class="top-nav">
+    <nav>
         <div class="nav-container">
-            <a href="https://toolpond.org" class="nav-logo">
-                <div class="nav-logo-icon">TP</div>
-                <span>ToolPond Pro</span>
-            </a>
+            <a href="index.html" class="logo">ToolPond</a>
             <ul class="nav-links">
-                <li><a href="https://toolpond.org">Home</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="https://toolpond.org/bmi-calculator.html">BMI Calc</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="main-container">
-        <section class="hero">
-            <div class="hero-badge">Advanced Calorie Calculator 2026</div>
+    <div class="page-header">
+        <div class="container">
             <h1>Calorie Calculator</h1>
-            <p>Calculate your daily calorie needs, BMI, BMR, TDEE, macro breakdown, and personalized weight loss/gain targets with scientifically accurate formulas.</p>
-        </section>
-
-        <div class="calculator-grid">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-header-icon" style="background: var(--primary-light); color: var(--primary);">📋</div>
-                    <div>
-                        <div class="card-header-title">Your Details</div>
-                        <div class="card-header-subtitle">Enter your body metrics</div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <div class="input-label">Gender</div>
-                        <div class="gender-toggle">
-                            <label class="gender-option">
-                                <input type="radio" name="gender" value="male" checked onchange="calculateAll()">
-                                <div class="gender-option-label">
-                                    <span class="gender-option-icon">👨</span>
-                                    <span class="gender-option-text">Male</span>
-                                </div>
-                            </label>
-                            <label class="gender-option">
-                                <input type="radio" name="gender" value="female" onchange="calculateAll()">
-                                <div class="gender-option-label">
-                                    <span class="gender-option-icon">👩</span>
-                                    <span class="gender-option-text">Female</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-label">Age: <span id="ageDisplay">30</span> years</div>
-                        <input type="range" id="ageSlider" min="10" max="100" value="30" oninput="updateAge(this.value)">
-                        <div class="slider-labels"><span>10</span><span>100</span></div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-label">Height: <span id="heightDisplay">175</span> cm</div>
-                        <input type="range" id="heightSlider" min="100" max="250" value="175" oninput="updateHeight(this.value)">
-                        <div class="slider-labels"><span>100 cm</span><span>250 cm</span></div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-label">Weight: <span id="weightDisplay">70</span> kg</div>
-                        <input type="range" id="weightSlider" min="30" max="200" value="70" oninput="updateWeight(this.value)">
-                        <div class="slider-labels"><span>30 kg</span><span>200 kg</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-header-icon" style="background: var(--secondary-light); color: var(--secondary);">🎯</div>
-                    <div>
-                        <div class="card-header-title">Activity & Goal</div>
-                        <div class="card-header-subtitle">Set your lifestyle and target</div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <div class="input-label">Activity Level</div>
-                        <div class="activity-grid">
-                            <label class="activity-option">
-                                <input type="radio" name="activity" value="1.2" onchange="calculateAll()">
-                                <div class="activity-option-label">
-                                    <span class="activity-option-icon">🛋️</span>
-                                    <span class="activity-option-title">Sedentary</span>
-                                    <span class="activity-option-desc">Little to no exercise</span>
-                                </div>
-                            </label>
-                            <label class="activity-option">
-                                <input type="radio" name="activity" value="1.375" checked onchange="calculateAll()">
-                                <div class="activity-option-label">
-                                    <span class="activity-option-icon">🚶</span>
-                                    <span class="activity-option-title">Light</span>
-                                    <span class="activity-option-desc">1-3 days/week</span>
-                                </div>
-                            </label>
-                            <label class="activity-option">
-                                <input type="radio" name="activity" value="1.55" onchange="calculateAll()">
-                                <div class="activity-option-label">
-                                    <span class="activity-option-icon">🏃</span>
-                                    <span class="activity-option-title">Moderate</span>
-                                    <span class="activity-option-desc">3-5 days/week</span>
-                                </div>
-                            </label>
-                            <label class="activity-option">
-                                <input type="radio" name="activity" value="1.725" onchange="calculateAll()">
-                                <div class="activity-option-label">
-                                    <span class="activity-option-icon">💪</span>
-                                    <span class="activity-option-title">Active</span>
-                                    <span class="activity-option-desc">6-7 days/week</span>
-                                </div>
-                            </label>
-                            <label class="activity-option">
-                                <input type="radio" name="activity" value="1.9" onchange="calculateAll()">
-                                <div class="activity-option-label">
-                                    <span class="activity-option-icon">🔥</span>
-                                    <span class="activity-option-title">Very Active</span>
-                                    <span class="activity-option-desc">Physical job</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-label">Your Goal</div>
-                        <div class="goal-toggle">
-                            <label class="goal-option">
-                                <input type="radio" name="goal" value="loss" onchange="calculateAll()">
-                                <div class="goal-option-label">
-                                    <span class="goal-option-icon">📉</span>
-                                    <span class="goal-option-text">Lose Weight</span>
-                                </div>
-                            </label>
-                            <label class="goal-option">
-                                <input type="radio" name="goal" value="maintain" checked onchange="calculateAll()">
-                                <div class="goal-option-label">
-                                    <span class="goal-option-icon">⚖️</span>
-                                    <span class="goal-option-text">Maintain</span>
-                                </div>
-                            </label>
-                            <label class="goal-option">
-                                <input type="radio" name="goal" value="gain" onchange="calculateAll()">
-                                <div class="goal-option-label">
-                                    <span class="goal-option-icon">📈</span>
-                                    <span class="goal-option-text">Gain Weight</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="btn-group">
-                        <button class="btn btn-primary" onclick="calculateAll()">Calculate</button>
-                        <button class="btn btn-secondary" onclick="resetCalculator()">Reset</button>
-                    </div>
-                </div>
-            </div>
+            <p>Estimate your daily calorie needs using the Mifflin-St Jeor equation. Adjust for weight loss, maintenance, or muscle gain.</p>
         </div>
-
-        <div class="results-card">
-            <div class="results-header">
-                <h2>Your Daily Calorie Target</h2>
-                <div class="results-main-value"><span id="targetCalories">2,200</span></div>
-                <div class="results-main-unit">calories per day</div>
-            </div>
-            <div class="results-grid">
-                <div class="result-item">
-                    <div class="result-item-label">BMR</div>
-                    <div class="result-item-value"><span id="bmrValue">1,600</span></div>
-                    <div class="result-item-unit">calories at rest</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-item-label">TDEE</div>
-                    <div class="result-item-value"><span id="tdeeValue">2,200</span></div>
-                    <div class="result-item-unit">calories with activity</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-item-label">Deficit/Surplus</div>
-                    <div class="result-item-value"><span id="deficitValue">0</span></div>
-                    <div class="result-item-unit">calories per day</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-item-label">Weekly Change</div>
-                    <div class="result-item-value"><span id="weeklyChange">0.0</span></div>
-                    <div class="result-item-unit">kg per week</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bmi-card">
-            <div class="bmi-header">
-                <span style="font-size: 1.5rem;">📊</span>
-                <h3>Body Mass Index (BMI)</h3>
-            </div>
-            <div class="bmi-display">
-                <div class="bmi-value-circle">
-                    <div class="bmi-value-number" id="bmiValue">22.9</div>
-                    <div class="bmi-value-label">BMI Score</div>
-                </div>
-                <div class="bmi-info">
-                    <div class="bmi-category" id="bmiCategory" style="color: var(--primary);">Normal Weight</div>
-                    <div class="bmi-description" id="bmiDescription">Your BMI is within the healthy range. Maintain your current lifestyle.</div>
-                </div>
-            </div>
-            <div class="bmi-scale">
-                <div class="bmi-scale-segment bmi-scale-under">Under 18.5</div>
-                <div class="bmi-scale-segment bmi-scale-normal">Normal 18.5-25</div>
-                <div class="bmi-scale-segment bmi-scale-over">Over 25-30</div>
-                <div class="bmi-scale-segment bmi-scale-obese">Obese 30+</div>
-                <div class="bmi-marker" id="bmiMarker" style="left: 45%;"></div>
-            </div>
-        </div>
-
-        <div class="macro-card">
-            <div class="macro-header">
-                <h3><span style="font-size: 1.5rem;">🍽️</span> Macro Breakdown</h3>
-                <div class="macro-ratio-selector">
-                    <button class="macro-ratio-btn active" onclick="setMacroRatio('balanced')" id="btnBalanced">Balanced</button>
-                    <button class="macro-ratio-btn" onclick="setMacroRatio('lowCarb')" id="btnLowCarb">Low Carb</button>
-                    <button class="macro-ratio-btn" onclick="setMacroRatio('highProtein')" id="btnHighProtein">High Protein</button>
-                    <button class="macro-ratio-btn" onclick="setMacroRatio('keto')" id="btnKeto">Keto</button>
-                </div>
-            </div>
-            <div class="macro-bars" id="macroBars">
-                <div class="macro-bar macro-bar-protein" id="barProtein" style="width: 30%;">30%</div>
-                <div class="macro-bar macro-bar-carbs" id="barCarbs" style="width: 40%;">40%</div>
-                <div class="macro-bar macro-bar-fat" id="barFat" style="width: 30%;">30%</div>
-            </div>
-            <div class="macro-details">
-                <div class="macro-detail">
-                    <div class="macro-detail-icon">🥩</div>
-                    <div class="macro-detail-label">Protein</div>
-                    <div class="macro-detail-value"><span id="proteinGrams">165</span>g</div>
-                    <div class="macro-detail-unit">per day</div>
-                    <div class="macro-detail-cal"><span id="proteinCals">660</span> cal</div>
-                </div>
-                <div class="macro-detail">
-                    <div class="macro-detail-icon">🍞</div>
-                    <div class="macro-detail-label">Carbs</div>
-                    <div class="macro-detail-value"><span id="carbsGrams">220</span>g</div>
-                    <div class="macro-detail-unit">per day</div>
-                    <div class="macro-detail-cal"><span id="carbsCals">880</span> cal</div>
-                </div>
-                <div class="macro-detail">
-                    <div class="macro-detail-icon">🥑</div>
-                    <div class="macro-detail-label">Fats</div>
-                    <div class="macro-detail-value"><span id="fatGrams">73</span>g</div>
-                    <div class="macro-detail-unit">per day</div>
-                    <div class="macro-detail-cal"><span id="fatCals">660</span> cal</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-card">
-            <div class="timeline-header">
-                <span style="font-size: 1.5rem;">📅</span>
-                <h3>Projected Weight Timeline</h3>
-            </div>
-            <div class="timeline-grid" id="timelineGrid"></div>
-        </div>
-
-        <div class="meal-card">
-            <div class="meal-header">
-                <span style="font-size: 1.5rem;">🍱</span>
-                <h3>Suggested Meal Plan</h3>
-            </div>
-            <div class="meal-grid" id="mealGrid"></div>
-        </div>
-
-        <div class="info-box">
-            <strong>How It Works:</strong> We use the Mifflin-St Jeor equation (the most accurate BMR formula) to calculate your Basal Metabolic Rate. Then we multiply by your activity level to get TDEE. Finally, we adjust for your goal: -500 calories for weight loss, +500 for weight gain, or maintenance.
-        </div>
-
-        <section class="faq-section" id="faq">
-            <div class="faq-header">
-                <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about calorie calculation</p>
-            </div>
-            <div class="faq-item active">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>How do I calculate my daily calorie needs?</span>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Daily calorie needs are calculated using your Basal Metabolic Rate (BMR) multiplied by an activity factor. We use the Mifflin-St Jeor formula which multiplies your activity level: Sedentary (1.2), Light (1.375), Moderate (1.55), Active (1.725), or Very Active (1.9).
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>What is the difference between BMR and TDEE?</span>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    BMR (Basal Metabolic Rate) is calories burned at rest. TDEE (Total Daily Energy Expenditure) is your total calorie burn including all activities and exercise. TDEE = BMR x Activity Factor.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>How many calories should I eat to lose weight?</span>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Create a calorie deficit of 500 calories below your TDEE for healthy weight loss (1 pound/week). This calculator subtracts 500 for weight loss goals and adds 500 for weight gain goals.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>What are macros and why do they matter?</span>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Macros are Protein, Carbs, and Fats. Protein builds muscle, Carbs provide energy, Fats support hormones. Aim for 0.7-1g protein per lb body weight for muscle building.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>Is this calculator accurate?</span>
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Yes! We use the scientifically validated Mifflin-St Jeor equation considered the most accurate BMR formula. Results are typically accurate within ±10%.
-                </div>
-            </div>
-        </section>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>About Us</h4>
-                    <ul>
-                        <li><a href="https://toolpond.org">Home</a></li>
-                        <li><a href="https://toolpond.org/about.html">About</a></li>
-                        <li><a href="https://toolpond.org/privacy-policy.html">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Health Calculators</h4>
-                    <ul>
-                        <li><a href="https://toolpond.org/bmi-calculator.html">BMI Calculator</a></li>
-                        <li><a href="https://toolpond.org/body-fat-calculator.html">Body Fat Calculator</a></li>
-                        <li><a href="https://toolpond.org/macros-calculator.html">Macros Calculator</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Tools</h4>
-                    <ul>
-                        <li><a href="https://toolpond.org/loan-calculator.html">Loan Calculator</a></li>
-                        <li><a href="https://toolpond.org/percentage-calculator.html">Percentage Calculator</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="https://toolpond.org/contact.html">Contact Us</a></li>
-                        <li>Email: info@toolpond.org</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 ToolPond Pro. All rights reserved.</p>
+    <div class="container">
+        <div class="content-section">
+            <h2>Calculate Your Daily Calories</h2>
+            <p>Enter your age, gender, height, weight, and activity level to estimate how many calories you need each day. This calculator uses the Mifflin-St Jeor equation, which research shows is the most accurate formula for estimating resting metabolic rate in non-obese adults.</p>
+            <div style="background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:1.5rem 0;">
+                <p style="color:#6b7280">[Your existing calorie calculator tool goes here]</p>
             </div>
         </div>
+
+        <div class="content-section">
+            <h2>How Calorie Calculations Work</h2>
+            <p>Your total daily calorie needs depend on two main components: your Basal Metabolic Rate (BMR) and your activity level. Understanding both helps you set realistic nutrition goals.</p>
+
+            <h3>Basal Metabolic Rate (BMR)</h3>
+            <p>BMR represents the minimum calories your body needs to maintain basic life functions — breathing, circulation, cell production, and temperature regulation — while at complete rest. It accounts for 60–75% of your total daily energy expenditure.</p>
+            <p>This calculator uses the <strong>Mifflin-St Jeor equation</strong>, published in 1990 and validated in multiple studies as the most accurate BMR estimation method for adults:</p>
+            <div class="highlight">
+                <p><strong>Men:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age in years) + 5</p>
+                <p style="margin-top:0.5rem"><strong>Women:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age in years) − 161</p>
+            </div>
+            <p>The Mifflin-St Jeor equation replaced the older Harris-Benedict equation (1919) because it more accurately predicts actual metabolic rates measured in laboratory settings. Studies show it has a prediction accuracy within 10% of measured values for most adults.</p>
+
+            <h3>Activity Level Multipliers</h3>
+            <p>After calculating BMR, we multiply by an activity factor to estimate your Total Daily Energy Expenditure (TDEE):</p>
+            <table>
+                <tr><th>Activity Level</th><th>Description</th><th>Multiplier</th></tr>
+                <tr><td>Sedentary</td><td>Little to no exercise, desk job</td><td>BMR × 1.2</td></tr>
+                <tr><td>Lightly Active</td><td>Light exercise 1–3 days per week</td><td>BMR × 1.375</td></tr>
+                <tr><td>Moderately Active</td><td>Moderate exercise 3–5 days per week</td><td>BMR × 1.55</td></tr>
+                <tr><td>Very Active</td><td>Hard exercise 6–7 days per week</td><td>BMR × 1.725</td></tr>
+                <tr><td>Extra Active</td><td>Very hard exercise, physical job, or training twice daily</td><td>BMR × 1.9</td></tr>
+            </table>
+            <p>Be honest about your activity level. Most people overestimate their daily activity, leading to calorie targets that are too high for their goals.</p>
+
+            <h3>Adjusting Calories for Your Goals</h3>
+            <p>Once you know your TDEE (maintenance calories), adjust based on your goal:</p>
+            <ul>
+                <li><strong>Weight loss:</strong> Subtract 300–500 calories from TDEE. This creates a moderate deficit of approximately 0.5–1 kg (1–2 lbs) of fat loss per week. Larger deficits are harder to sustain and increase muscle loss risk.</li>
+                <li><strong>Weight maintenance:</strong> Eat at your TDEE level. Monitor weight over 2–3 weeks and adjust if it trends up or down.</li>
+                <li><strong>Muscle gain:</strong> Add 200–300 calories above TDEE. This supports muscle growth while minimizing fat gain. Combine with resistance training and adequate protein intake (1.6–2.2g per kg body weight).</li>
+            </ul>
+
+            <h3>Factors That Affect Calorie Needs</h3>
+            <p>The calculator provides an estimate, but individual variation is significant:</p>
+            <ul>
+                <li><strong>Muscle mass:</strong> Muscle tissue burns more calories at rest than fat tissue. Two people at the same weight but different body compositions have different calorie needs.</li>
+                <li><strong>Metabolic adaptation:</strong> Prolonged calorie restriction can lower BMR by 5–15% as the body becomes more efficient. This is why weight loss plateaus occur.</li>
+                <li><strong>Hormonal factors:</strong> Thyroid function, cortisol levels, and menstrual cycle phase all influence metabolic rate.</li>
+                <li><strong>NEAT (Non-Exercise Activity Thermogenesis):</strong> Fidgeting, posture maintenance, and unconscious movement vary enormously between individuals and can account for 200–900 calories daily.</li>
+                <li><strong>Thermic effect of food:</strong> Protein requires 20–30% of its calories to digest, compared to 5–10% for carbs and 0–3% for fats. High-protein diets slightly increase calorie expenditure.</li>
+                <li><strong>Genetics:</strong> Twin studies suggest 40–70% of metabolic rate variation is genetic.</li>
+            </ul>
+
+            <h3>Why Calorie Counting Sometimes Fails</h3>
+            <p>Even with accurate calculations, calorie tracking can be frustrating:</p>
+            <ul>
+                <li><strong>Food label inaccuracies:</strong> FDA regulations allow up to 20% variance in calorie counts on packaged foods. Restaurant meals can be off by 200+ calories.</li>
+                <li><strong>Portion estimation errors:</strong> Studies show people underestimate portion sizes by 20–50% when not using a food scale.</li>
+                <li><strong>Calorie absorption variation:</strong> Gut microbiome differences mean two people eating identical meals may absorb different calorie amounts.</li>
+                <li><strong>Water weight fluctuations:</strong> Sodium intake, carbohydrate stores, and hormonal changes can shift scale weight by 1–3 kg without reflecting actual fat change.</li>
+            </ul>
+
+            <h3>Practical Tips for Using This Calculator</h3>
+            <ul>
+                <li><strong>Use it as a starting point, not gospel:</strong> Track your weight for 2–3 weeks while eating at the calculated level. If weight doesn't change as expected, adjust by 100–200 calories.</li>
+                <li><strong>Recalculate monthly:</strong> As your weight changes, your calorie needs change. Update the calculator regularly.</li>
+                <li><strong>Prioritize protein:</strong> Aim for 1.6–2.2g protein per kg of body weight to preserve muscle during weight loss and support muscle gain.</li>
+                <li><strong>Don't go below 1,200 calories (women) or 1,500 (men):</strong> Very low calorie diets risk nutrient deficiencies, muscle loss, and metabolic slowdown without medical supervision.</li>
+                <li><strong>Consider diet breaks:</strong> Eating at maintenance for 1–2 weeks after every 8–12 weeks of dieting helps reset hormones and makes long-term adherence easier.</li>
+            </ul>
+
+            <div class="warning">
+                <p><strong>Medical Disclaimer:</strong> This calculator provides estimates based on population averages. Individual needs vary significantly. Pregnant women, children, people with eating disorders, and those with medical conditions should consult a healthcare provider or registered dietitian before changing calorie intake. Never eat fewer than 1,200 calories (women) or 1,500 calories (men) daily without medical supervision.</p>
+            </div>
+
+            <div class="author-footer">
+                <p>Built by <strong>Shahid Abbas</strong> · ToolPond · Pakistan</p>
+                <p>Formula: Mifflin-St Jeor (1990). <a href="contact.html" style="color:var(--primary);text-decoration:none;">Report an issue</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="calculators.html">Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy</a>
+        </div>
+        <p>&copy; 2026 ToolPond. Built by Shahid Abbas.</p>
     </footer>
-
-    <script>
-        let currentMacroRatio = 'balanced';
-        const startingWeight = 70;
-
-        // Update slider display values
-        function updateAge(value) {
-            document.getElementById('ageDisplay').textContent = value;
-            calculateAll();
-        }
-
-        function updateHeight(value) {
-            document.getElementById('heightDisplay').textContent = value;
-            calculateAll();
-        }
-
-        function updateWeight(value) {
-            document.getElementById('weightDisplay').textContent = value;
-            calculateAll();
-        }
-
-        // Get form values
-        function getValues() {
-            return {
-                gender: document.querySelector('input[name="gender"]:checked').value,
-                age: parseInt(document.getElementById('ageSlider').value),
-                height: parseInt(document.getElementById('heightSlider').value),
-                weight: parseInt(document.getElementById('weightSlider').value),
-                activity: parseFloat(document.querySelector('input[name="activity"]:checked').value),
-                goal: document.querySelector('input[name="goal"]:checked').value
-            };
-        }
-
-        // Calculate BMR using Mifflin-St Jeor
-        function calculateBMR(gender, weight, height, age) {
-            let bmr;
-            if (gender === 'male') {
-                bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-            } else {
-                bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
-            }
-            return Math.round(bmr);
-        }
-
-        // Calculate BMI
-        function calculateBMI(weight, height) {
-            const heightM = height / 100;
-            return (weight / (heightM * heightM)).toFixed(1);
-        }
-
-        // Get BMI category
-        function getBMICategory(bmi) {
-            bmi = parseFloat(bmi);
-            if (bmi < 18.5) return { category: 'Underweight', color: '#3b82f6', description: 'Your BMI is below healthy range. Consider consulting a healthcare provider.' };
-            if (bmi < 25) return { category: 'Normal Weight', color: '#10b981', description: 'Your BMI is within the healthy range. Maintain your current lifestyle.' };
-            if (bmi < 30) return { category: 'Overweight', color: '#f59e0b', description: 'Your BMI is above healthy range. A moderate deficit can help.' };
-            return { category: 'Obese', color: '#ef4444', description: 'Your BMI is above healthy range. Consider consulting a healthcare provider.' };
-        }
-
-        // Get macro ratios
-        function getMacroRatios() {
-            const ratios = {
-                balanced: { protein: 30, carbs: 40, fat: 30 },
-                lowCarb: { protein: 40, carbs: 20, fat: 40 },
-                highProtein: { protein: 40, carbs: 35, fat: 25 },
-                keto: { protein: 25, carbs: 5, fat: 70 }
-            };
-            return ratios[currentMacroRatio] || ratios.balanced;
-        }
-
-        // Set macro ratio and recalculate
-        function setMacroRatio(ratio) {
-            currentMacroRatio = ratio;
-            document.querySelectorAll('.macro-ratio-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn' + ratio.charAt(0).toUpperCase() + ratio.slice(1)).classList.add('active');
-            calculateAll();
-        }
-
-        // Update timeline
-        function updateTimeline(startWeight, weeklyChange) {
-            const grid = document.getElementById('timelineGrid');
-            grid.innerHTML = '';
-            
-            for (let week = 1; week <= 24; week += 4) {
-                const projectedWeight = (startWeight + (weeklyChange * week)).toFixed(1);
-                const change = (weeklyChange * week).toFixed(1);
-                
-                const item = document.createElement('div');
-                item.className = 'timeline-item';
-                item.innerHTML = `
-                    <div class="timeline-item-week">Week ${week}</div>
-                    <div class="timeline-item-weight">${projectedWeight} kg</div>
-                    <div class="timeline-item-change ${change < 0 ? 'loss' : change > 0 ? 'gain' : 'maintain'}">${change > 0 ? '+' : ''}${change} kg</div>
-                `;
-                grid.appendChild(item);
-            }
-        }
-
-        // Update meal plan
-        function updateMealPlan(tdee) {
-            const meals = {
-                breakfast: { emoji: '🥣', name: 'Breakfast', percent: 0.25 },
-                lunch: { emoji: '🍝', name: 'Lunch', percent: 0.35 },
-                snack: { emoji: '🍎', name: 'Snack', percent: 0.1 },
-                dinner: { emoji: '🍗', name: 'Dinner', percent: 0.3 }
-            };
-            
-            const grid = document.getElementById('mealGrid');
-            grid.innerHTML = '';
-            
-            for (const [key, meal] of Object.entries(meals)) {
-                const calories = Math.round(tdee * meal.percent);
-                const item = document.createElement('div');
-                item.className = 'meal-item';
-                item.innerHTML = `
-                    <div class="meal-item-title">${meal.emoji} ${meal.name}</div>
-                    <div class="meal-item-calories">${calories} cal</div>
-                    <div class="meal-item-macros">P: 25-30g | C: 40-50g | F: 10-15g</div>
-                `;
-                grid.appendChild(item);
-            }
-        }
-
-        // Main calculate function
-        function calculateAll() {
-            const values = getValues();
-            
-            // Calculate BMR & TDEE
-            const bmr = calculateBMR(values.gender, values.weight, values.height, values.age);
-            const tdee = Math.round(bmr * values.activity);
-            
-            // Calculate target calories
-            let target, deficit, weeklyChange;
-            if (values.goal === 'loss') {
-                target = tdee - 500;
-                deficit = -500;
-                weeklyChange = -0.5;
-            } else if (values.goal === 'gain') {
-                target = tdee + 500;
-                deficit = 500;
-                weeklyChange = 0.5;
-            } else {
-                target = tdee;
-                deficit = 0;
-                weeklyChange = 0;
-            }
-
-            // Update results
-            document.getElementById('targetCalories').textContent = target.toLocaleString();
-            document.getElementById('bmrValue').textContent = bmr.toLocaleString();
-            document.getElementById('tdeeValue').textContent = tdee.toLocaleString();
-            document.getElementById('deficitValue').textContent = (deficit > 0 ? '+' : '') + deficit;
-            document.getElementById('weeklyChange').textContent = (weeklyChange > 0 ? '+' : '') + weeklyChange.toFixed(1);
-
-            // Update BMI
-            const bmi = calculateBMI(values.weight, values.height);
-            const bmiInfo = getBMICategory(bmi);
-            document.getElementById('bmiValue').textContent = bmi;
-            document.getElementById('bmiCategory').textContent = bmiInfo.category;
-            document.getElementById('bmiCategory').style.color = bmiInfo.color;
-            document.getElementById('bmiDescription').textContent = bmiInfo.description;
-
-            // BMI marker position
-            const markerPos = (parseFloat(bmi) / 40) * 100;
-            document.getElementById('bmiMarker').style.left = Math.min(markerPos, 99) + '%';
-
-            // Calculate macros
-            const ratios = getMacroRatios();
-            const proteinCals = Math.round(target * (ratios.protein / 100));
-            const carbsCals = Math.round(target * (ratios.carbs / 100));
-            const fatCals = Math.round(target * (ratios.fat / 100));
-
-            const proteinGrams = Math.round(proteinCals / 4);
-            const carbsGrams = Math.round(carbsCals / 4);
-            const fatGrams = Math.round(fatCals / 9);
-
-            // Update macro displays
-            document.getElementById('proteinGrams').textContent = proteinGrams;
-            document.getElementById('carbsGrams').textContent = carbsGrams;
-            document.getElementById('fatGrams').textContent = fatGrams;
-            document.getElementById('proteinCals').textContent = proteinCals;
-            document.getElementById('carbsCals').textContent = carbsCals;
-            document.getElementById('fatCals').textContent = fatCals;
-
-            // Update macro bars
-            document.getElementById('barProtein').style.width = ratios.protein + '%';
-            document.getElementById('barProtein').textContent = ratios.protein + '%';
-            document.getElementById('barCarbs').style.width = ratios.carbs + '%';
-            document.getElementById('barCarbs').textContent = ratios.carbs + '%';
-            document.getElementById('barFat').style.width = ratios.fat + '%';
-            document.getElementById('barFat').textContent = ratios.fat + '%';
-
-            // Update timeline and meal plan
-            updateTimeline(values.weight, weeklyChange);
-            updateMealPlan(target);
-        }
-
-        // Reset calculator
-        function resetCalculator() {
-            document.getElementById('ageSlider').value = 30;
-            document.getElementById('heightSlider').value = 175;
-            document.getElementById('weightSlider').value = 70;
-            document.querySelector('input[name="gender"][value="male"]').checked = true;
-            document.querySelector('input[name="activity"][value="1.375"]').checked = true;
-            document.querySelector('input[name="goal"][value="maintain"]').checked = true;
-            currentMacroRatio = 'balanced';
-            document.getElementById('ageDisplay').textContent = 30;
-            document.getElementById('heightDisplay').textContent = 175;
-            document.getElementById('weightDisplay').textContent = 70;
-            calculateAll();
-        }
-
-        // Toggle FAQ
-        function toggleFaq(element) {
-            element.closest('.faq-item').classList.toggle('active');
-        }
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', () => {
-            calculateAll();
-            setMacroRatio('balanced');
-        });
-    </script>
 </body>
 </html>
