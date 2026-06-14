@@ -2,908 +2,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-adsense-account" content="ca-pub-7280526621945427">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
-     crossorigin="anonymous"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
-     crossorigin="anonymous"></script,>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
-     crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free BMI calculator - Calculate your body mass index instantly with height and weight. Health assessment tool, no signup needed. Track fitness progress.">
-    <meta name="keywords" content="BMI calculator, body mass index calculator, BMI tracker, weight calculator, health calculator">
-    <meta name="author" content="ToolPond Pro">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="description" content="BMI Calculator - Calculate your Body Mass Index using WHO standards. Understand BMI categories, limitations, and what your result means. Built by Shahid Abbas.">
+    <meta name="author" content="Shahid Abbas">
     <link rel="canonical" href="https://toolpond.org/bmi-calculator.html">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://toolpond.org/bmi-calculator.html">
-    <meta property="og:title" content="Free BMI Calculator - Calculate Your Body Mass Index">
-    <meta property="og:description" content="Instant BMI calculator - Calculate body mass index from height and weight. Health assessment tool, completely free, no signup required.">
-    
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="BMI Calculator">
-    <meta property="twitter:description" content="Calculate your BMI and health score instantly">
-    
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"BMI Calculator","description":"Free online BMI calculator for calculating body mass index and health assessment","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"620"}}
-    </script>
-    
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does BMI calculator work?","acceptedAnswer":{"@type":"Answer","text":"Enter your height and weight and the BMI calculator instantly computes your body mass index. BMI is calculated by dividing weight in kilograms by height in meters squared (kg/m²)."}},{"@type":"Question","name":"Is BMI calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free forever with no signup required and unlimited BMI calculations."}},{"@type":"Question","name":"What does BMI mean?","acceptedAnswer":{"@type":"Answer","text":"BMI stands for Body Mass Index. It's a measure of body fat based on height and weight. Categories: Underweight <18.5, Normal 18.5-24.9, Overweight 25-29.9, Obese 30+."}},{"@type":"Question","name":"Is BMI accurate?","acceptedAnswer":{"@type":"Answer","text":"BMI is a useful screening tool for most people, but it doesn't distinguish between muscle and fat. Consult healthcare professionals for personalized assessment."}}]}
-    </script>
-    
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolpond.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://toolpond.org/index.html#tools"},{"@type":"ListItem","position":3,"name":"BMI Calculator","item":"https://toolpond.org/bmi-calculator.html"}]}
-    </script>
-    
-    <title>Free BMI Calculator - Calculate Body Mass Index Instantly</title>
+    <title>BMI Calculator - Body Mass Index Calculator</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#06B6D4;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb}body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:#374151;background:var(--light);overflow-x:hidden}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:#374151;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1200px;margin:0 auto;padding:0 2rem}.breadcrumb{padding:1rem 2rem;background:#fff;border-bottom:1px solid var(--border);font-size:0.9rem}.breadcrumb a{color:var(--primary);margin:0 0.5rem}.tool-header{background:linear-gradient(135deg,var(--primary),#22D3EE);color:#fff;padding:3rem 2rem;text-align:center}.tool-header h1{font-size:2.8rem;margin-bottom:0.5rem;font-weight:800}.tool-header p{font-size:1.1rem;opacity:0.95;margin-bottom:0.5rem}.tool-content{padding:3rem 2rem;background:#fff}.content-grid{display:grid;grid-template-columns:2fr 1fr;gap:2rem}@media(max-width:1024px){.content-grid{grid-template-columns:1fr}}.input-group{margin-bottom:1.5rem}.input-label{display:block;margin-bottom:0.75rem;font-weight:600;color:var(--dark);font-size:1.05rem}.input-field{width:100%;padding:1rem;border:2px solid var(--border);border-radius:10px;font-size:1rem;transition:all 0.3s}.input-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(6,182,212,0.1)}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2rem 0}.stat-card{background:linear-gradient(135deg,#CFFAFE,#A5F3FC);padding:1.5rem;border-radius:10px;text-align:center;border:1px solid var(--border);transition:all 0.3s}.stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(6,182,212,0.1)}.stat-label{color:#6b7280;font-size:0.85rem;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.5px}.stat-value{font-size:2.5rem;font-weight:700;color:var(--primary)}.action-buttons{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}.btn{padding:0.85rem 1.75rem;border:none;border-radius:7px;font-weight:600;cursor:pointer;transition:all 0.3s}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#0891B2;transform:translateY(-2px)}.btn-secondary{background:#f3f4f6;color:var(--dark);border:2px solid var(--border)}.btn-secondary:hover{background:var(--primary);color:#fff}.sidebar{background:var(--light);padding:2rem;border-radius:10px;border:1px solid var(--border)}.sidebar h3{color:var(--dark);margin-bottom:1rem;font-size:1.1rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem}.sidebar-item{margin-bottom:1rem;padding:0.75rem;background:#fff;border-radius:6px;border-left:4px solid var(--primary)}.content-section{margin:3rem 0;padding:2rem;background:var(--light);border-radius:10px}.content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem}.content-section h3{color:#4b5563;margin:1.5rem 0 0.75rem;font-size:1.2rem;font-weight:600}.content-section p{margin-bottom:1rem;line-height:1.8;color:#4b5563;font-size:1.05rem}.content-section ul{margin:1rem 0 1rem 1.5rem}.content-section li{margin-bottom:0.75rem}.use-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1.5rem 0}.use-case{background:#fff;padding:1.5rem;border-radius:8px;border-top:4px solid var(--primary)}.use-case h4{color:var(--dark);margin-bottom:0.5rem}.use-case p{color:#6b7280;font-size:0.95rem}.faq-item{margin-bottom:1rem;background:#fff;padding:1.5rem;border-radius:8px;border-left:4px solid var(--primary)}.faq-item h4{color:var(--dark);margin-bottom:0.5rem}.faq-item p{color:#6b7280;font-size:0.95rem}.related-section{background:#fff;padding:2rem;border-radius:10px;border:2px solid var(--primary);margin:3rem 0}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}.tool-card{background:linear-gradient(135deg,#CFFAFE,#A5F3FC);padding:1.5rem;border-radius:8px;border:2px solid var(--border);text-align:center;transition:all 0.3s;cursor:pointer}.tool-card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(6,182,212,0.15);border-color:var(--primary)}.tool-icon{font-size:2.5rem;margin-bottom:0.5rem}.tool-card h4{color:var(--dark);margin-bottom:0.5rem}.tool-card a{color:var(--primary);font-weight:600;display:inline-block;margin-top:0.5rem}.footer-section{background:var(--dark);color:#fff;padding:3rem 2rem}.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}.footer-col h4{color:var(--primary);margin-bottom:1rem}.footer-col a{color:#d1d5db;transition:color 0.3s}.footer-col a:hover{color:#fff}.footer-col ul{list-style:none}.footer-bottom{text-align:center;border-top:1px solid #4b5563;padding-top:2rem;color:#9ca3af}.back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999}.back-to-top.show{opacity:1;visibility:visible}.cta-banner{background:linear-gradient(135deg,var(--primary),#22D3EE);color:#fff;padding:2rem;border-radius:10px;text-align:center;margin:2rem 0}.cta-banner h3{margin-bottom:1rem;font-size:1.5rem}.cta-banner .btn{background:#fff;color:var(--primary)}.cta-banner .btn:hover{background:#f3f4f6}.result-box{background:linear-gradient(135deg,#CFFAFE,#A5F3FC);padding:1.5rem;border-radius:10px;border-left:4px solid var(--primary);margin:1.5rem 0;display:none}.result-box.show{display:block}.result-value{font-size:2rem;font-weight:700;color:var(--primary);margin:0.5rem 0}@media(max-width:768px){.tool-header h1{font-size:1.8rem}.action-buttons{flex-direction:column}}
-
-        /* ======= NEW ADVANCED STYLES ======= */
-        .unit-toggle { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; background: #f3f4f6; padding: 0.3rem; border-radius: 8px; width: fit-content; }
-        .unit-toggle button { padding: 0.5rem 1.2rem; border: none; background: transparent; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; color: #6b7280; }
-        .unit-toggle button.active { background: #fff; color: var(--primary); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-        .unit-toggle button:hover { color: var(--primary); }
-
-        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .input-row.imperial { grid-template-columns: 1fr 1fr; }
-        .input-row.imperial .input-group:nth-child(1) { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-        .gender-select { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-        .gender-option { flex: 1; padding: 1rem; border: 2px solid var(--border); border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.3s; background: #fff; }
-        .gender-option:hover { border-color: var(--primary); }
-        .gender-option.selected { border-color: var(--primary); background: linear-gradient(135deg,#CFFAFE,#A5F3FC); }
-        .gender-option .icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
-        .gender-option .label { font-weight: 600; font-size: 0.9rem; }
-
-        .age-input { margin-bottom: 1.5rem; }
-
-        .bmi-gauge { width: 100%; height: 24px; border-radius: 12px; background: linear-gradient(90deg, #3B82F6 0%, #3B82F6 18.5%, #10B981 18.5%, #10B981 25%, #F59E0B 25%, #F59E0B 30%, #EF4444 30%, #EF4444 100%); position: relative; margin: 1.5rem 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
-        .bmi-gauge-marker { position: absolute; top: -8px; width: 4px; height: 40px; background: #1f2937; border-radius: 2px; transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); transform: translateX(-50%); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        .bmi-gauge-marker::after { content: attr(data-value); position: absolute; top: -28px; left: 50%; transform: translateX(-50%); background: #1f2937; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
-        .bmi-gauge-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: #9ca3af; margin-top: 0.3rem; }
-
-        .ideal-weight-box { background: #fff; border: 2px solid var(--border); border-radius: 10px; padding: 1.2rem; margin-top: 1rem; }
-        .ideal-weight-box h4 { color: var(--dark); margin-bottom: 0.5rem; font-size: 1rem; }
-        .ideal-weight-range { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
-
-        .history-section { margin-top: 2rem; }
-        .history-list { max-height: 200px; overflow-y: auto; }
-        .history-item { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0.8rem; background: #fff; border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.85rem; border-left: 3px solid var(--primary); }
-        .history-item .h-bmi { font-weight: 700; color: var(--primary); }
-        .history-item .h-date { color: #9ca3af; font-size: 0.75rem; }
-        .history-item .h-delete { background: none; border: none; color: #EF4444; cursor: pointer; font-size: 1rem; padding: 0 0.3rem; }
-        .history-item .h-delete:hover { background: #FEE2E2; border-radius: 4px; }
-
-        .error-msg { color: #EF4444; font-size: 0.85rem; margin-top: 0.3rem; display: none; }
-        .error-msg.show { display: block; }
-        .input-field.error { border-color: #EF4444; background: #FEF2F2; }
-
-        .bmi-visual { display: flex; height: 40px; border-radius: 8px; overflow: hidden; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        .bmi-visual-segment { display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-        .bmi-visual-segment.under { background: #3B82F6; flex: 18.5; }
-        .bmi-visual-segment.normal { background: #10B981; flex: 6.4; }
-        .bmi-visual-segment.over { background: #F59E0B; flex: 5; }
-        .bmi-visual-segment.obese { background: #EF4444; flex: 10; }
-
-        .pulse-animation { animation: pulse 0.5s ease-in-out; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
-        .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px); background: #1f2937; color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 500; z-index: 10000; opacity: 0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-        .copy-btn { background: none; border: 2px solid var(--primary); color: var(--primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-left: 0.5rem; }
-        .copy-btn:hover { background: var(--primary); color: #fff; }
-
-        .share-buttons { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
-        .share-btn { padding: 0.5rem 1rem; border-radius: 6px; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.3s; color: #fff; }
-        .share-btn.tw { background: #1DA1F2; }
-        .share-btn.fb { background: #4267B2; }
-        .share-btn.wa { background: #25D366; }
-        .share-btn.copy { background: #6b7280; }
-        .share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-
-        .health-tips { background: #fff; border-radius: 10px; padding: 1.2rem; margin-top: 1rem; border: 1px solid var(--border); }
-        .health-tips h4 { color: var(--dark); margin-bottom: 0.75rem; font-size: 1rem; }
-        .health-tips ul { margin: 0; padding-left: 1.2rem; }
-        .health-tips li { margin-bottom: 0.4rem; font-size: 0.9rem; color: #4b5563; }
-
-        .input-hint { font-size: 0.8rem; color: #9ca3af; margin-top: 0.3rem; }
-
-        @media(max-width:768px) {
-            .input-row, .input-row.imperial .input-group:nth-child(1) { grid-template-columns: 1fr; }
-            .gender-select { flex-direction: column; }
-            .bmi-gauge-labels { font-size: 0.6rem; }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#0066cc;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--light)}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.page-header{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.page-header h1{font-size:2.2rem;margin-bottom:0.5rem}.page-header p{font-size:1rem;opacity:0.9;max-width:700px;margin:0 auto}.container{max-width:900px;margin:0 auto;padding:0 2rem}.content-section{background:#fff;padding:2.5rem;margin:2rem 0;border-radius:8px;border:1px solid var(--border)}.content-section h2{color:var(--dark);margin-bottom:1rem;font-size:1.4rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem;display:inline-block}.content-section h3{color:var(--dark);margin:1.5rem 0 0.75rem 0;font-size:1.1rem}.content-section p{color:#4b5563;margin-bottom:1rem;line-height:1.8}.content-section ul{margin-left:1.5rem;color:#4b5563;margin-bottom:1rem}.content-section li{margin-bottom:0.5rem}.content-section table{width:100%;border-collapse:collapse;margin:1rem 0}.content-section th,.content-section td{border:1px solid var(--border);padding:0.75rem;text-align:left}.content-section th{background:var(--light);font-weight:600;color:var(--dark)}.highlight{background:#f0f9ff;border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.highlight p{color:#4b5563;margin:0}.warning{background:#fff7ed;border-left:4px solid #f97316;padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.warning p{color:#7c2d12;margin:0}.author-footer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);color:#6b7280;font-size:0.9rem}footer{background:var(--dark);color:#fff;padding:2rem;text-align:center}.footer-links{margin-bottom:1rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}@media(max-width:768px){.page-header h1{font-size:1.8rem}}
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">⚖️ ToolPond Pro</div>
+            <a href="index.html" class="logo">ToolPond</a>
             <ul class="nav-links">
-                <li><a href="https://toolpond.org/index.html">Home</a></li>
-                <li><a href="https://toolpond.org/about.html">About</a></li>
-                <li><a href="https://toolpond.org/contact.html">Contact</a></li>
-                <li><a href="https://toolpond.org/privacy-policy.html">Privacy</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="breadcrumb">
-        <a href="https://toolpond.org/index.html">Home</a> / <a href="https://toolpond.org/index.html#tools">Tools</a> / <span>BMI Calculator</span>
-    </div>
-
-    <div class="tool-header">
-        <h1>Free BMI Calculator</h1>
-        <p>Calculate Your Body Mass Index Instantly</p>
-        <p style="opacity:0.9;font-size:1rem">Health assessment • Fitness tracking • No signup needed</p>
+    <div class="page-header">
+        <div class="container">
+            <h1>BMI Calculator</h1>
+            <p>Calculate your Body Mass Index using WHO standards. Understand what your result means and when BMI can be misleading.</p>
+        </div>
     </div>
 
     <div class="container">
-        <div class="tool-content">
-            <div class="content-grid">
-                <div>
-                    <!-- Unit Toggle -->
-                    <div class="unit-toggle">
-                        <button class="active" onclick="setUnit('metric')" id="btn-metric">Metric (cm/kg)</button>
-                        <button onclick="setUnit('imperial')" id="btn-imperial">Imperial (ft/lbs)</button>
-                    </div>
+        <div class="content-section">
+            <h2>Calculate Your BMI</h2>
+            <p>Enter your height and weight to calculate your Body Mass Index. This calculator uses the standard formula recommended by the World Health Organization.</p>
+            <div style="background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:1.5rem 0;">
+                <p style="color:#6b7280">[Your existing BMI calculator tool goes here]</p>
+            </div>
+        </div>
 
-                    <!-- Gender Selection -->
-                    <div class="gender-select">
-                        <div class="gender-option selected" onclick="selectGender('male')" data-gender="male">
-                            <span class="icon">♂️</span>
-                            <span class="label">Male</span>
-                        </div>
-                        <div class="gender-option" onclick="selectGender('female')" data-gender="female">
-                            <span class="icon">♀️</span>
-                            <span class="label">Female</span>
-                        </div>
-                    </div>
+        <div class="content-section">
+            <h2>What is BMI?</h2>
+            <p>Body Mass Index (BMI) is a simple screening tool that uses your height and weight to estimate whether you are underweight, normal weight, overweight, or obese. It was developed in the 1830s by Belgian mathematician Adolphe Quetelet and has been used by health organizations worldwide for over a century.</p>
+            <p>The formula is straightforward: <strong>BMI = weight (kg) / height (m)²</strong>. For imperial units, the formula is: <strong>BMI = (weight (lb) / height (in)²) × 703</strong>.</p>
 
-                    <!-- Age Input -->
-                    <div class="age-input">
-                        <label class="input-label" for="age">Age (years):</label>
-                        <input type="number" id="age" class="input-field" placeholder="25" min="2" max="120" value="25">
-                        <div class="input-hint">Age helps calculate more accurate health recommendations</div>
-                    </div>
+            <h3>BMI Categories (WHO Standards)</h3>
+            <table>
+                <tr><th>Category</th><th>BMI Range</th><th>What It Means</th></tr>
+                <tr><td>Underweight</td><td>Below 18.5</td><td>May indicate malnutrition, eating disorders, or other health conditions</td></tr>
+                <tr><td>Normal weight</td><td>18.5 – 24.9</td><td>Generally considered healthy for most adults</td></tr>
+                <tr><td>Overweight</td><td>25.0 – 29.9</td><td>May indicate excess body weight; health risks increase</td></tr>
+                <tr><td>Obese Class I</td><td>30.0 – 34.9</td><td>Moderate risk of weight-related health conditions</td></tr>
+                <tr><td>Obese Class II</td><td>35.0 – 39.9</td><td>High risk of weight-related health conditions</td></tr>
+                <tr><td>Obese Class III</td><td>40.0 and above</td><td>Very high risk; immediate medical consultation recommended</td></tr>
+            </table>
 
-                    <!-- Metric Inputs -->
-                    <div class="input-row" id="metric-inputs">
-                        <div class="input-group">
-                            <label class="input-label" for="height-cm">Height (cm):</label>
-                            <input type="number" id="height-cm" class="input-field" placeholder="170" min="50" max="300" step="0.1">
-                            <div class="error-msg" id="error-height-cm">Please enter a valid height (50-300 cm)</div>
-                        </div>
-                        <div class="input-group">
-                            <label class="input-label" for="weight-kg">Weight (kg):</label>
-                            <input type="number" id="weight-kg" class="input-field" placeholder="70" min="2" max="500" step="0.1">
-                            <div class="error-msg" id="error-weight-kg">Please enter a valid weight (2-500 kg)</div>
-                        </div>
-                    </div>
+            <h3>Why BMI Categories Differ for Some Populations</h3>
+            <p>The WHO standards above apply to adults of European descent. Research has shown that BMI thresholds should be adjusted for different ethnic groups:</p>
+            <ul>
+                <li><strong>Asian populations:</strong> Health risks begin at lower BMI levels. The WHO Western Pacific Region uses a cutoff of 23 for overweight and 25 for obesity.</li>
+                <li><strong>South Asian populations:</strong> Studies show increased diabetes and cardiovascular risk at BMI levels below 25. Some health authorities use 23 as the overweight threshold.</li>
+                <li><strong>Pacific Islander populations:</strong> May have higher muscle mass and bone density, making standard BMI potentially misleading.</li>
+            </ul>
 
-                    <!-- Imperial Inputs -->
-                    <div class="input-row imperial" id="imperial-inputs" style="display:none;">
-                        <div class="input-group">
-                            <div>
-                                <label class="input-label" for="height-ft">Height (ft):</label>
-                                <input type="number" id="height-ft" class="input-field" placeholder="5" min="1" max="9">
-                            </div>
-                            <div>
-                                <label class="input-label" for="height-in">Height (in):</label>
-                                <input type="number" id="height-in" class="input-field" placeholder="7" min="0" max="11" step="0.1">
-                            </div>
-                            <div class="error-msg" id="error-height-imperial" style="grid-column:1/-1;">Please enter valid height</div>
-                        </div>
-                        <div class="input-group">
-                            <label class="input-label" for="weight-lbs">Weight (lbs):</label>
-                            <input type="number" id="weight-lbs" class="input-field" placeholder="154" min="5" max="1100" step="0.1">
-                            <div class="error-msg" id="error-weight-lbs">Please enter a valid weight (5-1100 lbs)</div>
-                        </div>
-                    </div>
+            <h3>When BMI is Misleading</h3>
+            <p>BMI is a population-level screening tool, not a diagnostic measure. It can be inaccurate for individuals in these situations:</p>
+            <ul>
+                <li><strong>Athletes and bodybuilders:</strong> Muscle weighs more than fat. A muscular person may have a BMI in the "overweight" or "obese" category despite low body fat.</li>
+                <li><strong>Elderly adults:</strong> Muscle mass naturally decreases with age. An older adult with normal BMI may still have excess body fat and low muscle mass (sarcopenic obesity).</li>
+                <li><strong>Pregnant women:</strong> BMI is not used during pregnancy. Weight gain is expected and necessary for fetal development.</li>
+                <li><strong>Children and teenagers:</strong> BMI for children is interpreted using age and sex-specific percentiles, not adult categories.</li>
+                <li><strong>People with edema:</strong> Fluid retention increases weight without increasing body fat.</li>
+                <li><strong>Very tall or very short individuals:</strong> BMI does not account for body frame size or proportional differences at height extremes.</li>
+            </ul>
 
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-label">BMI</div>
-                            <div class="stat-value" id="bmiValue">-</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Category</div>
-                            <div class="stat-value" id="bmiCategory" style="font-size:1.2rem">-</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Status</div>
-                            <div class="stat-value" id="bmiStatus" style="font-size:1rem">-</div>
-                        </div>
-                    </div>
+            <h3>Better Alternatives to BMI</h3>
+            <p>For a more accurate assessment of body composition, consider these measurements alongside BMI:</p>
+            <ul>
+                <li><strong>Waist circumference:</strong> Excess abdominal fat (apple-shaped body) carries higher health risk than fat distributed in hips and thighs. Men should aim for under 40 inches (102 cm); women under 35 inches (88 cm).</li>
+                <li><strong>Waist-to-hip ratio:</strong> Divide waist measurement by hip measurement. Ratios above 0.90 for men and 0.85 for women indicate increased health risk.</li>
+                <li><strong>Body fat percentage:</strong> Measured by calipers, bioelectrical impedance, DEXA scan, or underwater weighing. Healthy ranges are approximately 10–20% for men and 20–30% for women.</li>
+                <li><strong>Body fat distribution:</strong> Visceral fat (around organs) is more dangerous than subcutaneous fat (under skin). CT and MRI can measure this, though they are expensive.</li>
+            </ul>
 
-                    <!-- BMI Visual Gauge -->
-                    <div id="bmi-gauge-container" style="display:none;">
-                        <div class="bmi-gauge" id="bmiGauge">
-                            <div class="bmi-gauge-marker" id="gaugeMarker" style="left:0%;" data-value="-"></div>
-                        </div>
-                        <div class="bmi-gauge-labels">
-                            <span>10</span>
-                            <span>18.5</span>
-                            <span>25</span>
-                            <span>30</span>
-                            <span>40+</span>
-                        </div>
-                        <div class="bmi-visual">
-                            <div class="bmi-visual-segment under">Under</div>
-                            <div class="bmi-visual-segment normal">Normal</div>
-                            <div class="bmi-visual-segment over">Over</div>
-                            <div class="bmi-visual-segment obese">Obese</div>
-                        </div>
-                    </div>
+            <h3>Health Risks Associated with BMI Categories</h3>
+            <p>Research consistently links higher BMI to increased risk of:</p>
+            <ul>
+                <li>Type 2 diabetes</li>
+                <li>Cardiovascular disease and hypertension</li>
+                <li>Stroke</li>
+                <li>Certain cancers (breast, colon, kidney, liver)</li>
+                <li>Sleep apnea</li>
+                <li>Osteoarthritis</li>
+                <li>Fatty liver disease (NAFLD)</li>
+                <li>Reduced fertility</li>
+            </ul>
+            <p>Conversely, being underweight increases risk of osteoporosis, anemia, weakened immune function, and fertility problems.</p>
 
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" onclick="calculateBMI()">📊 Calculate BMI</button>
-                        <button class="btn btn-secondary" onclick="clearCalculator()">🔄 Clear</button>
-                        <button class="btn btn-secondary" onclick="saveToHistory()">💾 Save Result</button>
-                    </div>
+            <h3>How to Use Your BMI Result</h3>
+            <p>If your BMI falls outside the normal range, do not panic. A single measurement is not a diagnosis. Consider these steps:</p>
+            <ul>
+                <li><strong>Consult a healthcare provider:</strong> A doctor can assess your overall health using blood tests, physical examination, and family history.</li>
+                <li><strong>Measure waist circumference:</strong> This provides additional context about where your body stores fat.</li>
+                <li><strong>Track trends, not single numbers:</strong> BMI changes over time matter more than one reading. Gradual weight gain or loss indicates lifestyle patterns.</li>
+                <li><strong>Focus on health behaviors:</strong> Regular physical activity, balanced nutrition, adequate sleep, and stress management improve health regardless of BMI.</li>
+            </ul>
 
-                    <div class="result-box" id="result">
-                        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
-                            <div><strong>💪 Your BMI Analysis:</strong></div>
-                            <button class="copy-btn" onclick="copyResult()">📋 Copy</button>
-                        </div>
-                        <div id="analysis" style="margin-top:1rem;color:#4b5563"></div>
-                        
-                        <div class="ideal-weight-box" id="idealWeightBox" style="display:none;">
-                            <h4>🎯 Your Ideal Weight Range</h4>
-                            <div class="ideal-weight-range" id="idealWeightRange">-</div>
-                            <div style="font-size:0.85rem;color:#6b7280;margin-top:0.3rem;">Based on your height for a healthy BMI (18.5 - 24.9)</div>
-                        </div>
-
-                        <div class="health-tips" id="healthTips" style="display:none;">
-                            <h4>💡 Personalized Health Tips</h4>
-                            <ul id="tipsList"></ul>
-                        </div>
-
-                        <div class="share-buttons" id="shareButtons" style="display:none;">
-                            <button class="share-btn copy" onclick="copyResult()">📋 Copy Result</button>
-                            <button class="share-btn tw" onclick="shareTwitter()">𝕏 Share</button>
-                            <button class="share-btn fb" onclick="shareFacebook()">f Share</button>
-                            <button class="share-btn wa" onclick="shareWhatsApp()">💬 WhatsApp</button>
-                        </div>
-                    </div>
-
-                    <!-- History Section -->
-                    <div class="history-section" id="historySection" style="display:none;">
-                        <h3 style="color:var(--dark);margin-bottom:1rem;font-size:1.1rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem;">📈 Calculation History</h3>
-                        <div class="history-list" id="historyList"></div>
-                        <button class="btn btn-secondary" style="margin-top:0.8rem;font-size:0.85rem;padding:0.5rem 1rem;" onclick="clearHistory()">🗑️ Clear History</button>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="sidebar">
-                        <h3>⚡ BMI Categories</h3>
-                        <div class="sidebar-item"><strong>Underweight:</strong> BMI &lt; 18.5</div>
-                        <div class="sidebar-item"><strong>Normal:</strong> BMI 18.5 - 24.9</div>
-                        <div class="sidebar-item"><strong>Overweight:</strong> BMI 25 - 29.9</div>
-                        <div class="sidebar-item"><strong>Obese:</strong> BMI ≥ 30</div>
-                    </div>
-
-                    <div class="sidebar" style="margin-top:2rem">
-                        <h3>📋 Features</h3>
-                        <div class="sidebar-item">✓ Instant calculation</div>
-                        <div class="sidebar-item">✓ Metric & Imperial units</div>
-                        <div class="sidebar-item">✓ Visual BMI gauge</div>
-                        <div class="sidebar-item">✓ Ideal weight calculator</div>
-                        <div class="sidebar-item">✓ Health tips & analysis</div>
-                        <div class="sidebar-item">✓ Save & track history</div>
-                        <div class="sidebar-item">✓ 100% free</div>
-                        <div class="sidebar-item">✓ No signup</div>
-                    </div>
-
-                    <div class="sidebar" style="margin-top:2rem">
-                        <h3>📊 BMI Formula</h3>
-                        <div class="sidebar-item" style="font-family:monospace;font-size:0.9rem;">BMI = kg / m²</div>
-                        <div class="sidebar-item" style="font-size:0.85rem;color:#6b7280;">Weight in kilograms divided by height in meters squared</div>
-                    </div>
-                </div>
+            <div class="warning">
+                <p><strong>Medical Disclaimer:</strong> This calculator provides an estimate only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice because of something you have read on this website.</p>
             </div>
 
-            <div class="content-section">
-                <h2>What is a BMI Calculator?</h2>
-                <p>A <strong>BMI calculator</strong> is a free online health tool that instantly calculates your body mass index from your height and weight. This <strong>body mass index calculator</strong> provides a quick health assessment using the standard BMI formula: weight (kg) divided by height (meters) squared. Perfect for fitness tracking, health monitoring, and wellness goals.</p>
-                
-                <p>Our <strong>free BMI calculator</strong> helps you quickly determine if your weight is healthy for your height. Whether you're starting a fitness journey, monitoring health, or tracking progress, this <strong>weight calculator</strong> provides instant results with detailed health category information.</p>
-
-                <h3>Why Use Our Free BMI Calculator?</h3>
-                <ul>
-                    <li><strong>Instant Results:</strong> Calculate your BMI in seconds</li>
-                    <li><strong>Dual Units:</strong> Switch between metric and imperial measurements</li>
-                    <li><strong>Visual Gauge:</strong> See exactly where you stand on the BMI scale</li>
-                    <li><strong>Ideal Weight:</strong> Know your healthy weight range</li>
-                    <li><strong>Health Assessment:</strong> Get your BMI category and health status</li>
-                    <li><strong>Personalized Tips:</strong> Receive tailored health recommendations</li>
-                    <li><strong>Track History:</strong> Save and monitor your BMI over time</li>
-                    <li><strong>Completely Free:</strong> No signup, no fees, no hidden costs</li>
-                    <li><strong>Accurate Formula:</strong> Uses standard medical BMI calculation</li>
-                    <li><strong>Easy to Use:</strong> Simple interface for quick calculations</li>
-                    <li><strong>Fitness Tracking:</strong> Monitor your BMI progress over time</li>
-                </ul>
-            </div>
-
-            <div class="content-section">
-                <h2>How to Use the BMI Calculator</h2>
-                <h3>Step 1: Choose Your Units</h3>
-                <p>Select either Metric (cm/kg) or Imperial (ft/lbs) using the toggle button at the top of the calculator.</p>
-
-                <h3>Step 2: Select Your Gender</h3>
-                <p>Click on Male or Female. This helps provide more accurate health recommendations.</p>
-
-                <h3>Step 3: Enter Your Age</h3>
-                <p>Type your age in years. Age factors into personalized health advice.</p>
-
-                <h3>Step 4: Enter Your Height</h3>
-                <p>For metric: Type your height in centimeters (cm). For example, if you're 170 cm tall, enter 170.<br>
-                For imperial: Enter feet and inches separately.</p>
-
-                <h3>Step 5: Enter Your Weight</h3>
-                <p>For metric: Type your weight in kilograms (kg). For example, if you weigh 70 kg, enter 70.<br>
-                For imperial: Enter your weight in pounds (lbs).</p>
-
-                <h3>Step 6: Calculate BMI</h3>
-                <p>Click the "Calculate BMI" button to instantly get your body mass index, health category, visual gauge, ideal weight range, and personalized health tips.</p>
-
-                <h3>Step 7: Save & Track</h3>
-                <p>Click "Save Result" to store your BMI in local history for progress tracking over time.</p>
-            </div>
-
-            <div class="content-section">
-                <h2>Key Features of Our BMI Calculator</h2>
-                
-                <h3>✓ Dual Unit System</h3>
-                <p>Seamlessly switch between metric (cm/kg) and imperial (ft/lbs) units with automatic conversion.</p>
-
-                <h3>✓ Visual BMI Gauge</h3>
-                <p>An animated gauge shows exactly where your BMI falls on the health spectrum with color-coded categories.</p>
-
-                <h3>✓ Ideal Weight Calculator</h3>
-                <p>Automatically calculates your ideal weight range based on your height for a healthy BMI.</p>
-
-                <h3>✓ Medical-Grade Calculation</h3>
-                <p>Uses the standard BMI formula recognized by health organizations worldwide for accurate results.</p>
-
-                <h3>✓ Health Category Classification</h3>
-                <p>Automatically categorizes your BMI into underweight, normal weight, overweight, or obese categories.</p>
-
-                <h3>✓ Personalized Health Tips</h3>
-                <p>Get tailored recommendations based on your BMI, age, and gender for better health outcomes.</p>
-
-                <h3>✓ Calculation History</h3>
-                <p>Save and track your BMI calculations over time to monitor your fitness progress.</p>
-
-                <h3>✓ Instant Results</h3>
-                <p>Get your BMI calculation and health assessment in seconds with no waiting.</p>
-
-                <h3>✓ Easy to Use Interface</h3>
-                <p>Simple, intuitive design perfect for quick health checks and fitness tracking.</p>
-
-                <h3>✓ 100% Free & Unlimited</h3>
-                <p>Calculate your BMI as many times as you want with no signup, no fees, forever.</p>
-
-                <h3>✓ Mobile Optimized</h3>
-                <p>Access the BMI calculator on any device for fitness tracking on the go.</p>
-
-                <h3>✓ Share Your Results</h3>
-                <p>Easily copy or share your BMI results via social media or messaging apps.</p>
-            </div>
-
-            <div class="content-section" id="use-cases">
-                <h2>Common Uses for BMI Calculator</h2>
-                <div class="use-cases">
-                    <div class="use-case">
-                        <h4>💪 Fitness Tracking</h4>
-                        <p>Monitor your BMI progress during fitness journeys and weight management.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>🏥 Health Monitoring</h4>
-                        <p>Track BMI regularly for personal health assessment and awareness.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>⚖️ Weight Management</h4>
-                        <p>Use BMI as one indicator for healthy weight goals and progress tracking.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>🎯 Fitness Goals</h4>
-                        <p>Set and monitor BMI-related fitness objectives and milestones.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>📊 Health Education</h4>
-                        <p>Learn about BMI, health categories, and body composition assessment.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>👨‍⚕️ Medical Reference</h4>
-                        <p>Get baseline BMI information for discussions with healthcare providers.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cta-banner">
-                <h3>Check Your BMI Today</h3>
-                <p>Get your instant health assessment with our free BMI calculator</p>
-                <button class="btn" onclick="document.getElementById('height-cm').focus()">Calculate Now →</button>
-            </div>
-
-            <div class="content-section">
-                <h2>Understanding BMI & Health</h2>
-                
-                <h3>What Does BMI Mean?</h3>
-                <p><strong>BMI (Body Mass Index)</strong> is a numerical measure of body fat based on height and weight. It's a screening tool used by healthcare professionals worldwide to identify potential weight-related health issues.</p>
-
-                <h3>BMI Categories Explained</h3>
-                <p><strong>Underweight (BMI &lt; 18.5):</strong> May indicate insufficient body weight. <strong>Normal Weight (BMI 18.5-24.9):</strong> Healthy weight range for most adults. <strong>Overweight (BMI 25-29.9):</strong> Above healthy weight range. <strong>Obese (BMI ≥ 30):</strong> Significantly above healthy range, may increase health risks.</p>
-
-                <h3>Is BMI Accurate?</h3>
-                <p>BMI is a useful screening tool for most people but doesn't distinguish between muscle and fat. Athletes may have high BMI despite low body fat. Always consult healthcare providers for personalized health assessment.</p>
-
-                <h3>Healthy BMI Range</h3>
-                <p>For most adults, a BMI between 18.5 and 24.9 is considered healthy weight. However, ideal BMI varies by age, gender, and individual factors. Consult healthcare professionals for personalized recommendations.</p>
-            </div>
-
-            <div class="content-section">
-                <h2>FAQ</h2>
-                
-                <div class="faq-item">
-                    <h4>How does the BMI calculator work?</h4>
-                    <p>Enter your height in centimeters and weight in kilograms. The calculator uses the formula: BMI = weight (kg) / height (m)². Results appear instantly with your BMI number and health category.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Is the BMI calculator free?</h4>
-                    <p>Yes, completely free forever with unlimited BMI calculations and no signup required.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What is a normal BMI?</h4>
-                    <p>A normal BMI ranges from 18.5 to 24.9. This range is generally considered healthy for most adults.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Is BMI accurate for everyone?</h4>
-                    <p>BMI is a useful screening tool for most people but doesn't account for muscle mass, bone density, or age. Athletes and older adults may need personalized health assessment.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Should I track BMI regularly?</h4>
-                    <p>Yes, tracking BMI monthly can help monitor weight changes and fitness progress. However, don't obsess over daily fluctuations due to water weight and other factors.</p>
-                </div>
-            </div>
-
-            <div class="related-section">
-                <h3>Related Health Tools</h3>
-                <div class="tools-grid">
-                    <div class="tool-card" onclick="location.href='https://toolpond.org/index.html'">
-                        <div class="tool-icon">🍎</div>
-                        <h4>Nutrition Calc</h4>
-                        <a href="https://toolpond.org/index.html">Try →</a>
-                    </div>
-                    <div class="tool-card" onclick="location.href='https://toolpond.org/index.html'">
-                        <div class="tool-icon">📏</div>
-                        <h4>Unit Converter</h4>
-                        <a href="https://toolpond.org/index.html">Try →</a>
-                    </div>
-                    <div class="tool-card" onclick="location.href='https://toolpond.org/index.html'">
-                        <div class="tool-icon">▶️</div>
-                        <h4>YouTube Earnings</h4>
-                        <a href="https://toolpond.org/index.html">Try →</a>
-                    </div>
-                    <div class="tool-card" onclick="location.href='https://toolpond.org/index.html'">
-                        <div class="tool-icon">📝</div>
-                        <h4>Word Counter</h4>
-                        <a href="https://toolpond.org/index.html">Try →</a>
-                    </div>
-                </div>
+            <div class="author-footer">
+                <p>Built by <strong>Shahid Abbas</strong> · ToolPond · Pakistan</p>
+                <p>Formula verified against WHO guidelines. <a href="contact.html" style="color:var(--primary);text-decoration:none;">Report an issue</a>.</p>
             </div>
         </div>
     </div>
 
-    <div class="footer-section">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="https://toolpond.org/index.html">Home</a></li>
-                    <li><a href="https://toolpond.org/about.html">About</a></li>
-                    <li><a href="https://toolpond.org/contact.html">Contact</a></li>
-                    <li><a href="https://toolpond.org/privacy-policy.html">Privacy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Health & Fitness</h4>
-                <ul>
-                    <li><a href="https://toolpond.org/bmi-calculator.html">BMI Calculator</a></li>
-                    <li><a href="https://toolpond.org/index.html">Nutrition Calc</a></li>
-                    <li><a href="https://toolpond.org/index.html">Unit Converter</a></li>
-                    <li><a href="https://toolpond.org/index.html">Earnings Calc</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>More Tools</h4>
-                <ul>
-                    <li><a href="https://toolpond.org/index.html">Word Counter</a></li>
-                    <li><a href="https://toolpond.org/index.html">Password Gen</a></li>
-                    <li><a href="https://toolpond.org/index.html">Unit Converter</a></li>
-                    <li><a href="https://toolpond.org/index.html">All Tools</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>About ToolPond Pro</h4>
-                <p>ToolPond Pro provides 20+ free online tools including BMI calculator, health calculators, fitness tracker, word counter, password generator, and productivity tools. All tools are browser-based, require no signup, and process data locally. Free health and fitness tools for everyone interested in tracking wellness and personal growth.</p>
-            </div>
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="calculators.html">Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy</a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 ToolPond Pro | <a href="https://toolpond.org/privacy-policy.html">Privacy Policy</a> | <a href="https://toolpond.org/contact.html">Contact Us</a></p>
-            <p>Free BMI calculator and health tools. No signup, no fees, 100% secure and unlimited use.</p>
-        </div>
-    </div>
-
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
-    <div class="toast" id="toast"></div>
-
-    <script>
-        // ======= STATE MANAGEMENT =======
-        let currentUnit = 'metric';
-        let currentGender = 'male';
-        let currentBMI = null;
-        let currentCategory = null;
-
-        // ======= UNIT TOGGLE =======
-        function setUnit(unit) {
-            currentUnit = unit;
-            document.getElementById('btn-metric').classList.toggle('active', unit === 'metric');
-            document.getElementById('btn-imperial').classList.toggle('active', unit === 'imperial');
-            document.getElementById('metric-inputs').style.display = unit === 'metric' ? 'grid' : 'none';
-            document.getElementById('imperial-inputs').style.display = unit === 'imperial' ? 'grid' : 'none';
-            clearErrors();
-        }
-
-        // ======= GENDER SELECTION =======
-        function selectGender(gender) {
-            currentGender = gender;
-            document.querySelectorAll('.gender-option').forEach(el => {
-                el.classList.toggle('selected', el.dataset.gender === gender);
-            });
-        }
-
-        // ======= ERROR HANDLING =======
-        function showError(id, show) {
-            const el = document.getElementById(id);
-            if (el) el.classList.toggle('show', show);
-        }
-        function clearErrors() {
-            document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('show'));
-            document.querySelectorAll('.input-field').forEach(el => el.classList.remove('error'));
-        }
-        function markError(inputId, errorId) {
-            document.getElementById(inputId).classList.add('error');
-            showError(errorId, true);
-        }
-
-        // ======= TOAST NOTIFICATION =======
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
-        // ======= BMI CALCULATION =======
-        function calculateBMI() {
-            clearErrors();
-            let heightM, weightKg, bmi;
-
-            if (currentUnit === 'metric') {
-                const heightCm = parseFloat(document.getElementById('height-cm').value);
-                weightKg = parseFloat(document.getElementById('weight-kg').value);
-
-                if (!heightCm || heightCm < 50 || heightCm > 300) {
-                    markError('height-cm', 'error-height-cm');
-                    return;
-                }
-                if (!weightKg || weightKg < 2 || weightKg > 500) {
-                    markError('weight-kg', 'error-weight-kg');
-                    return;
-                }
-                heightM = heightCm / 100;
-            } else {
-                const ft = parseFloat(document.getElementById('height-ft').value) || 0;
-                const inches = parseFloat(document.getElementById('height-in').value) || 0;
-                const lbs = parseFloat(document.getElementById('weight-lbs').value);
-
-                const totalInches = ft * 12 + inches;
-                if (totalInches < 20 || totalInches > 120) {
-                    showError('error-height-imperial', true);
-                    return;
-                }
-                if (!lbs || lbs < 5 || lbs > 1100) {
-                    markError('weight-lbs', 'error-weight-lbs');
-                    return;
-                }
-                heightM = totalInches * 0.0254;
-                weightKg = lbs * 0.453592;
-            }
-
-            bmi = weightKg / (heightM * heightM);
-            currentBMI = parseFloat(bmi.toFixed(1));
-
-            let category, status, color, tips = [];
-
-            if (currentBMI < 18.5) {
-                category = 'Underweight';
-                status = 'Below Normal';
-                color = '#3B82F6';
-                tips = [
-                    'Consider increasing caloric intake with nutrient-dense foods',
-                    'Include strength training to build healthy muscle mass',
-                    'Consult a healthcare provider to rule out underlying conditions',
-                    'Eat more protein-rich foods like lean meats, eggs, and legumes',
-                    'Add healthy fats like avocados, nuts, and olive oil to your diet'
-                ];
-            } else if (currentBMI < 25) {
-                category = 'Normal';
-                status = 'Healthy';
-                color = '#10B981';
-                tips = [
-                    'Great job! Maintain your healthy lifestyle',
-                    'Continue regular physical activity (150 min/week recommended)',
-                    'Eat a balanced diet with plenty of fruits and vegetables',
-                    'Stay hydrated and get adequate sleep (7-9 hours)',
-                    'Regular health check-ups help maintain your wellness'
-                ];
-            } else if (currentBMI < 30) {
-                category = 'Overweight';
-                status = 'Monitor';
-                color = '#F59E0B';
-                tips = [
-                    'Aim for gradual weight loss (0.5-1 kg per week)',
-                    'Increase daily physical activity and reduce sedentary time',
-                    'Focus on portion control and mindful eating',
-                    'Limit processed foods, sugary drinks, and excessive sodium',
-                    'Consider consulting a nutritionist for a personalized plan'
-                ];
-            } else {
-                category = 'Obese';
-                status = 'At Risk';
-                color = '#EF4444';
-                tips = [
-                    'Consult a healthcare provider for a comprehensive health plan',
-                    'Start with low-impact exercises like walking or swimming',
-                    'Focus on whole, unprocessed foods and fiber-rich meals',
-                    'Set realistic, achievable weight loss goals',
-                    'Consider joining a support group for motivation and accountability'
-                ];
-            }
-
-            currentCategory = category;
-
-            // Update stat cards with animation
-            const bmiEl = document.getElementById('bmiValue');
-            bmiEl.textContent = currentBMI;
-            bmiEl.style.color = color;
-            bmiEl.classList.add('pulse-animation');
-            setTimeout(() => bmiEl.classList.remove('pulse-animation'), 500);
-
-            document.getElementById('bmiCategory').textContent = category;
-            document.getElementById('bmiCategory').style.color = color;
-            document.getElementById('bmiStatus').textContent = status;
-            document.getElementById('bmiStatus').style.color = color;
-
-            // Show gauge
-            document.getElementById('bmi-gauge-container').style.display = 'block';
-            const gaugePercent = Math.min(Math.max((currentBMI - 10) / 30 * 100, 0), 100);
-            document.getElementById('gaugeMarker').style.left = gaugePercent + '%';
-            document.getElementById('gaugeMarker').dataset.value = currentBMI;
-
-            // Ideal weight calculation
-            const minIdeal = (18.5 * heightM * heightM).toFixed(1);
-            const maxIdeal = (24.9 * heightM * heightM).toFixed(1);
-            const idealUnit = currentUnit === 'metric' ? 'kg' : 'lbs';
-            const minDisplay = currentUnit === 'metric' ? minIdeal : (minIdeal * 2.20462).toFixed(1);
-            const maxDisplay = currentUnit === 'metric' ? maxIdeal : (maxIdeal * 2.20462).toFixed(1);
-
-            document.getElementById('idealWeightRange').textContent = minDisplay + ' - ' + maxDisplay + ' ' + idealUnit;
-            document.getElementById('idealWeightBox').style.display = 'block';
-
-            // Analysis text
-            const age = parseInt(document.getElementById('age').value) || 25;
-            let ageNote = '';
-            if (age > 65) ageNote = ' For adults over 65, a slightly higher BMI (23-28) may be beneficial.';
-            else if (age < 18) ageNote = ' BMI categories differ for children and teens. Please consult a pediatrician.';
-
-            document.getElementById('analysis').innerHTML = `
-                <strong style="color:${color};font-size:1.1rem;">BMI: ${currentBMI} — ${category}</strong><br>
-                <strong>Status: ${status}</strong><br><br>
-                Your BMI indicates a <strong>${category.toLowerCase()}</strong> weight status. 
-                ${ageNote}<br><br>
-                <strong>Height:</strong> ${currentUnit === 'metric' ? (heightM*100).toFixed(1) + ' cm' : Math.floor(heightM/0.0254/12) + ' ft ' + ((heightM/0.0254)%12).toFixed(1) + ' in'}<br>
-                <strong>Weight:</strong> ${currentUnit === 'metric' ? weightKg.toFixed(1) + ' kg' : (weightKg*2.20462).toFixed(1) + ' lbs'}<br>
-                <strong>Gender:</strong> ${currentGender === 'male' ? 'Male' : 'Female'} | <strong>Age:</strong> ${age}
-            `;
-
-            // Health tips
-            const tipsList = document.getElementById('tipsList');
-            tipsList.innerHTML = tips.map(t => `<li>${t}</li>`).join('');
-            document.getElementById('healthTips').style.display = 'block';
-
-            // Show result box and share buttons
-            document.getElementById('result').classList.add('show');
-            document.getElementById('shareButtons').style.display = 'flex';
-
-            // Auto-save to history
-            autoSaveToHistory();
-
-            // Scroll to result
-            document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        // ======= CLEAR =======
-        function clearCalculator() {
-            document.getElementById('height-cm').value = '';
-            document.getElementById('weight-kg').value = '';
-            document.getElementById('height-ft').value = '';
-            document.getElementById('height-in').value = '';
-            document.getElementById('weight-lbs').value = '';
-            document.getElementById('age').value = '25';
-            document.getElementById('result').classList.remove('show');
-            document.getElementById('bmi-gauge-container').style.display = 'none';
-            document.getElementById('idealWeightBox').style.display = 'none';
-            document.getElementById('healthTips').style.display = 'none';
-            document.getElementById('shareButtons').style.display = 'none';
-            document.getElementById('bmiValue').textContent = '-';
-            document.getElementById('bmiValue').style.color = 'var(--primary)';
-            document.getElementById('bmiCategory').textContent = '-';
-            document.getElementById('bmiCategory').style.color = 'var(--primary)';
-            document.getElementById('bmiStatus').textContent = '-';
-            document.getElementById('bmiStatus').style.color = 'var(--primary)';
-            clearErrors();
-            currentBMI = null;
-            currentCategory = null;
-        }
-
-        // ======= HISTORY =======
-        function getHistory() {
-            try {
-                return JSON.parse(localStorage.getItem('bmiHistory') || '[]');
-            } catch (e) { return []; }
-        }
-        function saveHistory(history) {
-            localStorage.setItem('bmiHistory', JSON.stringify(history.slice(-20)));
-        }
-        function autoSaveToHistory() {
-            if (!currentBMI) return;
-            const history = getHistory();
-            const entry = {
-                bmi: currentBMI,
-                category: currentCategory,
-                date: new Date().toLocaleDateString(),
-                time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-                unit: currentUnit,
-                gender: currentGender,
-                id: Date.now()
-            };
-            // Avoid duplicate consecutive entries
-            if (history.length > 0 && history[history.length-1].bmi === currentBMI) return;
-            history.push(entry);
-            saveHistory(history);
-            renderHistory();
-        }
-        function saveToHistory() {
-            if (!currentBMI) {
-                showToast('Please calculate your BMI first!');
-                return;
-            }
-            autoSaveToHistory();
-            showToast('Result saved to history!');
-        }
-        function renderHistory() {
-            const history = getHistory();
-            const container = document.getElementById('historySection');
-            const list = document.getElementById('historyList');
-            if (history.length === 0) {
-                container.style.display = 'none';
-                return;
-            }
-            container.style.display = 'block';
-            list.innerHTML = history.slice().reverse().map(h => {
-                let color = '#3B82F6';
-                if (h.category === 'Normal') color = '#10B981';
-                else if (h.category === 'Overweight') color = '#F59E0B';
-                else if (h.category === 'Obese') color = '#EF4444';
-                return `
-                    <div class="history-item">
-                        <div>
-                            <span class="h-bmi" style="color:${color}">BMI ${h.bmi}</span>
-                            <span style="color:#6b7280;margin-left:0.5rem;">${h.category}</span>
-                        </div>
-                        <div style="display:flex;align-items:center;gap:0.5rem;">
-                            <span class="h-date">${h.date} ${h.time}</span>
-                            <button class="h-delete" onclick="deleteHistoryItem(${h.id})" title="Delete">×</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-        function deleteHistoryItem(id) {
-            let history = getHistory();
-            history = history.filter(h => h.id !== id);
-            saveHistory(history);
-            renderHistory();
-            showToast('Entry deleted');
-        }
-        function clearHistory() {
-            localStorage.removeItem('bmiHistory');
-            renderHistory();
-            showToast('History cleared');
-        }
-
-        // ======= COPY & SHARE =======
-        function copyResult() {
-            if (!currentBMI) return;
-            const text = `My BMI is ${currentBMI} (${currentCategory}) — calculated with ToolPond Pro BMI Calculator`;
-            navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard!'))
-                .catch(() => showToast('Unable to copy'));
-        }
-        function shareTwitter() {
-            if (!currentBMI) return;
-            const text = encodeURIComponent(`My BMI is ${currentBMI} (${currentCategory}) — Check yours with ToolPond Pro!`);
-            window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
-        }
-        function shareFacebook() {
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
-        }
-        function shareWhatsApp() {
-            if (!currentBMI) return;
-            const text = encodeURIComponent(`My BMI is ${currentBMI} (${currentCategory}) — Check yours with ToolPond Pro! ${window.location.href}`);
-            window.open(`https://wa.me/?text=${text}`, '_blank');
-        }
-
-        // ======= KEYBOARD SUPPORT =======
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const active = document.activeElement;
-                if (active.tagName === 'INPUT') {
-                    calculateBMI();
-                }
-            }
-        });
-
-        // ======= BACK TO TOP =======
-        function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
-        window.addEventListener('scroll', () => {
-            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
-        });
-
-        // ======= INIT =======
-        document.addEventListener('DOMContentLoaded', function() {
-            renderHistory();
-            // Load saved preferences
-            try {
-                const prefs = JSON.parse(localStorage.getItem('bmiPrefs') || '{}');
-                if (prefs.unit) setUnit(prefs.unit);
-                if (prefs.gender) selectGender(prefs.gender);
-                if (prefs.age) document.getElementById('age').value = prefs.age;
-            } catch (e) {}
-        });
-
-        // Save preferences on change
-        ['age'].forEach(id => {
-            document.getElementById(id).addEventListener('change', function() {
-                localStorage.setItem('bmiPrefs', JSON.stringify({
-                    unit: currentUnit,
-                    gender: currentGender,
-                    age: document.getElementById('age').value
-                }));
-            });
-        });
-    </script>
+        <p>&copy; 2026 ToolPond. Built by Shahid Abbas.</p>
+    </footer>
 </body>
 </html>
