@@ -3,124 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YouTube Earnings Calculator - Estimate your YouTube revenue based on views, CPM, and engagement. Learn how YouTube monetization works. Built by Shahid Abbas.">
-    <meta name="author" content="Shahid Abbas">
+    <meta name="description" content="Free YouTube Earnings Calculator 2026 - Calculate your YouTube revenue instantly. Estimate ad earnings, CPM rates, and monthly income. See how much YouTubers actually make from views and subscribers.">
+    <meta name="keywords" content="YouTube earnings calculator, YouTube money calculator, YouTube CPM calculator, YouTube revenue calculator, how much do YouTubers make, YouTube income calculator, ad revenue calculator, free YouTube tool">
+    <meta name="author" content="ToolPond Pro">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://toolpond.org/youtube-earnings-calculator.html">
-    <title>YouTube Earnings Calculator - Estimate Your Revenue</title>
+
+    <meta property="og:title" content="Free YouTube Earnings Calculator 2026 - Estimate Your YouTube Revenue">
+    <meta property="og:description" content="Calculate YouTube earnings based on views, subscribers, and CPM rates. See realistic income projections. Completely free and 100% private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpond.org/youtube-earnings-calculator.html">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free YouTube Earnings Calculator">
+    <meta name="twitter:description" content="Calculate how much you can earn from YouTube with realistic CPM estimates">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "YouTube Earnings Calculator",
+      "description": "Calculate YouTube ad revenue based on views and CPM rates",
+      "url": "https://toolpond.org/youtube-earnings-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/"},
+        {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://toolpond.org/calculators.html"},
+        {"@type": "ListItem", "position": 3, "name": "YouTube Earnings", "item": "https://toolpond.org/youtube-earnings-calculator.html"}
+      ]
+    }
+    </script>
+
+    <title>Free YouTube Earnings Calculator 2026 | Estimate YouTube Revenue | ToolPond Pro</title>
+
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#0066cc;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--light)}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.page-header{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.page-header h1{font-size:2.2rem;margin-bottom:0.5rem}.page-header p{font-size:1rem;opacity:0.9;max-width:700px;margin:0 auto}.container{max-width:900px;margin:0 auto;padding:0 2rem}.content-section{background:#fff;padding:2.5rem;margin:2rem 0;border-radius:8px;border:1px solid var(--border)}.content-section h2{color:var(--dark);margin-bottom:1rem;font-size:1.4rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem;display:inline-block}.content-section h3{color:var(--dark);margin:1.5rem 0 0.75rem 0;font-size:1.1rem}.content-section p{color:#4b5563;margin-bottom:1rem;line-height:1.8}.content-section ul{margin-left:1.5rem;color:#4b5563;margin-bottom:1rem}.content-section li{margin-bottom:0.5rem}.content-section table{width:100%;border-collapse:collapse;margin:1rem 0}.content-section th,.content-section td{border:1px solid var(--border);padding:0.75rem;text-align:left}.content-section th{background:var(--light);font-weight:600;color:var(--dark)}.highlight{background:#f0f9ff;border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.highlight p{color:#4b5563;margin:0}.author-footer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);color:#6b7280;font-size:0.9rem}footer{background:var(--dark);color:#fff;padding:2rem;text-align:center}.footer-links{margin-bottom:1rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}@media(max-width:768px){.page-header h1{font-size:1.8rem}}
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#0066cc;--primary-dark:#1e40af;--primary-light:#dbeafe;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151;--text-light:#6b7280}
+        
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif;line-height:1.6;color:var(--text);background:var(--light)}
+        
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:color 0.3s}
+        .nav-links a:hover{color:var(--primary)}
+        
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        
+        .hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:3rem 2rem;text-align:center;margin-bottom:2rem}
+        .hero h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}
+        .hero p{font-size:1.1rem;opacity:0.95;max-width:700px;margin:0 auto}
+        
+        .breadcrumb{padding:1rem 2rem;background:#fff;border-bottom:1px solid var(--border);font-size:0.9rem}
+        .breadcrumb a{color:var(--primary);text-decoration:none}
+        .breadcrumb span{margin:0 0.5rem;color:var(--text-light)}
+        
+        .main-content{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-bottom:3rem}
+        
+        .calculator-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        .sidebar{display:flex;flex-direction:column;gap:1rem}
+        .sidebar-box{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        
+        .intro-content{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border:1px solid var(--border)}
+        .intro-content h2{color:var(--dark);margin-bottom:1rem;font-size:1.5rem}
+        .intro-content p{color:#4b5563;margin-bottom:1rem;line-height:1.8}
+        
+        .form-group{margin-bottom:1.5rem}
+        .form-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark);font-size:0.95rem}
+        .form-input{width:100%;padding:0.75rem;border:2px solid var(--border);border-radius:8px;font-size:1rem;transition:all 0.3s}
+        .form-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+        
+        .btn{width:100%;padding:1rem;background:linear-gradient(135deg,var(--success),#059669);color:#fff;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;margin-top:1rem}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,0.3)}
+        
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#e0f2fe);border:2px solid var(--primary);border-radius:12px;padding:2rem;margin-top:2rem;display:none}
+        .result-box.show{display:block;animation:slideDown 0.3s ease}
+        @keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        
+        .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:2rem}
+        .result-item{background:#fff;padding:1.5rem;border-radius:8px;text-align:center}
+        .result-label{color:var(--text-light);font-size:0.85rem;text-transform:uppercase;margin-bottom:0.5rem;font-weight:600}
+        .result-value{font-size:2.5rem;font-weight:800;color:var(--primary)}
+        
+        .revenue-breakdown{background:#fff;padding:1.5rem;border-radius:8px;margin:1.5rem 0}
+        .breakdown-row{display:flex;justify-content:space-between;padding:0.75rem 0;border-bottom:1px solid var(--border)}
+        .breakdown-row:last-child{border-bottom:none}
+        .breakdown-label{color:var(--dark);font-weight:600}
+        .breakdown-value{color:var(--primary);font-weight:700}
+        
+        .tips-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border-left:4px solid var(--warning)}
+        .tips-section h3{color:var(--dark);margin-bottom:1rem}
+        .tips-section ul{list-style:none;padding-left:0}
+        .tips-section li{padding:0.75rem 0;padding-left:1.5rem;position:relative;color:#4b5563}
+        .tips-section li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:bold}
+        
+        .how-to-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border-left:4px solid var(--primary)}
+        .step{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+        .step:last-child{border-bottom:none}
+        .step-number{display:inline-block;width:2rem;height:2rem;background:var(--primary);color:#fff;border-radius:50%;text-align:center;line-height:2rem;font-weight:700;margin-right:0.5rem}
+        
+        .faq-item{background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:1rem;overflow:hidden}
+        .faq-question{padding:1.5rem;cursor:pointer;font-weight:600;color:var(--dark);display:flex;justify-content:space-between;align-items:center;transition:background 0.3s}
+        .faq-question:hover{background:var(--light)}
+        .faq-arrow{transition:transform 0.3s;font-size:1.2rem;color:var(--primary)}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;padding:0 1.5rem}
+        .faq-item.open .faq-answer{max-height:500px;padding:0 1.5rem 1.5rem}
+        .faq-answer p{color:#4b5563;line-height:1.8;margin-bottom:0.5rem}
+        
+        .stat-box h3{color:var(--dark);margin-bottom:0.5rem;font-size:0.95rem;text-transform:uppercase;font-weight:700}
+        .stat-value{font-size:1.8rem;font-weight:800;color:var(--primary);margin:0.5rem 0}
+        .stat-desc{color:var(--text-light);font-size:0.9rem}
+        
+        .related-tools{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem}
+        .related-tools h3{color:var(--dark);margin-bottom:1rem}
+        .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+        .related-item{padding:1rem;background:var(--light);border-radius:8px;text-align:center;text-decoration:none;color:var(--primary);font-weight:600;transition:all 0.3s;border:1px solid var(--border)}
+        .related-item:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
+        
+        footer{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;display:block;margin-bottom:0.5rem;transition:color 0.3s}
+        .footer-col a:hover{color:#fff}
+        .footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid #4b5563;color:#9ca3af}
+        
+        @media(max-width:768px){
+            .main-content{grid-template-columns:1fr}
+            .hero h1{font-size:1.8rem}
+            .result-grid{grid-template-columns:1fr}
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">ToolPond</a>
+            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="calculators.html">Tools</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="page-header">
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="calculators.html">Calculators</a> <span>/</span>
+            <strong>YouTube Earnings Calculator</strong>
+        </div>
+    </div>
+
+    <div class="hero">
         <div class="container">
             <h1>YouTube Earnings Calculator</h1>
-            <p>Estimate your potential YouTube revenue based on views, CPM, and engagement metrics</p>
+            <p>Calculate your potential YouTube revenue instantly. Estimate earnings based on views, subscribers, and CPM rates. See realistic income projections. Completely free and 100% private.</p>
         </div>
     </div>
 
     <div class="container">
-        <!-- Calculator Tool Section -->
-        <div class="content-section">
-            <h2>Calculate Your Earnings</h2>
-            <p>Enter your channel metrics below to estimate monthly and annual revenue. This calculator uses industry-standard CPM ranges and factors in engagement rates.</p>
+        <!-- Introduction Section -->
+        <div class="intro-content">
+            <h2>Understanding YouTube Earnings: How Much Do YouTubers Actually Make?</h2>
+            <p>One of the biggest questions for aspiring content creators is: "How much money can I make from YouTube?" The truth is complex. YouTube earnings depend on multiple factors that go far beyond just view count. Understanding these factors helps you set realistic income expectations and create a sustainable content strategy.</p>
+            
+            <p><strong>What is CPM?</strong> CPM stands for "Cost Per Mille" (cost per thousand views). It's the amount advertisers pay YouTube for every 1,000 views on your videos. CPM varies dramatically based on viewer location, content type, and season. US viewers generate $5-30 CPM, while international viewers might generate $0.50-3 CPM.</p>
+            
+            <p><strong>How do YouTube earnings actually work?</strong> YouTube takes 45% of ad revenue, creators get 55%. So if an advertiser pays $10 CPM, you receive about $5.50 per 1,000 views. But this assumes viewers watch ads completely—skipped ads pay much less. This is why view count alone doesn't determine earnings.</p>
+            
+            <p><strong>Key factors affecting your earnings:</strong></p>
+            <ul style="margin-left:1.5rem;margin:1rem 0">
+                <li><strong>Viewer location:</strong> US/UK/Canada viewers = high CPM. Other countries = lower CPM</li>
+                <li><strong>Content niche:</strong> Finance/tech = $10-50 CPM. Gaming/entertainment = $1-5 CPM</li>
+                <li><strong>Engagement:</strong> Higher watch time = more complete ads = higher earnings</li>
+                <li><strong>Season:</strong> December highest CPM, summer lowest</li>
+                <li><strong>Ad-friendly content:</strong> Controversial content = lower CPM or demonetized</li>
+            </ul>
+            
+            <p><strong>Why use this calculator?</strong> This tool helps you estimate realistic income based on different scenarios. You can experiment with different CPM rates, view counts, and subscriber bases to understand what income level is achievable with your content type and audience.</p>
+        </div>
 
-            <!-- Calculator form would go here - placeholder for your existing tool -->
-            <div style="background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:1.5rem 0;">
-                <p style="color:#6b7280">[Your existing calculator tool goes here]</p>
+        <div class="main-content">
+            <!-- Calculator Section -->
+            <div class="calculator-section">
+                <h2 style="color:var(--dark);margin-bottom:1.5rem">Calculate Your YouTube Earnings</h2>
+
+                <form onsubmit="calculateEarnings(event)">
+                    <div class="form-group">
+                        <label class="form-label">Monthly Views</label>
+                        <input type="number" id="views" class="form-input" placeholder="100000" step="10000" min="0" required>
+                        <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
+                            Enter your typical monthly view count
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Subscribers (Optional)</label>
+                        <input type="number" id="subscribers" class="form-input" placeholder="10000" step="1000" min="0" value="0">
+                        <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
+                            Channel subscriber count
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Estimated CPM ($)</label>
+                        <input type="number" id="cpm" class="form-input" placeholder="5.0" step="0.50" min="0" max="100" required>
+                        <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
+                            US/UK: $5-30 | International: $0.50-3
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Content Niche</label>
+                        <select id="niche" class="form-input">
+                            <option value="">Select niche...</option>
+                            <option value="finance">Finance/Investing ($10-50)</option>
+                            <option value="tech">Technology ($8-25)</option>
+                            <option value="education">Education ($5-15)</option>
+                            <option value="business">Business ($8-30)</option>
+                            <option value="gaming">Gaming ($1-5)</option>
+                            <option value="entertainment">Entertainment ($1-4)</option>
+                            <option value="lifestyle">Lifestyle ($2-8)</option>
+                            <option value="vlog">Vlogs ($1-6)</option>
+                            <option value="music">Music ($0.5-3)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Audience Geographic Mix</label>
+                        <select id="audience" class="form-input">
+                            <option value="us">Mostly US/UK/Canada (50%+ tier-1)</option>
+                            <option value="mixed">Mixed Global Audience</option>
+                            <option value="intl">Mostly International</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn">Calculate Earnings</button>
+                </form>
+
+                <!-- Results -->
+                <div id="result" class="result-box">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <div class="result-label">Monthly Revenue</div>
+                            <div class="result-value" id="monthlyEarnings">$0</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Annual Revenue</div>
+                            <div class="result-value" id="annualEarnings">$0</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Revenue per Subscriber</div>
+                            <div class="result-value" id="perSubscriber">$0</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">YouTube's Share (45%)</div>
+                            <div class="result-value" id="youtubeShare">$0</div>
+                        </div>
+                    </div>
+
+                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Revenue Breakdown</h3>
+                    <div class="revenue-breakdown">
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">Gross Ad Revenue</span>
+                            <span class="breakdown-value" id="grossRevenue">$0</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">YouTube's Cut (45%)</span>
+                            <span class="breakdown-value" style="color:var(--danger)" id="youtubePayment">$0</span>
+                        </div>
+                        <div class="breakdown-row" style="border:none;border-top:2px solid var(--border);padding-top:1rem;margin-top:1rem">
+                            <span class="breakdown-label" style="font-size:1.1rem">Your Earnings (55%)</span>
+                            <span class="breakdown-value" style="font-size:1.2rem" id="yourEarnings">$0</span>
+                        </div>
+                    </div>
+
+                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Income Scenarios</h3>
+                    <div style="background:var(--light);padding:1rem;border-radius:8px">
+                        <p style="color:#4b5563;margin-bottom:0.5rem"><strong>If CPM increases 50%:</strong> <span id="scenario1" style="color:var(--primary);font-weight:700">$0</span>/month</p>
+                        <p style="color:#4b5563;margin-bottom:0.5rem"><strong>If views double:</strong> <span id="scenario2" style="color:var(--primary);font-weight:700">$0</span>/month</p>
+                        <p style="color:#4b5563"><strong>If CPM is average tier-1 ($15):</strong> <span id="scenario3" style="color:var(--primary);font-weight:700">$0</span>/month</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- CPM by Niche -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1.5rem">📊 CPM by Niche</h3>
+                    <div class="stat-box">
+                        <h3>Finance</h3>
+                        <p style="color:var(--text-light);font-size:0.9rem">Highest CPM ($10-50) - Most valuable niche</p>
+                    </div>
+                </div>
+
+                <!-- YouTube Requirements -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">✅ Monetization Requirements</h3>
+                    <ul style="font-size:0.9rem;color:#4b5563;list-style:none;padding:0;line-height:1.8">
+                        <li>✓ 1,000 subscribers</li>
+                        <li>✓ 4,000 watch hours (12 months)</li>
+                        <li>✓ Channel in good standing</li>
+                        <li>✓ Comply with policies</li>
+                    </ul>
+                </div>
+
+                <!-- Income Reality -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">💡 Earning Reality</h3>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.8">Most creators don't hit 4,000 watch hours or 1,000 subscribers. YouTube income averages $0.25-4 per 1,000 views (much lower than CPM suggests).</p>
+                </div>
             </div>
         </div>
 
-        <!-- Detailed Guide Section -->
-        <div class="content-section">
-            <h2>How YouTube Monetization Works</h2>
-            <p>YouTube creators earn money primarily through the YouTube Partner Program (YPP), which allows ads to be displayed on videos. However, the amount you earn depends on far more than just view count. Understanding these factors helps set realistic expectations and optimize your content strategy.</p>
+        <!-- How to Use Section -->
+        <div class="how-to-section">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">How to Use This YouTube Earnings Calculator</h2>
+            <div class="step">
+                <span class="step-number">1</span>
+                <div><strong>Enter Monthly Views:</strong> Your average monthly view count. If new, estimate conservatively.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <div><strong>Add Subscribers:</strong> Optional. Helps calculate per-subscriber metrics.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <div><strong>Set CPM:</strong> Research your niche's typical CPM. Finance=$10-50, Gaming=$1-5.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">4</span>
+                <div><strong>Select Niche & Audience:</strong> Helps estimate realistic CPM for your content.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">5</span>
+                <div><strong>Get Results:</strong> See monthly/annual earnings, YouTube's cut, and income scenarios.</div>
+            </div>
+        </div>
 
-            <h3>What is CPM and Why Does It Vary?</h3>
-            <p>CPM (Cost Per Mille) represents how much advertisers pay for 1,000 ad impressions on your videos. CPM rates vary dramatically based on several factors:</p>
+        <!-- Expert Tips -->
+        <div class="tips-section">
+            <h3>💡 Expert YouTube Earning Tips</h3>
             <ul>
-                <li><strong>Viewer Location:</strong> Audiences in the United States, Canada, UK, and Australia typically generate higher CPMs ($4–$15) compared to viewers in India, Pakistan, or Southeast Asia ($0.50–$3).</li>
-                <li><strong>Niche/Topic:</strong> Finance, business, and technology channels command higher CPMs ($8–$20+) because advertisers in these sectors pay more per click. Gaming, entertainment, and vlog channels typically see lower CPMs ($1–$5).</li>
-                <li><strong>Seasonality:</strong> CPMs spike during Q4 (October–December) due to holiday advertising budgets, then drop in Q1 (January–March) when advertisers reduce spending.</li>
-                <li><strong>Ad Format:</strong> Skippable video ads pay differently than non-skippable ads, bumper ads, or overlay ads. Longer videos (8+ minutes) can include mid-roll ads, significantly increasing revenue per view.</li>
+                <li>Focus on audience retention, not just views—complete ad watches earn more</li>
+                <li>High-CPM niches (finance, tech, business) earn 5-50x more than entertainment</li>
+                <li>US/UK/Canada audiences worth 10x more than international—geo-targeting matters</li>
+                <li>Diversify revenue: sponsorships often earn more than AdSense</li>
+                <li>Avoid demonetization: controversial content gets 0 CPM—stick to brand-safe topics</li>
+                <li>Use YouTube analytics to find your highest-CPM content and create more</li>
+                <li>Engagement matters: more comments/likes = higher perceived quality = higher CPM</li>
+                <li>Consistency over virality: sustainable growth builds loyal, valuable audiences</li>
             </ul>
+        </div>
 
-            <h3>YouTube Partner Program Requirements</h3>
-            <p>Before you can earn anything from ads, you must meet these thresholds:</p>
-            <table>
-                <tr><th>Requirement</th><th>Details</th></tr>
-                <tr><td>Subscribers</td><td>1,000 minimum</td></tr>
-                <tr><td>Watch Hours</td><td>4,000 hours in the past 12 months (or 10M Shorts views)</td></tr>
-                <tr><td>Account Standing</td><td>No active Community Guidelines strikes</td></tr>
-                <tr><td>2-Step Verification</td><td>Required for account security</td></tr>
-                <tr><td>AdSense Account</td><td>Linked and approved</td></tr>
-            </table>
+        <!-- FAQ Section -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
 
-            <h3>Beyond Ad Revenue: Other Income Streams</h3>
-            <p>Successful YouTubers rarely rely solely on AdSense. Diversifying income protects against algorithm changes and CPM fluctuations:</p>
-            <ul>
-                <li><strong>Channel Memberships:</strong> Monthly subscriptions ($0.99–$100/month) offering exclusive badges, emojis, and content.</li>
-                <li><strong>Super Chat & Super Stickers:</strong> Viewer donations during live streams. Popular in gaming and reaction channels.</li>
-                <li><strong>YouTube Shopping:</strong> Tag products directly in videos and earn affiliate commissions.</li>
-                <li><strong>Sponsored Content:</strong> Brand deals typically pay $10–$50 per 1,000 views depending on niche and engagement.</li>
-                <li><strong>Affiliate Marketing:</strong> Promoting products with trackable links. Amazon Associates, ShareASale, and niche-specific programs are common.</li>
-                <li><strong>Merchandise:</strong> Selling branded products through YouTube's integrated merch shelf or external platforms like Shopify.</li>
-                <li><strong>Courses & Digital Products:</strong> Many creators earn significantly more from selling knowledge than from ads.</li>
-            </ul>
-
-            <h3>Realistic Earnings by Channel Size</h3>
-            <table>
-                <tr><th>Channel Size</th><th>Monthly Views</th><th>Estimated Monthly Ad Revenue</th></tr>
-                <tr><td>Small (10K subs)</td><td>50,000–100,000</td><td>$100–$500</td></tr>
-                <tr><td>Medium (100K subs)</td><td>500,000–1M</td><td>$1,500–$5,000</td></tr>
-                <tr><td>Large (500K subs)</td><td>2M–5M</td><td>$8,000–$25,000</td></tr>
-                <tr><td>Massive (1M+ subs)</td><td>10M+</td><td>$50,000–$200,000+</td></tr>
-            </table>
-            <p style="font-size:0.9rem;color:#6b7280;margin-top:0.5rem">Note: These are rough estimates. Actual earnings vary significantly based on niche, audience location, and engagement.</p>
-
-            <h3>How to Increase Your YouTube Revenue</h3>
-            <ul>
-                <li><strong>Target High-CPM Niches:</strong> Finance, technology, business, and health content attracts premium advertisers.</li>
-                <li><strong>Create Longer Videos:</strong> Videos over 8 minutes can include mid-roll ads, potentially doubling revenue per view.</li>
-                <li><strong>Improve Audience Retention:</strong> Higher retention rates signal quality to YouTube, leading to more recommendations and higher CPM placements.</li>
-                <li><strong>Post Consistently:</strong> Regular uploads build audience habits and increase total watch time.</li>
-                <li><strong>Optimize for Search:</strong> SEO-friendly titles and descriptions attract viewers actively searching for content, who tend to watch longer.</li>
-                <li><strong>Build an Email List:</strong> Own your audience. Email lists convert better for affiliate offers and product launches than YouTube alone.</li>
-            </ul>
-
-            <div class="highlight">
-                <p><strong>Important:</strong> This calculator provides estimates only. Actual YouTube revenue depends on numerous factors including advertiser demand, audience demographics, video length, and YouTube's revenue share (55% to creators, 45% to YouTube). Use these figures for planning purposes, not financial projections.</p>
+            <div class="faq-item open">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I make money without 4,000 watch hours?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Not from YouTube AdSense directly—you need 4,000 watch hours and 1,000 subscribers to enable monetization. However, you can earn through sponsorships, channel memberships, or affiliate links before hitting monetization thresholds. Many creators start earning this way.</p>
+                </div>
             </div>
 
-            <div class="author-footer">
-                <p>Built by <strong>Shahid Abbas</strong> · ToolPond · Pakistan</p>
-                <p>Have questions about this calculator? <a href="contact.html" style="color:var(--primary);text-decoration:none;">Contact me</a>.</p>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Why is my CPM so low?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Low CPM usually means: (1) Mostly international viewers (low CPM countries), (2) Entertainment/music niche (naturally lower CPM), (3) Controversial content (advertisers avoid), (4) Audience skips ads, (5) Wrong season (summer=lower, December=higher). High-CPM niches like finance and B2B services get 10-50x more.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's RPM vs CPM?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>CPM = what advertisers pay per 1,000 views. RPM = what YOU earn per 1,000 views (after YouTube takes 45%). So $10 CPM = about $5.50 RPM. This calculator shows RPM ($5.50), YouTube takes the rest. Your actual earnings depend on your RPM, not CPM.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How much do successful YouTubers make?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Top 1% of YouTubers earn $10,000+/month, but from sponsorships not just AdSense. Typical full-time YouTubers earn $2,000-5,000/month from AdSense once they have 500k+ subscribers. Beginner YouTubers (10k-100k subs) earn $100-1,000/month. The calculator helps you estimate your realistic earnings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is this calculator accurate?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, mathematically accurate for the inputs you provide. However, real earnings vary because: CPM fluctuates monthly, not all views generate ads, some viewers use ad-blockers, content demonetization reduces earnings. Use this to estimate ballpark figures, not exact predictions. Real earnings usually run 20-50% of these estimates due to these factors.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Should I focus on views or subscribers?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Views determine AdSense earnings (this calculator). Subscribers determine sponsorship appeal. Real income comes from both: AdSense provides baseline, sponsorships provide premium. Create content for subscribers you want (quality over quantity), then sponsorships follow naturally from loyal audience.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is my data private?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, 100% private. All calculations happen in your browser. We never see, store, or collect your view counts, subscriber counts, or any data. No login required, no tracking, no ads. Your channel information stays completely private.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Examples -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Real-World YouTube Earnings Examples</h2>
+            
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Small Finance Channel (50k subs, 200k views/month)</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Niche:</strong> Finance (CPM=$15) | <strong>Audience:</strong> 70% US</p>
+                <p style="color:#4b5563"><strong>Result:</strong> $1,650/month ($19,800/year) from AdSense | Sponsorships could add $5k-10k/month</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Gaming Channel (500k subs, 5M views/month)</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Niche:</strong> Gaming (CPM=$3) | <strong>Audience:</strong> Global</p>
+                <p style="color:#4b5563"><strong>Result:</strong> $8,250/month ($99,000/year) | Popular gamers earn mostly from sponsorships, merchandise, not AdSense</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: B2B SaaS Tutorial (100k subs, 300k views/month)</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Niche:</strong> Business/Tech (CPM=$20) | <strong>Audience:</strong> 80% US</p>
+                <p style="color:#4b5563"><strong>Result:</strong> $3,300/month ($39,600/year) from AdSense | High CPM niche = sustainable income without sponsorships</p>
+            </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+            <h3>🔗 Related Content Creator Calculators</h3>
+            <div class="related-grid">
+                <a href="tiktok-instagram-calculators.html" class="related-item">🎵 TikTok Earnings</a>
+                <a href="salary-calculator.html" class="related-item">💼 Salary</a>
+                <a href="compound-interest-calculator.html" class="related-item">📈 Investment Growth</a>
+                <a href="budget-planner.html" class="related-item">💰 Budget</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="calculators.html">Tools</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Finance Tools</h4>
+                <a href="salary-calculator.html">Salary</a>
+                <a href="compound-interest-calculator.html">Compound Interest</a>
+                <a href="mortgage-calculator.html">Mortgage</a>
+                <a href="budget-planner.html">Budget</a>
+            </div>
+            <div class="footer-col">
+                <h4>All Tools</h4>
+                <a href="calculators.html">Calculator Directory</a>
+                <a href="calorie-calculator.html">Health Tools</a>
+                <a href="youtube-earnings-calculator.html">Creator Tools</a>
+                <a href="converter.html">Converters</a>
+            </div>
         </div>
-        <p>&copy; 2026 ToolPond. Built by Shahid Abbas.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolPond Pro. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('niche').addEventListener('change', function() {
+            const cpmInput = document.getElementById('cpm');
+            const nicheCPMs = {
+                'finance': '15',
+                'tech': '12',
+                'education': '8',
+                'business': '15',
+                'gaming': '3',
+                'entertainment': '2',
+                'lifestyle': '4',
+                'vlog': '3',
+                'music': '1'
+            };
+            if (this.value && nicheCPMs[this.value]) {
+                cpmInput.placeholder = 'CPM: $' + nicheCPMs[this.value];
+            }
+        });
+
+        document.getElementById('audience').addEventListener('change', function() {
+            const cpm = parseFloat(document.getElementById('cpm').value) || 0;
+            if (this.value === 'intl' && cpm > 0) {
+                document.getElementById('cpm').value = (cpm * 0.3).toFixed(2);
+            }
+        });
+
+        function calculateEarnings(e) {
+            e.preventDefault();
+            
+            const views = parseFloat(document.getElementById('views').value);
+            const subscribers = parseFloat(document.getElementById('subscribers').value) || 0;
+            const cpm = parseFloat(document.getElementById('cpm').value);
+            
+            // Calculate earnings
+            const grossMonthly = (views / 1000) * cpm;
+            const yourShare = grossMonthly * 0.55;
+            const youtubeShare = grossMonthly * 0.45;
+            
+            const annualEarnings = yourShare * 12;
+            const perSubEarnings = subscribers > 0 ? yourShare / subscribers : 0;
+            
+            // Scenarios
+            const scenario1 = ((views / 1000) * (cpm * 1.5) * 0.55).toFixed(2);
+            const scenario2 = ((views * 2 / 1000) * cpm * 0.55).toFixed(2);
+            const scenario3 = ((views / 1000) * 15 * 0.55).toFixed(2);
+            
+            // Update results
+            document.getElementById('monthlyEarnings').textContent = '$' + yourShare.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('annualEarnings').textContent = '$' + annualEarnings.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('perSubscriber').textContent = '$' + perSubEarnings.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('youtubeShare').textContent = '$' + youtubeShare.toLocaleString('en-US', {maximumFractionDigits: 2});
+            
+            document.getElementById('grossRevenue').textContent = '$' + grossMonthly.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('youtubePayment').textContent = '-$' + youtubeShare.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('yourEarnings').textContent = '$' + yourShare.toLocaleString('en-US', {maximumFractionDigits: 2});
+            
+            document.getElementById('scenario1').textContent = '$' + scenario1;
+            document.getElementById('scenario2').textContent = '$' + scenario2;
+            document.getElementById('scenario3').textContent = '$' + scenario3;
+            
+            document.getElementById('result').classList.add('show');
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function toggleFAQ(element) {
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== element.parentElement) {
+                    item.classList.remove('open');
+                }
+            });
+            element.parentElement.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
