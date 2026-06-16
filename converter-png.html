@@ -3,138 +3,662 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PNG Converter - Convert PNG images to JPG, WebP, or PDF. Adjust quality and compression. Free online image conversion tool built by Shahid Abbas.">
-    <meta name="author" content="Shahid Abbas">
-    <link rel="canonical" href="https://toolpond.org/png-converter.html">
-    <title>PNG Converter - Convert PNG to JPG, WebP, PDF</title>
+    <meta name="description" content="Free Image Converter 2026 - Convert PNG to JPG, WebP, PDF instantly. Compress images, adjust quality, and convert formats online. No uploads, 100% private image converter.">
+    <meta name="keywords" content="image converter, PNG to JPG, convert PNG, image compression, WebP converter, PDF converter, free image tool, image optimizer, lossy compression">
+    <meta name="author" content="ToolPond Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolpond.org/converter-png.html">
+
+    <meta property="og:title" content="Free Image Converter 2026 - PNG to JPG, WebP & PDF">
+    <meta property="og:description" content="Convert images instantly. PNG to JPG, WebP, PDF. Adjust quality and compress. 100% private, no uploads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpond.org/converter-png.html">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Image Converter">
+    <meta name="twitter:description" content="Convert PNG, JPG, WebP images instantly">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Converter",
+      "description": "Convert between PNG, JPG, WebP, and PDF formats",
+      "url": "https://toolpond.org/converter-png.html",
+      "applicationCategory": "Utility",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/"},
+        {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://toolpond.org/calculators.html"},
+        {"@type": "ListItem", "position": 3, "name": "Image Converter", "item": "https://toolpond.org/converter-png.html"}
+      ]
+    }
+    </script>
+
+    <title>Free Image Converter 2026 | PNG to JPG, WebP & PDF | ToolPond Pro</title>
+
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#0066cc;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--light)}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.page-header{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.page-header h1{font-size:2.2rem;margin-bottom:0.5rem}.page-header p{font-size:1rem;opacity:0.9;max-width:700px;margin:0 auto}.container{max-width:900px;margin:0 auto;padding:0 2rem}.content-section{background:#fff;padding:2.5rem;margin:2rem 0;border-radius:8px;border:1px solid var(--border)}.content-section h2{color:var(--dark);margin-bottom:1rem;font-size:1.4rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem;display:inline-block}.content-section h3{color:var(--dark);margin:1.5rem 0 0.75rem 0;font-size:1.1rem}.content-section p{color:#4b5563;margin-bottom:1rem;line-height:1.8}.content-section ul{margin-left:1.5rem;color:#4b5563;margin-bottom:1rem}.content-section li{margin-bottom:0.5rem}.content-section table{width:100%;border-collapse:collapse;margin:1rem 0}.content-section th,.content-section td{border:1px solid var(--border);padding:0.75rem;text-align:left}.content-section th{background:var(--light);font-weight:600;color:var(--dark)}.highlight{background:#f0f9ff;border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.highlight p{color:#4b5563;margin:0}.author-footer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);color:#6b7280;font-size:0.9rem}footer{background:var(--dark);color:#fff;padding:2rem;text-align:center}.footer-links{margin-bottom:1rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}@media(max-width:768px){.page-header h1{font-size:1.8rem}}
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#0066cc;--primary-dark:#1e40af;--primary-light:#dbeafe;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151;--text-light:#6b7280}
+        
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif;line-height:1.6;color:var(--text);background:var(--light)}
+        
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:color 0.3s}
+        .nav-links a:hover{color:var(--primary)}
+        
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        
+        .hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:3rem 2rem;text-align:center;margin-bottom:2rem}
+        .hero h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}
+        .hero p{font-size:1.1rem;opacity:0.95;max-width:700px;margin:0 auto}
+        
+        .breadcrumb{padding:1rem 2rem;background:#fff;border-bottom:1px solid var(--border);font-size:0.9rem}
+        .breadcrumb a{color:var(--primary);text-decoration:none}
+        .breadcrumb span{margin:0 0.5rem;color:var(--text-light)}
+        
+        .main-content{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-bottom:3rem}
+        
+        .converter-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        .sidebar{display:flex;flex-direction:column;gap:1rem}
+        .sidebar-box{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        
+        .intro-content{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border:1px solid var(--border)}
+        .intro-content h2{color:var(--dark);margin-bottom:1rem;font-size:1.5rem}
+        .intro-content p{color:#4b5563;margin-bottom:1rem;line-height:1.8}
+        
+        .upload-area{border:3px dashed var(--primary);border-radius:12px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:all 0.3s;background:var(--light)}
+        .upload-area:hover{background:var(--primary-light);border-color:var(--primary-dark)}
+        .upload-area.active{background:var(--primary-light);border-color:var(--success)}
+        .upload-icon{font-size:3rem;margin-bottom:1rem}
+        .upload-text{color:var(--dark);font-weight:600;margin-bottom:0.5rem}
+        .upload-subtext{color:var(--text-light);font-size:0.9rem}
+        
+        .form-group{margin-bottom:1.5rem}
+        .form-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark);font-size:0.95rem}
+        .form-input{width:100%;padding:0.75rem;border:2px solid var(--border);border-radius:8px;font-size:1rem;transition:all 0.3s}
+        .form-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+        
+        .quality-slider{width:100%;height:6px;border-radius:3px;background:var(--border);outline:none}
+        .quality-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--primary);cursor:pointer}
+        .quality-slider::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--primary);cursor:pointer;border:none}
+        
+        .btn{width:100%;padding:1rem;background:linear-gradient(135deg,var(--success),#059669);color:#fff;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;margin-top:1rem}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,0.3)}
+        .btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
+        
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#e0f2fe);border:2px solid var(--primary);border-radius:12px;padding:2rem;margin-top:2rem;display:none}
+        .result-box.show{display:block;animation:slideDown 0.3s ease}
+        @keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        
+        .preview-area{background:#fff;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+        .preview-label{color:var(--text-light);font-size:0.85rem;text-transform:uppercase;margin-bottom:0.5rem;font-weight:600}
+        .preview-image{max-width:100%;max-height:400px;border-radius:6px;margin:1rem 0}
+        
+        .file-info{background:#fff;padding:1rem;border-radius:8px;margin:1rem 0}
+        .info-row{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid var(--border)}
+        .info-row:last-child{border-bottom:none}
+        .info-label{font-weight:600;color:var(--dark)}
+        .info-value{color:var(--primary);font-weight:700}
+        
+        .tips-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border-left:4px solid var(--warning)}
+        .tips-section h3{color:var(--dark);margin-bottom:1rem}
+        .tips-section ul{list-style:none;padding-left:0}
+        .tips-section li{padding:0.75rem 0;padding-left:1.5rem;position:relative;color:#4b5563}
+        .tips-section li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:bold}
+        
+        .how-to-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border-left:4px solid var(--primary)}
+        .step{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+        .step:last-child{border-bottom:none}
+        .step-number{display:inline-block;width:2rem;height:2rem;background:var(--primary);color:#fff;border-radius:50%;text-align:center;line-height:2rem;font-weight:700;margin-right:0.5rem}
+        
+        .format-comparison{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;margin:1.5rem 0;font-size:0.9rem}
+        .format-comparison th{background:var(--primary);color:#fff;padding:0.75rem;text-align:left;font-weight:600}
+        .format-comparison td{padding:0.75rem;border-bottom:1px solid var(--border)}
+        .format-comparison tr:last-child td{border-bottom:none}
+        .format-comparison tr:hover{background:var(--light)}
+        
+        .faq-item{background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:1rem;overflow:hidden}
+        .faq-question{padding:1.5rem;cursor:pointer;font-weight:600;color:var(--dark);display:flex;justify-content:space-between;align-items:center;transition:background 0.3s}
+        .faq-question:hover{background:var(--light)}
+        .faq-arrow{transition:transform 0.3s;font-size:1.2rem;color:var(--primary)}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;padding:0 1.5rem}
+        .faq-item.open .faq-answer{max-height:500px;padding:0 1.5rem 1.5rem}
+        .faq-answer p{color:#4b5563;line-height:1.8;margin-bottom:0.5rem}
+        
+        .stat-box h3{color:var(--dark);margin-bottom:0.5rem;font-size:0.95rem;text-transform:uppercase;font-weight:700}
+        .stat-value{font-size:1.8rem;font-weight:800;color:var(--primary);margin:0.5rem 0}
+        
+        .related-tools{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem}
+        .related-tools h3{color:var(--dark);margin-bottom:1rem}
+        .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+        .related-item{padding:1rem;background:var(--light);border-radius:8px;text-align:center;text-decoration:none;color:var(--primary);font-weight:600;transition:all 0.3s;border:1px solid var(--border)}
+        .related-item:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
+        
+        footer{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;display:block;margin-bottom:0.5rem;transition:color 0.3s}
+        .footer-col a:hover{color:#fff}
+        .footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid #4b5563;color:#9ca3af}
+        
+        @media(max-width:768px){
+            .main-content{grid-template-columns:1fr}
+            .hero h1{font-size:1.8rem}
+            .preview-image{max-height:300px}
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">ToolPond</a>
+            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="calculators.html">Tools</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="page-header">
+    <div class="breadcrumb">
         <div class="container">
-            <h1>PNG Converter</h1>
-            <p>Convert PNG images to JPG, WebP, or PDF with adjustable quality and compression settings</p>
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="calculators.html">Calculators</a> <span>/</span>
+            <strong>Image Converter</strong>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Image Converter</h1>
+            <p>Convert images between PNG, JPG, WebP, and PDF formats instantly. Compress images, adjust quality, and optimize file sizes. No uploads, 100% private conversion.</p>
         </div>
     </div>
 
     <div class="container">
-        <!-- Calculator Tool Section -->
-        <div class="content-section">
-            <h2>Convert Your PNG Images</h2>
-            <p>Upload your PNG file and select the output format. Adjust quality settings to balance file size and image clarity. All processing happens in your browser — your images are never uploaded to our servers.</p>
+        <!-- Introduction Section -->
+        <div class="intro-content">
+            <h2>Image Format Guide: PNG vs JPG vs WebP</h2>
+            <p>Choosing the right image format is essential for web performance, storage efficiency, and visual quality. Different formats excel in different scenarios. Understanding when to use PNG, JPG, WebP, or PDF helps you optimize images for web, print, and archival purposes.</p>
+            
+            <p><strong>What are image formats?</strong> Image formats are ways of encoding visual data. Each format compresses images differently, affecting quality, file size, and compatibility. PNG preserves perfect quality but creates larger files. JPG compresses aggressively for smaller file sizes. WebP offers the best balance of quality and compression. PDF is ideal for documents and printing.</p>
+            
+            <p><strong>Why convert images?</strong> You might need to:</p>
+            <ul style="margin-left:1.5rem;margin:1rem 0">
+                <li><strong>Optimize for web:</strong> Convert PNG/BMP to JPG/WebP for faster loading</li>
+                <li><strong>Reduce file size:</strong> Compress for email, storage, or sharing</li>
+                <li><strong>Change format:</strong> Convert for compatibility with specific software</li>
+                <li><strong>Prepare for print:</strong> Convert to PDF with proper quality and color space</li>
+                <li><strong>Archive efficiently:</strong> Compress images while maintaining acceptable quality</li>
+            </ul>
+            
+            <p><strong>Format comparison:</strong> PNG is ideal for graphics and images needing transparency. JPG is best for photographs and complex images. WebP offers superior compression for modern browsers. PDF is perfect for documents and printing. Each format has specific use cases.</p>
+        </div>
 
-            <!-- Converter tool would go here - placeholder for your existing tool -->
-            <div style="background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:1.5rem 0;">
-                <p style="color:#6b7280">[Your existing PNG converter tool goes here]</p>
+        <div class="main-content">
+            <!-- Converter Section -->
+            <div class="converter-section">
+                <h2 style="color:var(--dark);margin-bottom:1.5rem">Convert Your Image</h2>
+
+                <!-- File Upload Area -->
+                <div class="upload-area" id="dropZone">
+                    <div class="upload-icon">📸</div>
+                    <div class="upload-text">Drop image here or click to select</div>
+                    <div class="upload-subtext">Supports PNG, JPG, WebP (Max 50MB)</div>
+                    <input type="file" id="imageInput" accept="image/*" style="display:none" onchange="handleImageSelect()">
+                </div>
+
+                <div id="converterPanel" style="display:none;margin-top:1.5rem">
+                    <div class="form-group">
+                        <label class="form-label">Output Format</label>
+                        <select id="outputFormat" class="form-input" onchange="updatePreview()">
+                            <option value="jpeg">JPG (JPEG)</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="qualityGroup">
+                        <label class="form-label">Quality: <span id="qualityValue">85</span>%</label>
+                        <input type="range" id="quality" class="quality-slider" min="1" max="100" value="85" oninput="updateQualityValue()">
+                        <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
+                            <strong>85%:</strong> Recommended for balanced quality and file size
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="convertImage()">Convert Image</button>
+                </div>
+
+                <!-- Results -->
+                <div id="result" class="result-box">
+                    <div class="preview-area">
+                        <div class="preview-label">Original Image</div>
+                        <img id="previewImage" class="preview-image" alt="Original">
+                    </div>
+
+                    <div class="file-info">
+                        <div class="info-row">
+                            <span class="info-label">Original Format</span>
+                            <span class="info-value" id="originalFormat">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Original Size</span>
+                            <span class="info-value" id="originalSize">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Converted Format</span>
+                            <span class="info-value" id="convertedFormat">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Converted Size</span>
+                            <span class="info-value" id="convertedSize">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Space Saved</span>
+                            <span class="info-value" id="spaceSaved">-</span>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="downloadImage()" style="background:linear-gradient(135deg,#10b981,#059669)">
+                        ⬇️ Download Converted Image
+                    </button>
+
+                    <button class="btn" onclick="resetConverter()" style="background:linear-gradient(135deg,#6b7280,#4b5563);margin-top:0.5rem">
+                        Start Over
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Format Info -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1.5rem">🎨 Format Details</h3>
+                    <div class="stat-box">
+                        <h3>JPG - Lossy</h3>
+                        <p style="color:var(--text-light);font-size:0.9rem">Best for photos. Smaller files, some quality loss. Universal compatibility.</p>
+                    </div>
+                </div>
+
+                <!-- Quality Guide -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">📊 Quality Guide</h3>
+                    <ul style="font-size:0.9rem;color:#4b5563;list-style:none;padding:0;line-height:1.8">
+                        <li>✓ 95%+ = Highest quality, large file</li>
+                        <li>✓ 85% = Recommended balance</li>
+                        <li>✓ 70% = Good for web, small file</li>
+                        <li>✓ 50% = Low quality, tiny file</li>
+                    </ul>
+                </div>
+
+                <!-- Privacy Info -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">🔒 Privacy</h3>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.8">All conversions happen in your browser. No files uploaded to servers. No data collection. 100% private.</p>
+                </div>
             </div>
         </div>
 
-        <!-- Detailed Guide Section -->
-        <div class="content-section">
-            <h2>Understanding Image Format Conversion</h2>
-            <p>PNG (Portable Network Graphics) is a lossless image format that preserves full quality but often produces larger file sizes. Converting PNG to other formats can significantly reduce file size for web use, email attachments, or storage constraints. However, each format has trade-offs that matter depending on your use case.</p>
-
-            <h3>PNG vs Other Image Formats</h3>
-            <table>
-                <tr><th>Format</th><th>Compression</th><th>Transparency</th><th>Best For</th></tr>
-                <tr><td>PNG</td><td>Lossless</td><td>Yes (alpha channel)</td><td>Logos, icons, graphics with text, images needing transparency</td></tr>
-                <tr><td>JPG/JPEG</td><td>Lossy</td><td>No</td><td>Photographs, complex images, web publishing where file size matters</td></tr>
-                <tr><td>WebP</td><td>Lossy or Lossless</td><td>Yes</td><td>Modern web images, best compression with quality preservation</td></tr>
-                <tr><td>PDF</td><td>Varies</td><td>Yes (in some modes)</td><td>Documents, print-ready files, archiving</td></tr>
-                <tr><td>GIF</td><td>Lossless (256 colors)</td><td>Yes (1-bit)</td><td>Simple animations, small icons</td></tr>
+        <!-- Format Comparison -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Image Format Comparison</h2>
+            <table class="format-comparison">
+                <thead>
+                    <tr>
+                        <th>Format</th>
+                        <th>Best For</th>
+                        <th>File Size</th>
+                        <th>Quality</th>
+                        <th>Transparency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>JPG/JPEG</strong></td>
+                        <td>Photographs, complex images</td>
+                        <td>Small</td>
+                        <td>Good (with compression)</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PNG</strong></td>
+                        <td>Graphics, illustrations, transparency</td>
+                        <td>Large</td>
+                        <td>Excellent (lossless)</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WebP</strong></td>
+                        <td>Modern web, compression</td>
+                        <td>Very Small</td>
+                        <td>Excellent</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PDF</strong></td>
+                        <td>Documents, printing, archival</td>
+                        <td>Variable</td>
+                        <td>Excellent</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
             </table>
+            <p style="color:#4b5563;line-height:1.8;margin-top:1rem"><strong>JPG</strong> is ideal for photographs where some compression is acceptable. <strong>PNG</strong> maintains perfect quality and supports transparency but creates larger files. <strong>WebP</strong> offers the best compression for web use. <strong>PDF</strong> is best for documents, forms, and printing.</p>
+        </div>
 
-            <h3>When to Convert PNG to JPG</h3>
-            <p>Converting PNG to JPG reduces file size through lossy compression, which permanently discards some image data. This is ideal when:</p>
+        <!-- How to Use Section -->
+        <div class="how-to-section">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">How to Use This Image Converter</h2>
+            <div class="step">
+                <span class="step-number">1</span>
+                <div><strong>Upload Image:</strong> Click or drag an image file (PNG, JPG, WebP) into the upload area.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <div><strong>Choose Output Format:</strong> Select the format you want (JPG, PNG, WebP, or PDF).</div>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <div><strong>Adjust Quality:</strong> For lossy formats (JPG, WebP), adjust quality slider for file size vs quality balance.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">4</span>
+                <div><strong>Convert:</strong> Click "Convert Image" to process the file.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">5</span>
+                <div><strong>Download:</strong> Download the converted image. File size reduction is shown immediately.</div>
+            </div>
+        </div>
+
+        <!-- Expert Tips -->
+        <div class="tips-section">
+            <h3>💡 Expert Image Conversion Tips</h3>
             <ul>
-                <li><strong>Sharing photographs:</strong> JPG handles continuous-tone images (photos) better than PNG and produces smaller files.</li>
-                <li><strong>Email attachments:</strong> Reducing file size helps avoid attachment limits and speeds up sending.</li>
-                <li><strong>Web publishing:</strong> Smaller images load faster, improving page speed and user experience.</li>
-                <li><strong>Storage constraints:</strong> JPG can reduce file size by 50–80% compared to PNG for photographic content.</li>
+                <li>Use JPG for photographs (smaller files, acceptable quality loss)</li>
+                <li>Use PNG for graphics, logos, or images needing transparency</li>
+                <li>Use WebP for modern web (best compression, supported by all browsers now)</li>
+                <li>Quality 85% is sweet spot for JPG/WebP—good quality without bloated files</li>
+                <li>PNG is lossless—convert to JPG to reduce size, but never convert JPG→PNG (won't improve quality)</li>
+                <li>For web, optimize images: use JPG 85% for photos, WebP for complex graphics</li>
+                <li>Always keep an original copy—converting JPG to PNG won't restore lost data</li>
+                <li>Test quality settings—convert, download, and compare file sizes vs visual quality</li>
             </ul>
-            <p><strong>When NOT to use JPG:</strong> Avoid converting graphics with sharp edges, text, or transparency. JPG compression creates visible artifacts around high-contrast edges and does not support transparency.</p>
+        </div>
 
-            <h3>When to Convert PNG to WebP</h3>
-            <p>WebP is a modern image format developed by Google that provides superior compression compared to both PNG and JPG. It supports both lossy and lossless compression, plus full alpha transparency.</p>
-            <ul>
-                <li><strong>Website optimization:</strong> WebP images are typically 25–35% smaller than JPG and 26% smaller than PNG at equivalent quality.</li>
-                <li><strong>Responsive images:</strong> Modern browsers support WebP, making it ideal for serving optimized images to compatible devices.</li>
-                <li><strong>Preserving transparency:</strong> Unlike JPG, WebP supports full alpha transparency, making it a better replacement for PNG graphics.</li>
-            </ul>
-            <p><strong>Browser compatibility:</strong> WebP is supported by Chrome, Firefox, Safari, and Edge. For older browsers, provide fallback JPG/PNG images using the HTML picture element.</p>
+        <!-- FAQ Section -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
 
-            <h3>When to Convert PNG to PDF</h3>
-            <p>Converting images to PDF is useful for document creation, archiving, and print workflows:</p>
-            <ul>
-                <li><strong>Document compilation:</strong> Combine multiple images into a single PDF for reports, portfolios, or presentations.</li>
-                <li><strong>Print preparation:</strong> PDF preserves image dimensions and resolution for professional printing.</li>
-                <li><strong>Archiving:</strong> PDF is a standardized format that remains readable across devices and operating systems.</li>
-                <li><strong>Form submission:</strong> Many institutions require documents in PDF format for official submissions.</li>
-            </ul>
-
-            <h3>Quality Settings Explained</h3>
-            <p>When converting to lossy formats (JPG, WebP lossy), quality settings control the balance between file size and visual fidelity:</p>
-            <table>
-                <tr><th>Quality Setting</th><th>Best For</th><th>Typical Size Reduction</th></tr>
-                <tr><td>90–100%</td><td>Professional printing, archiving, when quality is critical</td><td>10–30%</td></tr>
-                <tr><td>70–85%</td><td>Web images, social media, general sharing</td><td>40–60%</td></tr>
-                <tr><td>50–65%</td><td>Thumbnails, previews, when bandwidth is limited</td><td>60–80%</td></tr>
-                <tr><td>Below 50%</td><td>Not recommended — visible artifacts and quality loss</td><td>80%+</td></tr>
-            </table>
-
-            <h3>Common Conversion Mistakes</h3>
-            <ul>
-                <li><strong>Converting text/graphics to JPG:</strong> JPG compression blurs sharp edges and makes text unreadable. Use PNG or WebP for graphics.</li>
-                <li><strong>Over-compressing:</strong> Setting quality too low creates blocky artifacts that cannot be reversed. Always keep the original PNG as backup.</li>
-                <li><strong>Ignoring color profiles:</strong> Some images use CMYK or specific RGB profiles. Converting without color management can shift colors.</li>
-                <li><strong>Converting already-compressed JPG to PNG:</strong> This increases file size without recovering lost quality. The damage from JPG compression is permanent.</li>
-                <li><strong>Not checking transparency:</strong> Converting a transparent PNG to JPG will replace transparency with a solid color (usually white or black).</li>
-            </ul>
-
-            <h3>Privacy and Security</h3>
-            <p>This converter processes all images locally in your browser using JavaScript. Your files are never uploaded to any server. This means:</p>
-            <ul>
-                <li>Your images never leave your device</li>
-                <li>No file size limits imposed by server bandwidth</li>
-                <li>Works offline after the page loads</li>
-                <li>No risk of data breaches or unauthorized access</li>
-            </ul>
-
-            <div class="highlight">
-                <p><strong>Tip:</strong> For web use, consider converting PNG photographs to WebP at 80% quality. This typically reduces file size by 60–70% while maintaining visual quality indistinguishable from the original to most viewers.</p>
+            <div class="faq-item open">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Will converting to JPG reduce quality?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>JPG uses lossy compression, so yes—some quality is lost. But at 85-90% quality, the loss is imperceptible to most people while file size drops 50-80%. Test different quality levels to find your sweet spot.</p>
+                </div>
             </div>
 
-            <div class="author-footer">
-                <p>Built by <strong>Shahid Abbas</strong> · ToolPond · Pakistan</p>
-                <p>Need a format not listed here? <a href="contact.html" style="color:var(--primary);text-decoration:none;">Request a new conversion option</a>.</p>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I convert JPG back to PNG and restore quality?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No. JPG compresses data destructively—once lost, it's gone forever. Converting JPG→PNG just changes the file format but won't restore lost quality. Always keep the original file before converting.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's the maximum file size?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>This converter handles files up to 50MB. For larger files, use desktop image editor software like Photoshop or free alternatives like GIMP.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Does PNG transparency convert to other formats?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>WebP and PDF preserve transparency. JPG doesn't support transparency—transparent areas become white background. If you need transparency, convert to PNG or WebP instead.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's the difference between JPG quality settings?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Quality scale (1-100%) controls compression: 95%+ = highest quality, huge file; 85% = recommended balance; 70% = good for web, noticeably smaller; 50% = visible quality loss, very small file. Test different levels for your images.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is WebP supported by all browsers?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, WebP is now supported by all modern browsers (Chrome, Firefox, Safari, Edge). It offers better compression than JPG while maintaining quality. Ideal for websites.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is my image data private?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, 100% private. All conversions happen in your browser. No files uploaded to servers, no data collection, no tracking. Your images stay completely private.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Examples -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Real Image Conversion Examples</h2>
+            
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Photo for Web (PNG → JPG 85%)</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Original:</strong> PNG photo = 2.5 MB | <strong>Converted:</strong> JPG 85% = 280 KB</p>
+                <p style="color:#4b5563"><strong>Result:</strong> 89% size reduction! Quality still excellent for web. Loads 10x faster.</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Screenshot for Sharing (BMP → PNG)</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Original:</strong> BMP screenshot = 5 MB | <strong>Converted:</strong> PNG = 800 KB</p>
+                <p style="color:#4b5563"><strong>Result:</strong> 84% size reduction. Perfect quality preserved. Easy to email or share.</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: Logo for Print (PNG → PDF)</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Original:</strong> PNG logo = 150 KB | <strong>Converted:</strong> PDF = 120 KB</p>
+                <p style="color:#4b5563"><strong>Result:</strong> Perfect quality for printing. Maintains transparency and colors. Professional format.</p>
+            </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+            <h3>🔗 Related Conversion & Design Tools</h3>
+            <div class="related-grid">
+                <a href="converter.html" class="related-item">📏 Unit Converter</a>
+                <a href="color-palette-generator.html" class="related-item">🎨 Color Palette</a>
+                <a href="qr-code-generator.html" class="related-item">📲 QR Code</a>
+                <a href="background-remover.html" class="related-item">✂️ Background Remover</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="calculators.html">Tools</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Conversion Tools</h4>
+                <a href="converter.html">Unit Converter</a>
+                <a href="converter-png.html">Image Converter</a>
+                <a href="currency-converter.html">Currency</a>
+                <a href="calculators.html">All Tools</a>
+            </div>
+            <div class="footer-col">
+                <h4>Design Tools</h4>
+                <a href="color-palette-generator.html">Color Palette</a>
+                <a href="background-remover.html">Background Remover</a>
+                <a href="qr-code-generator.html">QR Code</a>
+                <a href="password-generator.html">Password Generator</a>
+            </div>
         </div>
-        <p>&copy; 2026 ToolPond. Built by Shahid Abbas.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolPond Pro. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        let selectedImage = null;
+        let originalFile = null;
+
+        document.getElementById('dropZone').addEventListener('click', () => {
+            document.getElementById('imageInput').click();
+        });
+
+        document.getElementById('dropZone').addEventListener('dragover', (e) => {
+            e.preventDefault();
+            document.getElementById('dropZone').classList.add('active');
+        });
+
+        document.getElementById('dropZone').addEventListener('dragleave', () => {
+            document.getElementById('dropZone').classList.remove('active');
+        });
+
+        document.getElementById('dropZone').addEventListener('drop', (e) => {
+            e.preventDefault();
+            document.getElementById('dropZone').classList.remove('active');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                document.getElementById('imageInput').files = files;
+                handleImageSelect();
+            }
+        });
+
+        function handleImageSelect() {
+            const file = document.getElementById('imageInput').files[0];
+            if (file) {
+                originalFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    selectedImage = new Image();
+                    selectedImage.src = e.target.result;
+                    document.getElementById('converterPanel').style.display = 'block';
+                    updateFileInfo();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateFileInfo() {
+            const sizeKB = (originalFile.size / 1024).toFixed(2);
+            document.getElementById('originalSize').textContent = sizeKB + ' KB';
+            document.getElementById('originalFormat').textContent = originalFile.type.split('/')[1].toUpperCase();
+        }
+
+        function updateQualityValue() {
+            document.getElementById('qualityValue').textContent = document.getElementById('quality').value;
+        }
+
+        function convertImage() {
+            if (!selectedImage) return;
+
+            const format = document.getElementById('outputFormat').value;
+            const quality = document.getElementById('quality').value / 100;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = selectedImage.width;
+            canvas.height = selectedImage.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(selectedImage, 0, 0);
+
+            canvas.toBlob((blob) => {
+                const convertedSizeKB = (blob.size / 1024).toFixed(2);
+                const originalSizeKB = (originalFile.size / 1024).toFixed(2);
+                const savedKB = (originalSizeKB - convertedSizeKB).toFixed(2);
+                const savedPercent = ((savedKB / originalSizeKB) * 100).toFixed(1);
+
+                document.getElementById('previewImage').src = selectedImage.src;
+                document.getElementById('convertedSize').textContent = convertedSizeKB + ' KB';
+                document.getElementById('convertedFormat').textContent = format.toUpperCase();
+                document.getElementById('spaceSaved').textContent = savedKB + ' KB (' + savedPercent + '%)';
+                document.getElementById('result').classList.add('show');
+
+                // Store blob for download
+                window.convertedBlob = blob;
+                window.convertedFormat = format;
+            }, 'image/' + format, quality);
+        }
+
+        function downloadImage() {
+            if (!window.convertedBlob) return;
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(window.convertedBlob);
+            link.download = 'converted-image.' + window.convertedFormat;
+            link.click();
+        }
+
+        function resetConverter() {
+            document.getElementById('imageInput').value = '';
+            document.getElementById('converterPanel').style.display = 'none';
+            document.getElementById('result').classList.remove('show');
+            selectedImage = null;
+            originalFile = null;
+        }
+
+        function updatePreview() {
+            // Quality group only shows for lossy formats
+            const format = document.getElementById('outputFormat').value;
+            document.getElementById('qualityGroup').style.display = (format === 'jpeg' || format === 'webp') ? 'block' : 'none';
+        }
+
+        function toggleFAQ(element) {
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== element.parentElement) {
+                    item.classList.remove('open');
+                }
+            });
+            element.parentElement.classList.toggle('open');
+        }
+
+        // Initialize
+        updatePreview();
+    </script>
 </body>
 </html>
