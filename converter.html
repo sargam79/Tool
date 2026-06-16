@@ -3,139 +3,614 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Unit Converter - Convert length, weight, temperature, volume, and area. Supports metric and imperial systems. Built by Shahid Abbas.">
-    <meta name="author" content="Shahid Abbas">
-    <link rel="canonical" href="https://toolpond.org/unit-converter.html">
-    <title>Unit Converter - Free Online Conversion Tool</title>
+    <meta name="description" content="Free Unit Converter 2026 - Convert between units instantly. Temperature, length, weight, volume, speed, and more. Quick, accurate, and 100% private unit conversion calculator.">
+    <meta name="keywords" content="unit converter, temperature converter, length converter, weight converter, volume converter, speed converter, free converter tool, conversion calculator">
+    <meta name="author" content="ToolPond Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolpond.org/converter.html">
+
+    <meta property="og:title" content="Free Unit Converter 2026 - Convert Any Units">
+    <meta property="og:description" content="Fast, accurate unit conversion for temperature, length, weight, volume, and more. Completely free and 100% private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpond.org/converter.html">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Unit Converter">
+    <meta name="twitter:description" content="Convert units instantly - temperature, length, weight, volume, and more">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Unit Converter",
+      "description": "Convert between different units of measurement",
+      "url": "https://toolpond.org/converter.html",
+      "applicationCategory": "Utility",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/"},
+        {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://toolpond.org/calculators.html"},
+        {"@type": "ListItem", "position": 3, "name": "Unit Converter", "item": "https://toolpond.org/converter.html"}
+      ]
+    }
+    </script>
+
+    <title>Free Unit Converter 2026 | Temperature, Length, Weight & More | ToolPond Pro</title>
+
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#0066cc;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--light)}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.page-header{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.page-header h1{font-size:2.2rem;margin-bottom:0.5rem}.page-header p{font-size:1rem;opacity:0.9;max-width:700px;margin:0 auto}.container{max-width:900px;margin:0 auto;padding:0 2rem}.content-section{background:#fff;padding:2.5rem;margin:2rem 0;border-radius:8px;border:1px solid var(--border)}.content-section h2{color:var(--dark);margin-bottom:1rem;font-size:1.4rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem;display:inline-block}.content-section h3{color:var(--dark);margin:1.5rem 0 0.75rem 0;font-size:1.1rem}.content-section p{color:#4b5563;margin-bottom:1rem;line-height:1.8}.content-section ul{margin-left:1.5rem;color:#4b5563;margin-bottom:1rem}.content-section li{margin-bottom:0.5rem}.content-section table{width:100%;border-collapse:collapse;margin:1rem 0}.content-section th,.content-section td{border:1px solid var(--border);padding:0.75rem;text-align:left}.content-section th{background:var(--light);font-weight:600;color:var(--dark)}.highlight{background:#f0f9ff;border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.highlight p{color:#4b5563;margin:0}.author-footer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);color:#6b7280;font-size:0.9rem}footer{background:var(--dark);color:#fff;padding:2rem;text-align:center}.footer-links{margin-bottom:1rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}@media(max-width:768px){.page-header h1{font-size:1.8rem}}
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#0066cc;--primary-dark:#1e40af;--primary-light:#dbeafe;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151;--text-light:#6b7280}
+        
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif;line-height:1.6;color:var(--text);background:var(--light)}
+        
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:color 0.3s}
+        .nav-links a:hover{color:var(--primary)}
+        
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        
+        .hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:3rem 2rem;text-align:center;margin-bottom:2rem}
+        .hero h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}
+        .hero p{font-size:1.1rem;opacity:0.95;max-width:700px;margin:0 auto}
+        
+        .breadcrumb{padding:1rem 2rem;background:#fff;border-bottom:1px solid var(--border);font-size:0.9rem}
+        .breadcrumb a{color:var(--primary);text-decoration:none}
+        .breadcrumb span{margin:0 0.5rem;color:var(--text-light)}
+        
+        .main-content{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-bottom:3rem}
+        
+        .calculator-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        .sidebar{display:flex;flex-direction:column;gap:1rem}
+        .sidebar-box{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        
+        .intro-content{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border:1px solid var(--border)}
+        .intro-content h2{color:var(--dark);margin-bottom:1rem;font-size:1.5rem}
+        .intro-content p{color:#4b5563;margin-bottom:1rem;line-height:1.8}
+        
+        .category-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.5rem}
+        .category-btn{padding:0.75rem;border:2px solid var(--border);background:#fff;border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:0.9rem}
+        .category-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .category-btn:hover{border-color:var(--primary)}
+        
+        .form-group{margin-bottom:1.5rem}
+        .form-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark);font-size:0.95rem}
+        .form-input{width:100%;padding:0.75rem;border:2px solid var(--border);border-radius:8px;font-size:1rem;transition:all 0.3s}
+        .form-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+        
+        .conversion-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;align-items:flex-end}
+        
+        .swap-btn{padding:0.75rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.3s;width:100%}
+        .swap-btn:hover{background:var(--primary-dark);transform:scale(1.05)}
+        
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#e0f2fe);border:2px solid var(--primary);border-radius:12px;padding:2rem;margin-top:2rem}
+        .result-display{background:#fff;padding:1.5rem;border-radius:8px;text-align:center}
+        .result-label{color:var(--text-light);font-size:0.85rem;text-transform:uppercase;margin-bottom:0.5rem;font-weight:600}
+        .result-value{font-size:2.5rem;font-weight:800;color:var(--primary);word-break:break-all}
+        
+        .conversion-table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;margin:1.5rem 0;font-size:0.9rem}
+        .conversion-table th{background:var(--primary);color:#fff;padding:0.75rem;text-align:left;font-weight:600}
+        .conversion-table td{padding:0.75rem;border-bottom:1px solid var(--border)}
+        .conversion-table tr:last-child td{border-bottom:none}
+        .conversion-table tr:hover{background:var(--light)}
+        
+        .tips-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border-left:4px solid var(--warning)}
+        .tips-section h3{color:var(--dark);margin-bottom:1rem}
+        .tips-section ul{list-style:none;padding-left:0}
+        .tips-section li{padding:0.75rem 0;padding-left:1.5rem;position:relative;color:#4b5563}
+        .tips-section li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:bold}
+        
+        .faq-item{background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:1rem;overflow:hidden}
+        .faq-question{padding:1.5rem;cursor:pointer;font-weight:600;color:var(--dark);display:flex;justify-content:space-between;align-items:center;transition:background 0.3s}
+        .faq-question:hover{background:var(--light)}
+        .faq-arrow{transition:transform 0.3s;font-size:1.2rem;color:var(--primary)}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;padding:0 1.5rem}
+        .faq-item.open .faq-answer{max-height:500px;padding:0 1.5rem 1.5rem}
+        .faq-answer p{color:#4b5563;line-height:1.8;margin-bottom:0.5rem}
+        
+        .stat-box h3{color:var(--dark);margin-bottom:0.5rem;font-size:0.95rem;text-transform:uppercase;font-weight:700}
+        .stat-value{font-size:1.8rem;font-weight:800;color:var(--primary);margin:0.5rem 0}
+        
+        .related-tools{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem}
+        .related-tools h3{color:var(--dark);margin-bottom:1rem}
+        .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+        .related-item{padding:1rem;background:var(--light);border-radius:8px;text-align:center;text-decoration:none;color:var(--primary);font-weight:600;transition:all 0.3s;border:1px solid var(--border)}
+        .related-item:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
+        
+        footer{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;display:block;margin-bottom:0.5rem;transition:color 0.3s}
+        .footer-col a:hover{color:#fff}
+        .footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid #4b5563;color:#9ca3af}
+        
+        @media(max-width:768px){
+            .main-content{grid-template-columns:1fr}
+            .hero h1{font-size:1.8rem}
+            .category-tabs{grid-template-columns:repeat(2,1fr)}
+            .conversion-grid{grid-template-columns:1fr}
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">ToolPond</a>
+            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="calculators.html">Tools</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="page-header">
+    <div class="breadcrumb">
         <div class="container">
-            <h1>Unit Converter</h1>
-            <p>Convert between metric and imperial units for length, weight, temperature, volume, and area</p>
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="calculators.html">Calculators</a> <span>/</span>
+            <strong>Unit Converter</strong>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Universal Unit Converter</h1>
+            <p>Convert between units instantly and accurately. Temperature, length, weight, volume, speed, and more. Real-time calculations with instant results. Completely free and 100% private.</p>
         </div>
     </div>
 
     <div class="container">
-        <!-- Calculator Tool Section -->
-        <div class="content-section">
-            <h2>Convert Units</h2>
-            <p>Select the unit type and enter your value to convert between metric and imperial systems instantly.</p>
+        <!-- Introduction Section -->
+        <div class="intro-content">
+            <h2>Unit Conversion Made Simple: A Complete Guide</h2>
+            <p>Unit conversion is one of the most common tasks in daily life and professional work. Whether you're cooking (ounces to grams), traveling (miles to kilometers), or doing scientific work (Fahrenheit to Celsius), accurate unit conversion is essential. Manual calculations are error-prone and time-consuming—a good converter eliminates mistakes instantly.</p>
+            
+            <p><strong>Why is unit conversion important?</strong> Different countries use different measurement systems. The US uses imperial units (miles, pounds, Fahrenheit), most of the world uses metric (kilometers, kilograms, Celsius). Scientists use additional units. Traveling, cooking, shopping, and professional work all require instant accurate conversions.</p>
+            
+            <p><strong>Common conversion categories:</strong></p>
+            <ul style="margin-left:1.5rem;margin:1rem 0">
+                <li><strong>Temperature:</strong> Celsius ↔ Fahrenheit ↔ Kelvin</li>
+                <li><strong>Length:</strong> Meters, kilometers, feet, miles, inches, centimeters</li>
+                <li><strong>Weight:</strong> Kilograms, pounds, grams, ounces, stones</li>
+                <li><strong>Volume:</strong> Liters, gallons, milliliters, cups, pints</li>
+                <li><strong>Speed:</strong> MPH ↔ KPH, knots, meters/second</li>
+            </ul>
+            
+            <p><strong>How conversion works:</strong> Each unit has a defined relationship to other units. For example, 1 kilometer = 0.621371 miles. To convert, you multiply by the conversion factor. This converter handles all the math instantly—just enter your value and select units.</p>
+        </div>
 
-            <!-- Calculator form would go here - placeholder for your existing tool -->
-            <div style="background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:1.5rem 0;">
-                <p style="color:#6b7280">[Your existing unit converter tool goes here]</p>
+        <div class="main-content">
+            <!-- Calculator Section -->
+            <div class="calculator-section">
+                <h2 style="color:var(--dark);margin-bottom:1.5rem">Convert Units</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <div class="category-tabs">
+                        <button class="category-btn active" onclick="setCategory('temperature', this)">🌡️ Temperature</button>
+                        <button class="category-btn" onclick="setCategory('length', this)">📏 Length</button>
+                        <button class="category-btn" onclick="setCategory('weight', this)">⚖️ Weight</button>
+                        <button class="category-btn" onclick="setCategory('volume', this)">🧊 Volume</button>
+                        <button class="category-btn" onclick="setCategory('speed', this)">🚗 Speed</button>
+                        <button class="category-btn" onclick="setCategory('area', this)">📐 Area</button>
+                    </div>
+                </div>
+
+                <div class="conversion-grid">
+                    <div class="form-group">
+                        <label class="form-label">From</label>
+                        <input type="number" id="inputValue" class="form-input" placeholder="Enter value" step="any" oninput="performConversion()" required>
+                        <select id="fromUnit" class="form-input" onchange="performConversion()">
+                            <option>Celsius</option>
+                            <option>Fahrenheit</option>
+                            <option>Kelvin</option>
+                        </select>
+                    </div>
+
+                    <button class="swap-btn" onclick="swapUnits()">⇄ Swap</button>
+
+                    <div class="form-group">
+                        <label class="form-label">To</label>
+                        <input type="number" id="outputValue" class="form-input" placeholder="Result" readonly>
+                        <select id="toUnit" class="form-input" onchange="performConversion()">
+                            <option>Fahrenheit</option>
+                            <option>Celsius</option>
+                            <option>Kelvin</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="result-box">
+                    <div style="margin-bottom:1.5rem">
+                        <div class="result-display">
+                            <div class="result-label">Conversion Result</div>
+                            <div class="result-value" id="displayResult">0</div>
+                        </div>
+                    </div>
+
+                    <table class="conversion-table">
+                        <thead>
+                            <tr>
+                                <th>Common Conversions</th>
+                                <th style="text-align:right">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody id="conversionTable">
+                        </tbody>
+                    </table>
+
+                    <div style="background:var(--light);padding:1rem;border-radius:8px;margin-top:1rem">
+                        <p style="color:#4b5563;font-size:0.9rem"><strong>Formula:</strong> <span id="formulaDisplay"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Quick Reference -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1.5rem">📚 Quick Reference</h3>
+                    <div class="stat-box">
+                        <h3>1 Kilometer</h3>
+                        <p style="color:var(--text-light);font-size:0.9rem">= 0.621 miles</p>
+                    </div>
+                </div>
+
+                <!-- Temperature Reference -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">🌡️ Temperature Points</h3>
+                    <ul style="font-size:0.9rem;color:#4b5563;list-style:none;padding:0;line-height:1.8">
+                        <li>✓ Water freezes: 0°C = 32°F</li>
+                        <li>✓ Room temperature: 20°C = 68°F</li>
+                        <li>✓ Body temp: 37°C = 98.6°F</li>
+                        <li>✓ Water boils: 100°C = 212°F</li>
+                    </ul>
+                </div>
+
+                <!-- Metric vs Imperial -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">⚖️ System Info</h3>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.8"><strong>Metric:</strong> Used by 195+ countries. Standard for science.</p>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.8"><strong>Imperial:</strong> Used mainly in USA. Common in recipes and older measurements.</p>
+                </div>
             </div>
         </div>
 
-        <!-- Detailed Guide Section -->
-        <div class="content-section">
-            <h2>Understanding Unit Conversion</h2>
-            <p>Unit conversion is essential in science, engineering, cooking, travel, and everyday life. Different countries and industries use different measurement systems, making conversion skills necessary for accurate communication and calculation.</p>
-
-            <h3>The Two Main Systems: Metric and Imperial</h3>
-            <p>Most of the world uses the metric system (meters, kilograms, liters), while the United States primarily uses the imperial system (feet, pounds, gallons). Understanding both systems and how to convert between them prevents costly mistakes in construction, medicine, and international trade.</p>
-
-            <h3>Common Conversion Categories</h3>
-
-            <h3>Length Conversions</h3>
-            <p>Length conversions are needed in construction, sewing, travel, and science. Common conversions include:</p>
-            <table>
-                <tr><th>From</th><th>To</th><th>Formula</th></tr>
-                <tr><td>Meters (m)</td><td>Feet (ft)</td><td>Multiply by 3.28084</td></tr>
-                <tr><td>Kilometers (km)</td><td>Miles (mi)</td><td>Multiply by 0.621371</td></tr>
-                <tr><td>Centimeters (cm)</td><td>Inches (in)</td><td>Multiply by 0.393701</td></tr>
-                <tr><td>Millimeters (mm)</td><td>Inches (in)</td><td>Multiply by 0.0393701</td></tr>
+        <!-- Common Conversions Reference -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Most Common Unit Conversions</h2>
+            
+            <table class="conversion-table">
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th style="text-align:right">Factor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1 Kilometer</strong></td>
+                        <td>Miles</td>
+                        <td style="text-align:right">0.621371</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 Kilogram</strong></td>
+                        <td>Pounds</td>
+                        <td style="text-align:right">2.20462</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 Liter</strong></td>
+                        <td>Gallons (US)</td>
+                        <td style="text-align:right">0.264172</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 Square Meter</strong></td>
+                        <td>Square Feet</td>
+                        <td style="text-align:right">10.764</td>
+                    </tr>
+                    <tr>
+                        <td><strong>100 Celsius</strong></td>
+                        <td>Fahrenheit</td>
+                        <td style="text-align:right">212°F</td>
+                    </tr>
+                </tbody>
             </table>
+        </div>
 
-            <h3>Weight Conversions</h3>
-            <p>Weight conversions are critical in cooking, shipping, fitness tracking, and medicine. Common conversions include:</p>
-            <table>
-                <tr><th>From</th><th>To</th><th>Formula</th></tr>
-                <tr><td>Kilograms (kg)</td><td>Pounds (lb)</td><td>Multiply by 2.20462</td></tr>
-                <tr><td>Grams (g)</td><td>Ounces (oz)</td><td>Multiply by 0.035274</td></tr>
-                <tr><td>Metric Tons</td><td>US Tons</td><td>Multiply by 1.10231</td></tr>
-            </table>
-
-            <h3>Temperature Conversions</h3>
-            <p>Temperature scales differ globally. Celsius is standard in most countries, while Fahrenheit is used in the United States. Kelvin is used in scientific contexts.</p>
+        <!-- Expert Tips -->
+        <div class="tips-section">
+            <h3>💡 Unit Conversion Tips & Tricks</h3>
             <ul>
-                <li><strong>Celsius to Fahrenheit:</strong> (°C × 9/5) + 32 = °F</li>
-                <li><strong>Fahrenheit to Celsius:</strong> (°F − 32) × 5/9 = °C</li>
-                <li><strong>Celsius to Kelvin:</strong> °C + 273.15 = K</li>
+                <li>Remember key reference points: 0°C = 32°F, 1km ≈ 0.6 miles, 1 lb ≈ 0.45 kg</li>
+                <li>For rough estimates: Multiply kilometers by 0.6 to get miles, multiply pounds by 0.45 to get kg</li>
+                <li>Temperature is non-linear: You can't just multiply—use the formula (°F = °C × 9/5 + 32)</li>
+                <li>Always double-check decimals in scientific calculations—small errors compound</li>
+                <li>Most countries use 24-hour time and metric units—familiarize yourself before traveling</li>
+                <li>Recipe conversions matter: Baking requires precise measurements, especially with weight</li>
+                <li>Speed conversions: 1 MPH ≈ 1.6 KPH (or divide KPH by 1.6 to get MPH)</li>
+                <li>Volume confusion: US gallon ≠ Imperial gallon (different by ~20%)—always specify</li>
             </ul>
+        </div>
 
-            <h3>Volume Conversions</h3>
-            <p>Volume conversions are essential in cooking, chemistry, and fuel measurement. Note that US and UK fluid ounces differ slightly:</p>
-            <table>
-                <tr><th>From</th><th>To</th><th>Formula</th></tr>
-                <tr><td>Liters (L)</td><td>US Gallons</td><td>Multiply by 0.264172</td></tr>
-                <tr><td>Milliliters (mL)</td><td>Fluid Ounces (US)</td><td>Multiply by 0.033814</td></tr>
-                <tr><td>Cups (US)</td><td>Milliliters</td><td>Multiply by 236.588</td></tr>
-            </table>
+        <!-- FAQ Section -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
 
-            <h3>Area Conversions</h3>
-            <p>Area conversions are used in real estate, agriculture, and construction:</p>
-            <table>
-                <tr><th>From</th><th>To</th><th>Formula</th></tr>
-                <tr><td>Square Meters</td><td>Square Feet</td><td>Multiply by 10.7639</td></tr>
-                <tr><td>Square Kilometers</td><td>Square Miles</td><td>Multiply by 0.386102</td></tr>
-                <tr><td>Hectares</td><td>Acres</td><td>Multiply by 2.47105</td></tr>
-            </table>
-
-            <h3>When Precision Matters</h3>
-            <p>Some conversions require exact precision while others can be approximate:</p>
-            <ul>
-                <li><strong>Medical dosing:</strong> Always use exact conversions. Even small errors can be dangerous.</li>
-                <li><strong>Construction:</strong> Use precise measurements. Rounding errors compound over large projects.</li>
-                <li><strong>Cooking:</strong> Small rounding differences are usually acceptable. A few grams or milliliters rarely ruin a recipe.</li>
-                <li><strong>Travel:</strong> Approximate conversions are fine for understanding distances and temperatures.</li>
-            </ul>
-
-            <h3>Common Conversion Mistakes</h3>
-            <ul>
-                <li><strong>Confusing weight and volume:</strong> Ounces can measure weight (dry) or volume (fluid). These are not interchangeable.</li>
-                <li><strong>Ignoring temperature differences:</strong> Room temperature in Celsius (20°C) is 68°F, not a simple multiplication.</li>
-                <li><strong>US vs UK gallons:</strong> A US gallon is 3.785 liters, while a UK gallon is 4.546 liters. This matters for fuel calculations.</li>
-                <li><strong>Rounding too early:</strong> Round only at the final step to maintain accuracy through multi-step conversions.</li>
-            </ul>
-
-            <div class="highlight">
-                <p><strong>Tip:</strong> This converter uses exact conversion factors and rounds to a reasonable number of decimal places. For scientific or medical applications, always verify critical conversions with a second source.</p>
+            <div class="faq-item open">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's the difference between Celsius and Fahrenheit?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Both measure temperature but use different scales. Celsius: water freezes at 0°, boils at 100°. Fahrenheit: water freezes at 32°, boils at 212°. Celsius is metric (used globally), Fahrenheit is mainly used in the USA. Conversion: °F = (°C × 9/5) + 32.</p>
+                </div>
             </div>
 
-            <div class="author-footer">
-                <p>Built by <strong>Shahid Abbas</strong> · ToolPond · Pakistan</p>
-                <p>Need a conversion not listed here? <a href="contact.html" style="color:var(--primary);text-decoration:none;">Suggest a new unit</a>.</p>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Why do countries use different measurement systems?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Historical reasons. Most countries adopted the metric system in the 1800s (easier to calculate, based on 10). The US kept imperial units for practical reasons (feet/inches matched natural proportions for construction). Today, metric is the international standard, but imperial persists in the US, UK, and some older measurements.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How accurate is this converter?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Very accurate. Uses standard SI conversion factors (internationally accepted). Results are correct to many decimal places. For practical purposes (cooking, travel, work), this is perfectly accurate. For precision scientific work, specify decimal places needed.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's a Kelvin and why is it used?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Kelvin is the absolute temperature scale used in science. 0 K = -273.15°C (absolute zero, lowest possible temperature). No negative numbers. Science uses Kelvin because it's proportional (doubling K means doubling molecular motion). Regular people use Celsius/Fahrenheit; scientists use Kelvin.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is 1 pound the same everywhere?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No. There are two main pounds: Pound-force (lbf) used in physics, and Pound-mass (lbm) used in weight. For everyday use, when you say "pound" you mean weight. In the US: 1 lb ≈ 0.453592 kg. For recipes, always use weight-based measurements (grams/ounces) not volume.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I convert recipes between metric and imperial?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Use weight conversions for accuracy: 1 cup flour ≈ 125g, 1 cup sugar ≈ 200g, 1 tablespoon ≈ 15ml. Volume conversions (cups/ml) are less reliable because density differs by ingredient. For baking especially, use grams if possible—weight is more precise than volume.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is my data private?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, 100% private. All conversions happen in your browser. We never see, store, or collect your conversion data. No login required, no tracking, no ads. Your data stays completely private.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Examples -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Real-World Conversion Examples</h2>
+            
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Travel - Converting Distance</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Scenario:</strong> Road trip in Canada is 500 miles. How many kilometers?</p>
+                <p style="color:#4b5563"><strong>Conversion:</strong> 500 miles × 1.60934 = 804.67 km</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Cooking - Converting Temperature</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Scenario:</strong> Recipe says bake at 375°F, your oven uses Celsius. What temp?</p>
+                <p style="color:#4b5563"><strong>Conversion:</strong> (375 - 32) × 5/9 = 190.5°C (set to 190°C or 200°C)</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: Shopping - Converting Weight</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Scenario:</strong> Need 2 kg flour but recipe shows 4.4 lbs. Is that right?</p>
+                <p style="color:#4b5563"><strong>Conversion:</strong> 2 kg × 2.20462 = 4.4 lbs (perfect match!)</p>
+            </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+            <h3>🔗 Related Tools & Calculators</h3>
+            <div class="related-grid">
+                <a href="converter-png.html" class="related-item">🖼️ Image Converter</a>
+                <a href="calorie-calculator.html" class="related-item">🍗 Calorie</a>
+                <a href="bmi-calculator.html" class="related-item">⚖️ BMI</a>
+                <a href="calculators.html" class="related-item">🔧 All Tools</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="calculators.html">Tools</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <a href="converter.html">Unit Converter</a>
+                <a href="converter-png.html">Image Converter</a>
+                <a href="calculators.html">All Calculators</a>
+            </div>
+            <div class="footer-col">
+                <h4>More</h4>
+                <a href="calorie-calculator.html">Calorie</a>
+                <a href="bmi-calculator.html">BMI</a>
+                <a href="salary-calculator.html">Salary</a>
+            </div>
         </div>
-        <p>&copy; 2026 ToolPond. Built by Shahid Abbas.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolPond Pro. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        const conversions = {
+            'temperature': {
+                'units': ['Celsius', 'Fahrenheit', 'Kelvin'],
+                'factors': {
+                    'C->F': (v) => (v * 9/5) + 32,
+                    'C->K': (v) => v + 273.15,
+                    'F->C': (v) => (v - 32) * 5/9,
+                    'F->K': (v) => ((v - 32) * 5/9) + 273.15,
+                    'K->C': (v) => v - 273.15,
+                    'K->F': (v) => ((v - 273.15) * 9/5) + 32
+                }
+            },
+            'length': {
+                'units': ['Meter', 'Kilometer', 'Mile', 'Foot', 'Inch', 'Centimeter'],
+                'toMeter': {'Meter': 1, 'Kilometer': 1000, 'Mile': 1609.34, 'Foot': 0.3048, 'Inch': 0.0254, 'Centimeter': 0.01}
+            },
+            'weight': {
+                'units': ['Kilogram', 'Pound', 'Gram', 'Ounce', 'Stone', 'Ton'],
+                'toKg': {'Kilogram': 1, 'Pound': 0.453592, 'Gram': 0.001, 'Ounce': 0.0283495, 'Stone': 6.35029, 'Ton': 1000}
+            },
+            'volume': {
+                'units': ['Liter', 'Milliliter', 'Gallon (US)', 'Cup (US)', 'Ounce (US)', 'Pint (US)'],
+                'toLiter': {'Liter': 1, 'Milliliter': 0.001, 'Gallon (US)': 3.78541, 'Cup (US)': 0.236588, 'Ounce (US)': 0.0295735, 'Pint (US)': 0.473176}
+            },
+            'speed': {
+                'units': ['KPH', 'MPH', 'Knot', 'Meter/Second'],
+                'toMps': {'KPH': 0.277778, 'MPH': 0.44704, 'Knot': 0.514444, 'Meter/Second': 1}
+            },
+            'area': {
+                'units': ['Square Meter', 'Square Kilometer', 'Square Foot', 'Square Mile', 'Hectare', 'Acre'],
+                'toM2': {'Square Meter': 1, 'Square Kilometer': 1000000, 'Square Foot': 0.092903, 'Square Mile': 2.58999e6, 'Hectare': 10000, 'Acre': 4046.86}
+            }
+        };
+
+        let currentCategory = 'temperature';
+
+        function setCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const units = conversions[cat].units;
+            document.getElementById('fromUnit').innerHTML = units.map(u => `<option>${u}</option>`).join('');
+            document.getElementById('toUnit').innerHTML = units.slice(1).concat(units[0]).map(u => `<option>${u}</option>`).join('');
+            
+            performConversion();
+        }
+
+        function performConversion() {
+            const value = parseFloat(document.getElementById('inputValue').value) || 0;
+            const from = document.getElementById('fromUnit').value;
+            const to = document.getElementById('toUnit').value;
+            
+            let result = 0;
+            let formula = '';
+            
+            const conv = conversions[currentCategory];
+            
+            if (currentCategory === 'temperature') {
+                const key = from[0] + '->' + to[0];
+                result = conv.factors[key](value);
+                formula = `${value}°${from[0]} = ${result.toFixed(2)}°${to[0]}`;
+            } else {
+                const baseKey = Object.keys(conv)[1];
+                const toBase = conv[baseKey][from];
+                const fromBase = conv[baseKey][to];
+                result = (value * toBase) / fromBase;
+                formula = `${value} ${from} = ${result.toFixed(4)} ${to}`;
+            }
+            
+            document.getElementById('outputValue').value = result.toFixed(6);
+            document.getElementById('displayResult').textContent = result.toFixed(4);
+            document.getElementById('formulaDisplay').textContent = formula;
+            
+            populateCommonConversions(value, from);
+        }
+
+        function populateCommonConversions(value, fromUnit) {
+            const conv = conversions[currentCategory];
+            const table = document.getElementById('conversionTable');
+            table.innerHTML = '';
+            
+            const units = conv.units;
+            for (let unit of units) {
+                if (unit === fromUnit) continue;
+                
+                let result = 0;
+                if (currentCategory === 'temperature') {
+                    const key = fromUnit[0] + '->' + unit[0];
+                    result = conv.factors[key](value);
+                } else {
+                    const baseKey = Object.keys(conv)[1];
+                    const toBase = conv[baseKey][fromUnit];
+                    const fromBase = conv[baseKey][unit];
+                    result = (value * toBase) / fromBase;
+                }
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${value} ${fromUnit}</td>
+                    <td style="text-align:right">${result.toFixed(6)} ${unit}</td>
+                `;
+                table.appendChild(row);
+            }
+        }
+
+        function swapUnits() {
+            const temp = document.getElementById('fromUnit').value;
+            document.getElementById('fromUnit').value = document.getElementById('toUnit').value;
+            document.getElementById('toUnit').value = temp;
+            performConversion();
+        }
+
+        function toggleFAQ(element) {
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== element.parentElement) {
+                    item.classList.remove('open');
+                }
+            });
+            element.parentElement.classList.toggle('open');
+        }
+
+        // Initialize
+        performConversion();
+    </script>
 </body>
 </html>
