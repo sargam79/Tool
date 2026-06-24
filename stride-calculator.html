@@ -113,7 +113,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --primary: #8b5cf6; --dark: #1f2937; --light: #f9fafb; --border: #e5e7eb; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #374151; background: var(--light); }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: #374151; background: var(--light); overflow-x: hidden; }
         nav { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
@@ -122,23 +122,23 @@
         .nav-links a:hover { color: var(--primary); }
         .breadcrumb { padding: 1rem 2rem; background: #fff; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
         .breadcrumb a { color: var(--primary); text-decoration: none; margin: 0 0.5rem; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .tool-header { background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; padding: 3rem 2rem; text-align: center; margin: 2rem 0; border-radius: 12px; }
-        .tool-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 800; }
-        .tool-header p { font-size: 1.1rem; opacity: 0.95; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .tool-header { background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; padding: 2rem 1rem; text-align: center; margin: 1rem 0; border-radius: 12px; }
+        .tool-header h1 { font-size: 2rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .tool-header p { font-size: 1rem; opacity: 0.95; }
         .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin: 2rem 0; }
         @media(max-width: 1024px) { .content-grid { grid-template-columns: 1fr; } }
-        .tool-wrapper { background: #fff; padding: 2rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.07); }
+        .tool-wrapper { background: #fff; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.07); }
         .input-group { margin-bottom: 1.5rem; }
         .input-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark); }
         .input-field { width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; }
         .input-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(139,92,246,0.1); }
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
-        .stat-card { background: linear-gradient(135deg, #f3e8ff, #fdf2f8); padding: 1.2rem; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
-        .stat-label { color: #6b7280; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .stat-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .stat-card { background: linear-gradient(135deg, #f3e8ff, #fdf2f8); padding: 1rem; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
+        .stat-label { color: #6b7280; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
         .action-buttons { display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
-        .btn { padding: 0.85rem 1.75rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.95rem; }
         .btn-primary { background: var(--primary); color: #fff; }
         .btn-primary:hover { background: #7c3aed; transform: translateY(-2px); }
         .btn-secondary { background: #f3f4f6; color: var(--dark); border: 2px solid var(--border); }
@@ -148,30 +148,49 @@
         .sidebar { background: var(--light); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
         .sidebar h3 { color: var(--dark); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
         .sidebar-item { margin-bottom: 0.75rem; padding: 0.6rem; background: #fff; border-radius: 6px; border-left: 4px solid var(--primary); font-size: 0.9rem; }
-        .content-section { margin: 3rem 0; padding: 2rem; background: #fff; border-radius: 10px; border: 1px solid var(--border); }
-        .content-section h2 { color: var(--dark); margin-bottom: 1.5rem; font-size: 1.8rem; border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem; }
-        .content-section h3 { color: #4b5563; margin: 1.5rem 0 0.75rem; font-size: 1.2rem; font-weight: 600; }
+        .content-section { margin: 2rem 0; padding: 1.5rem; background: #fff; border-radius: 10px; border: 1px solid var(--border); }
+        .content-section h2 { color: var(--dark); margin-bottom: 1.5rem; font-size: 1.5rem; border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem; }
+        .content-section h3 { color: #4b5563; margin: 1.5rem 0 0.75rem; font-size: 1.1rem; font-weight: 600; }
         .content-section p { margin-bottom: 1rem; line-height: 1.8; color: #4b5563; }
         .content-section ul, .content-section ol { margin: 1rem 0 1rem 1.5rem; }
         .content-section li { margin-bottom: 0.5rem; color: #4b5563; }
-        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        th, td { padding: 0.75rem; text-align: center; border: 1px solid var(--border); }
-        th { background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; font-weight: 600; }
-        tr:nth-child(even) { background: #f9fafb; }
-        tr:hover { background: #f3e8ff; }
+
+        /* TABLE FIXES - Responsive with proper borders */
+        .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; border-radius: 8px; border: 1px solid var(--border); }
+        .table-container table { width: 100%; min-width: 600px; border-collapse: separate; border-spacing: 0; margin: 0; border: none; }
+        .table-container th, .table-container td { padding: 0.75rem 0.5rem; text-align: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); white-space: nowrap; }
+        .table-container th:last-child, .table-container td:last-child { border-right: none; }
+        .table-container th { background: linear-gradient(135deg, var(--primary), #ec4899); color: #fff; font-weight: 600; border-top: none; }
+        .table-container th:first-child { border-top-left-radius: 8px; }
+        .table-container th:last-child { border-top-right-radius: 8px; }
+        .table-container tr:last-child td:first-child { border-bottom-left-radius: 8px; }
+        .table-container tr:last-child td:last-child { border-bottom-right-radius: 8px; }
+        .table-container tr:nth-child(even) { background: #f9fafb; }
+        .table-container tr:hover { background: #f3e8ff; }
+
         .highlight-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 6px; }
         .highlight-box p { margin: 0; color: #92400e; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem; }
         .tool-card { background: linear-gradient(135deg, #f3e8ff, #fdf2f8); padding: 1.2rem; border-radius: 8px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; }
         .tool-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(139,92,246,0.15); border-color: var(--primary); }
         .tool-card a { color: var(--primary); font-weight: 600; text-decoration: none; }
-        .footer-section { background: var(--dark); color: #fff; padding: 3rem 2rem; margin-top: 4rem; }
-        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section { background: var(--dark); color: #fff; padding: 3rem 1rem; margin-top: 4rem; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
         .footer-col h4 { color: var(--primary); margin-bottom: 1rem; }
         .footer-col a { color: #d1d5db; text-decoration: none; display: block; margin-bottom: 0.5rem; }
         .footer-col a:hover { color: #fff; }
         .footer-bottom { text-align: center; border-top: 1px solid #4b5563; padding-top: 2rem; margin-top: 2rem; color: #9ca3af; }
-        @media(max-width: 768px) { .tool-header h1 { font-size: 1.8rem; } .stats-grid { grid-template-columns: 1fr; } }
+
+        @media(max-width: 768px) {
+            .tool-header h1 { font-size: 1.5rem; }
+            .tool-header p { font-size: 0.9rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .content-section { padding: 1rem; }
+            .content-section h2 { font-size: 1.3rem; }
+            .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+            .nav-links { display: none; }
+            .table-container th, .table-container td { padding: 0.5rem 0.3rem; font-size: 0.85rem; }
+        }
     </style>
 </head>
 <body>
@@ -264,7 +283,8 @@
                     <h2>Average Stride Length by Height Chart</h2>
                     <p>Use this stride length chart to compare your results to averages for your height and sex. These values are based on research from the University of Oklahoma Health Sciences Center and clinical gait studies.</p>
 
-                    <table>
+                    <div class="table-container">
+<table>
                         <thead>
                             <tr>
                                 <th>Height</th>
@@ -286,6 +306,7 @@
                             <tr><td>6'4" (193 cm)</td><td>2.7 ft (82 cm)</td><td>2.8-3.2 ft (85-97 cm)</td><td>2.8 ft (85 cm)</td><td>2.9-3.3 ft (88-100 cm)</td></tr>
                         </tbody>
                     </table>
+</div>
 
                     <div class="highlight-box">
                         <p><strong>Quick Formula:</strong> Step Length = Height (inches) x 0.413 (women) or 0.415 (men). Stride Length = Step Length x 2. For a 5'8" woman (68 inches): 68 x 0.413 = 28.1 inches per step, or 56.2 inches (4.7 ft) per stride.</p>
@@ -297,7 +318,8 @@
                     <h2>Stride Length by Running Pace</h2>
                     <p>Your stride length changes naturally with pace. This table shows typical stride lengths at different speeds for a 5'8" runner. Use it to benchmark your own results.</p>
 
-                    <table>
+                    <div class="table-container">
+<table>
                         <thead>
                             <tr>
                                 <th>Pace (per mile)</th>
@@ -316,6 +338,7 @@
                             <tr><td>5:00/mile</td><td>3:06/km</td><td>3.8 ft (116 cm)</td><td>185-195</td></tr>
                         </tbody>
                     </table>
+</div>
 
                     <p><strong>Speed Formula:</strong> Running Speed = Stride Length x Cadence / 2. Example: 1.2m stride x 170 SPM / 2 = 102 meters/minute = ~9:45/mile pace.</p>
                 </div>
@@ -367,7 +390,8 @@
                     <h2>How Many Steps in a Mile? Calculator & Chart</h2>
                     <p>A common question runners ask: "How many steps in a mile?" The answer depends entirely on your stride length. Use this chart or enter your stride length above to get your exact number.</p>
 
-                    <table>
+                    <div class="table-container">
+<table>
                         <thead>
                             <tr>
                                 <th>Stride Length</th>
@@ -388,6 +412,7 @@
                             <tr><td>3.8 ft (116 cm)</td><td>1,389</td><td>1,389</td><td>863</td></tr>
                         </tbody>
                     </table>
+</div>
 
                     <div class="highlight-box">
                         <p><strong>Formula:</strong> Steps per mile = 5,280 ÷ stride length (in feet). Steps per km = 3,281 ÷ stride length (in feet). A 5'6" person with a 2.4 ft walking stride takes approximately <strong>2,200 steps per mile</strong>.</p>
@@ -399,7 +424,8 @@
                     <h2>Elite Runner Stride Length: How the Pros Compare</h2>
                     <p>Curious how your stride length compares to professional runners? Here are verified measurements from elite athletes at race pace:</p>
 
-                    <table>
+                    <div class="table-container">
+<table>
                         <thead>
                             <tr>
                                 <th>Runner</th>
@@ -417,6 +443,7 @@
                             <tr><td>Haile Gebrselassie</td><td>1.64m (5'5")</td><td>Marathon (2:03:59)</td><td>~190</td><td>1.78m (5.8 ft)</td></tr>
                         </tbody>
                     </table>
+</div>
 
                     <p><strong>Key Insight:</strong> Notice that shorter runners like Kipchoge (5'6") and Farah (5'5") achieve world-class times through <strong>high cadence</strong> (185-190 SPM) rather than exceptionally long strides. Their stride-to-height ratios are 1.14 and 1.06 respectively — well within the normal range. This proves that <strong>cadence matters more than stride length</strong> for most runners.</p>
                 </div>
