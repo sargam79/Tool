@@ -1,279 +1,304 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ============================================
+       HOMEPAGE & HUB PAGES
+       ============================================ -->
   <url>
     <loc>https://toolpond.org/index.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/calculators.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.95</priority>
   </url>
+
+  <url>
+    <loc>https://toolpond.org/games.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- ============================================
+       ABOUT, CONTACT & LEGAL
+       ============================================ -->
   <url>
     <loc>https://toolpond.org/about.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/contact.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/privacy-policy.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.4</priority>
   </url>
+
+  <!-- ============================================
+       GAME PAGES
+       ============================================ -->
   <url>
-    <loc>https://toolpond.org/sitemap.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://toolpond.org/sky-spirit.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://toolpond.org/blog.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://toolpond.org/space-drifter.html</loc>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.7</priority>
   </url>
-  <!-- HEALTH & FITNESS CALCULATORS (12 tools) -->
+
+  <url>
+    <loc>https://toolpond.org/dragon-dash.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================
+       HEALTH & FITNESS CALCULATORS (12)
+       ============================================ -->
   <url>
     <loc>https://toolpond.org/calorie-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.85</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/macros-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/water-intake-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/bmi-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.85</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/body-fat-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/age-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/gpa-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/percentage-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/pregnancy-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/ovulation-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/stride-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.7</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/nutrition-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
-  <!-- FINANCIAL & MONEY CALCULATORS (11 tools) -->
+
+  <!-- ============================================
+       FINANCIAL CALCULATORS (11)
+       ============================================ -->
   <url>
     <loc>https://toolpond.org/salary-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.85</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/compound-interest-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.85</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/retirement-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/payment-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/budget-planner.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/mortgage-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.85</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/loan-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/credit-card.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/currency-converter.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/youtube-earnings-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/tiktok-instagram-calculators.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
-  <!-- CONVERTERS & GENERATORS (6 tools) -->
+
+  <!-- ============================================
+       CONVERTERS & GENERATORS (6)
+       ============================================ -->
   <url>
     <loc>https://toolpond.org/converter.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/converter-png.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/qr-code-generator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/color-palette-generator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/password-generator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/hashtag-generator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
-  <!-- WRITING & CONTENT TOOLS (3 tools) -->
+
+  <!-- ============================================
+       WRITING & CONTENT TOOLS (3)
+       ============================================ -->
   <url>
     <loc>https://toolpond.org/word-counter-tool.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-29</lastmod>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/ai-writing-assistant.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/resume-score-ai.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
-  <!-- ENTERTAINMENT TOOLS (2 tools) -->
-  <url>
-    <loc>https://toolpond.org/ai-face-compatibility.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolpond.org/matrix-destiny-calculator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <!-- UTILITY TOOLS (4 tools) -->
+
+  <!-- ============================================
+       UTILITIES & PRODUCTIVITY (5)
+       ============================================ -->
   <url>
     <loc>https://toolpond.org/background-remover.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/json-schema-generator-pro.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.7</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/meal-planner.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.75</priority>
   </url>
+
   <url>
     <loc>https://toolpond.org/content-calendar-generator.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://toolpond.org/matrix-destiny-calculator.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
