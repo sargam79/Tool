@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en",>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +58,9 @@
         .nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
         .nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:color 0.3s}
         .nav-links a:hover{color:var(--primary)}
-        
+        .nav-links .nav-game{color:#7c3aed;font-weight:700}
+        .nav-links .nav-game:hover{color:#6d28d9}
+
         .page-header{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:3rem 2rem;text-align:center}
         .page-header h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}
         .page-header p{font-size:1.1rem;opacity:0.95;max-width:700px;margin:0 auto}
@@ -90,7 +92,28 @@
         .tool-card a{text-decoration:none;color:var(--dark);font-weight:700;display:block;margin-bottom:0.75rem;font-size:1.1rem}
         .tool-card a:hover{color:var(--primary)}
         .tool-card p{color:#4b5563;font-size:0.95rem;line-height:1.6}
-        
+
+        /* ── Games section — same structure, purple accent ── */
+        .games-header{border-bottom-color:#7c3aed}
+        .games-header h2{color:var(--dark)}
+        .game-card{background:#fff;padding:1.5rem;border-radius:10px;border:1px solid var(--border);transition:all 0.3s;box-shadow:0 1px 3px rgba(0,0,0,0.05);position:relative;overflow:hidden}
+        .game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7c3aed,#a78bfa)}
+        .game-card:hover{transform:translateY(-5px);border-color:#7c3aed;box-shadow:0 8px 20px rgba(124,58,237,0.12)}
+        .game-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.75rem}
+        .game-card-title{text-decoration:none;color:var(--dark);font-weight:700;font-size:1.1rem;display:block}
+        .game-card-title:hover{color:#7c3aed}
+        .game-badge-new{background:#7c3aed;color:#fff;font-size:0.65rem;font-weight:800;padding:2px 8px;border-radius:10px;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;margin-left:8px;vertical-align:middle}
+        .game-badge-soon{background:#e5e7eb;color:#6b7280;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;margin-left:8px;vertical-align:middle}
+        .game-card p{color:#4b5563;font-size:0.95rem;line-height:1.6;margin-bottom:1rem}
+        .game-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.1rem}
+        .game-tag{background:#ede9fe;color:#7c3aed;font-size:0.72rem;font-weight:700;padding:2px 10px;border-radius:10px}
+        .game-play-btn{display:inline-block;background:#7c3aed;color:#fff;font-size:0.85rem;font-weight:700;padding:8px 20px;border-radius:8px;text-decoration:none;transition:all 0.2s}
+        .game-play-btn:hover{background:#6d28d9;transform:scale(1.03)}
+        .game-play-disabled{display:inline-block;background:#e5e7eb;color:#9ca3af;font-size:0.85rem;font-weight:700;padding:8px 20px;border-radius:8px;cursor:not-allowed}
+        .games-view-all{margin-top:1.5rem;text-align:center}
+        .games-view-all a{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#7c3aed;border:2px solid #7c3aed;font-weight:700;font-size:0.9rem;padding:10px 28px;border-radius:8px;text-decoration:none;transition:all 0.2s}
+        .games-view-all a:hover{background:#7c3aed;color:#fff}
+
         .stats-bar{background:linear-gradient(135deg,var(--primary-light),#e0f2fe);padding:1.5rem;border-radius:12px;margin:2rem 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center;border:1px solid var(--border)}
         .stat-item h3{color:var(--primary);font-size:1.8rem;font-weight:800}
         .stat-item p{color:var(--text-light);font-size:0.9rem;margin-top:0.25rem}
@@ -105,7 +128,7 @@
         .faq-section{background:#fff;padding:2rem;border-radius:12px;margin:2rem 0;border:1px solid var(--border)}
         .faq-section h2{color:var(--dark);margin-bottom:1.5rem}
         .faq-item{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-        .faq-item:last-child{border-bottom:none}
+        .faq-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
         .faq-item h3{color:var(--dark);margin-bottom:0.5rem;font-weight:700}
         .faq-item p{color:#4b5563;line-height:1.8}
         
@@ -131,6 +154,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="calculators.html">Tools</a></li>
+                <li><a href="games.html" class="nav-game">🎮 Games</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="privacy-policy.html">Privacy</a></li>
@@ -146,7 +170,8 @@
     </div>
 
     <div class="container">
-        <!-- Search & Filter Section -->
+
+        <!-- Search & Filter -->
         <div class="search-section">
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search calculators by name..." onkeyup="filterTools()">
@@ -172,23 +197,78 @@
 
         <!-- Statistics -->
         <div class="stats-bar">
-            <div class="stat-item">
-                <h3>37+</h3>
-                <p>Free Tools</p>
+            <div class="stat-item"><h3>37+</h3><p>Free Tools</p></div>
+            <div class="stat-item"><h3>100%</h3><p>Browser-Based</p></div>
+            <div class="stat-item"><h3>100%</h3><p>Private & Secure</p></div>
+            <div class="stat-item"><h3>0</h3><p>Ads & Tracking</p></div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             🎮 GAMES SECTION
+        ════════════════════════════════════════ -->
+        <div class="category-section" id="games">
+            <div class="category-header games-header">
+                <span class="category-icon">🎮</span>
+                <h2>Free Browser Games</h2>
             </div>
-            <div class="stat-item">
-                <h3>100%</h3>
-                <p>Browser-Based</p>
+            <p class="category-desc">Play free arcade games right in your browser — no download, no login, no ads. Works on mobile and desktop. New games added regularly.</p>
+
+            <div class="tools-grid">
+
+                <!-- Sky Spirit — LIVE -->
+                <div class="game-card">
+                    <div class="game-card-top">
+                        <a href="games/sky-spirit.html" class="game-card-title">✨ Sky Spirit: Wind Runner</a>
+                        <span class="game-badge-new">NEW</span>
+                    </div>
+                    <p>Tap or click to fly a glowing spirit through wind rings. Collect crystals, grab power-ups like Shield and Slow-Mo, and unlock 8 spirit color skins. How far can you go?</p>
+                    <div class="game-tags">
+                        <span class="game-tag">Tap to Fly</span>
+                        <span class="game-tag">Arcade</span>
+                        <span class="game-tag">Endless</span>
+                        <span class="game-tag">Power-ups</span>
+                    </div>
+                    <a href="games/sky-spirit.html" class="game-play-btn">▶ Play Now</a>
+                </div>
+
+                <!-- Space Drifter — Coming Soon -->
+                <div class="game-card" style="opacity:0.6">
+                    <div class="game-card-top">
+                        <span class="game-card-title">🌌 Space Drifter</span>
+                        <span class="game-badge-soon">Coming Soon</span>
+                    </div>
+                    <p>Navigate your ship through asteroid fields in deep space. One touch to boost, release to drift. Survive as long as you can in the void.</p>
+                    <div class="game-tags">
+                        <span class="game-tag">Space</span>
+                        <span class="game-tag">Reflex</span>
+                        <span class="game-tag">Endless</span>
+                    </div>
+                    <span class="game-play-disabled">⏳ Coming Soon</span>
+                </div>
+
+                <!-- Dragon Dash — Coming Soon -->
+                <div class="game-card" style="opacity:0.6">
+                    <div class="game-card-top">
+                        <span class="game-card-title">🐉 Dragon Dash</span>
+                        <span class="game-badge-soon">Coming Soon</span>
+                    </div>
+                    <p>Ride a fire dragon through ancient ruins. Dodge traps, collect treasure, and outrun the cave collapse in this fast-paced runner.</p>
+                    <div class="game-tags">
+                        <span class="game-tag">Runner</span>
+                        <span class="game-tag">Fantasy</span>
+                        <span class="game-tag">Casual</span>
+                    </div>
+                    <span class="game-play-disabled">⏳ Coming Soon</span>
+                </div>
+
             </div>
-            <div class="stat-item">
-                <h3>100%</h3>
-                <p>Private & Secure</p>
-            </div>
-            <div class="stat-item">
-                <h3>0</h3>
-                <p>Ads & Tracking</p>
+
+            <!-- View all games link -->
+            <div class="games-view-all">
+                <a href="games.html">🎮 View All Games →</a>
             </div>
         </div>
+        <!-- ════════════════════════════════════════ -->
 
         <!-- Health & Fitness -->
         <div class="category-section" id="health">
@@ -198,54 +278,18 @@
             </div>
             <p class="category-desc">Track and manage your health with scientifically validated formulas. These calculators help you understand your body composition, nutritional needs, fitness progress, and reproductive health. All health calculators use peer-reviewed equations from medical literature and include appropriate disclaimers.</p>
             <div class="tools-grid">
-                <div class="tool-card" data-category="health">
-                    <a href="calorie-calculator.html">🍗 Calorie Calculator</a>
-                    <p>Estimate your daily calorie needs (TDEE) using the Mifflin-St Jeor formula. Accounts for age, weight, height, and activity level. Includes macro breakdown and goal-based calculations.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="macros-calculator.html">🥗 Macros Calculator</a>
-                    <p>Calculate optimal protein, carbohydrates, and fat targets based on your calorie goals and dietary preferences. Supports multiple diet types.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="water-intake-calculator.html">💧 Water Intake Calculator</a>
-                    <p>Determine your optimal daily hydration based on body weight, climate, activity level, and exercise intensity.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="bmi-calculator.html">⚖️ BMI Calculator</a>
-                    <p>Calculate Body Mass Index using WHO standards. Includes category breakdowns, ideal weight ranges, and health interpretations.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="body-fat-calculator.html">💪 Body Fat Calculator</a>
-                    <p>Estimate body fat percentage using the U.S. Navy method. Includes healthy ranges by age and gender for reference.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="age-calculator.html">🎂 Age Calculator</a>
-                    <p>Calculate exact age in years, months, and days. Handles leap years and timezone differences accurately.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="gpa-calculator.html">📚 GPA Calculator</a>
-                    <p>Compute grade point average for 4.0, 5.0, and percentage-based systems. Supports weighted grades and multiple grading scales.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="percentage-calculator.html">📊 Percentage Calculator</a>
-                    <p>Calculate percentages, percentage change, and percentage difference. Useful for discounts, tips, and statistical analysis.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="pregnancy-calculator.html">👶 Pregnancy Calculator</a>
-                    <p>Estimate due date and track pregnancy milestones. Based on standard obstetric calculations used in healthcare.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="ovulation-calculator.html">📅 Ovulation Calculator</a>
-                    <p>Predict your fertile window and ovulation date based on menstrual cycle length and regularity.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="stride-calculator.html">🏃 Stride Calculator</a>
-                    <p>Estimate your running stride length based on height and sex. Helps optimize running form and pace calculations.</p>
-                </div>
-                <div class="tool-card" data-category="health">
-                    <a href="nutrition-calculator.html">🍽️ Nutrition Calculator</a>
-                    <p>Analyze macronutrient and micronutrient content of meals. Compares against daily recommended values by age and gender.</p>
-                </div>
+                <div class="tool-card" data-category="health"><a href="calorie-calculator.html">🍗 Calorie Calculator</a><p>Estimate your daily calorie needs (TDEE) using the Mifflin-St Jeor formula. Accounts for age, weight, height, and activity level. Includes macro breakdown and goal-based calculations.</p></div>
+                <div class="tool-card" data-category="health"><a href="macros-calculator.html">🥗 Macros Calculator</a><p>Calculate optimal protein, carbohydrates, and fat targets based on your calorie goals and dietary preferences. Supports multiple diet types.</p></div>
+                <div class="tool-card" data-category="health"><a href="water-intake-calculator.html">💧 Water Intake Calculator</a><p>Determine your optimal daily hydration based on body weight, climate, activity level, and exercise intensity.</p></div>
+                <div class="tool-card" data-category="health"><a href="bmi-calculator.html">⚖️ BMI Calculator</a><p>Calculate Body Mass Index using WHO standards. Includes category breakdowns, ideal weight ranges, and health interpretations.</p></div>
+                <div class="tool-card" data-category="health"><a href="body-fat-calculator.html">💪 Body Fat Calculator</a><p>Estimate body fat percentage using the U.S. Navy method. Includes healthy ranges by age and gender for reference.</p></div>
+                <div class="tool-card" data-category="health"><a href="age-calculator.html">🎂 Age Calculator</a><p>Calculate exact age in years, months, and days. Handles leap years and timezone differences accurately.</p></div>
+                <div class="tool-card" data-category="health"><a href="gpa-calculator.html">📚 GPA Calculator</a><p>Compute grade point average for 4.0, 5.0, and percentage-based systems. Supports weighted grades and multiple grading scales.</p></div>
+                <div class="tool-card" data-category="health"><a href="percentage-calculator.html">📊 Percentage Calculator</a><p>Calculate percentages, percentage change, and percentage difference. Useful for discounts, tips, and statistical analysis.</p></div>
+                <div class="tool-card" data-category="health"><a href="pregnancy-calculator.html">👶 Pregnancy Calculator</a><p>Estimate due date and track pregnancy milestones. Based on standard obstetric calculations used in healthcare.</p></div>
+                <div class="tool-card" data-category="health"><a href="ovulation-calculator.html">📅 Ovulation Calculator</a><p>Predict your fertile window and ovulation date based on menstrual cycle length and regularity.</p></div>
+                <div class="tool-card" data-category="health"><a href="stride-calculator.html">🏃 Stride Calculator</a><p>Estimate your running stride length based on height and sex. Helps optimize running form and pace calculations.</p></div>
+                <div class="tool-card" data-category="health"><a href="nutrition-calculator.html">🍽️ Nutrition Calculator</a><p>Analyze macronutrient and micronutrient content of meals. Compares against daily recommended values by age and gender.</p></div>
             </div>
         </div>
 
@@ -257,50 +301,17 @@
             </div>
             <p class="category-desc">Make informed financial decisions with calculators for budgeting, investing, loans, and salary planning. These tools use standard financial formulas and include detailed explanations of concepts like compound interest, amortization, tax brackets, and APR.</p>
             <div class="tools-grid">
-                <div class="tool-card" data-category="finance">
-                    <a href="salary-calculator.html">💼 Salary Calculator</a>
-                    <p>Convert between hourly, weekly, monthly, and annual salary. Calculates take-home pay after federal and state taxes, FICA, and deductions.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="compound-interest-calculator.html">📈 Compound Interest Calculator</a>
-                    <p>Project investment growth with compound interest. Compare different compounding frequencies and time periods with interactive visualization.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="retirement-calculator.html">🏖️ Retirement Calculator</a>
-                    <p>Estimate retirement savings needs based on current age, savings rate, desired retirement age, and lifestyle expenses.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="payment-calculator.html">📋 Payment Calculator</a>
-                    <p>Calculate monthly loan and financing payments. Shows complete amortization schedule with interest breakdown.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="budget-planner.html">📊 Budget Planner</a>
-                    <p>Plan monthly budget using the 50/30/20 rule. Tracks needs, wants, and savings allocations with visual breakdown.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
-                    <p>Estimate monthly mortgage payments including principal, interest, property tax, and homeowners insurance.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="loan-calculator.html">🔗 Loan Calculator</a>
-                    <p>Calculate total interest, monthly payments, and complete amortization for personal and auto loans.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="credit-card.html">💳 Credit Card Payoff Calculator</a>
-                    <p>Plan debt repayment with avalanche or snowball methods. Shows interest savings and exact payoff timeline.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="currency-converter.html">💵 Currency Converter</a>
-                    <p>Convert between major world currencies using current exchange rates. Includes historical trends and rate analysis.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="youtube-earnings-calculator.html">📺 YouTube Earnings Calculator</a>
-                    <p>Estimate YouTube revenue based on views, CPM rates, and engagement metrics. Includes Creator Fund requirements and sponsorship potential.</p>
-                </div>
-                <div class="tool-card" data-category="finance">
-                    <a href="tiktok-instagram-calculators.html">🎵 TikTok & Instagram Earnings</a>
-                    <p>Estimate Creator Fund earnings and sponsorship potential for TikTok and Instagram based on followers and engagement rates.</p>
-                </div>
+                <div class="tool-card" data-category="finance"><a href="salary-calculator.html">💼 Salary Calculator</a><p>Convert between hourly, weekly, monthly, and annual salary. Calculates take-home pay after federal and state taxes, FICA, and deductions.</p></div>
+                <div class="tool-card" data-category="finance"><a href="compound-interest-calculator.html">📈 Compound Interest Calculator</a><p>Project investment growth with compound interest. Compare different compounding frequencies and time periods with interactive visualization.</p></div>
+                <div class="tool-card" data-category="finance"><a href="retirement-calculator.html">🏖️ Retirement Calculator</a><p>Estimate retirement savings needs based on current age, savings rate, desired retirement age, and lifestyle expenses.</p></div>
+                <div class="tool-card" data-category="finance"><a href="payment-calculator.html">📋 Payment Calculator</a><p>Calculate monthly loan and financing payments. Shows complete amortization schedule with interest breakdown.</p></div>
+                <div class="tool-card" data-category="finance"><a href="budget-planner.html">📊 Budget Planner</a><p>Plan monthly budget using the 50/30/20 rule. Tracks needs, wants, and savings allocations with visual breakdown.</p></div>
+                <div class="tool-card" data-category="finance"><a href="mortgage-calculator.html">🏠 Mortgage Calculator</a><p>Estimate monthly mortgage payments including principal, interest, property tax, and homeowners insurance.</p></div>
+                <div class="tool-card" data-category="finance"><a href="loan-calculator.html">🔗 Loan Calculator</a><p>Calculate total interest, monthly payments, and complete amortization for personal and auto loans.</p></div>
+                <div class="tool-card" data-category="finance"><a href="credit-card.html">💳 Credit Card Payoff Calculator</a><p>Plan debt repayment with avalanche or snowball methods. Shows interest savings and exact payoff timeline.</p></div>
+                <div class="tool-card" data-category="finance"><a href="currency-converter.html">💵 Currency Converter</a><p>Convert between major world currencies using current exchange rates. Includes historical trends and rate analysis.</p></div>
+                <div class="tool-card" data-category="finance"><a href="youtube-earnings-calculator.html">📺 YouTube Earnings Calculator</a><p>Estimate YouTube revenue based on views, CPM rates, and engagement metrics. Includes Creator Fund requirements and sponsorship potential.</p></div>
+                <div class="tool-card" data-category="finance"><a href="tiktok-instagram-calculators.html">🎵 TikTok & Instagram Earnings</a><p>Estimate Creator Fund earnings and sponsorship potential for TikTok and Instagram based on followers and engagement rates.</p></div>
             </div>
         </div>
 
@@ -312,30 +323,12 @@
             </div>
             <p class="category-desc">Convert files and units, generate codes and assets quickly. These utilities run entirely in your browser for maximum privacy and speed. No file uploads to external servers.</p>
             <div class="tools-grid">
-                <div class="tool-card" data-category="converters">
-                    <a href="converter.html">📏 Unit Converter</a>
-                    <p>Convert between length, weight, temperature, volume, speed, and area units. Supports both metric and imperial systems with real-time calculations.</p>
-                </div>
-                <div class="tool-card" data-category="converters">
-                    <a href="converter-png.html">🖼️ PNG Converter</a>
-                    <p>Convert PNG images to JPG, WebP, or PDF formats. Adjust quality and compression settings for optimal file size.</p>
-                </div>
-                <div class="tool-card" data-category="converters">
-                    <a href="qr-code-generator.html">📲 QR Code Generator</a>
-                    <p>Create custom QR codes for URLs, text, WiFi credentials, and contact cards. Download as PNG or SVG vector format.</p>
-                </div>
-                <div class="tool-card" data-category="converters">
-                    <a href="color-palette-generator.html">🎨 Color Palette Generator</a>
-                    <p>Generate harmonious color schemes from a base color. Exports hex codes and RGB values for web design projects.</p>
-                </div>
-                <div class="tool-card" data-category="converters">
-                    <a href="password-generator.html">🔐 Password Generator</a>
-                    <p>Create secure, random passwords with customizable length and character types. Estimates crack time and entropy strength.</p>
-                </div>
-                <div class="tool-card" data-category="converters">
-                    <a href="hashtag-generator.html">🏷️ Hashtag Generator</a>
-                    <p>Generate relevant hashtags for social media posts based on keywords and niche. Optimizes reach and engagement.</p>
-                </div>
+                <div class="tool-card" data-category="converters"><a href="converter.html">📏 Unit Converter</a><p>Convert between length, weight, temperature, volume, speed, and area units. Supports both metric and imperial systems with real-time calculations.</p></div>
+                <div class="tool-card" data-category="converters"><a href="converter-png.html">🖼️ PNG Converter</a><p>Convert PNG images to JPG, WebP, or PDF formats. Adjust quality and compression settings for optimal file size.</p></div>
+                <div class="tool-card" data-category="converters"><a href="qr-code-generator.html">📲 QR Code Generator</a><p>Create custom QR codes for URLs, text, WiFi credentials, and contact cards. Download as PNG or SVG vector format.</p></div>
+                <div class="tool-card" data-category="converters"><a href="color-palette-generator.html">🎨 Color Palette Generator</a><p>Generate harmonious color schemes from a base color. Exports hex codes and RGB values for web design projects.</p></div>
+                <div class="tool-card" data-category="converters"><a href="password-generator.html">🔐 Password Generator</a><p>Create secure, random passwords with customizable length and character types. Estimates crack time and entropy strength.</p></div>
+                <div class="tool-card" data-category="converters"><a href="hashtag-generator.html">🏷️ Hashtag Generator</a><p>Generate relevant hashtags for social media posts based on keywords and niche. Optimizes reach and engagement.</p></div>
             </div>
         </div>
 
@@ -347,18 +340,9 @@
             </div>
             <p class="category-desc">Tools for writers, students, and content creators. Analyze text, estimate reading time, and plan content strategy.</p>
             <div class="tools-grid">
-                <div class="tool-card" data-category="writing">
-                    <a href="word-counter-tool.html">📝 Word Counter</a>
-                    <p>Count words, characters, sentences, and paragraphs instantly. Estimates reading time and speaking time for presentations.</p>
-                </div>
-                <div class="tool-card" data-category="writing">
-                    <a href="ai-writing-assistant.html">🤖 AI Writing Assistant</a>
-                    <p>Get suggestions for improving your writing. Checks for clarity, grammar, and tone with actionable feedback.</p>
-                </div>
-                <div class="tool-card" data-category="writing">
-                    <a href="resume-score-ai.html">⭐ Resume Score AI</a>
-                    <p>Analyze your resume with AI to improve ATS compatibility and hiring manager appeal. Get detailed improvement suggestions.</p>
-                </div>
+                <div class="tool-card" data-category="writing"><a href="word-counter-tool.html">📝 Word Counter</a><p>Count words, characters, sentences, and paragraphs instantly. Estimates reading time and speaking time for presentations.</p></div>
+                <div class="tool-card" data-category="writing"><a href="ai-writing-assistant.html">🤖 AI Writing Assistant</a><p>Get suggestions for improving your writing. Checks for clarity, grammar, and tone with actionable feedback.</p></div>
+                <div class="tool-card" data-category="writing"><a href="resume-score-ai.html">⭐ Resume Score AI</a><p>Analyze your resume with AI to improve ATS compatibility and hiring manager appeal. Get detailed improvement suggestions.</p></div>
             </div>
         </div>
 
@@ -370,26 +354,11 @@
             </div>
             <p class="category-desc">Practical tools for designers, developers, and planners. From image editing to data formatting and meal planning.</p>
             <div class="tools-grid">
-                <div class="tool-card" data-category="utilities">
-                    <a href="background-remover.html">✂️ Background Remover</a>
-                    <p>Remove image backgrounds automatically using AI. Works with portraits, products, and objects in seconds.</p>
-                </div>
-                <div class="tool-card" data-category="utilities">
-                    <a href="json-schema-generator-pro.html">📄 JSON Schema Generator</a>
-                    <p>Generate JSON Schema from sample JSON data. Validates structure for APIs, databases, and web services.</p>
-                </div>
-                <div class="tool-card" data-category="utilities">
-                    <a href="meal-planner.html">🍽️ Meal Planner</a>
-                    <p>Plan weekly meals with nutritional balance. Generates shopping lists based on selected recipes and dietary preferences.</p>
-                </div>
-                <div class="tool-card" data-category="utilities">
-                    <a href="content-calendar-generator.html">📅 Content Calendar Generator</a>
-                    <p>Create monthly content calendars with posting schedules, topic ideas, and platform assignments for consistency.</p>
-                </div>
-                <div class="tool-card" data-category="utilities">
-                    <a href="matrix-destiny-calculator.html">🎬 Entertainment Calculators</a>
-                    <p>Fun calculators for entertainment and lifestyle including compatibility tests and personality assessments.</p>
-                </div>
+                <div class="tool-card" data-category="utilities"><a href="background-remover.html">✂️ Background Remover</a><p>Remove image backgrounds automatically using AI. Works with portraits, products, and objects in seconds.</p></div>
+                <div class="tool-card" data-category="utilities"><a href="json-schema-generator-pro.html">📄 JSON Schema Generator</a><p>Generate JSON Schema from sample JSON data. Validates structure for APIs, databases, and web services.</p></div>
+                <div class="tool-card" data-category="utilities"><a href="meal-planner.html">🍽️ Meal Planner</a><p>Plan weekly meals with nutritional balance. Generates shopping lists based on selected recipes and dietary preferences.</p></div>
+                <div class="tool-card" data-category="utilities"><a href="content-calendar-generator.html">📅 Content Calendar Generator</a><p>Create monthly content calendars with posting schedules, topic ideas, and platform assignments for consistency.</p></div>
+                <div class="tool-card" data-category="utilities"><a href="matrix-destiny-calculator.html">🎬 Entertainment Calculators</a><p>Fun calculators for entertainment and lifestyle including compatibility tests and personality assessments.</p></div>
             </div>
         </div>
 
@@ -397,77 +366,28 @@
         <div class="benefits">
             <h2>Why Choose ToolPond Pro?</h2>
             <div class="benefits-grid">
-                <div class="benefit-item">
-                    <h3>🔒 Privacy First</h3>
-                    <p>All calculations happen in your browser. We never collect, see, or store your data. No logins, no tracking, no ads.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>⚡ Instant Results</h3>
-                    <p>Real-time calculations with no servers or waiting. Get results instantly as you type or adjust values.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>📱 Works Everywhere</h3>
-                    <p>Mobile, tablet, desktop. Responsive design works perfectly on any device without app installation.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>✅ Accurate & Trusted</h3>
-                    <p>Uses scientifically validated formulas. 2024 tax brackets, current rates, and industry-standard calculations.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>🎓 Educational</h3>
-                    <p>Each tool includes formulas, tips, FAQs, and real-world examples to help you learn while calculating.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>🚀 Always Free</h3>
-                    <p>No premium tiers, no hidden costs. Every calculator is completely free to use forever.</p>
-                </div>
+                <div class="benefit-item"><h3>🔒 Privacy First</h3><p>All calculations happen in your browser. We never collect, see, or store your data. No logins, no tracking, no ads.</p></div>
+                <div class="benefit-item"><h3>⚡ Instant Results</h3><p>Real-time calculations with no servers or waiting. Get results instantly as you type or adjust values.</p></div>
+                <div class="benefit-item"><h3>📱 Works Everywhere</h3><p>Mobile, tablet, desktop. Responsive design works perfectly on any device without app installation.</p></div>
+                <div class="benefit-item"><h3>✅ Accurate & Trusted</h3><p>Uses scientifically validated formulas. 2024 tax brackets, current rates, and industry-standard calculations.</p></div>
+                <div class="benefit-item"><h3>🎓 Educational</h3><p>Each tool includes formulas, tips, FAQs, and real-world examples to help you learn while calculating.</p></div>
+                <div class="benefit-item"><h3>🚀 Always Free</h3><p>No premium tiers, no hidden costs. Every calculator is completely free to use forever.</p></div>
             </div>
         </div>
 
-        <!-- FAQ Section -->
+        <!-- FAQ -->
         <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-                <h3>Are all calculators really free?</h3>
-                <p>Yes, 100% free. Every calculator on ToolPond Pro is completely free to use with no premium tiers, hidden costs, or upgrade requirements.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>Is my data private?</h3>
-                <p>Yes. All calculations happen in your browser. We never see, store, or collect your data. No logins required, no tracking, no ads, no cookies.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>How accurate are the calculations?</h3>
-                <p>Very accurate. All calculators use scientifically validated formulas. Health calculators use peer-reviewed medical equations. Financial calculators use standard industry formulas. We use current tax brackets and market rates updated regularly.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>Do I need to create an account?</h3>
-                <p>No account needed. Every calculator is completely free and accessible without signup, login, or registration.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>Can I use ToolPond on mobile?</h3>
-                <p>Yes. All calculators are fully responsive and work perfectly on phones, tablets, and desktops. No app installation required.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>How often are calculators updated?</h3>
-                <p>We update calculators regularly with new features, improved accuracy, and current rates (tax brackets, interest rates, etc.). Tax brackets are updated annually for accuracy.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Can I suggest a new calculator?</h3>
-                <p>Yes! We regularly add new calculators based on user requests. <a href="contact.html" style="color:var(--primary);text-decoration:none;font-weight:600">Contact us</a> with your suggestions.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Are the formulas correct?</h3>
-                <p>Yes. We use scientifically validated and industry-standard formulas. All methodology is documented in each calculator's guide section.</p>
-            </div>
+            <div class="faq-item"><h3>Are all calculators really free?</h3><p>Yes, 100% free. Every calculator on ToolPond Pro is completely free to use with no premium tiers, hidden costs, or upgrade requirements.</p></div>
+            <div class="faq-item"><h3>Is my data private?</h3><p>Yes. All calculations happen in your browser. We never see, store, or collect your data. No logins required, no tracking, no ads, no cookies.</p></div>
+            <div class="faq-item"><h3>How accurate are the calculations?</h3><p>Very accurate. All calculators use scientifically validated formulas. Health calculators use peer-reviewed medical equations. Financial calculators use standard industry formulas. We use current tax brackets and market rates updated regularly.</p></div>
+            <div class="faq-item"><h3>Do I need to create an account?</h3><p>No account needed. Every calculator is completely free and accessible without signup, login, or registration.</p></div>
+            <div class="faq-item"><h3>Can I use ToolPond on mobile?</h3><p>Yes. All calculators are fully responsive and work perfectly on phones, tablets, and desktops. No app installation required.</p></div>
+            <div class="faq-item"><h3>How often are calculators updated?</h3><p>We update calculators regularly with new features, improved accuracy, and current rates (tax brackets, interest rates, etc.). Tax brackets are updated annually for accuracy.</p></div>
+            <div class="faq-item"><h3>Can I suggest a new calculator?</h3><p>Yes! We regularly add new calculators based on user requests. <a href="contact.html" style="color:var(--primary);text-decoration:none;font-weight:600">Contact us</a> with your suggestions.</p></div>
+            <div class="faq-item"><h3>Are the formulas correct?</h3><p>Yes. We use scientifically validated and industry-standard formulas. All methodology is documented in each calculator's guide section.</p></div>
         </div>
+
     </div>
 
     <footer>
@@ -494,11 +414,10 @@
                 <a href="#utilities">Utilities</a>
             </div>
             <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="calculators.html">All Tools</a>
-                <a href="contact.html">Support</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="index.html">Back to Home</a>
+                <h4>Games</h4>
+                <a href="games.html">All Games</a>
+                <a href="games/sky-spirit.html">✨ Sky Spirit</a>
+                <a href="contact.html">Suggest a Game</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -508,29 +427,18 @@
 
     <script>
         function filterTools() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const toolCards = document.querySelectorAll('.tool-card');
-            
-            toolCards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(searchInput) ? 'block' : 'none';
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.style.display = card.textContent.toLowerCase().includes(q) ? 'block' : 'none';
             });
         }
-
         function filterByCategory(category, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
-            const toolCards = document.querySelectorAll('.tool-card');
-            toolCards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = card.dataset.category === category ? 'block' : 'none';
-                }
+            document.querySelectorAll('.tool-card').forEach(card => {
+                card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
             });
         }
-
         function resetSearch() {
             document.getElementById('searchInput').value = '';
             filterTools();
