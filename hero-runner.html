@@ -3,6 +3,14 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Hero Runner - A cyberpunk endless runner game. Navigate Sector-7, dash through barriers, and survive the neon sprawl.">
+<meta property="og:title" content="Hero Runner - Ultimate Unified Edition">
+<meta property="og:description" content="A cyberpunk kinetic endless runner. Dash, jump, and survive the rainy sprawl of Sector-7.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolpond.org/hero-runner.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#111125">
+<link rel="icon" type="image/x-icon" href="/logo.png">
 <title>Hero Runner - Ultimate Unified Edition</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap" rel="stylesheet"/>
@@ -101,7 +109,7 @@
         .kinetic-shadow:active { transform: translateY(4px); box-shadow: 0 0 0 0 #006163; }
         .glass-panel { background: rgba(30, 30, 50, 0.7); backdrop-filter: blur(12px); border: 2px solid rgba(125, 252, 255, 0.2); }
         .parallax-bg { background-attachment: fixed; background-size: cover; background-position: center; transition: transform 0.1s ease-out; }
-        
+
         @keyframes pulse-glow { 0%, 100% { filter: drop-shadow(0 0 8px rgba(45, 226, 230, 0.6)); } 50% { filter: drop-shadow(0 0 15px rgba(45, 226, 230, 0.9)); } }
         .animate-glow { animation: pulse-glow 2s infinite ease-in-out; }
 
@@ -123,6 +131,196 @@
         .glitch-overlay { position: absolute; inset: 0; background: rgba(125, 252, 255, 0.05); pointer-events: none; z-index: 999; display: none; }
 
         .energy-block { clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%); }
+
+        /* CSS Hero Character */
+        .hero-character {
+            position: relative;
+            width: 200px;
+            height: 280px;
+        }
+        .hero-head {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 80px;
+            background: linear-gradient(180deg, rgba(125,252,255,0.3) 0%, rgba(125,252,255,0.1) 100%);
+            border-radius: 50% 50% 45% 45%;
+            border: 2px solid rgba(125,252,255,0.5);
+            overflow: hidden;
+        }
+        .hero-visor {
+            position: absolute;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 16px;
+            background: linear-gradient(90deg, #7dfcff 0%, #2de2e6 50%, #7dfcff 100%);
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(125,252,255,0.8), inset 0 0 4px rgba(255,255,255,0.3);
+        }
+        .hero-visor::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            right: 8px;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #fff;
+        }
+        .hero-body {
+            position: absolute;
+            top: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 110px;
+            background: linear-gradient(180deg, rgba(125,252,255,0.25) 0%, rgba(30,30,50,0.8) 100%);
+            border-radius: 20px 20px 30px 30px;
+            border: 2px solid rgba(125,252,255,0.3);
+        }
+        .hero-chest-glow {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(45,226,230,0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+        .hero-arm-left, .hero-arm-right {
+            position: absolute;
+            top: 95px;
+            width: 28px;
+            height: 90px;
+            background: linear-gradient(180deg, rgba(125,252,255,0.2) 0%, rgba(30,30,50,0.6) 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(125,252,255,0.3);
+        }
+        .hero-arm-left { left: 25px; transform: rotate(15deg); }
+        .hero-arm-right { right: 25px; transform: rotate(-15deg); }
+        .hero-leg-left, .hero-leg-right {
+            position: absolute;
+            top: 190px;
+            width: 32px;
+            height: 80px;
+            background: linear-gradient(180deg, rgba(30,30,50,0.9) 0%, rgba(125,252,255,0.15) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(125,252,255,0.2);
+        }
+        .hero-leg-left { left: 55px; }
+        .hero-leg-right { right: 55px; }
+        .hero-scarf {
+            position: absolute;
+            top: 75px;
+            right: 30px;
+            width: 60px;
+            height: 20px;
+            background: linear-gradient(90deg, rgba(255,178,185,0.6) 0%, rgba(255,178,185,0.2) 100%);
+            border-radius: 10px;
+            transform: rotate(-20deg);
+            animation: scarf-wave 2s ease-in-out infinite;
+        }
+        @keyframes scarf-wave {
+            0%, 100% { transform: rotate(-20deg) translateX(0); }
+            50% { transform: rotate(-15deg) translateX(5px); }
+        }
+
+        /* CSS Backgrounds */
+        .bg-city-css {
+            background: 
+                linear-gradient(180deg, #0c0c1f 0%, #1a1a2e 30%, #1e1e3a 60%, #111125 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .bg-city-css::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(125,252,255,0.05) 20%, transparent 40%),
+                linear-gradient(90deg, transparent 60%, rgba(125,252,255,0.08) 80%, transparent 100%);
+        }
+        .bg-city-css::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent 0px,
+                transparent 40px,
+                rgba(125,252,255,0.1) 40px,
+                rgba(125,252,255,0.1) 42px,
+                transparent 42px,
+                transparent 80px
+            );
+        }
+        .bg-industrial-css {
+            background: 
+                linear-gradient(180deg, #0a0a14 0%, #1e1e32 30%, #2a1a1a 60%, #111125 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .bg-industrial-css::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0px,
+                transparent 20px,
+                rgba(255,178,185,0.05) 20px,
+                rgba(255,178,185,0.05) 22px
+            );
+        }
+        .bg-industrial-css::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: 
+                radial-gradient(ellipse at 30% 100%, rgba(255,178,185,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 100%, rgba(125,252,255,0.08) 0%, transparent 50%);
+        }
+
+        /* City lights */
+        .city-light {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #7dfcff;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #7dfcff, 0 0 12px rgba(125,252,255,0.5);
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Industrial pipes */
+        .industrial-pipe {
+            position: absolute;
+            background: linear-gradient(90deg, rgba(255,178,185,0.2) 0%, rgba(255,178,185,0.05) 100%);
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body class="font-body-lg text-on-background selection:bg-primary-container selection:text-on-primary-container h-screen overflow-hidden">
@@ -145,9 +343,25 @@
 <!-- Dynamic Background Layer -->
 <div class="fixed inset-0 z-0 overflow-hidden">
 <!-- City Background for UI screens -->
-<div class="absolute inset-0 bg-cover bg-center parallax-bg opacity-100 transition-opacity duration-1000" id="bg-city" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKcVGXwB3U_XV90pEDxwfrR9HEgKAb0-HSuusDvyZwSxU1RkLWgQR8WLG4Cz_7EpiLvjYlXtxGKWrkE4HJKrTno1PrXqLE8qO5RD1UW-cNlLJoQLxzsC11qYFpKaBLXoAT5rchOzKVEW6yvVmXjLpGzQ8Z7kF9Wg7l6yIAG-niYSvZSF7SNLiStIkU0wLN0Sr739dUe39Aj6VWtiIGAzNtf_qMrP_IdxIUtgcGDnjtxU13Ffza-V0lBP5wfcz-FWlyTZgtff6qN7zh')"></div>
+<div class="absolute inset-0 bg-city-css parallax-bg opacity-100 transition-opacity duration-1000" id="bg-city">
+    <div class="city-light" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+    <div class="city-light" style="top: 35%; left: 25%; animation-delay: 0.5s;"></div>
+    <div class="city-light" style="top: 15%; left: 45%; animation-delay: 1s;"></div>
+    <div class="city-light" style="top: 40%; left: 60%; animation-delay: 1.5s;"></div>
+    <div class="city-light" style="top: 25%; left: 75%; animation-delay: 2s;"></div>
+    <div class="city-light" style="top: 45%; left: 85%; animation-delay: 2.5s;"></div>
+    <div class="city-light" style="top: 30%; left: 10%; animation-delay: 0.3s;"></div>
+    <div class="city-light" style="top: 50%; left: 35%; animation-delay: 0.8s;"></div>
+    <div class="city-light" style="top: 55%; left: 55%; animation-delay: 1.2s;"></div>
+    <div class="city-light" style="top: 48%; left: 80%; animation-delay: 1.8s;"></div>
+</div>
 <!-- Industrial Background for Gameplay -->
-<div class="absolute inset-0 bg-cover bg-center parallax-bg opacity-0 transition-opacity duration-1000" id="bg-industrial" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvD74Ay81kvvmjlD7xzykfVRVYll666PbcIIqOS_T20F-8Kt3LqEu2dA2KLPW2Dc-TmO4FALU6Kgmk6KSvf5uV9_H8-5BSHDHjuLTzku4qDe7dhf8Ww1IimzoY1KzFYh93eqjsweoFVzyCI3SMsDwgT3iOLnFu7f5wASHv97YMQ0X3YQY4-cNBq1vzzoBy5iuQXhSd9XFrhjrYL_rzl1dNlpXNDLSRZLcBbEqQExXhAWxSqKg6nz06tCtxF')"></div>
+<div class="absolute inset-0 bg-industrial-css parallax-bg opacity-0 transition-opacity duration-1000" id="bg-industrial">
+    <div class="industrial-pipe" style="top: 15%; left: 0; width: 40%; height: 6px;"></div>
+    <div class="industrial-pipe" style="top: 25%; right: 0; width: 35%; height: 4px;"></div>
+    <div class="industrial-pipe" style="top: 60%; left: 10%; width: 30%; height: 5px;"></div>
+    <div class="industrial-pipe" style="top: 70%; right: 15%; width: 25%; height: 4px;"></div>
+</div>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-surface-dim/40"></div>
 <div class="rain-overlay" id="rain-container"></div>
 <div class="scanline"></div>
@@ -180,8 +394,20 @@
 </div>
 <div class="w-full md:w-1/2 flex items-center justify-center relative">
 <div class="absolute inset-0 bg-primary/10 blur-[100px] rounded-full"></div>
-<!-- Human Runner Image (External Source) -->
-<img alt="Hero Runner" class="w-3/4 h-auto object-contain animate-glow relative z-10 drop-shadow-[0_20px_50px_rgba(45,226,230,0.4)]" src="https://lh3.googleusercontent.com/aida/AP1WRLubut2qHhnJOIL7tnWePo0UTsrcIE6GwbRtLHDHXJT6rN_CZPHvJ20F-YCWacMVrfDV-2o6V9ACw-QfcXpKhyNhsQv5aS6YzIKxGLE7aw3d1FykqBw0d8uboVfhWUuAXb8f0G2ujznTTRPtt6OU4MGDTR7_VP371FypmZ5oQOj0xwOpc01USdv-jlsW3hNkXWhoZlp1-EiSN4-etlX8XuHIgDySVspp8PK08Oiz_tRV5QGoM2yg3g4yoL3o"/>
+<!-- CSS Hero Character -->
+<div class="hero-character animate-glow relative z-10">
+    <div class="hero-head">
+        <div class="hero-visor"></div>
+    </div>
+    <div class="hero-scarf"></div>
+    <div class="hero-body">
+        <div class="hero-chest-glow"></div>
+    </div>
+    <div class="hero-arm-left"></div>
+    <div class="hero-arm-right"></div>
+    <div class="hero-leg-left"></div>
+    <div class="hero-leg-right"></div>
+</div>
 <div class="absolute bottom-4 right-4 glass-panel p-4 rounded-xl flex flex-col gap-1 min-w-[180px]">
 <span class="font-label-caps text-label-caps text-outline uppercase">Runner_01</span>
 <span class="font-body-lg text-primary font-bold uppercase tracking-tight">Level 14 Kineticist</span>
@@ -352,10 +578,10 @@
 </div>
 <!-- Mobile Controls (Thumb Zone) -->
 <div class="md:hidden fixed bottom-4 left-4 right-4 flex justify-between items-center z-30">
-<button class="kinetic-shadow w-20 h-20 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<button class="kinetic-shadow w-20 h-20 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center" onclick="triggerJump()">
 <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">north</span>
 </button>
-<button class="kinetic-shadow w-20 h-20 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<button class="kinetic-shadow w-20 h-20 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center" onclick="triggerDash()">
 <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
 </button>
 </div>
@@ -446,7 +672,7 @@
 <button class="bg-surface-container-highest text-on-surface py-3 rounded-xl font-label-caps text-label-caps uppercase transition-all flex-1 border border-primary/20 flex items-center justify-center gap-2" onclick="changeState('title')">
 <span class="material-symbols-outlined text-sm">home</span> Main Menu
                     </button>
-<button class="bg-surface-container-highest text-on-surface py-3 rounded-xl font-label-caps text-label-caps uppercase transition-all flex-1 border border-secondary/20 flex items-center justify-center gap-2">
+<button class="bg-surface-container-highest text-on-surface py-3 rounded-xl font-label-caps text-label-caps uppercase transition-all flex-1 border border-secondary/20 flex items-center justify-center gap-2" onclick="shareScore()">
 <span class="material-symbols-outlined text-sm">share</span> Share Core
                     </button>
 </div>
@@ -557,7 +783,7 @@
 
         // Visual Feedback
         body.classList.add('glitch-active');
-        
+
         if (oldSection) {
             oldSection.classList.remove('animate-state-enter');
             oldSection.classList.add('animate-state-exit');
@@ -618,6 +844,24 @@
             title.textContent = "Neo-Tokyo Processing";
             desc.textContent = "Data retrieval mission in the deep core of the industrial district. Security drones are hyper-active. Fast reaction kinetic bursts are required for survival.";
         }
+    }
+
+    function shareScore() {
+        const text = `I scored 24,580 in Hero Runner! Can you beat me?`;
+        if (navigator.share) {
+            navigator.share({ title: 'Hero Runner', text: text, url: window.location.href });
+        } else {
+            navigator.clipboard.writeText(text + ' ' + window.location.href);
+            alert('Score copied to clipboard!');
+        }
+    }
+
+    function triggerJump() {
+        console.log('Jump triggered');
+    }
+
+    function triggerDash() {
+        console.log('Dash triggered');
     }
 
     document.addEventListener('mousemove', (e) => {
