@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hero Runner - Ultimate Unified Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed": "#ffdadc",
+                "on-primary": "#003738",
+                "secondary": "#ffb2b9",
+                "surface-container": "#1e1e32",
+                "secondary-container": "#cf0346",
+                "inverse-on-surface": "#2f2e43",
+                "primary": "#7dfcff",
+                "on-tertiary-container": "#715100",
+                "on-tertiary": "#412d00",
+                "on-secondary-fixed": "#40000f",
+                "on-primary-fixed": "#002021",
+                "inverse-primary": "#00696b",
+                "on-secondary-fixed-variant": "#91002e",
+                "surface-container-high": "#28283d",
+                "on-secondary": "#67001e",
+                "surface-variant": "#333348",
+                "outline": "#859494",
+                "secondary-fixed-dim": "#ffb2b9",
+                "primary-fixed-dim": "#1edce0",
+                "on-background": "#e2e0fc",
+                "background": "#111125",
+                "surface-container-highest": "#333348",
+                "tertiary-fixed-dim": "#febb10",
+                "surface": "#111125",
+                "on-secondary-container": "#ffe1e2",
+                "primary-container": "#2de2e6",
+                "on-surface": "#e2e0fc",
+                "surface-container-lowest": "#0c0c1f",
+                "surface-container-low": "#1a1a2e",
+                "on-primary-container": "#006163",
+                "tertiary-container": "#ffc342",
+                "surface-dim": "#111125",
+                "tertiary-fixed": "#ffdea5",
+                "surface-bright": "#37374d",
+                "error-container": "#93000a",
+                "tertiary": "#ffe6bb",
+                "on-surface-variant": "#bac9c9",
+                "primary-fixed": "#52f9fc",
+                "on-primary-fixed-variant": "#004f51",
+                "on-tertiary-fixed": "#261900",
+                "error": "#ffb4ab",
+                "inverse-surface": "#e2e0fc",
+                "outline-variant": "#3b494a",
+                "on-error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#5d4200",
+                "on-error": "#690005",
+                "surface-tint": "#1edce0"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-margin-desktop": "40px",
+                "container-margin-mobile": "20px",
+                "safe-zone-bottom": "32px",
+                "unit": "8px",
+                "gutter": "16px"
+            },
+            "fontFamily": {
+                "body-sm": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "headline-md": ["Anybody"],
+                "label-caps": ["Space Grotesk"],
+                "display-lg-mobile": ["Anybody"],
+                "display-lg": ["Anybody"]
+            },
+            "fontSize": {
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                "display-lg-mobile": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #111125; color: #e2e0fc; overflow-x: hidden; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .kinetic-shadow { box-shadow: 0 4px 0 0 #006163; transition: all 0.1s; }
+        .kinetic-shadow:active { transform: translateY(4px); box-shadow: 0 0 0 0 #006163; }
+        .glass-panel { background: rgba(30, 30, 50, 0.7); backdrop-filter: blur(12px); border: 2px solid rgba(125, 252, 255, 0.2); }
+        .parallax-bg { background-attachment: fixed; background-size: cover; background-position: center; transition: transform 0.1s ease-out; }
+        
+        @keyframes pulse-glow { 0%, 100% { filter: drop-shadow(0 0 8px rgba(45, 226, 230, 0.6)); } 50% { filter: drop-shadow(0 0 15px rgba(45, 226, 230, 0.9)); } }
+        .animate-glow { animation: pulse-glow 2s infinite ease-in-out; }
+
+        @keyframes rain { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+        .rain-overlay { position: absolute; inset: 0; pointer-events: none; overflow: hidden; opacity: 0.2; }
+        .rain-drop { position: absolute; background: linear-gradient(transparent, #7dfcff); width: 1px; height: 40px; animation: rain linear infinite; }
+
+        .scanline { width: 100%; height: 2px; background: rgba(45, 226, 230, 0.1); position: absolute; top: 0; animation: scanline 8s linear infinite; z-index: 50; pointer-events: none; }
+        @keyframes scanline { 0% { top: 0; } 100% { top: 100%; } }
+
+        /* Transition Animations */
+        @keyframes state-enter { 0% { opacity: 0; transform: scale(0.98); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes state-exit { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.02); } }
+        .animate-state-enter { animation: state-enter 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-state-exit { animation: state-exit 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+        @keyframes glitch-flicker { 0% { opacity: 0; } 10% { opacity: 0.5; } 20% { opacity: 0.1; } 30% { opacity: 0.8; } 40% { opacity: 0.2; } 100% { opacity: 0; } }
+        .glitch-active .glitch-overlay { display: block; animation: glitch-flicker 0.4s linear; }
+        .glitch-overlay { position: absolute; inset: 0; background: rgba(125, 252, 255, 0.05); pointer-events: none; z-index: 999; display: none; }
+
+        .energy-block { clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%); }
+    </style>
+</head>
+<body class="font-body-lg text-on-background selection:bg-primary-container selection:text-on-primary-container h-screen overflow-hidden">
+<div class="glitch-overlay" id="glitch-fx"></div>
+<!-- Global App Bar (Unified Header) -->
+<header class="fixed top-0 w-full z-[100] flex justify-between items-center px-container-margin-mobile md:px-container-margin-desktop py-4 bg-gradient-to-b from-surface-dim/80 to-transparent">
+<div class="flex items-center gap-3 cursor-pointer" onclick="changeState('title')">
+<span class="material-symbols-outlined text-primary text-3xl font-bold italic" style="font-variation-settings: 'FILL' 1;">videogame_asset</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg italic font-black text-primary uppercase tracking-tighter drop-shadow-[0_0_8px_rgba(125,252,255,0.6)]">HERO RUNNER</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8" id="desktop-nav">
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all uppercase hover:scale-105" onclick="changeState('map')">Mission</button>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all uppercase hover:scale-105" onclick="changeState('leaderboard')">Global Rank</button>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors hover:scale-105 uppercase" onclick="changeState('settings')">Config</button>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors text-2xl" onclick="changeState('settings')">settings</button>
+</div>
+</header>
+<!-- Dynamic Background Layer -->
+<div class="fixed inset-0 z-0 overflow-hidden">
+<!-- City Background for UI screens -->
+<div class="absolute inset-0 bg-cover bg-center parallax-bg opacity-100 transition-opacity duration-1000" id="bg-city" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKcVGXwB3U_XV90pEDxwfrR9HEgKAb0-HSuusDvyZwSxU1RkLWgQR8WLG4Cz_7EpiLvjYlXtxGKWrkE4HJKrTno1PrXqLE8qO5RD1UW-cNlLJoQLxzsC11qYFpKaBLXoAT5rchOzKVEW6yvVmXjLpGzQ8Z7kF9Wg7l6yIAG-niYSvZSF7SNLiStIkU0wLN0Sr739dUe39Aj6VWtiIGAzNtf_qMrP_IdxIUtgcGDnjtxU13Ffza-V0lBP5wfcz-FWlyTZgtff6qN7zh')"></div>
+<!-- Industrial Background for Gameplay -->
+<div class="absolute inset-0 bg-cover bg-center parallax-bg opacity-0 transition-opacity duration-1000" id="bg-industrial" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvD74Ay81kvvmjlD7xzykfVRVYll666PbcIIqOS_T20F-8Kt3LqEu2dA2KLPW2Dc-TmO4FALU6Kgmk6KSvf5uV9_H8-5BSHDHjuLTzku4qDe7dhf8Ww1IimzoY1KzFYh93eqjsweoFVzyCI3SMsDwgT3iOLnFu7f5wASHv97YMQ0X3YQY4-cNBq1vzzoBy5iuQXhSd9XFrhjrYL_rzl1dNlpXNDLSRZLcBbEqQExXhAWxSqKg6nz06tCtxF')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-surface-dim/40"></div>
+<div class="rain-overlay" id="rain-container"></div>
+<div class="scanline"></div>
+</div>
+<!-- Main SPA Viewport -->
+<main class="relative z-10 w-full h-full pt-24 pb-safe-zone-bottom flex items-center justify-center">
+<!-- STATE: TITLE SCREEN -->
+<section class="absolute inset-0 flex flex-col md:flex-row items-center justify-between px-12 py-8 animate-state-enter" id="state-title">
+<div class="w-full md:w-1/2 flex flex-col gap-6 text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/20 border border-secondary-container rounded-lg w-fit">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-caps text-[10px] text-secondary-fixed uppercase tracking-widest">Active Season: Neon Genesis</span>
+</div>
+<h2 class="font-display-lg text-display-lg italic font-black text-on-surface leading-[1.1]">READY YOUR <br/><span class="text-primary">KINETIC CORE</span></h2>
+<p class="font-body-lg text-on-surface-variant max-w-sm">Navigate the rainy sprawl of Sector-7. Use your Dash and Jump to bypass corporate barriers.</p>
+<div class="flex flex-col gap-4 mt-4">
+<button class="kinetic-shadow bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container px-10 py-4 rounded-lg font-headline-md text-headline-md italic uppercase transition-all flex items-center justify-center gap-3 w-fit" onclick="changeState('map')">
+<span>Initiate Session</span>
+<span class="material-symbols-outlined font-bold">bolt</span>
+</button>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest hover:bg-surface-bright text-on-surface px-6 py-3 rounded-lg font-label-caps text-label-caps uppercase transition-colors flex items-center gap-2" onclick="changeState('leaderboard')">
+<span class="material-symbols-outlined text-sm">leaderboard</span> Rankings
+                    </button>
+<button class="bg-surface-container-highest hover:bg-surface-bright text-on-surface px-6 py-3 rounded-lg font-label-caps text-label-caps uppercase transition-colors flex items-center gap-2" onclick="changeState('settings')">
+<span class="material-symbols-outlined text-sm">tune</span> Config
+                    </button>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 flex items-center justify-center relative">
+<div class="absolute inset-0 bg-primary/10 blur-[100px] rounded-full"></div>
+<!-- Human Runner Image -->
+<img alt="Hero Runner" class="w-3/4 h-auto object-contain animate-glow relative z-10 drop-shadow-[0_20px_50px_rgba(45,226,230,0.4)]" src="https://lh3.googleusercontent.com/aida/AP1WRLubut2qHhnJOIL7tnWePo0UTsrcIE6GwbRtLHDHXJT6rN_CZPHvJ20F-YCWacMVrfDV-2o6V9ACw-QfcXpKhyNhsQv5aS6YzIKxGLE7aw3d1FykqBw0d8uboVfhWUuAXb8f0G2ujznTTRPtt6OU4MGDTR7_VP371FypmZ5oQOj0xwOpc01USdv-jlsW3hNkXWhoZlp1-EiSN4-etlX8XuHIgDySVspp8PK08Oiz_tRV5QGoM2yg3g4yoL3o"/>
+<div class="absolute bottom-4 right-4 glass-panel p-4 rounded-xl flex flex-col gap-1 min-w-[180px]">
+<span class="font-label-caps text-label-caps text-outline uppercase">Runner_01</span>
+<span class="font-body-lg text-primary font-bold uppercase tracking-tight">Level 14 Kineticist</span>
+<div class="w-full h-1.5 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="h-full w-2/3 bg-primary shadow-[0_0_8px_#7dfcff]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- STATE: LEVEL SELECTION MAP -->
+<section class="hidden absolute inset-0 flex p-8 gap-8" id="state-map">
+<div class="flex-1 relative">
+<!-- Holographic Grid -->
+<div class="w-full h-full glass-panel rounded-2xl border-primary/20 overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#7dfcff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+<div class="p-8">
+<div class="flex justify-between items-end mb-8">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-primary uppercase">Mission Protocol</span>
+<h2 class="font-display-lg text-headline-md italic font-black text-on-surface uppercase tracking-tight">GEO-SYSTEM SYNC</h2>
+</div>
+<div class="glass-panel px-4 py-2 rounded-lg flex items-center gap-4">
+<span class="font-label-caps text-[10px] text-outline uppercase">Global Progress</span>
+<div class="w-32 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 64%"></div>
+</div>
+<span class="font-body-sm text-primary text-xs">64%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<!-- Active Node -->
+<div class="glass-panel p-6 border-primary bg-primary/5 hover:bg-primary/10 transition-all cursor-pointer group" onclick="selectMission('Sector-7')">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary text-3xl animate-pulse">radar</span>
+<span class="font-label-caps text-[10px] text-primary px-2 py-0.5 bg-primary/10 rounded">ACTIVE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Sector-7</h3>
+<p class="font-body-sm text-outline italic">Rainy Sunset Sprawl</p>
+<div class="mt-4 pt-4 border-t border-primary/20 flex justify-between items-center">
+<span class="font-label-caps text-[9px] text-outline">RECORD: 4,280m</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Industrial Node -->
+<div class="glass-panel p-6 border-secondary/40 hover:border-secondary transition-all cursor-pointer group" onclick="selectMission('Neo-Tokyo')">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary text-3xl">factory</span>
+<span class="font-label-caps text-[10px] text-secondary px-2 py-0.5 bg-secondary/10 rounded">NEW</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-secondary mb-1">Neo-Tokyo</h3>
+<p class="font-body-sm text-outline italic">Industrial Processing</p>
+<div class="mt-4 pt-4 border-t border-secondary/20 flex justify-between items-center">
+<span class="font-label-caps text-[9px] text-outline">DIFFICULTY: ELITE</span>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-2 transition-transform">bolt</span>
+</div>
+</div>
+<!-- Locked Node -->
+<div class="glass-panel p-6 border-outline/20 opacity-50 cursor-not-allowed">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-outline text-3xl">lock</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-outline mb-1">Classified</h3>
+<p class="font-body-sm text-outline italic">Encrypted Data Stream</p>
+<div class="mt-4 pt-4 border-t border-outline/20">
+<span class="font-label-caps text-[9px] text-outline">LVL 20 REQUIRED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mission Briefing Panel -->
+<div class="w-96 glass-panel rounded-2xl flex flex-col p-6 border-primary/30">
+<h3 class="font-label-caps text-label-caps text-primary uppercase mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">description</span> Mission Briefing
+            </h3>
+<div id="mission-content">
+<h4 class="font-headline-md text-xl text-on-surface mb-2" id="mission-title">Sector-7 Expedition</h4>
+<p class="font-body-lg text-sm text-on-surface-variant leading-relaxed mb-6" id="mission-desc">
+                    Infiltrate the heavy industrial sector of Neo-Tokyo. Recover the experimental kinetic drive before security protocols lock down. High verticality and dash-gating expected.
+                </p>
+<div class="mb-8">
+<span class="font-label-caps text-[10px] text-outline uppercase block mb-3">Tactical Rewards</span>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-container-high p-2 rounded flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+<span class="font-bold text-xs mt-1">500</span>
+</div>
+<div class="bg-surface-container-high p-2 rounded flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-sm">diamond</span>
+<span class="font-bold text-xs mt-1">x2</span>
+</div>
+<div class="bg-surface-container-high p-2 rounded flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-sm">memory</span>
+<span class="font-bold text-xs mt-1">x1</span>
+</div>
+</div>
+</div>
+<button class="kinetic-shadow w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-headline-md text-headline-md italic uppercase transition-all flex items-center justify-center gap-3" onclick="changeState('gameplay')">
+                    Deploy Hero
+                    <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<button class="mt-4 w-full bg-surface-container-highest text-on-surface-variant py-3 rounded-xl font-label-caps text-label-caps uppercase hover:text-primary transition-all" onclick="changeState('title')">
+                Abort Selection
+            </button>
+</div>
+</section>
+<!-- STATE: GAMEPLAY -->
+<section class="hidden absolute inset-0 flex flex-col" id="state-gameplay">
+<!-- HUD Layer -->
+<div class="p-8 flex justify-between items-start w-full pointer-events-none z-20">
+<div class="flex flex-col gap-4">
+<!-- Kinetic Core Bar -->
+<div class="glass-panel p-4 rounded-xl flex flex-col gap-1 min-w-[240px] border-l-4 border-primary pointer-events-auto">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-primary tracking-tighter uppercase">Kinetic Core</span>
+<span class="font-label-caps text-label-caps text-primary" id="energy-val">85%</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="flex-1 bg-primary energy-block shadow-[0_0_10px_rgba(125,252,255,0.8)]"></div>
+<div class="flex-1 bg-primary energy-block shadow-[0_0_10px_rgba(125,252,255,0.8)]"></div>
+<div class="flex-1 bg-primary energy-block shadow-[0_0_10px_rgba(125,252,255,0.8)]"></div>
+<div class="flex-1 bg-primary energy-block shadow-[0_0_10px_rgba(125,252,255,0.8)]"></div>
+<div class="flex-1 bg-surface-container-highest energy-block"></div>
+</div>
+</div>
+<!-- Shard Counter -->
+<div class="glass-panel px-4 py-2 rounded-lg w-fit flex items-center gap-3 border-l-4 border-secondary pointer-events-auto">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-headline-md text-headline-md text-on-surface" id="shard-counter">1,402</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2 pointer-events-auto">
+<div class="glass-panel px-6 py-4 rounded-xl text-right border-r-4 border-primary">
+<span class="font-label-caps text-label-caps text-outline uppercase block mb-1">Distance</span>
+<span class="font-display-lg text-3xl font-black text-on-surface tracking-widest tabular-nums" id="distance-counter">0000m</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-md font-label-caps text-label-caps animate-pulse">
+                    x2.5 MULTIPLIER
+                </div>
+</div>
+</div>
+<!-- Tactical Mini-Map (Bottom Right) -->
+<div class="absolute bottom-8 right-8 w-48 h-48 pointer-events-none z-20">
+<div class="glass-panel rounded-xl h-full w-full overflow-hidden relative border-2 border-primary/20 pointer-events-auto">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,#7dfcff_0%,transparent_70%)]"></div>
+<div class="absolute inset-4 border border-primary/10 rounded bg-surface-container-low/40">
+<!-- Dynamic dots -->
+<div class="absolute top-1/2 left-1/4 w-2 h-2 bg-primary rounded-full animate-ping"></div>
+<div class="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-secondary rounded-full"></div>
+<div class="absolute bottom-1/4 left-1/2 w-1 h-1 bg-primary/40 rounded-full"></div>
+</div>
+<div class="absolute bottom-2 left-0 right-0 flex justify-between px-3">
+<span class="font-label-caps text-[8px] text-outline uppercase">Scanning Sector...</span>
+<span class="font-label-caps text-[8px] text-primary uppercase">Active</span>
+</div>
+</div>
+</div>
+<!-- Gameplay Visuals (Atmospheric) -->
+<div class="flex-grow flex items-center justify-center relative">
+<!-- Center Indicator / Dash Trigger -->
+<div class="relative flex flex-col items-center group pointer-events-auto cursor-pointer" onclick="changeState('gameover')">
+<div class="w-64 h-1 border-t border-dashed border-primary/40 group-hover:border-primary transition-all"></div>
+<div class="absolute -top-4 w-8 h-8 rotate-45 bg-primary/20 border border-primary/40 group-hover:bg-primary/40 transition-all"></div>
+<span class="font-label-caps text-[10px] text-primary/50 mt-8 group-hover:text-primary tracking-widest">DASH TRIGGER | DEBUG: CLICK TO FAIL</span>
+</div>
+</div>
+<!-- Mobile Controls (Thumb Zone) -->
+<div class="md:hidden fixed bottom-4 left-4 right-4 flex justify-between items-center z-30">
+<button class="kinetic-shadow w-20 h-20 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">north</span>
+</button>
+<button class="kinetic-shadow w-20 h-20 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+</div>
+</section>
+<!-- STATE: LEADERBOARD -->
+<section class="hidden absolute inset-0 flex flex-col p-12" id="state-leaderboard">
+<div class="flex justify-between items-end mb-8 relative z-10">
+<div class="flex flex-col gap-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/30 rounded-lg w-fit">
+<span class="material-symbols-outlined text-primary text-sm">public</span>
+<span class="font-label-caps text-[10px] text-primary uppercase tracking-widest">Global Standings</span>
+</div>
+<h2 class="font-display-lg text-headline-md italic font-black text-on-surface uppercase tracking-tight">KINETIC LEADERS</h2>
+</div>
+<button class="bg-surface-container-highest hover:bg-surface-bright text-on-surface px-6 py-3 rounded-lg font-label-caps text-label-caps uppercase transition-colors flex items-center gap-2 border border-outline/20" onclick="changeState('title')">
+<span class="material-symbols-outlined text-sm">arrow_back</span> Return to Base
+            </button>
+</div>
+<div class="flex-grow glass-panel rounded-xl overflow-hidden flex flex-col border-primary/20 relative z-10">
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-high border-b border-outline/10 font-label-caps text-[10px] text-outline uppercase tracking-widest">
+<div class="col-span-1">Rank</div>
+<div class="col-span-5">Runner Unit</div>
+<div class="col-span-3">Sync Distance</div>
+<div class="col-span-3 text-right">Core Score</div>
+</div>
+<div class="flex-grow overflow-y-auto">
+<div class="grid grid-cols-12 gap-4 px-6 py-4 items-center bg-primary/5 border-l-4 border-primary">
+<div class="col-span-1 font-display-lg text-lg italic text-primary">01</div>
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="font-body-lg text-on-surface font-bold uppercase tracking-tight">NEON_DRIFTER_X</div>
+</div>
+<div class="col-span-3 font-body-lg text-on-surface-variant">14,802m</div>
+<div class="col-span-3 text-right font-display-lg text-lg italic text-primary">2,450,910</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-surface-container/50 transition-colors border-b border-outline/5">
+<div class="col-span-1 font-display-lg text-lg italic text-outline">02</div>
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">person</span>
+</div>
+<div class="font-body-lg text-on-surface font-bold uppercase tracking-tight">CYBER_REBEL</div>
+</div>
+<div class="col-span-3 font-body-lg text-on-surface-variant">12,194m</div>
+<div class="col-span-3 text-right font-display-lg text-lg italic text-on-surface">1,984,200</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-6 py-4 items-center bg-secondary-container/10 border-l-4 border-secondary mt-4">
+<div class="col-span-1 font-display-lg text-lg italic text-secondary">42</div>
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-secondary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">person</span>
+</div>
+<div class="font-body-lg text-on-surface font-bold uppercase tracking-tight">Runner_01 (YOU)</div>
+</div>
+<div class="col-span-3 font-body-lg text-on-surface-variant">1,204m</div>
+<div class="col-span-3 text-right font-display-lg text-lg italic text-secondary">24,580</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STATE: GAME OVER -->
+<section class="hidden absolute inset-0 z-50 flex items-center justify-center bg-surface-dim/80 backdrop-blur-md" id="state-gameover">
+<div class="glass-panel max-w-lg w-full p-8 rounded-2xl border-error/30 flex flex-col items-center text-center gap-6">
+<div class="w-16 h-16 bg-error-container/20 rounded-full flex items-center justify-center border-2 border-error">
+<span class="material-symbols-outlined text-error text-3xl">warning</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="font-display-lg text-display-lg-mobile italic font-black text-error uppercase tracking-tighter">ENERGY DEPLETED</h2>
+<p class="font-body-lg text-on-surface-variant">Systems forced into emergency stasis.</p>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full">
+<div class="bg-surface-container-high p-4 rounded-xl flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline uppercase">Final Score</span>
+<span class="font-headline-md text-headline-md text-tertiary">24,580</span>
+</div>
+<div class="bg-surface-container-high p-4 rounded-xl flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-outline uppercase">Distance</span>
+<span class="font-headline-md text-headline-md text-primary">1,204m</span>
+</div>
+</div>
+<div class="flex flex-col w-full gap-3">
+<button class="kinetic-shadow bg-primary-container text-on-primary-container py-4 rounded-xl font-headline-md text-headline-md italic uppercase transition-all w-full" onclick="changeState('gameplay')">
+                    Re-Deploy Units
+                </button>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest text-on-surface py-3 rounded-xl font-label-caps text-label-caps uppercase transition-all flex-1 border border-primary/20 flex items-center justify-center gap-2" onclick="changeState('title')">
+<span class="material-symbols-outlined text-sm">home</span> Main Menu
+                    </button>
+<button class="bg-surface-container-highest text-on-surface py-3 rounded-xl font-label-caps text-label-caps uppercase transition-all flex-1 border border-secondary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">share</span> Share Core
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- STATE: SETTINGS -->
+<section class="hidden absolute inset-0 z-50 flex items-center justify-center" id="state-settings">
+<div class="glass-panel max-w-xl w-full p-8 rounded-2xl border-primary/30 flex flex-col gap-8">
+<div class="flex justify-between items-center border-b border-primary/20 pb-4">
+<h2 class="font-display-lg text-headline-md italic font-black text-primary uppercase tracking-tight">System Config</h2>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" onclick="changeState('title')">close</button>
+</div>
+<div class="space-y-6">
+<!-- Audio Sliders -->
+<div class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-primary uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">volume_up</span> Audio Sync
+                    </h3>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between">
+<span class="font-label-caps text-[10px] text-outline uppercase">Master SFX</span>
+<span class="font-body-sm text-primary text-xs">80%</span>
+</div>
+<input class="w-full h-1 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" type="range" value="80"/>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between">
+<span class="font-label-caps text-[10px] text-outline uppercase">Ambient Music</span>
+<span class="font-body-sm text-primary text-xs">65%</span>
+</div>
+<input class="w-full h-1 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" type="range" value="65"/>
+</div>
+</div>
+</div>
+<!-- Input Config -->
+<div class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-primary uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">keyboard</span> Input Mapping
+                    </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high p-3 rounded-lg border border-outline/10 flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-outline uppercase">Sprint</span>
+<span class="text-primary font-bold text-sm">WASD</span>
+</div>
+<div class="bg-surface-container-high p-3 rounded-lg border border-outline/10 flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-outline uppercase">Kinetic Jump</span>
+<span class="text-primary font-bold text-sm">SPACE</span>
+</div>
+<div class="bg-surface-container-high p-3 rounded-lg border border-outline/10 flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-outline uppercase">Dash Burst</span>
+<span class="text-primary font-bold text-sm">SHIFT</span>
+</div>
+<div class="bg-surface-container-high p-3 rounded-lg border border-outline/10 flex justify-between items-center">
+<span class="font-label-caps text-[10px] text-outline uppercase">Interact</span>
+<span class="text-primary font-bold text-sm">E</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 pt-4 border-t border-primary/20">
+<button class="kinetic-shadow flex-1 bg-primary-container text-on-primary-container py-3 rounded-xl font-label-caps text-label-caps uppercase italic" onclick="changeState('title')">Save protocols</button>
+<button class="flex-1 bg-surface-container-highest text-on-surface py-3 rounded-xl font-label-caps text-label-caps uppercase" onclick="changeState('title')">Discard</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav (Mobile Only Shell) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-safe-zone-bottom pt-2 bg-surface-container/70 rounded-t-xl backdrop-blur-md border-t-2 border-primary/30 shadow-[0_-4px_20px_rgba(0,105,107,0.4)] md:hidden" id="mobile-nav">
+<button class="flex flex-col items-center justify-center text-outline p-3 hover:text-primary transition-colors" onclick="changeState('title')">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline p-3 hover:text-primary transition-colors" onclick="changeState('map')">
+<span class="material-symbols-outlined">map</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline p-3 hover:text-primary transition-colors" onclick="changeState('leaderboard')">
+<span class="material-symbols-outlined">leaderboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline p-3 hover:text-primary transition-colors" onclick="changeState('settings')">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</nav>
+<script>
+    let currentState = 'title';
+    let distance = 0;
+    let distanceInterval;
+
+    function createRain() {
+        const container = document.getElementById('rain-container');
+        const count = 30;
+        for(let i=0; i<count; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'rain-drop';
+            drop.style.left = Math.random() * 100 + '%';
+            drop.style.animationDuration = (Math.random() * 0.5 + 0.3) + 's';
+            drop.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(drop);
+        }
+    }
+
+    async function changeState(newState) {
+        if (newState === currentState) return;
+
+        const oldSection = document.getElementById(`state-${currentState}`);
+        const newSection = document.getElementById(`state-${newState}`);
+        const body = document.body;
+
+        // Visual Feedback
+        body.classList.add('glitch-active');
+        
+        if (oldSection) {
+            oldSection.classList.remove('animate-state-enter');
+            oldSection.classList.add('animate-state-exit');
+        }
+
+        await new Promise(r => setTimeout(r, 400));
+
+        if (oldSection) oldSection.classList.add('hidden');
+        if (newSection) {
+            newSection.classList.remove('hidden');
+            newSection.classList.remove('animate-state-exit');
+            newSection.classList.add('animate-state-enter');
+        }
+
+        // Background Handling
+        const bgCity = document.getElementById('bg-city');
+        const bgIndustrial = document.getElementById('bg-industrial');
+        if (newState === 'gameplay') {
+            bgCity.classList.replace('opacity-100', 'opacity-0');
+            bgIndustrial.classList.replace('opacity-0', 'opacity-100');
+            startDistanceSim();
+        } else {
+            bgCity.classList.replace('opacity-0', 'opacity-100');
+            bgIndustrial.classList.replace('opacity-100', 'opacity-0');
+            clearInterval(distanceInterval);
+        }
+
+        // Nav Handling
+        const mobileNav = document.getElementById('mobile-nav');
+        if (newState === 'gameplay' || newState === 'gameover') {
+            mobileNav.classList.add('hidden');
+        } else {
+            mobileNav.classList.remove('hidden');
+        }
+
+        currentState = newState;
+        body.classList.remove('glitch-active');
+    }
+
+    function startDistanceSim() {
+        distance = 0;
+        const counter = document.getElementById('distance-counter');
+        if(distanceInterval) clearInterval(distanceInterval);
+        distanceInterval = setInterval(() => {
+            if (currentState !== 'gameplay') return;
+            distance += Math.floor(Math.random() * 5) + 2;
+            counter.textContent = distance.toString().padStart(4, '0') + 'm';
+        }, 100);
+    }
+
+    function selectMission(id) {
+        const title = document.getElementById('mission-title');
+        const desc = document.getElementById('mission-desc');
+        if (id === 'Sector-7') {
+            title.textContent = "Sector-7 Expedition";
+            desc.textContent = "Infiltrate the heavy industrial sector of Neo-Tokyo. Recover the experimental kinetic drive before security protocols lock down. High verticality and dash-gating expected.";
+        } else {
+            title.textContent = "Neo-Tokyo Processing";
+            desc.textContent = "Data retrieval mission in the deep core of the industrial district. Security drones are hyper-active. Fast reaction kinetic bursts are required for survival.";
+        }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 15;
+        const y = (e.clientY / window.innerHeight - 0.5) * 15;
+        const bgs = document.querySelectorAll('.parallax-bg');
+        bgs.forEach(bg => {
+            bg.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
+        });
+    });
+
+    createRain();
+</script>
+</body></html>
