@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Play free browser games online — no download, no login, no ads. Sky Spirit: Wind Runner, Space Drifter, Dragon Dash & more. Works on mobile & desktop instantly.">
-    <meta name="keywords" content="free browser games, free online games no download, play games online free, HTML5 games free, mobile browser games, free arcade games online, tap to fly game, endless runner game free, casual browser games, free games no signup, instant play games, web games 2026, free games mobile desktop, sky spirit game, wind runner game">
+    <meta name="description" content="Play free browser games online — no download, no login, no ads. Sky Spirit: Wind Runner, Bubble Pop Quest, Space Drifter, Dragon Dash & more. Works on mobile & desktop instantly.">
+    <meta name="keywords" content="free browser games, free online games no download, play games online free, HTML5 games free, mobile browser games, free arcade games online, tap to fly game, endless runner game free, casual browser games, free games no signup, instant play games, web games 2026, free games mobile desktop, sky spirit game, wind runner game, bubble pop game, bubble shooter game free">
     <meta name="author" content="ToolPond Pro">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -13,7 +13,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Free Browser Games — Play Online No Download | ToolPond Pro">
-    <meta property="og:description" content="Play free browser games instantly — no download, no login, no ads. Sky Spirit: Wind Runner, Space Drifter & more. Works on mobile & desktop.">
+    <meta property="og:description" content="Play free browser games instantly — no download, no login, no ads. Sky Spirit: Wind Runner, Bubble Pop Quest & more. Works on mobile & desktop.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/games.html">
     <meta property="og:site_name" content="ToolPond Pro Games">
@@ -25,7 +25,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free Browser Games — Play Online No Download">
-    <meta name="twitter:description" content="Play Sky Spirit: Wind Runner and more free browser games. No download. No login. No ads. Works on mobile & desktop.">
+    <meta name="twitter:description" content="Play Sky Spirit: Wind Runner, Bubble Pop Quest and more free browser games. No download. No login. No ads. Works on mobile & desktop.">
     <meta name="twitter:image" content="https://toolpond.org/og-games.png">
 
     <!-- VideoGame Schema for Sky Spirit -->
@@ -60,6 +60,33 @@
     }
     </script>
 
+    <!-- VideoGame Schema for Bubble Pop Quest -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Bubble Pop Quest",
+      "description": "A free online bubble shooter puzzle game. Match colorful crystal-bright bubbles, clear hundreds of levels across five worlds, and unlock rainbow and bomb power-ups. No download or login required.",
+      "url": "https://toolpond.org/bubble-pop-quest.html",
+      "genre": ["Puzzle", "Arcade", "Casual"],
+      "gamePlatform": ["Web Browser", "Mobile Browser", "Desktop Browser"],
+      "operatingSystem": "Any modern browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ToolPond Pro",
+        "url": "https://toolpond.org"
+      },
+      "isAccessibleForFree": true,
+      "playMode": "SinglePlayer",
+      "applicationCategory": "Game"
+    }
+    </script>
+
     <!-- ItemList Schema for Games Directory -->
     <script type="application/ld+json">
     {
@@ -68,7 +95,7 @@
       "name": "Free Browser Games Directory",
       "description": "A curated collection of free browser-based games playable instantly with no download or login required.",
       "url": "https://toolpond.org/games.html",
-      "numberOfItems": 3,
+      "numberOfItems": 4,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -79,12 +106,18 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Bubble Pop Quest",
+          "url": "https://toolpond.org/bubble-pop-quest.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Space Drifter",
           "url": "https://toolpond.org/space-drifter.html"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "name": "Dragon Dash",
           "url": "https://toolpond.org/dragon-dash.html"
         }
@@ -173,6 +206,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Sky Spirit: Wind Runner is a free tap-to-fly arcade game where you guide a glowing spirit through wind rings, collect crystals, and activate power-ups like Shield and Slow-Mo. Unlock 8 spirit color skins as you progress."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Bubble Pop Quest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bubble Pop Quest is a free online bubble shooter puzzle game. Match three or more crystal-bright bubbles of the same color to clear them, progress through five colorful worlds with 20 levels each, and unlock rainbow and bomb power-ups."
           }
         }
       ]
@@ -274,6 +315,9 @@
         .featured-game .game-play-btn{background:linear-gradient(135deg,var(--primary),#a855f7);padding:12px 32px;font-size:1rem}
         .featured-game .game-play-btn:hover{background:linear-gradient(135deg,var(--primary-dark),#9333ea)}
 
+        /* Bubble Pop Quest preview accent (crystal-bright bubble theme) */
+        .bubble-preview{background:linear-gradient(135deg,#1A1A2E,#2C5364)}
+
         @media(max-width:768px){
             .featured-game-grid{grid-template-columns:1fr}
             .page-header h1{font-size:1.8rem}
@@ -332,7 +376,7 @@
     <div class="page-header">
         <div class="container">
             <h1>Free Browser Games — Play Online Instantly, No Download Required</h1>
-            <p>Play the best free browser games right now — no download, no login, no ads. Sky Spirit: Wind Runner, Space Drifter, Dragon Dash & more. Works perfectly on mobile, tablet, and desktop.</p>
+            <p>Play the best free browser games right now — no download, no login, no ads. Sky Spirit: Wind Runner, Bubble Pop Quest, Space Drifter, Dragon Dash & more. Works perfectly on mobile, tablet, and desktop.</p>
         </div>
     </div>
 
@@ -353,6 +397,7 @@
             <div class="category-filters">
                 <button class="filter-btn active" onclick="filterByCategory('all', this)" aria-label="Show all games">All Games</button>
                 <button class="filter-btn" onclick="filterByCategory('arcade', this)" aria-label="Filter arcade games">🕹️ Arcade</button>
+                <button class="filter-btn" onclick="filterByCategory('puzzle', this)" aria-label="Filter puzzle games">🧩 Puzzle</button>
                 <button class="filter-btn" onclick="filterByCategory('endless', this)" aria-label="Filter endless runner games">🏃 Endless Runner</button>
                 <button class="filter-btn" onclick="filterByCategory('tap', this)" aria-label="Filter tap games">👆 Tap to Play</button>
                 <button class="filter-btn" onclick="filterByCategory('coming', this)" aria-label="Filter upcoming games">⏳ Coming Soon</button>
@@ -371,12 +416,12 @@
                 <li><strong>No Ads:</strong> Enjoy uninterrupted gameplay with zero advertisements.</li>
                 <li><strong>Works Anywhere:</strong> Runs in any modern browser — Chrome, Safari, Firefox, Edge.</li>
             </ul>
-            <p>Our games are built with modern HTML5 and WebGL technology, delivering smooth 60fps gameplay directly in your browser. From fast-paced arcade action to relaxing endless runners, there is something for everyone.</p>
+            <p>Our games are built with modern HTML5 and WebGL technology, delivering smooth 60fps gameplay directly in your browser. From fast-paced arcade action to relaxing endless runners and colorful puzzle games, there is something for everyone.</p>
         </div>
 
         <!-- Stats -->
         <div class="stats-bar">
-            <div class="stat-item"><h3>3+</h3><p>Free Games</p></div>
+            <div class="stat-item"><h3>4+</h3><p>Free Games</p></div>
             <div class="stat-item"><h3>100%</h3><p>No Download</p></div>
             <div class="stat-item"><h3>100%</h3><p>No Ads</p></div>
             <div class="stat-item"><h3>0</h3><p>Signups Needed</p></div>
@@ -415,6 +460,28 @@
                                 <div class="game-preview-text">Sky Spirit: Wind Runner<br>Tap to Fly • Collect Crystals • Unlock Skins</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Bubble Pop Quest -->
+                <div class="game-card" data-category="arcade puzzle tap">
+                    <div class="game-card-inner">
+                        <div class="game-card-top">
+                            <a href="bubble-pop-quest.html" class="game-card-title">🫧 Bubble Pop Quest</a>
+                            <span class="game-badge-new">NEW</span>
+                        </div>
+                        <p>Aim and shoot crystal-bright bubbles to match three or more of the same color. Clear your way through 5 colorful worlds and 100 levels, collect coins, and blast through obstacles with rainbow and bomb power-ups.</p>
+                        <div class="game-tags">
+                            <span class="game-tag">Puzzle</span>
+                            <span class="game-tag">Bubble Shooter</span>
+                            <span class="game-tag">Match 3</span>
+                            <span class="game-tag">Casual</span>
+                        </div>
+                        <a href="bubble-pop-quest.html" class="game-play-btn">▶ Play Bubble Pop Quest</a>
+                    </div>
+                    <div class="game-preview bubble-preview">
+                        <div class="game-preview-icon">🫧</div>
+                        <div class="game-preview-text">Bubble Pop Quest<br>Match & Pop • 5 Worlds • Power-Ups</div>
                     </div>
                 </div>
 
@@ -501,6 +568,10 @@
                 <p>Sky Spirit: Wind Runner is a free tap-to-fly arcade game where you guide a glowing spirit through wind rings, collect crystals, and activate power-ups like Shield and Slow-Mo. Unlock 8 spirit color skins as you progress.</p>
             </div>
             <div class="faq-item">
+                <h3>What is Bubble Pop Quest?</h3>
+                <p>Bubble Pop Quest is a free online bubble shooter puzzle game. Match three or more crystal-bright bubbles of the same color to clear them, progress through five colorful worlds with 20 levels each, and unlock rainbow and bomb power-ups.</p>
+            </div>
+            <div class="faq-item">
                 <h3>Are there more games coming?</h3>
                 <p>Yes! We are actively developing Space Drifter and Dragon Dash, with more arcade and casual browser games planned for 2026. <a href="contact.html" style="color:var(--primary);text-decoration:none;font-weight:600">Suggest a game idea</a> and we might build it.</p>
             </div>
@@ -528,12 +599,14 @@
             <div class="footer-col">
                 <h4>Popular Games</h4>
                 <a href="sky-spirit.html">✨ Sky Spirit</a>
+                <a href="bubble-pop-quest.html">🫧 Bubble Pop Quest</a>
                 <a href="games.html">All Games</a>
                 <a href="contact.html">Suggest a Game</a>
             </div>
             <div class="footer-col">
                 <h4>Game Categories</h4>
                 <a href="games.html">Arcade Games</a>
+                <a href="games.html">Puzzle Games</a>
                 <a href="games.html">Endless Runners</a>
                 <a href="games.html">Tap Games</a>
                 <a href="games.html">Coming Soon</a>
