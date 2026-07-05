@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Penalty Duel — Free Online Penalty Shootout Game | Toolpond</title>
+<meta name="description" content="Play Penalty Duel free in your browser — aim and power up your penalty kicks, then dive to save the CPU's shots in a full best-of-5 shootout with sudden death. No download, works on desktop and mobile.">
+<meta name="keywords" content="penalty duel, penalty shootout game, penalty kick game online, free soccer game, football penalty game, goalkeeper game, sudden death shootout, browser game, html5 game, mobile arcade game, no download game, toolpond games">
+<meta name="author" content="Toolpond">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolpond.org/penalty-duel.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Penalty Duel — Free Online Penalty Shootout Game">
+<meta property="og:description" content="Aim, power up, and shoot — then dive to save the CPU's kicks. A full best-of-5 penalty shootout with sudden death, playable instantly in your browser.">
+<meta property="og:url" content="https://toolpond.org/penalty-duel.html">
+<meta property="og:site_name" content="Toolpond">
+<meta property="og:image" content="https://toolpond.org/penalty-duel-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Penalty Duel — Free Online Penalty Shootout Game">
+<meta name="twitter:description" content="Aim, power up, and shoot — then dive to save the CPU's kicks. Play free in your browser, no download needed.">
+<meta name="twitter:image" content="https://toolpond.org/penalty-duel-og.jpg">
+
+<meta name="theme-color" content="#07140a">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Penalty Duel",
+  "url": "https://toolpond.org/penalty-duel.html",
+  "description": "A free online penalty shootout game — aim and power up your kicks, then dive to save the CPU's shots in a best-of-5 shootout with sudden death. Play instantly in your browser on desktop or mobile.",
+  "applicationCategory": "Game",
+  "genre": "Arcade, Sports",
+  "gamePlatform": ["Web Browser", "Mobile"],
+  "operatingSystem": "Any",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Toolpond",
+    "url": "https://toolpond.org"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  html,body { width:100%; overflow-x:hidden; overflow-y:auto; background:#07140a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif; }
+  #wrap { position:relative; width:100%; height:100vh; display:flex; align-items:center; justify-content:center; }
+  canvas { display:block; touch-action:none; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,0.55); }
+
+  #hud { position:absolute; top:10px; left:0; right:0; display:flex; flex-direction:column; align-items:center; gap:6px; pointer-events:none; }
+  .scoreboard { display:flex; align-items:center; gap:14px; background:rgba(0,0,0,0.45); border:1px solid rgba(255,255,255,0.15); backdrop-filter:blur(4px); border-radius:14px; padding:6px 16px; }
+  .team-label { color:#fff; font-weight:800; font-size:13px; letter-spacing:0.5px; }
+  .team-label.you { color:#7ee0ff; }
+  .team-label.cpu { color:#ff5c8a; }
+  .dots { display:flex; gap:4px; }
+  .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.3); }
+  .dot.goal { background:#4ade80; border-color:#4ade80; }
+  .dot.miss { background:#ff5c6a; border-color:#ff5c6a; }
+  .score-num { color:#ffd23f; font-weight:900; font-size:18px; min-width:18px; text-align:center; }
+  #turnLabel { color:#fff; font-size:12px; font-weight:700; letter-spacing:1px; background:rgba(0,0,0,0.4); padding:4px 14px; border-radius:10px; text-transform:uppercase; }
+
+  #powerBarWrap { position:absolute; right:22px; bottom:170px; width:26px; height:180px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.2); border-radius:14px; overflow:hidden; display:none; }
+  #powerBarFill { position:absolute; bottom:0; left:0; right:0; height:0%; background:linear-gradient(0deg,#4ade80,#ffd23f 60%,#ff5c5c); }
+  #powerLabel { position:absolute; right:22px; bottom:355px; color:#fff; font-size:10px; font-weight:700; letter-spacing:0.5px; background:rgba(0,0,0,0.4); padding:3px 8px; border-radius:6px; display:none; }
+
+  #zoneButtons { position:absolute; left:0; right:0; bottom:40px; display:none; justify-content:center; gap:14px; }
+  .zoneBtn { width:84px; height:56px; border-radius:12px; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.35); color:#fff; font-weight:800; font-size:13px; letter-spacing:0.5px; }
+  .zoneBtn:active { background:rgba(255,255,255,0.3); transform:scale(0.95); }
+
+  #reactBar { position:absolute; left:50%; transform:translateX(-50%); bottom:110px; width:220px; height:8px; background:rgba(255,255,255,0.15); border-radius:6px; overflow:hidden; display:none; }
+  #reactBarFill { height:100%; width:100%; background:linear-gradient(90deg,#4ade80,#ffd23f,#ff5c5c); transform-origin:left; }
+
+  #banner { position:absolute; top:38%; left:0; right:0; text-align:center; pointer-events:none; }
+  #bannerText { display:inline-block; font-size:0px; font-weight:900; letter-spacing:2px; padding:10px 28px; border-radius:14px; opacity:0; transform:scale(0.7); transition:none; }
+
+  #hint { position:absolute; bottom:14px; left:0; right:0; text-align:center; color:rgba(255,255,255,0.55); font-size:11.5px; pointer-events:none; }
+
+  #overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 30%, rgba(15,50,25,0.94), rgba(4,10,6,0.98)); text-align:center; padding:24px; }
+  #overlay h1 { font-size:clamp(26px,7.5vw,44px); font-weight:900; letter-spacing:1px; margin-bottom:6px; background:linear-gradient(90deg,#7ee0ff,#4ade80,#ffd23f); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  #overlay .sub { color:#a8c8b0; font-size:13.5px; margin-bottom:22px; max-width:320px; }
+  #diffRow { display:flex; gap:10px; margin-bottom:22px; }
+  .diffBtn { background:rgba(255,255,255,0.08); border:2px solid rgba(255,255,255,0.2); color:#fff; padding:10px 16px; border-radius:12px; font-weight:800; font-size:13px; cursor:pointer; }
+  .diffBtn.selected { border-color:#4ade80; background:rgba(74,222,128,0.18); }
+  .stat-row { display:flex; gap:26px; margin-bottom:22px; }
+  .stat { color:#fff; }
+  .stat .num { font-size:26px; font-weight:900; display:block; }
+  .stat .lbl { font-size:10px; color:#9ab8a0; letter-spacing:1.5px; text-transform:uppercase; }
+  #playBtn { background:linear-gradient(180deg,#4ade80,#1fa35c); color:#04160a; border:none; border-bottom:4px solid #147a41; padding:14px 46px; font-size:17px; font-weight:900; letter-spacing:1px; border-radius:14px; cursor:pointer; box-shadow:0 8px 22px rgba(74,222,128,0.35); }
+  #playBtn:active { transform:translateY(2px); border-bottom-width:2px; }
+  .hidden { display:none !important; }
+
+  #siteFooter { width:100%; background:#07140a; border-top:1px solid rgba(255,255,255,0.08); padding:40px 20px 30px; }
+  #siteFooter .inner { max-width:760px; margin:0 auto; }
+  #siteFooter .breadcrumb { font-size:12px; color:#7a9a80; margin-bottom:22px; letter-spacing:0.3px; }
+  #siteFooter .breadcrumb a { color:#7ee0ff; text-decoration:none; }
+  #siteFooter .breadcrumb a:hover { text-decoration:underline; }
+  #siteFooter h2 { color:#fff; font-size:16px; letter-spacing:0.5px; margin-bottom:10px; }
+  #siteFooter p { color:#a0c8a8; font-size:13.5px; line-height:1.7; margin-bottom:26px; max-width:640px; }
+  #siteFooter .games-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:30px; }
+  #siteFooter .game-card { display:block; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.15s, background 0.15s; }
+  #siteFooter .game-card:hover { border-color:rgba(74,222,128,0.5); background:rgba(255,255,255,0.08); }
+  #siteFooter .game-card .name { color:#fff; font-weight:700; font-size:14px; display:block; margin-bottom:3px; }
+  #siteFooter .game-card .desc { color:#8ab090; font-size:11.5px; }
+  #siteFooter .foot-links { display:flex; flex-wrap:wrap; gap:16px; font-size:12.5px; }
+  #siteFooter .foot-links a { color:#a0c8a8; text-decoration:none; }
+  #siteFooter .foot-links a:hover { color:#7ee0ff; }
+  #siteFooter .copyright { margin-top:20px; color:#5a785e; font-size:11.5px; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game"></canvas>
+
+  <div id="hud">
+    <div class="scoreboard">
+      <div class="team-label you">YOU</div>
+      <div class="score-num" id="playerScoreNum">0</div>
+      <div class="dots" id="playerDots"></div>
+      <div style="width:1px;height:18px;background:rgba(255,255,255,0.2);"></div>
+      <div class="dots" id="cpuDots"></div>
+      <div class="score-num" id="cpuScoreNum">0</div>
+      <div class="team-label cpu">CPU</div>
+    </div>
+    <div id="turnLabel">YOUR KICK</div>
+  </div>
+
+  <div id="powerLabel">HOLD TO CHARGE</div>
+  <div id="powerBarWrap"><div id="powerBarFill"></div></div>
+
+  <div id="reactBar"><div id="reactBarFill"></div></div>
+  <div id="zoneButtons">
+    <button class="zoneBtn" data-zone="L">◀ LEFT</button>
+    <button class="zoneBtn" data-zone="C">CENTER</button>
+    <button class="zoneBtn" data-zone="R">RIGHT ▶</button>
+  </div>
+
+  <div id="banner"><div id="bannerText"></div></div>
+
+  <div id="overlay">
+    <h1 id="titleText">PENALTY DUEL</h1>
+    <div class="sub" id="subText">Drag to aim, hold to charge power, release to shoot. Tap a zone to dive and save.</div>
+    <div id="diffRow">
+      <button class="diffBtn selected" data-diff="rookie">Rookie</button>
+      <button class="diffBtn" data-diff="pro">Pro</button>
+      <button class="diffBtn" data-diff="legend">Legend</button>
+    </div>
+    <div class="stat-row hidden" id="statsRow">
+      <div class="stat"><span class="num" id="finalScoreLine">0 - 0</span><span class="lbl">final score</span></div>
+      <div class="stat"><span class="num" id="bestStreakNum">0</span><span class="lbl">best win streak</span></div>
+    </div>
+    <button id="playBtn">PLAY</button>
+  </div>
+
+  <div id="hint">drag the ball to aim · hold to power up · release to shoot</div>
+</div>
+
+<footer id="siteFooter">
+  <div class="inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://toolpond.org/index.html">Home</a> ›
+      <a href="https://toolpond.org/games.html">Games</a> ›
+      <span>Penalty Duel</span>
+    </nav>
+
+    <h2>About Penalty Duel</h2>
+    <p>
+      Penalty Duel is a free online penalty shootout game. Drag to aim, hold to charge your shot's power,
+      and release to strike — then switch sides and dive to save the CPU's kicks before time runs out.
+      Play a full best-of-5 shootout with sudden death, three difficulty levels, and a saved win streak.
+      Runs instantly in your browser on desktop or mobile, no download required.
+    </p>
+
+    <h2>More free games on Toolpond</h2>
+    <div class="games-grid">
+      <a class="game-card" href="https://toolpond.org/prism-smash.html">
+        <span class="name">Prism Smash</span>
+        <span class="desc">Neon brick breaker with combos & power-ups</span>
+      </a>
+      <a class="game-card" href="https://toolpond.org/sky-spirit.html">
+        <span class="name">Sky Spirit: Wind Runner</span>
+        <span class="desc">An airborne endless runner adventure</span>
+      </a>
+      <a class="game-card" href="https://toolpond.org/bubble-pop-quest.html">
+        <span class="name">Bubble Pop Quest</span>
+        <span class="desc">Match and pop colorful bubble puzzles</span>
+      </a>
+      <a class="game-card" href="https://toolpond.org/games.html">
+        <span class="name">All Games</span>
+        <span class="desc">Browse the full free games library</span>
+      </a>
+    </div>
+
+    <div class="foot-links">
+      <a href="https://toolpond.org/index.html">Home</a>
+      <a href="https://toolpond.org/games.html">All Games</a>
+      <a href="https://toolpond.org/calculators.html">Calculators</a>
+      <a href="https://toolpond.org/contact.html">Suggest a Game</a>
+    </div>
+    <div class="copyright">© Toolpond — Free browser games, no download required.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const W = 480, H = 800;
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const availW = window.innerWidth * 0.97;
+    const availH = window.innerHeight * 0.97;
+    const scale = Math.min(availW / W, availH / H, 2.0);
+    canvas.style.width = Math.round(W*scale)+'px';
+    canvas.style.height = Math.round(H*scale)+'px';
+  }
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('orientationchange', ()=>setTimeout(resizeCanvas,200));
+
+  // ---------- constants ----------
+  const SPOT = { x: 240, y: 660 };
+  const GOAL = { left:70, right:410, top:140, bottom:330 };
+  const GOAL_W = GOAL.right-GOAL.left, GOAL_H = GOAL.bottom-GOAL.top;
+  const ALLOW = { left:10, right:470, top:75, bottom:345 };
+  const THIRD_W = GOAL_W/3;
+  const ZONE_X = { L: GOAL.left+THIRD_W*0.5, C: GOAL.left+THIRD_W*1.5, R: GOAL.left+THIRD_W*2.5 };
+
+  const DIFF = {
+    rookie: { keeperAcc:0.42, cpuCorner:0.30 },
+    pro:    { keeperAcc:0.58, cpuCorner:0.50 },
+    legend: { keeperAcc:0.74, cpuCorner:0.70 },
+  };
+
+  let difficulty = 'rookie';
+  let state = 'menu'; // menu, aim, kickAnim, saveWaitRunup, saveAnim, banner, matchOver
+  let frame = 0;
+
+  // match state
+  let phase = 'normal'; // normal, suddenDeath
+  let round = 0;
+  let playerScore=0, cpuScore=0, playerAttempts=0, cpuAttempts=0;
+  let playerHistory=[], cpuHistory=[];
+  let bestStreak = parseInt(localStorage.getItem('penaltyDuelBestStreak')||'0',10);
+  let currentStreak = parseInt(localStorage.getItem('penaltyDuelCurrentStreak')||'0',10);
+
+  // aim/kick working vars
+  let reticle = { x:240, y:235 };
+  let dragging = false;
+  let charging = false;
+  let chargeStart = 0;
+  let power = 0;
+
+  // ball + keeper animation state
+  let ball = { x:SPOT.x, y:SPOT.y, scale:1, rot:0, visible:true };
+  let keeper = { x:ZONE_X.C, dive:'C', diveT:0, pose:'idle' };
+  let kickerFig = { x:SPOT.x, run:0 };
+  let netRipple = 0, netRippleX = 240;
+  let anim = null; // {startT, dur, from, to, power}
+  let pendingResolve = null;
+
+  // save-phase specific
+  let cpuTarget = null, cpuPowerVal = 0, cpuThird = 'C', cpuHeight = 'mid';
+  let playerZoneChoice = null;
+  let reactWindowStart = 0, reactWindowDur = 0;
+  const RUNUP_MS = 480;
+
+  let particles = [];
+  let screenFlash = 0;
+  let soundOn = true;
+
+  // ---------- DOM refs ----------
+  const overlay = document.getElementById('overlay');
+  const titleText = document.getElementById('titleText');
+  const subText = document.getElementById('subText');
+  const statsRow = document.getElementById('statsRow');
+  const finalScoreLine = document.getElementById('finalScoreLine');
+  const bestStreakNum = document.getElementById('bestStreakNum');
+  const playBtn = document.getElementById('playBtn');
+  const diffButtons = document.querySelectorAll('.diffBtn');
+  const playerScoreNum = document.getElementById('playerScoreNum');
+  const cpuScoreNum = document.getElementById('cpuScoreNum');
+  const playerDots = document.getElementById('playerDots');
+  const cpuDots = document.getElementById('cpuDots');
+  const turnLabel = document.getElementById('turnLabel');
+  const powerBarWrap = document.getElementById('powerBarWrap');
+  const powerBarFill = document.getElementById('powerBarFill');
+  const powerLabel = document.getElementById('powerLabel');
+  const zoneButtonsEl = document.getElementById('zoneButtons');
+  const reactBar = document.getElementById('reactBar');
+  const reactBarFill = document.getElementById('reactBarFill');
+  const bannerText = document.getElementById('bannerText');
+  const hint = document.getElementById('hint');
+
+  diffButtons.forEach(b => b.addEventListener('click', () => {
+    diffButtons.forEach(x=>x.classList.remove('selected'));
+    b.classList.add('selected');
+    difficulty = b.dataset.diff;
+  }));
+
+  // ---------- sound engine ----------
+  let audioCtx = null;
+  function ac(){ try{ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); return audioCtx; }catch(e){ soundOn=false; return null; } }
+  function tone(freq, dur, type, vol, glideTo){
+    if(!soundOn) return;
+    try{
+      const c = ac();
+      const osc = c.createOscillator(), gain = c.createGain();
+      osc.type = type||'sine'; osc.frequency.value = freq;
+      gain.gain.value = vol||0.08;
+      if (glideTo) osc.frequency.exponentialRampToValueAtTime(glideTo, c.currentTime+dur);
+      osc.connect(gain); gain.connect(c.destination);
+      osc.start();
+      gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime+dur);
+      osc.stop(c.currentTime+dur);
+    }catch(e){}
+  }
+  function noiseBurst(dur, freq, vol){
+    if(!soundOn) return;
+    try{
+      const c = ac();
+      const bufSize = c.sampleRate*dur;
+      const buf = c.createBuffer(1, bufSize, c.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i=0;i<bufSize;i++) data[i] = (Math.random()*2-1) * (1-i/bufSize);
+      const src = c.createBufferSource(); src.buffer = buf;
+      const filt = c.createBiquadFilter(); filt.type='bandpass'; filt.frequency.value = freq;
+      const gain = c.createGain(); gain.gain.value = vol;
+      src.connect(filt); filt.connect(gain); gain.connect(c.destination);
+      src.start();
+    }catch(e){}
+  }
+  function sfxWhistle(){ tone(1400,0.18,'square',0.05,1900); }
+  function sfxKick(power){ tone(140+power*60,0.12,'square',0.09); }
+  function sfxGoal(){ noiseBurst(1.1, 1200, 0.18); tone(880,0.3,'sine',0.06); setTimeout(()=>tone(1100,0.3,'sine',0.05),140); }
+  function sfxSave(){ tone(320,0.1,'triangle',0.1); noiseBurst(0.3, 600, 0.08); }
+  function sfxMissGroan(){ noiseBurst(0.7, 300, 0.12); }
+  function sfxPost(){ tone(1800,0.25,'sine',0.08,600); }
+  function sfxCountdownTick(){ tone(700,0.05,'square',0.04); }
+
+  // ---------- helpers ----------
+  function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+  function thirdOf(x){ if (x < GOAL.left+THIRD_W) return 'L'; if (x > GOAL.right-THIRD_W) return 'R'; return 'C'; }
+  function heightOf(y){
+    const t = (y-GOAL.top)/GOAL_H;
+    if (t < 0.35) return 'high';
+    if (t < 0.72) return 'mid';
+    return 'low';
+  }
+  function insideFrame(x,y){ return x > GOAL.left+6 && x < GOAL.right-6 && y > GOAL.top+6 && y < GOAL.bottom-6; }
+  function nearPost(x,y){
+    const nearL = Math.abs(x-GOAL.left) < 16, nearR = Math.abs(x-GOAL.right) < 16, nearTop = Math.abs(y-GOAL.top) < 14;
+    return (nearL||nearR||nearTop) && insideFrame(x,y);
+  }
+  function computeSaveChance(matchedThird, heightZone, pwr){
+    if (!matchedThird) return 0.05;
+    let base = heightZone==='high' ? 0.35 : heightZone==='low' ? 0.55 : 0.68;
+    base *= (1 - pwr*0.35);
+    return clamp(base, 0.03, 0.95);
+  }
+
+  // ---------- UI update ----------
+  function renderDots(){
+    playerDots.innerHTML = '';
+    cpuDots.innerHTML = '';
+    const maxSlots = Math.max(5, playerHistory.length, cpuHistory.length);
+    for (let i=0;i<maxSlots;i++){
+      const pd = document.createElement('div');
+      pd.className = 'dot' + (playerHistory[i] ? (playerHistory[i]==='G'?' goal':' miss') : '');
+      playerDots.appendChild(pd);
+      const cd = document.createElement('div');
+      cd.className = 'dot' + (cpuHistory[i] ? (cpuHistory[i]==='G'?' goal':' miss') : '');
+      cpuDots.appendChild(cd);
+    }
+  }
+  function updateScoreUI(){
+    playerScoreNum.textContent = playerScore;
+    cpuScoreNum.textContent = cpuScore;
+    renderDots();
+  }
+
+  function showBanner(text, color){
+    bannerText.textContent = text;
+    bannerText.style.color = color;
+    bannerText.style.fontSize = '28px';
+    bannerText.style.background = 'rgba(0,0,0,0.5)';
+    bannerText.style.opacity = '1';
+    bannerText.style.transform = 'scale(1.05)';
+    setTimeout(()=>{ bannerText.style.transform='scale(1)'; }, 80);
+    setTimeout(()=>{ bannerText.style.opacity='0'; }, 900);
+  }
+
+  // ---------- match flow ----------
+  function startMatch(){
+    phase='normal'; round=0;
+    playerScore=0; cpuScore=0; playerAttempts=0; cpuAttempts=0;
+    playerHistory=[]; cpuHistory=[];
+    updateScoreUI();
+    overlay.classList.add('hidden');
+    beginPlayerKick();
+  }
+
+  function beginPlayerKick(){
+    state = 'aim';
+    reticle = { x:240, y:235 };
+    power = 0; charging = false;
+    ball = { x:SPOT.x, y:SPOT.y, scale:1, rot:0, visible:true };
+    keeper = { x:ZONE_X.C, dive:'C', diveT:0, pose:'idle' };
+    turnLabel.textContent = 'YOUR KICK';
+    powerBarWrap.style.display = 'block';
+    powerLabel.style.display = 'block';
+    zoneButtonsEl.style.display = 'none';
+    reactBar.style.display = 'none';
+    hint.textContent = 'drag the ball to aim · hold to power up · release to shoot';
+    sfxWhistle();
+  }
+
+  function beginCpuKick(){
+    state = 'saveWaitRunup';
+    ball = { x:SPOT.x, y:SPOT.y, scale:1, rot:0, visible:true };
+    keeper = { x:ZONE_X.C, dive:null, diveT:0, pose:'idle' };
+    kickerFig = { x:SPOT.x, run:0 };
+    playerZoneChoice = null;
+    turnLabel.textContent = 'YOUR SAVE';
+    powerBarWrap.style.display = 'none';
+    powerLabel.style.display = 'none';
+    zoneButtonsEl.style.display = 'flex';
+    reactBar.style.display = 'block';
+    reactBarFill.style.transform = 'scaleX(1)';
+    hint.textContent = "tap a zone the instant you see where it's going!";
+
+    const d = DIFF[difficulty];
+    const cornerChance = d.cpuCorner;
+    const thirds = ['L','C','R'];
+    cpuThird = Math.random() < (1-0.34) && Math.random() < cornerChance
+      ? thirds[Math.random()<0.5?0:2]
+      : thirds[Math.floor(Math.random()*3)];
+    cpuHeight = Math.random() < cornerChance ? (Math.random()<0.6?'high':'low') : 'mid';
+    cpuPowerVal = 0.5 + Math.random()*0.5;
+
+    const jitterX = (Math.random()-0.5)*THIRD_W*0.5;
+    const hy = cpuHeight==='high' ? GOAL.top+GOAL_H*0.18 : cpuHeight==='low' ? GOAL.top+GOAL_H*0.85 : GOAL.top+GOAL_H*0.5;
+    cpuTarget = { x: clamp(ZONE_X[cpuThird]+jitterX, GOAL.left+14, GOAL.right-14), y: hy };
+
+    reactWindowStart = performance.now();
+    const flightDur = 1100 - cpuPowerVal*600;
+    reactWindowDur = RUNUP_MS + flightDur;
+
+    anim = null;
+    setTimeout(() => {
+      if (state !== 'saveWaitRunup') return;
+      state = 'saveAnim';
+      sfxKick(cpuPowerVal);
+      anim = { start: performance.now(), dur: flightDur, from:{x:SPOT.x,y:SPOT.y}, to: cpuTarget, power: cpuPowerVal, kind:'cpuShot' };
+    }, RUNUP_MS);
+  }
+
+  function checkMatchEnd(){
+    if (phase === 'normal') {
+      const remP = 5 - playerAttempts, remC = 5 - cpuAttempts;
+      if (playerScore > cpuScore + remC) return endMatch('player');
+      if (cpuScore > playerScore + remP) return endMatch('cpu');
+      if (playerAttempts >= 5 && cpuAttempts >= 5) {
+        if (playerScore !== cpuScore) return endMatch(playerScore>cpuScore?'player':'cpu');
+        phase = 'suddenDeath';
+      }
+    } else {
+      if (playerAttempts === cpuAttempts) {
+        if (playerScore !== cpuScore) return endMatch(playerScore>cpuScore?'player':'cpu');
+      }
+    }
+    return false;
+  }
+
+  function endMatch(winner){
+    state = 'matchOver';
+    if (winner === 'player') {
+      currentStreak++;
+      if (currentStreak > bestStreak) bestStreak = currentStreak;
+      titleText.textContent = 'YOU WIN! 🏆';
+      titleText.style.background = 'linear-gradient(90deg,#4ade80,#7ee0ff)';
+    } else {
+      currentStreak = 0;
+      titleText.textContent = 'CPU WINS';
+      titleText.style.background = 'linear-gradient(90deg,#ff5c8a,#ff9a5c)';
+    }
+    titleText.style.webkitBackgroundClip='text'; titleText.style.backgroundClip='text';
+    localStorage.setItem('penaltyDuelBestStreak', bestStreak);
+    localStorage.setItem('penaltyDuelCurrentStreak', currentStreak);
+    subText.textContent = phase==='suddenDeath' ? 'Decided in sudden death!' : 'Rematch to build your win streak.';
+    finalScoreLine.textContent = playerScore + ' - ' + cpuScore;
+    bestStreakNum.textContent = bestStreak;
+    statsRow.classList.remove('hidden');
+    playBtn.textContent = 'PLAY AGAIN';
+    powerBarWrap.style.display='none'; powerLabel.style.display='none';
+    zoneButtonsEl.style.display='none'; reactBar.style.display='none';
+    overlay.classList.remove('hidden');
+    return true;
+  }
+
+  function advanceAfter(who){
+    if (who === 'player') { if (checkMatchEnd()) return; beginCpuKick(); }
+    else { if (checkMatchEnd()) return; round++; beginPlayerKick(); }
+  }
+
+  // ---------- resolve outcomes ----------
+  function finalizePlayerKick(){
+    const t = reticle;
+    playerAttempts++;
+    let result, label, color;
+    if (!insideFrame(t.x,t.y)) {
+      result='miss'; label='OFF TARGET!'; color='#ffb84d'; sfxMissGroan();
+    } else if (nearPost(t.x,t.y) && Math.random()<0.22) {
+      result='miss'; label='OFF THE POST!'; color='#ffb84d'; sfxPost();
+    } else {
+      const third = thirdOf(t.x), hz = heightOf(t.y);
+      const d = DIFF[difficulty];
+      const aiCorrect = Math.random() < d.keeperAcc;
+      const guess = aiCorrect ? third : ['L','C','R'].filter(z=>z!==third)[Math.floor(Math.random()*2)];
+      keeper.dive = guess;
+      const saveChance = computeSaveChance(guess===third, hz, power);
+      if (Math.random() < saveChance) { result='save'; label='SAVED!'; color='#7ee0ff'; sfxSave(); }
+      else { result='goal'; label='GOAL!'; color='#4ade80'; sfxGoal(); netRipple=1; netRippleX=t.x; screenFlash=0.5; }
+    }
+    if (result==='goal') { playerScore++; playerHistory.push('G'); }
+    else { playerHistory.push('X'); }
+    updateScoreUI();
+    state = 'banner';
+    showBanner(label, color);
+    setTimeout(()=>{ advanceAfter('player'); }, 950);
+  }
+
+  function finalizeSave(){
+    cpuAttempts++;
+    let result, label, color;
+    const matched = playerZoneChoice === cpuThird;
+    if (playerZoneChoice === null) {
+      result='goal'; label='TOO SLOW!'; color='#ff5c8a'; sfxGoal(); netRipple=1; netRippleX=cpuTarget.x; screenFlash=0.5;
+    } else {
+      const saveChance = computeSaveChance(matched, cpuHeight, cpuPowerVal);
+      if (Math.random() < saveChance) { result='save'; label='GREAT SAVE!'; color='#7ee0ff'; sfxSave(); }
+      else { result='goal'; label='GOAL!'; color='#ff5c8a'; sfxGoal(); netRipple=1; netRippleX=cpuTarget.x; screenFlash=0.5; }
+    }
+    if (result==='goal') { cpuScore++; cpuHistory.push('G'); }
+    else { cpuHistory.push('X'); }
+    updateScoreUI();
+    state = 'banner';
+    showBanner(label, color);
+    setTimeout(()=>{ advanceAfter('cpu'); }, 950);
+  }
+
+  // ---------- input: aiming/kicking ----------
+  function clientToLogical(clientX, clientY){
+    const rect = canvas.getBoundingClientRect();
+    return { x:(clientX-rect.left)*(W/rect.width), y:(clientY-rect.top)*(H/rect.height) };
+  }
+  function pointerDown(clientX, clientY){
+    if (state !== 'aim') return;
+    const p = clientToLogical(clientX, clientY);
+    dragging = true; charging = true; chargeStart = performance.now();
+    reticle.x = clamp(p.x, ALLOW.left, ALLOW.right);
+    reticle.y = clamp(p.y, ALLOW.top, ALLOW.bottom);
+  }
+  function pointerMove(clientX, clientY){
+    if (state !== 'aim' || !dragging) return;
+    const p = clientToLogical(clientX, clientY);
+    reticle.x = clamp(p.x, ALLOW.left, ALLOW.right);
+    reticle.y = clamp(p.y, ALLOW.top, ALLOW.bottom);
+  }
+  function pointerUp(){
+    if (state !== 'aim' || !dragging) return;
+    dragging = false; charging = false;
+    const held = (performance.now()-chargeStart)/1100;
+    power = clamp(Math.max(held,0.22), 0.22, 1);
+    state = 'kickAnim';
+    sfxKick(power);
+    const dur = 1000 - power*550;
+    anim = { start: performance.now(), dur, from:{x:SPOT.x,y:SPOT.y}, to:{x:reticle.x,y:reticle.y}, power, kind:'playerShot' };
+  }
+
+  canvas.addEventListener('mousedown', e => pointerDown(e.clientX, e.clientY));
+  canvas.addEventListener('mousemove', e => pointerMove(e.clientX, e.clientY));
+  window.addEventListener('mouseup', () => pointerUp());
+  canvas.addEventListener('touchstart', e => { const t=e.touches[0]; pointerDown(t.clientX,t.clientY); e.preventDefault(); }, {passive:false});
+  canvas.addEventListener('touchmove', e => { const t=e.touches[0]; pointerMove(t.clientX,t.clientY); e.preventDefault(); }, {passive:false});
+  canvas.addEventListener('touchend', e => { pointerUp(); e.preventDefault(); }, {passive:false});
+
+  // ---------- input: zone buttons (defending) ----------
+  document.querySelectorAll('.zoneBtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (state !== 'saveWaitRunup' && state !== 'saveAnim') return;
+      if (playerZoneChoice !== null) return;
+      playerZoneChoice = btn.dataset.zone;
+      keeper.dive = playerZoneChoice;
+      keeper.diveT = 0;
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (state === 'saveWaitRunup' || state === 'saveAnim') {
+      if (e.key==='ArrowLeft' && playerZoneChoice===null) { playerZoneChoice='L'; keeper.dive='L'; keeper.diveT=0; }
+      if ((e.key==='ArrowDown'||e.key==='ArrowUp') && playerZoneChoice===null) { playerZoneChoice='C'; keeper.dive='C'; keeper.diveT=0; }
+      if (e.key==='ArrowRight' && playerZoneChoice===null) { playerZoneChoice='R'; keeper.dive='R'; keeper.diveT=0; }
+    }
+    if (state==='menu' || state==='matchOver') { if (e.key==='Enter') startGameClick(); }
+  });
+
+  function startGameClick(){ startMatch(); }
+  playBtn.addEventListener('click', startGameClick);
+
+  // ---------- particles ----------
+  function spawnParticles(x,y,color,n){
+    for (let i=0;i<n;i++) particles.push({x,y,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6-2,life:24,color});
+  }
+
+  // ---------- drawing ----------
+  function roundRect(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+  }
+
+  function drawStadium(){
+    const sky = ctx.createLinearGradient(0,0,0,GOAL.top+20);
+    sky.addColorStop(0,'#0d2b1a'); sky.addColorStop(1,'#123d24');
+    ctx.fillStyle = sky; ctx.fillRect(0,0,W,GOAL.top+20);
+
+    // floodlight glows
+    for (const fx of [40, W-40]) {
+      const g = ctx.createRadialGradient(fx,30,4,fx,30,90);
+      g.addColorStop(0,'rgba(255,255,220,0.5)'); g.addColorStop(1,'rgba(255,255,220,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(fx,30,90,0,Math.PI*2); ctx.fill();
+    }
+    // crowd stands
+    ctx.fillStyle = 'rgba(0,0,0,0.35)';
+    ctx.fillRect(0,0,W,58);
+    for (let i=0;i<40;i++){
+      const cx = (i*13 + (frame*0.05)) % W;
+      const cy = 8 + (i%5)*9;
+      ctx.fillStyle = i%3===0 ? 'rgba(255,210,63,0.25)' : i%3===1 ? 'rgba(126,224,255,0.2)' : 'rgba(255,255,255,0.15)';
+      ctx.fillRect(cx, cy, 6, 6);
+    }
+
+    // pitch
+    const pitch = ctx.createLinearGradient(0,GOAL.top+20,0,H);
+    pitch.addColorStop(0,'#1c5c34'); pitch.addColorStop(1,'#0f3a20');
+    ctx.fillStyle = pitch; ctx.fillRect(0,GOAL.top+20,W,H-(GOAL.top+20));
+    ctx.fillStyle = 'rgba(255,255,255,0.04)';
+    for (let i=0;i<10;i++) ctx.fillRect(0, GOAL.top+20+i*((H-GOAL.top-20)/10), W, ((H-GOAL.top-20)/10)/2);
+
+    // penalty arc + box lines
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(SPOT.x, SPOT.y-40, 90, 30, 0, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(SPOT.x, SPOT.y, 4, 0, Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.8)'; ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+    ctx.strokeRect(GOAL.left-40, GOAL.bottom, GOAL_W+80, 140);
+  }
+
+  function drawGoal(){
+    // net mesh
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(GOAL.left, GOAL.top, GOAL_W, GOAL_H);
+    ctx.clip();
+    ctx.strokeStyle = 'rgba(255,255,255,0.28)'; ctx.lineWidth = 1;
+    const rippleAmt = netRipple;
+    for (let x=GOAL.left; x<=GOAL.right; x+=14){
+      ctx.beginPath();
+      for (let y=GOAL.top; y<=GOAL.bottom; y+=6){
+        const d = Math.hypot(x-netRippleX, y-GOAL.top-GOAL_H*0.5);
+        const bulge = rippleAmt>0.01 ? Math.sin((frame*0.4)-d*0.05) * rippleAmt * Math.max(0,1-d/160) * 6 : 0;
+        const yy = y;
+        if (y===GOAL.top) ctx.moveTo(x+bulge,yy); else ctx.lineTo(x+bulge,yy);
+      }
+      ctx.stroke();
+    }
+    for (let y=GOAL.top; y<=GOAL.bottom; y+=14){
+      ctx.beginPath();
+      for (let x=GOAL.left; x<=GOAL.right; x+=6){
+        const d = Math.hypot(x-netRippleX, y-GOAL.top-GOAL_H*0.5);
+        const bulge = rippleAmt>0.01 ? Math.sin((frame*0.4)-d*0.05) * rippleAmt * Math.max(0,1-d/160) * 6 : 0;
+        if (x===GOAL.left) ctx.moveTo(x,y+bulge); else ctx.lineTo(x,y+bulge);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    // posts
+    ctx.fillStyle = '#f4f4f4';
+    ctx.fillRect(GOAL.left-7, GOAL.top-8, 7, GOAL_H+8+10);
+    ctx.fillRect(GOAL.right, GOAL.top-8, 7, GOAL_H+8+10);
+    ctx.fillRect(GOAL.left-7, GOAL.top-8, GOAL_W+14, 7);
+    ctx.strokeStyle = 'rgba(0,0,0,0.15)'; ctx.lineWidth=1;
+    ctx.strokeRect(GOAL.left-7, GOAL.top-8, 7, GOAL_H+18);
+  }
+
+  function drawKeeperFig(){
+    const k = keeper;
+    let x = ZONE_X[k.dive || 'C'];
+    const t = clamp(k.diveT, 0, 1);
+    const curX = ZONE_X.C + (x-ZONE_X.C)*easeOutQuad(t);
+    const dy = (k.dive && k.dive!=='C') ? -Math.sin(t*Math.PI)*14 : 0;
+    const lean = (k.dive==='L' ? -1 : k.dive==='R' ? 1 : 0) * easeOutQuad(t) * 0.9;
+
+    ctx.save();
+    ctx.translate(curX, GOAL.bottom-6+dy);
+    ctx.rotate(lean*0.6);
+    // shadow
+    ctx.fillStyle='rgba(0,0,0,0.3)';
+    ctx.beginPath(); ctx.ellipse(0,10,22,6,0,0,Math.PI*2); ctx.fill();
+    // body
+    const grad = ctx.createLinearGradient(0,-46,0,0);
+    grad.addColorStop(0,'#ffd23f'); grad.addColorStop(1,'#e0a500');
+    ctx.fillStyle = grad;
+    roundRect(-14,-46,28,40,8); ctx.fill();
+    // arms stretched toward dive
+    ctx.strokeStyle = '#ffe9a8'; ctx.lineWidth=7; ctx.lineCap='round';
+    const armSpread = 14 + easeOutQuad(t)*18;
+    ctx.beginPath();
+    ctx.moveTo(-10,-38); ctx.lineTo(-armSpread*Math.sign(lean||-1)-8, -30-easeOutQuad(t)*10);
+    ctx.moveTo(10,-38); ctx.lineTo(armSpread*Math.sign(lean||1)+8, -30-easeOutQuad(t)*10);
+    ctx.stroke();
+    // head
+    ctx.fillStyle = '#ffcf9e';
+    ctx.beginPath(); ctx.arc(0,-52,10,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+  function easeOutQuad(t){ return 1-(1-t)*(1-t); }
+
+  function drawKickerFigure(){
+    if (state !== 'saveWaitRunup' && state !== 'saveAnim') return;
+    const t = clamp((performance.now()-reactWindowStart)/RUNUP_MS, 0, 1);
+    const x = SPOT.x - 60 + t*55;
+    ctx.save();
+    ctx.translate(x, SPOT.y-4);
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.beginPath(); ctx.ellipse(0,4,16,5,0,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#ff5c8a';
+    roundRect(-10,-34,20,32,7); ctx.fill();
+    ctx.fillStyle = '#ffcf9e';
+    ctx.beginPath(); ctx.arc(0,-40,8,0,Math.PI*2); ctx.fill();
+    const legSwing = Math.sin(frame*0.6)*8;
+    ctx.strokeStyle = '#2b3a55'; ctx.lineWidth=6; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(-4,-2); ctx.lineTo(-4+legSwing,14); ctx.moveTo(4,-2); ctx.lineTo(4-legSwing,14); ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawReticle(){
+    if (state !== 'aim') return;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(reticle.x, reticle.y, 14, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(reticle.x-20,reticle.y); ctx.lineTo(reticle.x-8,reticle.y); ctx.moveTo(reticle.x+8,reticle.y); ctx.lineTo(reticle.x+20,reticle.y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(reticle.x,reticle.y-20); ctx.lineTo(reticle.x,reticle.y-8); ctx.moveTo(reticle.x,reticle.y+8); ctx.lineTo(reticle.x,reticle.y+20); ctx.stroke();
+    const inFrame = insideFrame(reticle.x, reticle.y);
+    ctx.fillStyle = inFrame ? 'rgba(74,222,128,0.9)' : 'rgba(255,92,92,0.9)';
+    ctx.beginPath(); ctx.arc(reticle.x, reticle.y, 3, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawBallSprite(x,y,scale,rot){
+    ctx.save();
+    ctx.translate(x,y); ctx.rotate(rot); ctx.scale(scale,scale);
+    ctx.fillStyle = '#f5f5f5';
+    ctx.beginPath(); ctx.arc(0,0,10,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0.5)'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(-6,-3); ctx.lineTo(0,-7); ctx.lineTo(6,-3); ctx.lineTo(3,5); ctx.lineTo(-3,5); ctx.closePath(); ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    drawStadium();
+    drawGoal();
+    drawKickerFigure();
+    drawKeeperFig();
+    drawReticle();
+
+    if (ball.visible) drawBallSprite(ball.x, ball.y, ball.scale, ball.rot);
+
+    for (const p of particles) {
+      ctx.globalAlpha = Math.max(p.life/24,0);
+      ctx.fillStyle = p.color;
+      ctx.beginPath(); ctx.arc(p.x,p.y,3,0,Math.PI*2); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    if (screenFlash > 0.01) {
+      ctx.fillStyle = 'rgba(255,255,255,'+(screenFlash*0.25)+')';
+      ctx.fillRect(0,0,W,H);
+    }
+
+    // phase indicator
+    if (phase === 'suddenDeath' && state !== 'menu' && state !== 'matchOver') {
+      ctx.fillStyle = 'rgba(255,92,92,0.85)';
+      ctx.font = 'bold 13px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('SUDDEN DEATH', W/2, 118);
+    }
+  }
+
+  // ---------- update ----------
+  function update(){
+    frame++;
+
+    // particles
+    for (const p of particles) { p.x+=p.vx; p.y+=p.vy; p.vy+=0.25; p.life--; }
+    particles = particles.filter(p=>p.life>0);
+    if (netRipple>0) netRipple *= 0.94;
+    if (screenFlash>0) screenFlash *= 0.9;
+
+    if (state === 'aim') {
+      if (charging) {
+        const held = clamp((performance.now()-chargeStart)/1100, 0, 1);
+        powerBarFill.style.height = (held*100)+'%';
+      }
+      ball.x = SPOT.x; ball.y = SPOT.y;
+      keeper.x = ZONE_X.C;
+    }
+
+    if (state === 'kickAnim' && anim) {
+      const t = clamp((performance.now()-anim.start)/anim.dur, 0, 1);
+      const arc = (1-anim.power) * 50 * Math.sin(t*Math.PI);
+      ball.x = anim.from.x + (anim.to.x-anim.from.x)*t;
+      ball.y = anim.from.y + (anim.to.y-anim.from.y)*t - arc;
+      ball.scale = 1 - t*0.62;
+      ball.rot += 0.5 + anim.power*0.6;
+      keeper.diveT = clamp(t*1.4, 0, 1);
+      if (t >= 1) { anim = null; finalizePlayerKick(); }
+    }
+
+    if ((state === 'saveWaitRunup' || state === 'saveAnim')) {
+      const elapsed = performance.now() - reactWindowStart;
+      const frac = clamp(1 - elapsed/reactWindowDur, 0, 1);
+      reactBarFill.style.transform = 'scaleX('+frac+')';
+      if (playerZoneChoice) keeper.diveT = clamp(keeper.diveT + 0.06, 0, 1);
+    }
+
+    if (state === 'saveAnim' && anim && anim.kind==='cpuShot') {
+      const t = clamp((performance.now()-anim.start)/anim.dur, 0, 1);
+      const arc = (1-anim.power) * 50 * Math.sin(t*Math.PI);
+      ball.x = anim.from.x + (anim.to.x-anim.from.x)*t;
+      ball.y = anim.from.y + (anim.to.y-anim.from.y)*t - arc;
+      ball.scale = 1 - t*0.62;
+      ball.rot += 0.5 + anim.power*0.6;
+      if (t >= 1) { anim = null; finalizeSave(); }
+    }
+  }
+
+  function loop(){ update(); draw(); requestAnimationFrame(loop); }
+
+  resizeCanvas();
+  updateScoreUI();
+  loop();
+})();
+</script>
+</body>
+</html>
