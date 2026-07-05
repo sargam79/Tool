@@ -3,8 +3,30 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>Bloxdoku — Block Puzzle</title>
-<meta name="description" content="Bloxdoku: a fast, glowing block puzzle game. Drop pieces, clear rows, columns and 3x3 boxes, and chase combos."/>
+<title>Bloxdoku — Free Block Puzzle Game Online | ToolPond Pro</title>
+<meta name="description" content="Play Bloxdoku free online — a fast, glowing block puzzle game. Drag pieces onto a 9x9 grid, clear rows, columns and 3x3 boxes, and chase combos. No download, no login, works on mobile & desktop."/>
+<meta name="keywords" content="bloxdoku, block puzzle game, block puzzle online, free block puzzle, wood block puzzle, block sudoku, drag and drop puzzle game, 9x9 grid puzzle, free puzzle games online, HTML5 block puzzle, no download puzzle game, mobile block puzzle, block blast game, sudoku block puzzle free, casual puzzle game online"/>
+<meta name="author" content="ToolPond Pro"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://toolpond.org/bloxdoku.html"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Bloxdoku — Free Block Puzzle Game Online"/>
+<meta property="og:description" content="Drag pieces onto a 9x9 grid, clear rows, columns and boxes, and chase combos. Free, no download, no login, works on mobile & desktop."/>
+<meta property="og:url" content="https://toolpond.org/bloxdoku.html"/>
+<meta property="og:site_name" content="ToolPond Pro Games"/>
+<meta property="og:image" content="https://toolpond.org/og-bloxdoku.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="en_US"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Bloxdoku — Free Block Puzzle Game Online"/>
+<meta name="twitter:description" content="Drag pieces onto a 9x9 grid, clear lines, and chase combos. Free block puzzle game, no download needed."/>
+<meta name="twitter:image" content="https://toolpond.org/og-bloxdoku.png"/>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -241,6 +263,40 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   }
   #toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
+
+  /* More games section */
+  .more-games{ margin-top: 30px; }
+  .more-games-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding: 0 2px 10px; font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size: 14px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .more-games-all{
+    color: var(--cyan); text-decoration:none; font-weight:700;
+    letter-spacing: normal; text-transform:none; font-size: 13px;
+  }
+  .more-games-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .game-card{
+    display:flex; flex-direction:column; align-items:flex-start; gap:4px;
+    background: var(--panel); border:1px solid #2a3155; border-radius: 14px;
+    padding: 14px; text-decoration:none; color: var(--text);
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .game-card:active{ transform: scale(0.97); }
+  .game-card-emoji{ font-size: 22px; }
+  .game-card-name{ font-weight: 800; font-size: 13.5px; line-height:1.25; }
+  .game-card-tag{ font-size: 11px; color: var(--text-dim); font-weight:600; }
+
+  .site-footer{
+    margin-top: 22px; text-align:center; font-size: 12px;
+    color: var(--text-dim); padding-bottom: 4px;
+  }
+  .site-footer a{ color: var(--text-dim); text-decoration:none; }
+  .site-footer a:hover{ color: var(--text); }
+  .site-footer span{ margin: 0 6px; opacity: 0.5; }
 </style>
 </head>
 <body>
@@ -269,6 +325,35 @@
   </div>
 
   <div id="tray"></div>
+
+  <section class="more-games" aria-label="More free games on ToolPond Pro">
+    <div class="more-games-head">
+      <span>More Free Games</span>
+      <a href="https://toolpond.org/games.html" class="more-games-all">All Games →</a>
+    </div>
+    <div class="more-games-grid">
+      <a class="game-card" href="https://toolpond.org/sky-spirit.html">
+        <span class="game-card-emoji">✨</span>
+        <span class="game-card-name">Sky Spirit: Wind Runner</span>
+        <span class="game-card-tag">Tap to Fly</span>
+      </a>
+      <a class="game-card" href="https://toolpond.org/bubble-pop-quest.html">
+        <span class="game-card-emoji">🫧</span>
+        <span class="game-card-name">Bubble Pop Quest</span>
+        <span class="game-card-tag">Match 3</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="https://toolpond.org/index.html">Home</a>
+    <span>·</span>
+    <a href="https://toolpond.org/games.html">Games</a>
+    <span>·</span>
+    <a href="https://toolpond.org/calculators.html">Tools</a>
+    <span>·</span>
+    <a href="https://toolpond.org/about.html">About</a>
+  </footer>
 
 </div>
 
@@ -644,6 +729,7 @@ function attachDragHandlers(gridEl, piece){
 
 function startDrag(e, piece, gridEl){
   e.preventDefault();
+  playPickup();
   const cellPx = 22;
   const gap = 3;
   const { rows, cols } = pieceBounds(piece.shape);
@@ -819,6 +905,44 @@ function playPlace(){
   ensureAudio();
   tone({ freq: 260, freqEnd: 120, duration: 0.12, type: 'triangle', gainStart: 0.3 });
 }
+function playPickup(){
+  ensureAudio();
+  tone({ freq: 420, freqEnd: 620, duration: 0.09, type: 'sine', gainStart: 0.14 });
+}
+
+/* Soft ambient pad, loops quietly while the game is unmuted */
+let ambientNodes = null;
+function startAmbient(){
+  if (isMuted || ambientNodes) return;
+  ensureAudio();
+  const gain = audioCtx.createGain();
+  gain.gain.value = 0.035;
+  gain.connect(audioCtx.destination);
+
+  const o1 = audioCtx.createOscillator();
+  o1.type = 'sine'; o1.frequency.value = 110;
+  const o2 = audioCtx.createOscillator();
+  o2.type = 'sine'; o2.frequency.value = 110 * 1.5; // perfect fifth
+
+  const lfo = audioCtx.createOscillator();
+  lfo.type = 'sine'; lfo.frequency.value = 0.08;
+  const lfoGain = audioCtx.createGain();
+  lfoGain.gain.value = 0.018;
+  lfo.connect(lfoGain);
+  lfoGain.connect(gain.gain);
+
+  o1.connect(gain); o2.connect(gain);
+  o1.start(); o2.start(); lfo.start();
+
+  ambientNodes = { o1, o2, lfo, gain };
+}
+function stopAmbient(){
+  if (!ambientNodes) return;
+  const { o1, o2, lfo, gain } = ambientNodes;
+  try { o1.stop(); o2.stop(); lfo.stop(); } catch(e){}
+  gain.disconnect();
+  ambientNodes = null;
+}
 function playClear(big){
   ensureAudio();
   const notes = big ? [523, 659, 784, 988] : [523, 784];
@@ -838,7 +962,8 @@ function bindGlobalEvents(){
   soundToggleBtn.addEventListener('click', () => {
     isMuted = !isMuted;
     soundToggleBtn.textContent = isMuted ? '🔇' : '🔊';
-    if (!isMuted){ ensureAudio(); playButton(); }
+    if (!isMuted){ ensureAudio(); playButton(); startAmbient(); }
+    else { stopAmbient(); }
   });
   restartBtn.addEventListener('click', () => {
     playButton();
@@ -850,7 +975,7 @@ function bindGlobalEvents(){
     playButton();
     resetGame();
   });
-  document.body.addEventListener('pointerdown', () => ensureAudio(), { once: true });
+  document.body.addEventListener('pointerdown', () => { ensureAudio(); startAmbient(); }, { once: true });
 }
 
 /* ================= Boot ================= */
