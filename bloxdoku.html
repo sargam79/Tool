@@ -29,6 +29,24 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Bloxdoku",
+  "url": "https://toolpond.org/bloxdoku.html",
+  "description": "Bloxdoku is a free online block puzzle game. Drag pieces onto a 9x9 grid, clear rows, columns and 3x3 boxes, and chase combos. No download, no login required.",
+  "genre": ["Puzzle", "Block Puzzle", "Casual"],
+  "gamePlatform": ["Web Browser", "Android", "iOS"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "publisher": {
+    "@type": "Organization",
+    "name": "ToolPond Pro"
+  }
+}
+</script>
 <style>
   :root{
     --bg: #0F1220;
@@ -75,6 +93,7 @@
     font-family:'Space Grotesk', sans-serif;
     font-weight:700; font-size: 22px; letter-spacing: 0.5px;
     display:flex; align-items:center; gap:8px;
+    margin: 0;
   }
   .logo-chip{
     width:14px; height:14px; border-radius:4px;
@@ -297,13 +316,25 @@
   .site-footer a{ color: var(--text-dim); text-decoration:none; }
   .site-footer a:hover{ color: var(--text); }
   .site-footer span{ margin: 0 6px; opacity: 0.5; }
+
+  .how-to-play{
+    margin-top: 26px; background: var(--panel); border:1px solid #2a3155;
+    border-radius: 16px; padding: 16px 18px;
+  }
+  .how-to-play h2{
+    font-family:'Space Grotesk', sans-serif; font-size: 15px; margin: 0 0 10px;
+    color: var(--text); letter-spacing: 0.3px;
+  }
+  .how-to-play ol{ margin:0; padding-left: 20px; color: var(--text-dim); font-size: 13.5px; line-height:1.6; }
+  .how-to-play li{ margin-bottom: 6px; }
+  .how-to-play li strong{ color: var(--text); }
 </style>
 </head>
 <body>
 <div id="app">
 
   <header>
-    <div class="logo"><span class="logo-chip"></span>BLOXDOKU</div>
+    <h1 class="logo"><span class="logo-chip"></span>BLOXDOKU</h1>
     <div class="header-actions">
       <button class="icon-btn" id="sound-toggle" aria-label="Toggle sound">🔊</button>
       <button class="icon-btn" id="restart-btn" aria-label="Restart">↻</button>
@@ -325,6 +356,18 @@
   </div>
 
   <div id="tray"></div>
+
+  <section class="how-to-play" aria-label="How to play Bloxdoku">
+    <h2>How to Play Bloxdoku</h2>
+    <ol>
+      <li><strong>Drag a piece</strong> from the tray onto the 9x9 grid.</li>
+      <li>Cells glow <strong>green</strong> where the piece fits, <strong>red</strong> where it doesn't.</li>
+      <li><strong>Release</strong> to drop the piece into a valid spot.</li>
+      <li><strong>Fill</strong> any full row, column, or 3x3 box to clear it and score points.</li>
+      <li>Clear multiple lines at once, or clear on back-to-back drops, to build <strong>combo</strong> bonuses.</li>
+      <li>The game ends when none of your 3 tray pieces fit anywhere on the board.</li>
+    </ol>
+  </section>
 
   <section class="more-games" aria-label="More free games on ToolPond Pro">
     <div class="more-games-head">
