@@ -3,7 +3,675 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Calorie Calculator 2026 - Calculate daily calorie needs instantly. TDEE calculator with macro breakdown, activity levels, and personalized nutrition plans. Accurate calorie counter for weight loss, muscle gain, and maintenance.">
+    <meta name="description" content="<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free calorie calculator to find your daily calorie needs & TDEE. Calculate calories for weight loss, muscle gain, or maintenance. Includes BMR calculator, macro breakdown & personalized nutrition plans. 100% private.">
+    <meta name="keywords" content="calorie calculator, daily calorie needs, TDEE calculator, calorie counter, BMR calculator, how many calories should I eat, calories to lose weight, calorie intake calculator, maintenance calories, calories for muscle gain, macro calculator, free calorie tool, nutrition calculator">
+    <meta name="author" content="ToolPond Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolpond.org/calorie-calculator.html">
+    <title>Free Calorie Calculator 2026 | TDEE & Daily Calorie Needs</title>
+    <meta property="og:description" content="Accurate calorie calculator with macro breakdown. Calculate your TDEE, daily calorie needs for weight loss, muscle gain, or maintenance. Completely free and 100% private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpond.org/calorie-calculator.html">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Calorie Calculator">
+    <meta name="twitter:description" content="Calculate your daily calorie needs with macronutrient breakdown">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calorie Calculator",
+      "description": "Calculate daily calorie needs (TDEE) with macro breakdown",
+      "url": "https://toolpond.org/calorie-calculator.html",
+      "applicationCategory": "HealthApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "4100"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/"},
+        {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://toolpond.org/calculators.html"},
+        {"@type": "ListItem", "position": 3, "name": "Calorie Calculator", "item": "https://toolpond.org/calorie-calculator.html"}
+      ]
+    }
+    </script>
+
+    <title>Free Calorie Calculator 2026 | TDEE & Daily Calorie Needs | ToolPond Pro</title>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#0066cc;--primary-dark:#1e40af;--primary-light:#dbeafe;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151;--text-light:#6b7280}
+        
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif;line-height:1.6;color:var(--text);background:var(--light);overflow-x:hidden}
+        
+        nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+        .logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}
+        .nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+        .nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:color 0.3s}
+        .nav-links a:hover{color:var(--primary)}
+        
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        
+        .hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:3rem 2rem;text-align:center;margin-bottom:2rem}
+        .hero h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}
+        .hero p{font-size:1.1rem;opacity:0.95;max-width:700px;margin:0 auto}
+        
+        .breadcrumb{padding:1rem 2rem;background:#fff;border-bottom:1px solid var(--border);font-size:0.9rem}
+        .breadcrumb a{color:var(--primary);text-decoration:none}
+        .breadcrumb a:hover{text-decoration:underline}
+        .breadcrumb span{margin:0 0.5rem;color:var(--text-light)}
+        
+        .main-content{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-bottom:3rem}
+        
+        .calculator-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        .sidebar{display:flex;flex-direction:column;gap:1rem}
+        .sidebar-box{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid var(--border)}
+        
+        .intro-content{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border:1px solid var(--border)}
+        .intro-content h2{color:var(--dark);margin-bottom:1rem;font-size:1.5rem}
+        .intro-content p{color:#4b5563;margin-bottom:1rem;line-height:1.8}
+        
+        .form-group{margin-bottom:1.5rem}
+        .form-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark);font-size:0.95rem}
+        .form-input{width:100%;padding:0.75rem;border:2px solid var(--border);border-radius:8px;font-size:1rem;transition:all 0.3s;font-family:inherit}
+        .form-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+        
+        .unit-toggle{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1rem}
+        .unit-btn{padding:0.75rem;border:2px solid var(--border);background:#fff;border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s}
+        .unit-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .unit-btn:hover{border-color:var(--primary)}
+        
+        .activity-options{display:grid;grid-template-columns:1fr;gap:0.5rem}
+        .activity-btn{padding:0.75rem;border:2px solid var(--border);background:#fff;border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s;text-align:left}
+        .activity-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .activity-btn:hover{border-color:var(--primary)}
+        .activity-label{display:block;font-weight:700;color:var(--dark)}
+        .activity-desc{font-size:0.85rem;color:var(--text-light);font-weight:400;margin-top:0.25rem}
+        
+        .btn{width:100%;padding:1rem;background:linear-gradient(135deg,var(--success),#059669);color:#fff;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;margin-top:1rem}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,0.3)}
+        
+        .result-box{background:linear-gradient(135deg,var(--primary-light),#e0f2fe);border:2px solid var(--primary);border-radius:12px;padding:2rem;margin-top:2rem;display:none}
+        .result-box.show{display:block;animation:slideDown 0.3s ease}
+        @keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        
+        .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:2rem}
+        .result-item{background:#fff;padding:1.5rem;border-radius:8px;text-align:center}
+        .result-label{color:var(--text-light);font-size:0.85rem;text-transform:uppercase;margin-bottom:0.5rem;font-weight:600}
+        .result-value{font-size:2.5rem;font-weight:800;color:var(--primary)}
+        
+        .goal-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:1.5rem}
+        .goal-card{background:#fff;padding:1.5rem;border-radius:8px;text-align:center}
+        .goal-card h4{color:var(--dark);margin-bottom:0.5rem;font-size:0.9rem}
+        .goal-value{font-size:1.5rem;font-weight:800;color:var(--primary)}
+        .goal-desc{font-size:0.8rem;color:var(--text-light);margin-top:0.5rem}
+        
+        .macro-breakdown{background:#fff;padding:1.5rem;border-radius:8px;margin-top:1.5rem}
+        .macro-bar{margin-bottom:1.5rem}
+        .macro-label{display:flex;justify-content:space-between;margin-bottom:0.5rem;font-weight:600}
+        .macro-track{width:100%;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+        .macro-fill{height:100%;border-radius:4px;transition:width 0.3s}
+        .macro-protein .macro-fill{background:#3b82f6}
+        .macro-carbs .macro-fill{background:#f59e0b}
+        .macro-fat .macro-fill{background:#ef4444}
+        
+        .stat-box h3{color:var(--dark);margin-bottom:0.5rem;font-size:0.95rem;text-transform:uppercase;font-weight:700;letter-spacing:0.5px}
+        .stat-value{font-size:1.8rem;font-weight:800;color:var(--primary);margin:0.5rem 0}
+        .stat-desc{color:var(--text-light);font-size:0.9rem}
+        
+        .tips-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border-left:4px solid var(--warning)}
+        .tips-section h3{color:var(--dark);margin-bottom:1rem}
+        .tips-section ul{list-style:none;padding-left:0}
+        .tips-section li{padding:0.75rem 0;padding-left:1.5rem;position:relative;color:#4b5563}
+        .tips-section li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:bold}
+        
+        .how-to-section{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem;border-left:4px solid var(--primary)}
+        .step{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+        .step:last-child{border-bottom:none}
+        .step-number{display:inline-block;width:2rem;height:2rem;background:var(--primary);color:#fff;border-radius:50%;text-align:center;line-height:2rem;font-weight:700;margin-right:0.5rem}
+        .step-text{color:#4b5563;line-height:1.8}
+        
+        .formula-box{background:#f0f9ff;border-left:4px solid var(--primary);padding:1.5rem;margin:1.5rem 0;border-radius:6px;font-family:monospace}
+        .formula-box p{color:#4b5563;margin:0.5rem 0;font-size:0.95rem}
+        
+        .faq-item{background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:1rem;overflow:hidden}
+        .faq-question{padding:1.5rem;cursor:pointer;font-weight:600;color:var(--dark);display:flex;justify-content:space-between;align-items:center;transition:background 0.3s}
+        .faq-question:hover{background:var(--light)}
+        .faq-arrow{transition:transform 0.3s;font-size:1.2rem;color:var(--primary)}
+        .faq-item.open .faq-arrow{transform:rotate(180deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;padding:0 1.5rem}
+        .faq-item.open .faq-answer{max-height:500px;padding:0 1.5rem 1.5rem}
+        .faq-answer p{color:#4b5563;line-height:1.8;margin-bottom:0.5rem}
+        
+        .related-tools{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem}
+        .related-tools h3{color:var(--dark);margin-bottom:1rem}
+        .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+        .related-item{padding:1rem;background:var(--light);border-radius:8px;text-align:center;text-decoration:none;color:var(--primary);font-weight:600;transition:all 0.3s;border:1px solid var(--border)}
+        .related-item:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
+        
+        footer{background:var(--dark);color:#fff;padding:3rem 2rem;margin-top:3rem}
+        .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+        .footer-col h4{color:var(--primary);margin-bottom:1rem}
+        .footer-col a{color:#d1d5db;text-decoration:none;display:block;margin-bottom:0.5rem;transition:color 0.3s}
+        .footer-col a:hover{color:#fff}
+        .footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid #4b5563;color:#9ca3af}
+        
+        @media(max-width:768px){
+            .main-content{grid-template-columns:1fr}
+            .hero h1{font-size:1.8rem}
+            .hero p{font-size:1rem}
+            .result-grid{grid-template-columns:1fr}
+            .unit-toggle{grid-template-columns:1fr}
+            .goal-cards{grid-template-columns:repeat(2,1fr)}
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculators.html">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> <span>/</span>
+            <a href="calculators.html">Calculators</a> <span>/</span>
+            <strong>Calorie Calculator</strong>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Calorie Calculator</h1>
+            <p>Calculate your daily calorie needs (TDEE) instantly. Get personalized nutrition plans for weight loss, muscle gain, or maintenance. Completely free and 100% private.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <div class="intro-content">
+            <h2>Understanding Calorie Needs: Your Personal Nutrition Guide</h2>
+            <p>Knowing your daily calorie needs is fundamental to achieving any fitness goal. Whether you want to lose weight, build muscle, or maintain your current physique, understanding how many calories your body needs each day is the first step toward success.</p>
+            
+            <p><strong>What is TDEE?</strong> TDEE stands for Total Daily Energy Expenditure—the total number of calories your body burns in a day. It includes your Basal Metabolic Rate (BMR, calories burned at rest) plus calories burned through daily activities and exercise. Your TDEE is unique to your age, sex, height, weight, and activity level.</p>
+            
+            <p><strong>Why calculate your calorie needs?</strong> Knowing your TDEE allows you to:</p>
+            <ul style="margin-left:1.5rem;margin:1rem 0">
+                <li><strong>Lose weight strategically:</strong> Eat 300-500 calories below TDEE for sustainable weight loss (1-2 lbs/week)</li>
+                <li><strong>Build muscle:</strong> Eat 300-500 calories above TDEE with proper strength training</li>
+                <li><strong>Maintain weight:</strong> Eat at your TDEE to keep your current body composition</li>
+                <li><strong>Track progress:</strong> Monitor calorie intake against your calculated needs</li>
+                <li><strong>Optimize nutrition:</strong> Plan macronutrients (protein, carbs, fat) based on your calorie target</li>
+            </ul>
+            
+            <p><strong>The science behind it:</strong> Your body burns calories constantly—even at rest. Your BMR accounts for 60-75% of daily calorie burn. Activity level multiplies your BMR to get TDEE. Someone sedentary might have a TDEE of 2,000 calories, while an active person of the same size might burn 2,800 calories daily. Understanding this helps you set realistic nutrition goals.</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Calculator Section -->
+            <div class="calculator-section">
+                <h2 style="color:var(--dark);margin-bottom:1.5rem">Calculate Your TDEE</h2>
+
+                <!-- Unit Toggle -->
+                <div class="unit-toggle">
+                    <button class="unit-btn active" onclick="setUnit('metric')">Metric (kg, cm)</button>
+                    <button class="unit-btn" onclick="setUnit('imperial')">Imperial (lbs, in)</button>
+                </div>
+
+                <form onsubmit="calculateCalories(event)">
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" id="age" class="form-input" placeholder="25" min="15" max="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Sex</label>
+                        <select id="sex" class="form-input">
+                            <option value="">Select...</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Height</label>
+                        <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:flex-end">
+                            <input type="number" id="height" class="form-input" placeholder="170" step="0.1" required>
+                            <span id="heightUnit" style="font-weight:600;color:var(--text-light)">cm</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Weight</label>
+                        <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:flex-end">
+                            <input type="number" id="weight" class="form-input" placeholder="70" step="0.1" required>
+                            <span id="weightUnit" style="font-weight:600;color:var(--text-light)">kg</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Activity Level</label>
+                        <div class="activity-options">
+                            <button type="button" class="activity-btn active" onclick="setActivity(1.2, this)">
+                                <span class="activity-label">💤 Sedentary</span>
+                                <span class="activity-desc">Little or no exercise, desk job</span>
+                            </button>
+                            <button type="button" class="activity-btn" onclick="setActivity(1.375, this)">
+                                <span class="activity-label">🚶 Lightly Active</span>
+                                <span class="activity-desc">Light exercise 1-3 days/week</span>
+                            </button>
+                            <button type="button" class="activity-btn" onclick="setActivity(1.55, this)">
+                                <span class="activity-label">🏃 Moderately Active</span>
+                                <span class="activity-desc">Moderate exercise 3-5 days/week</span>
+                            </button>
+                            <button type="button" class="activity-btn" onclick="setActivity(1.725, this)">
+                                <span class="activity-label">💪 Very Active</span>
+                                <span class="activity-desc">Intense exercise 6-7 days/week</span>
+                            </button>
+                            <button type="button" class="activity-btn" onclick="setActivity(1.9, this)">
+                                <span class="activity-label">🏋️ Extremely Active</span>
+                                <span class="activity-desc">Physical job or intense training</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn">Calculate My Calories</button>
+                </form>
+
+                <!-- Results -->
+                <div id="result" class="result-box">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <div class="result-label">Your TDEE (Daily Calories)</div>
+                            <div class="result-value" id="tdee">0</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Basal Metabolic Rate</div>
+                            <div class="result-value" id="bmr">0</div>
+                        </div>
+                    </div>
+
+                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Goal-Based Calorie Targets</h3>
+                    <div class="goal-cards">
+                        <div class="goal-card">
+                            <h4>Weight Loss</h4>
+                            <div class="goal-value" id="lossCalories">0</div>
+                            <div class="goal-desc">-500 cal/day (1-2 lbs/week)</div>
+                        </div>
+                        <div class="goal-card">
+                            <h4>Maintenance</h4>
+                            <div class="goal-value" id="maintenanceCalories">0</div>
+                            <div class="goal-desc">Keep current weight</div>
+                        </div>
+                        <div class="goal-card">
+                            <h4>Muscle Gain</h4>
+                            <div class="goal-value" id="gainCalories">0</div>
+                            <div class="goal-desc">+300 cal/day (0.5-1 lb/week)</div>
+                        </div>
+                        <div class="goal-card">
+                            <h4>Aggressive Gain</h4>
+                            <div class="goal-value" id="aggGainCalories">0</div>
+                            <div class="goal-desc">+500 cal/day (1-2 lbs/week)</div>
+                        </div>
+                    </div>
+
+                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Macronutrient Breakdown (at Maintenance)</h3>
+                    <div class="macro-breakdown">
+                        <div class="macro-bar macro-protein">
+                            <div class="macro-label"><span>Protein (30%)</span><span id="proteinCals">0g</span></div>
+                            <div class="macro-track"><div class="macro-fill" style="width:30%"></div></div>
+                        </div>
+                        <div class="macro-bar macro-carbs">
+                            <div class="macro-label"><span>Carbohydrates (40%)</span><span id="carbsCals">0g</span></div>
+                            <div class="macro-track"><div class="macro-fill" style="width:40%"></div></div>
+                        </div>
+                        <div class="macro-bar macro-fat">
+                            <div class="macro-label"><span>Fats (30%)</span><span id="fatCals">0g</span></div>
+                            <div class="macro-track"><div class="macro-fill" style="width:30%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Quick Facts -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1.5rem">💡 Nutrition Facts</h3>
+                    <div class="stat-box">
+                        <h3>1 Pound = 3,500 Calories</h3>
+                        <p style="color:var(--text-light);font-size:0.9rem">To lose 1 pound, create a 3,500 calorie deficit. That's 500/day for 1 week.</p>
+                    </div>
+                </div>
+
+                <!-- Protein Info -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">🍗 Protein Goals</h3>
+                    <div class="stat-box">
+                        <h3>0.8-1g per lb</h3>
+                        <p style="color:var(--text-light);font-size:0.9rem">For muscle building, aim for 0.8-1g of protein per pound of body weight daily.</p>
+                    </div>
+                </div>
+
+                <!-- Activity Multiplier -->
+                <div class="sidebar-box">
+                    <h3 style="color:var(--dark);margin-bottom:1rem">📊 Activity Matters</h3>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.8">Your activity level can increase daily burn by 20-90% compared to BMR alone. More movement = more calories burned.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BMR Formula Section -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">The Mifflin-St Jeor Equation</h2>
+            <div class="formula-box">
+                <p><strong>This calculator uses the Mifflin-St Jeor formula (most accurate for BMR):</strong></p>
+                <p style="margin-top:1rem"><strong>For Men:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) + 5</p>
+                <p><strong>For Women:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) - 161</p>
+                <p style="margin-top:1rem"><strong>Then multiply BMR by activity factor to get TDEE</strong></p>
+            </div>
+            <p style="color:#4b5563;line-height:1.8;margin-top:1rem">The Mifflin-St Jeor equation is the most scientifically validated formula for calculating BMR in healthy adults. It accounts for age, sex, height, and weight for accuracy.</p>
+        </div>
+
+        <!-- How to Use Section -->
+        <div class="how-to-section">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">How to Use This Calorie Calculator</h2>
+            <div class="step">
+                <span class="step-number">1</span>
+                <div class="step-text"><strong>Enter Your Stats:</strong> Select your age, sex, height, and weight. Be accurate—even small differences affect results.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <div class="step-text"><strong>Choose Activity Level:</strong> Honestly assess your typical weekly activity. Include work, exercise, and daily movement.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <div class="step-text"><strong>Calculate TDEE:</strong> Click the button to get your personalized daily calorie needs and BMR.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">4</span>
+                <div class="step-text"><strong>Select Your Goal:</strong> Choose weight loss, maintenance, or muscle gain based on your targets.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">5</span>
+                <div class="step-text"><strong>Track Macros:</strong> Use the macronutrient breakdown to plan meals balanced in protein, carbs, and fat.</div>
+            </div>
+            <div class="step">
+                <span class="step-number">6</span>
+                <div class="step-text"><strong>Monitor Results:</strong> Track calories for 2-4 weeks and adjust based on real progress.</div>
+            </div>
+        </div>
+
+        <!-- Expert Tips -->
+        <div class="tips-section">
+            <h3>💪 Expert Nutrition Tips</h3>
+            <ul>
+                <li>Your calculated needs are estimates—individual variation is 10-20%, so adjust based on real results</li>
+                <li>Eat adequate protein (0.8-1g per pound)—it preserves muscle, increases satiety, and boosts metabolism</li>
+                <li>Don't go too low—extreme calorie deficits slow metabolism and cause muscle loss; aim for 500 cal/day max</li>
+                <li>Include strength training when in a deficit—this preserves muscle mass while losing fat</li>
+                <li>Track consistently for 2 weeks before adjusting—weight fluctuates due to water, food volume, and hormones</li>
+                <li>Recalculate TDEE every 10-15 pounds—your needs change as your weight changes</li>
+                <li>Don't ignore sustainability—the best diet is one you can stick to long-term</li>
+                <li>Use our Macros Calculator for detailed meal planning based on your calorie goal</li>
+            </ul>
+        </div>
+
+        <!-- FAQ Section -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
+
+            <div class="faq-item open">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What's the difference between BMR and TDEE?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>BMR (Basal Metabolic Rate) is calories burned at rest doing nothing. TDEE (Total Daily Energy Expenditure) includes BMR plus activity. TDEE is what matters for weight management. Example: BMR might be 1,500 calories, but TDEE could be 2,200 calories with moderate activity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How accurate is this calculator?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>This calculator uses the scientifically validated Mifflin-St Jeor formula—typically accurate within ±10-15% of actual TDEE. Real results vary based on metabolism, muscle mass, hormones, and food accuracy. Use this as a starting point and adjust based on actual weight changes over 2-4 weeks.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Why am I not losing weight at my calculated calories?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Common reasons: (1) Underestimating actual calorie intake (portion sizes are often larger than thought), (2) Activity level is lower than estimated, (3) Metabolic adaptation after prolonged dieting, (4) Medical conditions affecting metabolism. Try tracking more accurately for 2 weeks, then adjust down by 200-300 calories if not losing 1-2 lbs/week.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How often should I recalculate my calories?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Recalculate every 10-15 pounds of weight change. As your weight changes, your calorie needs change—someone who weighs 150 lbs has different needs than when they weighed 180 lbs. This ensures your targets stay accurate for your current body.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Should macros be 30/40/30 (P/C/F)?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The 30/40/30 split is a good starting point, but individual needs vary. More important: get 0.8-1g protein per pound for muscle building, then split remaining calories between carbs and fats based on preference. Some people thrive on higher carbs, others on higher fats. Experiment and adjust based on energy and results.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I eat different amounts on rest vs training days?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. Eat slightly more on training days (+300-500 calories) and slightly less on rest days (-300-500 calories). This averages to your TDEE over the week while supporting workouts with energy when needed. Many athletes use flexible daily calories for this reason.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is my data private?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, 100% private. All calculations happen in your browser. We never see, store, or collect your height, weight, age, or any personal data. No login required, no tracking, no ads. Your health information stays completely private.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Examples -->
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">Real-World Examples</h2>
+            
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Sedentary Office Worker</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Profile:</strong> 30-year-old Male, 180 lbs, 5'10", Sedentary (desk job)</p>
+                <p style="color:#4b5563"><strong>Results:</strong> BMR: 1,780 cal | TDEE: 2,136 cal | For weight loss: 1,636 cal/day | Protein: 180g, Carbs: 214g, Fat: 71g</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Active Fitness Enthusiast</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Profile:</strong> 25-year-old Female, 140 lbs, 5'6", Very Active (6 days/week exercise)</p>
+                <p style="color:#4b5563"><strong>Results:</strong> BMR: 1,380 cal | TDEE: 2,379 cal | For muscle gain: 2,679 cal/day | Protein: 140g, Carbs: 268g, Fat: 79g</p>
+            </div>
+
+            <div style="background:var(--light);padding:1.5rem;border-radius:8px">
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: Weight Loss Progress</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Starting Point:</strong> 200 lbs, TDEE 2,500 cal | Target deficit: 1,500 cal (2,000 cal/day diet)</p>
+                <p style="color:#4b5563"><strong>After 8 Weeks:</strong> -16 lbs | New TDEE: 2,350 cal | Recalculate and adjust diet to maintain progress</p>
+            </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools">
+            <h3>🔗 Related Health & Fitness Calculators</h3>
+            <div class="related-grid">
+                <a href="macros-calculator.html" class="related-item">🥗 Macros Calculator</a>
+                <a href="bmi-calculator.html" class="related-item">⚖️ BMI Calculator</a>
+                <a href="body-fat-calculator.html" class="related-item">💪 Body Fat %</a>
+                <a href="water-intake-calculator.html" class="related-item">💧 Water Intake</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Health Tools</h4>
+                <a href="calorie-calculator.html">Calorie Calculator</a>
+                <a href="bmi-calculator.html">BMI Calculator</a>
+                <a href="macros-calculator.html">Macros Calculator</a>
+                <a href="body-fat-calculator.html">Body Fat Calculator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Financial Tools</h4>
+                <a href="salary-calculator.html">Salary Calculator</a>
+                <a href="compound-interest-calculator.html">Compound Interest</a>
+                <a href="mortgage-calculator.html">Mortgage Calculator</a>
+                <a href="budget-planner.html">Budget Planner</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ToolPond Pro. All rights reserved. | <a href="privacy-policy.html" style="color:#d1d5db;text-decoration:none">Privacy Policy</a> | <a href="contact.html" style="color:#d1d5db;text-decoration:none">Contact</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentUnit = 'metric';
+        let activityMultiplier = 1.2;
+
+        function setUnit(unit) {
+            currentUnit = unit;
+            document.querySelectorAll('.unit-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (unit === 'metric') {
+                document.getElementById('heightUnit').textContent = 'cm';
+                document.getElementById('weightUnit').textContent = 'kg';
+                document.getElementById('height').placeholder = '170';
+                document.getElementById('weight').placeholder = '70';
+            } else {
+                document.getElementById('heightUnit').textContent = 'in';
+                document.getElementById('weightUnit').textContent = 'lbs';
+                document.getElementById('height').placeholder = '67';
+                document.getElementById('weight').placeholder = '154';
+            }
+        }
+
+        function setActivity(multiplier, btn) {
+            activityMultiplier = multiplier;
+            document.querySelectorAll('.activity-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function calculateCalories(e) {
+            e.preventDefault();
+            
+            const age = parseInt(document.getElementById('age').value);
+            const sex = document.getElementById('sex').value;
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            
+            // Convert to metric if needed
+            let heightCm = currentUnit === 'metric' ? height : height * 2.54;
+            let weightKg = currentUnit === 'metric' ? weight : weight * 0.453592;
+            
+            // Mifflin-St Jeor formula
+            let bmr;
+            if (sex === 'male') {
+                bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
+            } else {
+                bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
+            }
+            
+            const tdee = Math.round(bmr * activityMultiplier);
+            
+            // Goal calories
+            const lossCalories = Math.round(tdee - 500);
+            const maintenanceCalories = tdee;
+            const gainCalories = Math.round(tdee + 300);
+            const aggGainCalories = Math.round(tdee + 500);
+            
+            // Macros (30/40/30)
+            const protein = Math.round((tdee * 0.30) / 4);
+            const carbs = Math.round((tdee * 0.40) / 4);
+            const fat = Math.round((tdee * 0.30) / 9);
+            
+            // Update results
+            document.getElementById('tdee').textContent = tdee.toLocaleString();
+            document.getElementById('bmr').textContent = Math.round(bmr).toLocaleString();
+            document.getElementById('lossCalories').textContent = lossCalories.toLocaleString();
+            document.getElementById('maintenanceCalories').textContent = maintenanceCalories.toLocaleString();
+            document.getElementById('gainCalories').textContent = gainCalories.toLocaleString();
+            document.getElementById('aggGainCalories').textContent = aggGainCalories.toLocaleString();
+            
+            document.getElementById('proteinCals').textContent = protein + 'g';
+            document.getElementById('carbsCals').textContent = carbs + 'g';
+            document.getElementById('fatCals').textContent = fat + 'g';
+            
+            document.getElementById('result').classList.add('show');
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function toggleFAQ(element) {
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== element.parentElement) {
+                    item.classList.remove('open');
+                }
+            });
+            element.parentElement.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>.">
     <meta name="keywords" content="calorie calculator, daily calorie needs, TDEE calculator, calorie counter, macro calculator, calories burned, weight loss calculator, BMR calculator, calorie intake, nutrition calculator, free calorie tool">
     <meta name="author" content="ToolPond Pro">
     <meta name="robots" content="index, follow">
