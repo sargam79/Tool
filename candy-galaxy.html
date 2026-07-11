@@ -216,6 +216,7 @@
   .candy {
     width: 80%;
     height: 80%;
+    position: relative;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
     transition: transform 0.3s ease;
   }
@@ -581,15 +582,15 @@ const CANDY_TYPES = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
 
 const CANDY_SVGS = {
   red: `<svg viewBox="0 0 100 100" class="candy"><defs><radialGradient id="rg" cx="30%" cy="30%"><stop offset="0%" stop-color="#ff8a8a"/><stop offset="100%" stop-color="#e63946"/></radialGradient><filter id="gs"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#e63946" flood-opacity="0.5"/></filter></defs><circle cx="50" cy="50" r="38" fill="url(#rg)" filter="url(#gs)"/><circle cx="35" cy="35" r="12" fill="rgba(255,255,255,0.4)"/><ellipse cx="50" cy="50" rx="28" ry="28" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>`,
-  
+
   blue: `<svg viewBox="0 0 100 100" class="candy"><defs><radialGradient id="bg" cx="30%" cy="30%"><stop offset="0%" stop-color="#74c0fc"/><stop offset="100%" stop-color="#1971c2"/></radialGradient><filter id="bs"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1971c2" flood-opacity="0.5"/></filter></defs><rect x="15" y="15" width="70" height="70" rx="20" fill="url(#bg)" filter="url(#bs)" transform="rotate(45 50 50)"/><rect x="28" y="28" width="20" height="20" rx="6" fill="rgba(255,255,255,0.4)" transform="rotate(45 50 50)"/><rect x="35" y="35" width="30" height="30" rx="10" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" transform="rotate(45 50 50)"/></svg>`,
-  
+
   green: `<svg viewBox="0 0 100 100" class="candy"><defs><radialGradient id="gg" cx="30%" cy="30%"><stop offset="0%" stop-color="#69db7c"/><stop offset="100%" stop-color="#2f9e44"/></radialGradient><filter id="gs2"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#2f9e44" flood-opacity="0.5"/></filter></defs><polygon points="50,10 85,35 75,75 25,75 15,35" fill="url(#gg)" filter="url(#gs2)"/><polygon points="35,30 50,22 65,30 60,50 50,58 40,50" fill="rgba(255,255,255,0.4)"/><polygon points="30,40 70,40 65,65 35,65" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>`,
-  
+
   yellow: `<svg viewBox="0 0 100 100" class="candy"><defs><radialGradient id="yg" cx="30%" cy="30%"><stop offset="0%" stop-color="#ffe066"/><stop offset="100%" stop-color="#f08c00"/></radialGradient><filter id="ys"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#f08c00" flood-opacity="0.5"/></filter></defs><polygon points="50,12 61,38 88,38 66,55 75,82 50,66 25,82 34,55 12,38 39,38" fill="url(#yg)" filter="url(#ys)"/><polygon points="50,22 56,38 72,38 60,48 65,64 50,54 35,64 40,48 28,38 44,38" fill="rgba(255,255,255,0.4)"/></svg>`,
-  
+
   purple: `<svg viewBox="0 0 100 100" class="candy"><defs><radialGradient id="pg" cx="30%" cy="30%"><stop offset="0%" stop-color="#da77f2"/><stop offset="100%" stop-color="#9c36b5"/></radialGradient><filter id="ps"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#9c36b5" flood-opacity="0.5"/></filter></defs><path d="M50 12 C65 12, 78 25, 78 40 C78 55, 65 68, 50 88 C35 68, 22 55, 22 40 C22 25, 35 12, 50 12Z" fill="url(#pg)" filter="url(#ps)"/><ellipse cx="42" cy="32" rx="10" ry="14" fill="rgba(255,255,255,0.4)"/><path d="M40 40 Q50 50 60 40 Q50 60 40 40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>`,
-  
+
   orange: `<svg viewBox="0 0 100 100" class="candy"><defs><radialGradient id="og" cx="30%" cy="30%"><stop offset="0%" stop-color="#ffa94d"/><stop offset="100%" stop-color="#e8590c"/></radialGradient><filter id="os"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#e8590c" flood-opacity="0.5"/></filter></defs><path d="M20 30 Q20 15, 35 15 L65 15 Q80 15, 80 30 L80 70 Q80 85, 65 85 L35 85 Q20 85, 20 70Z" fill="url(#og)" filter="url(#os)"/><rect x="30" y="25" width="18" height="12" rx="4" fill="rgba(255,255,255,0.4)"/><rect x="30" y="45" width="40" height="25" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>`
 };
 
@@ -744,18 +745,52 @@ class CandyGalaxyGame {
     }
   }
 
+  /** Animate candy A sliding from cellA to cellB's position, and candy B
+   *  sliding from cellB to cellA's position. At the end of the animation,
+   *  swap the board data and re-render both cells so the candies snap into
+   *  their correct final positions cleanly. */
+  animateSwap(cellA, cellB, rA, cA, rB, cB) {
+    return new Promise(resolve => {
+      const candyA = cellA.querySelector('.candy');
+      const candyB = cellB.querySelector('.candy');
+      const rectA = cellA.getBoundingClientRect();
+      const rectB = cellB.getBoundingClientRect();
+      const dx = rectB.left - rectA.left;
+      const dy = rectB.top - rectA.top;
+
+      if (candyA) {
+        candyA.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        candyA.style.transform = `translate(${dx}px, ${dy}px)`;
+        candyA.style.zIndex = '10';
+      }
+      if (candyB) {
+        candyB.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        candyB.style.transform = `translate(${-dx}px, ${-dy}px)`;
+        candyB.style.zIndex = '10';
+      }
+
+      setTimeout(() => {
+        // Swap board data
+        const temp = this.board[rA][cA];
+        this.board[rA][cA] = this.board[rB][cB];
+        this.board[rB][cB] = temp;
+        // Re-render both cells with fresh untransformed candies
+        cellA.innerHTML = CANDY_SVGS[this.board[rA][cA]];
+        cellB.innerHTML = CANDY_SVGS[this.board[rB][cB]];
+        resolve();
+      }, 250);
+    });
+  }
+
   async swapCandies(r1, c1, r2, c2) {
     this.isProcessing = true;
     audio.swap();
 
-    const temp = this.board[r1][c1];
-    this.board[r1][c1] = this.board[r2][c2];
-    this.board[r2][c2] = temp;
-
     const cell1 = this.getCellElement(r1, c1);
     const cell2 = this.getCellElement(r2, c2);
-    cell1.innerHTML = CANDY_SVGS[this.board[r1][c1]];
-    cell2.innerHTML = CANDY_SVGS[this.board[r2][c2]];
+
+    // Animate the visual swap
+    await this.animateSwap(cell1, cell2, r1, c1, r2, c2);
 
     const matches = this.findMatches();
     if (matches.length > 0) {
@@ -766,19 +801,17 @@ class CandyGalaxyGame {
         this.checkGameOver();
       }
     } else {
+      // No match — animate back to original positions
       audio.invalid();
-      await new Promise(r => setTimeout(r, 200));
-      this.board[r2][c2] = this.board[r1][c1];
-      this.board[r1][c1] = temp;
-      cell1.innerHTML = CANDY_SVGS[this.board[r1][c1]];
-      cell2.innerHTML = CANDY_SVGS[this.board[r2][c2]];
+      await new Promise(r => setTimeout(r, 100));
+      await this.animateSwap(cell1, cell2, r1, c1, r2, c2);
     }
     this.isProcessing = false;
   }
 
   findMatches() {
     const matches = new Set();
-    
+
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols - 2; c++) {
         const type = this.board[r][c];
@@ -870,7 +903,7 @@ class CandyGalaxyGame {
     const center = matches[Math.floor(matches.length / 2)];
     const cell = this.getCellElement(center.r, center.c);
     const rect = cell.getBoundingClientRect();
-    
+
     const text = document.createElement('div');
     text.className = 'combo-text';
     text.textContent = `+${points}`;
@@ -878,7 +911,7 @@ class CandyGalaxyGame {
     text.style.top = `${rect.top}px`;
     text.style.color = points > 50 ? '#ffd700' : '#ff6b9d';
     document.body.appendChild(text);
-    
+
     setTimeout(() => text.remove(), 1200);
   }
 
@@ -887,7 +920,7 @@ class CandyGalaxyGame {
       const cell = this.getCellElement(r, c);
       const rect = cell.getBoundingClientRect();
       const colors = ['#ff6b9d', '#00d4ff', '#ffd700', '#00ff88', '#da77f2', '#ffa94d'];
-      
+
       for (let i = 0; i < 6; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -910,7 +943,7 @@ class CandyGalaxyGame {
     document.getElementById('movesDisplay').classList.toggle('low-moves', this.moves > 0 && this.moves <= 5);
     document.getElementById('levelDisplay').textContent = this.level;
     document.getElementById('targetDisplay').textContent = this.target.toLocaleString();
-    
+
     const progress = Math.min((this.score / this.target) * 100, 100);
     document.getElementById('levelProgress').style.width = `${progress}%`;
   }
@@ -935,7 +968,7 @@ class CandyGalaxyGame {
       audio.levelFail();
     }
     starEls.forEach((el, i) => el.classList.toggle('on', i < stars));
-    
+
     document.getElementById('modalScore').textContent = this.score.toLocaleString();
     modal.classList.add('active');
   }
@@ -977,7 +1010,7 @@ class CandyGalaxyGame {
     }
     this.renderBoard();
     this.updateUI();
-    
+
     const matches = this.findMatches();
     if (matches.length > 0) {
       setTimeout(() => this.processMatches(matches), 300);
@@ -989,7 +1022,7 @@ class CandyGalaxyGame {
     audio.button();
     const cells = this.boardEl.querySelectorAll('.cell');
     cells.forEach(c => c.classList.remove('hint-flash'));
-    
+
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const directions = [[0,1],[1,0],[0,-1],[-1,0]];
@@ -999,11 +1032,11 @@ class CandyGalaxyGame {
             const temp = this.board[r][c];
             this.board[r][c] = this.board[nr][nc];
             this.board[nr][nc] = temp;
-            
+
             const matches = this.findMatches();
             this.board[nr][nc] = this.board[r][c];
             this.board[r][c] = temp;
-            
+
             if (matches.length > 0) {
               this.getCellElement(r, c).classList.add('hint-flash');
               this.getCellElement(nr, nc).classList.add('hint-flash');
