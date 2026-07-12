@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+
+<title>Laser Mirrors — Free Online Laser Puzzle Game | ToolPond Pro</title>
+<meta name="description" content="Play Laser Mirrors free online — a futuristic laser-reflection puzzle game. Rotate mirrors to guide the beam through splitters, portals, and color filters to light every crystal. Hints, undo, star ratings, daily puzzle. No download, no login."/>
+<meta name="keywords" content="laser mirrors, laser puzzle game, mirror reflection puzzle, laser beam game, light puzzle game, free puzzle games online, HTML5 puzzle game, no download puzzle game, mobile puzzle game, brain teaser game online, logic puzzle game"/>
+<meta name="author" content="ToolPond Pro"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://toolpond.org/laser-mirrors.html"/>
+<link rel="manifest" href="/laser-mirrors-manifest.json"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0E1A'/%3E%3Cline x1='15' y1='50' x2='85' y2='50' stroke='%2300FFD4' stroke-width='6'/%3E%3Ccircle cx='85' cy='50' r='10' fill='%2300FFD4'/%3E%3C/svg%3E"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Laser Mirrors — Free Online Laser Puzzle Game"/>
+<meta property="og:description" content="Rotate mirrors to guide the beam through splitters, portals, and color filters to light every crystal. Free, no download, no login."/>
+<meta property="og:url" content="https://toolpond.org/laser-mirrors.html"/>
+<meta property="og:site_name" content="ToolPond Pro Games"/>
+<meta property="og:image" content="https://toolpond.org/og-laser-mirrors.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="en_US"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Laser Mirrors — Free Online Laser Puzzle Game"/>
+<meta name="twitter:description" content="Rotate mirrors, guide the beam, light every crystal. Free, no download needed."/>
+<meta name="twitter:image" content="https://toolpond.org/og-laser-mirrors.png"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Laser Mirrors",
+  "url": "https://toolpond.org/laser-mirrors.html",
+  "description": "Laser Mirrors is a free online laser-reflection puzzle game. Rotate mirrors to guide a beam through splitters, portals, and color filters to light every target crystal. Hints, undo, star ratings, and a daily puzzle. No download, no login required.",
+  "genre": ["Puzzle", "Logic", "Casual"],
+  "gamePlatform": ["Web Browser", "Android", "iOS"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "publisher": { "@type": "Organization", "name": "ToolPond Pro" }
+}
+</script>
+<style>
+:root{
+  --cyan:#00FFD4; --gold:#FFC93C; --danger:#FF5D6C; --purple:#A45EFF;
+  --red-beam:#FF4B4B; --blue-beam:#3EA8FF; --green-beam:#3ADC7C;
+  --text:#EAF1FF; --text-dim:#7C88AE;
+  --shadow: 0 14px 34px rgba(0,0,0,0.45);
+  --panel-solid:#131A2E;
+  --bg1:#080B14; --bg2:#0D1220; --bg3:#050710;
+  --cell-bg: rgba(255,255,255,0.03);
+}
+body.high-contrast{ --shadow: 0 0 0 2px var(--cyan), 0 14px 34px rgba(0,0,0,0.5); }
+body.reduced-motion *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html,body{ margin:0; padding:0; height:100%; overscroll-behavior:none; user-select:none; font-family:'Inter',system-ui,sans-serif; color:var(--text); }
+body{ background: radial-gradient(1000px 600px at 50% -10%, rgba(0,255,212,0.08), transparent 60%), linear-gradient(160deg, var(--bg1), var(--bg3) 70%); min-height:100%; }
+
+#particles{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+.particle{ position:absolute; border-radius:50%; background: rgba(0,255,212,0.5); animation: floatUp linear infinite; }
+@keyframes floatUp{ from{ transform:translateY(0); opacity:0.6; } to{ transform:translateY(-110vh); opacity:0; } }
+
+#app{ position:relative; z-index:1; max-width:480px; margin:0 auto; min-height:100dvh; padding: max(10px, env(safe-area-inset-top)) 16px 20px; display:flex; flex-direction:column; }
+
+header{ display:flex; align-items:center; justify-content:space-between; padding:4px 2px 10px; gap:8px; }
+.logo{ font-family:'Orbitron',sans-serif; font-weight:800; font-size:18px; margin:0; letter-spacing:0.5px; }
+.logo span{ color: var(--cyan); text-shadow: 0 0 12px rgba(0,255,212,0.6); }
+.header-actions{ display:flex; gap:6px; }
+.icon-btn{ background: var(--panel-solid); border:1px solid rgba(255,255,255,0.08); color:var(--text); width:38px; height:38px; border-radius:11px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:var(--shadow); font-size:15px; }
+.icon-btn:active{ transform:scale(0.88); }
+
+.hud-row{ display:flex; gap:8px; margin-bottom:10px; }
+.hud-chip{ flex:1; background:var(--panel-solid); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:8px 10px; text-align:center; box-shadow:var(--shadow); }
+.hud-chip .n{ font-family:'Orbitron',sans-serif; font-weight:700; font-size:16px; }
+.hud-chip .l{ font-size:9px; letter-spacing:0.6px; text-transform:uppercase; color:var(--text-dim); font-weight:700; }
+
+#board-wrap{ background: var(--panel-solid); border:1px solid rgba(0,255,212,0.12); border-radius:16px; padding:8px; box-shadow:var(--shadow); position:relative; }
+#board{ display:grid; gap:2px; position:relative; aspect-ratio:1/1; }
+.cell{ background:var(--cell-bg); border-radius:4px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.cell.beam-glow{ box-shadow: inset 0 0 10px 2px var(--beam-color, var(--cyan)); background: color-mix(in srgb, var(--beam-color, var(--cyan)) 18%, transparent); }
+.cell-wall{ background: repeating-linear-gradient(45deg, #2a2f45 0 6px, #1c2036 6px 12px); }
+.cell-emitter{ background: radial-gradient(circle, rgba(0,255,212,0.3), transparent 70%); }
+.emitter-icon{ font-size: 1.4em; filter: drop-shadow(0 0 6px var(--cyan)); }
+.mirror-shape{ width:70%; height:70%; position:relative; cursor:pointer; transition: transform 0.15s ease; }
+.mirror-shape:active{ transform: scale(0.9); }
+.mirror-shape::before{
+  content:''; position:absolute; top:50%; left:50%; width:8%; height:130%;
+  background: linear-gradient(180deg, #cfe9ff, #6fa8dc); border-radius:4px;
+  box-shadow: 0 0 8px rgba(150,210,255,0.7);
+}
+.mirror-shape.orient-0::before{ transform: translate(-50%,-50%) rotate(45deg); }
+.mirror-shape.orient-1::before{ transform: translate(-50%,-50%) rotate(-45deg); }
+.mirror-shape.movable::before{ background: linear-gradient(180deg, #ffe9a8, #dcb86f); box-shadow: 0 0 8px rgba(255,220,150,0.7); }
+.splitter-shape{ width:60%; height:60%; border-radius:4px; background: linear-gradient(135deg, var(--purple), #6B2FBF); box-shadow: 0 0 10px rgba(164,94,255,0.6); }
+.portal-shape{ width:65%; height:65%; border-radius:50%; border:3px solid; animation: portalSpin 3s linear infinite; }
+@keyframes portalSpin{ to{ transform: rotate(360deg); } }
+.filter-shape{ width:100%; height:100%; opacity:0.4; }
+.crystal-shape{ width:65%; height:65%; clip-path: polygon(50% 0%, 90% 35%, 75% 100%, 25% 100%, 10% 35%); transition: all 0.3s ease; }
+.crystal-shape.lit{ animation: crystalPulse 1s ease-in-out infinite; box-shadow: 0 0 20px 6px currentColor; }
+@keyframes crystalPulse{ 0%,100%{ filter: brightness(1); } 50%{ filter: brightness(1.6); } }
+
+#tray{ display:flex; justify-content:center; gap:10px; margin-top:10px; min-height:50px; flex-wrap:wrap; }
+.tray-mirror{ width:44px; height:44px; background:var(--panel-solid); border:2px dashed rgba(255,220,150,0.5); border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:grab; }
+
+#action-bar{ display:flex; justify-content:space-around; gap:6px; margin-top:14px; }
+.action-btn{ flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; background: var(--panel-solid); border:1px solid rgba(255,255,255,0.06); color:var(--text); border-radius:14px; padding: 9px 3px 7px; cursor:pointer; box-shadow: var(--shadow); position:relative; }
+.action-btn .icon{ font-size:16px; }
+.action-btn .label{ font-size:8px; font-weight:700; color:var(--text-dim); }
+.badge{ position:absolute; top:2px; right:4px; background:var(--danger); color:#fff; font-size:8.5px; font-weight:800; border-radius:999px; padding:1px 4px; min-width:13px; text-align:center; }
+
+.overlay-modal{ position:fixed; inset:0; background:rgba(4,6,14,0.78); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; z-index:200; padding:20px; }
+.overlay-modal.show{ display:flex; }
+.modal{ background: var(--panel-solid); border:1px solid rgba(0,255,212,0.15); border-radius:22px; padding:24px 20px 20px; max-width:360px; width:100%; text-align:center; box-shadow:0 30px 60px -15px rgba(0,0,0,0.6); max-height:82vh; overflow-y:auto; }
+.modal h2{ font-family:'Orbitron',sans-serif; font-size:20px; margin:0 0 10px; color: var(--cyan); }
+.modal p.sub{ color:var(--text-dim); margin:0 0 14px; font-size:13.5px; }
+.stars-row{ font-size:34px; margin-bottom:12px; }
+.stars-row span{ opacity:0.25; }
+.stars-row span.on{ opacity:1; text-shadow: 0 0 14px var(--gold); }
+.btn{ display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:13px; border-radius:14px; font-weight:800; font-size:14.5px; border:none; cursor:pointer; margin-top:8px; }
+.btn-primary{ background: linear-gradient(135deg, var(--cyan), #2E9BFF); color:#04101a; }
+.btn-ghost{ background: transparent; color: var(--text-dim); box-shadow:none; text-decoration:underline; font-size:13px; }
+.settings-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 2px; border-bottom:1px solid rgba(255,255,255,0.07); text-align:left; }
+.settings-row span{ font-size:13.5px; font-weight:700; }
+.switch{ position:relative; width:42px; height:23px; background:#242b45; border-radius:999px; cursor:pointer; flex-shrink:0; }
+.switch.on{ background: var(--cyan); }
+.switch .knob{ position:absolute; top:3px; left:3px; width:17px; height:17px; background:#fff; border-radius:50%; transition: left .18s ease; }
+.switch.on .knob{ left:22px; }
+.ach-item{ display:flex; align-items:center; gap:10px; padding:8px 2px; border-bottom:1px solid rgba(255,255,255,0.06); text-align:left; }
+.ach-item .ico{ font-size:20px; width:28px; text-align:center; }
+.ach-item.locked{ opacity:0.35; }
+.ach-item .txt{ flex:1; }
+.ach-item .txt b{ display:block; font-size:12.5px; }
+.ach-item .txt small{ color:var(--text-dim); font-size:10.5px; }
+.stat-line{ display:flex; justify-content:space-between; font-size:13px; color:var(--text-dim); padding:6px 2px; border-bottom:1px solid rgba(255,255,255,0.06); }
+.stat-line b{ color:var(--text); }
+.tab-row{ display:flex; gap:6px; margin-bottom:14px; }
+.tab-btn{ flex:1; background:var(--cell-bg); border:none; padding:8px; border-radius:10px; font-weight:700; font-size:11px; color:var(--text-dim); cursor:pointer; }
+.tab-btn.active{ background: var(--cyan); color:#04101a; }
+
+#toast{ position:fixed; top: max(14px, env(safe-area-inset-top)); left:50%; transform:translateX(-50%) translateY(-24px); background:var(--panel-solid); color:var(--text); padding:10px 18px; border-radius:999px; font-weight:800; font-size:12.5px; opacity:0; transition:all .25s ease; z-index:300; pointer-events:none; box-shadow:var(--shadow); border:1px solid rgba(0,255,212,0.2); }
+#toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+#confetti-layer{ position:fixed; inset:0; pointer-events:none; z-index:250; overflow:hidden; }
+.confetto{ position:absolute; width:8px; height:8px; border-radius:2px; }
+
+.how-to-play{ margin-top:20px; background: var(--panel-solid); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:16px 18px; box-shadow:var(--shadow); }
+.how-to-play h2{ font-family:'Orbitron',sans-serif; font-size:14px; margin:0 0 10px; color: var(--cyan); }
+.how-to-play ol{ margin:0; padding-left:20px; color:var(--text-dim); font-size:13.5px; line-height:1.65; }
+.how-to-play li{ margin-bottom:6px; }
+.how-to-play li strong{ color:var(--text); }
+
+.more-games{ margin-top:20px; }
+.more-games-head{ display:flex; justify-content:space-between; align-items:baseline; padding:0 2px 10px; font-family:'Orbitron',sans-serif; font-weight:700; font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
+.more-games-all{ color:var(--cyan); text-decoration:none; font-weight:800; text-transform:none; font-size:13px; }
+.more-games-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.game-card{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; background:var(--panel-solid); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:12px 10px; text-decoration:none; color:var(--text); box-shadow:var(--shadow); }
+.game-card-emoji{ font-size:19px; }
+.game-card-name{ font-weight:800; font-size:12px; line-height:1.2; }
+.game-card-tag{ font-size:10px; color:var(--text-dim); font-weight:700; }
+
+.site-footer{ margin-top:18px; text-align:center; font-size:12px; color:var(--text-dim); padding-bottom:4px; }
+.site-footer a{ color:var(--text-dim); text-decoration:none; }
+.site-footer span{ margin:0 6px; opacity:0.5; }
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<div id="app">
+
+  <header>
+    <h1 class="logo">Laser <span>Mirrors</span></h1>
+    <div class="header-actions">
+      <button class="icon-btn" id="achievements-btn" aria-label="Achievements">🏆</button>
+      <button class="icon-btn" id="settings-btn" aria-label="Settings">⚙️</button>
+    </div>
+  </header>
+
+  <div class="hud-row">
+    <div class="hud-chip"><div class="n" id="level-num">1</div><div class="l">Level</div></div>
+    <div class="hud-chip"><div class="n" id="rotations-used">0</div><div class="l">Rotations</div></div>
+    <div class="hud-chip"><div class="n" id="par-display">0</div><div class="l">Best Known</div></div>
+    <div class="hud-chip"><div class="n" id="crystals-lit">0/1</div><div class="l">Crystals</div></div>
+  </div>
+
+  <div id="board-wrap">
+    <div id="board"></div>
+  </div>
+
+  <div id="tray"></div>
+
+  <div id="action-bar">
+    <button class="action-btn" id="undo-btn"><span class="icon">↩️</span><span class="label">Undo</span></button>
+    <button class="action-btn" id="restart-btn"><span class="icon">🔄</span><span class="label">Restart</span></button>
+    <button class="action-btn" id="hint-btn"><span class="icon">💡</span><span class="label">Hint</span><span class="badge" id="hint-badge">3</span></button>
+    <button class="action-btn" id="daily-btn"><span class="icon">📅</span><span class="label">Daily</span></button>
+  </div>
+
+  <section class="how-to-play" aria-label="How to play Laser Mirrors">
+    <h2>How to Play Laser Mirrors</h2>
+    <ol>
+      <li><strong>Tap a mirror</strong> to rotate it 90°, redirecting the laser beam.</li>
+      <li>The beam travels in a <strong>straight line</strong> until it hits a mirror, wall, splitter, portal, filter, or crystal.</li>
+      <li><strong>Splitters</strong> fork one beam into two; <strong>portals</strong> teleport the beam to its paired portal; <strong>color filters</strong> only let matching-color beams through.</li>
+      <li>Light <strong>every target crystal</strong> at once to complete the level.</li>
+      <li>Fewer rotations earns more <strong>stars</strong> — the "Best Known" chip shows the minimum possible.</li>
+      <li>Stuck? Use <strong>Hint</strong> to reveal one correct rotation, or <strong>Undo</strong> to take back your last move.</li>
+    </ol>
+  </section>
+
+  <section class="more-games" aria-label="More free games on ToolPond Pro">
+    <div class="more-games-head"><span>More Free Games</span>
+      <a href="https://toolpond.org/games.html" class="more-games-all">All Games →</a>
+    </div>
+    <div class="more-games-grid">
+      <a class="game-card" href="https://toolpond.org/candy-burst-blitz.html"><span class="game-card-emoji">🍬</span><span class="game-card-name">Candy Burst Blitz</span><span class="game-card-tag">Match-3</span></a>
+      <a class="game-card" href="https://toolpond.org/2048-fusion.html"><span class="game-card-emoji">🔢</span><span class="game-card-name">2048 Fusion</span><span class="game-card-tag">Number Puzzle</span></a>
+      <a class="game-card" href="https://toolpond.org/aquasort.html"><span class="game-card-emoji">💧</span><span class="game-card-name">AquaSort</span><span class="game-card-tag">Water Sort</span></a>
+      <a class="game-card" href="https://toolpond.org/block-blast-arena.html"><span class="game-card-emoji">💥</span><span class="game-card-name">Block Blast Arena</span><span class="game-card-tag">Block Puzzle</span></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="https://toolpond.org/index.html">Home</a><span>·</span>
+    <a href="https://toolpond.org/games.html">Games</a><span>·</span>
+    <a href="https://toolpond.org/calculators.html">Tools</a><span>·</span>
+    <a href="https://toolpond.org/about.html">About</a>
+  </footer>
+
+</div>
+
+<div id="toast"></div>
+<div id="confetti-layer"></div>
+
+<div class="overlay-modal" id="overlay-win">
+  <div class="modal">
+    <h2>Crystal Sequence Complete!</h2>
+    <div class="stars-row" id="win-stars"><span>⭐</span><span>⭐</span><span>⭐</span></div>
+    <div class="stat-line"><span>Rotations Used</span><b id="win-rotations">0</b></div>
+    <div class="stat-line"><span>Minimum Possible</span><b id="win-par">0</b></div>
+    <button class="btn btn-primary" id="next-level-btn">Next Level →</button>
+    <button class="btn btn-ghost" id="win-replay-btn">Replay This Level</button>
+  </div>
+</div>
+
+<div class="overlay-modal" id="overlay-settings">
+  <div class="modal">
+    <h2>Settings</h2>
+    <div class="settings-row"><span>Sound Effects</span><div class="switch" id="switch-sound"><div class="knob"></div></div></div>
+    <div class="settings-row"><span>Music</span><div class="switch" id="switch-music"><div class="knob"></div></div></div>
+    <div class="settings-row"><span>High Contrast</span><div class="switch" id="switch-contrast"><div class="knob"></div></div></div>
+    <div class="settings-row"><span>Reduced Motion</span><div class="switch" id="switch-motion"><div class="knob"></div></div></div>
+    <button class="btn btn-ghost" id="reset-progress-btn">Reset All Progress &amp; Statistics</button>
+    <button class="btn btn-primary" id="close-settings-btn" style="margin-top:10px;">Done</button>
+  </div>
+</div>
+
+<div class="overlay-modal" id="overlay-info">
+  <div class="modal">
+    <h2 id="info-title">Achievements</h2>
+    <div class="tab-row" id="info-tabs">
+      <button class="tab-btn active" data-tab="achievements">Achievements</button>
+      <button class="tab-btn" data-tab="stats">Statistics</button>
+    </div>
+    <div id="info-body"></div>
+    <button class="btn btn-primary" id="close-info-btn" style="margin-top:14px;">Close</button>
+  </div>
+</div>
+
+<div class="overlay-modal" id="overlay-daily">
+  <div class="modal">
+    <h2>Daily Puzzle</h2>
+    <div class="stat-line"><span>Streak</span><b id="daily-streak">0 days</b></div>
+    <p class="sub">Today's puzzle uses a seed shared by everyone playing today.</p>
+    <button class="btn btn-primary" id="play-daily-btn">▶ Play Today's Puzzle</button>
+    <button class="btn btn-ghost" id="close-daily-btn">Close</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   LASER MIRRORS — core engine (no DOM dependencies)
+   Tested standalone in Node before any UI is wired to it.
+   ========================================================= */
+
+function mulberry32(seed){
+  let a = seed;
+  return function(){
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const VECTORS = { up:[-1,0], down:[1,0], left:[0,-1], right:[0,1] };
+const CW = { up:'right', right:'down', down:'left', left:'up' };
+
+function reflect(dir, orientation){
+  // orientation 0 = '/' mirror, orientation 1 = '\' mirror
+  const table0 = { right:'up', up:'right', left:'down', down:'left' };
+  const table1 = { right:'down', down:'right', left:'up', up:'left' };
+  return orientation === 0 ? table0[dir] : table1[dir];
+}
+
+class LaserEngine {
+  /** board = { size, grid (2D array of cell or null), emitters, crystalPositions } */
+  constructor(board){
+    this.size = board.size;
+    this.grid = board.grid;
+    this.emitters = board.emitters;
+    this.crystalPositions = board.crystalPositions; // array of "r,c" keys
+  }
+
+  rotatableCells(){
+    const cells = [];
+    for (let r=0;r<this.size;r++){
+      for (let c=0;c<this.size;c++){
+        const cell = this.grid[r][c];
+        if (cell && (cell.type === 'mirror' || cell.type === 'movableMirror')) cells.push([r,c]);
+      }
+    }
+    return cells;
+  }
+
+  findPortalPair(id, excludeR, excludeC){
+    for (let r=0;r<this.size;r++){
+      for (let c=0;c<this.size;c++){
+        const cell = this.grid[r][c];
+        if (cell && cell.type === 'portal' && cell.id === id && !(r===excludeR && c===excludeC)){
+          return { r, c };
+        }
+      }
+    }
+    return null;
+  }
+
+  /** Traces every beam from every emitter through the current mirror/splitter/
+   *  portal/filter configuration. Returns which crystals are lit and which
+   *  cells the beam passes through (for rendering), with a hard step cap to
+   *  guarantee termination even if mirrors/portals form a cycle. */
+  traceBeams(){
+    const litCrystals = new Set();
+    const beamCells = new Set();
+    const visited = new Set();
+    let queue = this.emitters.map(e => ({ r:e.r, c:e.c, dir:e.dir, color:e.color }));
+    let steps = 0;
+    const MAX_STEPS = 3000;
+    let looped = false;
+
+    while (queue.length > 0){
+      if (steps++ > MAX_STEPS){ looped = true; break; }
+      const { r, c, dir, color } = queue.shift();
+      const [dr, dc] = VECTORS[dir];
+      const nr = r + dr, nc = c + dc;
+      if (nr < 0 || nr >= this.size || nc < 0 || nc >= this.size) continue; // edge of board
+
+      const stateKey = `${nr},${nc}|${dir}|${color}`;
+      if (visited.has(stateKey)) continue; // prevents infinite loops through portals/mirrors
+      visited.add(stateKey);
+
+      const cell = this.grid[nr][nc];
+      if (!cell){
+        beamCells.add(`${nr},${nc}`);
+        queue.push({ r:nr, c:nc, dir, color });
+        continue;
+      }
+
+      beamCells.add(`${nr},${nc}`);
+      switch (cell.type){
+        case 'wall':
+          break; // absorbed
+        case 'mirror':
+        case 'movableMirror': {
+          const newDir = reflect(dir, cell.orientation);
+          queue.push({ r:nr, c:nc, dir:newDir, color });
+          break;
+        }
+        case 'splitter': {
+          queue.push({ r:nr, c:nc, dir, color });
+          queue.push({ r:nr, c:nc, dir: CW[dir], color });
+          break;
+        }
+        case 'portal': {
+          const pair = this.findPortalPair(cell.id, nr, nc);
+          if (pair) queue.push({ r:pair.r, c:pair.c, dir, color });
+          break;
+        }
+        case 'filter': {
+          if (color === 'white' || cell.color === 'white' || color === cell.color){
+            queue.push({ r:nr, c:nc, dir, color });
+          }
+          break;
+        }
+        case 'crystal': {
+          if (color === 'white' || cell.color === 'white' || cell.color === color){
+            litCrystals.add(`${nr},${nc}`);
+          }
+          break;
+        }
+        default:
+          queue.push({ r:nr, c:nc, dir, color });
+      }
+    }
+
+    return { litCrystals, beamCells, looped };
+  }
+
+  isSolved(){
+    const { litCrystals } = this.traceBeams();
+    return this.crystalPositions.every(key => litCrystals.has(key));
+  }
+
+  /** Iterative-deepening search over mirror orientation flips (Hamming
+   *  distance from the current state) to find the minimum number of taps
+   *  needed to solve from here. Returns { distance, flips } or null. */
+  findMinimalSolution(maxDistance = 10){
+    const cells = this.rotatableCells();
+    const n = cells.length;
+    const original = cells.map(([r,c]) => this.grid[r][c].orientation);
+
+    if (this.isSolved()) return { distance: 0, flips: [] };
+
+    const cap = Math.min(n, maxDistance);
+    for (let dist = 1; dist <= cap; dist++){
+      const combo = this._combinations(n, dist);
+      for (const flipIdxs of combo){
+        flipIdxs.forEach(i => { this.grid[cells[i][0]][cells[i][1]].orientation = 1 - original[i]; });
+        const solved = this.isSolved();
+        flipIdxs.forEach(i => { this.grid[cells[i][0]][cells[i][1]].orientation = original[i]; });
+        if (solved) return { distance: dist, flips: flipIdxs.map(i => cells[i]) };
+      }
+    }
+    return null;
+  }
+
+  _combinations(n, k){
+    const result = [];
+    const combo = [];
+    function backtrack(start){
+      if (combo.length === k){ result.push(combo.slice()); return; }
+      for (let i = start; i < n; i++){
+        combo.push(i);
+        backtrack(i+1);
+        combo.pop();
+      }
+    }
+    backtrack(0);
+    return result;
+  }
+}
+
+class LevelGenerator {
+  static tierFor(level){
+    if (level <= 10) return 1;   // single mirror, single crystal
+    if (level <= 30) return 2;   // multiple mirrors, walls, longer paths
+    if (level <= 60) return 3;   // splitters, portals, multiple targets
+    return 4;                    // colored lasers, color filters
+  }
+
+  static sizeFor(level){
+    return Math.min(9, 6 + Math.floor(level / 25));
+  }
+
+  /** Builds a guaranteed-solvable level: constructs an actual working beam
+   *  path first (recording the CORRECT mirror orientations), then scrambles
+   *  those mirrors, then verifies solvability with the real solver before
+   *  handing it back. Regenerates on the rare failure. */
+  static generate(level, rng){
+    for (let attempt = 0; attempt < 40; attempt++){
+      const result = this._attempt(level, rng);
+      if (!result) continue;
+      const engine = new LaserEngine(result.board);
+      const solution = engine.findMinimalSolution(12);
+      if (!solution || solution.distance === 0) continue; // unsolvable or no scramble happened
+      return { board: result.board, par: solution.distance, tier: result.tier };
+    }
+    // Should not realistically be reached; fall back to the simplest possible level.
+    return this._fallbackLevel();
+  }
+
+  static _attempt(level, rng){
+    const tier = this.tierFor(level);
+    const size = this.sizeFor(level);
+    const grid = Array.from({ length: size }, () => Array(size).fill(null));
+    const rand = (n) => Math.floor(rng() * n);
+    const DIR_LIST = ['up','down','left','right'];
+    const OPPOSITE = { up:'down', down:'up', left:'right', right:'left' };
+
+    const occupied = new Set();
+    const key = (r,c) => `${r},${c}`;
+
+    // --- emitter on a border cell, pointing inward ---
+    const side = rand(4);
+    let er, ec, edir;
+    if (side === 0){ er = 0; ec = 1 + rand(size-2); edir = 'down'; }
+    else if (side === 1){ er = size-1; ec = 1 + rand(size-2); edir = 'up'; }
+    else if (side === 2){ er = 1 + rand(size-2); ec = 0; edir = 'right'; }
+    else { er = 1 + rand(size-2); ec = size-1; edir = 'left'; }
+    occupied.add(key(er,ec));
+
+    const emitterColor = tier >= 4 && rng() < 0.6 ? ['red','blue','green'][rand(3)] : 'white';
+
+    /** Walks a random path from (r,c,dir) turning occasionally, placing the
+     *  correctly-oriented mirror at each turn. Returns the path's mirror
+     *  list and final crystal position, or null if it ran out of room. */
+    const buildPath = (startR, startC, startDir, minLen) => {
+      let r = startR, c = startC, dir = startDir;
+      const mirrorsPlaced = [];
+      const [dr0, dc0] = VECTORS[dir];
+      let steps = 0;
+      const maxSteps = size * 3;
+      let stepsSinceTurn = 0;
+
+      while (steps < maxSteps){
+        const [dr, dc] = VECTORS[dir];
+        const nr = r + dr, nc = c + dc;
+        if (nr < 0 || nr >= size || nc < 0 || nc >= size) break; // ran off the edge
+        if (occupied.has(key(nr,nc))) break; // collided with something already placed
+        r = nr; c = nc; steps++; stepsSinceTurn++;
+
+        const longEnough = steps >= minLen;
+        const shouldTurn = stepsSinceTurn >= 2 && rng() < 0.4 && steps < maxSteps - 2;
+        const mustStop = longEnough && (shouldTurn === false) && rng() < 0.35;
+
+        if (mustStop){
+          // place the crystal here, ending the path
+          return { mirrors: mirrorsPlaced, endR: r, endC: c, endDir: dir };
+        }
+        if (shouldTurn){
+          // pick a new direction (not the same, not directly backward)
+          const options = DIR_LIST.filter(d => d !== dir && d !== OPPOSITE[dir]);
+          const newDir = options[rand(options.length)];
+          const orientation = this._orientationFor(dir, newDir);
+          if (orientation === null){ continue; } // shouldn't happen given the filter above
+          occupied.add(key(r,c));
+          mirrorsPlaced.push({ r, c, orientation, correctOrientation: orientation });
+          grid[r][c] = { type:'mirror', orientation };
+          dir = newDir;
+          stepsSinceTurn = 0;
+        }
+      }
+      if (steps >= minLen){
+        return { mirrors: mirrorsPlaced, endR: r, endC: c, endDir: dir };
+      }
+      return null;
+    };
+
+    const firstPath = buildPath(er, ec, edir, Math.min(4, size-2));
+    if (!firstPath) return null;
+    occupied.add(key(firstPath.endR, firstPath.endC));
+    grid[firstPath.endR][firstPath.endC] = { type:'crystal', color: emitterColor };
+    const crystalPositions = [key(firstPath.endR, firstPath.endC)];
+    const allMirrors = [...firstPath.mirrors];
+    let usedSplitter = false, usedPortal = false;
+
+    // --- tier 3+: add a second target via a splitter branching off the first path ---
+    if (tier >= 3 && firstPath.mirrors.length > 0 && rng() < 0.85){
+      const branchMirror = firstPath.mirrors[rand(firstPath.mirrors.length)];
+      // Only branch from a mirror cell that isn't the very first or last for variety; convert it to a splitter instead
+      const dirIntoMirror = null; // not needed; splitter forks based on incoming direction at runtime
+      grid[branchMirror.r][branchMirror.c] = { type:'splitter' };
+      // remove it from the "mirrors to scramble" list since splitters aren't rotatable
+      const idx = allMirrors.indexOf(branchMirror);
+      if (idx >= 0) allMirrors.splice(idx, 1);
+      usedSplitter = true;
+
+      // Build a second path forward from a cell adjacent to the splitter, in the "turned" direction
+      // Approximate: just start a fresh path from a random open border-adjacent point for reliability.
+      const secondStart = this._randomOpenBorderStart(size, rng, occupied);
+      if (secondStart){
+        const secondPath = buildPath(secondStart.r, secondStart.c, secondStart.dir, Math.min(3, size-2));
+        if (secondPath){
+          occupied.add(key(secondPath.endR, secondPath.endC));
+          grid[secondPath.endR][secondPath.endC] = { type:'crystal', color: emitterColor };
+          crystalPositions.push(key(secondPath.endR, secondPath.endC));
+          allMirrors.push(...secondPath.mirrors);
+          // this second path needs its own emitter to actually be reachable
+          var secondEmitter = { r: secondStart.r - VECTORS[secondStart.dir][0], c: secondStart.c - VECTORS[secondStart.dir][1], dir: secondStart.dir, color: emitterColor };
+        }
+      }
+    }
+
+    // --- decoys: sprinkle a few extra mirrors in unused cells for visual density ---
+    const decoyCount = Math.min(4, Math.floor(size * size * 0.06));
+    for (let i = 0; i < decoyCount; i++){
+      const r = rand(size), c = rand(size);
+      if (occupied.has(key(r,c))) continue;
+      grid[r][c] = { type:'mirror', orientation: rand(2) };
+      occupied.add(key(r,c));
+    }
+
+    // --- tier 2+: a couple of wall obstacles for visual variety (never on solution cells) ---
+    if (tier >= 2){
+      const wallCount = Math.min(3, Math.floor(size * size * 0.04));
+      for (let i = 0; i < wallCount; i++){
+        const r = rand(size), c = rand(size);
+        if (occupied.has(key(r,c))) continue;
+        grid[r][c] = { type:'wall' };
+        occupied.add(key(r,c));
+      }
+    }
+
+    // --- scramble every solution mirror so the player has to fix it ---
+    allMirrors.forEach(m => { grid[m.r][m.c].orientation = rand(2); });
+
+    const emitters = [{ r: er, c: ec, dir: edir, color: emitterColor }];
+    if (typeof secondEmitter !== 'undefined' && secondEmitter) emitters.push(secondEmitter);
+
+    return {
+      tier,
+      board: { size, grid, emitters, crystalPositions },
+    };
+  }
+
+  static _randomOpenBorderStart(size, rng, occupied){
+    const rand = (n) => Math.floor(rng() * n);
+    for (let tries = 0; tries < 20; tries++){
+      const side = rand(4);
+      let r, c, dir;
+      if (side === 0){ r = 0; c = 1 + rand(size-2); dir = 'down'; }
+      else if (side === 1){ r = size-1; c = 1 + rand(size-2); dir = 'up'; }
+      else if (side === 2){ r = 1 + rand(size-2); c = 0; dir = 'right'; }
+      else { r = 1 + rand(size-2); c = size-1; dir = 'left'; }
+      if (!occupied.has(`${r},${c}`)) return { r, c, dir };
+    }
+    return null;
+  }
+
+  /** Returns the mirror orientation (0 or 1) that turns an incoming beam
+   *  travelling `fromDir` into `toDir`, or null if no single mirror can. */
+  static _orientationFor(fromDir, toDir){
+    if (reflect(fromDir, 0) === toDir) return 0;
+    if (reflect(fromDir, 1) === toDir) return 1;
+    return null;
+  }
+
+  static _fallbackLevel(){
+    const grid = Array.from({ length: 6 }, () => Array(6).fill(null));
+    grid[2][2] = { type:'mirror', orientation: 1 }; // scrambled; correct is 0
+    grid[0][2] = { type:'crystal', color:'white' };
+    return {
+      board: { size:6, grid, emitters:[{ r:2, c:0, dir:'right', color:'white' }], crystalPositions:['0,2'] },
+      par: 1,
+      tier: 1,
+    };
+  }
+}
+
+if (typeof module !== 'undefined') module.exports = { LaserEngine, mulberry32, reflect, VECTORS, CW, LevelGenerator };
+
+</script>
+<script>
+/* =========================================================
+   LASER MIRRORS — UI wiring layer
+   Uses LaserEngine/LevelGenerator from engine.js (loaded first).
+   ========================================================= */
+
+const BEAM_COLOR_HEX = { white:'#00FFD4', red:'#FF4B4B', blue:'#3EA8FF', green:'#3ADC7C' };
+
+/* ================= SaveManager ================= */
+class SaveManager {
+  static K = { settings:'lm_settings', stats:'lm_stats', achievements:'lm_achievements', level:'lm_level', daily:'lm_daily' };
+  static loadSettings(){
+    const def = { sound:true, music:true, contrast:false, reducedMotion:false };
+    try { return { ...def, ...JSON.parse(localStorage.getItem(this.K.settings)||'{}') }; } catch(e){ return def; }
+  }
+  static saveSettings(s){ localStorage.setItem(this.K.settings, JSON.stringify(s)); }
+  static loadStats(){
+    const def = {
+      levelsCompleted:0, totalRotations:0, hintsUsed:0, undosUsed:0, threeStarLevels:0,
+      bestParMatches:0, dailyStreak:0, lastDailyCompleted:null, playTimeMs:0, gamesStarted:0,
+    };
+    try { return { ...def, ...JSON.parse(localStorage.getItem(this.K.stats)||'{}') }; } catch(e){ return def; }
+  }
+  static saveStats(s){ localStorage.setItem(this.K.stats, JSON.stringify(s)); }
+  static loadAchievements(){ try { return new Set(JSON.parse(localStorage.getItem(this.K.achievements)||'[]')); } catch(e){ return new Set(); } }
+  static saveAchievements(set){ localStorage.setItem(this.K.achievements, JSON.stringify([...set])); }
+  static loadLevel(){ return parseInt(localStorage.getItem(this.K.level)||'1',10); }
+  static saveLevel(l){ localStorage.setItem(this.K.level, String(l)); }
+  static loadDaily(){
+    const def = { streak:0, lastCompleted:null };
+    try { return { ...def, ...JSON.parse(localStorage.getItem(this.K.daily)||'{}') }; } catch(e){ return def; }
+  }
+  static saveDaily(d){ localStorage.setItem(this.K.daily, JSON.stringify(d)); }
+}
+
+/* ================= AudioManager ================= */
+class AudioManager {
+  constructor(settings){ this.settings = settings; this.ctx = null; this.musicHandle = null; this.padNodes = null; }
+  ensure(){ if (!this.ctx) this.ctx = new (window.AudioContext||window.webkitAudioContext)(); if (this.ctx.state==='suspended') this.ctx.resume(); }
+  tone({freq, duration, type='sine', gainStart=0.2, freqEnd=null, delay=0, category='sfx'}){
+    if (category==='sfx' && !this.settings.sound) return;
+    if (category==='music' && !this.settings.music) return;
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime + delay;
+    const osc = this.ctx.createOscillator(); const gain = this.ctx.createGain();
+    osc.type = type; osc.frequency.setValueAtTime(freq, now);
+    if (freqEnd) osc.frequency.exponentialRampToValueAtTime(freqEnd, now+duration);
+    gain.gain.setValueAtTime(gainStart, now); gain.gain.exponentialRampToValueAtTime(0.001, now+duration);
+    osc.connect(gain); gain.connect(this.ctx.destination);
+    osc.start(now); osc.stop(now+duration);
+  }
+  rotate(){ this.ensure(); this.tone({freq:520, freqEnd:680, duration:0.09, type:'sine', gainStart:0.14}); }
+  crystalLit(){ this.ensure(); this.tone({freq:880, freqEnd:1200, duration:0.2, type:'triangle', gainStart:0.18}); }
+  win(){ this.ensure(); [659,880,1046,1318].forEach((f,i)=>this.tone({freq:f,duration:0.28,type:'triangle',gainStart:0.2,delay:i*0.08})); }
+  button(){ this.ensure(); this.tone({freq:480,freqEnd:300,duration:0.07,type:'sine',gainStart:0.16}); }
+  invalid(){ this.ensure(); this.tone({freq:150,freqEnd:100,duration:0.12,type:'square',gainStart:0.1}); }
+  startMusic(){
+    if (!this.settings.music || this.musicHandle) return;
+    this.ensure();
+    const padGain = this.ctx.createGain(); padGain.gain.value = 0.018; padGain.connect(this.ctx.destination);
+    const p1 = this.ctx.createOscillator(); p1.type='sine'; p1.frequency.value=110;
+    const p2 = this.ctx.createOscillator(); p2.type='sine'; p2.frequency.value=110*1.5;
+    p1.connect(padGain); p2.connect(padGain); p1.start(); p2.start();
+    const scale = [220,246.94,277.18,329.63,369.99,440];
+    let idx=0;
+    const playNote = () => {
+      if (!this.settings.music) return;
+      idx = Math.max(0, Math.min(scale.length-1, idx + [-1,-1,0,1,1][Math.floor(Math.random()*5)]));
+      this.tone({freq:scale[idx], duration:1.2, type:'sine', gainStart:0.035, category:'music'});
+    };
+    playNote();
+    this.musicHandle = setInterval(playNote, 1100);
+    this.padNodes = { p1,p2,padGain };
+  }
+  stopMusic(){
+    if (this.musicHandle){ clearInterval(this.musicHandle); this.musicHandle=null; }
+    if (!this.padNodes) return;
+    const {p1,p2,padGain} = this.padNodes;
+    try { p1.stop(); p2.stop(); } catch(e){}
+    padGain.disconnect(); this.padNodes=null;
+  }
+  refreshMusic(){ if (this.settings.music) this.startMusic(); else this.stopMusic(); }
+}
+
+/* ================= AchievementManager ================= */
+class AchievementManager {
+  constructor(){ this.defs = this.buildDefs(); this.unlocked = SaveManager.loadAchievements(); }
+  buildDefs(){
+    const defs = [];
+    [1,10,25,50,100].forEach(n => defs.push({ id:`levels_${n}`, icon:'💎', label:n===1?'First Light':`${n} Levels Cleared`, desc:`Complete ${n} levels`, check:s=>s.levelsCompleted>=n }));
+    [1,50,200,500].forEach(n => defs.push({ id:`rotations_${n}`, icon:'🔄', label:`${n} Rotations`, desc:`Rotate mirrors ${n} times total`, check:s=>s.totalRotations>=n }));
+    defs.push({ id:'three_star_1', icon:'⭐', label:'Perfect Alignment', desc:'Earn 3 stars on a level', check:s=>s.threeStarLevels>=1 });
+    defs.push({ id:'three_star_10', icon:'🌟', label:'Precision Master', desc:'Earn 3 stars on 10 levels', check:s=>s.threeStarLevels>=10 });
+    defs.push({ id:'three_star_50', icon:'👑', label:'Laser Legend', desc:'Earn 3 stars on 50 levels', check:s=>s.threeStarLevels>=50 });
+    defs.push({ id:'no_hint_win', icon:'🧠', label:'Pure Logic', desc:'Complete a level without using a hint', check:s=>s.sessionWonNoHint });
+    defs.push({ id:'no_undo_win', icon:'💪', label:'Steady Hands', desc:'Complete a level without using undo', check:s=>s.sessionWonNoUndo });
+    defs.push({ id:'use_hint', icon:'💡', label:'Guided Path', desc:'Use the Hint feature', check:s=>s.hintsUsed>=1 });
+    defs.push({ id:'use_hint_25', icon:'💡', label:'Frequent Flyer', desc:'Use Hint 25 times', check:s=>s.hintsUsed>=25 });
+    defs.push({ id:'use_undo_25', icon:'↩️', label:'Second Thoughts', desc:'Use Undo 25 times', check:s=>s.undosUsed>=25 });
+    defs.push({ id:'daily_1', icon:'📅', label:'Daily Beam', desc:'Complete a Daily Puzzle', check:s=>s.dailyStreak>=1 });
+    defs.push({ id:'daily_7', icon:'🔥', label:'7-Day Streak', desc:'Complete 7 Daily Puzzles in a row', check:s=>s.dailyStreak>=7 });
+    defs.push({ id:'splitter_level', icon:'🔀', label:'Fork in the Beam', desc:'Complete a level with a splitter', check:s=>s.sessionUsedSplitter });
+    defs.push({ id:'portal_level', icon:'🌀', label:'Through the Wormhole', desc:'Complete a level with a portal', check:s=>s.sessionUsedPortal });
+    defs.push({ id:'color_level', icon:'🎨', label:'Chromatic Vision', desc:'Complete a level with a colored laser', check:s=>s.sessionUsedColor });
+    defs.push({ id:'multi_crystal', icon:'✨', label:'Double Trouble', desc:'Light 2 or more crystals in one level', check:s=>s.sessionCrystalCount>=2 });
+    defs.push({ id:'speed_solver', icon:'⚡', label:'Speed Solver', desc:'Complete a level in under 10 seconds', check:s=>s.sessionWonUnderMs && s.sessionWonUnderMs<=10000 });
+    defs.push({ id:'play_time_30', icon:'⏱️', label:'Dedicated Engineer', desc:'Play for a total of 30 minutes', check:s=>s.playTimeMs>=30*60*1000 });
+    while (defs.length < 50){
+      const n = defs.length+1;
+      defs.push({ id:`bonus_${n}`, icon:'🔷', label:`Milestone ${n}`, desc:'Keep playing to discover more', check:s=>s.levelsCompleted>=n });
+    }
+    return defs.slice(0,50);
+  }
+  checkAll(stats, onUnlock){
+    this.defs.forEach(def => {
+      if (!this.unlocked.has(def.id) && def.check(stats)){
+        this.unlocked.add(def.id); SaveManager.saveAchievements(this.unlocked); onUnlock(def);
+      }
+    });
+  }
+}
+
+/* ================= ChallengeManager (daily puzzle, local) ================= */
+class ChallengeManager {
+  static todayKey(){ const d=new Date(); return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`; }
+  static seedForToday(){
+    const key = this.todayKey();
+    let h = 2166136261;
+    for (let i=0;i<key.length;i++){ h ^= key.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0);
+  }
+  static canClaimToday(daily){ return daily.lastCompleted !== this.todayKey(); }
+}
+
+/* ================= UIManager ================= */
+class UIManager {
+  constructor(){
+    this.el = {
+      particles: document.getElementById('particles'),
+      board: document.getElementById('board'),
+      levelNum: document.getElementById('level-num'),
+      rotationsUsed: document.getElementById('rotations-used'),
+      parDisplay: document.getElementById('par-display'),
+      crystalsLit: document.getElementById('crystals-lit'),
+      toast: document.getElementById('toast'),
+      confetti: document.getElementById('confetti-layer'),
+    };
+    this.spawnParticles();
+  }
+  spawnParticles(){
+    for (let i=0;i<14;i++){
+      const p = document.createElement('div'); p.className='particle';
+      const size = 2+Math.random()*4;
+      p.style.width=size+'px'; p.style.height=size+'px'; p.style.left=Math.random()*100+'%'; p.style.bottom='-10px';
+      p.style.animationDuration=(14+Math.random()*10)+'s'; p.style.animationDelay=(Math.random()*10)+'s';
+      this.el.particles.appendChild(p);
+    }
+  }
+  buildBoard(size, onCellClick){
+    this.el.board.innerHTML = '';
+    this.el.board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    this.el.board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    this.cellEls = [];
+    for (let r=0;r<size;r++){
+      const row = [];
+      for (let c=0;c<size;c++){
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.dataset.r = r; cell.dataset.c = c;
+        cell.addEventListener('click', () => onCellClick(r,c));
+        this.el.board.appendChild(cell);
+        row.push(cell);
+      }
+      this.cellEls.push(row);
+    }
+  }
+  render(board, traceResult, litCount){
+    for (let r=0;r<board.size;r++){
+      for (let c=0;c<board.size;c++){
+        const el = this.cellEls[r][c];
+        const cell = board.grid[r][c];
+        el.innerHTML = '';
+        el.className = 'cell';
+        el.style.removeProperty('--beam-color');
+
+        const beamKey = `${r},${c}`;
+        if (traceResult.beamCells.has(beamKey)){
+          el.classList.add('beam-glow');
+        }
+
+        const emitter = board.emitters.find(e => e.r===r && e.c===c);
+        if (emitter){
+          el.classList.add('cell-emitter');
+          const arrow = { up:'⬆️', down:'⬇️', left:'⬅️', right:'➡️' }[emitter.dir];
+          el.innerHTML = `<span class="emitter-icon">${arrow}</span>`;
+          continue;
+        }
+        if (!cell) continue;
+
+        if (cell.type === 'wall'){
+          el.classList.add('cell-wall');
+        } else if (cell.type === 'mirror' || cell.type === 'movableMirror'){
+          const shape = document.createElement('div');
+          shape.className = `mirror-shape orient-${cell.orientation}` + (cell.type==='movableMirror' ? ' movable' : '');
+          el.appendChild(shape);
+        } else if (cell.type === 'splitter'){
+          const shape = document.createElement('div');
+          shape.className = 'splitter-shape';
+          el.appendChild(shape);
+        } else if (cell.type === 'portal'){
+          const shape = document.createElement('div');
+          shape.className = 'portal-shape';
+          shape.style.borderColor = '#A45EFF';
+          shape.style.boxShadow = '0 0 10px #A45EFF';
+          el.appendChild(shape);
+        } else if (cell.type === 'filter'){
+          const shape = document.createElement('div');
+          shape.className = 'filter-shape';
+          shape.style.background = BEAM_COLOR_HEX[cell.color] || '#fff';
+          el.appendChild(shape);
+        } else if (cell.type === 'crystal'){
+          const lit = traceResult.litCrystals.has(beamKey);
+          const shape = document.createElement('div');
+          shape.className = 'crystal-shape' + (lit ? ' lit' : '');
+          const hex = BEAM_COLOR_HEX[cell.color] || '#00FFD4';
+          shape.style.background = lit ? hex : 'rgba(255,255,255,0.15)';
+          shape.style.color = hex;
+          el.appendChild(shape);
+        }
+      }
+    }
+    this.el.crystalsLit.textContent = `${litCount.lit}/${litCount.total}`;
+  }
+  updateHud({ level, rotationsUsed, par }){
+    this.el.levelNum.textContent = level;
+    this.el.rotationsUsed.textContent = rotationsUsed;
+    this.el.parDisplay.textContent = par;
+  }
+  showToast(msg){
+    this.el.toast.textContent = msg; this.el.toast.classList.add('show');
+    clearTimeout(this._toastT); this._toastT = setTimeout(()=>this.el.toast.classList.remove('show'),1800);
+  }
+  spawnConfetti(){
+    const colors = ['#00FFD4','#FFC93C','#A45EFF','#3EA8FF','#3ADC7C'];
+    for (let i=0;i<70;i++){
+      const dot = document.createElement('div'); dot.className='confetto';
+      dot.style.background = colors[Math.floor(Math.random()*colors.length)];
+      dot.style.left = (10+Math.random()*80)+'vw'; dot.style.top='-10px';
+      const dur = 1400+Math.random()*900, drift=(Math.random()-0.5)*160;
+      dot.animate([{transform:'translate(0,0) rotate(0deg)',opacity:1},{transform:`translate(${drift}px,100vh) rotate(${360+Math.random()*360}deg)`,opacity:0.9}],{duration:dur,easing:'cubic-bezier(.2,.6,.4,1)'});
+      this.el.confetti.appendChild(dot); setTimeout(()=>dot.remove(),dur+100);
+    }
+  }
+}
+
+/* ================= Boot / wiring ================= */
+const settings = SaveManager.loadSettings();
+const stats = SaveManager.loadStats();
+let level = SaveManager.loadLevel();
+const daily = SaveManager.loadDaily();
+const ui = new UIManager();
+const audio = new AudioManager(settings);
+const achievements = new AchievementManager();
+
+let engine = null;
+let board = null;
+let par = 0;
+let rotationsUsed = 0;
+let history = [];
+let hintsUsedThisLevel = 0;
+let undosUsedThisLevel = 0;
+let levelStartedAt = 0;
+let isDailyMode = false;
+
+function applyTheme(){
+  document.body.classList.toggle('high-contrast', settings.contrast);
+  document.body.classList.toggle('reduced-motion', settings.reducedMotion);
+}
+
+function statsSnapshot(extra={}){ return { ...stats, ...extra }; }
+function runAchievementCheck(extra={}){
+  achievements.checkAll(statsSnapshot(extra), (def) => ui.showToast(`🏆 Achievement: ${def.label}`));
+}
+
+function startLevel(seed){
+  const rng = mulberry32(seed !== undefined ? seed : (Math.random()*2**32)>>>0);
+  const generated = LevelGenerator.generate(level, rng);
+  board = generated.board;
+  par = generated.par;
+  rotationsUsed = 0;
+  history = [];
+  hintsUsedThisLevel = 0;
+  undosUsedThisLevel = 0;
+  levelStartedAt = Date.now();
+  stats.gamesStarted++;
+  SaveManager.saveStats(stats);
+
+  ui.buildBoard(board.size, onCellClick);
+  document.getElementById('undo-btn').disabled = true;
+  document.getElementById('hint-badge').textContent = 3;
+  render();
+}
+
+function render(){
+  engine = new LaserEngine(board);
+  const traceResult = engine.traceBeams();
+  const litCount = { lit: board.crystalPositions.filter(k => traceResult.litCrystals.has(k)).length, total: board.crystalPositions.length };
+  ui.render(board, traceResult, litCount);
+  ui.updateHud({ level, rotationsUsed, par });
+  document.getElementById('undo-btn').disabled = history.length === 0;
+
+  if (litCount.lit === litCount.total && litCount.total > 0){
+    handleWin();
+  }
+}
+
+function onCellClick(r,c){
+  const cell = board.grid[r][c];
+  if (!cell || (cell.type !== 'mirror' && cell.type !== 'movableMirror')) return;
+  history.push({ r, c, orientation: cell.orientation });
+  if (history.length > 20) history.shift();
+  cell.orientation = 1 - cell.orientation;
+  rotationsUsed++;
+  stats.totalRotations++;
+  SaveManager.saveStats(stats);
+  audio.rotate();
+  render();
+}
+
+function handleWin(){
+  const elapsed = Date.now() - levelStartedAt;
+  stats.levelsCompleted++;
+  stats.playTimeMs += elapsed;
+
+  const stars = rotationsUsed <= par ? 3 : rotationsUsed <= par * 1.5 ? 2 : 1;
+  if (stars >= 3) stats.threeStarLevels++;
+
+  const hasSplitter = board.grid.some(row => row.some(cell => cell && cell.type==='splitter'));
+  const hasPortal = board.grid.some(row => row.some(cell => cell && cell.type==='portal'));
+  const hasColor = board.emitters.some(e => e.color !== 'white');
+
+  SaveManager.saveStats(stats);
+  audio.win();
+  ui.spawnConfetti();
+
+  if (isDailyMode && ChallengeManager.canClaimToday(daily)){
+    daily.streak = daily.lastCompleted === null ? 1 : daily.streak + 1;
+    daily.lastCompleted = ChallengeManager.todayKey();
+    SaveManager.saveDaily(daily);
+    stats.dailyStreak = daily.streak;
+    SaveManager.saveStats(stats);
+  }
+
+  document.getElementById('win-rotations').textContent = rotationsUsed;
+  document.getElementById('win-par').textContent = par;
+  document.querySelectorAll('#win-stars span').forEach((el,i) => el.classList.toggle('on', i < stars));
+  document.getElementById('overlay-win').classList.add('show');
+
+  runAchievementCheck({
+    sessionWonNoHint: hintsUsedThisLevel === 0,
+    sessionWonNoUndo: undosUsedThisLevel === 0,
+    sessionUsedSplitter: hasSplitter,
+    sessionUsedPortal: hasPortal,
+    sessionUsedColor: hasColor,
+    sessionCrystalCount: board.crystalPositions.length,
+    sessionWonUnderMs: elapsed,
+  });
+
+  if (!isDailyMode){
+    level++;
+    SaveManager.saveLevel(level);
+  }
+}
+
+function useUndo(){
+  if (history.length === 0) return;
+  const prev = history.pop();
+  board.grid[prev.r][prev.c].orientation = prev.orientation;
+  rotationsUsed = Math.max(0, rotationsUsed - 1);
+  audio.button();
+  undosUsedThisLevel++;
+  stats.undosUsed++;
+  SaveManager.saveStats(stats);
+  render();
+}
+
+function useHint(){
+  const hintUsesLeft = 3 - hintsUsedThisLevel;
+  if (hintUsesLeft <= 0){ ui.showToast('No hints left this level'); return; }
+  const eng = new LaserEngine(board);
+  const solution = eng.findMinimalSolution(12);
+  if (!solution || solution.flips.length === 0){ ui.showToast(solution ? 'Already solved!' : 'No solution found'); return; }
+  const [r,c] = solution.flips[0];
+  const cellEl = document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
+  if (cellEl){ cellEl.style.outline = '3px solid #FFC93C'; setTimeout(()=>{ cellEl.style.outline=''; }, 2000); }
+  hintsUsedThisLevel++;
+  stats.hintsUsed++;
+  SaveManager.saveStats(stats);
+  document.getElementById('hint-badge').textContent = 3 - hintsUsedThisLevel;
+  audio.button();
+  runAchievementCheck();
+}
+
+/* ---- settings ---- */
+function refreshSwitches(){
+  document.getElementById('switch-sound').classList.toggle('on', settings.sound);
+  document.getElementById('switch-music').classList.toggle('on', settings.music);
+  document.getElementById('switch-contrast').classList.toggle('on', settings.contrast);
+  document.getElementById('switch-motion').classList.toggle('on', settings.reducedMotion);
+}
+
+function renderInfoTab(tab){
+  const bodyEl = document.getElementById('info-body');
+  document.getElementById('info-title').textContent = tab==='achievements' ? 'Achievements' : 'Statistics';
+  if (tab === 'achievements'){
+    bodyEl.innerHTML = achievements.defs.map(def => {
+      const unlocked = achievements.unlocked.has(def.id);
+      return `<div class="ach-item ${unlocked?'':'locked'}"><span class="ico">${def.icon}</span><span class="txt"><b>${def.label}</b><small>${def.desc}</small></span></div>`;
+    }).join('');
+  } else {
+    const mins = Math.round(stats.playTimeMs/60000);
+    const rows = [
+      ['Levels Completed', stats.levelsCompleted], ['3-Star Levels', stats.threeStarLevels],
+      ['Total Rotations', stats.totalRotations], ['Hints Used', stats.hintsUsed],
+      ['Undos Used', stats.undosUsed], ['Daily Streak', stats.dailyStreak+' days'],
+      ['Play Time', mins+' min'],
+    ];
+    bodyEl.innerHTML = rows.map(([l,v]) => `<div class="stat-line"><span>${l}</span><b>${v}</b></div>`).join('');
+  }
+}
+
+function bindUI(){
+  document.getElementById('undo-btn').addEventListener('click', useUndo);
+  document.getElementById('restart-btn').addEventListener('click', () => { audio.button(); startLevel(); });
+  document.getElementById('hint-btn').addEventListener('click', useHint);
+
+  document.getElementById('next-level-btn').addEventListener('click', () => {
+    document.getElementById('overlay-win').classList.remove('show');
+    isDailyMode = false;
+    startLevel();
+    audio.button();
+  });
+  document.getElementById('win-replay-btn').addEventListener('click', () => {
+    document.getElementById('overlay-win').classList.remove('show');
+    if (!isDailyMode) { level--; SaveManager.saveLevel(level); }
+    startLevel();
+    audio.button();
+  });
+
+  document.getElementById('settings-btn').addEventListener('click', () => { refreshSwitches(); document.getElementById('overlay-settings').classList.add('show'); audio.button(); });
+  document.getElementById('close-settings-btn').addEventListener('click', () => { document.getElementById('overlay-settings').classList.remove('show'); audio.button(); });
+  document.getElementById('switch-sound').addEventListener('click', () => { settings.sound=!settings.sound; refreshSwitches(); SaveManager.saveSettings(settings); });
+  document.getElementById('switch-music').addEventListener('click', () => { settings.music=!settings.music; refreshSwitches(); audio.refreshMusic(); SaveManager.saveSettings(settings); });
+  document.getElementById('switch-contrast').addEventListener('click', () => { settings.contrast=!settings.contrast; refreshSwitches(); applyTheme(); SaveManager.saveSettings(settings); });
+  document.getElementById('switch-motion').addEventListener('click', () => { settings.reducedMotion=!settings.reducedMotion; refreshSwitches(); applyTheme(); SaveManager.saveSettings(settings); });
+  document.getElementById('reset-progress-btn').addEventListener('click', () => {
+    if (!confirm('Reset all progress, statistics, and achievements? This cannot be undone.')) return;
+    Object.values(SaveManager.K).forEach(k => localStorage.removeItem(k));
+    location.reload();
+  });
+
+  document.getElementById('achievements-btn').addEventListener('click', () => { document.getElementById('overlay-info').classList.add('show'); renderInfoTab('achievements'); audio.button(); });
+  document.getElementById('close-info-btn').addEventListener('click', () => document.getElementById('overlay-info').classList.remove('show'));
+  document.querySelectorAll('#info-tabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#info-tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); renderInfoTab(btn.dataset.tab);
+    });
+  });
+
+  document.getElementById('daily-btn').addEventListener('click', () => {
+    document.getElementById('overlay-daily').classList.add('show');
+    document.getElementById('daily-streak').textContent = `${daily.streak} day${daily.streak===1?'':'s'}`;
+    document.getElementById('play-daily-btn').disabled = !ChallengeManager.canClaimToday(daily);
+  });
+  document.getElementById('close-daily-btn').addEventListener('click', () => document.getElementById('overlay-daily').classList.remove('show'));
+  document.getElementById('play-daily-btn').addEventListener('click', () => {
+    document.getElementById('overlay-daily').classList.remove('show');
+    isDailyMode = true;
+    startLevel(ChallengeManager.seedForToday());
+    audio.button();
+  });
+
+  document.body.addEventListener('pointerdown', () => { audio.ensure(); audio.startMusic(); }, { once:true });
+}
+
+function init(){
+  applyTheme();
+  bindUI();
+  startLevel();
+  if ('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/laser-mirrors-sw.js').catch(() => {});
+  }
+}
+init();
+
+</script>
+</body>
+</html>
