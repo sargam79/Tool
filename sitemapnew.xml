@@ -1,25 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!--  ============================================
+<!--   ============================================
        HOMEPAGE & HUB PAGES
-       ============================================  -->
+       ============================================   -->
 <url>
-<loc>https://toolpond.org/index.html</loc>
-<lastmod>2026-06-29</lastmod>
+<loc>https://toolpond.org/</loc>
+<lastmod>2026-07-18</lastmod>
 <priority>1.0</priority>
-</url>
-<url>
-<loc>https://toolpond.org/calculators.html</loc>
-<lastmod>2026-06-29</lastmod>
-<priority>0.95</priority>
 </url>
 <url>
 <loc>https://toolpond.org/games.html</loc>
 <lastmod>2026-06-29</lastmod>
 <priority>0.95</priority>
 </url>
-<!--  ============================================
+<!--   ============================================
        ABOUT, CONTACT & LEGAL
-       ============================================  -->
+       ============================================   -->
 <url>
 <loc>https://toolpond.org/about.html</loc>
 <lastmod>2026-06-29</lastmod>
@@ -35,9 +31,9 @@
 <lastmod>2026-06-29</lastmod>
 <priority>0.4</priority>
 </url>
-<!--  ============================================
+<!--   ============================================
        GAME PAGES (LIVE ONLY)
-       ============================================  -->
+       ============================================   -->
 <url>
 <loc>https://toolpond.org/sky-spirit.html</loc>
 <lastmod>2026-06-29</lastmod>
@@ -74,18 +70,13 @@
 <priority>0.9</priority>
 </url>
 <url>
-<loc>https://toolpond.org/candy-burst-blitz.html</loc>
-<lastmod>2026-07-12</lastmod>
-<priority>0.9</priority>
-</url>
-<url>
 <loc>https://toolpond.org/laser-mirrors.html</loc>
 <lastmod>2026-07-12</lastmod>
 <priority>0.9</priority>
 </url>
-<!--  ============================================
+<!--   ============================================
        HEALTH & FITNESS CALCULATORS (12)
-       ============================================  -->
+       ============================================   -->
 <url>
 <loc>https://toolpond.org/calorie-calculator.html</loc>
 <lastmod>2026-06-29</lastmod>
@@ -146,9 +137,9 @@
 <lastmod>2026-06-29</lastmod>
 <priority>0.75</priority>
 </url>
-<!--  ============================================
+<!--   ============================================
        FINANCIAL CALCULATORS (11)
-       ============================================  -->
+       ============================================   -->
 <url>
 <loc>https://toolpond.org/salary-calculator.html</loc>
 <lastmod>2026-06-29</lastmod>
@@ -204,9 +195,9 @@
 <lastmod>2026-06-29</lastmod>
 <priority>0.75</priority>
 </url>
-<!--  ============================================
+<!--   ============================================
        CONVERTERS & GENERATORS (6)
-       ============================================  -->
+       ============================================   -->
 <url>
 <loc>https://toolpond.org/converter.html</loc>
 <lastmod>2026-06-29</lastmod>
@@ -237,9 +228,9 @@
 <lastmod>2026-06-29</lastmod>
 <priority>0.75</priority>
 </url>
-<!--  ============================================
+<!--   ============================================
        WRITING & CONTENT TOOLS (3)
-       ============================================  -->
+       ============================================   -->
 <url>
 <loc>https://toolpond.org/word-counter-tool.html</loc>
 <lastmod>2026-06-29</lastmod>
@@ -255,9 +246,9 @@
 <lastmod>2026-06-29</lastmod>
 <priority>0.75</priority>
 </url>
-<!--  ============================================
+<!--   ============================================
        UTILITIES & PRODUCTIVITY (5)
-       ============================================  -->
+       ============================================   -->
 <url>
 <loc>https://toolpond.org/background-remover.html</loc>
 <lastmod>2026-06-29</lastmod>
