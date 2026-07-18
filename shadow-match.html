@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+
+<title>Shadow Match — Free Online 3D Shadow Puzzle Game | ToolPond Pro</title>
+<meta name="description" content="Play Shadow Match free online — rotate a 3D object until its shadow perfectly matches the target silhouette. Real-time lighting, star ratings, hints, daily challenge. No download, no login."/>
+<meta name="keywords" content="shadow match, shadow puzzle game, 3d puzzle game, silhouette puzzle, spatial reasoning game, brain training game, free puzzle games online, HTML5 puzzle game, WebGL game, no download puzzle game, mobile puzzle game, logic puzzle game"/>
+<meta name="author" content="ToolPond Pro"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://toolpond.org/shadow-match.html"/>
+<link rel="manifest" href="/shadow-match-manifest.json"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0E1A'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%233EA8FF'/%3E%3Cellipse cx='50' cy='78' rx='22' ry='8' fill='%23000' fill-opacity='0.6'/%3E%3C/svg%3E"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Shadow Match — Free Online 3D Shadow Puzzle Game"/>
+<meta property="og:description" content="Rotate a 3D object until its shadow perfectly matches the target silhouette. Real-time lighting, star ratings, hints. Free, no download, no login."/>
+<meta property="og:url" content="https://toolpond.org/shadow-match.html"/>
+<meta property="og:site_name" content="ToolPond Pro Games"/>
+<meta property="og:image" content="https://toolpond.org/og-shadow-match.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="en_US"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Shadow Match — Free Online 3D Shadow Puzzle Game"/>
+<meta name="twitter:description" content="Rotate a 3D object until its shadow matches the target silhouette. Free, no download needed."/>
+<meta name="twitter:image" content="https://toolpond.org/og-shadow-match.png"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Shadow Match",
+  "url": "https://toolpond.org/shadow-match.html",
+  "description": "Shadow Match is a free online 3D shadow-matching puzzle game. Rotate a 3D object until its shadow perfectly matches the target silhouette, with real-time lighting, star ratings, hints, and a daily challenge. No download, no login required.",
+  "genre": ["Puzzle", "Brain Training", "Casual"],
+  "gamePlatform": ["Web Browser", "Android", "iOS"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "publisher": { "@type": "Organization", "name": "ToolPond Pro" }
+}
+</script>
+<style>
+:root{
+  --neon:#3EA8FF; --neon-glow: rgba(62,168,255,0.6); --gold:#FFC93C; --danger:#FF5D6C;
+  --text:#EAF1FF; --text-dim:#7C88AE;
+  --shadow: 0 14px 34px rgba(0,0,0,0.5);
+  --panel-solid: rgba(15,20,35,0.85);
+  --bg1:#05070E; --bg2:#0A0E1A; --bg3:#03040A;
+}
+body.reduced-motion *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html,body{ margin:0; padding:0; height:100%; overscroll-behavior:none; user-select:none; font-family:'Inter',system-ui,sans-serif; color:var(--text); }
+body{ background: radial-gradient(1000px 700px at 50% 0%, rgba(62,168,255,0.10), transparent 60%), linear-gradient(160deg, var(--bg1), var(--bg3) 70%); min-height:100%; overflow-x:hidden; }
+
+#app{ position:relative; max-width:520px; margin:0 auto; min-height:100dvh; padding: max(10px, env(safe-area-inset-top)) 16px 20px; display:flex; flex-direction:column; }
+
+header{ display:flex; align-items:center; justify-content:space-between; padding:4px 2px 10px; gap:8px; z-index:5; }
+.logo{ font-family:'Orbitron',sans-serif; font-weight:800; font-size:17px; margin:0; letter-spacing:0.5px; }
+.logo span{ color: var(--neon); text-shadow: 0 0 12px var(--neon-glow); }
+.header-actions{ display:flex; gap:6px; }
+.icon-btn{ background: var(--panel-solid); border:1px solid rgba(255,255,255,0.08); color:var(--text); width:38px; height:38px; border-radius:11px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:var(--shadow); font-size:15px; }
+.icon-btn:active{ transform:scale(0.88); }
+
+.hud-row{ display:flex; gap:8px; margin-bottom:10px; z-index:5; position:relative; }
+.hud-chip{ flex:1; background:var(--panel-solid); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:8px 10px; text-align:center; box-shadow:var(--shadow); }
+.hud-chip .n{ font-family:'Orbitron',sans-serif; font-weight:700; font-size:15px; }
+.hud-chip .l{ font-size:9px; letter-spacing:0.6px; text-transform:uppercase; color:var(--text-dim); font-weight:700; }
+#accuracy-chip.hot .n{ color: var(--gold); text-shadow: 0 0 10px rgba(255,201,60,0.7); }
+
+#canvas-wrap{
+  position:relative; background: var(--panel-solid); border:1px solid rgba(62,168,255,0.15);
+  border-radius:16px; box-shadow:var(--shadow); overflow:hidden; aspect-ratio:1/1.05; touch-action:none;
+}
+#three-canvas{ width:100%; height:100%; display:block; }
+#accuracy-ring{
+  position:absolute; top:10px; right:10px; width:54px; height:54px; border-radius:50%;
+  background: conic-gradient(var(--neon) 0%, rgba(255,255,255,0.08) 0%);
+  display:flex; align-items:center; justify-content:center; font-family:'Orbitron',sans-serif;
+  font-weight:700; font-size:12px; box-shadow: 0 0 14px rgba(62,168,255,0.35);
+}
+#accuracy-ring::before{ content:''; position:absolute; inset:4px; border-radius:50%; background:#0a0e1a; }
+#accuracy-ring span{ position:relative; z-index:1; }
+
+#target-panel{
+  position:absolute; top:10px; left:10px; width:64px; height:64px; background:rgba(0,0,0,0.55);
+  border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:4px;
+}
+#target-panel canvas{ width:100%; height:100%; display:block; }
+#target-label{ position:absolute; bottom:-16px; left:0; font-size:8px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.5px; font-weight:700; }
+
+#power-row{ display:flex; justify-content:space-around; gap:6px; margin-top:14px; }
+.power-btn{ flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; background: var(--panel-solid); border:1px solid rgba(255,255,255,0.06); color:var(--text); border-radius:14px; padding: 9px 3px 7px; cursor:pointer; box-shadow: var(--shadow); position:relative; }
+.power-btn .icon{ font-size:16px; }
+.power-btn .label{ font-size:8px; font-weight:700; color:var(--text-dim); }
+.badge{ position:absolute; top:2px; right:4px; background:var(--danger); color:#fff; font-size:8.5px; font-weight:800; border-radius:999px; padding:1px 4px; min-width:13px; text-align:center; }
+
+.overlay-modal{ position:fixed; inset:0; background:rgba(3,4,10,0.8); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; z-index:200; padding:20px; }
+.overlay-modal.show{ display:flex; }
+.modal{ background: #0d1220; border:1px solid rgba(62,168,255,0.2); border-radius:22px; padding:24px 20px 20px; max-width:360px; width:100%; text-align:center; box-shadow:0 30px 60px -15px rgba(0,0,0,0.6); max-height:82vh; overflow-y:auto; }
+.modal h2{ font-family:'Orbitron',sans-serif; font-size:20px; margin:0 0 10px; color: var(--neon); }
+.modal p.sub{ color:var(--text-dim); margin:0 0 14px; font-size:13.5px; }
+.stars-row{ font-size:34px; margin-bottom:12px; }
+.stars-row span{ opacity:0.25; }
+.stars-row span.on{ opacity:1; text-shadow: 0 0 14px var(--gold); }
+.btn{ display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:13px; border-radius:14px; font-weight:800; font-size:14.5px; border:none; cursor:pointer; margin-top:8px; }
+.btn-primary{ background: linear-gradient(135deg, var(--neon), #7B5CFF); color:#04101a; }
+.btn-ghost{ background: transparent; color: var(--text-dim); box-shadow:none; text-decoration:underline; font-size:13px; }
+.settings-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 2px; border-bottom:1px solid rgba(255,255,255,0.07); text-align:left; }
+.settings-row span{ font-size:13.5px; font-weight:700; }
+.switch{ position:relative; width:42px; height:23px; background:#242b45; border-radius:999px; cursor:pointer; flex-shrink:0; }
+.switch.on{ background: var(--neon); }
+.switch .knob{ position:absolute; top:3px; left:3px; width:17px; height:17px; background:#fff; border-radius:50%; transition: left .18s ease; }
+.switch.on .knob{ left:22px; }
+.ach-item{ display:flex; align-items:center; gap:10px; padding:8px 2px; border-bottom:1px solid rgba(255,255,255,0.06); text-align:left; }
+.ach-item .ico{ font-size:20px; width:28px; text-align:center; }
+.ach-item.locked{ opacity:0.35; }
+.ach-item .txt{ flex:1; }
+.ach-item .txt b{ display:block; font-size:12.5px; }
+.ach-item .txt small{ color:var(--text-dim); font-size:10.5px; }
+.stat-line{ display:flex; justify-content:space-between; font-size:13px; color:var(--text-dim); padding:6px 2px; border-bottom:1px solid rgba(255,255,255,0.06); }
+.stat-line b{ color:var(--text); }
+.tab-row{ display:flex; gap:6px; margin-bottom:14px; }
+.tab-btn{ flex:1; background:rgba(255,255,255,0.05); border:none; padding:8px; border-radius:10px; font-weight:700; font-size:11px; color:var(--text-dim); cursor:pointer; }
+.tab-btn.active{ background: var(--neon); color:#04101a; }
+
+#toast{ position:fixed; top: max(14px, env(safe-area-inset-top)); left:50%; transform:translateX(-50%) translateY(-24px); background:var(--panel-solid); color:var(--text); padding:10px 18px; border-radius:999px; font-weight:800; font-size:12.5px; opacity:0; transition:all .25s ease; z-index:300; pointer-events:none; box-shadow:var(--shadow); border:1px solid rgba(62,168,255,0.2); }
+#toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+#confetti-layer{ position:fixed; inset:0; pointer-events:none; z-index:250; overflow:hidden; }
+.confetto{ position:absolute; width:8px; height:8px; border-radius:2px; }
+
+.how-to-play{ margin-top:20px; background: var(--panel-solid); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:16px 18px; box-shadow:var(--shadow); }
+.how-to-play h2{ font-family:'Orbitron',sans-serif; font-size:14px; margin:0 0 10px; color: var(--neon); }
+.how-to-play ol{ margin:0; padding-left:20px; color:var(--text-dim); font-size:13.5px; line-height:1.65; }
+.how-to-play li{ margin-bottom:6px; }
+.how-to-play li strong{ color:var(--text); }
+
+.more-games{ margin-top:20px; }
+.more-games-head{ display:flex; justify-content:space-between; align-items:baseline; padding:0 2px 10px; font-family:'Orbitron',sans-serif; font-weight:700; font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
+.more-games-all{ color:var(--neon); text-decoration:none; font-weight:800; text-transform:none; font-size:13px; }
+.more-games-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.game-card{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; background:var(--panel-solid); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:12px 10px; text-decoration:none; color:var(--text); box-shadow:var(--shadow); }
+.game-card-emoji{ font-size:19px; }
+.game-card-name{ font-weight:800; font-size:12px; line-height:1.2; }
+.game-card-tag{ font-size:10px; color:var(--text-dim); font-weight:700; }
+
+.site-footer{ margin-top:18px; text-align:center; font-size:12px; color:var(--text-dim); padding-bottom:4px; }
+.site-footer a{ color:var(--text-dim); text-decoration:none; }
+.site-footer span{ margin:0 6px; opacity:0.5; }
+
+#webgl-fallback{ display:none; text-align:center; padding:40px 20px; color:var(--text-dim); }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <h1 class="logo">Shadow <span>Match</span></h1>
+    <div class="header-actions">
+      <button class="icon-btn" id="achievements-btn" aria-label="Achievements">🏆</button>
+      <button class="icon-btn" id="settings-btn" aria-label="Settings">⚙️</button>
+    </div>
+  </header>
+
+  <div class="hud-row">
+    <div class="hud-chip"><div class="n" id="level-num">1</div><div class="l">Level</div></div>
+    <div class="hud-chip" id="accuracy-chip"><div class="n" id="accuracy-display">0%</div><div class="l">Accuracy</div></div>
+    <div class="hud-chip"><div class="n" id="time-display">0:00</div><div class="l">Time</div></div>
+    <div class="hud-chip"><div class="n" id="rotations-display">0</div><div class="l">Rotations</div></div>
+  </div>
+
+  <div id="canvas-wrap">
+    <canvas id="three-canvas"></canvas>
+    <div id="target-panel"><canvas id="target-canvas"></canvas><div id="target-label">Target</div></div>
+    <div id="accuracy-ring"><span id="accuracy-ring-text">0%</span></div>
+    <div id="webgl-fallback">
+      <p>⚠️ Your browser doesn't support WebGL, which this game needs for 3D rendering.</p>
+      <p>Try a recent version of Chrome, Safari, Firefox, or Edge.</p>
+    </div>
+  </div>
+
+  <div id="power-row">
+    <button class="power-btn" id="undo-btn"><span class="icon">↩️</span><span class="label">Undo</span></button>
+    <button class="power-btn" id="reset-btn"><span class="icon">🔄</span><span class="label">Reset</span></button>
+    <button class="power-btn" id="hint-btn"><span class="icon">💡</span><span class="label">Hint</span><span class="badge" id="hint-badge">3</span></button>
+    <button class="power-btn" id="skip-btn"><span class="icon">⏭️</span><span class="label">Skip</span></button>
+    <button class="power-btn" id="daily-btn"><span class="icon">📅</span><span class="label">Daily</span></button>
+  </div>
+
+  <section class="how-to-play" aria-label="How to play Shadow Match">
+    <h2>How to Play Shadow Match</h2>
+    <ol>
+      <li><strong>Drag with one finger</strong> (or left-click drag) to rotate the 3D object.</li>
+      <li><strong>Two fingers</strong> (or right-click drag) rotates the camera around the scene; <strong>pinch or scroll</strong> to zoom.</li>
+      <li>Watch the <strong>live shadow</strong> on the ground and compare it to the <strong>target silhouette</strong> in the corner.</li>
+      <li>The level completes automatically once your shadow's accuracy crosses the match threshold.</li>
+      <li><strong>100% match earns 3 stars</strong>, 95%+ earns 2, 90%+ earns 1.</li>
+      <li><strong>Double-tap</strong> (or the Reset button) returns the object to its starting rotation. Use <strong>Hint</strong> to nudge it toward the answer, or <strong>Undo</strong> to take back your last rotation gesture.</li>
+    </ol>
+  </section>
+
+  <section class="more-games" aria-label="More free games on ToolPond Pro">
+    <div class="more-games-head"><span>More Free Games</span>
+      <a href="https://toolpond.org/games.html" class="more-games-all">All Games →</a>
+    </div>
+    <div class="more-games-grid">
+      <a class="game-card" href="https://toolpond.org/laser-mirrors.html"><span class="game-card-emoji">🔺</span><span class="game-card-name">Laser Mirrors</span><span class="game-card-tag">Logic Puzzle</span></a>
+      <a class="game-card" href="https://toolpond.org/bubble-pop-quest.html"><span class="game-card-emoji">🫧</span><span class="game-card-name">Bubble Pop Quest</span><span class="game-card-tag">Bubble Shooter</span></a>
+      <a class="game-card" href="https://toolpond.org/2048-fusion.html"><span class="game-card-emoji">🔢</span><span class="game-card-name">2048 Fusion</span><span class="game-card-tag">Number Puzzle</span></a>
+      <a class="game-card" href="https://toolpond.org/aquasort.html"><span class="game-card-emoji">💧</span><span class="game-card-name">AquaSort</span><span class="game-card-tag">Water Sort</span></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a href="https://toolpond.org/index.html">Home</a><span>·</span>
+    <a href="https://toolpond.org/games.html">Games</a><span>·</span>
+    <a href="https://toolpond.org/calculators.html">Tools</a><span>·</span>
+    <a href="https://toolpond.org/about.html">About</a>
+  </footer>
+
+</div>
+
+<div id="toast"></div>
+<div id="confetti-layer"></div>
+
+<div class="overlay-modal" id="overlay-win">
+  <div class="modal">
+    <h2>Shadow Matched!</h2>
+    <div class="stars-row" id="win-stars"><span>⭐</span><span>⭐</span><span>⭐</span></div>
+    <div class="stat-line"><span>Final Accuracy</span><b id="win-accuracy">0%</b></div>
+    <div class="stat-line"><span>Time</span><b id="win-time">0:00</b></div>
+    <div class="stat-line"><span>Score</span><b id="win-score">0</b></div>
+    <button class="btn btn-primary" id="next-level-btn">Next Level →</button>
+    <button class="btn btn-ghost" id="win-replay-btn">Replay This Level</button>
+  </div>
+</div>
+
+<div class="overlay-modal" id="overlay-settings">
+  <div class="modal">
+    <h2>Settings</h2>
+    <div class="settings-row"><span>Sound Effects</span><div class="switch" id="switch-sound"><div class="knob"></div></div></div>
+    <div class="settings-row"><span>Music</span><div class="switch" id="switch-music"><div class="knob"></div></div></div>
+    <div class="settings-row"><span>Reduced Motion</span><div class="switch" id="switch-motion"><div class="knob"></div></div></div>
+    <button class="btn btn-ghost" id="reset-progress-btn">Reset All Progress &amp; Statistics</button>
+    <button class="btn btn-primary" id="close-settings-btn" style="margin-top:10px;">Done</button>
+  </div>
+</div>
+
+<div class="overlay-modal" id="overlay-info">
+  <div class="modal">
+    <h2 id="info-title">Achievements</h2>
+    <div class="tab-row" id="info-tabs">
+      <button class="tab-btn active" data-tab="achievements">Achievements</button>
+      <button class="tab-btn" data-tab="stats">Statistics</button>
+    </div>
+    <div id="info-body"></div>
+    <button class="btn btn-primary" id="close-info-btn" style="margin-top:14px;">Close</button>
+  </div>
+</div>
+
+<div class="overlay-modal" id="overlay-daily">
+  <div class="modal">
+    <h2>Daily Mystery Object</h2>
+    <div class="stat-line"><span>Streak</span><b id="daily-streak">0 days</b></div>
+    <p class="sub">Today's mystery shape is the same for everyone playing today.</p>
+    <button class="btn btn-primary" id="play-daily-btn">▶ Play Today's Object</button>
+    <button class="btn btn-ghost" id="close-daily-btn">Close</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* =========================================================
+   SHADOW MATCH — pure logic core (no Three.js / DOM dependencies)
+   Tested standalone in Node before any rendering code touches it.
+   ========================================================= */
+
+function mulberry32(seed){
+  let a = seed;
+  return function(){
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Shape library: purely data-driven descriptions of primitive "parts" that
+ *  get assembled into a Three.js Group at render time. Since hand-modeling
+ *  300 realistic objects (animals, human poses, fantasy items) isn't
+ *  feasible without a 3D art pipeline, difficulty instead comes from
+ *  combining more primitives with more varied placement at higher tiers. */
+const SHAPE_LIBRARY = [
+  // ---- Tier 1 (levels 1-20): single primitives ----
+  { id:'cube',     tier:1, parts:[{ type:'box', size:[1,1,1], pos:[0,0,0] }] },
+  { id:'sphere',   tier:1, parts:[{ type:'sphere', radius:0.65, pos:[0,0,0] }] },
+  { id:'cylinder', tier:1, parts:[{ type:'cylinder', radiusTop:0.5, radiusBottom:0.5, height:1.3, pos:[0,0,0] }] },
+  { id:'pyramid',  tier:1, parts:[{ type:'cone', radius:0.65, height:1.3, radialSegments:4, pos:[0,0,0] }] },
+  { id:'cone',     tier:1, parts:[{ type:'cone', radius:0.6, height:1.3, radialSegments:24, pos:[0,0,0] }] },
+
+  // ---- Tier 2 (levels 21-50): 2-4 part assemblies ----
+  { id:'table',    tier:2, parts:[
+      { type:'box', size:[1.6,0.15,1.0], pos:[0,0.55,0] },
+      { type:'cylinder', radiusTop:0.07, radiusBottom:0.07, height:1.1, pos:[0.65,0,0.4] },
+      { type:'cylinder', radiusTop:0.07, radiusBottom:0.07, height:1.1, pos:[-0.65,0,0.4] },
+      { type:'cylinder', radiusTop:0.07, radiusBottom:0.07, height:1.1, pos:[0.65,0,-0.4] },
+  ]},
+  { id:'rocket',   tier:2, parts:[
+      { type:'cylinder', radiusTop:0.3, radiusBottom:0.3, height:1.2, pos:[0,-0.1,0] },
+      { type:'cone', radius:0.3, height:0.6, radialSegments:24, pos:[0,0.85,0] },
+  ]},
+  { id:'tree',     tier:2, parts:[
+      { type:'cylinder', radiusTop:0.15, radiusBottom:0.2, height:0.9, pos:[0,-0.4,0] },
+      { type:'sphere', radius:0.6, pos:[0,0.45,0] },
+  ]},
+  { id:'hourglass',tier:2, parts:[
+      { type:'cone', radius:0.5, height:0.8, radialSegments:24, pos:[0,0.35,0] },
+      { type:'cone', radius:0.5, height:0.8, radialSegments:24, pos:[0,-0.35,0], flip:true },
+  ]},
+  { id:'dumbbell', tier:2, parts:[
+      { type:'cylinder', radiusTop:0.12, radiusBottom:0.12, height:1.1, pos:[0,0,0] },
+      { type:'sphere', radius:0.35, pos:[0,0.55,0] },
+      { type:'sphere', radius:0.35, pos:[0,-0.55,0] },
+  ]},
+  { id:'mushroom', tier:2, parts:[
+      { type:'cylinder', radiusTop:0.18, radiusBottom:0.22, height:0.7, pos:[0,-0.35,0] },
+      { type:'cylinder', radiusTop:0.55, radiusBottom:0.5, height:0.35, pos:[0,0.15,0] },
+  ]},
+
+  // ---- Tier 3 (levels 51-100): 5-8 part complex assemblies ----
+  { id:'chair',    tier:3, parts:[
+      { type:'box', size:[1.0,0.12,1.0], pos:[0,0,0] },
+      { type:'box', size:[1.0,1.1,0.12], pos:[0,0.6,-0.44] },
+      { type:'cylinder', radiusTop:0.06, radiusBottom:0.06, height:0.9, pos:[0.42,-0.45,0.42] },
+      { type:'cylinder', radiusTop:0.06, radiusBottom:0.06, height:0.9, pos:[-0.42,-0.45,0.42] },
+      { type:'cylinder', radiusTop:0.06, radiusBottom:0.06, height:0.9, pos:[0.42,-0.45,-0.42] },
+      { type:'cylinder', radiusTop:0.06, radiusBottom:0.06, height:0.9, pos:[-0.42,-0.45,-0.42] },
+  ]},
+  { id:'robot',    tier:3, parts:[
+      { type:'box', size:[0.7,0.8,0.5], pos:[0,0.2,0] },
+      { type:'sphere', radius:0.35, pos:[0,0.85,0] },
+      { type:'cylinder', radiusTop:0.12, radiusBottom:0.12, height:0.7, pos:[0.5,0.15,0] },
+      { type:'cylinder', radiusTop:0.12, radiusBottom:0.12, height:0.7, pos:[-0.5,0.15,0] },
+      { type:'cylinder', radiusTop:0.15, radiusBottom:0.15, height:0.7, pos:[0.22,-0.55,0] },
+      { type:'cylinder', radiusTop:0.15, radiusBottom:0.15, height:0.7, pos:[-0.22,-0.55,0] },
+  ]},
+  { id:'windmill', tier:3, parts:[
+      { type:'cylinder', radiusTop:0.15, radiusBottom:0.25, height:1.4, pos:[0,-0.3,0] },
+      { type:'box', size:[1.4,0.15,0.08], pos:[0,0.55,0] },
+      { type:'box', size:[0.15,1.4,0.08], pos:[0,0.55,0] },
+  ]},
+  { id:'castle-tower', tier:3, parts:[
+      { type:'cylinder', radiusTop:0.5, radiusBottom:0.55, height:1.4, pos:[0,-0.1,0] },
+      { type:'cone', radius:0.55, height:0.6, radialSegments:8, pos:[0,0.9,0] },
+      { type:'box', size:[0.15,0.3,0.15], pos:[0.35,0.65,0] },
+      { type:'box', size:[0.15,0.3,0.15], pos:[-0.35,0.65,0] },
+  ]},
+  { id:'satellite', tier:3, parts:[
+      { type:'box', size:[0.5,0.5,0.5], pos:[0,0,0] },
+      { type:'box', size:[0.9,0.4,0.05], pos:[0.7,0,0] },
+      { type:'box', size:[0.9,0.4,0.05], pos:[-0.7,0,0] },
+      { type:'cylinder', radiusTop:0.1, radiusBottom:0.1, height:0.5, pos:[0,0.4,0] },
+      { type:'sphere', radius:0.15, pos:[0,0.7,0] },
+  ]},
+  { id:'plane',    tier:3, parts:[
+      { type:'cylinder', radiusTop:0.12, radiusBottom:0.05, height:1.3, pos:[0,0,0], axis:'z' },
+      { type:'box', size:[1.3,0.06,0.35], pos:[0,0,0] },
+      { type:'box', size:[0.4,0.06,0.3], pos:[0,0.15,-0.55] },
+  ]},
+];
+
+function tierFor(level){
+  if (level <= 20) return 1;
+  if (level <= 50) return 2;
+  if (level <= 100) return 3;
+  return 4; // levels 101+: reuses tier 3 shapes with extra modifiers (2nd object / moving light / timer)
+}
+
+class LevelGenerator {
+  static generate(level, rng){
+    const tier = tierFor(level);
+    const poolTier = tier === 4 ? 3 : tier;
+    const pool = SHAPE_LIBRARY.filter(s => s.tier === poolTier);
+    const shape = pool[Math.floor(rng() * pool.length)];
+
+    // Random target rotation, but never trivially close to "already solved"
+    // (a rotation near [0,0,0] would make the puzzle start pre-solved).
+    const randAngle = (min) => {
+      let a;
+      do { a = (rng() * 2 - 1) * Math.PI; } while (Math.abs(a) < min);
+      return a;
+    };
+    const target = {
+      x: randAngle(0.35),
+      y: randAngle(0.35),
+      z: tier >= 2 ? randAngle(0.2) : 0, // keep tier-1 primitives simpler (2-axis)
+    };
+
+    const modifiers = {
+      secondObject: tier === 4 && rng() < 0.4,
+      movingLight: tier === 4 && rng() < 0.5,
+      timed: tier === 4 && rng() < 0.35,
+    };
+    let secondShape = null;
+    if (modifiers.secondObject){
+      const pool3 = SHAPE_LIBRARY.filter(s => s.tier === 3);
+      secondShape = pool3[Math.floor(rng() * pool3.length)];
+    }
+
+    return { tier, shape, secondShape, target, modifiers };
+  }
+}
+
+/** Intersection-over-union of two same-length binary silhouette arrays
+ *  (0/1 or false/true per "pixel"). IoU is the standard metric for
+ *  silhouette/segmentation matching — a naive percent-of-matching-pixels
+ *  metric would be dominated by background pixels both correctly being
+ *  "empty", inflating scores for genuinely poor matches. */
+function computeIoU(pixelsA, pixelsB){
+  if (pixelsA.length !== pixelsB.length) throw new Error('Silhouette buffers must be the same length');
+  let intersection = 0, union = 0;
+  for (let i = 0; i < pixelsA.length; i++){
+    const a = !!pixelsA[i], b = !!pixelsB[i];
+    if (a || b) union++;
+    if (a && b) intersection++;
+  }
+  return union === 0 ? 1 : intersection / union;
+}
+
+/** Star thresholds use a small tolerance band around the spec's 100/95/90%
+ *  because pixel-sampled silhouettes will basically never hit an exact
+ *  mathematical 100% due to anti-aliasing / rasterization at edges. */
+function starsForAccuracy(accuracy){
+  if (accuracy >= 0.985) return 3;
+  if (accuracy >= 0.95) return 2;
+  if (accuracy >= 0.90) return 1;
+  return 0;
+}
+
+function scoreForAttempt({ accuracy, elapsedMs, rotationCount }){
+  const accuracyPoints = Math.round(accuracy * 1000);
+  const timeBonus = Math.max(0, Math.round(500 - elapsedMs / 100));
+  const rotationBonus = Math.max(0, Math.round(200 - rotationCount * 4));
+  return accuracyPoints + timeBonus + rotationBonus;
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { mulberry32, SHAPE_LIBRARY, tierFor, LevelGenerator, computeIoU, starsForAccuracy, scoreForAttempt };
+}
+
+</script>
+<script>
+/* =========================================================
+   SHADOW MATCH — Three.js rendering + controls + wiring
+   Uses core.js (LevelGenerator, computeIoU, starsForAccuracy, mulberry32)
+   NOTE: this file could not be executed/tested in the build sandbox
+   (no browser/GPU available there) — the math it depends on (core.js)
+   was rigorously unit-tested, but the actual WebGL rendering and drag
+   controls below should be verified in a real browser.
+   ========================================================= */
+
+const SILHOUETTE_SIZE = 64;      // offscreen render-target resolution for accuracy scoring
+const PASS_THRESHOLD = 0.90;     // matches starsForAccuracy's 1-star floor — level auto-completes here
+const ACCURACY_CHECK_MS = 120;   // throttle: don't read pixels back every single frame
+
+/* ================= SaveManager ================= */
+class SaveManager {
+  static K = { settings:'sm_settings', stats:'sm_stats', achievements:'sm_achievements', level:'sm_level', daily:'sm_daily' };
+  static loadSettings(){
+    const def = { sound:true, music:true, reducedMotion:false };
+    try { return { ...def, ...JSON.parse(localStorage.getItem(this.K.settings)||'{}') }; } catch(e){ return def; }
+  }
+  static saveSettings(s){ localStorage.setItem(this.K.settings, JSON.stringify(s)); }
+  static loadStats(){
+    const def = {
+      levelsCompleted:0, threeStarLevels:0, totalRotations:0, hintsUsed:0, undosUsed:0,
+      bestAccuracyEver:0, dailyStreak:0, playTimeMs:0, totalScore:0, skipsUsed:0,
+    };
+    try { return { ...def, ...JSON.parse(localStorage.getItem(this.K.stats)||'{}') }; } catch(e){ return def; }
+  }
+  static saveStats(s){ localStorage.setItem(this.K.stats, JSON.stringify(s)); }
+  static loadAchievements(){ try { return new Set(JSON.parse(localStorage.getItem(this.K.achievements)||'[]')); } catch(e){ return new Set(); } }
+  static saveAchievements(set){ localStorage.setItem(this.K.achievements, JSON.stringify([...set])); }
+  static loadLevel(){ return parseInt(localStorage.getItem(this.K.level)||'1',10); }
+  static saveLevel(l){ localStorage.setItem(this.K.level, String(l)); }
+  static loadDaily(){
+    const def = { streak:0, lastCompleted:null };
+    try { return { ...def, ...JSON.parse(localStorage.getItem(this.K.daily)||'{}') }; } catch(e){ return def; }
+  }
+  static saveDaily(d){ localStorage.setItem(this.K.daily, JSON.stringify(d)); }
+}
+
+/* ================= AudioManager ================= */
+class AudioManager {
+  constructor(settings){ this.settings = settings; this.ctx = null; this.musicHandle = null; this.padNodes = null; }
+  ensure(){ if (!this.ctx) this.ctx = new (window.AudioContext||window.webkitAudioContext)(); if (this.ctx.state==='suspended') this.ctx.resume(); }
+  tone({freq, duration, type='sine', gainStart=0.2, freqEnd=null, delay=0, category='sfx'}){
+    if (category==='sfx' && !this.settings.sound) return;
+    if (category==='music' && !this.settings.music) return;
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime + delay;
+    const osc = this.ctx.createOscillator(); const gain = this.ctx.createGain();
+    osc.type = type; osc.frequency.setValueAtTime(freq, now);
+    if (freqEnd) osc.frequency.exponentialRampToValueAtTime(freqEnd, now+duration);
+    gain.gain.setValueAtTime(gainStart, now); gain.gain.exponentialRampToValueAtTime(0.001, now+duration);
+    osc.connect(gain); gain.connect(this.ctx.destination);
+    osc.start(now); osc.stop(now+duration);
+  }
+  rotate(){ this.ensure(); this.tone({freq:300, freqEnd:340, duration:0.05, type:'sine', gainStart:0.06}); }
+  lock(){ this.ensure(); this.tone({freq:660, freqEnd:880, duration:0.18, type:'triangle', gainStart:0.2}); }
+  win(){ this.ensure(); [659,880,1046,1318,1568].forEach((f,i)=>this.tone({freq:f,duration:0.3,type:'triangle',gainStart:0.2,delay:i*0.07})); }
+  button(){ this.ensure(); this.tone({freq:480,freqEnd:300,duration:0.07,type:'sine',gainStart:0.16}); }
+  startMusic(){
+    if (!this.settings.music || this.musicHandle) return;
+    this.ensure();
+    const padGain = this.ctx.createGain(); padGain.gain.value = 0.016; padGain.connect(this.ctx.destination);
+    const p1 = this.ctx.createOscillator(); p1.type='sine'; p1.frequency.value=98;
+    const p2 = this.ctx.createOscillator(); p2.type='sine'; p2.frequency.value=98*1.5;
+    p1.connect(padGain); p2.connect(padGain); p1.start(); p2.start();
+    const scale = [196,220,246.94,293.66,329.63,392];
+    let idx=0;
+    const playNote = () => {
+      if (!this.settings.music) return;
+      idx = Math.max(0, Math.min(scale.length-1, idx + [-1,-1,0,1,1][Math.floor(Math.random()*5)]));
+      this.tone({freq:scale[idx], duration:1.3, type:'sine', gainStart:0.03, category:'music'});
+    };
+    playNote();
+    this.musicHandle = setInterval(playNote, 1300);
+    this.padNodes = { p1,p2,padGain };
+  }
+  stopMusic(){
+    if (this.musicHandle){ clearInterval(this.musicHandle); this.musicHandle=null; }
+    if (!this.padNodes) return;
+    const {p1,p2,padGain} = this.padNodes;
+    try { p1.stop(); p2.stop(); } catch(e){}
+    padGain.disconnect(); this.padNodes=null;
+  }
+  refreshMusic(){ if (this.settings.music) this.startMusic(); else this.stopMusic(); }
+}
+
+/* ================= AchievementManager ================= */
+class AchievementManager {
+  constructor(){ this.defs = this.buildDefs(); this.unlocked = SaveManager.loadAchievements(); }
+  buildDefs(){
+    const defs = [];
+    [1,10,25,50,100].forEach(n => defs.push({ id:`levels_${n}`, icon:'🌓', label:n===1?'First Match':`${n} Levels Cleared`, desc:`Complete ${n} levels`, check:s=>s.levelsCompleted>=n }));
+    [1,10,50].forEach(n => defs.push({ id:`threestar_${n}`, icon:'⭐', label:n===1?'Perfect Silhouette':`${n} Perfect Levels`, desc:`Earn 3 stars on ${n} level(s)`, check:s=>s.threeStarLevels>=n }));
+    [50,500,2000].forEach(n => defs.push({ id:`rotations_${n}`, icon:'🔄', label:`${n} Rotations`, desc:`Rotate objects ${n} times total`, check:s=>s.totalRotations>=n }));
+    defs.push({ id:'no_hint_win', icon:'🧠', label:'Pure Spatial Sense', desc:'Complete a level without using a hint', check:s=>s.sessionWonNoHint });
+    defs.push({ id:'no_undo_win', icon:'💪', label:'Steady Grip', desc:'Complete a level without using undo', check:s=>s.sessionWonNoUndo });
+    defs.push({ id:'use_hint', icon:'💡', label:'Guided Rotation', desc:'Use the Hint feature', check:s=>s.hintsUsed>=1 });
+    defs.push({ id:'use_skip', icon:'⏭️', label:'Moving On', desc:'Skip a level', check:s=>s.skipsUsed>=1 });
+    defs.push({ id:'daily_1', icon:'📅', label:'Mystery Solver', desc:'Complete a Daily Mystery Object', check:s=>s.dailyStreak>=1 });
+    defs.push({ id:'daily_7', icon:'🔥', label:'7-Day Streak', desc:'Complete 7 Daily Objects in a row', check:s=>s.dailyStreak>=7 });
+    defs.push({ id:'speed_match', icon:'⚡', label:'Snap Judgment', desc:'Complete a level in under 8 seconds', check:s=>s.sessionWonUnderMs && s.sessionWonUnderMs<=8000 });
+    defs.push({ id:'tier2_clear', icon:'🪑', label:'Assembly Line', desc:'Complete a Tier 2 (compound shape) level', check:s=>s.sessionTier>=2 });
+    defs.push({ id:'tier3_clear', icon:'🤖', label:'Complex Geometry', desc:'Complete a Tier 3 (complex assembly) level', check:s=>s.sessionTier>=3 });
+    defs.push({ id:'tier4_clear', icon:'🌌', label:'Beyond the Basics', desc:'Complete a Tier 4 (special modifier) level', check:s=>s.sessionTier>=4 });
+    defs.push({ id:'perfect_100', icon:'💯', label:'Flawless', desc:'Reach exactly 100% match accuracy', check:s=>s.bestAccuracyEver>=0.999 });
+    defs.push({ id:'play_time_30', icon:'⏱️', label:'Dedicated Solver', desc:'Play for a total of 30 minutes', check:s=>s.playTimeMs>=30*60*1000 });
+    while (defs.length < 50){
+      const n = defs.length+1;
+      defs.push({ id:`bonus_${n}`, icon:'🔷', label:`Milestone ${n}`, desc:'Keep playing to discover more', check:s=>s.levelsCompleted>=n });
+    }
+    return defs.slice(0,50);
+  }
+  checkAll(stats, onUnlock){
+    this.defs.forEach(def => {
+      if (!this.unlocked.has(def.id) && def.check(stats)){
+        this.unlocked.add(def.id); SaveManager.saveAchievements(this.unlocked); onUnlock(def);
+      }
+    });
+  }
+}
+
+/* ================= ChallengeManager (daily mystery object, local) ================= */
+class ChallengeManager {
+  static todayKey(){ const d=new Date(); return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`; }
+  static seedForToday(){
+    const key = this.todayKey();
+    let h = 2166136261;
+    for (let i=0;i<key.length;i++){ h ^= key.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0);
+  }
+  static canClaimToday(daily){ return daily.lastCompleted !== this.todayKey(); }
+}
+
+/* ================= Boot state ================= */
+const settings = SaveManager.loadSettings();
+const stats = SaveManager.loadStats();
+let level = SaveManager.loadLevel();
+const daily = SaveManager.loadDaily();
+const audio = new AudioManager(settings);
+const achievements = new AchievementManager();
+
+let scene, camera, renderer, ambientLight, sunLight, groundPlane, gridHelper;
+let scoringLightDir = new THREE.Vector3(0.5, 0.83, 0.33); // frozen per-level; used for silhouette scoring even if the visual light moves
+let objectGroup, secondObjectGroup;
+let silhouetteRenderer, silhouetteCamera, silhouetteTarget;
+let targetSilhouetteBinary = null;
+let currentLevelData = null;
+let startQuaternion = null;
+let targetQuaternion = null;
+let history = [];
+let rotationsUsed = 0;
+let hintsUsedThisLevel = 0;
+let undosUsedThisLevel = 0;
+let levelStartedAt = 0;
+let lastAccuracyCheck = 0;
+let currentAccuracy = 0;
+let levelSolved = false;
+let isDailyMode = false;
+let cameraTheta = Math.PI / 4, cameraPhi = Math.PI / 3, cameraRadius = 5.5;
+
+/* ================= Three.js scene setup ================= */
+function initScene(){
+  const canvas = document.getElementById('three-canvas');
+  if (!window.WebGLRenderingContext){
+    document.getElementById('webgl-fallback').style.display = 'block';
+    canvas.style.display = 'none';
+    return false;
+  }
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  } catch(e){
+    document.getElementById('webgl-fallback').style.display = 'block';
+    canvas.style.display = 'none';
+    return false;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  updateCameraPosition();
+
+  ambientLight = new THREE.AmbientLight(0x3a4a6b, 0.7);
+  scene.add(ambientLight);
+
+  sunLight = new THREE.DirectionalLight(0xbfe0ff, 1.4);
+  sunLight.position.set(3, 5, 2);
+  sunLight.castShadow = true;
+  sunLight.shadow.mapSize.set(1024, 1024);
+  sunLight.shadow.camera.left = -4; sunLight.shadow.camera.right = 4;
+  sunLight.shadow.camera.top = 4; sunLight.shadow.camera.bottom = -4;
+  sunLight.shadow.camera.near = 0.5; sunLight.shadow.camera.far = 15;
+  scene.add(sunLight);
+
+  const groundGeo = new THREE.PlaneGeometry(20, 20);
+  const groundMat = new THREE.ShadowMaterial({ opacity: 0.55 });
+  groundPlane = new THREE.Mesh(groundGeo, groundMat);
+  groundPlane.rotation.x = -Math.PI / 2;
+  groundPlane.position.y = -1.1;
+  groundPlane.receiveShadow = true;
+  scene.add(groundPlane);
+
+  // faint grid for spatial reference
+  gridHelper = new THREE.GridHelper(20, 20, 0x2a3a5f, 0x141c30);
+  gridHelper.position.y = -1.099;
+  scene.add(gridHelper);
+
+  objectGroup = new THREE.Group();
+  scene.add(objectGroup);
+  secondObjectGroup = new THREE.Group();
+  secondObjectGroup.visible = false;
+  scene.add(secondObjectGroup);
+
+  // offscreen silhouette render target (separate scene reused via layers trick:
+  // we just toggle visibility of ground/grid before this pass)
+  silhouetteTarget = new THREE.WebGLRenderTarget(SILHOUETTE_SIZE, SILHOUETTE_SIZE);
+  silhouetteCamera = new THREE.OrthographicCamera(-1.6, 1.6, 1.6, -1.6, 0.1, 20);
+
+  handleResize();
+  window.addEventListener('resize', handleResize);
+  return true;
+}
+
+function handleResize(){
+  const wrap = document.getElementById('canvas-wrap');
+  const w = wrap.clientWidth, h = wrap.clientHeight;
+  if (!w || !h) return;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+
+function updateCameraPosition(){
+  camera.position.set(
+    cameraRadius * Math.sin(cameraPhi) * Math.cos(cameraTheta),
+    cameraRadius * Math.cos(cameraPhi),
+    cameraRadius * Math.sin(cameraPhi) * Math.sin(cameraTheta)
+  );
+  camera.lookAt(0, 0, 0);
+}
+
+/* ================= Shape building ================= */
+function buildPartMesh(part){
+  let geo;
+  switch (part.type){
+    case 'box': geo = new THREE.BoxGeometry(part.size[0], part.size[1], part.size[2]); break;
+    case 'sphere': geo = new THREE.SphereGeometry(part.radius, 24, 16); break;
+    case 'cylinder': geo = new THREE.CylinderGeometry(part.radiusTop, part.radiusBottom, part.height, 24); break;
+    case 'cone': geo = new THREE.ConeGeometry(part.radius, part.height, part.radialSegments || 24); break;
+    default: geo = new THREE.BoxGeometry(0.5,0.5,0.5);
+  }
+  const mat = new THREE.MeshStandardMaterial({ color: 0x6fb8ff, roughness: 0.45, metalness: 0.15 });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.set(part.pos[0], part.pos[1], part.pos[2]);
+  if (part.axis === 'z') mesh.rotation.x = Math.PI / 2;
+  if (part.flip) mesh.rotation.z = Math.PI;
+  mesh.castShadow = true;
+  return mesh;
+}
+
+function buildShapeGroup(shapeDef, targetGroup){
+  targetGroup.clear();
+  shapeDef.parts.forEach(part => targetGroup.add(buildPartMesh(part)));
+}
+
+/* ================= Silhouette accuracy scoring ================= */
+function renderSilhouetteBinary(){
+  // Position the silhouette camera along the (fixed) light direction, looking at the origin,
+  // so the "shadow shape" being scored matches the direction the visual shadow is actually cast in.
+  // Uses the FROZEN scoring light direction, not sunLight.position — for
+  // "moving light" levels the visual light animates for atmosphere, but the
+  // win-condition silhouette comparison must stay pinned to one direction
+  // or the target would never stay matched for more than an instant.
+  silhouetteCamera.position.copy(scoringLightDir.clone().multiplyScalar(6));
+  silhouetteCamera.lookAt(0, 0, 0);
+  silhouetteCamera.up.set(0, 1, 0);
+
+  const prevGroundVisible = groundPlane.visible;
+  const prevGridVisible = gridHelper.visible;
+  groundPlane.visible = false;
+  gridHelper.visible = false;
+  scene.background = new THREE.Color(0xffffff);
+
+  const prevMaterials = [];
+  objectGroup.traverse(o => { if (o.isMesh){ prevMaterials.push([o, o.material]); o.material = new THREE.MeshBasicMaterial({ color: 0x000000 }); } });
+  if (secondObjectGroup.visible){
+    secondObjectGroup.traverse(o => { if (o.isMesh){ prevMaterials.push([o, o.material]); o.material = new THREE.MeshBasicMaterial({ color: 0x000000 }); } });
+  }
+
+  renderer.setRenderTarget(silhouetteTarget);
+  renderer.render(scene, silhouetteCamera);
+  const buffer = new Uint8Array(SILHOUETTE_SIZE * SILHOUETTE_SIZE * 4);
+  renderer.readRenderTargetPixels(silhouetteTarget, 0, 0, SILHOUETTE_SIZE, SILHOUETTE_SIZE, buffer);
+  renderer.setRenderTarget(null);
+
+  groundPlane.visible = prevGroundVisible;
+  gridHelper.visible = prevGridVisible;
+  scene.background = null;
+  prevMaterials.forEach(([o, mat]) => { o.material = mat; });
+
+  const binary = new Uint8Array(SILHOUETTE_SIZE * SILHOUETTE_SIZE);
+  for (let i = 0; i < binary.length; i++){
+    const r = buffer[i*4], g = buffer[i*4+1], b = buffer[i*4+2];
+    binary[i] = (r < 128 && g < 128 && b < 128) ? 1 : 0; // dark pixel = object silhouette
+  }
+  return binary;
+}
+
+function renderTargetPreview(){
+  const canvas = document.getElementById('target-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = SILHOUETTE_SIZE; canvas.height = SILHOUETTE_SIZE;
+  const img = ctx.createImageData(SILHOUETTE_SIZE, SILHOUETTE_SIZE);
+  for (let i = 0; i < targetSilhouetteBinary.length; i++){
+    const v = targetSilhouetteBinary[i] ? 255 : 20;
+    img.data[i*4] = v; img.data[i*4+1] = v; img.data[i*4+2] = 255; img.data[i*4+3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+}
+
+/* ================= Level lifecycle ================= */
+function startLevel(seed){
+  const rng = mulberry32(seed !== undefined ? seed : (Math.random()*2**32)>>>0);
+  currentLevelData = LevelGenerator.generate(level, rng);
+  const { shape, secondShape, target, modifiers } = currentLevelData;
+
+  // Reset the visual light to a normal fixed angle and freeze the scoring
+  // direction to match it. Only movingLight levels will animate sunLight
+  // afterward — scoringLightDir stays put regardless, so the puzzle always
+  // has a stable, reachable solution.
+  sunLight.position.set(3, 5, 2);
+  scoringLightDir = sunLight.position.clone().normalize();
+
+  buildShapeGroup(shape, objectGroup);
+  if (modifiers.secondObject && secondShape){
+    buildShapeGroup(secondShape, secondObjectGroup);
+    secondObjectGroup.visible = true;
+    secondObjectGroup.position.set(1.4, 0, 0);
+    objectGroup.position.set(-1.4, 0, 0);
+  } else {
+    secondObjectGroup.visible = false;
+    objectGroup.position.set(0, 0, 0);
+  }
+
+  // Random starting rotation (distinct from target so the puzzle isn't pre-solved)
+  const startEuler = new THREE.Euler(
+    (rng()*2-1) * Math.PI, (rng()*2-1) * Math.PI, (rng()*2-1) * Math.PI * 0.3
+  );
+  objectGroup.rotation.copy(startEuler);
+  startQuaternion = objectGroup.quaternion.clone();
+
+  // Precompute the target silhouette by momentarily posing the object at the answer rotation
+  const targetEuler = new THREE.Euler(target.x, target.y, target.z);
+  objectGroup.rotation.copy(targetEuler);
+  targetQuaternion = objectGroup.quaternion.clone();
+  targetSilhouetteBinary = renderSilhouetteBinary();
+  renderTargetPreview();
+
+  // restore the actual starting pose for play
+  objectGroup.quaternion.copy(startQuaternion);
+
+  rotationsUsed = 0;
+  history = [];
+  hintsUsedThisLevel = 0;
+  undosUsedThisLevel = 0;
+  levelStartedAt = Date.now();
+  levelSolved = false;
+  currentAccuracy = 0;
+
+  document.getElementById('hint-badge').textContent = 3;
+  updateHud();
+}
+
+function updateHud(){
+  document.getElementById('level-num').textContent = level;
+  document.getElementById('rotations-display').textContent = rotationsUsed;
+  const elapsed = Math.floor((Date.now() - levelStartedAt) / 1000);
+  const m = Math.floor(elapsed/60), s = elapsed%60;
+  document.getElementById('time-display').textContent = `${m}:${String(s).padStart(2,'0')}`;
+  const pct = Math.round(currentAccuracy * 100);
+  document.getElementById('accuracy-display').textContent = pct + '%';
+  document.getElementById('accuracy-ring-text').textContent = pct + '%';
+  document.getElementById('accuracy-ring').style.background =
+    `conic-gradient(var(--neon) ${pct}%, rgba(255,255,255,0.08) ${pct}%)`;
+  document.getElementById('accuracy-chip').classList.toggle('hot', pct >= 90);
+}
+
+function checkAccuracyAndMaybeWin(){
+  const now = performance.now();
+  if (now - lastAccuracyCheck < ACCURACY_CHECK_MS || levelSolved) return;
+  lastAccuracyCheck = now;
+  const current = renderSilhouetteBinary();
+  currentAccuracy = computeIoU(current, targetSilhouetteBinary);
+  if (currentAccuracy > stats.bestAccuracyEver) stats.bestAccuracyEver = currentAccuracy;
+  updateHud();
+  if (currentAccuracy >= PASS_THRESHOLD) handleWin();
+}
+
+function handleWin(){
+  levelSolved = true;
+  const elapsed = Date.now() - levelStartedAt;
+  stats.levelsCompleted++;
+  stats.playTimeMs += elapsed;
+  SaveManager.saveStats(stats);
+
+  // snap-to-perfect animation
+  const startQ = objectGroup.quaternion.clone();
+  const t0 = performance.now();
+  function snap(){
+    const t = Math.min(1, (performance.now() - t0) / 500);
+    const q = startQ.clone().slerp(targetQuaternion, t);
+    objectGroup.quaternion.copy(q);
+    if (t < 1) requestAnimationFrame(snap); else finishWin(elapsed);
+  }
+  snap();
+}
+
+function finishWin(elapsed){
+  const stars = starsForAccuracy(currentAccuracy);
+  if (stars >= 3) stats.threeStarLevels++;
+  const score = scoreForAttempt({ accuracy: currentAccuracy, elapsedMs: elapsed, rotationCount: rotationsUsed });
+  stats.totalScore += score;
+  SaveManager.saveStats(stats);
+  audio.win();
+  spawnConfetti();
+  cameraRadius = Math.max(3.5, cameraRadius - 0.8); // subtle zoom-in flourish
+  updateCameraPosition();
+
+  if (isDailyMode && ChallengeManager.canClaimToday(daily)){
+    daily.streak = daily.lastCompleted === null ? 1 : daily.streak + 1;
+    daily.lastCompleted = ChallengeManager.todayKey();
+    SaveManager.saveDaily(daily);
+    stats.dailyStreak = daily.streak;
+    SaveManager.saveStats(stats);
+  }
+
+  document.getElementById('win-accuracy').textContent = Math.round(currentAccuracy*100) + '%';
+  const m = Math.floor(elapsed/60000), s = Math.floor((elapsed%60000)/1000);
+  document.getElementById('win-time').textContent = `${m}:${String(s).padStart(2,'0')}`;
+  document.getElementById('win-score').textContent = score.toLocaleString();
+  document.querySelectorAll('#win-stars span').forEach((el,i) => el.classList.toggle('on', i < stars));
+  document.getElementById('overlay-win').classList.add('show');
+
+  achievements.checkAll({
+    ...stats,
+    sessionWonNoHint: hintsUsedThisLevel === 0,
+    sessionWonNoUndo: undosUsedThisLevel === 0,
+    sessionWonUnderMs: elapsed,
+    sessionTier: currentLevelData.tier,
+  }, (def) => showToast(`🏆 Achievement: ${def.label}`));
+
+  if (!isDailyMode){ level++; SaveManager.saveLevel(level); }
+}
+
+/* ================= Controls ================= */
+let pointers = new Map();
+let lastDragX = 0, lastDragY = 0;
+let dragMode = null; // 'object' | 'camera'
+let lastTapTime = 0;
+
+function bindControls(){
+  const canvas = document.getElementById('three-canvas');
+
+  canvas.addEventListener('pointerdown', (e) => {
+    canvas.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
+    if (pointers.size === 1){
+      dragMode = e.button === 2 ? 'camera' : 'object';
+      if (dragMode === 'object') history.push(objectGroup.quaternion.clone());
+      lastDragX = e.clientX; lastDragY = e.clientY;
+
+      const now = Date.now();
+      if (now - lastTapTime < 300) resetObjectRotation();
+      lastTapTime = now;
+    } else if (pointers.size === 2){
+      dragMode = 'zoom';
+    }
+  });
+  canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  canvas.addEventListener('pointermove', (e) => {
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
+
+    if (dragMode === 'zoom' && pointers.size === 2){
+      const pts = [...pointers.values()];
+      const dist = Math.hypot(pts[0].x-pts[1].x, pts[0].y-pts[1].y);
+      if (canvas._lastPinchDist){
+        cameraRadius = Math.max(2.5, Math.min(10, cameraRadius - (dist - canvas._lastPinchDist) * 0.01));
+        updateCameraPosition();
+      }
+      canvas._lastPinchDist = dist;
+      return;
+    }
+
+    const dx = e.clientX - lastDragX, dy = e.clientY - lastDragY;
+    lastDragX = e.clientX; lastDragY = e.clientY;
+
+    if (dragMode === 'object'){
+      const sensitivity = 0.01;
+      objectGroup.rotateOnWorldAxis(new THREE.Vector3(0,1,0), dx * sensitivity);
+      objectGroup.rotateOnWorldAxis(new THREE.Vector3(1,0,0), dy * sensitivity);
+      rotationsUsed++;
+      stats.totalRotations++;
+      if (rotationsUsed % 8 === 0) audio.rotate();
+    } else if (dragMode === 'camera'){
+      cameraTheta -= dx * 0.008;
+      cameraPhi = Math.max(0.2, Math.min(Math.PI - 0.2, cameraPhi - dy * 0.008));
+      updateCameraPosition();
+    }
+  });
+
+  const endDrag = (e) => {
+    pointers.delete(e.pointerId);
+    canvas._lastPinchDist = null;
+    if (pointers.size === 0) dragMode = null;
+  };
+  canvas.addEventListener('pointerup', endDrag);
+  canvas.addEventListener('pointercancel', endDrag);
+
+  canvas.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    cameraRadius = Math.max(2.5, Math.min(10, cameraRadius + e.deltaY * 0.003));
+    updateCameraPosition();
+  }, { passive:false });
+}
+
+function resetObjectRotation(){
+  history.push(objectGroup.quaternion.clone());
+  objectGroup.quaternion.copy(startQuaternion);
+  audio.button();
+}
+
+/* ================= Actions ================= */
+function useUndo(){
+  if (history.length === 0) return;
+  objectGroup.quaternion.copy(history.pop());
+  undosUsedThisLevel++;
+  stats.undosUsed++;
+  SaveManager.saveStats(stats);
+  audio.button();
+}
+function useHint(){
+  if (hintsUsedThisLevel >= 3){ showToast('No hints left this level'); return; }
+  history.push(objectGroup.quaternion.clone());
+  objectGroup.quaternion.slerp(targetQuaternion, 0.3);
+  hintsUsedThisLevel++;
+  stats.hintsUsed++;
+  SaveManager.saveStats(stats);
+  document.getElementById('hint-badge').textContent = 3 - hintsUsedThisLevel;
+  audio.button();
+}
+function useSkip(){
+  stats.skipsUsed++;
+  SaveManager.saveStats(stats);
+  audio.button();
+  if (!isDailyMode){ level++; SaveManager.saveLevel(level); }
+  startLevel();
+}
+
+/* ================= UI wiring ================= */
+function showToast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(showToast._t); showToast._t = setTimeout(() => el.classList.remove('show'), 1800);
+}
+function spawnConfetti(){
+  const colors = ['#3EA8FF','#7B5CFF','#FFC93C','#3ADC7C'];
+  const layer = document.getElementById('confetti-layer');
+  for (let i=0;i<70;i++){
+    const dot = document.createElement('div'); dot.className='confetto';
+    dot.style.background = colors[Math.floor(Math.random()*colors.length)];
+    dot.style.left = (10+Math.random()*80)+'vw'; dot.style.top='-10px';
+    const dur = 1400+Math.random()*900, drift=(Math.random()-0.5)*160;
+    dot.animate([{transform:'translate(0,0) rotate(0deg)',opacity:1},{transform:`translate(${drift}px,100vh) rotate(${360+Math.random()*360}deg)`,opacity:0.9}],{duration:dur,easing:'cubic-bezier(.2,.6,.4,1)'});
+    layer.appendChild(dot); setTimeout(()=>dot.remove(),dur+100);
+  }
+}
+
+function renderInfoTab(tab){
+  const bodyEl = document.getElementById('info-body');
+  document.getElementById('info-title').textContent = tab==='achievements' ? 'Achievements' : 'Statistics';
+  if (tab === 'achievements'){
+    bodyEl.innerHTML = achievements.defs.map(def => {
+      const unlocked = achievements.unlocked.has(def.id);
+      return `<div class="ach-item ${unlocked?'':'locked'}"><span class="ico">${def.icon}</span><span class="txt"><b>${def.label}</b><small>${def.desc}</small></span></div>`;
+    }).join('');
+  } else {
+    const mins = Math.round(stats.playTimeMs/60000);
+    const rows = [
+      ['Levels Completed', stats.levelsCompleted], ['3-Star Levels', stats.threeStarLevels],
+      ['Best Accuracy Ever', Math.round(stats.bestAccuracyEver*100)+'%'], ['Total Score', stats.totalScore.toLocaleString()],
+      ['Total Rotations', stats.totalRotations], ['Hints Used', stats.hintsUsed], ['Undos Used', stats.undosUsed],
+      ['Daily Streak', stats.dailyStreak+' days'], ['Play Time', mins+' min'],
+    ];
+    bodyEl.innerHTML = rows.map(([l,v]) => `<div class="stat-line"><span>${l}</span><b>${v}</b></div>`).join('');
+  }
+}
+
+function refreshSwitches(){
+  document.getElementById('switch-sound').classList.toggle('on', settings.sound);
+  document.getElementById('switch-music').classList.toggle('on', settings.music);
+  document.getElementById('switch-motion').classList.toggle('on', settings.reducedMotion);
+}
+
+function bindUI(){
+  document.getElementById('undo-btn').addEventListener('click', useUndo);
+  document.getElementById('reset-btn').addEventListener('click', resetObjectRotation);
+  document.getElementById('hint-btn').addEventListener('click', useHint);
+  document.getElementById('skip-btn').addEventListener('click', useSkip);
+
+  document.getElementById('next-level-btn').addEventListener('click', () => {
+    document.getElementById('overlay-win').classList.remove('show');
+    isDailyMode = false;
+    startLevel();
+    audio.button();
+  });
+  document.getElementById('win-replay-btn').addEventListener('click', () => {
+    document.getElementById('overlay-win').classList.remove('show');
+    if (!isDailyMode){ level--; SaveManager.saveLevel(level); }
+    startLevel();
+    audio.button();
+  });
+
+  document.getElementById('settings-btn').addEventListener('click', () => { refreshSwitches(); document.getElementById('overlay-settings').classList.add('show'); audio.button(); });
+  document.getElementById('close-settings-btn').addEventListener('click', () => { document.getElementById('overlay-settings').classList.remove('show'); audio.button(); });
+  document.getElementById('switch-sound').addEventListener('click', () => { settings.sound=!settings.sound; refreshSwitches(); SaveManager.saveSettings(settings); });
+  document.getElementById('switch-music').addEventListener('click', () => { settings.music=!settings.music; refreshSwitches(); audio.refreshMusic(); SaveManager.saveSettings(settings); });
+  document.getElementById('switch-motion').addEventListener('click', () => {
+    settings.reducedMotion=!settings.reducedMotion; refreshSwitches();
+    document.body.classList.toggle('reduced-motion', settings.reducedMotion);
+    SaveManager.saveSettings(settings);
+  });
+  document.getElementById('reset-progress-btn').addEventListener('click', () => {
+    if (!confirm('Reset all progress, statistics, and achievements? This cannot be undone.')) return;
+    Object.values(SaveManager.K).forEach(k => localStorage.removeItem(k));
+    location.reload();
+  });
+
+  document.getElementById('achievements-btn').addEventListener('click', () => { document.getElementById('overlay-info').classList.add('show'); renderInfoTab('achievements'); audio.button(); });
+  document.getElementById('close-info-btn').addEventListener('click', () => document.getElementById('overlay-info').classList.remove('show'));
+  document.querySelectorAll('#info-tabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#info-tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); renderInfoTab(btn.dataset.tab);
+    });
+  });
+
+  document.getElementById('daily-btn').addEventListener('click', () => {
+    document.getElementById('overlay-daily').classList.add('show');
+    document.getElementById('daily-streak').textContent = `${daily.streak} day${daily.streak===1?'':'s'}`;
+    document.getElementById('play-daily-btn').disabled = !ChallengeManager.canClaimToday(daily);
+  });
+  document.getElementById('close-daily-btn').addEventListener('click', () => document.getElementById('overlay-daily').classList.remove('show'));
+  document.getElementById('play-daily-btn').addEventListener('click', () => {
+    document.getElementById('overlay-daily').classList.remove('show');
+    isDailyMode = true;
+    startLevel(ChallengeManager.seedForToday());
+    audio.button();
+  });
+
+  document.body.addEventListener('pointerdown', () => { audio.ensure(); audio.startMusic(); }, { once:true });
+}
+
+/* ================= Main loop ================= */
+function animate(){
+  requestAnimationFrame(animate);
+  if (currentLevelData && currentLevelData.modifiers.movingLight){
+    const t = Date.now() * 0.0004;
+    sunLight.position.set(Math.cos(t)*4, 4, Math.sin(t)*4);
+  }
+  renderer.render(scene, camera);
+  if (!levelSolved) checkAccuracyAndMaybeWin();
+  updateHud();
+}
+
+/* ================= Boot ================= */
+function init(){
+  if (settings.reducedMotion) document.body.classList.add('reduced-motion');
+  const ok = initScene();
+  if (!ok) return;
+  bindControls();
+  bindUI();
+  startLevel();
+  animate();
+  if ('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/shadow-match-sw.js').catch(() => {});
+  }
+}
+init();
+
+</script>
+</body>
+</html>
