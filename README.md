@@ -8,6 +8,7 @@
 - [Salary Calculator](https://toolpond.org/salary-calculator.html)
 - [Currency Converter](https://toolpond.org/currency-converter.html)
 - [Calorie Calculator](https://toolpond.org/calorie-calculator.html)
+- [Free Browser Games(https://toolpond.org/games.html)]
 - [BMI Calculator](https://toolpond.org/bmi-calculator.html)
 - [Loan Calculator](https://toolpond.org/loan-calculator.html)
 - [Password Generator](https://toolpond.org/password-generator.html)
