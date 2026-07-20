@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0e0e0e;
+            overflow: hidden;
+            user-select: none;
+        }
+        .scanline-overlay {
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        .skew-box {
+            transform: skewX(-15deg);
+        }
+        .skew-content {
+            transform: skewX(15deg);
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(24px);
+            border-left: 2px solid rgba(0, 219, 231, 0.2);
+        }
+        .glow-orange {
+            box-shadow: 0 0 20px rgba(255, 87, 26, 0.4);
+        }
+        @keyframes lightSweep {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(200%) skewX(-15deg); }
+        }
+        .sweep-effect::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 40%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: lightSweep 3s infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#2f3131",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#006a70",
+                        "surface-container": "#201f1f",
+                        "tertiary-container": "#909191",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-tint": "#ffb59e",
+                        "secondary": "#ddfcff",
+                        "tertiary": "#c6c6c7",
+                        "surface": "#131313",
+                        "secondary-fixed-dim": "#00dbe7",
+                        "primary-fixed": "#ffdbd0",
+                        "on-primary-fixed-variant": "#852400",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-primary-container": "#521300",
+                        "inverse-primary": "#ae3200",
+                        "outline": "#ad897e",
+                        "on-primary": "#5e1700",
+                        "primary": "#ffb59e",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#313030",
+                        "on-surface-variant": "#e6beb2",
+                        "error-container": "#93000a",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "primary-container": "#ff571a",
+                        "surface-container-highest": "#353534",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#ffb59e",
+                        "surface-dim": "#131313",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#282a2a",
+                        "secondary-container": "#00f1fe",
+                        "outline-variant": "#5c4037",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "on-primary-fixed": "#3a0b00",
+                        "on-secondary-fixed": "#002022",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed": "#74f5ff",
+                        "on-background": "#e5e2e1",
+                        "on-secondary": "#00363a",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "surface-variant": "#353534"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Anybody"],
+                        "display-hero": ["Anybody"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Anybody"],
+                        "body-md": ["Hanken Grotesk"],
+                        "data-lg": ["JetBrains Mono"],
+                        "data-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-hero": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "data-lg": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "data-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface overflow-hidden">
+<div class="fixed inset-0 scanline-overlay z-[100] opacity-10"></div>
+<!-- 3D SHOWROOM BACKGROUND -->
+<div class="fixed inset-0 z-0 bg-surface-container-lowest">
+<div class="w-full h-full bg-cover bg-center opacity-80 scale-110" data-alt="A cinematic, high-fidelity 3D render of a futuristic hypercar parked in a minimalist, high-tech showroom. The environment features polished black concrete floors with sharp reflections of the car's aerodynamic carbon-fiber body. Cold electric cyan and warm velocity orange lighting highlights the vehicle's aggressive lines, creating a dramatic high-contrast motorsport aesthetic. Deep atmospheric shadows and soft volumetric fog emphasize the premium automotive engineering." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7b33UWw7EsKXii1CE39h33L0iDwSJ34PH8MXwVfg5rrMBEYHiPCKzaaVoRNOfJzwLQc6MCu3SS5u-DCCuPQaz2dzTKxqpOw_JN0-iubbYdptUEJ_uAk6RLFUGpaJ_ti6QNKpkdIVFj_7DlWKbfqXrnUwyPTs-3dFaWVHsZ4chWQLZ3TO2qD_vSuJrlsEkcWTvlI5BoZcP56Z7cbBb_FVV_G1k-8EHhitLznjKaQSzhQU37xnXd8XoBC0IA_pf_8KlYPoPDhINaVk')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent"></div>
+</div>
+<!-- TOP APP BAR -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest to-transparent">
+<div class="flex items-center gap-4">
+<img alt="Velocity Legends Logo" class="w-12 h-12 object-contain drop-shadow-[0_0_10px_rgba(255,181,158,0.5)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCaHOlPwMHLs9Gf1zmWzlyB17cIbyRSOrlD849VwJZ8Keu1DbebH2u3NBUGwTB4Ee45Bd4-3Y0jaJTtWMmk1Vnh-fOWCI8pQh4NCmXpoHzcnPS7qE23h4iluc8NpJKmngbh6e5V-PGMs7Jp42uIjZYjL9lFpmwpuBRB0sgxqG6RlnUhuG0cYs5FqzpH8d8e_zJvMJJhWZOO-9KkNVor2zg1HVPC_9Oe46fgbrAi5Kh5elrxLzD3HQRcDr5JxXticfAVxQbFGYuX5E"/>
+<h1 class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)]">VELOCITY LEGENDS</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 bg-surface-container/40 backdrop-blur-md px-4 py-2 border-l-2 border-primary skew-box">
+<span class="material-symbols-outlined text-primary skew-content" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-data-lg text-data-lg text-on-surface skew-content">1.2M CR</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container/40 backdrop-blur-md px-4 py-2 border-l-2 border-secondary-fixed-dim skew-box">
+<span class="material-symbols-outlined text-secondary-fixed-dim skew-content" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-data-lg text-data-lg text-on-surface skew-content">500 GOLD</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-high/60 p-1 pr-4 rounded-full border border-outline-variant/30 backdrop-blur-md">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center overflow-hidden border border-primary/50">
+<span class="material-symbols-outlined text-on-primary-container text-2xl">person</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">LVL 42</div>
+<div class="font-body-md text-body-md font-bold text-on-surface leading-none">LEGEND_ACE</div>
+</div>
+</div>
+</div>
+</header>
+<!-- LEFT SIDEBAR HUD: CAR STATS -->
+<main class="relative z-10 h-screen flex flex-col justify-center px-margin-safe gap-8 pt-20">
+<div class="max-w-md space-y-6">
+<div class="glass-panel p-6 skew-box relative overflow-hidden group hover:bg-surface-container-high/40 transition-all duration-300">
+<div class="skew-content space-y-4">
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface italic">ZENITH GT-R</h2>
+<span class="font-data-sm text-data-sm text-secondary-fixed-dim uppercase tracking-widest">Prototype S-Class</span>
+</div>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant">
+<span>TOP SPEED</span>
+<span class="text-on-surface font-bold">385 KM/H</span>
+</div>
+<div class="h-2 w-full bg-surface-container flex gap-1">
+<div class="h-full bg-primary-container w-[85%]"></div>
+<div class="h-full bg-surface-container-highest flex-1"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant">
+<span>ACCELERATION</span>
+<span class="text-on-surface font-bold">0-100 2.1S</span>
+</div>
+<div class="h-2 w-full bg-surface-container flex gap-1">
+<div class="h-full bg-secondary-fixed-dim w-[92%]"></div>
+<div class="h-full bg-surface-container-highest flex-1"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant">
+<span>HANDLING</span>
+<span class="text-on-surface font-bold">9.4 Gs</span>
+</div>
+<div class="h-2 w-full bg-surface-container flex gap-1">
+<div class="h-full bg-tertiary w-[78%]"></div>
+<div class="h-full bg-surface-container-highest flex-1"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 sweep-effect opacity-50"></div>
+</div>
+<!-- TILES GRID -->
+<div class="grid grid-cols-2 gap-4">
+<button class="relative glass-panel p-4 skew-box text-left group hover:scale-105 transition-transform duration-200">
+<div class="skew-content">
+<span class="material-symbols-outlined text-primary mb-2">assignment</span>
+<h3 class="font-headline-md text-[18px] text-on-surface italic uppercase">Daily Missions</h3>
+<p class="font-label-caps text-[9px] text-on-surface-variant">3 AVAILABLE • +2500 XP</p>
+</div>
+</button>
+<button class="relative glass-panel p-4 skew-box text-left border-l-2 border-secondary-fixed-dim group hover:scale-105 transition-transform duration-200">
+<div class="skew-content">
+<span class="material-symbols-outlined text-secondary-fixed-dim mb-2">festival</span>
+<h3 class="font-headline-md text-[18px] text-on-surface italic uppercase">Seasonal Festival</h3>
+<p class="font-label-caps text-[9px] text-on-surface-variant">ENDS IN 14H • NEW CAR</p>
+</div>
+</button>
+</div>
+</div>
+<!-- MAIN ACTION AREA -->
+<div class="mt-auto mb-32 flex flex-col items-start gap-4">
+<button class="group relative px-12 py-6 bg-primary-container skew-box glow-orange active:scale-95 transition-all duration-150">
+<div class="skew-content flex items-center gap-6">
+<span class="font-display-hero text-headline-lg italic text-on-primary-container leading-none">START RACE</span>
+<span class="material-symbols-outlined text-on-primary-container text-4xl group-hover:translate-x-2 transition-transform">chevron_right</span>
+</div>
+<div class="absolute top-0 right-0 h-1 w-full bg-white/20"></div>
+</button>
+<div class="flex gap-4">
+<button class="w-14 h-14 border-2 border-secondary-fixed-dim skew-box flex items-center justify-center hover:bg-secondary-fixed-dim/20 transition-colors">
+<span class="material-symbols-outlined text-secondary-fixed-dim skew-content">settings_input_component</span>
+</button>
+<button class="px-8 py-4 border-2 border-outline/50 skew-box flex items-center justify-center hover:bg-on-surface/5 transition-colors">
+<span class="font-headline-md text-[16px] text-on-surface italic skew-content uppercase">Upgrade Car</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BOTTOM NAV BAR -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-safe pb-safe h-20 bg-surface/80 backdrop-blur-xl border-t border-secondary/20 skew-x-[-15deg] shadow-[0_-4px_24px_rgba(0,219,231,0.1)]">
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-8 shadow-[0_0_15px_rgba(255,181,158,0.6)] skew-x-[15deg] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps mt-1">HOME</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-8 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-caps text-label-caps mt-1">GARAGE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-8 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-caps text-label-caps mt-1">MAP</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-8 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps mt-1">SOCIAL</span>
+</a>
+</nav>
+<!-- ATMOSPHERIC INTERACTION SCRIPTS -->
+<script>
+        document.addEventListener('mousemove', (e) => {
+            const background = document.querySelector('.scale-110');
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            background.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
+        });
+
+        // Button press visual feedback
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.filter = 'brightness(1.5) contrast(1.2)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.filter = 'none';
+            });
+        });
+    </script>
+</body></html>

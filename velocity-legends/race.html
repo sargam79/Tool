@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Velocity Legends | In-Race HUD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --velocity-orange: #ffb59e;
+            --electric-cyan: #00dbe7;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #0e0e0e;
+            font-family: 'Hanken Grotesk', sans-serif;
+            color: #e5e2e1;
+        }
+
+        .hud-glass {
+            background: rgba(19, 19, 19, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 219, 231, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hud-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1) 0px,
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+
+        .slant-cut {
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+
+        .reverse-slant-cut {
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .speedo-arc {
+            transform: rotate(-90deg);
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        @keyframes scanline-flicker {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.9; }
+        }
+
+        .flicker {
+            animation: scanline-flicker 0.1s infinite;
+        }
+
+        .motion-blur-edge {
+            box-shadow: inset 0 0 100px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .glitch-text {
+            text-shadow: 2px 0 var(--electric-cyan), -2px 0 var(--velocity-orange);
+        }
+
+        /* Perspective Slants */
+        .skew-container {
+            transform: skewX(-15deg);
+        }
+        .skew-content {
+            transform: skewX(15deg);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#2f3131",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-container": "#006a70",
+                        "surface-container": "#201f1f",
+                        "tertiary-container": "#909191",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-tint": "#ffb59e",
+                        "secondary": "#ddfcff",
+                        "tertiary": "#c6c6c7",
+                        "surface": "#131313",
+                        "secondary-fixed-dim": "#00dbe7",
+                        "primary-fixed": "#ffdbd0",
+                        "on-primary-fixed-variant": "#852400",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-primary-container": "#521300",
+                        "inverse-primary": "#ae3200",
+                        "outline": "#ad897e",
+                        "on-primary": "#5e1700",
+                        "primary": "#ffb59e",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#313030",
+                        "on-surface-variant": "#e6beb2",
+                        "error-container": "#93000a",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "primary-container": "#ff571a",
+                        "surface-container-highest": "#353534",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#ffb59e",
+                        "surface-dim": "#131313",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#282a2a",
+                        "secondary-container": "#00f1fe",
+                        "outline-variant": "#5c4037",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "on-primary-fixed": "#3a0b00",
+                        "on-secondary-fixed": "#002022",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed": "#74f5ff",
+                        "on-background": "#e5e2e1",
+                        "on-secondary": "#00363a",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "surface-variant": "#353534"
+                    },
+                    "spacing": {
+                        "margin-safe": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Anybody"],
+                        "display-hero": ["Anybody"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Anybody"],
+                        "body-md": ["Hanken Grotesk"],
+                        "data-lg": ["JetBrains Mono"],
+                        "data-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-hero": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "data-lg": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "data-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background select-none overflow-hidden">
+<!-- WORLD VIEW (BACKGROUND) -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000" data-alt="An ultra-realistic 3rd person chase view of a sleek titanium-gray hypercar racing down a winding coastal highway during a vibrant sunset. The sun sits low on the horizon, casting long shadows and a warm orange and purple glow across the sky. Ray-traced reflections of the ocean and cliffs shimmer on the car's aerodynamic body. Cinematic motion blur streaks the guardrails and asphalt at high speed." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCx9yTBty7tw4QymSXSicSg5PId3hEXUerQ1DCSOnhC1Nzsecc5nQawRfG0zeXdmPdf-VkMwk_RXZuKRiNbz8CmQtq6d-SvBZ4TKmmfilnizGl82iUXQlGyHBZgMB7UWZwoHY_MKCBuBRxOeZQR-Yf8hMArrlw_4kCT270TbVmj4mlO36ROs9BX6PhTO_T1ixW9NdyowqcbG5_PSt_8TRr-D8ZYSOd3CHrz6DG50a7530_LMW8ysYnUI4tMwoXyYVJn46mHyJd0v9g')">
+</div>
+<!-- Lighting & Atmosphere Overlays -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
+<div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] opacity-40"></div>
+<div class="absolute inset-0 motion-blur-edge pointer-events-none"></div>
+<!-- Lens Flare Placeholder -->
+<div class="absolute top-20 right-40 w-1 h-1 bg-white rounded-full shadow-[0_0_100px_40px_rgba(255,181,158,0.6)]"></div>
+<div class="absolute top-24 right-60 w-16 h-1 bg-primary/30 blur-md rotate-12"></div>
+</div>
+<!-- SHARED TOP APP BAR (Contextualized for HUD) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest/80 to-transparent">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary/50 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional esports profile avatar of a driver wearing a high-tech carbon fiber helmet with a glowing cyan visor, set against a dark minimalist background in a premium gaming style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEcGt5xiv8Yr_FUyxSpqm_F5Me2jcYU0SgPEnhsWD9nKPe8wiTsAdw7U0maO5nFyv_vTRI7KQOeH7KUYKVU5fvlzFeGRPK6lUKuYKwtIIiyMd4zFMolhQ4OBGkUoGToTFtttKhbNr2VXveLygpw8M-CCYiBuMGbP6m2TpQW3nE2Id10s-aUFeOPGyUHS2sRxq0Os9K4ZRESfTEPprji_GjXdaz31CzsCaBY4jf8h2G3947FFvtkYFN3zsxu2C7kwAJ2gWO9yKBXBM"/>
+</div>
+<div>
+<h1 class="font-display-hero text-headline-md italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)] leading-none">VELOCITY LEGENDS</h1>
+<p class="font-data-sm text-secondary-fixed-dim uppercase tracking-widest mt-1">PRO LEAGUE: SEASON 4</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-md text-headline-md tracking-tight italic text-primary">1.2M CR | 500 GOLD</span>
+<div class="flex gap-2 mt-1">
+<span class="font-data-sm text-on-surface-variant/70 border-r border-outline-variant pr-2">PING: 24MS</span>
+<span class="font-data-sm text-on-surface-variant/70">FPS: 120</span>
+</div>
+</div>
+</header>
+<!-- TOP LEFT: RACE INFO -->
+<div class="fixed top-24 left-margin-safe z-40 flex flex-col gap-unit">
+<div class="hud-glass p-gutter skew-container min-w-[200px]">
+<div class="skew-content">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-on-surface-variant">POSITION</span>
+<span class="font-display-hero text-headline-lg italic text-primary leading-none">02<span class="text-headline-md text-on-surface-variant/50">/12</span></span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary w-2/3 shadow-[0_0_8px_var(--velocity-orange)]"></div>
+</div>
+</div>
+</div>
+<div class="hud-glass px-gutter py-2 skew-container">
+<div class="skew-content flex justify-between items-center">
+<span class="font-label-caps text-on-surface-variant">LAP</span>
+<span class="font-data-lg text-secondary-fixed-dim italic">03/05</span>
+</div>
+</div>
+<!-- Time Blocks -->
+<div class="mt-4 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<div class="w-1 h-8 bg-electric-cyan shadow-[0_0_8px_var(--electric-cyan)]"></div>
+<div class="hud-glass px-4 py-1 flex-1">
+<span class="font-data-sm text-on-surface-variant block">CURRENT</span>
+<span class="font-data-lg text-on-surface italic">01:14.432</span>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-60">
+<div class="w-1 h-8 bg-on-surface-variant"></div>
+<div class="hud-glass px-4 py-1 flex-1">
+<span class="font-data-sm text-on-surface-variant block">BEST</span>
+<span class="font-data-lg text-on-surface italic">01:12.890</span>
+</div>
+</div>
+</div>
+</div>
+<!-- BOTTOM LEFT: MINIMAP -->
+<div class="fixed bottom-margin-safe left-margin-safe z-40">
+<div class="hud-glass w-64 h-64 rounded-none border-l-4 border-primary">
+<!-- Map Texture -->
+<div class="absolute inset-2 bg-surface-container-lowest/80 overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 mix-blend-screen" data-alt="A stylized digital GPS map of a winding coastal highway, rendered in glowing electric cyan lines against a dark navy blue background. The map shows topographic contour lines and the blue expanse of the Pacific ocean on one side. Small glowing dots represent other racers on the technical grid." data-location="Coastal Highway, California" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEGZK-YaNpE3pvH-fUakUkFVa7TB3zSQOYMPdakp_bkyK7ZyPHXmG_93yRbS3ZgdKSt3rA8DECJ52_LzZoODwamMxHDMIXI6AOB_JSnZF_YA8_Q6rLxJTOX6uSjzjI9kjbjGiYg_HUgbqpbB6K_sFwVbWoN5CFG4ec1vOiFnmr7_kBriuOZJPKLjL5pY0O3OtRhoRPfizhOAAZnmUunj369VQmENj9_dpNpf8TTHkLlZysZvlyo04PzgiJu_gdCf3Nh7IxRw38ClQ"/>
+<!-- Player Indicator -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-4 h-4 bg-primary rotate-45 shadow-[0_0_15px_var(--velocity-orange)] flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">navigation</span>
+</div>
+</div>
+<!-- Opponent Dots -->
+<div class="absolute top-1/3 left-1/4 w-2 h-2 bg-white rounded-full flicker"></div>
+<div class="absolute bottom-1/4 right-1/3 w-2 h-2 bg-white rounded-full"></div>
+</div>
+<!-- Map Details -->
+<div class="absolute bottom-2 left-2 bg-black/60 px-2 py-0.5">
+<span class="font-data-sm text-primary tracking-tighter uppercase">PACIFIC COAST • SECTOR 2</span>
+</div>
+</div>
+</div>
+<!-- BOTTOM RIGHT: SPEEDOMETER & TELEMETRY -->
+<div class="fixed bottom-margin-safe right-margin-safe z-40 flex flex-col items-end gap-gutter">
+<!-- Action Notification -->
+<div class="flex items-center gap-4 animate-pulse">
+<span class="font-label-caps text-electric-cyan italic tracking-[0.3em]">DRFT X1.5</span>
+<div class="hud-glass px-4 py-2 skew-container bg-primary/10 border-primary shadow-[0_0_20px_rgba(255,181,158,0.2)]">
+<span class="skew-content font-display-hero text-headline-md italic text-primary">+450 PTS</span>
+</div>
+</div>
+<div class="relative flex items-end gap-4">
+<!-- Telemetry Stack -->
+<div class="flex flex-col gap-2 mb-4">
+<div class="hud-glass px-3 py-1 slant-cut text-right min-w-[80px]">
+<span class="font-data-sm text-on-surface-variant block opacity-50 uppercase">Tire Temp</span>
+<span class="font-data-sm text-on-surface">82°C</span>
+</div>
+<div class="hud-glass px-3 py-1 slant-cut text-right min-w-[80px] border-r-4 border-electric-cyan">
+<span class="font-data-sm text-on-surface-variant block opacity-50 uppercase">G-Force</span>
+<span class="font-data-sm text-on-surface">1.4G</span>
+</div>
+</div>
+<!-- Main Dial -->
+<div class="relative w-72 h-72 flex items-center justify-center">
+<!-- Outer Arc (NOS) -->
+<svg class="absolute inset-0 w-full h-full -rotate-180" viewbox="0 0 100 100">
+<!-- NOS Path -->
+<path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="rgba(0, 219, 231, 0.2)" stroke-linecap="square" stroke-width="4"></path>
+<path class="shadow-[0_0_10px_rgba(0,219,231,1)]" d="M 15 50 A 35 35 0 0 1 70 50" fill="none" stroke="var(--electric-cyan)" stroke-linecap="square" stroke-width="4"></path>
+</svg>
+<div class="hud-glass w-64 h-64 rounded-full border-4 border-surface-container-highest flex flex-col items-center justify-center shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
+<span class="font-label-caps text-on-surface-variant tracking-[0.4em] mb-[-4px]">KM/H</span>
+<h2 class="font-display-hero text-[84px] italic text-on-surface leading-none flicker" id="speed-counter">248</h2>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-headline-md text-primary italic">GEAR 6</span>
+</div>
+<!-- Segmented Rev Bar -->
+<div class="flex gap-1 mt-6 h-3 px-12 w-full">
+<div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
+<div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
+<div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
+<div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
+<div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
+<div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
+<div class="flex-1 bg-primary shadow-[0_0_5px_var(--velocity-orange)]"></div>
+<div class="flex-1 bg-surface-container-highest"></div>
+<div class="flex-1 bg-surface-container-highest"></div>
+<div class="flex-1 bg-surface-container-highest"></div>
+</div>
+</div>
+<!-- NOS Indicator -->
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-surface p-1 border border-electric-cyan">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-electric-cyan text-[14px]">bolt</span>
+<span class="font-data-sm text-electric-cyan">NITROUS READY</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- REAR VIEW MIRROR (TOP CENTER) -->
+<div class="fixed top-margin-safe left-1/2 -translate-x-1/2 z-40">
+<div class="hud-glass w-[400px] h-16 skew-container border-b-2 border-primary/40">
+<div class="skew-content w-full h-full overflow-hidden opacity-80 scale-x-[-1]">
+<img class="w-full h-full object-cover" data-alt="A rear-view mirror perspective from a racing car, showing the sun setting on the coastal highway behind the vehicle. Two rival race cars, one lime green and one electric blue, are visible in the distance, trailing closely through the heat haze and dust. Minimalist digital grid lines are overlaid on the glass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz-BE5_NfxP8jHQ12Su4xYYvmD1-6ypsStRwPppE3gjRqQYbvWQmFURcPr1QQXaQRTL2mV1ShbG5LAlX_IuIbTb_Da7GQrEcatJiPpylghopxf87Wit_acVkDXlmmBYrdcvq4z89aZAyzN6UDydnhnTv2hdOP3W5jIqNwY_480N7baUFjZnYHrCAN6KdBpCXaVetsHOw4kGwQpqoeYyMkKgacW9Iz5nMqGF8tufd5zYKxNNXk47CdQnlp5S8p-4f6h8cI2_uIz-aY"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+</div>
+</div>
+</div>
+<!-- INTERACTIVE SCRIPTS -->
+<script>
+        // Simulate Speed Changes
+        const speedEl = document.getElementById('speed-counter');
+        let speed = 248;
+        
+        setInterval(() => {
+            const delta = Math.floor(Math.random() * 5) - 2;
+            speed = Math.max(180, Math.min(320, speed + delta));
+            speedEl.textContent = speed;
+        }, 100);
+
+        // Simulate HUD Flicker
+        function randomFlicker() {
+            const hudElements = document.querySelectorAll('.hud-glass');
+            const target = hudElements[Math.floor(Math.random() * hudElements.length)];
+            target.style.opacity = '0.7';
+            setTimeout(() => {
+                target.style.opacity = '1';
+            }, 50);
+            setTimeout(randomFlicker, Math.random() * 3000 + 2000);
+        }
+        randomFlicker();
+
+        // Screen Shake on "Speed"
+        window.addEventListener('keydown', (e) => {
+            if(e.code === 'Space') { // Nitro push
+                document.body.classList.add('transition-transform', 'duration-75', 'scale-[1.01]');
+                setTimeout(() => {
+                    document.body.classList.remove('scale-[1.01]');
+                }, 100);
+            }
+        });
+    </script>
+<!-- FOOTER NAV (SUPPRESSED ON HUD AS PER RULES, but defining for consistency if it were a menu) -->
+<!-- The BottomNavBar is suppressed as this is a focused task-oriented screen (Racing) -->
+</body></html>
