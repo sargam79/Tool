@@ -7,7 +7,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
         :root {
             --velocity-orange: #ffb59e;
@@ -175,11 +174,11 @@
       min-height: max(884px, 100dvh);
     }
   </style>
-  </head>
+</head>
 <body class="bg-background select-none overflow-hidden">
 <!-- WORLD VIEW (BACKGROUND) -->
 <div class="fixed inset-0 z-0">
-<div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000" data-alt="An ultra-realistic 3rd person chase view of a sleek titanium-gray hypercar racing down a winding coastal highway during a vibrant sunset. The sun sits low on the horizon, casting long shadows and a warm orange and purple glow across the sky. Ray-traced reflections of the ocean and cliffs shimmer on the car's aerodynamic body. Cinematic motion blur streaks the guardrails and asphalt at high speed." style="background-image: url('assets/images/bg-race.png')">
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000" style="background-image: url('/assets/images/https://lh3.googleusercontent.com/aida-public/AB6AXuA0xhyxoNCVcao-_wENFCgANnK1kD4BoKw8PY7NV0qvKGGFX10GjA3fkMsSqxifsdLrbHEN9lk0moxyGXPYew8lJKTHK_dfnWz2R8BzikGYzkJ1zyf5eROykk4raeV6qPTaGphRRVHjNhO4-bWPTL9R8u1c968VUVl6UkYkPhsWPNoAwKAa1voeDIQYKOFPYzn3Z3d4xRnAKUTajjRsmRk0QV64vSGQM0izfqAppp7360mqnfN-rQRmzrXLsPiO-l2hPXljDvDlok4')">
 </div>
 <!-- Lighting & Atmosphere Overlays -->
 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
@@ -189,11 +188,11 @@
 <div class="absolute top-20 right-40 w-1 h-1 bg-white rounded-full shadow-[0_0_100px_40px_rgba(255,181,158,0.6)]"></div>
 <div class="absolute top-24 right-60 w-16 h-1 bg-primary/30 blur-md rotate-12"></div>
 </div>
-<!-- SHARED TOP APP BAR (Contextualized for HUD) -->
+<!-- SHARED TOP APP BAR -->
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest/80 to-transparent">
 <div class="flex items-center gap-4">
 <div class="w-12 h-12 rounded-full border-2 border-primary/50 overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover" data-alt="A professional esports profile avatar of a driver wearing a high-tech carbon fiber helmet with a glowing cyan visor, set against a dark minimalist background in a premium gaming style." src="assets/images/avatar-player.png"/>
+<img alt="Driver Avatar" class="w-full h-full object-cover" src="/assets/images/https://lh3.googleusercontent.com/aida-public/AB6AXuDEcGt5xiv8Yr_FUyxSpqm_F5Me2jcYU0SgPEnhsWD9nKPe8wiTsAdw7U0maO5nFyv_vTRI7KQOeH7KUYKVU5fvlzFeGRPK6lUKuYKwtIIiyMd4zFMolhQ4OBGkUoGToTFtttKhbNr2VXveLygpw8M-CCYiBuMGbP6m2TpQW3nE2Id10s-aUFeOPGyUHS2sRxq0Os9K4ZRESfTEPprji_GjXdaz31CzsCaBY4jf8h2G3947FFvtkYFN3zsxu2C7kwAJ2gWO9yKBXBM"/>
 </div>
 <div>
 <h1 class="font-display-hero text-headline-md italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)] leading-none">VELOCITY LEGENDS</h1>
@@ -250,16 +249,13 @@
 <div class="hud-glass w-64 h-64 rounded-none border-l-4 border-primary">
 <!-- Map Texture -->
 <div class="absolute inset-2 bg-surface-container-lowest/80 overflow-hidden">
-<img class="w-full h-full object-cover opacity-60 mix-blend-screen" data-alt="A stylized digital GPS map of a winding coastal highway, rendered in glowing electric cyan lines against a dark navy blue background. The map shows topographic contour lines and the blue expanse of the Pacific ocean on one side. Small glowing dots represent other racers on the technical grid." data-location="Coastal Highway, California" src="assets/images/bg-minimap.png"/>
-<!-- Player Indicator -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<img alt="Gameplay Minimap" class="w-full h-full object-cover opacity-80" src="/assets/images/https://lh3.googleusercontent.com/aida-public/AB6AXuCcyCtPyLwMvKD1xy_dnG6hiMRbHSAZV2PGzZiI_1QKQOpBhb2X_MFCDiRgjXlCWbczZiIEJohXywQAgLAfXG1HLEU_sAlxFdgjuLET8qqznAaFcs2HyUs5vvaaCfmrcNde8TkUk3EEOCQlK1HZAo0ajtARGwewzeF_ADSqZkXO3HGoo1vIiEkqHM3JaR0k4x4jR-_0bInJ-chgAAedjcUK_3_VYIwYzlKo2wHAI9YqAo8RxzkGbjyDJlEwr37wezpZ-P2T_7aQuh4"/>
+<!-- Player Indicator (Overlaying on high-fidelity map) -->
+<div class="absolute top-[80%] left-[20%] -translate-x-1/2 -translate-y-1/2">
 <div class="w-4 h-4 bg-primary rotate-45 shadow-[0_0_15px_var(--velocity-orange)] flex items-center justify-center">
 <span class="material-symbols-outlined text-[12px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">navigation</span>
 </div>
 </div>
-<!-- Opponent Dots -->
-<div class="absolute top-1/3 left-1/4 w-2 h-2 bg-white rounded-full flicker"></div>
-<div class="absolute bottom-1/4 right-1/3 w-2 h-2 bg-white rounded-full"></div>
 </div>
 <!-- Map Details -->
 <div class="absolute bottom-2 left-2 bg-black/60 px-2 py-0.5">
@@ -292,13 +288,12 @@
 <div class="relative w-72 h-72 flex items-center justify-center">
 <!-- Outer Arc (NOS) -->
 <svg class="absolute inset-0 w-full h-full -rotate-180" viewbox="0 0 100 100">
-<!-- NOS Path -->
 <path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="rgba(0, 219, 231, 0.2)" stroke-linecap="square" stroke-width="4"></path>
 <path class="shadow-[0_0_10px_rgba(0,219,231,1)]" d="M 15 50 A 35 35 0 0 1 70 50" fill="none" stroke="var(--electric-cyan)" stroke-linecap="square" stroke-width="4"></path>
 </svg>
 <div class="hud-glass w-64 h-64 rounded-full border-4 border-surface-container-highest flex flex-col items-center justify-center shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
 <span class="font-label-caps text-on-surface-variant tracking-[0.4em] mb-[-4px]">KM/H</span>
-<h2 class="font-display-hero text-[84px] italic text-on-surface leading-none flicker" id="speed-counter">248</h2>
+<h2 class="font-display-hero text-[84px] italic text-on-surface leading-none flicker" id="speed-counter">184</h2>
 <div class="flex items-center gap-2 mt-2">
 <span class="font-headline-md text-primary italic">GEAR 6</span>
 </div>
@@ -328,10 +323,10 @@
 </div>
 <!-- REAR VIEW MIRROR (TOP CENTER) -->
 <div class="fixed top-margin-safe left-1/2 -translate-x-1/2 z-40">
-<div class="hud-glass w-[400px] h-16 skew-container border-b-2 border-primary/40">
-<div class="skew-content w-full h-full overflow-hidden opacity-80 scale-x-[-1]">
-<img class="w-full h-full object-cover" data-alt="A rear-view mirror perspective from a racing car, showing the sun setting on the coastal highway behind the vehicle. Two rival race cars, one lime green and one electric blue, are visible in the distance, trailing closely through the heat haze and dust. Minimalist digital grid lines are overlaid on the glass." src="assets/images/bg-rearview.png"/>
-<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+<div class="hud-glass w-[450px] h-20 rounded-b-2xl border-b-2 border-primary/40 shadow-2xl">
+<div class="w-full h-full overflow-hidden opacity-90">
+<img alt="Rearview Mirror Assets" class="w-full h-full object-cover" src="/assets/images/https://lh3.googleusercontent.com/aida-public/AB6AXuDTWpqLh6R-YMC_W_5J9SzVs2ScFym837FjcWVdImg3n8w4aqUSIXUr-IARuiMmCc07GcqITUvEY_p43uM2gVRuVVcZpT5qhEC9N2_xPEDhRDqY1MoGS37l-IY2U45IWnV5w1c7Jdq1D5x4XCVGM4qQWmWF6taHhfn98d2TJ--K2hM0UC1orMZ-V0DZ636E-gnCdoGkgE9CksXW4tZ1Gq5QOum5lq3g4PzQqaAYfufI6_pzSHQTimod2pGMWJgPPyQjx1bdRdGDAIs"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/20 pointer-events-none"></div>
 </div>
 </div>
 </div>
@@ -339,11 +334,11 @@
 <script>
         // Simulate Speed Changes
         const speedEl = document.getElementById('speed-counter');
-        let speed = 248;
+        let speed = 184;
         
         setInterval(() => {
             const delta = Math.floor(Math.random() * 5) - 2;
-            speed = Math.max(180, Math.min(320, speed + delta));
+            speed = Math.max(170, Math.min(220, speed + delta));
             speedEl.textContent = speed;
         }, 100);
 
@@ -351,24 +346,24 @@
         function randomFlicker() {
             const hudElements = document.querySelectorAll('.hud-glass');
             const target = hudElements[Math.floor(Math.random() * hudElements.length)];
-            target.style.opacity = '0.7';
-            setTimeout(() => {
-                target.style.opacity = '1';
-            }, 50);
+            if (target) {
+                target.style.opacity = '0.7';
+                setTimeout(() => {
+                    target.style.opacity = '1';
+                }, 50);
+            }
             setTimeout(randomFlicker, Math.random() * 3000 + 2000);
         }
         randomFlicker();
 
-        // Screen Shake on "Speed"
+        // Screen Interaction
         window.addEventListener('keydown', (e) => {
-            if(e.code === 'Space') { // Nitro push
-                document.body.classList.add('transition-transform', 'duration-75', 'scale-[1.01]');
+            if(e.code === 'Space') { 
+                document.body.classList.add('transition-transform', 'duration-75', 'scale-[1.005]');
                 setTimeout(() => {
-                    document.body.classList.remove('scale-[1.01]');
+                    document.body.classList.remove('scale-[1.005]');
                 }, 100);
             }
         });
     </script>
-<!-- FOOTER NAV (SUPPRESSED ON HUD AS PER RULES, but defining for consistency if it were a menu) -->
-<!-- The BottomNavBar is suppressed as this is a focused task-oriented screen (Racing) -->
 </body></html>
