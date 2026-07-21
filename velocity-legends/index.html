@@ -2,9 +2,10 @@
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Velocity Legends | Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:wght@300;400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -12,390 +13,448 @@
             theme: {
                 extend: {
                     "colors": {
-                        "on-tertiary": "#2f3131",
-                        "surface-container-low": "#1c1b1b",
-                        "on-surface": "#e5e2e1",
-                        "on-secondary-container": "#006a70",
-                        "surface-container": "#201f1f",
-                        "tertiary-container": "#909191",
-                        "surface-container-high": "#2a2a2a",
-                        "surface-tint": "#ffb59e",
-                        "secondary": "#ddfcff",
-                        "tertiary": "#c6c6c7",
-                        "surface": "#131313",
-                        "secondary-fixed-dim": "#00dbe7",
-                        "primary-fixed": "#ffdbd0",
-                        "on-primary-fixed-variant": "#852400",
-                        "inverse-surface": "#e5e2e1",
-                        "surface-container-lowest": "#0e0e0e",
-                        "tertiary-fixed-dim": "#c6c6c7",
-                        "on-primary-container": "#521300",
-                        "inverse-primary": "#ae3200",
-                        "outline": "#ad897e",
-                        "on-primary": "#5e1700",
                         "primary": "#ff4d00",
-                        "on-tertiary-fixed": "#1a1c1c",
-                        "inverse-on-surface": "#313030",
-                        "on-surface-variant": "#e6beb2",
-                        "error-container": "#93000a",
-                        "surface-bright": "#3a3939",
-                        "on-tertiary-fixed-variant": "#454747",
-                        "primary-container": "#ff571a",
-                        "surface-container-highest": "#353534",
-                        "on-error": "#690005",
-                        "primary-fixed-dim": "#ffb59e",
-                        "surface-dim": "#131313",
-                        "error": "#ffb4ab",
-                        "on-tertiary-container": "#282a2a",
-                        "secondary-container": "#00f1fe",
-                        "outline-variant": "#5c4037",
-                        "on-error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
                         "background": "#131313",
-                        "on-primary-fixed": "#3a0b00",
-                        "on-secondary-fixed": "#002022",
-                        "tertiary-fixed": "#e2e2e2",
-                        "secondary-fixed": "#74f5ff",
-                        "on-background": "#e5e2e1",
+                        "surface": "#131313",
+                        "surface-variant": "#353436",
+                        "on-surface": "#e5e2e3",
+                        "on-surface-variant": "#e6beb2",
+                        "secondary": "#00eefc",
                         "on-secondary": "#00363a",
-                        "on-secondary-fixed-variant": "#004f54",
-                        "surface-variant": "#353534"
+                        "primary-container": "#ff571a",
+                        "on-primary-container": "#ffffff",
+                        "secondary-container": "#00eefc",
+                        "on-secondary-container": "#00363a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-high": "#2a2a2b",
+                        "surface-container-highest": "#353436",
+                        "outline": "#ad897e",
+                        "error": "#ffb4ab"
                     },
                     "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
                     },
                     "spacing": {
-                        "margin-safe": "32px",
-                        "unit": "4px",
+                        "safe-area-bottom": "env(safe-area-inset-bottom, 24px)",
+                        "margin-mobile": "16px",
                         "gutter": "16px",
-                        "container-padding": "24px"
+                        "base": "4px",
+                        "bottom-nav-height": "72px",
+                        "margin-desktop": "32px"
                     },
                     "fontFamily": {
-                        "headline-md": ["Anybody"],
-                        "display-hero": ["Anybody"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "label-caps": ["Hanken Grotesk"],
+                        "nav-item": ["Hanken Grotesk"],
                         "headline-lg": ["Anybody"],
+                        "display-xl-mobile": ["Anybody"],
+                        "label-sm": ["JetBrains Mono"],
                         "body-md": ["Hanken Grotesk"],
-                        "data-lg": ["JetBrains Mono"],
-                        "data-sm": ["JetBrains Mono"]
+                        "display-xl": ["Anybody"]
                     },
                     "fontSize": {
-                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                        "display-hero": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
-                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
-                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
-                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
-                        "data-lg": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                        "data-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
+                        "nav-item": ["11px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-xl-mobile": ["28px", {"lineHeight": "1.1", "fontWeight": "800"}],
+                        "label-sm": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
                     }
                 },
             },
         }
     </script>
 <style>
-        .carbon-pattern {
-            background-color: #1a1c1e;
-            background-image: linear-gradient(45deg, #111 25%, transparent 25%, transparent 50%, #111 50%, #111 75%, transparent 75%, transparent);
-            background-size: 4px 4px;
-        }
-        .scanline-overlay {
-            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(to right, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-            background-size: 100% 4px, 4px 100%;
-            pointer-events: none;
-        }
-        .skew-box {
-            transform: skewX(-15deg);
-        }
-        .unskew-content {
-            transform: skewX(15deg);
-        }
-        .glass-panel {
-            background: rgba(20, 20, 20, 0.7);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 77, 0, 0.2);
-        }
-        @keyframes sweep {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
-        }
-        .animate-sweep {
-            animation: sweep 2s infinite linear;
-        }
-    </style>
-<style>
         body {
-            min-height: max(884px, 100dvh);
+            background-color: #0d0d0e;
+            background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.85), rgba(19, 19, 19, 0.98)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuDVULPh5KRIBbu1v2PJOkBGsJV_skRGjv4iOTSaiZFJAEpW5Bpx6hnmSCS7sHglc283HIzSjhzv7W2rz5r-lQxPxAXGn48S8fjRxBuZdcviwpNaToZS4kejq4GGD3xzCWzrybSz1QUD_LDkl3Gykx_tu1eDKlcA4iKLy5r-B1wdmGiQJ9S7AnzLeh0kgIjDqrsNk9lQCUSHlPWCq7iJHtWs7EnBqIjUkiOqU7SHUBsXianBiKBp6auHug6MDtxPnLpbkeJ_laE8vQE);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #e5e2e3;
+            overflow-x: hidden;
+            min-height: 100dvh;
+            -webkit-tap-highlight-color: transparent;
         }
+        .glass-card {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        .slanted-edge {
+            clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+        }
+        .glow-orange {
+            box-shadow: 0 0 20px rgba(255, 77, 0, 0.4);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 238, 252, 0.2);
+        }
+        .skew-tile {
+            transform: skewx(-8deg);
+        }
+        .skew-tile-inner {
+            transform: skewx(8deg);
+        }
+        .view-section {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            width: 100%;
+            max-width: 100%;
+        }
+        .view-hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        #bg-image-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+        #bg-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+        }
+        /* Mobile fixes for text wrapping */
+        .text-nowrap { white-space: nowrap; }
+        .touch-action-none { touch-action: none; }
     </style>
 </head>
-<body class="bg-background text-on-background overflow-hidden selection:bg-primary selection:text-on-primary">
-<!-- Garage Environment Background -->
-<div class="fixed inset-0 z-0">
-<div class="absolute inset-0 bg-black/60 z-10"></div>
-<div class="w-full h-full bg-cover bg-center transition-all duration-700" data-alt="A gritty, ultra-realistic underground parking garage with damp concrete floors and exposed steel beams. The scene is illuminated by flicking orange and electric cyan neon signs that cast long, dramatic shadows and create sharp reflections on the puddles of water. The atmosphere is high-octane and moody, reminiscent of a premium racing game environment like Need for Speed or Gran Turismo, with a cinematic shallow depth of field focusing on a distant workshop area." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8iXKfvIndco5mcbqPtt54yZSSnR2OGO_uz2HfIhdgA9P61QAkxm2opMl3pd7TIdhK-8OdGDpFgoC2mSASj_O-VXRyv8Kdns-nrpKEcSu3PIpZ2YrUohIYwsTJlCNUTerDlYKTVkkakSBLYzO-LeHDwEnVtwMstVEfEJJI_gC1AbxPqMahMrePd79dz_5CI6EtXK7JUfpqdtKhPkayb0QVO1yrqKj6mBpTtw-A3KgbmzmQrbkZ3yUqpF8i68mqrgfTMyA5XKIx8Z0')">
-</div>
-<div class="absolute inset-0 scanline-overlay z-20"></div>
+<body class="font-body-md text-body-md select-none overflow-x-hidden">
+<div id="bg-image-container">
+<img alt="Background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDqs2tT0EEdiJ0QdPsVnQu3mV_blTt1GiKmwWCQSMMy_pge1RNKS0tEncB1ABc37_Cpa1oFCs0NgXiDRFUMMqxjezwBcSwifo9wb2Nhpy7kXlu-2MrBhx0fsJTXyJ7u30DNICRsfovNl6sCQ-r_e-Nxo4I4oGEs0L9GMJN6zGMXxwih43Y_1jDop74DQYx-EOj3mYfQBwUVPBUAtC8B_vj7n9bFI4eKBm4Ho07KbEp9y7EhJsYfNqwCcDAzYu0IuluEyLpbXvkAAo"/>
 </div>
 <!-- Top App Bar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest to-transparent">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary shadow-[0_0_10px_rgba(255,77,0,0.5)]">
-<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional racing driver wearing a high-tech matte black helmet with a glowing orange visor. The background is a blurred high-tech racing cockpit. The aesthetic is aggressive and premium with sharp digital highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLGuMnqlsSdljO1i1EsTA2mZsEUmrzSmIcEkc6n13knGpxI-1EErcVLjI8d5jAzllQBdeqPcOMOIHFVewCs03NQtCREqfQGWd3FtWopY1HUj8WvdWV-8ELM14sup2ViiAmeQCHJ36ObRfAJUH0nfLVKN3C3Jm1F7BtQ3Ro-pgoQih9LYUU5nrBw5pvgUBGRQr5drDlBxldXJ9fzUjVEwukZCDwvKupY0cpJvNBo2Cp1RBFqfQX2uLYRmnUBmfIKiGsQzg3hGC3H8I"/>
+<header class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-white/5 flex flex-col h-auto pt-safe-area-top">
+<div class="flex justify-between items-center px-4 h-12">
+<div class="flex items-center gap-2">
+<img alt="VL Logo" class="w-6 h-6 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNQa-Bv8ouMDJHgcTJa1dMcxefJYngWnhQrub7rmqu0fW7wl5poMJyNVLGe53mLTjXldipp0OWHKlsPF9i2scONyVLJC8hqXsFW2w_dxuwtKBAFO1lPpPwLIZ7AX1EJ6JbHaN6GRerqzdgkeHeVwUb_In4ge6HdtiJuZ1c8GwD2HQaBqA0pBqQjjljYKGo4MDcq8u_WttGGM78XYq3p0YoamZ8fLWzfty6q1QP4XWDr0dmmZ6DQRALtuAMctxzQ-K_cawZD5_p2es"/>
+<h1 class="font-display-xl text-xl tracking-tighter text-primary italic uppercase leading-none">VELOCITY LEGENDS</h1>
 </div>
-<div>
-<h1 class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,77,0,0.5)]">VELOCITY LEGENDS</h1>
-<p class="font-data-sm text-secondary-fixed-dim uppercase">Rank: APEX PREDATOR</p>
+<div class="flex items-center gap-2">
+<span class="bg-primary/20 text-primary text-[10px] font-label-sm px-2 py-0.5 rounded border border-primary/30">LVL 48</span>
 </div>
 </div>
-<div class="text-right">
-<div class="font-headline-md text-headline-md tracking-tight italic text-primary">1.2M CR | 500 GOLD</div>
-<div class="font-data-sm text-on-surface-variant/70 uppercase">Daily Streak: 14 Days</div>
+<!-- Compact Stats Grid -->
+<div class="grid grid-cols-3 border-t border-white/5 bg-black/20">
+<div class="flex flex-col items-center justify-center py-2 border-r border-white/5">
+<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Credits</span>
+<span class="text-secondary font-bold text-xs tracking-tight">1.2M CR</span>
+</div>
+<div class="flex flex-col items-center justify-center py-2 border-r border-white/5">
+<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Gold</span>
+<span class="text-primary font-bold text-xs tracking-tight">500 GOLD</span>
+</div>
+<div class="flex flex-col items-center justify-center py-2">
+<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Streak</span>
+<span class="text-on-surface font-bold text-xs tracking-tight">14 DAYS</span>
+</div>
 </div>
 </header>
-<!-- Main Content Layout -->
-<main class="relative z-30 pt-24 pb-20 h-screen flex flex-col md:flex-row px-margin-safe gap-gutter overflow-hidden">
-<!-- Left: Car Selection Grid -->
-<section class="w-full md:w-1/3 flex flex-col gap-gutter h-full">
-<div class="flex justify-between items-end">
-<h2 class="font-headline-lg text-headline-lg italic text-white">MY GARAGE <span class="text-primary text-body-lg font-normal not-italic ml-2">(12/50)</span></h2>
-<div class="flex gap-2">
-<button class="w-10 h-10 glass-panel flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
-<span class="material-symbols-outlined">filter_list</span>
-</button>
-<button class="w-10 h-10 glass-panel flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
-<span class="material-symbols-outlined">sort</span>
-</button>
+<!-- Main Content Canvas -->
+<main class="pt-28 pb-28 px-4 max-w-full mx-auto min-h-screen relative overflow-x-hidden">
+<!-- Home View -->
+<section class="view-section relative z-10" id="view-home">
+<!-- Hero Feature Car - Optimized for Mobile -->
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden glass-card mb-6 border border-primary/20">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent z-10"></div>
+<img alt="Featured Car" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKwsP4tR_20LAC_usdwS7EHbjgf1_vy6dje-_mKd1beOTQdvBRPA8rGTPwsxDpOlcwgmwtJAHrv7ggmtzaLCLTAaIo2f-w3cOPlcxSQ4hYyngr80MqJjUSz8c4RBkQvDMSsFa4umS05ieltfsfwUB4cTZAVU7MdR-V400tazLAbApaQlUFhvvwNYL4rObrmhR8nwTQya6AvBoe5UUKcS7ektUz6mebEra0ROy5lL3k2tRBLUKCTzpHuPS5xM6vsVSoNpRvcDLJ6dM"/>
+<div class="absolute inset-x-4 bottom-6 z-20 space-y-3">
+<div class="flex flex-col">
+<div class="inline-flex">
+<span class="bg-primary text-on-primary px-2 py-0.5 font-label-sm skew-tile text-[10px]"><span class="skew-tile-inner block">LIMITED EDITION</span></span>
+</div>
+<h2 class="font-headline-lg text-2xl text-on-surface uppercase tracking-tight italic mt-1">V-APEX INTERCEPTOR</h2>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Speed</span>
+<span class="text-secondary font-bold text-sm">342<span class="text-[10px] ml-0.5 opacity-60">KM/H</span></span>
+</div>
+<div class="flex flex-col">
+<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Accel</span>
+<span class="text-secondary font-bold text-sm">2.1S</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Class</span>
+<span class="text-primary font-bold text-sm">S+</span>
 </div>
 </div>
-<div class="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
-<!-- Car Card 1 (Active) -->
-<div class="group relative overflow-hidden glass-panel border-l-4 border-l-primary cursor-pointer transition-all duration-300 transform hover:translate-x-2">
-<div class="absolute top-0 right-0 p-2 z-10">
-<span class="bg-primary text-on-primary font-data-sm px-2 py-0.5 skew-x-[-15deg] block">EQUIPPED</span>
-</div>
-<div class="flex items-center gap-4 p-3 h-24">
-<div class="w-32 h-full bg-surface-container-highest overflow-hidden relative">
-<img class="w-full h-full object-cover" data-alt="Detailed side-profile of a customized wide-body electric hypercar with a matte obsidian finish and glowing orange LED accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE2q4inoE6OLkY4tggbiMq06kEiTOpW445Wl-YK9WqZeoPfxAXynosYNeWpzmkuz9DIrns-eJT1T9FrJIwpGyHdL6WVGv7ObQuDWSvNE81WJ3E0uQ2ooF8JBSgGVdPybZbsjHA2IAoH1WRJT1YruMepBjQyQAkHtSuNQaIH4sm_ex35zz4NMVp6AjoSzzt_vUK2voKt5zhkUwBo3lvjA_4yfn0q0g2y6Q-rnu3_r7KSv0A5olryuJt2qMmdm3Lq2LO8A1TtN9kpbY"/>
-<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container/40"></div>
-</div>
-<div class="flex-1">
-<h3 class="font-headline-md text-[18px] italic leading-tight">FENYR SUPERSPORT</h3>
-<div class="flex gap-1 mt-1">
-<div class="w-2 h-2 bg-primary"></div>
-<div class="w-2 h-2 bg-primary"></div>
-<div class="w-2 h-2 bg-primary"></div>
-<div class="w-2 h-2 bg-primary/30"></div>
-<div class="w-2 h-2 bg-primary/30"></div>
-</div>
-<p class="font-data-sm text-secondary-fixed-dim mt-1">PR: 942</p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-headline-lg h-14 slanted-edge glow-orange transition-all flex items-center justify-center gap-3 active:scale-[0.98]" onclick="switchView('race-hud')">
+<span class="material-symbols-outlined font-bold text-2xl">play_arrow</span>
+                        START RACE
+                    </button>
 </div>
 </div>
-<div class="absolute bottom-0 left-0 w-full h-0.5 bg-primary/20 overflow-hidden">
-<div class="h-full w-1/2 bg-primary animate-sweep"></div>
+<!-- Mobile Grid (Vertical Stack) -->
+<div class="flex flex-col gap-4">
+<!-- Live Event -->
+<div class="glass-card p-5 border-l-2 border-l-primary">
+<div class="flex justify-between items-start mb-3">
+<h3 class="font-headline-lg text-lg text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">timer</span>
+                            NIGHTFALL CIRCUIT
+                        </h3>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</div>
+<p class="text-on-surface-variant/80 text-xs leading-relaxed mb-4">Master Neo-Tokyo in this endurance event. Double CR rewards for 4h.</p>
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<img alt="p1" class="w-8 h-8 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdGr1RS4NZKoezN3F0ojsZeU0DICIzThpPJeIJg59hoQOIlZ0muGje1v3HmhjpHoF3M73azyUd6ol_Jsf1_GZY8QilmvifvCgdp5ZijGcNNLi_k4KvHKddNCUwu1v8qah4t52aGMvdtMJ-RzUA_JzUrwq89oxdHVkZDmy-Gh0EGUApFMPYcNFNmeJ1EqYkSHLYaC-At7fJxp0FkiC3glL67qGCwb2fLwtzoB0QBxZNytJN3NmsOApUfXmDJCAcvU2K2DnbJosWUO4"/>
+<img alt="p2" class="w-8 h-8 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7GWjd9jARpfY49NLtzewI9uRUam-hS6iGiS2-mFX8vZUUEUsc2f-ba9fjMF6bLsRCeq6BZ2iSSWyQRzhC2fr5_bW5tZ3EHXujtXdmglDX_qBMA4FB4Tkt4aAjZ5U3TjnNYDeWRRsju30iUsqFhIkGpX7qCXX-vA-kiNYvtvGLTCGN2vtfv2iuS11ieHeCIs_-nPatLLJRKfvt0skIjnxBMB9z_vApGs6d3g1CAp1TilvNszm3_7Xhqx1hZXEDXSnkjtEmDKZWFc0"/>
+<div class="w-8 h-8 rounded-full border-2 border-background bg-surface-container-highest flex items-center justify-center text-[8px] font-bold">+12</div>
+</div>
+<span class="text-[10px] text-on-surface-variant/40">Drivers Competing</span>
 </div>
 </div>
-<!-- Car Card 2 -->
-<div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2">
-<div class="flex items-center gap-4 p-3 h-24">
-<div class="w-32 h-full bg-surface-container-highest overflow-hidden relative">
-<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A high-performance rally-spec hatchback." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhxH06QZo64ilxeccHTM3l5Y6-JwBAtEjNiKtEgGqyr3OXDp88P61lDMKf8gda27P8zm3z-tcTeCaHlo2XrwEJkqS8AkvthcG0ajWTVmu2KViole3wOHb6O19cvZcQ6yPwtwX4NnezraAae6ASKVL82d_ZmoHWzH9jCvnx_E9YYu9wLbb4POOleqFnKC333pz3109chBGgzPlzn150mboMpZRcQfy6IQ4LYTl6OF2X-Eg5cR-K2wFVWrI7_A9vM05wIkbP6Ok46GI"/>
+<!-- Daily Challenge -->
+<div class="glass-card p-5 border-l-2 border-l-secondary">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-sm text-[10px] text-secondary tracking-widest uppercase">Daily Goal</span>
+<span class="text-secondary text-[10px] font-bold">85%</span>
 </div>
-<div class="flex-1">
-<h3 class="font-headline-md text-[18px] italic leading-tight text-on-surface-variant">VORTEX RALLY</h3>
-<div class="flex gap-1 mt-1">
-<div class="w-2 h-2 bg-secondary"></div>
-<div class="w-2 h-2 bg-secondary/30"></div>
-<div class="w-2 h-2 bg-secondary/30"></div>
-<div class="w-2 h-2 bg-secondary/30"></div>
-<div class="w-2 h-2 bg-secondary/30"></div>
+<h3 class="font-headline-lg text-lg text-on-surface italic mb-4">DRIFT KING</h3>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary glow-cyan" style="width: 85%"></div>
 </div>
-<p class="font-data-sm text-on-surface-variant/50 mt-1">PR: 684</p>
+<div class="flex justify-between mt-2 text-[9px] text-on-surface-variant/60 uppercase">
+<span>8.5k / 10k PTS</span>
 </div>
 </div>
+<!-- Recent Activity -->
+<div class="glass-card flex flex-col">
+<div class="px-4 py-3 border-b border-white/5 flex justify-between items-center">
+<h4 class="text-[10px] text-on-surface-variant/40 uppercase tracking-widest font-bold">Recent History</h4>
+<button class="text-[10px] text-secondary uppercase font-bold">View All</button>
 </div>
-<!-- Car Card 3 -->
-<div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2">
-<div class="flex items-center gap-4 p-3 h-24">
-<div class="w-32 h-full bg-surface-container-highest overflow-hidden relative">
-<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A modern Japanese muscle car in midnight purple." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6EfmG7EZ53Htb1grMAwXQ9b-qAPg5_aC4iRWOZCX-X72as7cztAahWu4V_FkFsuqCnWHAT4ARLdCTDkIZiJ-h6X2jMn3P0SdETymOlhKaJ0UNQ72xfYTYB2jUBurEiXIMTiQ7YqJoeQnptqQUWfbg2yq44mlD9Jm5vLQj-dzjsIzfkctafaSIxNSKaVKcRbsrfJf-hBY18TZikaoq_PIt8Bt3iuIEFsj4CXunESl5bC0aNcvCl8m4StXX5evD_pfMpQ89F8vUN50"/>
+<div class="p-4 flex items-center justify-between active:bg-white/5 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/10 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-primary text-xl">military_tech</span>
 </div>
-<div class="flex-1">
-<h3 class="font-headline-md text-[18px] italic leading-tight text-on-surface-variant">SKYLINE R34 - PURPLE EDITION</h3>
-<div class="flex gap-1 mt-1">
-<div class="w-2 h-2 bg-secondary"></div>
-<div class="w-2 h-2 bg-secondary"></div>
-<div class="w-2 h-2 bg-secondary/30"></div>
-<div class="w-2 h-2 bg-secondary/30"></div>
-<div class="w-2 h-2 bg-secondary/30"></div>
+<div>
+<div class="text-xs font-bold text-on-surface">1st Place - Midnight Run</div>
+<div class="text-[10px] text-on-surface-variant/60">2m ago • +15k CR</div>
 </div>
-<p class="font-data-sm text-on-surface-variant/50 mt-1">PR: 812</p>
 </div>
+<span class="material-symbols-outlined text-on-surface-variant/20">chevron_right</span>
 </div>
 </div>
 </div>
 </section>
-<!-- Right: Detailed View & Customization -->
-<section class="flex-1 flex flex-col gap-gutter">
-<!-- Navigation Tabs -->
-<div class="flex gap-4">
-<button class="flex-1 glass-panel py-3 px-6 skew-box group relative overflow-hidden transition-all duration-300 bg-primary/20" id="tab-performance" onclick="switchTab('performance')">
-<div class="unskew-content flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-primary">speed</span>
-<span class="font-label-caps text-label-caps text-white">PERFORMANCE TUNING</span>
+<!-- Race HUD View (Hidden) -->
+<section class="view-section view-hidden fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center overflow-hidden" id="view-race-hud">
+<div class="absolute top-12 left-6 text-white flex flex-col gap-1">
+<span class="text-5xl font-display-xl italic leading-none">242 <small class="text-sm">KM/H</small></span>
+<span class="text-secondary font-label-sm tracking-widest">GEAR 5</span>
 </div>
-<div class="absolute bottom-0 left-0 w-full h-1 bg-primary"></div>
-</button>
-<button class="flex-1 glass-panel py-3 px-6 skew-box group relative overflow-hidden transition-all duration-300" id="tab-visual" onclick="switchTab('visual')">
-<div class="unskew-content flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-on-surface-variant">palette</span>
-<span class="font-label-caps text-label-caps text-on-surface-variant">VISUAL CUSTOM</span>
+<div class="text-center px-6">
+<div class="w-32 h-32 mb-8 mx-auto border-4 border-primary rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-6xl text-primary">speed</span>
 </div>
-<div class="absolute bottom-0 left-0 w-full h-1 bg-transparent group-hover:bg-secondary/50"></div>
-</button>
+<h2 class="text-4xl font-display-xl text-primary italic uppercase">Racing...</h2>
+<p class="text-on-surface-variant mt-4 text-sm max-w-xs mx-auto">Race simulation in progress. Physics engine active.</p>
+<button class="mt-12 w-full border border-primary text-primary px-8 py-4 font-bold tracking-widest uppercase text-xs active:bg-primary active:text-white transition-all" onclick="switchView('home')">
+                    ABORT MISSION
+                </button>
 </div>
-<!-- Stats & Visual Display Area -->
-<div class="flex-1 glass-panel relative p-8 flex flex-col justify-end">
-<!-- Data HUD Overlay -->
-<div class="absolute top-8 left-8 right-8 flex justify-between items-start pointer-events-none">
-<div class="space-y-6 w-72">
-<!-- Stat Block: Top Speed -->
-<div class="space-y-2">
-<div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
-<span>TOP SPEED</span>
-<span>342 KM/H</span>
-</div>
-<div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden">
-<div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 85%"></div>
-<div class="absolute inset-0 flex">
-<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
-<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
-<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
-<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
+</section>
+<!-- Garage View -->
+<section class="view-section view-hidden relative z-10" id="view-garage">
+<h2 class="font-display-xl text-3xl text-primary italic mb-6">MY GARAGE</h2>
+<div class="flex flex-col gap-4">
+<div class="glass-card group active:scale-[0.98] transition-all">
+<div class="h-44 relative bg-surface-container-low">
+<img alt="Car" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo2CjrzLZxGWxMuO2WZr4n0TfssgpaZwtY8cSwq7JWPj_j3PcnjiW8K8VWSgML6rMpHp1QjTs_IUG7piZ6lHgCDTDgM-W4nU1OEZ5K9QTKtlob7Z0rfjy1iBF9XNbMKJgegkdUwBBERp6bqlXGFuM19_FUX04llnUVZQmq4UIFrvyQWwhAoTYS6v3KlkUYw1IRmqlt6C0LVV7_vHvWDxcXV6S7vqKnyj7AZ-KNBzAmR_jl9uRTsePAjSARpBvZz16O-YGzgGBQmW0"/>
+<div class="absolute top-3 right-3">
+<span class="bg-secondary text-on-secondary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS A</span>
 </div>
 </div>
+<div class="p-5">
+<h3 class="font-headline-lg text-xl mb-1 italic">STORM-R7</h3>
+<div class="flex justify-between items-center mt-4">
+<div class="flex flex-col">
+<span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
+<span class="text-sm font-bold text-secondary">PR: 684</span>
 </div>
-<!-- Stat Block: Acceleration -->
-<div class="space-y-2">
-<div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
-<span>ACCELERATION</span>
-<span>0-100: 2.1s</span>
-</div>
-<div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden">
-<div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 92%"></div>
-</div>
-</div>
-<!-- Stat Block: Handling -->
-<div class="space-y-2">
-<div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
-<span>HANDLING</span>
-<span>LATERAL G: 1.4</span>
-</div>
-<div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden">
-<div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 78%"></div>
+<button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
 </div>
 </div>
 </div>
-<div class="glass-panel p-4 flex flex-col gap-2 skew-box">
-<div class="unskew-content text-right">
-<div class="text-on-surface-variant font-data-sm">MANUFACTURER</div>
-<div class="text-white font-headline-md text-xl">AXION MOTORS</div>
-</div>
-<div class="h-px bg-white/10"></div>
-<div class="unskew-content text-right">
-<div class="text-on-surface-variant font-data-sm">CLASS</div>
-<div class="text-primary font-headline-md text-xl">LEGENDARY</div>
+<!-- Buy Slot -->
+<div class="glass-card border-dashed border-white/20 h-32 flex flex-col items-center justify-center gap-2 opacity-60 active:opacity-100">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Unlock Slot</span>
 </div>
 </div>
-</div>
-<!-- Bottom Action Panel -->
-<div class="flex justify-between items-end">
-<div class="flex gap-4">
-<div class="glass-panel p-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
-<div>
-<p class="text-on-surface-variant font-data-sm">ENGINE STAGE</p>
-<p class="text-white font-bold">STAGE 4/5</p>
-</div>
-</div>
-<div class="glass-panel p-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
-<div>
-<p class="text-on-surface-variant font-data-sm">SUSPENSION</p>
-<p class="text-white font-bold">PRO SERIES</p>
+</section>
+<!-- Map View -->
+<section class="view-section view-hidden relative z-10" id="view-map">
+<div class="h-[450px] rounded-xl overflow-hidden glass-card relative border border-white/10 shadow-2xl">
+<div class="absolute inset-0 z-0 bg-neutral-900">
+<img alt="Map" class="w-full h-full object-cover opacity-40 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0HpBeN4UONFPa-8UsGdaQSQwQtbjRCen2TB5cWwqDb_jRV7fxeMHI1DpoiKM2xWZkh9GLSjfx8zM-KubP7nzHJS3K6wpRqtwLnmaud-H1zLxk9KCVQ5-ruTjD4xRe2QgFpzD9iT3TgTnuqyHVno8_GM7AEcjdGo-K2b6r5ypLi_5mQXErc6EoNGBddvV8rwFs1FSsUHsex0Le6qGH0bFJimr2Fxun0qhScEyrWG7HuhDg20l3i2SERr31L7VCH9aVdv7JLFkWDco"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="flex flex-col items-center gap-2">
+<span class="animate-bounce material-symbols-outlined text-primary text-4xl">location_on</span>
+<span class="text-white text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 backdrop-blur-sm">Downtown Hub</span>
 </div>
 </div>
 </div>
-<div class="flex gap-4">
-<button class="bg-surface-container-highest text-white font-headline-md italic px-10 py-4 skew-box border-2 border-white/20 hover:bg-white hover:text-black transition-all group overflow-hidden relative">
-<div class="unskew-content">UPGRADE</div>
-<div class="absolute inset-0 bg-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
-</button>
-<button class="bg-primary text-on-primary-container font-headline-md italic px-12 py-4 skew-box shadow-[0_0_25px_rgba(255,77,0,0.6)] hover:scale-105 active:scale-95 transition-all">
-<div class="unskew-content">EQUIP</div>
-</button>
+<div class="absolute top-4 left-4 z-10">
+<div class="glass-card p-3 rounded bg-black/60 backdrop-blur-md border-white/10">
+<h2 class="text-sm font-bold text-primary mb-0.5">WORLD MAP</h2>
+<p class="text-[9px] text-on-surface-variant">Tap locations to fast travel</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Social View -->
+<section class="view-section view-hidden relative z-10" id="view-social">
+<div class="flex flex-col gap-6">
+<div class="glass-card p-6 flex flex-col items-center text-center bg-gradient-to-b from-primary/10 to-transparent">
+<div class="w-24 h-24 rounded-full border-2 border-primary p-1 mb-4 bg-surface-container-high overflow-hidden shadow-lg shadow-primary/20">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWwApR8sw4aOdbQjt6fYCubpmIPeE2Dqau88m_nC1-UzevNOVc6qKyB-dk12y8ubm3Bx0pGiv--0DFRG-qL9XO9ew0UJ-WJQvEWBJ9I9wGLyZx7LWZKB7nNT66b54VqH8YzlnckSWUAnd_8m0RKLxd1rRg8HwbaxEJk2onf3-_txlqnwHLdsXIjBuOU-bg9nPS09hlrDaC-d5LNHYMyZNnTF274LygyC00eIDpkD_c26oAo6h91bZ5rQl-NTaYF6Es9NRF6S_87os"/>
+</div>
+<h3 class="font-headline-lg text-2xl text-on-surface italic">VELOCITY_X</h3>
+<p class="text-secondary text-[10px] font-bold tracking-widest mt-1">APEX PREDATOR</p>
+<div class="grid grid-cols-2 w-full gap-4 mt-6 pt-6 border-t border-white/5">
+<div class="text-center">
+<p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Race Wins</p>
+<p class="text-lg font-bold text-on-surface">1,240</p>
+</div>
+<div class="text-center">
+<p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Win Rate</p>
+<p class="text-lg font-bold text-on-surface">68%</p>
+</div>
+</div>
+</div>
+<div class="glass-card flex flex-col">
+<div class="px-4 py-3 border-b border-white/5 flex justify-between items-center bg-white/5">
+<h3 class="text-[10px] text-secondary font-bold tracking-[0.2em] uppercase">Leaderboard</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<tbody class="text-xs">
+<tr class="border-b border-white/5">
+<td class="px-4 py-4 text-primary font-bold">01</td>
+<td class="px-4 py-4 font-bold">DRFTR_PRO</td>
+<td class="px-4 py-4 text-right text-on-surface-variant">2.84M</td>
+</tr>
+<tr class="bg-primary/10 border-l-2 border-l-primary">
+<td class="px-4 py-4 text-primary font-bold">48</td>
+<td class="px-4 py-4 font-black">YOU</td>
+<td class="px-4 py-4 text-right">1.42M</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </section>
 </main>
-<!-- Bottom Nav Bar -->
-<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-safe pb-safe h-20 bg-surface/80 backdrop-blur-xl border-t border-secondary/20 skew-x-[-15deg] shadow-[0_-4px_24px_rgba(0,219,231,0.1)]">
-<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-caps text-label-caps mt-1">HOME</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-6 shadow-[0_0_15px_rgba(255,77,0,0.6)] skew-x-[15deg] transition-all active:scale-90" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_car</span>
-<span class="font-label-caps text-label-caps mt-1">GARAGE</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
-<span class="material-symbols-outlined">explore</span>
-<span class="font-label-caps text-label-caps mt-1">MAP</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
-<span class="material-symbols-outlined">group</span>
-<span class="font-label-caps text-label-caps mt-1">SOCIAL</span>
-</a>
+<!-- Bottom Navigation Bar - Mobile Safe Area -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-background/95 backdrop-blur-2xl border-t border-white/10 flex justify-around items-stretch h-bottom-nav-height pb-safe-area-bottom" id="bottom-nav">
+<!-- Nav Items -->
+<button class="flex-1 flex flex-col items-center justify-center text-secondary border-t-4 border-primary pt-1 active:scale-90 transition-all" id="nav-home" onclick="switchView('home')">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Home</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-garage" onclick="switchView('garage')">
+<span class="material-symbols-outlined text-2xl">garage</span>
+<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Garage</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-map" onclick="switchView('map')">
+<span class="material-symbols-outlined text-2xl">map</span>
+<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Map</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-social" onclick="switchView('social')">
+<span class="material-symbols-outlined text-2xl">group</span>
+<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Social</span>
+</button>
 </nav>
 <script>
-        function switchTab(tab) {
-            const perfBtn = document.getElementById('tab-performance');
-            const visualBtn = document.getElementById('tab-visual');
-            const perfIndicator = perfBtn.querySelector('.absolute');
-            const visualIndicator = visualBtn.querySelector('.absolute');
+        function switchView(viewId) {
+            const views = ['home', 'garage', 'map', 'social', 'race-hud'];
+            const navItems = ['home', 'garage', 'map', 'social'];
             
-            const perfText = perfBtn.querySelectorAll('span');
-            const visualText = visualBtn.querySelectorAll('span');
+            // Hide all views
+            views.forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                if (el) el.classList.add('view-hidden');
+            });
 
-            if (tab === 'performance') {
-                perfBtn.classList.add('bg-primary/20');
-                visualBtn.classList.remove('bg-primary/20');
-                perfIndicator.classList.replace('bg-transparent', 'bg-primary');
-                visualIndicator.classList.replace('bg-primary', 'bg-transparent');
-                
-                perfText.forEach(t => t.classList.replace('text-on-surface-variant', 'text-primary'));
-                visualText.forEach(t => t.classList.replace('text-primary', 'text-on-surface-variant'));
+            // Show selected view
+            const activeView = document.getElementById(`view-${viewId}`);
+            if (activeView) activeView.classList.remove('view-hidden');
+
+            // Handle navigation highlights and main UI visibility
+            const bottomNav = document.getElementById('bottom-nav');
+            const header = document.querySelector('header');
+
+            if (viewId === 'race-hud') {
+                bottomNav.style.display = 'none';
+                header.style.display = 'none';
             } else {
-                visualBtn.classList.add('bg-primary/20');
-                perfBtn.classList.remove('bg-primary/20');
-                visualIndicator.classList.replace('bg-transparent', 'bg-primary');
-                perfIndicator.classList.replace('bg-primary', 'bg-transparent');
+                bottomNav.style.display = 'flex';
+                header.style.display = 'flex';
+                
+                // Update active state in bottom nav
+                navItems.forEach(n => {
+                    const navBtn = document.getElementById(`nav-${n}`);
+                    if (navBtn) {
+                        navBtn.classList.remove('text-secondary', 'border-t-4', 'border-primary');
+                        navBtn.classList.add('text-on-surface-variant/40');
+                        const icon = navBtn.querySelector('.material-symbols-outlined');
+                        if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+                    }
+                });
 
-                visualText.forEach(t => t.classList.replace('text-on-surface-variant', 'text-primary'));
-                perfText.forEach(t => t.classList.replace('text-primary', 'text-on-surface-variant'));
+                const activeNav = document.getElementById(`nav-${viewId}`);
+                if (activeNav) {
+                    activeNav.classList.remove('text-on-surface-variant/40');
+                    activeNav.classList.add('text-secondary', 'border-t-4', 'border-primary');
+                    const activeIcon = activeNav.querySelector('.material-symbols-outlined');
+                    if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+                }
+            }
+
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Haptic feedback simulation
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(10);
             }
         }
 
-        // Atmospheric micro-interaction
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) / 100;
-            const moveY = (e.clientY - window.innerHeight / 2) / 100;
-            const bg = document.querySelector('.fixed.inset-0.z-0 > div:nth-child(2)');
-            if (bg) bg.style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
+        // Touch-friendly interactions
+        document.querySelectorAll('button, .glass-card').forEach(el => {
+            el.addEventListener('touchstart', function() {
+                this.classList.add('brightness-125');
+            }, { passive: true });
+            
+            el.addEventListener('touchend', function() {
+                this.classList.remove('brightness-125');
+            }, { passive: true });
         });
+
+        // Initialize
+        window.onload = () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.classList.add('transition-opacity', 'duration-500');
+                document.body.style.opacity = '1';
+            }, 50);
+        }
     </script>
 </body></html>
