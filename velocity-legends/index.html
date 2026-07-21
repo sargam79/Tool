@@ -2,48 +2,10 @@
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>
-        body {
-            background-color: #0e0e0e;
-            overflow: hidden;
-            user-select: none;
-        }
-        .scanline-overlay {
-            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.1) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-        }
-        .skew-box {
-            transform: skewX(-15deg);
-        }
-        .skew-content {
-            transform: skewX(15deg);
-        }
-        .glass-panel {
-            background: rgba(19, 19, 19, 0.6);
-            backdrop-filter: blur(24px);
-            border-left: 2px solid rgba(0, 219, 231, 0.2);
-        }
-        .glow-orange {
-            box-shadow: 0 0 20px rgba(255, 87, 26, 0.4);
-        }
-        @keyframes lightSweep {
-            0% { transform: translateX(-100%) skewX(-15deg); }
-            100% { transform: translateX(200%) skewX(-15deg); }
-        }
-        .sweep-effect::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 40%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: lightSweep 3s infinite;
-        }
-    </style>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -71,7 +33,7 @@
                         "inverse-primary": "#ae3200",
                         "outline": "#ad897e",
                         "on-primary": "#5e1700",
-                        "primary": "#ffb59e",
+                        "primary": "#ff4d00",
                         "on-tertiary-fixed": "#1a1c1c",
                         "inverse-on-surface": "#313030",
                         "on-surface-variant": "#e6beb2",
@@ -134,159 +96,306 @@
             },
         }
     </script>
+<style>
+        .carbon-pattern {
+            background-color: #1a1c1e;
+            background-image: linear-gradient(45deg, #111 25%, transparent 25%, transparent 50%, #111 50%, #111 75%, transparent 75%, transparent);
+            background-size: 4px 4px;
+        }
+        .scanline-overlay {
+            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(to right, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 4px, 4px 100%;
+            pointer-events: none;
+        }
+        .skew-box {
+            transform: skewX(-15deg);
+        }
+        .unskew-content {
+            transform: skewX(15deg);
+        }
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 77, 0, 0.2);
+        }
+        @keyframes sweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+        .animate-sweep {
+            animation: sweep 2s infinite linear;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
 </head>
-<body class="bg-background text-on-surface overflow-hidden">
-<div class="fixed inset-0 scanline-overlay z-[100] opacity-10"></div>
-<!-- 3D SHOWROOM BACKGROUND -->
-<div class="fixed inset-0 z-0 bg-surface-container-lowest">
-<div class="w-full h-full bg-cover bg-center opacity-80 scale-110" data-alt="A cinematic, high-fidelity 3D render of a futuristic hypercar parked in a minimalist, high-tech showroom. The environment features polished black concrete floors with sharp reflections of the car's aerodynamic carbon-fiber body. Cold electric cyan and warm velocity orange lighting highlights the vehicle's aggressive lines, creating a dramatic high-contrast motorsport aesthetic. Deep atmospheric shadows and soft volumetric fog emphasize the premium automotive engineering." style="background-image: url('assets/images/bg-home.png')"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-<div class="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent"></div>
+<body class="bg-background text-on-background overflow-hidden selection:bg-primary selection:text-on-primary">
+<!-- Garage Environment Background -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-black/60 z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-all duration-700" data-alt="A gritty, ultra-realistic underground parking garage with damp concrete floors and exposed steel beams. The scene is illuminated by flicking orange and electric cyan neon signs that cast long, dramatic shadows and create sharp reflections on the puddles of water. The atmosphere is high-octane and moody, reminiscent of a premium racing game environment like Need for Speed or Gran Turismo, with a cinematic shallow depth of field focusing on a distant workshop area." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8iXKfvIndco5mcbqPtt54yZSSnR2OGO_uz2HfIhdgA9P61QAkxm2opMl3pd7TIdhK-8OdGDpFgoC2mSASj_O-VXRyv8Kdns-nrpKEcSu3PIpZ2YrUohIYwsTJlCNUTerDlYKTVkkakSBLYzO-LeHDwEnVtwMstVEfEJJI_gC1AbxPqMahMrePd79dz_5CI6EtXK7JUfpqdtKhPkayb0QVO1yrqKj6mBpTtw-A3KgbmzmQrbkZ3yUqpF8i68mqrgfTMyA5XKIx8Z0')">
 </div>
-<!-- TOP APP BAR -->
+<div class="absolute inset-0 scanline-overlay z-20"></div>
+</div>
+<!-- Top App Bar -->
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest to-transparent">
 <div class="flex items-center gap-4">
-<img alt="Velocity Legends Logo" class="w-12 h-12 object-contain drop-shadow-[0_0_10px_rgba(255,181,158,0.5)]" src="assets/images/logo-icon.png"/>
-<h1 class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)]">VELOCITY LEGENDS</h1>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-2 bg-surface-container/40 backdrop-blur-md px-4 py-2 border-l-2 border-primary skew-box">
-<span class="material-symbols-outlined text-primary skew-content" style="font-variation-settings: 'FILL' 1;">payments</span>
-<span class="font-data-lg text-data-lg text-on-surface skew-content">1.2M CR</span>
-</div>
-<div class="flex items-center gap-2 bg-surface-container/40 backdrop-blur-md px-4 py-2 border-l-2 border-secondary-fixed-dim skew-box">
-<span class="material-symbols-outlined text-secondary-fixed-dim skew-content" style="font-variation-settings: 'FILL' 1;">stars</span>
-<span class="font-data-lg text-data-lg text-on-surface skew-content">500 GOLD</span>
-</div>
-<div class="flex items-center gap-3 bg-surface-container-high/60 p-1 pr-4 rounded-full border border-outline-variant/30 backdrop-blur-md">
-<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center overflow-hidden border border-primary/50">
-<span class="material-symbols-outlined text-on-primary-container text-2xl">person</span>
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary shadow-[0_0_10px_rgba(255,77,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional racing driver wearing a high-tech matte black helmet with a glowing orange visor. The background is a blurred high-tech racing cockpit. The aesthetic is aggressive and premium with sharp digital highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLGuMnqlsSdljO1i1EsTA2mZsEUmrzSmIcEkc6n13knGpxI-1EErcVLjI8d5jAzllQBdeqPcOMOIHFVewCs03NQtCREqfQGWd3FtWopY1HUj8WvdWV-8ELM14sup2ViiAmeQCHJ36ObRfAJUH0nfLVKN3C3Jm1F7BtQ3Ro-pgoQih9LYUU5nrBw5pvgUBGRQr5drDlBxldXJ9fzUjVEwukZCDwvKupY0cpJvNBo2Cp1RBFqfQX2uLYRmnUBmfIKiGsQzg3hGC3H8I"/>
 </div>
 <div>
-<div class="font-label-caps text-label-caps text-on-surface-variant">LVL 42</div>
-<div class="font-body-md text-body-md font-bold text-on-surface leading-none">LEGEND_ACE</div>
+<h1 class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,77,0,0.5)]">VELOCITY LEGENDS</h1>
+<p class="font-data-sm text-secondary-fixed-dim uppercase">Rank: APEX PREDATOR</p>
 </div>
 </div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md tracking-tight italic text-primary">1.2M CR | 500 GOLD</div>
+<div class="font-data-sm text-on-surface-variant/70 uppercase">Daily Streak: 14 Days</div>
 </div>
 </header>
-<!-- LEFT SIDEBAR HUD: CAR STATS -->
-<main class="relative z-10 h-screen flex flex-col justify-center px-margin-safe gap-8 pt-20">
-<div class="max-w-md space-y-6">
-<div class="glass-panel p-6 skew-box relative overflow-hidden group hover:bg-surface-container-high/40 transition-all duration-300">
-<div class="skew-content space-y-4">
-<div class="flex justify-between items-end border-b border-outline-variant/30 pb-2">
-<h2 class="font-headline-md text-headline-md text-on-surface italic">ZENITH GT-R</h2>
-<span class="font-data-sm text-data-sm text-secondary-fixed-dim uppercase tracking-widest">Prototype S-Class</span>
-</div>
-<div class="space-y-4">
-<div class="space-y-1">
-<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant">
-<span>TOP SPEED</span>
-<span class="text-on-surface font-bold">385 KM/H</span>
-</div>
-<div class="h-2 w-full bg-surface-container flex gap-1">
-<div class="h-full bg-primary-container w-[85%]"></div>
-<div class="h-full bg-surface-container-highest flex-1"></div>
-</div>
-</div>
-<div class="space-y-1">
-<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant">
-<span>ACCELERATION</span>
-<span class="text-on-surface font-bold">0-100 2.1S</span>
-</div>
-<div class="h-2 w-full bg-surface-container flex gap-1">
-<div class="h-full bg-secondary-fixed-dim w-[92%]"></div>
-<div class="h-full bg-surface-container-highest flex-1"></div>
-</div>
-</div>
-<div class="space-y-1">
-<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant">
-<span>HANDLING</span>
-<span class="text-on-surface font-bold">9.4 Gs</span>
-</div>
-<div class="h-2 w-full bg-surface-container flex gap-1">
-<div class="h-full bg-tertiary w-[78%]"></div>
-<div class="h-full bg-surface-container-highest flex-1"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="absolute inset-0 sweep-effect opacity-50"></div>
-</div>
-<!-- TILES GRID -->
-<div class="grid grid-cols-2 gap-4">
-<button class="relative glass-panel p-4 skew-box text-left group hover:scale-105 transition-transform duration-200">
-<div class="skew-content">
-<span class="material-symbols-outlined text-primary mb-2">assignment</span>
-<h3 class="font-headline-md text-[18px] text-on-surface italic uppercase">Daily Missions</h3>
-<p class="font-label-caps text-[9px] text-on-surface-variant">3 AVAILABLE • +2500 XP</p>
-</div>
+<!-- Main Content Layout -->
+<main class="relative z-30 pt-24 pb-20 h-screen flex flex-col md:flex-row px-margin-safe gap-gutter overflow-hidden">
+<!-- Left: Car Selection Grid -->
+<section class="w-full md:w-1/3 flex flex-col gap-gutter h-full">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg italic text-white">MY GARAGE <span class="text-primary text-body-lg font-normal not-italic ml-2">(12/50)</span></h2>
+<div class="flex gap-2">
+<button class="w-10 h-10 glass-panel flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">filter_list</span>
 </button>
-<button class="relative glass-panel p-4 skew-box text-left border-l-2 border-secondary-fixed-dim group hover:scale-105 transition-transform duration-200">
-<div class="skew-content">
-<span class="material-symbols-outlined text-secondary-fixed-dim mb-2">festival</span>
-<h3 class="font-headline-md text-[18px] text-on-surface italic uppercase">Seasonal Festival</h3>
-<p class="font-label-caps text-[9px] text-on-surface-variant">ENDS IN 14H • NEW CAR</p>
-</div>
+<button class="w-10 h-10 glass-panel flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">sort</span>
 </button>
 </div>
 </div>
-<!-- MAIN ACTION AREA -->
-<div class="mt-auto mb-32 flex flex-col items-start gap-4">
-<button class="group relative px-12 py-6 bg-primary-container skew-box glow-orange active:scale-95 transition-all duration-150">
-<div class="skew-content flex items-center gap-6">
-<span class="font-display-hero text-headline-lg italic text-on-primary-container leading-none">START RACE</span>
-<span class="material-symbols-outlined text-on-primary-container text-4xl group-hover:translate-x-2 transition-transform">chevron_right</span>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
+<!-- Car Card 1 (Active) -->
+<div class="group relative overflow-hidden glass-panel border-l-4 border-l-primary cursor-pointer transition-all duration-300 transform hover:translate-x-2">
+<div class="absolute top-0 right-0 p-2 z-10">
+<span class="bg-primary text-on-primary font-data-sm px-2 py-0.5 skew-x-[-15deg] block">EQUIPPED</span>
 </div>
-<div class="absolute top-0 right-0 h-1 w-full bg-white/20"></div>
-</button>
+<div class="flex items-center gap-4 p-3 h-24">
+<div class="w-32 h-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Detailed side-profile of a customized wide-body electric hypercar with a matte obsidian finish and glowing orange LED accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE2q4inoE6OLkY4tggbiMq06kEiTOpW445Wl-YK9WqZeoPfxAXynosYNeWpzmkuz9DIrns-eJT1T9FrJIwpGyHdL6WVGv7ObQuDWSvNE81WJ3E0uQ2ooF8JBSgGVdPybZbsjHA2IAoH1WRJT1YruMepBjQyQAkHtSuNQaIH4sm_ex35zz4NMVp6AjoSzzt_vUK2voKt5zhkUwBo3lvjA_4yfn0q0g2y6Q-rnu3_r7KSv0A5olryuJt2qMmdm3Lq2LO8A1TtN9kpbY"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container/40"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[18px] italic leading-tight">FENYR SUPERSPORT</h3>
+<div class="flex gap-1 mt-1">
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary/30"></div>
+<div class="w-2 h-2 bg-primary/30"></div>
+</div>
+<p class="font-data-sm text-secondary-fixed-dim mt-1">PR: 942</p>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-0.5 bg-primary/20 overflow-hidden">
+<div class="h-full w-1/2 bg-primary animate-sweep"></div>
+</div>
+</div>
+<!-- Car Card 2 -->
+<div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2">
+<div class="flex items-center gap-4 p-3 h-24">
+<div class="w-32 h-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A high-performance rally-spec hatchback." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhxH06QZo64ilxeccHTM3l5Y6-JwBAtEjNiKtEgGqyr3OXDp88P61lDMKf8gda27P8zm3z-tcTeCaHlo2XrwEJkqS8AkvthcG0ajWTVmu2KViole3wOHb6O19cvZcQ6yPwtwX4NnezraAae6ASKVL82d_ZmoHWzH9jCvnx_E9YYu9wLbb4POOleqFnKC333pz3109chBGgzPlzn150mboMpZRcQfy6IQ4LYTl6OF2X-Eg5cR-K2wFVWrI7_A9vM05wIkbP6Ok46GI"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[18px] italic leading-tight text-on-surface-variant">VORTEX RALLY</h3>
+<div class="flex gap-1 mt-1">
+<div class="w-2 h-2 bg-secondary"></div>
+<div class="w-2 h-2 bg-secondary/30"></div>
+<div class="w-2 h-2 bg-secondary/30"></div>
+<div class="w-2 h-2 bg-secondary/30"></div>
+<div class="w-2 h-2 bg-secondary/30"></div>
+</div>
+<p class="font-data-sm text-on-surface-variant/50 mt-1">PR: 684</p>
+</div>
+</div>
+</div>
+<!-- Car Card 3 -->
+<div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2">
+<div class="flex items-center gap-4 p-3 h-24">
+<div class="w-32 h-full bg-surface-container-highest overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" data-alt="A modern Japanese muscle car in midnight purple." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6EfmG7EZ53Htb1grMAwXQ9b-qAPg5_aC4iRWOZCX-X72as7cztAahWu4V_FkFsuqCnWHAT4ARLdCTDkIZiJ-h6X2jMn3P0SdETymOlhKaJ0UNQ72xfYTYB2jUBurEiXIMTiQ7YqJoeQnptqQUWfbg2yq44mlD9Jm5vLQj-dzjsIzfkctafaSIxNSKaVKcRbsrfJf-hBY18TZikaoq_PIt8Bt3iuIEFsj4CXunESl5bC0aNcvCl8m4StXX5evD_pfMpQ89F8vUN50"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[18px] italic leading-tight text-on-surface-variant">SKYLINE R34 - PURPLE EDITION</h3>
+<div class="flex gap-1 mt-1">
+<div class="w-2 h-2 bg-secondary"></div>
+<div class="w-2 h-2 bg-secondary"></div>
+<div class="w-2 h-2 bg-secondary/30"></div>
+<div class="w-2 h-2 bg-secondary/30"></div>
+<div class="w-2 h-2 bg-secondary/30"></div>
+</div>
+<p class="font-data-sm text-on-surface-variant/50 mt-1">PR: 812</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right: Detailed View & Customization -->
+<section class="flex-1 flex flex-col gap-gutter">
+<!-- Navigation Tabs -->
 <div class="flex gap-4">
-<button class="w-14 h-14 border-2 border-secondary-fixed-dim skew-box flex items-center justify-center hover:bg-secondary-fixed-dim/20 transition-colors">
-<span class="material-symbols-outlined text-secondary-fixed-dim skew-content">settings_input_component</span>
+<button class="flex-1 glass-panel py-3 px-6 skew-box group relative overflow-hidden transition-all duration-300 bg-primary/20" id="tab-performance" onclick="switchTab('performance')">
+<div class="unskew-content flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-primary">speed</span>
+<span class="font-label-caps text-label-caps text-white">PERFORMANCE TUNING</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-primary"></div>
 </button>
-<button class="px-8 py-4 border-2 border-outline/50 skew-box flex items-center justify-center hover:bg-on-surface/5 transition-colors">
-<span class="font-headline-md text-[16px] text-on-surface italic skew-content uppercase">Upgrade Car</span>
+<button class="flex-1 glass-panel py-3 px-6 skew-box group relative overflow-hidden transition-all duration-300" id="tab-visual" onclick="switchTab('visual')">
+<div class="unskew-content flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">palette</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">VISUAL CUSTOM</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-transparent group-hover:bg-secondary/50"></div>
+</button>
+</div>
+<!-- Stats & Visual Display Area -->
+<div class="flex-1 glass-panel relative p-8 flex flex-col justify-end">
+<!-- Data HUD Overlay -->
+<div class="absolute top-8 left-8 right-8 flex justify-between items-start pointer-events-none">
+<div class="space-y-6 w-72">
+<!-- Stat Block: Top Speed -->
+<div class="space-y-2">
+<div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
+<span>TOP SPEED</span>
+<span>342 KM/H</span>
+</div>
+<div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 85%"></div>
+<div class="absolute inset-0 flex">
+<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
+<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
+<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
+<div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
+</div>
+</div>
+</div>
+<!-- Stat Block: Acceleration -->
+<div class="space-y-2">
+<div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
+<span>ACCELERATION</span>
+<span>0-100: 2.1s</span>
+</div>
+<div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 92%"></div>
+</div>
+</div>
+<!-- Stat Block: Handling -->
+<div class="space-y-2">
+<div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
+<span>HANDLING</span>
+<span>LATERAL G: 1.4</span>
+</div>
+<div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 78%"></div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-4 flex flex-col gap-2 skew-box">
+<div class="unskew-content text-right">
+<div class="text-on-surface-variant font-data-sm">MANUFACTURER</div>
+<div class="text-white font-headline-md text-xl">AXION MOTORS</div>
+</div>
+<div class="h-px bg-white/10"></div>
+<div class="unskew-content text-right">
+<div class="text-on-surface-variant font-data-sm">CLASS</div>
+<div class="text-primary font-headline-md text-xl">LEGENDARY</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Panel -->
+<div class="flex justify-between items-end">
+<div class="flex gap-4">
+<div class="glass-panel p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+<div>
+<p class="text-on-surface-variant font-data-sm">ENGINE STAGE</p>
+<p class="text-white font-bold">STAGE 4/5</p>
+</div>
+</div>
+<div class="glass-panel p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
+<div>
+<p class="text-on-surface-variant font-data-sm">SUSPENSION</p>
+<p class="text-white font-bold">PRO SERIES</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-highest text-white font-headline-md italic px-10 py-4 skew-box border-2 border-white/20 hover:bg-white hover:text-black transition-all group overflow-hidden relative">
+<div class="unskew-content">UPGRADE</div>
+<div class="absolute inset-0 bg-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+</button>
+<button class="bg-primary text-on-primary-container font-headline-md italic px-12 py-4 skew-box shadow-[0_0_25px_rgba(255,77,0,0.6)] hover:scale-105 active:scale-95 transition-all">
+<div class="unskew-content">EQUIP</div>
 </button>
 </div>
 </div>
+</div>
+</section>
 </main>
-<!-- BOTTOM NAV BAR -->
+<!-- Bottom Nav Bar -->
 <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-safe pb-safe h-20 bg-surface/80 backdrop-blur-xl border-t border-secondary/20 skew-x-[-15deg] shadow-[0_-4px_24px_rgba(0,219,231,0.1)]">
-<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-8 shadow-[0_0_15px_rgba(255,181,158,0.6)] skew-x-[15deg] transition-transform active:scale-90" href="garage.html">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
 <span class="font-label-caps text-label-caps mt-1">HOME</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-8 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="leaderboard.html">
-<span class="material-symbols-outlined">directions_car</span>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-6 shadow-[0_0_15px_rgba(255,77,0,0.6)] skew-x-[15deg] transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_car</span>
 <span class="font-label-caps text-label-caps mt-1">GARAGE</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-8 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="profile.html">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
 <span class="material-symbols-outlined">explore</span>
 <span class="font-label-caps text-label-caps mt-1">MAP</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-8 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="profile.html">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="#">
 <span class="material-symbols-outlined">group</span>
 <span class="font-label-caps text-label-caps mt-1">SOCIAL</span>
 </a>
 </nav>
-<!-- ATMOSPHERIC INTERACTION SCRIPTS -->
 <script>
-        document.addEventListener('mousemove', (e) => {
-            const background = document.querySelector('.scale-110');
-            const x = (e.clientX / window.innerWidth - 0.5) * 20;
-            const y = (e.clientY / window.innerHeight - 0.5) * 20;
-            background.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
-        });
+        function switchTab(tab) {
+            const perfBtn = document.getElementById('tab-performance');
+            const visualBtn = document.getElementById('tab-visual');
+            const perfIndicator = perfBtn.querySelector('.absolute');
+            const visualIndicator = visualBtn.querySelector('.absolute');
+            
+            const perfText = perfBtn.querySelectorAll('span');
+            const visualText = visualBtn.querySelectorAll('span');
 
-        // Button press visual feedback
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach(btn => {
-            btn.addEventListener('mousedown', () => {
-                btn.style.filter = 'brightness(1.5) contrast(1.2)';
-            });
-            btn.addEventListener('mouseup', () => {
-                btn.style.filter = 'none';
-            });
+            if (tab === 'performance') {
+                perfBtn.classList.add('bg-primary/20');
+                visualBtn.classList.remove('bg-primary/20');
+                perfIndicator.classList.replace('bg-transparent', 'bg-primary');
+                visualIndicator.classList.replace('bg-primary', 'bg-transparent');
+                
+                perfText.forEach(t => t.classList.replace('text-on-surface-variant', 'text-primary'));
+                visualText.forEach(t => t.classList.replace('text-primary', 'text-on-surface-variant'));
+            } else {
+                visualBtn.classList.add('bg-primary/20');
+                perfBtn.classList.remove('bg-primary/20');
+                visualIndicator.classList.replace('bg-transparent', 'bg-primary');
+                perfIndicator.classList.replace('bg-primary', 'bg-transparent');
+
+                visualText.forEach(t => t.classList.replace('text-on-surface-variant', 'text-primary'));
+                perfText.forEach(t => t.classList.replace('text-primary', 'text-on-surface-variant'));
+            }
+        }
+
+        // Atmospheric micro-interaction
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 100;
+            const moveY = (e.clientY - window.innerHeight / 2) / 100;
+            const bg = document.querySelector('.fixed.inset-0.z-0 > div:nth-child(2)');
+            if (bg) bg.style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
         });
     </script>
 </body></html>
