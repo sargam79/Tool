@@ -3,122 +3,64 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Velocity Legends | Player Profile</title>
+<title>VELOCITY LEGENDS | Player Profile</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>
-        .glass-panel {
-            background: rgba(19, 19, 19, 0.7);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(0, 219, 231, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-panel::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(0, 219, 231, 0.05) 2px,
-                rgba(0, 219, 231, 0.05) 4px
-            );
-            pointer-events: none;
-        }
-        .slant-cut {
-            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
-        }
-        .slant-cut-reverse {
-            clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%);
-        }
-        .active-glow {
-            box-shadow: 0 0 20px rgba(255, 181, 158, 0.4);
-        }
-        .scanline-flicker {
-            animation: flicker 0.2s infinite;
-        }
-        @keyframes flicker {
-            0% { opacity: 0.95; }
-            50% { opacity: 1; }
-            100% { opacity: 0.98; }
-        }
-        .moving-sweep {
-            position: relative;
-            overflow: hidden;
-        }
-        .moving-sweep::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 181, 158, 0.2), transparent);
-            animation: sweep 3s infinite;
-        }
-        @keyframes sweep {
-            0% { left: -100%; }
-            50% { left: 150%; }
-            100% { left: 150%; }
-        }
-    </style>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "inverse-on-surface": "#313030",
-                        "surface-container-high": "#2a2a2a",
-                        "surface-container": "#201f1f",
-                        "on-surface-variant": "#e6beb2",
-                        "on-primary-container": "#521300",
-                        "surface-container-highest": "#353534",
-                        "tertiary": "#c6c6c7",
-                        "on-primary-fixed": "#3a0b00",
-                        "on-tertiary": "#2f3131",
-                        "primary-fixed-dim": "#ffb59e",
-                        "error": "#ffb4ab",
-                        "surface-variant": "#353534",
-                        "surface-dim": "#131313",
-                        "on-tertiary-fixed": "#1a1c1c",
-                        "on-background": "#e5e2e1",
-                        "outline-variant": "#5c4037",
+                        "outline": "#ad897e",
                         "on-error-container": "#ffdad6",
-                        "on-secondary": "#00363a",
-                        "inverse-primary": "#ae3200",
+                        "primary-fixed": "#ffdbd0",
+                        "surface-container-low": "#1c1b1b",
+                        "surface": "#131313",
+                        "primary-fixed-dim": "#ffb59e",
                         "tertiary-fixed-dim": "#c6c6c7",
-                        "on-secondary-fixed-variant": "#004f54",
-                        "tertiary-container": "#909191",
                         "secondary-fixed-dim": "#00dbe7",
                         "on-surface": "#e5e2e1",
                         "secondary-fixed": "#74f5ff",
-                        "secondary": "#ddfcff",
-                        "on-primary-fixed-variant": "#852400",
-                        "on-error": "#690005",
-                        "tertiary-fixed": "#e2e2e2",
-                        "surface-container-low": "#1c1b1b",
-                        "primary-container": "#ff571a",
+                        "on-tertiary": "#2f3131",
                         "primary": "#ffb59e",
-                        "surface": "#131313",
-                        "inverse-surface": "#e5e2e1",
+                        "on-surface-variant": "#e6beb2",
+                        "tertiary": "#c6c6c7",
+                        "inverse-primary": "#ae3200",
                         "on-secondary-container": "#006a70",
-                        "surface-container-lowest": "#0e0e0e",
-                        "on-secondary-fixed": "#002022",
-                        "surface-bright": "#3a3939",
-                        "outline": "#ad897e",
-                        "surface-tint": "#ffb59e",
-                        "background": "#131313",
                         "on-tertiary-container": "#282a2a",
-                        "error-container": "#93000a",
-                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#353534",
                         "secondary-container": "#00f1fe",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-tint": "#ffb59e",
+                        "error": "#ffb4ab",
+                        "background": "#131313",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1",
+                        "surface-bright": "#3a3939",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-container": "#ff571a",
+                        "surface-variant": "#353534",
+                        "on-secondary-fixed": "#002022",
+                        "on-primary-fixed": "#3a0b00",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary-fixed-variant": "#852400",
+                        "surface-container-high": "#2a2a2a",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#521300",
+                        "outline-variant": "#5c4037",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#313030",
                         "on-primary": "#5e1700",
-                        "on-tertiary-fixed-variant": "#454747"
+                        "on-secondary": "#00363a",
+                        "tertiary-container": "#909191",
+                        "secondary": "#ddfcff",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "surface-dim": "#131313"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -127,29 +69,29 @@
                         "full": "9999px"
                     },
                     "spacing": {
-                        "container-padding": "24px",
                         "unit": "4px",
                         "gutter": "16px",
+                        "container-padding": "24px",
                         "margin-safe": "32px"
                     },
                     "fontFamily": {
-                        "label-caps": ["Hanken Grotesk"],
-                        "headline-md": ["Anybody"],
-                        "data-sm": ["JetBrains Mono"],
-                        "data-lg": ["JetBrains Mono"],
-                        "headline-lg": ["Anybody"],
-                        "body-md": ["Hanken Grotesk"],
                         "display-hero": ["Anybody"],
+                        "headline-md": ["Anybody"],
+                        "data-lg": ["JetBrains Mono"],
+                        "data-sm": ["JetBrains Mono"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Anybody"],
                         "body-lg": ["Hanken Grotesk"]
                     },
                     "fontSize": {
-                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                        "data-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
-                        "data-lg": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
-                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
                         "display-hero": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "data-lg": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "data-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
                         "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}]
                     }
                 },
@@ -157,242 +99,243 @@
         }
     </script>
 <style>
+        .scanlines {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+        .skew-panel { transform: skewX(-15deg); }
+        .skew-content { transform: skewX(15deg); }
+        .glass-panel {
+            background: rgba(32, 31, 31, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 219, 231, 0.15);
+        }
+        .ray-trace-edge {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
     body {
       min-height: max(884px, 100dvh);
     }
   </style>
-</head>
-<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary">
-<!-- Top Navigation Bar -->
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary-container">
+<!-- Top App Bar -->
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest to-transparent">
 <div class="flex items-center gap-4">
-<div class="relative group">
-<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary active-glow">
-<img class="w-full h-full object-cover" data-alt="A futuristic cyberpunk racer avatar with glowing neon orange eye implants and a sleek carbon-fiber helmet. The character is set against a dark, tech-noir cityscape background with rain-slicked surfaces and blurred neon signs in shades of Velocity Orange and Electric Cyan. High-fidelity AAA gaming character render style." src="assets/images/avatar-player.png"/>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img alt="LEGEND_ACE Avatar" class="w-full h-full object-cover" data-alt="A cinematic, high-fidelity close-up of a futuristic racing pilot helmet made of carbon fiber with a reflective orange-gold visor. The pilot is wearing a professional racing suit with Velocity Motorsport branding. The lighting is dramatic and moody, with high-octane orange and cool cyan lighting accents in a dark, high-tech garage setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSo9qhb3Ptqey9dHcp8ukFpVgEPjDaX7lIIl7CPtKlMWybtiXcyT3_qRXf6s_A0qW088oNCTwrwlWNMFt3rNLMbGQ38Sv0VLU0xCbqV6sRgXBibk1YqYLqhchr9k5aNs2HaOxKKV-fNRbVr1Ns5TCbT4WG98F5Xt-VIGy1TwHzkig-0DNEzx0kyPOIxX8ZXfih-cLjCcwfGtFkbqH_NLBUozh6H_E6lG9iXUXALaHVpQBvQrkMOIIKlcxtNLrIAUgxG17OhiXt9wk"/>
 </div>
-<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary-container font-label-caps text-[8px] px-1 py-0.5 rounded italic">APEX</div>
+<div class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)]">
+                VELOCITY LEGENDS
+            </div>
+</div>
+<div class="font-data-lg text-primary italic">
+            1.2M CR | 500 GOLD
+        </div>
+</header>
+<main class="relative pt-32 pb-32 px-margin-safe min-h-screen">
+<!-- Background Atmospheric Element -->
+<div class="fixed inset-0 opacity-10 pointer-events-none scanlines z-10"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-20">
+<!-- Profile Column -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Hero Profile Card -->
+<div class="glass-panel ray-trace-edge p-8 skew-panel relative overflow-hidden group">
+<div class="skew-content">
+<div class="flex flex-col items-center gap-4">
+<div class="font-label-caps text-secondary uppercase tracking-[0.3em]">Global Rank #124</div>
+<h1 class="font-display-hero text-display-hero italic text-on-surface">LEGEND_ACE</h1>
+<div class="px-6 py-1 bg-primary text-on-primary-container font-label-caps skew-panel -skew-x-12">
+<span class="skew-content block">APEX PREDATOR</span>
+</div>
+<div class="w-full mt-8 space-y-4">
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">LEVEL 42</span>
+<span class="font-data-sm text-secondary">XP 128,400 / 150,000</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest flex">
+<div class="h-full bg-primary shadow-[0_0_15px_rgba(255,181,158,0.6)]" style="width: 85%"></div>
+<div class="h-full bg-surface-container-highest border-l-2 border-background" style="width: 5%"></div>
+<div class="h-full bg-surface-container-highest border-l-2 border-background" style="width: 5%"></div>
+<div class="h-full bg-surface-container-highest border-l-2 border-background" style="width: 5%"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="bg-surface-container-low p-4 border-l-2 border-secondary">
+<div class="font-label-caps text-on-surface-variant text-[10px]">WINS</div>
+<div class="font-data-lg text-secondary">842</div>
+</div>
+<div class="bg-surface-container-low p-4 border-l-2 border-secondary">
+<div class="font-label-caps text-on-surface-variant text-[10px]">TOP SPEED</div>
+<div class="font-data-lg text-secondary">412 KM/H</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Achievements -->
+<div class="glass-panel p-6 skew-panel">
+<div class="skew-content">
+<h3 class="font-headline-md italic mb-6 text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+                            ACHIEVEMENTS
+                        </h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-surface-container-low/50 p-3">
+<div class="w-12 h-12 bg-secondary-container flex items-center justify-center rounded-none skew-panel -skew-x-12">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant skew-content">speed</span>
 </div>
 <div>
-<h1 class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)] leading-none">VELOCITY LEGENDS</h1>
-<p class="font-data-sm text-secondary-fixed-dim text-[10px]">APEX PREDATOR RANK</p>
+<div class="font-label-caps text-on-surface">SONIC BOOM</div>
+<div class="text-[10px] text-on-surface-variant">Break 400km/h in a street race</div>
 </div>
 </div>
-<div class="flex items-center gap-6">
-<div class="flex flex-col items-end">
-<span class="font-headline-md text-primary italic tracking-tight">1.2M CR | 500 GOLD</span>
-<div class="h-0.5 w-32 bg-surface-container-highest relative overflow-hidden">
-<div class="absolute inset-0 bg-primary w-2/3 shadow-[0_0_8px_rgba(255,181,158,0.8)]"></div>
+<div class="flex items-center gap-4 bg-surface-container-low/50 p-3">
+<div class="w-12 h-12 bg-primary flex items-center justify-center rounded-none skew-panel -skew-x-12">
+<span class="material-symbols-outlined text-on-primary-container skew-content">local_fire_department</span>
 </div>
-</div>
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
-</div>
-</header>
-<main class="pt-32 pb-32 px-margin-safe space-y-12 max-w-7xl mx-auto">
-<!-- Profile Info Hero Section -->
-<section class="relative flex flex-col md:flex-row items-end gap-8 pb-8 border-b border-secondary/10">
-
-<div class="flex-1 space-y-4 relative z-10">
-<div class="flex items-center gap-4">
-<h2 class="font-display-hero text-[64px] italic text-on-surface leading-none tracking-tighter">LEGEND_ACE</h2>
-<div class="px-4 py-1 bg-secondary-container/20 border border-secondary-fixed-dim skew-x-[-15deg]">
-<span class="block font-headline-md text-secondary-fixed-dim italic skew-x-[15deg]">LEGEND RANK</span>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<div class="flex-1">
-<div class="flex justify-between font-label-caps text-on-surface-variant mb-1">
-<span>LEVEL 42</span>
-<span>8,450 / 10,000 XP</span>
-</div>
-<div class="h-3 bg-surface-container-highest border border-outline-variant/30 relative">
-<div class="absolute left-0 top-0 h-full bg-primary shadow-[0_0_15px_rgba(255,181,158,0.4)]" style="width: 84.5%">
-<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.3)_50%,transparent_100%)] animate-[shimmer_2s_infinite]"></div>
-</div>
-</div>
-</div>
-<div class="w-16 h-16 flex items-center justify-center glass-panel skew-x-[-15deg] border-primary">
-<span class="material-symbols-outlined text-primary text-3xl skew-x-[15deg]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Stats Grid -->
-<section class="grid grid-cols-2 md:grid-cols-4 gap-6">
-<div class="glass-panel p-6 skew-x-[-15deg] hover:border-primary transition-all group">
-<div class="skew-x-[15deg]">
-<p class="font-label-caps text-on-surface-variant mb-2">TOTAL RACES</p>
-<p class="font-data-lg text-secondary-fixed-dim group-hover:text-primary transition-colors">1,428</p>
-<div class="mt-4 h-1 w-8 bg-secondary-fixed-dim"></div>
-</div>
-</div>
-<div class="glass-panel p-6 skew-x-[-15deg] border-primary/40 moving-sweep">
-<div class="skew-x-[15deg]">
-<p class="font-label-caps text-on-surface-variant mb-2">WIN RATE %</p>
-<p class="font-data-lg text-primary">68.4%</p>
-<div class="mt-4 h-1 w-8 bg-primary"></div>
-</div>
-</div>
-<div class="glass-panel p-6 skew-x-[-15deg] hover:border-primary transition-all group">
-<div class="skew-x-[15deg]">
-<p class="font-label-caps text-on-surface-variant mb-2">TOP SPEED</p>
-<p class="font-data-lg text-secondary-fixed-dim group-hover:text-primary transition-colors">412 KM/H</p>
-<div class="mt-4 h-1 w-8 bg-secondary-fixed-dim"></div>
-</div>
-</div>
-<div class="glass-panel p-6 skew-x-[-15deg] hover:border-primary transition-all group">
-<div class="skew-x-[15deg]">
-<p class="font-label-caps text-on-surface-variant mb-2">DRIFT POINTS</p>
-<p class="font-data-lg text-secondary-fixed-dim group-hover:text-primary transition-colors">12.4M</p>
-<div class="mt-4 h-1 w-8 bg-secondary-fixed-dim"></div>
-</div>
-</div>
-</section>
-<!-- Showcase Garage -->
-<section class="space-y-6">
-<div class="flex justify-between items-end">
-<h3 class="font-headline-lg italic text-on-surface">SHOWCASE GARAGE</h3>
-<button class="font-label-caps text-primary hover:underline transition-all">VIEW ALL CARS</button>
-</div>
-<div class="flex overflow-x-auto gap-6 pb-4 no-scrollbar">
-<!-- Car Card 1 -->
-<div class="flex-none w-80 h-96 glass-panel group relative overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent z-10"></div>
-<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-<img class="w-full h-full object-cover" data-alt="A high-performance hypercar in a brilliant electric orange finish, positioned in a high-tech dark showroom with volumetric lighting and atmospheric floor fog. The car features sharp aerodynamic fins, a massive rear wing, and glowing cyan LED headlights. Style is cinematic Unreal Engine 5 render with ray-traced reflections." src="assets/images/car-showcase-1.png"/>
-</div>
-<div class="absolute bottom-6 left-6 right-6 z-20 space-y-2">
-<div class="flex justify-between items-center">
-<span class="font-data-sm text-primary">PERFORMANCE</span>
-<span class="font-data-lg text-primary">PR 942</span>
-</div>
-<h4 class="font-headline-md italic text-white">APEX VECTOR X1</h4>
-<div class="flex gap-1">
-<div class="h-1 flex-1 bg-primary"></div>
-<div class="h-1 flex-1 bg-primary"></div>
-<div class="h-1 flex-1 bg-primary"></div>
-<div class="h-1 flex-1 bg-surface-container-highest"></div>
-</div>
-</div>
-</div>
-<!-- Car Card 2 -->
-<div class="flex-none w-80 h-96 glass-panel group relative overflow-hidden border-secondary/20">
-<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent z-10"></div>
-<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-<img class="w-full h-full object-cover" data-alt="A futuristic midnight-blue drift machine with neon cyan underglow and white racing decals. The vehicle is angled sharply, shown in a rain-slicked underground parking garage with industrial metal beams and blinking yellow safety lights. High-octane motorsport aesthetic with sharp focus on car textures." src="assets/images/car-showcase-2.png"/>
-</div>
-<div class="absolute bottom-6 left-6 right-6 z-20 space-y-2">
-<div class="flex justify-between items-center">
-<span class="font-data-sm text-secondary-fixed-dim">PERFORMANCE</span>
-<span class="font-data-lg text-secondary-fixed-dim">PR 815</span>
-</div>
-<h4 class="font-headline-md italic text-white">SHADOW DRIFT S-2</h4>
-<div class="flex gap-1">
-<div class="h-1 flex-1 bg-secondary-fixed-dim"></div>
-<div class="h-1 flex-1 bg-secondary-fixed-dim"></div>
-<div class="h-1 flex-1 bg-surface-container-highest"></div>
-<div class="h-1 flex-1 bg-surface-container-highest"></div>
-</div>
-</div>
-</div>
-<!-- Car Card 3 -->
-<div class="flex-none w-80 h-96 glass-panel group relative overflow-hidden border-secondary/20">
-<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent z-10"></div>
-<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-<img class="w-full h-full object-cover" data-alt="A rugged, futuristic off-road rally car with heavy-duty suspension and carbon-fiber plating, painted in matte gray with vibrant orange accents. The car is displayed in a high-tech desert research facility at dusk, with golden hour light catching the metallic edges and orange neon highlights. 8k resolution gaming asset." src="assets/images/car-showcase-3.png"/>
-</div>
-<div class="absolute bottom-6 left-6 right-6 z-20 space-y-2">
-<div class="flex justify-between items-center">
-<span class="font-data-sm text-on-surface-variant">PERFORMANCE</span>
-<span class="font-data-lg text-on-surface-variant">PR 780</span>
-</div>
-<h4 class="font-headline-md italic text-white">TERRA BREAKER R</h4>
-<div class="flex gap-1">
-<div class="h-1 flex-1 bg-on-surface-variant"></div>
-<div class="h-1 flex-1 bg-on-surface-variant"></div>
-<div class="h-1 flex-1 bg-surface-container-highest"></div>
-<div class="h-1 flex-1 bg-surface-container-highest"></div>
+<div>
+<div class="font-label-caps text-on-surface">DRIFT KING</div>
+<div class="text-[10px] text-on-surface-variant">Maintain a 10s drift sequence</div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<!-- Achievements & Badges -->
-<section class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-<div class="space-y-6">
-<h3 class="font-headline-lg italic text-on-surface">RECENT MEDALS</h3>
-<div class="grid grid-cols-3 gap-4">
-<div class="flex flex-col items-center gap-3 p-4 glass-panel border-primary/30 active-glow">
-<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-full border border-primary">
-<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
-</div>
-<span class="font-label-caps text-primary">12 GOLD</span>
-</div>
-<div class="flex flex-col items-center gap-3 p-4 glass-panel border-secondary/30">
-<div class="w-16 h-16 flex items-center justify-center bg-secondary/10 rounded-full border border-secondary">
-<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
-</div>
-<span class="font-label-caps text-secondary">24 SILVER</span>
-</div>
-<div class="flex flex-col items-center gap-3 p-4 glass-panel border-on-surface-variant/30">
-<div class="w-16 h-16 flex items-center justify-center bg-on-surface-variant/10 rounded-full border border-on-surface-variant">
-<span class="material-symbols-outlined text-on-surface-variant text-4xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
-</div>
-<span class="font-label-caps text-on-surface-variant">8 BRONZE</span>
 </div>
 </div>
+<!-- Content Column -->
+<div class="lg:col-span-8 space-y-8">
+<h2 class="font-headline-lg italic text-secondary-fixed flex items-center gap-4">
+<span class="material-symbols-outlined text-[32px]">garage</span>
+                    ACTIVE GARAGE
+                </h2>
+<!-- Car Showcase Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Showcase Item 1 (Main) -->
+<div class="md:col-span-2 relative group cursor-pointer overflow-hidden aspect-[21/9] border border-secondary/20 skew-panel">
+<div class="absolute inset-0 skew-content scale-110">
+<img alt="Hypercar Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A stunning side profile of a matte carbon fiber hypercar with glowing orange aerodynamic accents. The car is parked in a dark, atmospheric futuristic showroom with cyan neon vertical light tubes reflecting off the wet floor. Volumetric smoke and high-contrast lighting create a premium automotive photography aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE53ddjOz_EmL5iK3CV1sbDSPs6p3i0Qip7wcbGn7mZJsofern6PywfO8sGXcJo2HIdVZBPzqBa9FYQwtWZm9Nz7sgmc7mBYvq0L8ky1QueS6GEzE41Baiz18gloRuBDFYfKnpYJXvY9i7KzdJ6GvIg4aZwN89wGq_w8RTlUug4e2HGlm5bWCsXqPHWDEo6VgPzULC-cSOQAVz5SG9abC9Xyq_htE3u5FbyZy9EqTKOM7TuRgPWsZjRLZ6U5ytD9ainchgRadM1QQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
-<div class="space-y-6">
-<h3 class="font-headline-lg italic text-on-surface">SEASON 4 BADGES</h3>
-<div class="flex flex-wrap gap-4">
-<div class="w-20 h-20 glass-panel flex items-center justify-center border-primary group relative hover:scale-105 transition-transform" title="Speed Demon">
-<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
-<div class="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse"></div>
-</div>
-<div class="w-20 h-20 glass-panel flex items-center justify-center border-secondary group relative hover:scale-105 transition-transform" title="Drift King">
-<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">toys</span>
-</div>
-<div class="w-20 h-20 glass-panel flex items-center justify-center border-primary/40 group relative hover:scale-105 transition-transform" title="Elite Social">
-<span class="material-symbols-outlined text-primary/40 text-3xl">hub</span>
-</div>
-<div class="w-20 h-20 glass-panel flex items-center justify-center border-secondary/40 group relative hover:scale-105 transition-transform" title="Night Racer">
-<span class="material-symbols-outlined text-secondary/40 text-3xl">nights_stay</span>
+<div class="absolute bottom-0 left-0 p-8 skew-content w-full flex justify-between items-end">
+<div>
+<div class="font-label-caps text-primary text-sm tracking-widest mb-1">CURRENT PRIMARY</div>
+<h3 class="font-display-hero text-headline-lg italic">AXION VORTEX S</h3>
+<div class="flex gap-4 mt-2">
+<span class="font-data-sm px-2 py-0.5 bg-secondary/10 text-secondary border border-secondary/20">S+ CLASS</span>
+<span class="font-data-sm px-2 py-0.5 bg-primary/10 text-primary border border-primary/20">PERFORMANCE: 998</span>
 </div>
 </div>
+<button class="bg-primary text-on-primary-container px-6 py-3 font-label-caps skew-panel -skew-x-12 hover:bg-white transition-colors group">
+<span class="skew-content flex items-center gap-2">
+                                    SELECT <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</button>
 </div>
-</section>
+</div>
+<!-- Showcase Item 2 -->
+<div class="relative group cursor-pointer overflow-hidden aspect-video border border-secondary/20 skew-panel">
+<div class="absolute inset-0 skew-content scale-110">
+<img alt="GT Racer Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A front three-quarter view of a vibrant orange high-performance race car in a dark studio. The lighting is cinematic with blue laser lines scanning the car's body. The floor is highly reflective black marble, creating a mirror effect. The atmosphere is intense and high-tech, emphasizing speed and aerodynamic precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAv8NZ8gQnJrhJszZlsWujqwxEnZtasRDYAJXQBwT4ZP7DcmH3K5tr3RGxhfa-OC-nlUM3HgcqRoNOlxTVIQzwUVmk570Dkvfl4DGTAcu-IhDzw8JyFjNIWGcMciCepHCh0AyZhXRitsFqFFN8LBe_75oqpIyD0lRFnQZdOZvYep_Ysk140dbu9wh5AG5y0Y9ZgECNqSfL1uN8IyBUWMu2XZDLkVNpOPVMlfoonDyvsGrrw8O9sRQ2qUPzARdpxycsxIx7_AtV6Mc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 p-6 skew-content">
+<div class="font-label-caps text-on-surface-variant text-[10px] mb-1">GT SPEC</div>
+<h4 class="font-headline-md italic">720 VELOCITY</h4>
+</div>
+</div>
+<!-- Showcase Item 3 -->
+<div class="relative group cursor-pointer overflow-hidden aspect-video border border-secondary/20 skew-panel">
+<div class="absolute inset-0 skew-content scale-110">
+<img alt="Street Tuner Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A side view of a deep blue Japanese street tuner car with white vinyl graphics and blue underglow lights. It is parked in a rain-slicked underground parking garage with concrete pillars and warm yellow hazard lights. The image has a gritty, cinematic midnight street racing vibe with realistic reflections on the water." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpiX3VrLNHMo-LzeWU1xl-yBd2zWJNSRbB1TlWKn4goWAm11GEvSQtPBgokZd5uU4sx5khf4JqvpZU-pyY_lncND1Xl5uul-ztH27S6w072n7FGlcuMQXnkx3Q4O5awy49LjdkhdvKFv6j3gtAdaU2g0IyRRmIGW8Kpb7LlWxG8YwBLMP1RW4bQ9HnQvWHJQpRbbr6r_upJz_s6r5Zl8c1i_FT4s8r9hkcIiISWZYFBS8rYETDw4-EzM7kD3POyr6rovOpsgSvO1A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 p-6 skew-content">
+<div class="font-label-caps text-on-surface-variant text-[10px] mb-1">STREET KINGS</div>
+<h4 class="font-headline-md italic">SKYLINE R34 CUSTOM</h4>
+</div>
+</div>
+</div>
+<!-- Telemetry Stats Panel -->
+<div class="glass-panel p-8 skew-panel">
+<div class="skew-content">
+<h3 class="font-headline-md italic mb-8 text-secondary-fixed">CAREER TELEMETRY</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="space-y-1">
+<div class="font-label-caps text-on-surface-variant text-[10px]">TOTAL DISTANCE</div>
+<div class="font-data-lg text-on-surface">14,250 <span class="text-sm font-body-md text-on-surface-variant">KM</span></div>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="h-full bg-secondary shadow-[0_0_10px_rgba(0,219,231,0.4)]" style="width: 70%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="font-label-caps text-on-surface-variant text-[10px]">DRIFT SCORE</div>
+<div class="font-data-lg text-on-surface">2.4M <span class="text-sm font-body-md text-on-surface-variant">PTS</span></div>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="h-full bg-secondary shadow-[0_0_10px_rgba(0,219,231,0.4)]" style="width: 45%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="font-label-caps text-on-surface-variant text-[10px]">RACE TIME</div>
+<div class="font-data-lg text-on-surface">156 <span class="text-sm font-body-md text-on-surface-variant">HRS</span></div>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="h-full bg-secondary shadow-[0_0_10px_rgba(0,219,231,0.4)]" style="width: 90%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="font-label-caps text-on-surface-variant text-[10px]">BEST LAP</div>
+<div class="font-data-lg text-on-surface">01:14:42</div>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="h-full bg-secondary shadow-[0_0_10px_rgba(0,219,231,0.4)]" style="width: 60%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 <!-- Bottom Navigation Bar -->
-<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-safe pb-safe h-20 bg-surface/80 backdrop-blur-xl border-t border-secondary/20 skew-x-[-15deg] shadow-[0_-4px_24px_rgba(0,219,231,0.1)]">
-<!-- HOME Tab -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-safe pb-safe h-20 bg-surface/80 backdrop-blur-xl border-t border-secondary/20 skew-panel">
 <a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="index.html">
-<span class="material-symbols-outlined">home</span>
+<span class="material-symbols-outlined mb-1">home</span>
 <span class="font-label-caps text-label-caps">HOME</span>
 </a>
-<!-- GARAGE Tab -->
 <a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="garage.html">
-<span class="material-symbols-outlined">directions_car</span>
+<span class="material-symbols-outlined mb-1">directions_car</span>
 <span class="font-label-caps text-label-caps">GARAGE</span>
 </a>
-<!-- MAP Tab -->
 <a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="leaderboard.html">
-<span class="material-symbols-outlined">explore</span>
+<span class="material-symbols-outlined mb-1">explore</span>
 <span class="font-label-caps text-label-caps">MAP</span>
 </a>
-<!-- SOCIAL Tab (ACTIVE) -->
-<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-6 shadow-[0_0_15px_rgba(255,181,158,0.6)] skew-x-[15deg] active:scale-90 transition-transform" href="profile.html">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-6 shadow-[0_0_15px_rgba(255,181,158,0.6)] skew-x-[15deg] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">group</span>
 <span class="font-label-caps text-label-caps">SOCIAL</span>
 </a>
 </nav>
 <script>
-        // Micro-interaction for hover effects on glass panels
-        document.querySelectorAll('.glass-panel').forEach(panel => {
+        // Micro-interaction for hover states on skewed elements
+        document.querySelectorAll('.skew-panel').forEach(panel => {
             panel.addEventListener('mousemove', (e) => {
-                const rect = panel.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                panel.style.setProperty('--mouse-x', `${x}px`);
-                panel.style.setProperty('--mouse-y', `${y}px`);
+                const { left, top, width, height } = panel.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                
+                const content = panel.querySelector('.skew-content');
+                if (content) {
+                    content.style.transform = `skewX(15deg) translate(${x * 10}px, ${y * 10}px)`;
+                }
+            });
+
+            panel.addEventListener('mouseleave', () => {
+                const content = panel.querySelector('.skew-content');
+                if (content) {
+                    content.style.transform = `skewX(15deg) translate(0, 0)`;
+                }
             });
         });
     </script>
