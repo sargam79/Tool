@@ -2,12 +2,13 @@
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
+<meta content="VELOCITY LEGENDS - Player Profile Dashboard" name="description"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>VELOCITY LEGENDS | Player Profile</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -100,7 +101,7 @@
     </script>
 <style>
         .scanlines {
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
             background-size: 100% 4px, 3px 100%;
             pointer-events: none;
         }
@@ -126,11 +127,14 @@
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest to-transparent">
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
-<img alt="LEGEND_ACE Avatar" class="w-full h-full object-cover" data-alt="A cinematic, high-fidelity close-up of a futuristic racing pilot helmet made of carbon fiber with a reflective orange-gold visor. The pilot is wearing a professional racing suit with Velocity Motorsport branding. The lighting is dramatic and moody, with high-octane orange and cool cyan lighting accents in a dark, high-tech garage setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSo9qhb3Ptqey9dHcp8ukFpVgEPjDaX7lIIl7CPtKlMWybtiXcyT3_qRXf6s_A0qW088oNCTwrwlWNMFt3rNLMbGQ38Sv0VLU0xCbqV6sRgXBibk1YqYLqhchr9k5aNs2HaOxKKV-fNRbVr1Ns5TCbT4WG98F5Xt-VIGy1TwHzkig-0DNEzx0kyPOIxX8ZXfih-cLjCcwfGtFkbqH_NLBUozh6H_E6lG9iXUXALaHVpQBvQrkMOIIKlcxtNLrIAUgxG17OhiXt9wk"/>
+<img alt="LEGEND_ACE Avatar" class="w-full h-full object-cover" data-alt="A cinematic, high-fidelity close-up of a futuristic racing pilot helmet made of carbon fiber with a reflective orange-gold visor. The pilot is wearing a professional racing suit with Velocity Motorsport branding. The lighting is dramatic and moody, with high-octane orange and cool cyan lighting accents in a dark, high-tech garage setting." src="avatar-player.png"/>
 </div>
+<div class="flex items-center gap-3">
+<img src="logo-icon.png" alt="Logo" class="w-8 h-8 object-contain"/>
 <div class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)]">
                 VELOCITY LEGENDS
             </div>
+</div>
 </div>
 <div class="font-data-lg text-primary italic">
             1.2M CR | 500 GOLD
@@ -144,7 +148,11 @@
 <div class="lg:col-span-4 space-y-8">
 <!-- Hero Profile Card -->
 <div class="glass-panel ray-trace-edge p-8 skew-panel relative overflow-hidden group">
-<div class="skew-content">
+<div class="absolute inset-0 z-0">
+<img src="bg-profile-hero.png" alt="Profile Background" class="w-full h-full object-cover opacity-40"/>
+<div class="absolute inset-0 bg-surface/70"></div>
+</div>
+<div class="skew-content relative z-10">
 <div class="flex flex-col items-center gap-4">
 <div class="font-label-caps text-secondary uppercase tracking-[0.3em]">Global Rank #124</div>
 <h1 class="font-display-hero text-display-hero italic text-on-surface">LEGEND_ACE</h1>
@@ -217,7 +225,7 @@
 <!-- Showcase Item 1 (Main) -->
 <div class="md:col-span-2 relative group cursor-pointer overflow-hidden aspect-[21/9] border border-secondary/20 skew-panel">
 <div class="absolute inset-0 skew-content scale-110">
-<img alt="Hypercar Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A stunning side profile of a matte carbon fiber hypercar with glowing orange aerodynamic accents. The car is parked in a dark, atmospheric futuristic showroom with cyan neon vertical light tubes reflecting off the wet floor. Volumetric smoke and high-contrast lighting create a premium automotive photography aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE53ddjOz_EmL5iK3CV1sbDSPs6p3i0Qip7wcbGn7mZJsofern6PywfO8sGXcJo2HIdVZBPzqBa9FYQwtWZm9Nz7sgmc7mBYvq0L8ky1QueS6GEzE41Baiz18gloRuBDFYfKnpYJXvY9i7KzdJ6GvIg4aZwN89wGq_w8RTlUug4e2HGlm5bWCsXqPHWDEo6VgPzULC-cSOQAVz5SG9abC9Xyq_htE3u5FbyZy9EqTKOM7TuRgPWsZjRLZ6U5ytD9ainchgRadM1QQ"/>
+<img alt="Hypercar Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A stunning side profile of a matte carbon fiber hypercar with glowing orange aerodynamic accents. The car is parked in a dark, atmospheric futuristic showroom with cyan neon vertical light tubes reflecting off the wet floor. Volumetric smoke and high-contrast lighting create a premium automotive photography aesthetic." src="car-showcase-1.png" loading="lazy"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
 <div class="absolute bottom-0 left-0 p-8 skew-content w-full flex justify-between items-end">
@@ -239,7 +247,7 @@
 <!-- Showcase Item 2 -->
 <div class="relative group cursor-pointer overflow-hidden aspect-video border border-secondary/20 skew-panel">
 <div class="absolute inset-0 skew-content scale-110">
-<img alt="GT Racer Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A front three-quarter view of a vibrant orange high-performance race car in a dark studio. The lighting is cinematic with blue laser lines scanning the car's body. The floor is highly reflective black marble, creating a mirror effect. The atmosphere is intense and high-tech, emphasizing speed and aerodynamic precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAv8NZ8gQnJrhJszZlsWujqwxEnZtasRDYAJXQBwT4ZP7DcmH3K5tr3RGxhfa-OC-nlUM3HgcqRoNOlxTVIQzwUVmk570Dkvfl4DGTAcu-IhDzw8JyFjNIWGcMciCepHCh0AyZhXRitsFqFFN8LBe_75oqpIyD0lRFnQZdOZvYep_Ysk140dbu9wh5AG5y0Y9ZgECNqSfL1uN8IyBUWMu2XZDLkVNpOPVMlfoonDyvsGrrw8O9sRQ2qUPzARdpxycsxIx7_AtV6Mc"/>
+<img alt="GT Racer Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A front three-quarter view of a vibrant orange high-performance race car in a dark studio. The lighting is cinematic with blue laser lines scanning the car's body. The floor is highly reflective black marble, creating a mirror effect. The atmosphere is intense and high-tech, emphasizing speed and aerodynamic precision." src="car-showcase-2.png" loading="lazy"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
 <div class="absolute bottom-0 left-0 p-6 skew-content">
@@ -250,7 +258,7 @@
 <!-- Showcase Item 3 -->
 <div class="relative group cursor-pointer overflow-hidden aspect-video border border-secondary/20 skew-panel">
 <div class="absolute inset-0 skew-content scale-110">
-<img alt="Street Tuner Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A side view of a deep blue Japanese street tuner car with white vinyl graphics and blue underglow lights. It is parked in a rain-slicked underground parking garage with concrete pillars and warm yellow hazard lights. The image has a gritty, cinematic midnight street racing vibe with realistic reflections on the water." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpiX3VrLNHMo-LzeWU1xl-yBd2zWJNSRbB1TlWKn4goWAm11GEvSQtPBgokZd5uU4sx5khf4JqvpZU-pyY_lncND1Xl5uul-ztH27S6w072n7FGlcuMQXnkx3Q4O5awy49LjdkhdvKFv6j3gtAdaU2g0IyRRmIGW8Kpb7LlWxG8YwBLMP1RW4bQ9HnQvWHJQpRbbr6r_upJz_s6r5Zl8c1i_FT4s8r9hkcIiISWZYFBS8rYETDw4-EzM7kD3POyr6rovOpsgSvO1A"/>
+<img alt="Street Tuner Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A side view of a deep blue Japanese street tuner car with white vinyl graphics and blue underglow lights. It is parked in a rain-slicked underground parking garage with concrete pillars and warm yellow hazard lights. The image has a gritty, cinematic midnight street racing vibe with realistic reflections on the water." src="car-showcase-3.png" loading="lazy"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
 <div class="absolute bottom-0 left-0 p-6 skew-content">
