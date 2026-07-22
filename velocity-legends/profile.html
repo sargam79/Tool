@@ -26,7 +26,7 @@
                         "on-surface": "#e5e2e1",
                         "secondary-fixed": "#74f5ff",
                         "on-tertiary": "#2f3131",
-                        "primary": "#ffb59e",
+                        "primary": "#ff4d00",
                         "on-surface-variant": "#e6beb2",
                         "tertiary": "#c6c6c7",
                         "inverse-primary": "#ae3200",
@@ -36,7 +36,7 @@
                         "surface-container-highest": "#353534",
                         "secondary-container": "#00f1fe",
                         "surface-container-lowest": "#0e0e0e",
-                        "surface-tint": "#ffb59e",
+                        "surface-tint": "#ff4d00",
                         "error": "#ffb4ab",
                         "background": "#131313",
                         "surface-container": "#201f1f",
@@ -127,11 +127,11 @@
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-safe py-gutter bg-gradient-to-b from-surface-container-lowest to-transparent">
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
-<img alt="LEGEND_ACE Avatar" class="w-full h-full object-cover" data-alt="A cinematic, high-fidelity close-up of a futuristic racing pilot helmet made of carbon fiber with a reflective orange-gold visor. The pilot is wearing a professional racing suit with Velocity Motorsport branding. The lighting is dramatic and moody, with high-octane orange and cool cyan lighting accents in a dark, high-tech garage setting." src="avatar-player.png"/>
+<img alt="LEGEND_ACE Avatar" class="w-full h-full object-cover" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
 </div>
 <div class="flex items-center gap-3">
-<img src="logo-icon.png" alt="Logo" class="w-8 h-8 object-contain"/>
-<div class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,181,158,0.5)]">
+<img src="assets/images/logo-icon.png" alt="Logo" class="w-8 h-8 object-contain" loading="lazy" onerror="this.style.display='none'"/>
+<div class="font-display-hero text-headline-lg italic text-primary drop-shadow-[0_0_10px_rgba(255,77,0,0.5)]">
                 VELOCITY LEGENDS
             </div>
 </div>
@@ -149,7 +149,7 @@
 <!-- Hero Profile Card -->
 <div class="glass-panel ray-trace-edge p-8 skew-panel relative overflow-hidden group">
 <div class="absolute inset-0 z-0">
-<img src="bg-profile-hero.png" alt="Profile Background" class="w-full h-full object-cover opacity-40"/>
+<img src="assets/images/bg-profile-hero.png" alt="Profile Background" class="w-full h-full object-cover opacity-40" loading="lazy" onerror="this.style.display='none'"/>
 <div class="absolute inset-0 bg-surface/70"></div>
 </div>
 <div class="skew-content relative z-10">
@@ -165,7 +165,7 @@
 <span class="font-data-sm text-secondary">XP 128,400 / 150,000</span>
 </div>
 <div class="h-2 w-full bg-surface-container-highest flex">
-<div class="h-full bg-primary shadow-[0_0_15px_rgba(255,181,158,0.6)]" style="width: 85%"></div>
+<div class="h-full bg-primary shadow-[0_0_15px_rgba(255,77,0,0.6)]" style="width: 85%"></div>
 <div class="h-full bg-surface-container-highest border-l-2 border-background" style="width: 5%"></div>
 <div class="h-full bg-surface-container-highest border-l-2 border-background" style="width: 5%"></div>
 <div class="h-full bg-surface-container-highest border-l-2 border-background" style="width: 5%"></div>
@@ -180,6 +180,7 @@
 <div class="bg-surface-container-low p-4 border-l-2 border-secondary">
 <div class="font-label-caps text-on-surface-variant text-[10px]">TOP SPEED</div>
 <div class="font-data-lg text-secondary">412 KM/H</div>
+</div>
 </div>
 </div>
 </div>
@@ -225,7 +226,7 @@
 <!-- Showcase Item 1 (Main) -->
 <div class="md:col-span-2 relative group cursor-pointer overflow-hidden aspect-[21/9] border border-secondary/20 skew-panel">
 <div class="absolute inset-0 skew-content scale-110">
-<img alt="Hypercar Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A stunning side profile of a matte carbon fiber hypercar with glowing orange aerodynamic accents. The car is parked in a dark, atmospheric futuristic showroom with cyan neon vertical light tubes reflecting off the wet floor. Volumetric smoke and high-contrast lighting create a premium automotive photography aesthetic." src="car-showcase-1.png" loading="lazy"/>
+<img alt="Hypercar Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="assets/images/car-hero.png" loading="lazy" onerror="this.style.display='none'"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
 <div class="absolute bottom-0 left-0 p-8 skew-content w-full flex justify-between items-end">
@@ -247,7 +248,7 @@
 <!-- Showcase Item 2 -->
 <div class="relative group cursor-pointer overflow-hidden aspect-video border border-secondary/20 skew-panel">
 <div class="absolute inset-0 skew-content scale-110">
-<img alt="GT Racer Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A front three-quarter view of a vibrant orange high-performance race car in a dark studio. The lighting is cinematic with blue laser lines scanning the car's body. The floor is highly reflective black marble, creating a mirror effect. The atmosphere is intense and high-tech, emphasizing speed and aerodynamic precision." src="car-showcase-2.png" loading="lazy"/>
+<img alt="GT Racer Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="assets/images/car-showcase-2.png" loading="lazy" onerror="this.style.display='none'"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
 <div class="absolute bottom-0 left-0 p-6 skew-content">
@@ -258,7 +259,7 @@
 <!-- Showcase Item 3 -->
 <div class="relative group cursor-pointer overflow-hidden aspect-video border border-secondary/20 skew-panel">
 <div class="absolute inset-0 skew-content scale-110">
-<img alt="Street Tuner Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A side view of a deep blue Japanese street tuner car with white vinyl graphics and blue underglow lights. It is parked in a rain-slicked underground parking garage with concrete pillars and warm yellow hazard lights. The image has a gritty, cinematic midnight street racing vibe with realistic reflections on the water." src="car-showcase-3.png" loading="lazy"/>
+<img alt="Street Tuner Showcase" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="assets/images/car-showcase-3.png" loading="lazy" onerror="this.style.display='none'"/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
 </div>
 <div class="absolute bottom-0 left-0 p-6 skew-content">
@@ -316,11 +317,11 @@
 <span class="material-symbols-outlined mb-1">directions_car</span>
 <span class="font-label-caps text-label-caps">GARAGE</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="leaderboard.html">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 py-2 px-6 skew-x-[15deg] hover:text-secondary-fixed-dim transition-all active:scale-90" href="race.html">
 <span class="material-symbols-outlined mb-1">explore</span>
 <span class="font-label-caps text-label-caps">MAP</span>
 </a>
-<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-6 shadow-[0_0_15px_rgba(255,181,158,0.6)] skew-x-[15deg] active:scale-90 transition-transform" href="#">
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary-container rounded-none py-2 px-6 shadow-[0_0_15px_rgba(255,77,0,0.6)] skew-x-[15deg] active:scale-90 transition-all" href="leaderboard.html">
 <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">group</span>
 <span class="font-label-caps text-label-caps">SOCIAL</span>
 </a>
