@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Velocity Legends | Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:wght@300;400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -69,7 +69,7 @@
 <style>
         body {
             background-color: #0d0d0e;
-            background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.85), rgba(19, 19, 19, 0.98)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuDVULPh5KRIBbu1v2PJOkBGsJV_skRGjv4iOTSaiZFJAEpW5Bpx6hnmSCS7sHglc283HIzSjhzv7W2rz5r-lQxPxAXGn48S8fjRxBuZdcviwpNaToZS4kejq4GGD3xzCWzrybSz1QUD_LDkl3Gykx_tu1eDKlcA4iKLy5r-B1wdmGiQJ9S7AnzLeh0kgIjDqrsNk9lQCUSHlPWCq7iJHtWs7EnBqIjUkiOqU7SHUBsXianBiKBp6auHug6MDtxPnLpbkeJ_laE8vQE);
+            background-image: linear-gradient(to bottom, rgba(19, 19, 19, 0.85), rgba(19, 19, 19, 0.98)), url(assets/images/bg-home.png);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -122,272 +122,448 @@
             object-fit: cover;
             opacity: 0.25;
         }
-        /* Mobile fixes for text wrapping */
         .text-nowrap { white-space: nowrap; }
         .touch-action-none { touch-action: none; }
+
+        /* Desktop sidebar styles */
+        @media (min-width: 1024px) {
+            .desktop-sidebar {
+                display: flex !important;
+            }
+            .mobile-nav {
+                display: none !important;
+            }
+            .main-content {
+                padding-left: 280px;
+                padding-bottom: 2rem !important;
+            }
+            .desktop-header {
+                left: 280px;
+                width: calc(100% - 280px);
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* Large desktop */
+        @media (min-width: 1280px) {
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 1.5rem;
+            }
+            .content-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body class="font-body-md text-body-md select-none overflow-x-hidden">
-<div id="bg-image-container">
-<img alt="Background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDqs2tT0EEdiJ0QdPsVnQu3mV_blTt1GiKmwWCQSMMy_pge1RNKS0tEncB1ABc37_Cpa1oFCs0NgXiDRFUMMqxjezwBcSwifo9wb2Nhpy7kXlu-2MrBhx0fsJTXyJ7u30DNICRsfovNl6sCQ-r_e-Nxo4I4oGEs0L9GMJN6zGMXxwih43Y_1jDop74DQYx-EOj3mYfQBwUVPBUAtC8B_vj7n9bFI4eKBm4Ho07KbEp9y7EhJsYfNqwCcDAzYu0IuluEyLpbXvkAAo"/>
-</div>
-<!-- Top App Bar -->
-<header class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-white/5 flex flex-col h-auto pt-safe-area-top">
-<div class="flex justify-between items-center px-4 h-12">
-<div class="flex items-center gap-2">
-<img alt="VL Logo" class="w-6 h-6 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNQa-Bv8ouMDJHgcTJa1dMcxefJYngWnhQrub7rmqu0fW7wl5poMJyNVLGe53mLTjXldipp0OWHKlsPF9i2scONyVLJC8hqXsFW2w_dxuwtKBAFO1lPpPwLIZ7AX1EJ6JbHaN6GRerqzdgkeHeVwUb_In4ge6HdtiJuZ1c8GwD2HQaBqA0pBqQjjljYKGo4MDcq8u_WttGGM78XYq3p0YoamZ8fLWzfty6q1QP4XWDr0dmmZ6DQRALtuAMctxzQ-K_cawZD5_p2es"/>
-<h1 class="font-display-xl text-xl tracking-tighter text-primary italic uppercase leading-none">VELOCITY LEGENDS</h1>
-</div>
-<div class="flex items-center gap-2">
-<span class="bg-primary/20 text-primary text-[10px] font-label-sm px-2 py-0.5 rounded border border-primary/30">LVL 48</span>
-</div>
-</div>
-<!-- Compact Stats Grid -->
-<div class="grid grid-cols-3 border-t border-white/5 bg-black/20">
-<div class="flex flex-col items-center justify-center py-2 border-r border-white/5">
-<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Credits</span>
-<span class="text-secondary font-bold text-xs tracking-tight">1.2M CR</span>
-</div>
-<div class="flex flex-col items-center justify-center py-2 border-r border-white/5">
-<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Gold</span>
-<span class="text-primary font-bold text-xs tracking-tight">500 GOLD</span>
-</div>
-<div class="flex flex-col items-center justify-center py-2">
-<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Streak</span>
-<span class="text-on-surface font-bold text-xs tracking-tight">14 DAYS</span>
-</div>
-</div>
+
+<!-- Desktop Sidebar (hidden on mobile) -->
+<aside class="desktop-sidebar hidden fixed left-0 top-0 h-full w-[280px] bg-background/95 backdrop-blur-2xl border-r border-white/10 z-50 flex-col">
+    <div class="p-6 border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <img alt="VL Logo" class="w-10 h-10 object-contain" src="assets/images/logo-icon.png" loading="lazy" onerror="this.style.display='none'"/>
+            <h1 class="font-display-xl text-2xl tracking-tighter text-primary italic uppercase leading-none">VELOCITY<br/>LEGENDS</h1>
+        </div>
+    </div>
+    <nav class="flex-1 py-6">
+        <button class="w-full flex items-center gap-4 px-6 py-4 text-secondary border-l-4 border-primary bg-primary/10 transition-all" id="nav-home-desktop" onclick="switchView('home')">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="font-nav-item text-sm uppercase tracking-wider">Home</span>
+        </button>
+        <button class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all" id="nav-garage-desktop" onclick="switchView('garage')">
+            <span class="material-symbols-outlined text-2xl">garage</span>
+            <span class="font-nav-item text-sm uppercase tracking-wider">Garage</span>
+        </button>
+        <button class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all" id="nav-map-desktop" onclick="switchView('map')">
+            <span class="material-symbols-outlined text-2xl">map</span>
+            <span class="font-nav-item text-sm uppercase tracking-wider">Map</span>
+        </button>
+        <button class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all" id="nav-social-desktop" onclick="switchView('social')">
+            <span class="material-symbols-outlined text-2xl">group</span>
+            <span class="font-nav-item text-sm uppercase tracking-wider">Social</span>
+        </button>
+    </nav>
+    <div class="p-6 border-t border-white/10">
+        <div class="flex items-center gap-3">
+            <img alt="Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
+            <div>
+                <p class="text-sm font-bold text-on-surface">VELOCITY_X</p>
+                <p class="text-[10px] text-secondary">LVL 48</p>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Desktop Header (hidden on mobile, shown on desktop) -->
+<header class="desktop-header hidden lg:flex fixed top-0 z-40 bg-background/90 backdrop-blur-xl border-b border-white/5 flex-col h-auto">
+    <div class="flex justify-between items-center px-8 h-16">
+        <div class="flex items-center gap-6">
+            <span class="bg-primary/20 text-primary text-xs font-label-sm px-3 py-1 rounded border border-primary/30">PRO LEAGUE: SEASON 4</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex flex-col items-end">
+                <span class="font-headline-lg text-lg tracking-tight italic text-primary">1.2M CR | 500 GOLD</span>
+                <div class="flex gap-3 mt-1">
+                    <span class="font-data-sm text-on-surface-variant/70 text-xs">PING: 24MS</span>
+                    <span class="font-data-sm text-on-surface-variant/70 text-xs">FPS: 120</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
+
+<!-- Mobile Top App Bar -->
+<header class="mobile-nav lg:hidden fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-white/5 flex flex-col h-auto pt-safe-area-top">
+    <div class="flex justify-between items-center px-4 h-12">
+        <div class="flex items-center gap-2">
+            <img alt="VL Logo" class="w-6 h-6 object-contain" src="assets/images/logo-icon.png" loading="lazy" onerror="this.style.display='none'"/>
+            <h1 class="font-display-xl text-xl tracking-tighter text-primary italic uppercase leading-none">VELOCITY LEGENDS</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="bg-primary/20 text-primary text-[10px] font-label-sm px-2 py-0.5 rounded border border-primary/30">LVL 48</span>
+        </div>
+    </div>
+    <!-- Compact Stats Grid -->
+    <div class="grid grid-cols-3 border-t border-white/5 bg-black/20">
+        <div class="flex flex-col items-center justify-center py-2 border-r border-white/5">
+            <span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Credits</span>
+            <span class="text-secondary font-bold text-xs tracking-tight">1.2M CR</span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-2 border-r border-white/5">
+            <span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Gold</span>
+            <span class="text-primary font-bold text-xs tracking-tight">500 GOLD</span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-2">
+            <span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Streak</span>
+            <span class="text-on-surface font-bold text-xs tracking-tight">14 DAYS</span>
+        </div>
+    </div>
+</header>
+
 <!-- Main Content Canvas -->
-<main class="pt-28 pb-28 px-4 max-w-full mx-auto min-h-screen relative overflow-x-hidden">
+<main class="main-content pt-28 lg:pt-20 pb-28 lg:pb-8 px-4 md:px-8 lg:px-12 max-w-full mx-auto min-h-screen relative overflow-x-hidden">
+
 <!-- Home View -->
 <section class="view-section relative z-10" id="view-home">
-<!-- Hero Feature Car - Optimized for Mobile -->
-<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden glass-card mb-6 border border-primary/20">
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
-<div class="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent z-10"></div>
-<img alt="Featured Car" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKwsP4tR_20LAC_usdwS7EHbjgf1_vy6dje-_mKd1beOTQdvBRPA8rGTPwsxDpOlcwgmwtJAHrv7ggmtzaLCLTAaIo2f-w3cOPlcxSQ4hYyngr80MqJjUSz8c4RBkQvDMSsFa4umS05ieltfsfwUB4cTZAVU7MdR-V400tazLAbApaQlUFhvvwNYL4rObrmhR8nwTQya6AvBoe5UUKcS7ektUz6mebEra0ROy5lL3k2tRBLUKCTzpHuPS5xM6vsVSoNpRvcDLJ6dM"/>
-<div class="absolute inset-x-4 bottom-6 z-20 space-y-3">
-<div class="flex flex-col">
-<div class="inline-flex">
-<span class="bg-primary text-on-primary px-2 py-0.5 font-label-sm skew-tile text-[10px]"><span class="skew-tile-inner block">LIMITED EDITION</span></span>
-</div>
-<h2 class="font-headline-lg text-2xl text-on-surface uppercase tracking-tight italic mt-1">V-APEX INTERCEPTOR</h2>
-</div>
-<div class="flex gap-4">
-<div class="flex flex-col">
-<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Speed</span>
-<span class="text-secondary font-bold text-sm">342<span class="text-[10px] ml-0.5 opacity-60">KM/H</span></span>
-</div>
-<div class="flex flex-col">
-<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Accel</span>
-<span class="text-secondary font-bold text-sm">2.1S</span>
-</div>
-<div class="flex flex-col">
-<span class="text-[9px] text-on-surface-variant/60 uppercase font-label-sm">Class</span>
-<span class="text-primary font-bold text-sm">S+</span>
-</div>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-headline-lg h-14 slanted-edge glow-orange transition-all flex items-center justify-center gap-3 active:scale-[0.98]" onclick="switchView('race-hud')">
-<span class="material-symbols-outlined font-bold text-2xl">play_arrow</span>
-                        START RACE
-                    </button>
-</div>
-</div>
-<!-- Mobile Grid (Vertical Stack) -->
-<div class="flex flex-col gap-4">
-<!-- Live Event -->
-<div class="glass-card p-5 border-l-2 border-l-primary">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-headline-lg text-lg text-secondary flex items-center gap-2">
-<span class="material-symbols-outlined text-xl">timer</span>
-                            NIGHTFALL CIRCUIT
-                        </h3>
-<span class="flex h-2 w-2 relative">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-</span>
-</div>
-<p class="text-on-surface-variant/80 text-xs leading-relaxed mb-4">Master Neo-Tokyo in this endurance event. Double CR rewards for 4h.</p>
-<div class="flex items-center gap-3">
-<div class="flex -space-x-2">
-<img alt="p1" class="w-8 h-8 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdGr1RS4NZKoezN3F0ojsZeU0DICIzThpPJeIJg59hoQOIlZ0muGje1v3HmhjpHoF3M73azyUd6ol_Jsf1_GZY8QilmvifvCgdp5ZijGcNNLi_k4KvHKddNCUwu1v8qah4t52aGMvdtMJ-RzUA_JzUrwq89oxdHVkZDmy-Gh0EGUApFMPYcNFNmeJ1EqYkSHLYaC-At7fJxp0FkiC3glL67qGCwb2fLwtzoB0QBxZNytJN3NmsOApUfXmDJCAcvU2K2DnbJosWUO4"/>
-<img alt="p2" class="w-8 h-8 rounded-full border-2 border-background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7GWjd9jARpfY49NLtzewI9uRUam-hS6iGiS2-mFX8vZUUEUsc2f-ba9fjMF6bLsRCeq6BZ2iSSWyQRzhC2fr5_bW5tZ3EHXujtXdmglDX_qBMA4FB4Tkt4aAjZ5U3TjnNYDeWRRsju30iUsqFhIkGpX7qCXX-vA-kiNYvtvGLTCGN2vtfv2iuS11ieHeCIs_-nPatLLJRKfvt0skIjnxBMB9z_vApGs6d3g1CAp1TilvNszm3_7Xhqx1hZXEDXSnkjtEmDKZWFc0"/>
-<div class="w-8 h-8 rounded-full border-2 border-background bg-surface-container-highest flex items-center justify-center text-[8px] font-bold">+12</div>
-</div>
-<span class="text-[10px] text-on-surface-variant/40">Drivers Competing</span>
-</div>
-</div>
-<!-- Daily Challenge -->
-<div class="glass-card p-5 border-l-2 border-l-secondary">
-<div class="flex justify-between items-center mb-4">
-<span class="font-label-sm text-[10px] text-secondary tracking-widest uppercase">Daily Goal</span>
-<span class="text-secondary text-[10px] font-bold">85%</span>
-</div>
-<h3 class="font-headline-lg text-lg text-on-surface italic mb-4">DRIFT KING</h3>
-<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-<div class="h-full bg-secondary glow-cyan" style="width: 85%"></div>
-</div>
-<div class="flex justify-between mt-2 text-[9px] text-on-surface-variant/60 uppercase">
-<span>8.5k / 10k PTS</span>
-</div>
-</div>
-<!-- Recent Activity -->
-<div class="glass-card flex flex-col">
-<div class="px-4 py-3 border-b border-white/5 flex justify-between items-center">
-<h4 class="text-[10px] text-on-surface-variant/40 uppercase tracking-widest font-bold">Recent History</h4>
-<button class="text-[10px] text-secondary uppercase font-bold">View All</button>
-</div>
-<div class="p-4 flex items-center justify-between active:bg-white/5 transition-colors">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 bg-primary/10 flex items-center justify-center rounded">
-<span class="material-symbols-outlined text-primary text-xl">military_tech</span>
-</div>
-<div>
-<div class="text-xs font-bold text-on-surface">1st Place - Midnight Run</div>
-<div class="text-[10px] text-on-surface-variant/60">2m ago • +15k CR</div>
-</div>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant/20">chevron_right</span>
-</div>
-</div>
-</div>
+    <!-- Hero Feature Car -->
+    <div class="hero-grid">
+        <div class="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] rounded-xl overflow-hidden glass-card mb-6 border border-primary/20">
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent z-10"></div>
+            <img alt="Featured Car" class="absolute inset-0 w-full h-full object-cover" src="assets/images/car-hero.png" loading="lazy" onerror="this.style.display='none'"/>
+            <div class="absolute inset-x-4 lg:inset-x-8 bottom-6 lg:bottom-8 z-20 space-y-3 lg:space-y-4">
+                <div class="flex flex-col">
+                    <div class="inline-flex">
+                        <span class="bg-primary text-on-primary px-2 py-0.5 font-label-sm skew-tile text-[10px]"><span class="skew-tile-inner block">LIMITED EDITION</span></span>
+                    </div>
+                    <h2 class="font-headline-lg text-2xl lg:text-4xl text-on-surface uppercase tracking-tight italic mt-1">V-APEX INTERCEPTOR</h2>
+                </div>
+                <div class="flex gap-4 lg:gap-8">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] lg:text-xs text-on-surface-variant/60 uppercase">Speed</span>
+                        <span class="text-secondary font-bold text-sm lg:text-lg">342<span class="text-[10px] ml-0.5 opacity-60">KM/H</span></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[9px] lg:text-xs text-on-surface-variant/60 uppercase">Accel</span>
+                        <span class="text-secondary font-bold text-sm lg:text-lg">2.1S</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[9px] lg:text-xs text-on-surface-variant/60 uppercase">Class</span>
+                        <span class="text-primary font-bold text-sm lg:text-lg">S+</span>
+                    </div>
+                </div>
+                <button class="w-full md:w-auto md:px-12 bg-primary hover:bg-primary/90 text-white font-headline-lg h-14 slanted-edge glow-orange transition-all flex items-center justify-center gap-3 active:scale-[0.98]" onclick="switchView('race-hud')">
+                    <span class="material-symbols-outlined font-bold text-2xl">play_arrow</span>
+                    START RACE
+                </button>
+            </div>
+        </div>
+
+        <!-- Desktop side panel (shows on lg+) -->
+        <div class="hidden lg:flex flex-col gap-4">
+            <div class="glass-card p-6 border-l-2 border-l-primary h-full">
+                <h3 class="font-headline-lg text-lg text-secondary mb-4">QUICK ACTIONS</h3>
+                <div class="flex flex-col gap-3">
+                    <button class="w-full bg-primary/20 border border-primary/30 text-primary py-3 px-4 text-sm font-bold uppercase hover:bg-primary hover:text-white transition-all">Daily Reward</button>
+                    <button class="w-full bg-secondary/20 border border-secondary/30 text-secondary py-3 px-4 text-sm font-bold uppercase hover:bg-secondary hover:text-on-secondary transition-all">Tournament</button>
+                    <button class="w-full bg-white/5 border border-white/10 text-on-surface py-3 px-4 text-sm font-bold uppercase hover:bg-white/10 transition-all">Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="content-grid flex flex-col lg:grid gap-4 lg:gap-6">
+        <!-- Live Event -->
+        <div class="glass-card p-5 border-l-2 border-l-primary">
+            <div class="flex justify-between items-start mb-3">
+                <h3 class="font-headline-lg text-lg text-secondary flex items-center gap-2">
+                    <span class="material-symbols-outlined text-xl">timer</span>
+                    NIGHTFALL CIRCUIT
+                </h3>
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+            </div>
+            <p class="text-on-surface-variant/80 text-xs leading-relaxed mb-4">Master Neo-Tokyo in this endurance event. Double CR rewards for 4h.</p>
+            <div class="flex items-center gap-3">
+                <div class="flex -space-x-2">
+                    <img alt="p1" class="w-8 h-8 rounded-full border-2 border-background" src="assets/images/avatar-rank1.png" loading="lazy" onerror="this.style.display='none'"/>
+                    <img alt="p2" class="w-8 h-8 rounded-full border-2 border-background" src="assets/images/avatar-rank2.png" loading="lazy" onerror="this.style.display='none'"/>
+                    <div class="w-8 h-8 rounded-full border-2 border-background bg-surface-container-highest flex items-center justify-center text-[8px] font-bold">+12</div>
+                </div>
+                <span class="text-[10px] text-on-surface-variant/40">Drivers Competing</span>
+            </div>
+        </div>
+
+        <!-- Daily Challenge -->
+        <div class="glass-card p-5 border-l-2 border-l-secondary">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-label-sm text-[10px] text-secondary tracking-widest uppercase">Daily Goal</span>
+                <span class="text-secondary text-[10px] font-bold">85%</span>
+            </div>
+            <h3 class="font-headline-lg text-lg text-on-surface italic mb-4">DRIFT KING</h3>
+            <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-secondary glow-cyan" style="width: 85%"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-[9px] text-on-surface-variant/60 uppercase">
+                <span>8.5k / 10k PTS</span>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="glass-card flex flex-col">
+            <div class="px-4 py-3 border-b border-white/5 flex justify-between items-center">
+                <h4 class="text-[10px] text-on-surface-variant/40 uppercase tracking-widest font-bold">Recent History</h4>
+                <button class="text-[10px] text-secondary uppercase font-bold">View All</button>
+            </div>
+            <div class="p-4 flex items-center justify-between active:bg-white/5 transition-colors">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-primary/10 flex items-center justify-center rounded">
+                        <span class="material-symbols-outlined text-primary text-xl">military_tech</span>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-on-surface">1st Place - Midnight Run</div>
+                        <div class="text-[10px] text-on-surface-variant/60">2m ago • +15k CR</div>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-on-surface-variant/20">chevron_right</span>
+            </div>
+        </div>
+    </div>
 </section>
+
 <!-- Race HUD View (Hidden) -->
 <section class="view-section view-hidden fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center overflow-hidden" id="view-race-hud">
-<div class="absolute top-12 left-6 text-white flex flex-col gap-1">
-<span class="text-5xl font-display-xl italic leading-none">242 <small class="text-sm">KM/H</small></span>
-<span class="text-secondary font-label-sm tracking-widest">GEAR 5</span>
-</div>
-<div class="text-center px-6">
-<div class="w-32 h-32 mb-8 mx-auto border-4 border-primary rounded-full flex items-center justify-center animate-pulse">
-<span class="material-symbols-outlined text-6xl text-primary">speed</span>
-</div>
-<h2 class="text-4xl font-display-xl text-primary italic uppercase">Racing...</h2>
-<p class="text-on-surface-variant mt-4 text-sm max-w-xs mx-auto">Race simulation in progress. Physics engine active.</p>
-<button class="mt-12 w-full border border-primary text-primary px-8 py-4 font-bold tracking-widest uppercase text-xs active:bg-primary active:text-white transition-all" onclick="switchView('home')">
-                    ABORT MISSION
-                </button>
-</div>
+    <div class="absolute top-12 left-6 lg:left-[300px] text-white flex flex-col gap-1">
+        <span class="text-5xl lg:text-7xl font-display-xl italic leading-none">242 <small class="text-sm lg:text-lg">KM/H</small></span>
+        <span class="text-secondary font-label-sm tracking-widest">GEAR 5</span>
+    </div>
+    <div class="text-center px-6">
+        <div class="w-32 h-32 lg:w-48 lg:h-48 mb-8 mx-auto border-4 border-primary rounded-full flex items-center justify-center animate-pulse">
+            <span class="material-symbols-outlined text-6xl lg:text-8xl text-primary">speed</span>
+        </div>
+        <h2 class="text-4xl lg:text-6xl font-display-xl text-primary italic uppercase">Racing...</h2>
+        <p class="text-on-surface-variant mt-4 text-sm lg:text-base max-w-xs mx-auto">Race simulation in progress. Physics engine active.</p>
+        <button class="mt-12 w-full md:w-auto md:px-16 border border-primary text-primary px-8 py-4 font-bold tracking-widest uppercase text-xs active:bg-primary active:text-white transition-all" onclick="switchView('home')">
+            ABORT MISSION
+        </button>
+    </div>
 </section>
+
 <!-- Garage View -->
 <section class="view-section view-hidden relative z-10" id="view-garage">
-<h2 class="font-display-xl text-3xl text-primary italic mb-6">MY GARAGE</h2>
-<div class="flex flex-col gap-4">
-<div class="glass-card group active:scale-[0.98] transition-all">
-<div class="h-44 relative bg-surface-container-low">
-<img alt="Car" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo2CjrzLZxGWxMuO2WZr4n0TfssgpaZwtY8cSwq7JWPj_j3PcnjiW8K8VWSgML6rMpHp1QjTs_IUG7piZ6lHgCDTDgM-W4nU1OEZ5K9QTKtlob7Z0rfjy1iBF9XNbMKJgegkdUwBBERp6bqlXGFuM19_FUX04llnUVZQmq4UIFrvyQWwhAoTYS6v3KlkUYw1IRmqlt6C0LVV7_vHvWDxcXV6S7vqKnyj7AZ-KNBzAmR_jl9uRTsePAjSARpBvZz16O-YGzgGBQmW0"/>
-<div class="absolute top-3 right-3">
-<span class="bg-secondary text-on-secondary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS A</span>
-</div>
-</div>
-<div class="p-5">
-<h3 class="font-headline-lg text-xl mb-1 italic">STORM-R7</h3>
-<div class="flex justify-between items-center mt-4">
-<div class="flex flex-col">
-<span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
-<span class="text-sm font-bold text-secondary">PR: 684</span>
-</div>
-<button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
-</div>
-</div>
-</div>
-<!-- Buy Slot -->
-<div class="glass-card border-dashed border-white/20 h-32 flex flex-col items-center justify-center gap-2 opacity-60 active:opacity-100">
-<span class="material-symbols-outlined text-3xl">add_circle</span>
-<span class="text-[10px] font-bold tracking-widest uppercase">Unlock Slot</span>
-</div>
-</div>
+    <h2 class="font-display-xl text-3xl lg:text-5xl text-primary italic mb-6">MY GARAGE</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div class="glass-card group active:scale-[0.98] transition-all">
+            <div class="h-44 lg:h-56 relative bg-surface-container-low">
+                <img alt="Car" class="w-full h-full object-cover" src="assets/images/car-showcase-1.png" loading="lazy" onerror="this.style.display='none'"/>
+                <div class="absolute top-3 right-3">
+                    <span class="bg-secondary text-on-secondary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS A</span>
+                </div>
+            </div>
+            <div class="p-5">
+                <h3 class="font-headline-lg text-xl mb-1 italic">STORM-R7</h3>
+                <div class="flex justify-between items-center mt-4">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
+                        <span class="text-sm font-bold text-secondary">PR: 684</span>
+                    </div>
+                    <button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
+                </div>
+            </div>
+        </div>
+        <!-- Additional cars from your assets -->
+        <div class="glass-card group active:scale-[0.98] transition-all">
+            <div class="h-44 lg:h-56 relative bg-surface-container-low">
+                <img alt="Car" class="w-full h-full object-cover" src="assets/images/car-muscle.png" loading="lazy" onerror="this.style.display='none'"/>
+                <div class="absolute top-3 right-3">
+                    <span class="bg-primary text-on-primary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS S</span>
+                </div>
+            </div>
+            <div class="p-5">
+                <h3 class="font-headline-lg text-xl mb-1 italic">MUSCLE-X</h3>
+                <div class="flex justify-between items-center mt-4">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
+                        <span class="text-sm font-bold text-secondary">PR: 812</span>
+                    </div>
+                    <button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
+                </div>
+            </div>
+        </div>
+        <div class="glass-card group active:scale-[0.98] transition-all">
+            <div class="h-44 lg:h-56 relative bg-surface-container-low">
+                <img alt="Car" class="w-full h-full object-cover" src="assets/images/car-rally.png" loading="lazy" onerror="this.style.display='none'"/>
+                <div class="absolute top-3 right-3">
+                    <span class="bg-secondary text-on-secondary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS B</span>
+                </div>
+            </div>
+            <div class="p-5">
+                <h3 class="font-headline-lg text-xl mb-1 italic">RALLY-KING</h3>
+                <div class="flex justify-between items-center mt-4">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
+                        <span class="text-sm font-bold text-secondary">PR: 756</span>
+                    </div>
+                    <button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
+                </div>
+            </div>
+        </div>
+        <!-- Buy Slot -->
+        <div class="glass-card border-dashed border-white/20 h-32 lg:h-auto flex flex-col items-center justify-center gap-2 opacity-60 active:opacity-100">
+            <span class="material-symbols-outlined text-3xl">add_circle</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase">Unlock Slot</span>
+        </div>
+    </div>
 </section>
+
 <!-- Map View -->
 <section class="view-section view-hidden relative z-10" id="view-map">
-<div class="h-[450px] rounded-xl overflow-hidden glass-card relative border border-white/10 shadow-2xl">
-<div class="absolute inset-0 z-0 bg-neutral-900">
-<img alt="Map" class="w-full h-full object-cover opacity-40 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0HpBeN4UONFPa-8UsGdaQSQwQtbjRCen2TB5cWwqDb_jRV7fxeMHI1DpoiKM2xWZkh9GLSjfx8zM-KubP7nzHJS3K6wpRqtwLnmaud-H1zLxk9KCVQ5-ruTjD4xRe2QgFpzD9iT3TgTnuqyHVno8_GM7AEcjdGo-K2b6r5ypLi_5mQXErc6EoNGBddvV8rwFs1FSsUHsex0Le6qGH0bFJimr2Fxun0qhScEyrWG7HuhDg20l3i2SERr31L7VCH9aVdv7JLFkWDco"/>
-<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-<div class="flex flex-col items-center gap-2">
-<span class="animate-bounce material-symbols-outlined text-primary text-4xl">location_on</span>
-<span class="text-white text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 backdrop-blur-sm">Downtown Hub</span>
-</div>
-</div>
-</div>
-<div class="absolute top-4 left-4 z-10">
-<div class="glass-card p-3 rounded bg-black/60 backdrop-blur-md border-white/10">
-<h2 class="text-sm font-bold text-primary mb-0.5">WORLD MAP</h2>
-<p class="text-[9px] text-on-surface-variant">Tap locations to fast travel</p>
-</div>
-</div>
-</div>
+    <div class="h-[450px] lg:h-[600px] rounded-xl overflow-hidden glass-card relative border border-white/10 shadow-2xl">
+        <div class="absolute inset-0 z-0 bg-neutral-900">
+            <img alt="Map" class="w-full h-full object-cover opacity-40 grayscale" src="assets/images/bg-minimap.png" loading="lazy" onerror="this.style.display='none'"/>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="flex flex-col items-center gap-2">
+                    <span class="animate-bounce material-symbols-outlined text-primary text-4xl">location_on</span>
+                    <span class="text-white text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 backdrop-blur-sm">Downtown Hub</span>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-4 left-4 z-10">
+            <div class="glass-card p-3 rounded bg-black/60 backdrop-blur-md border-white/10">
+                <h2 class="text-sm font-bold text-primary mb-0.5">WORLD MAP</h2>
+                <p class="text-[9px] text-on-surface-variant">Tap locations to fast travel</p>
+            </div>
+        </div>
+    </div>
 </section>
+
 <!-- Social View -->
 <section class="view-section view-hidden relative z-10" id="view-social">
-<div class="flex flex-col gap-6">
-<div class="glass-card p-6 flex flex-col items-center text-center bg-gradient-to-b from-primary/10 to-transparent">
-<div class="w-24 h-24 rounded-full border-2 border-primary p-1 mb-4 bg-surface-container-high overflow-hidden shadow-lg shadow-primary/20">
-<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWwApR8sw4aOdbQjt6fYCubpmIPeE2Dqau88m_nC1-UzevNOVc6qKyB-dk12y8ubm3Bx0pGiv--0DFRG-qL9XO9ew0UJ-WJQvEWBJ9I9wGLyZx7LWZKB7nNT66b54VqH8YzlnckSWUAnd_8m0RKLxd1rRg8HwbaxEJk2onf3-_txlqnwHLdsXIjBuOU-bg9nPS09hlrDaC-d5LNHYMyZNnTF274LygyC00eIDpkD_c26oAo6h91bZ5rQl-NTaYF6Es9NRF6S_87os"/>
-</div>
-<h3 class="font-headline-lg text-2xl text-on-surface italic">VELOCITY_X</h3>
-<p class="text-secondary text-[10px] font-bold tracking-widest mt-1">APEX PREDATOR</p>
-<div class="grid grid-cols-2 w-full gap-4 mt-6 pt-6 border-t border-white/5">
-<div class="text-center">
-<p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Race Wins</p>
-<p class="text-lg font-bold text-on-surface">1,240</p>
-</div>
-<div class="text-center">
-<p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Win Rate</p>
-<p class="text-lg font-bold text-on-surface">68%</p>
-</div>
-</div>
-</div>
-<div class="glass-card flex flex-col">
-<div class="px-4 py-3 border-b border-white/5 flex justify-between items-center bg-white/5">
-<h3 class="text-[10px] text-secondary font-bold tracking-[0.2em] uppercase">Leaderboard</h3>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left">
-<tbody class="text-xs">
-<tr class="border-b border-white/5">
-<td class="px-4 py-4 text-primary font-bold">01</td>
-<td class="px-4 py-4 font-bold">DRFTR_PRO</td>
-<td class="px-4 py-4 text-right text-on-surface-variant">2.84M</td>
-</tr>
-<tr class="bg-primary/10 border-l-2 border-l-primary">
-<td class="px-4 py-4 text-primary font-bold">48</td>
-<td class="px-4 py-4 font-black">YOU</td>
-<td class="px-4 py-4 text-right">1.42M</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-6 flex flex-col items-center text-center bg-gradient-to-b from-primary/10 to-transparent">
+            <div class="w-24 h-24 lg:w-32 lg:h-32 rounded-full border-2 border-primary p-1 mb-4 bg-surface-container-high overflow-hidden shadow-lg shadow-primary/20">
+                <img alt="Avatar" class="w-full h-full object-cover" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
+            </div>
+            <h3 class="font-headline-lg text-2xl lg:text-3xl text-on-surface italic">VELOCITY_X</h3>
+            <p class="text-secondary text-[10px] font-bold tracking-widest mt-1">APEX PREDATOR</p>
+            <div class="grid grid-cols-2 w-full gap-4 mt-6 pt-6 border-t border-white/5">
+                <div class="text-center">
+                    <p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Race Wins</p>
+                    <p class="text-lg lg:text-xl font-bold text-on-surface">1,240</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Win Rate</p>
+                    <p class="text-lg lg:text-xl font-bold text-on-surface">68%</p>
+                </div>
+            </div>
+        </div>
+        <div class="glass-card flex flex-col">
+            <div class="px-4 py-3 border-b border-white/5 flex justify-between items-center bg-white/5">
+                <h3 class="text-[10px] text-secondary font-bold tracking-[0.2em] uppercase">Leaderboard</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <tbody class="text-xs">
+                        <tr class="border-b border-white/5">
+                            <td class="px-4 py-3 text-primary font-bold">01</td>
+                            <td class="px-4 py-3 flex items-center gap-2">
+                                <img alt="rank1" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-rank1.png" loading="lazy" onerror="this.style.display='none'"/>
+                                <span class="font-bold">DRFTR_PRO</span>
+                            </td>
+                            <td class="px-4 py-3 text-right text-on-surface-variant">2.84M</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="px-4 py-3 text-primary font-bold">02</td>
+                            <td class="px-4 py-3 flex items-center gap-2">
+                                <img alt="rank2" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-rank2.png" loading="lazy" onerror="this.style.display='none'"/>
+                                <span class="font-bold">SPEED_DMN</span>
+                            </td>
+                            <td class="px-4 py-3 text-right text-on-surface-variant">2.41M</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="px-4 py-3 text-primary font-bold">03</td>
+                            <td class="px-4 py-3 flex items-center gap-2">
+                                <img alt="rank3" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-rank3.png" loading="lazy" onerror="this.style.display='none'"/>
+                                <span class="font-bold">NITRO_KNG</span>
+                            </td>
+                            <td class="px-4 py-3 text-right text-on-surface-variant">2.15M</td>
+                        </tr>
+                        <tr class="bg-primary/10 border-l-2 border-l-primary">
+                            <td class="px-4 py-3 text-primary font-bold">48</td>
+                            <td class="px-4 py-3 flex items-center gap-2">
+                                <img alt="you" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
+                                <span class="font-black">YOU</span>
+                            </td>
+                            <td class="px-4 py-3 text-right">1.42M</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </section>
 </main>
-<!-- Bottom Navigation Bar - Mobile Safe Area -->
-<nav class="fixed bottom-0 left-0 w-full z-50 bg-background/95 backdrop-blur-2xl border-t border-white/10 flex justify-around items-stretch h-bottom-nav-height pb-safe-area-bottom" id="bottom-nav">
-<!-- Nav Items -->
-<button class="flex-1 flex flex-col items-center justify-center text-secondary border-t-4 border-primary pt-1 active:scale-90 transition-all" id="nav-home" onclick="switchView('home')">
-<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
-<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Home</span>
-</button>
-<button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-garage" onclick="switchView('garage')">
-<span class="material-symbols-outlined text-2xl">garage</span>
-<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Garage</span>
-</button>
-<button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-map" onclick="switchView('map')">
-<span class="material-symbols-outlined text-2xl">map</span>
-<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Map</span>
-</button>
-<button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-social" onclick="switchView('social')">
-<span class="material-symbols-outlined text-2xl">group</span>
-<span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Social</span>
-</button>
+
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="mobile-nav lg:hidden fixed bottom-0 left-0 w-full z-50 bg-background/95 backdrop-blur-2xl border-t border-white/10 flex justify-around items-stretch h-bottom-nav-height pb-safe-area-bottom" id="bottom-nav">
+    <button class="flex-1 flex flex-col items-center justify-center text-secondary border-t-4 border-primary pt-1 active:scale-90 transition-all" id="nav-home" onclick="switchView('home')">
+        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
+        <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Home</span>
+    </button>
+    <button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-garage" onclick="switchView('garage')">
+        <span class="material-symbols-outlined text-2xl">garage</span>
+        <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Garage</span>
+    </button>
+    <button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-map" onclick="switchView('map')">
+        <span class="material-symbols-outlined text-2xl">map</span>
+        <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Map</span>
+    </button>
+    <button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-social" onclick="switchView('social')">
+        <span class="material-symbols-outlined text-2xl">group</span>
+        <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Social</span>
+    </button>
 </nav>
+
 <script>
         function switchView(viewId) {
             const views = ['home', 'garage', 'map', 'social', 'race-hud'];
             const navItems = ['home', 'garage', 'map', 'social'];
-            
+
             // Hide all views
             views.forEach(v => {
                 const el = document.getElementById(`view-${v}`);
@@ -398,18 +574,24 @@
             const activeView = document.getElementById(`view-${viewId}`);
             if (activeView) activeView.classList.remove('view-hidden');
 
-            // Handle navigation highlights and main UI visibility
+            // Handle mobile navigation
             const bottomNav = document.getElementById('bottom-nav');
-            const header = document.querySelector('header');
+            const mobileHeader = document.querySelector('.mobile-nav');
+            const desktopHeader = document.querySelector('.desktop-header');
+            const desktopSidebar = document.querySelector('.desktop-sidebar');
 
             if (viewId === 'race-hud') {
-                bottomNav.style.display = 'none';
-                header.style.display = 'none';
+                if (bottomNav) bottomNav.style.display = 'none';
+                if (mobileHeader) mobileHeader.style.display = 'none';
+                if (desktopHeader) desktopHeader.style.display = 'none';
+                if (desktopSidebar) desktopSidebar.style.display = 'none';
             } else {
-                bottomNav.style.display = 'flex';
-                header.style.display = 'flex';
-                
-                // Update active state in bottom nav
+                if (bottomNav) bottomNav.style.display = 'flex';
+                if (mobileHeader) mobileHeader.style.display = 'flex';
+                if (desktopHeader) desktopHeader.style.display = 'flex';
+                if (desktopSidebar) desktopSidebar.style.display = 'flex';
+
+                // Update mobile nav active state
                 navItems.forEach(n => {
                     const navBtn = document.getElementById(`nav-${n}`);
                     if (navBtn) {
@@ -427,11 +609,26 @@
                     const activeIcon = activeNav.querySelector('.material-symbols-outlined');
                     if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
                 }
+
+                // Update desktop sidebar active state
+                navItems.forEach(n => {
+                    const navBtn = document.getElementById(`nav-${n}-desktop`);
+                    if (navBtn) {
+                        navBtn.classList.remove('text-secondary', 'border-l-4', 'border-primary', 'bg-primary/10');
+                        navBtn.classList.add('text-on-surface-variant/40');
+                    }
+                });
+
+                const activeNavDesktop = document.getElementById(`nav-${viewId}-desktop`);
+                if (activeNavDesktop) {
+                    activeNavDesktop.classList.remove('text-on-surface-variant/40');
+                    activeNavDesktop.classList.add('text-secondary', 'border-l-4', 'border-primary', 'bg-primary/10');
+                }
             }
 
             window.scrollTo({ top: 0, behavior: 'instant' });
-            
-            // Haptic feedback simulation
+
+            // Haptic feedback
             if (window.navigator.vibrate) {
                 window.navigator.vibrate(10);
             }
@@ -442,7 +639,7 @@
             el.addEventListener('touchstart', function() {
                 this.classList.add('brightness-125');
             }, { passive: true });
-            
+
             el.addEventListener('touchend', function() {
                 this.classList.remove('brightness-125');
             }, { passive: true });
@@ -455,6 +652,7 @@
                 document.body.classList.add('transition-opacity', 'duration-500');
                 document.body.style.opacity = '1';
             }, 50);
-        }
+        };
     </script>
-</body></html>
+</body>
+</html>
