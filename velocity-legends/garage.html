@@ -155,6 +155,9 @@
                 display: flex !important;
             }
         }
+        .car-card.is-active {
+            border-left-color: #ff4d00 !important;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background overflow-hidden selection:bg-primary selection:text-on-primary">
@@ -174,9 +177,14 @@
             <img alt="VL Logo" class="w-6 h-6 object-contain" src="assets/images/logo-icon.png" loading="lazy" onerror="this.style.display='none'"/>
             <h1 class="font-display-hero text-headline-md italic text-primary drop-shadow-[0_0_10px_rgba(255,77,0,0.5)] leading-none">VELOCITY LEGENDS</h1>
         </div>
-        <div class="text-right">
-            <div class="font-headline-md text-headline-md tracking-tight italic text-primary">1.2M CR | 500 GOLD</div>
-            <div class="font-data-sm text-on-surface-variant/70 uppercase">Daily Streak: 14 Days</div>
+        <div class="flex items-center gap-3">
+            <div class="text-right">
+                <div class="font-headline-md text-headline-md tracking-tight italic text-primary">1.2M CR | 500 GOLD</div>
+                <div class="font-data-sm text-on-surface-variant/70 uppercase">Daily Streak: 14 Days</div>
+            </div>
+            <a href="profile.html" class="w-9 h-9 rounded-full border-2 border-primary overflow-hidden shrink-0">
+                <img alt="Profile" class="w-full h-full object-cover" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
+            </a>
         </div>
     </div>
 </header>
@@ -197,11 +205,15 @@
             </button>
         </div>
     </div>
-    <div class="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
+    <div class="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar" id="car-list">
         <!-- Car Card 1 (Active) -->
-        <div class="group relative overflow-hidden glass-panel border-l-4 border-l-primary cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg">
+        <div class="car-card group relative overflow-hidden glass-panel border-l-4 border-l-primary cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg is-active"
+             data-name="FENYR SUPERSPORT" data-manufacturer="W MOTORS" data-class="LEGENDARY" data-pr="942"
+             data-speed="85" data-accel="92" data-handling="78"
+             data-speed-label="342 KM/H" data-accel-label="0-100: 2.1s" data-handling-label="LATERAL G: 1.4"
+             data-img="assets/images/car-showcase-1.png">
             <div class="absolute top-0 right-0 p-2 z-10">
-                <span class="bg-primary text-on-primary font-data-sm px-2 py-0.5 skew-x-[-15deg] block text-xs">EQUIPPED</span>
+                <span class="bg-primary text-on-primary font-data-sm px-2 py-0.5 skew-x-[-15deg] block text-xs equipped-tag">EQUIPPED</span>
             </div>
             <div class="flex items-center gap-4 p-3 h-24 md:h-28">
                 <div class="w-32 md:w-40 h-full bg-surface-container-highest overflow-hidden relative rounded">
@@ -225,7 +237,11 @@
             </div>
         </div>
         <!-- Car Card 2 -->
-        <div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg">
+        <div class="car-card group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg"
+             data-name="LANCIA STRATOS HF" data-manufacturer="LANCIA" data-class="RALLY ICON" data-pr="684"
+             data-speed="60" data-accel="58" data-handling="88"
+             data-speed-label="248 KM/H" data-accel-label="0-100: 4.4s" data-handling-label="LATERAL G: 1.1"
+             data-img="assets/images/car-rally.png">
             <div class="flex items-center gap-4 p-3 h-24 md:h-28">
                 <div class="w-32 md:w-40 h-full bg-surface-container-highest overflow-hidden relative rounded">
                     <img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Lancia Stratos HF" src="assets/images/car-rally.png" loading="lazy" onerror="this.style.display='none'"/>
@@ -244,7 +260,11 @@
             </div>
         </div>
         <!-- Car Card 3 -->
-        <div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg">
+        <div class="car-card group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg"
+             data-name="SKYLINE GT-R R34" data-manufacturer="NISSAN" data-class="TUNER LEGEND" data-pr="812"
+             data-speed="74" data-accel="70" data-handling="82"
+             data-speed-label="298 KM/H" data-accel-label="0-100: 3.4s" data-handling-label="LATERAL G: 1.2"
+             data-img="assets/images/car-muscle.png">
             <div class="flex items-center gap-4 p-3 h-24 md:h-28">
                 <div class="w-32 md:w-40 h-full bg-surface-container-highest overflow-hidden relative rounded">
                     <img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Skyline GT-R R34" src="assets/images/car-muscle.png" loading="lazy" onerror="this.style.display='none'"/>
@@ -263,7 +283,11 @@
             </div>
         </div>
         <!-- Car Card 4 (Showcase 2) -->
-        <div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg">
+        <div class="car-card group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg"
+             data-name="STORM RIDER" data-manufacturer="STORM MOTORS" data-class="GT SPEC" data-pr="756"
+             data-speed="70" data-accel="66" data-handling="80"
+             data-speed-label="278 KM/H" data-accel-label="0-100: 3.7s" data-handling-label="LATERAL G: 1.2"
+             data-img="assets/images/car-showcase-2.png">
             <div class="flex items-center gap-4 p-3 h-24 md:h-28">
                 <div class="w-32 md:w-40 h-full bg-surface-container-highest overflow-hidden relative rounded">
                     <img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Showcase Car" src="assets/images/car-showcase-2.png" loading="lazy" onerror="this.style.display='none'"/>
@@ -282,7 +306,11 @@
             </div>
         </div>
         <!-- Car Card 5 (Showcase 3) -->
-        <div class="group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg">
+        <div class="car-card group relative overflow-hidden glass-panel border-l-4 border-l-transparent hover:border-l-secondary-fixed-dim cursor-pointer transition-all duration-300 transform hover:translate-x-2 rounded-r-lg"
+             data-name="PHANTOM Z" data-manufacturer="PHANTOM AUTO" data-class="STREET KING" data-pr="890"
+             data-speed="80" data-accel="83" data-handling="76"
+             data-speed-label="320 KM/H" data-accel-label="0-100: 2.8s" data-handling-label="LATERAL G: 1.3"
+             data-img="assets/images/car-showcase-3.png">
             <div class="flex items-center gap-4 p-3 h-24 md:h-28">
                 <div class="w-32 md:w-40 h-full bg-surface-container-highest overflow-hidden relative rounded">
                     <img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Showcase Car" src="assets/images/car-showcase-3.png" loading="lazy" onerror="this.style.display='none'"/>
@@ -299,6 +327,11 @@
                     <p class="font-data-sm text-on-surface-variant/50 mt-1">PR: 890</p>
                 </div>
             </div>
+        </div>
+        <!-- Buy Slot -->
+        <div class="glass-panel border-dashed border-white/20 h-32 lg:h-auto flex flex-col items-center justify-center gap-2 opacity-60 active:opacity-100">
+            <span class="material-symbols-outlined text-3xl">add_circle</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase">Unlock Slot</span>
         </div>
     </div>
 </section>
@@ -323,7 +356,7 @@
         </button>
     </div>
     <!-- Stats & Visual Display Area -->
-    <div class="flex-1 glass-panel relative p-8 flex flex-col justify-end rounded-lg">
+    <div class="flex-1 glass-panel relative p-8 flex flex-col justify-end rounded-lg" id="detail-panel" style="background-image: linear-gradient(to top, rgba(19,19,19,0.9), rgba(19,19,19,0.3)), url('assets/images/car-showcase-1.png'); background-size: cover; background-position: center;">
         <!-- Data HUD Overlay -->
         <div class="absolute top-8 left-8 right-8 flex justify-between items-start pointer-events-none">
             <div class="space-y-6 w-72">
@@ -331,48 +364,42 @@
                 <div class="space-y-2">
                     <div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
                         <span>TOP SPEED</span>
-                        <span>342 KM/H</span>
+                        <span id="stat-speed-label">342 KM/H</span>
                     </div>
                     <div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden rounded">
-                        <div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 85%"></div>
-                        <div class="absolute inset-0 flex">
-                            <div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
-                            <div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
-                            <div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
-                            <div class="h-full w-px bg-black/40" style="margin-left: 5%"></div>
-                        </div>
+                        <div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" id="stat-speed-bar" style="width: 85%"></div>
                     </div>
                 </div>
                 <!-- Stat Block: Acceleration -->
                 <div class="space-y-2">
                     <div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
                         <span>ACCELERATION</span>
-                        <span>0-100: 2.1s</span>
+                        <span id="stat-accel-label">0-100: 2.1s</span>
                     </div>
                     <div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden rounded">
-                        <div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 92%"></div>
+                        <div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" id="stat-accel-bar" style="width: 92%"></div>
                     </div>
                 </div>
                 <!-- Stat Block: Handling -->
                 <div class="space-y-2">
                     <div class="flex justify-between items-end font-data-sm text-secondary-fixed-dim">
                         <span>HANDLING</span>
-                        <span>LATERAL G: 1.4</span>
+                        <span id="stat-handling-label">LATERAL G: 1.4</span>
                     </div>
                     <div class="h-2 w-full carbon-pattern border border-white/10 relative overflow-hidden rounded">
-                        <div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" style="width: 78%"></div>
+                        <div class="h-full bg-gradient-to-r from-primary to-primary-container shadow-[0_0_8px_rgba(255,77,0,0.8)]" id="stat-handling-bar" style="width: 78%"></div>
                     </div>
                 </div>
             </div>
             <div class="glass-panel p-4 flex flex-col gap-2 skew-box rounded">
                 <div class="unskew-content text-right">
                     <div class="text-on-surface-variant font-data-sm">MANUFACTURER</div>
-                    <div class="text-white font-headline-md text-xl">W MOTORS</div>
+                    <div class="text-white font-headline-md text-xl" id="stat-manufacturer">W MOTORS</div>
                 </div>
                 <div class="h-px bg-white/10"></div>
                 <div class="unskew-content text-right">
                     <div class="text-on-surface-variant font-data-sm">CLASS</div>
-                    <div class="text-primary font-headline-md text-xl">LEGENDARY</div>
+                    <div class="text-primary font-headline-md text-xl" id="stat-class">LEGENDARY</div>
                 </div>
             </div>
         </div>
@@ -399,8 +426,8 @@
                     <div class="unskew-content">UPGRADE</div>
                     <div class="absolute inset-0 bg-white/10 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
                 </button>
-                <button class="bg-primary text-on-primary-container font-headline-md italic px-12 py-4 skew-box shadow-[0_0_25px_rgba(255,77,0,0.6)] hover:scale-105 active:scale-95 transition-all rounded-sm">
-                    <div class="unskew-content">EQUIP</div>
+                <button id="equip-btn" class="bg-primary text-on-primary-container font-headline-md italic px-12 py-4 skew-box shadow-[0_0_25px_rgba(255,77,0,0.6)] hover:scale-105 active:scale-95 transition-all rounded-sm">
+                    <div class="unskew-content" id="equip-btn-label">EQUIPPED</div>
                 </button>
             </div>
         </div>
@@ -457,6 +484,58 @@
             perfText.forEach(t => t.classList.replace('text-primary', 'text-on-surface-variant'));
         }
     }
+
+    // Car selection: clicking a card in the list updates the detail panel
+    let equippedCard = document.querySelector('.car-card.is-active');
+
+    document.querySelectorAll('.car-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('.car-card').forEach(c => c.classList.remove('is-active'));
+            card.classList.add('is-active');
+
+            const name = card.dataset.name;
+            const manufacturer = card.dataset.manufacturer;
+            const carClass = card.dataset.class;
+            const img = card.dataset.img;
+            const speedLabel = card.dataset.speedLabel;
+            const accelLabel = card.dataset.accelLabel;
+            const handlingLabel = card.dataset.handlingLabel;
+            const speed = card.dataset.speed;
+            const accel = card.dataset.accel;
+            const handling = card.dataset.handling;
+
+            const detailPanel = document.getElementById('detail-panel');
+            if (detailPanel) {
+                detailPanel.style.backgroundImage = `linear-gradient(to top, rgba(19,19,19,0.9), rgba(19,19,19,0.3)), url('${img}')`;
+            }
+            document.getElementById('stat-manufacturer').textContent = manufacturer;
+            document.getElementById('stat-class').textContent = carClass;
+            document.getElementById('stat-speed-label').textContent = speedLabel;
+            document.getElementById('stat-accel-label').textContent = accelLabel;
+            document.getElementById('stat-handling-label').textContent = handlingLabel;
+            document.getElementById('stat-speed-bar').style.width = speed + '%';
+            document.getElementById('stat-accel-bar').style.width = accel + '%';
+            document.getElementById('stat-handling-bar').style.width = handling + '%';
+
+            const equipBtn = document.getElementById('equip-btn-label');
+            const isEquipped = card === equippedCard;
+            equipBtn.textContent = isEquipped ? 'EQUIPPED' : 'EQUIP';
+
+            if (window.navigator.vibrate) window.navigator.vibrate(10);
+        });
+    });
+
+    document.getElementById('equip-btn').addEventListener('click', () => {
+        const active = document.querySelector('.car-card.is-active');
+        if (!active) return;
+        document.querySelectorAll('.equipped-tag').forEach(tag => tag.remove());
+        const tag = document.createElement('div');
+        tag.className = 'absolute top-0 right-0 p-2 z-10';
+        tag.innerHTML = '<span class="bg-primary text-on-primary font-data-sm px-2 py-0.5 skew-x-[-15deg] block text-xs equipped-tag">EQUIPPED</span>';
+        active.appendChild(tag);
+        equippedCard = active;
+        document.getElementById('equip-btn-label').textContent = 'EQUIPPED';
+    });
 
     // Atmospheric micro-interaction
     document.addEventListener('mousemove', (e) => {
