@@ -101,27 +101,6 @@
         .skew-tile-inner {
             transform: skewx(8deg);
         }
-        .view-section {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            width: 100%;
-            max-width: 100%;
-        }
-        .view-hidden {
-            display: none !important;
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        #bg-image-container {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-        }
-        #bg-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.25;
-        }
         .text-nowrap { white-space: nowrap; }
         .touch-action-none { touch-action: none; }
 
@@ -169,40 +148,41 @@
 </head>
 <body class="font-body-md text-body-md select-none overflow-x-hidden">
 
-<!-- Desktop Sidebar (hidden on mobile) -->
-<aside class="desktop-sidebar hidden fixed left-0 top-0 h-full w-[280px] bg-background/95 backdrop-blur-2xl border-r border-white/10 z-50 flex-col">
-    <div class="p-6 border-b border-white/10">
+<!-- Desktop Sidebar (hidden on mobile, now a floating draggable panel) -->
+<aside class="desktop-sidebar hidden w-[280px] bg-background/95 backdrop-blur-2xl border border-white/10 rounded-xl z-50 flex-col shadow-[0_8px_30px_rgba(0,0,0,0.5)] touch-action-none" id="desktop-sidebar">
+    <div class="p-4 border-b border-white/10 flex items-center justify-between cursor-grab active:cursor-grabbing" id="sidebar-drag-handle">
         <div class="flex items-center gap-3">
             <img alt="VL Logo" class="w-10 h-10 object-contain" src="assets/images/logo-icon.png" loading="lazy" onerror="this.style.display='none'"/>
             <h1 class="font-display-xl text-2xl tracking-tighter text-primary italic uppercase leading-none">VELOCITY<br/>LEGENDS</h1>
         </div>
+        <span class="material-symbols-outlined text-on-surface-variant/30 text-lg">drag_indicator</span>
     </div>
     <nav class="flex-1 py-6">
-        <button class="w-full flex items-center gap-4 px-6 py-4 text-secondary border-l-4 border-primary bg-primary/10 transition-all" id="nav-home-desktop">
+        <a href="index.html" class="w-full flex items-center gap-4 px-6 py-4 text-secondary border-l-4 border-primary bg-primary/10 transition-all">
             <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
             <span class="font-nav-item text-sm uppercase tracking-wider">Home</span>
-        </button>
-        <button class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all" id="nav-garage-desktop">
+        </a>
+        <a href="garage.html" class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all">
             <span class="material-symbols-outlined text-2xl">garage</span>
             <span class="font-nav-item text-sm uppercase tracking-wider">Garage</span>
-        </button>
-        <button class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all" id="nav-map-desktop">
+        </a>
+        <a href="race.html" class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all">
             <span class="material-symbols-outlined text-2xl">map</span>
             <span class="font-nav-item text-sm uppercase tracking-wider">Map</span>
-        </button>
-        <button class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all" id="nav-social-desktop">
+        </a>
+        <a href="leaderboard.html" class="w-full flex items-center gap-4 px-6 py-4 text-on-surface-variant/40 hover:text-secondary hover:bg-white/5 transition-all">
             <span class="material-symbols-outlined text-2xl">group</span>
             <span class="font-nav-item text-sm uppercase tracking-wider">Social</span>
-        </button>
+        </a>
     </nav>
     <div class="p-6 border-t border-white/10">
-        <div class="flex items-center gap-3">
+        <a href="profile.html" class="flex items-center gap-3">
             <img alt="Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
             <div>
                 <p class="text-sm font-bold text-on-surface">VELOCITY_X</p>
                 <p class="text-[10px] text-secondary">LVL 48</p>
             </div>
-        </div>
+        </a>
     </div>
 </aside>
 
@@ -231,9 +211,9 @@
             <img alt="VL Logo" class="w-6 h-6 object-contain" src="assets/images/logo-icon.png" loading="lazy" onerror="this.style.display='none'"/>
             <h1 class="font-display-xl text-xl tracking-tighter text-primary italic uppercase leading-none">VELOCITY LEGENDS</h1>
         </div>
-        <div class="flex items-center gap-2">
+        <a href="profile.html" class="flex items-center gap-2">
             <span class="bg-primary/20 text-primary text-[10px] font-label-sm px-2 py-0.5 rounded border border-primary/30">LVL 48</span>
-        </div>
+        </a>
     </div>
     <!-- Compact Stats Grid -->
     <div class="grid grid-cols-3 border-t border-white/5 bg-black/20">
@@ -255,8 +235,7 @@
 <!-- Main Content Canvas -->
 <main class="main-content pt-28 lg:pt-20 pb-28 lg:pb-8 px-4 md:px-8 lg:px-12 max-w-full mx-auto min-h-screen relative overflow-x-hidden">
 
-<!-- Home View -->
-<section class="view-section relative z-10" id="view-home">
+<section class="relative z-10" id="view-home">
     <!-- Hero Feature Car -->
     <div class="hero-grid">
         <div class="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[21/9] rounded-xl overflow-hidden glass-card mb-6 border border-primary/20">
@@ -284,10 +263,10 @@
                         <span class="text-primary font-bold text-sm lg:text-lg">S+</span>
                     </div>
                 </div>
-                <button id="start-race-btn" class="w-full md:w-auto md:px-12 bg-primary hover:bg-primary/90 text-white font-headline-lg h-14 slanted-edge glow-orange transition-all flex items-center justify-center gap-2">
+                <a href="race.html" id="start-race-btn" class="w-full md:w-auto md:px-12 bg-primary hover:bg-primary/90 text-white font-headline-lg h-14 slanted-edge glow-orange transition-all flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined font-bold text-2xl">play_arrow</span>
                     START RACE
-                </button>
+                </a>
             </div>
         </div>
 
@@ -348,7 +327,7 @@
         <div class="glass-card flex flex-col">
             <div class="px-4 py-3 border-b border-white/5 flex justify-between items-center">
                 <h4 class="text-[10px] text-on-surface-variant/40 uppercase tracking-widest font-bold">Recent History</h4>
-                <button class="text-[10px] text-secondary uppercase font-bold">View All</button>
+                <a href="leaderboard.html" class="text-[10px] text-secondary uppercase font-bold">View All</a>
             </div>
             <div class="p-4 flex items-center justify-between active:bg-white/5 transition-colors">
                 <div class="flex items-center gap-3">
@@ -365,294 +344,104 @@
         </div>
     </div>
 </section>
-
-<!-- Race HUD View (Hidden) -->
-<section class="view-section view-hidden fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center overflow-hidden" id="view-race-hud">
-    <div class="absolute top-12 left-6 lg:left-[300px] text-white flex flex-col gap-1">
-        <span class="text-5xl lg:text-7xl font-display-xl italic leading-none">242 <small class="text-sm lg:text-lg">KM/H</small></span>
-        <span class="text-secondary font-label-sm tracking-widest">GEAR 5</span>
-    </div>
-    <div class="text-center px-6">
-        <div class="w-32 h-32 lg:w-48 lg:h-48 mb-8 mx-auto border-4 border-primary rounded-full flex items-center justify-center animate-pulse">
-            <span class="material-symbols-outlined text-6xl lg:text-8xl text-primary">speed</span>
-        </div>
-        <h2 class="text-4xl lg:text-6xl font-display-xl text-primary italic uppercase">Racing...</h2>
-        <p class="text-on-surface-variant mt-4 text-sm lg:text-base max-w-xs mx-auto">Race simulation in progress. Physics engine active.</p>
-        <button id="abort-race-btn" class="mt-12 w-full md:w-auto md:px-16 border border-primary text-primary px-8 py-4 font-bold tracking-widest uppercase text-xs active:bg-primary active:text-white transition-all">
-            ABORT MISSION
-        </button>
-    </div>
-</section>
-
-<!-- Garage View -->
-<section class="view-section view-hidden relative z-10" id="view-garage">
-    <h2 class="font-display-xl text-3xl lg:text-5xl text-primary italic mb-6">MY GARAGE</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-        <div class="glass-card group active:scale-[0.98] transition-all">
-            <div class="h-44 lg:h-56 relative bg-surface-container-low">
-                <img alt="Car" class="w-full h-full object-cover" src="assets/images/car-showcase-1.png" loading="lazy" onerror="this.style.display='none'"/>
-                <div class="absolute top-3 right-3">
-                    <span class="bg-secondary text-on-secondary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS A</span>
-                </div>
-            </div>
-            <div class="p-5">
-                <h3 class="font-headline-lg text-xl mb-1 italic">STORM-R7</h3>
-                <div class="flex justify-between items-center mt-4">
-                    <div class="flex flex-col">
-                        <span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
-                        <span class="text-sm font-bold text-secondary">PR: 684</span>
-                    </div>
-                    <button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
-                </div>
-            </div>
-        </div>
-        <!-- Additional cars from your assets -->
-        <div class="glass-card group active:scale-[0.98] transition-all">
-            <div class="h-44 lg:h-56 relative bg-surface-container-low">
-                <img alt="Car" class="w-full h-full object-cover" src="assets/images/car-muscle.png" loading="lazy" onerror="this.style.display='none'"/>
-                <div class="absolute top-3 right-3">
-                    <span class="bg-primary text-on-primary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS S</span>
-                </div>
-            </div>
-            <div class="p-5">
-                <h3 class="font-headline-lg text-xl mb-1 italic">MUSCLE-X</h3>
-                <div class="flex justify-between items-center mt-4">
-                    <div class="flex flex-col">
-                        <span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
-                        <span class="text-sm font-bold text-secondary">PR: 812</span>
-                    </div>
-                    <button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
-                </div>
-            </div>
-        </div>
-        <div class="glass-card group active:scale-[0.98] transition-all">
-            <div class="h-44 lg:h-56 relative bg-surface-container-low">
-                <img alt="Car" class="w-full h-full object-cover" src="assets/images/car-rally.png" loading="lazy" onerror="this.style.display='none'"/>
-                <div class="absolute top-3 right-3">
-                    <span class="bg-secondary text-on-secondary px-2 py-1 text-[10px] font-bold rounded-sm">CLASS B</span>
-                </div>
-            </div>
-            <div class="p-5">
-                <h3 class="font-headline-lg text-xl mb-1 italic">RALLY-KING</h3>
-                <div class="flex justify-between items-center mt-4">
-                    <div class="flex flex-col">
-                        <span class="text-[9px] text-on-surface-variant/40 uppercase">Performance</span>
-                        <span class="text-sm font-bold text-secondary">PR: 756</span>
-                    </div>
-                    <button class="border border-secondary text-secondary px-4 py-2 text-[10px] font-bold uppercase active:bg-secondary active:text-on-secondary">Select</button>
-                </div>
-            </div>
-        </div>
-        <!-- Buy Slot -->
-        <div class="glass-card border-dashed border-white/20 h-32 lg:h-auto flex flex-col items-center justify-center gap-2 opacity-60 active:opacity-100">
-            <span class="material-symbols-outlined text-3xl">add_circle</span>
-            <span class="text-[10px] font-bold tracking-widest uppercase">Unlock Slot</span>
-        </div>
-    </div>
-</section>
-
-<!-- Map View -->
-<section class="view-section view-hidden relative z-10" id="view-map">
-    <div class="h-[450px] lg:h-[600px] rounded-xl overflow-hidden glass-card relative border border-white/10 shadow-2xl">
-        <div class="absolute inset-0 z-0 bg-neutral-900">
-            <img alt="Map" class="w-full h-full object-cover opacity-40 grayscale" src="assets/images/bg-minimap.png" loading="lazy" onerror="this.style.display='none'"/>
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div class="flex flex-col items-center gap-2">
-                    <span class="animate-bounce material-symbols-outlined text-primary text-4xl">location_on</span>
-                    <span class="text-white text-[10px] font-bold uppercase tracking-widest bg-black/50 px-2 py-1 backdrop-blur-sm">Downtown Hub</span>
-                </div>
-            </div>
-        </div>
-        <div class="absolute top-4 left-4 z-10">
-            <div class="glass-card p-3 rounded bg-black/60 backdrop-blur-md border-white/10">
-                <h2 class="text-sm font-bold text-primary mb-0.5">WORLD MAP</h2>
-                <p class="text-[9px] text-on-surface-variant">Tap locations to fast travel</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Social View -->
-<section class="view-section view-hidden relative z-10" id="view-social">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="glass-card p-6 flex flex-col items-center text-center bg-gradient-to-b from-primary/10 to-transparent">
-            <div class="w-24 h-24 lg:w-32 lg:h-32 rounded-full border-2 border-primary p-1 mb-4 bg-surface-container-high overflow-hidden shadow-lg shadow-primary/20">
-                <img alt="Avatar" class="w-full h-full object-cover" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
-            </div>
-            <h3 class="font-headline-lg text-2xl lg:text-3xl text-on-surface italic">VELOCITY_X</h3>
-            <p class="text-secondary text-[10px] font-bold tracking-widest mt-1">APEX PREDATOR</p>
-            <div class="grid grid-cols-2 w-full gap-4 mt-6 pt-6 border-t border-white/5">
-                <div class="text-center">
-                    <p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Race Wins</p>
-                    <p class="text-lg lg:text-xl font-bold text-on-surface">1,240</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-[9px] text-on-surface-variant/40 uppercase font-bold">Win Rate</p>
-                    <p class="text-lg lg:text-xl font-bold text-on-surface">68%</p>
-                </div>
-            </div>
-        </div>
-        <div class="glass-card flex flex-col">
-            <div class="px-4 py-3 border-b border-white/5 flex justify-between items-center bg-white/5">
-                <h3 class="text-[10px] text-secondary font-bold tracking-[0.2em] uppercase">Leaderboard</h3>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <tbody class="text-xs">
-                        <tr class="border-b border-white/5">
-                            <td class="px-4 py-3 text-primary font-bold">01</td>
-                            <td class="px-4 py-3 flex items-center gap-2">
-                                <img alt="rank1" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-rank1.png" loading="lazy" onerror="this.style.display='none'"/>
-                                <span class="font-bold">DRFTR_PRO</span>
-                            </td>
-                            <td class="px-4 py-3 text-right text-on-surface-variant">2.84M</td>
-                        </tr>
-                        <tr class="border-b border-white/5">
-                            <td class="px-4 py-3 text-primary font-bold">02</td>
-                            <td class="px-4 py-3 flex items-center gap-2">
-                                <img alt="rank2" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-rank2.png" loading="lazy" onerror="this.style.display='none'"/>
-                                <span class="font-bold">SPEED_DMN</span>
-                            </td>
-                            <td class="px-4 py-3 text-right text-on-surface-variant">2.41M</td>
-                        </tr>
-                        <tr class="border-b border-white/5">
-                            <td class="px-4 py-3 text-primary font-bold">03</td>
-                            <td class="px-4 py-3 flex items-center gap-2">
-                                <img alt="rank3" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-rank3.png" loading="lazy" onerror="this.style.display='none'"/>
-                                <span class="font-bold">NITRO_KNG</span>
-                            </td>
-                            <td class="px-4 py-3 text-right text-on-surface-variant">2.15M</td>
-                        </tr>
-                        <tr class="bg-primary/10 border-l-2 border-l-primary">
-                            <td class="px-4 py-3 text-primary font-bold">48</td>
-                            <td class="px-4 py-3 flex items-center gap-2">
-                                <img alt="you" class="w-6 h-6 rounded-full object-cover" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
-                                <span class="font-black">YOU</span>
-                            </td>
-                            <td class="px-4 py-3 text-right">1.42M</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</section>
 </main>
 
-<!-- Mobile Bottom Navigation Bar -->
-<nav class="mobile-nav lg:hidden fixed bottom-0 left-0 w-full z-50 bg-background/95 backdrop-blur-2xl border-t border-white/10 flex justify-around items-stretch h-bottom-nav-height pb-safe-area-bottom" id="bottom-nav">
-    <button class="flex-1 flex flex-col items-center justify-center text-secondary border-t-4 border-primary pt-1 active:scale-90 transition-all" id="nav-home">
+<!-- Mobile Bottom Navigation Bar (draggable) -->
+<nav class="mobile-nav lg:hidden fixed z-50 bg-background/95 backdrop-blur-2xl border border-white/10 flex justify-around items-stretch rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.5)] touch-action-none" id="bottom-nav">
+    <div class="flex items-center justify-center px-1 cursor-grab active:cursor-grabbing" id="nav-drag-handle">
+        <span class="material-symbols-outlined text-on-surface-variant/30 text-lg">drag_indicator</span>
+    </div>
+    <a href="index.html" class="flex flex-col items-center justify-center text-secondary px-4 py-2 active:scale-90 transition-all">
         <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
         <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Home</span>
-    </button>
-    <button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-garage">
+    </a>
+    <a href="garage.html" class="flex flex-col items-center justify-center text-on-surface-variant/40 px-4 py-2 active:scale-90 transition-all">
         <span class="material-symbols-outlined text-2xl">garage</span>
         <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Garage</span>
-    </button>
-    <button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-map">
+    </a>
+    <a href="race.html" class="flex flex-col items-center justify-center text-on-surface-variant/40 px-4 py-2 active:scale-90 transition-all">
         <span class="material-symbols-outlined text-2xl">map</span>
         <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Map</span>
-    </button>
-    <button class="flex-1 flex flex-col items-center justify-center text-on-surface-variant/40 pt-1 active:scale-90 transition-all" id="nav-social">
+    </a>
+    <a href="leaderboard.html" class="flex flex-col items-center justify-center text-on-surface-variant/40 px-4 py-2 active:scale-90 transition-all">
         <span class="material-symbols-outlined text-2xl">group</span>
         <span class="font-nav-item text-[10px] mt-1 uppercase tracking-wider">Social</span>
-    </button>
+    </a>
 </nav>
 
 <script>
-function switchView(viewId) {
-    const views = ['home', 'garage', 'map', 'social', 'race-hud'];
-    const navItems = ['home', 'garage', 'map', 'social'];
-
-    // Hide all views
-    views.forEach(v => {
-        const el = document.getElementById(`view-${v}`);
-        if (el) el.classList.add('view-hidden');
-    });
-
-    // Show selected view
-    const activeView = document.getElementById(`view-${viewId}`);
-    if (activeView) activeView.classList.remove('view-hidden');
-
-    // Handle mobile navigation
-    const bottomNav = document.getElementById('bottom-nav');
-    const mobileHeader = document.querySelector('.mobile-nav');
-    const desktopHeader = document.querySelector('.desktop-header');
-    const desktopSidebar = document.querySelector('.desktop-sidebar');
-
-    if (viewId === 'race-hud') {
-        if (bottomNav) bottomNav.style.display = 'none';
-        if (mobileHeader) mobileHeader.style.display = 'none';
-        if (desktopHeader) desktopHeader.style.display = 'none';
-        if (desktopSidebar) desktopSidebar.style.display = 'none';
-    } else {
-        if (bottomNav) bottomNav.style.display = 'flex';
-        if (mobileHeader) mobileHeader.style.display = 'flex';
-        if (desktopHeader) desktopHeader.style.display = 'flex';
-        if (desktopSidebar) desktopSidebar.style.display = 'flex';
-
-        // Update mobile nav active state
-        navItems.forEach(n => {
-            const navBtn = document.getElementById(`nav-${n}`);
-            if (navBtn) {
-                navBtn.classList.remove('text-secondary', 'border-t-4', 'border-primary');
-                navBtn.classList.add('text-on-surface-variant/40');
-                const icon = navBtn.querySelector('.material-symbols-outlined');
-                if (icon) icon.style.fontVariationSettings = "'FILL' 0";
-            }
-        });
-
-        const activeNav = document.getElementById(`nav-${viewId}`);
-        if (activeNav) {
-            activeNav.classList.remove('text-on-surface-variant/40');
-            activeNav.classList.add('text-secondary', 'border-t-4', 'border-primary');
-            const activeIcon = activeNav.querySelector('.material-symbols-outlined');
-            if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
-        }
-
-        // Update desktop sidebar active state
-        navItems.forEach(n => {
-            const navBtn = document.getElementById(`nav-${n}-desktop`);
-            if (navBtn) {
-                navBtn.classList.remove('text-secondary', 'border-l-4', 'border-primary', 'bg-primary/10');
-                navBtn.classList.add('text-on-surface-variant/40');
-            }
-        });
-
-        const activeNavDesktop = document.getElementById(`nav-${viewId}-desktop`);
-        if (activeNavDesktop) {
-            activeNavDesktop.classList.remove('text-on-surface-variant/40');
-            activeNavDesktop.classList.add('text-secondary', 'border-l-4', 'border-primary', 'bg-primary/10');
-        }
-    }
-
-    window.scrollTo({ top: 0, behavior: 'instant' });
-
-    // Haptic feedback
-    if (window.navigator.vibrate) {
-        window.navigator.vibrate(10);
-    }
-}
-
-// Setup event listeners
+// Draggable floating bottom nav
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile nav buttons
-    document.getElementById('nav-home').addEventListener('click', () => switchView('home'));
-    document.getElementById('nav-garage').addEventListener('click', () => switchView('garage'));
-    document.getElementById('nav-map').addEventListener('click', () => switchView('map'));
-    document.getElementById('nav-social').addEventListener('click', () => switchView('social'));
+    const nav = document.getElementById('bottom-nav');
+    const handle = document.getElementById('nav-drag-handle');
 
-    // Desktop nav buttons
-    document.getElementById('nav-home-desktop').addEventListener('click', () => switchView('home'));
-    document.getElementById('nav-garage-desktop').addEventListener('click', () => switchView('garage'));
-    document.getElementById('nav-map-desktop').addEventListener('click', () => switchView('map'));
-    document.getElementById('nav-social-desktop').addEventListener('click', () => switchView('social'));
+    function clamp(val, min, max) { return Math.max(min, Math.min(max, val)); }
 
-    // Race buttons
-    document.getElementById('start-race-btn').addEventListener('click', () => switchView('race-hud'));
-    document.getElementById('abort-race-btn').addEventListener('click', () => switchView('home'));
+    function placeNav(x, y) {
+        const rect = nav.getBoundingClientRect();
+        const maxX = window.innerWidth - rect.width - 8;
+        const maxY = window.innerHeight - rect.height - 8;
+        nav.style.left = clamp(x, 8, Math.max(8, maxX)) + 'px';
+        nav.style.top = clamp(y, 8, Math.max(8, maxY)) + 'px';
+        nav.style.bottom = 'auto';
+        nav.style.right = 'auto';
+        nav.style.transform = 'none';
+    }
 
-    // Touch-friendly interactions
+    // Restore saved position, or default to bottom-center
+    const saved = localStorage.getItem('vl-nav-pos');
+    if (saved) {
+        const { x, y } = JSON.parse(saved);
+        placeNav(x, y);
+    } else {
+        nav.style.left = '50%';
+        nav.style.bottom = '24px';
+        nav.style.transform = 'translateX(-50%)';
+    }
+
+    let dragging = false;
+    let startX, startY, navStartX, navStartY;
+
+    function onDragStart(clientX, clientY) {
+        dragging = true;
+        const rect = nav.getBoundingClientRect();
+        startX = clientX;
+        startY = clientY;
+        navStartX = rect.left;
+        navStartY = rect.top;
+    }
+
+    function onDragMove(clientX, clientY) {
+        if (!dragging) return;
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+        placeNav(navStartX + dx, navStartY + dy);
+    }
+
+    function onDragEnd() {
+        if (!dragging) return;
+        dragging = false;
+        const rect = nav.getBoundingClientRect();
+        localStorage.setItem('vl-nav-pos', JSON.stringify({ x: rect.left, y: rect.top }));
+    }
+
+    handle.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        handle.setPointerCapture(e.pointerId);
+        onDragStart(e.clientX, e.clientY);
+    });
+    handle.addEventListener('pointermove', (e) => onDragMove(e.clientX, e.clientY));
+    handle.addEventListener('pointerup', onDragEnd);
+    handle.addEventListener('pointercancel', onDragEnd);
+
+    window.addEventListener('resize', () => {
+        const rect = nav.getBoundingClientRect();
+        placeNav(rect.left, rect.top);
+    });
+});
+
+// Touch-friendly interactions
+document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('button, .glass-card').forEach(el => {
         el.addEventListener('touchstart', function() {
             this.classList.add('brightness-125');
@@ -662,9 +451,15 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.remove('brightness-125');
         }, { passive: true });
     });
+
+    if (window.navigator.vibrate) {
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', () => window.navigator.vibrate(10));
+        });
+    }
 });
 
-// Initialize
+// Fade-in on load
 window.onload = () => {
     document.body.style.opacity = '0';
     setTimeout(() => {
