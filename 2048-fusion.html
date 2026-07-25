@@ -121,6 +121,7 @@ header{ display:flex; align-items:center; justify-content:space-between; padding
   font-family:'Baloo 2',sans-serif; font-weight:800; color:#6b6154;
   transition: left .12s ease, top .12s ease; will-change: left, top;
   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  line-height:1; overflow:hidden;
 }
 .tile.spawn{ animation: spawnPop .18s ease; }
 @keyframes spawnPop{ 0%{ transform:scale(0); } 80%{ transform:scale(1.12); } 100%{ transform:scale(1); } }
@@ -758,7 +759,8 @@ class UIManager {
   }
   measureCell(size){
     const boardRect = this.el.board.getBoundingClientRect();
-    this.cellPx = (boardRect.width - this.gapPx*(size-1)) / size;
+    const w = boardRect.width || this.el.board.offsetWidth || 320;
+    this.cellPx = Math.max(20, (w - this.gapPx*(size-1)) / size);
   }
   tileColor(value){
     const colors = {
@@ -793,7 +795,7 @@ class UIManager {
         el.style.top = (r * (this.cellPx + this.gapPx)) + 'px';
         el.style.background = this.tileColor(tile.value);
         el.style.color = tile.value <= 4 ? '#6b6154' : '#f9f6f2';
-        el.style.fontSize = (this.cellPx * 0.42 * big) + 'px';
+        el.style.fontSize = (Math.max(10, this.cellPx) * 0.42 * big) + 'px';
         if (tile.value >= 128){
           el.classList.add('glow');
           el.style.setProperty('--glow-color', this.tileColor(tile.value));
@@ -930,4 +932,490 @@ function doMove(direction){
   const multiplier = powerUps.doubleActive ? 2 : 1;
   const res = game.move(direction, { scoreMultiplier: multiplier });
   if (!res.moved){
-    game.history.pop(); // nothing happened, don'
+    
+    return;
+  }
+  // move succeeded
+  audio.move();
+  if (res.mergedCount > 0){
+    const avgMerged = res.gained / res.mergedCount;
+    audio.merge(avgMerged);
+    ui.showScorePopup(res.gained);
+    if (powerUps.doubleActive){
+      powerUps.doubleMergesLeft -= res.mergedCount;
+      if (powerUps.doubleMergesLeft <= 0){
+        powerUps.doubleActive = false;
+        ui.showToast('2x Score ended');
+      }
+    }
+  }
+  game.spawnRandomTile();
+  render();
+  runAchievementCheck();
+
+  // Win check
+  if (!game.won && game.hasTile(2048)){
+    game.won = true;
+    audio.win();
+    ui.spawnConfetti();
+    document.getElementById('overlay-win').classList.add('show');
+    stats.winsCount++;
+    if (sessionUndosUsed === 0) stats.winsNoUndo++;
+    SaveManager.saveStats(stats);
+    runAchievementCheck({ sessionWonNoUndo: sessionUndosUsed === 0, sessionWonBoardSize: game.size, sessionWonDifficulty: settings.difficulty, sessionWonMode: game.mode, sessionWonUnderMs: Date.now() - game.startedAt });
+  }
+
+  // Game over check
+  if (!game.anyMoveAvailable()){
+    endGame('No more moves left.');
+  }
+}
+
+function endGame(reason){
+  game.over = true;
+  clearInterval(timerHandle);
+  audio.over();
+  ui.screenShake();
+  const bestTile = game.bestTile();
+  stats.gamesPlayed++;
+  stats.totalScoreSum += game.score;
+  stats.totalMerges += game.merges;
+  stats.totalUndosUsed += sessionUndosUsed;
+  stats.bestScore = Math.max(stats.bestScore, game.score);
+  stats.bestTile = Math.max(stats.bestTile, bestTile);
+  if (!stats.tilesReached.includes(bestTile)) stats.tilesReached.push(bestTile);
+  const gameTime = Date.now() - game.startedAt;
+  stats.longestGameMs = Math.max(stats.longestGameMs, gameTime);
+  stats.totalPlayTimeMs += gameTime;
+  // Leaderboard
+  const lb = SaveManager.loadLeaderboard();
+  lb.push({ score: game.score, bestTile, date: new Date().toISOString(), mode: game.mode, size: game.size });
+  lb.sort((a,b) => b.score - a.score);
+  if (lb.length > 50) lb.length = 50;
+  SaveManager.saveLeaderboard(lb);
+  SaveManager.saveStats(stats);
+  document.getElementById('over-sub').textContent = reason;
+  document.getElementById('over-score').textContent = game.score.toLocaleString();
+  document.getElementById('over-tile').textContent = bestTile;
+  document.getElementById('overlay-over').classList.add('show');
+  runAchievementCheck();
+}
+
+function updatePowerUpBadges(){
+  document.querySelector('#power-destroy .badge').textContent = powerUps.uses.destroy;
+  document.querySelector('#power-shuffle .badge').textContent = powerUps.uses.shuffle;
+  document.querySelector('#power-hint .badge').textContent = powerUps.uses.hint;
+  document.querySelector('#power-double .badge').textContent = powerUps.uses.double;
+  document.getElementById('undo-badge').textContent = 10 - sessionUndosUsed;
+  document.getElementById('power-destroy').disabled = powerUps.uses.destroy <= 0;
+  document.getElementById('power-shuffle').disabled = powerUps.uses.shuffle <= 0;
+  document.getElementById('power-hint').disabled = powerUps.uses.hint <= 0;
+  document.getElementById('power-double').disabled = powerUps.uses.double <= 0;
+  document.getElementById('undo-btn').disabled = game && game.history.length === 0;
+}
+
+/* ================= Input handling ================= */
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('keydown', e => {
+  if (!game || game.over || paused) return;
+  const map = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down', a:'left', d:'right', w:'up', s:'down' };
+  if (map[e.key]){ e.preventDefault(); doMove(map[e.key]); }
+});
+
+const boardWrap = document.getElementById('board-wrap');
+boardWrap.addEventListener('touchstart', e => {
+  if (e.touches.length > 1) return;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+boardWrap.addEventListener('touchend', e => {
+  if (!game || game.over || paused) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  const minSwipe = 24;
+  if (Math.abs(dx) < minSwipe && Math.abs(dy) < minSwipe) return;
+  if (Math.abs(dx) > Math.abs(dy)) doMove(dx > 0 ? 'right' : 'left');
+  else doMove(dy > 0 ? 'down' : 'up');
+}, { passive: true });
+
+let mouseDownX = 0, mouseDownY = 0;
+boardWrap.addEventListener('mousedown', e => { mouseDownX = e.clientX; mouseDownY = e.clientY; });
+boardWrap.addEventListener('mouseup', e => {
+  if (!game || game.over || paused) return;
+  const dx = e.clientX - mouseDownX;
+  const dy = e.clientY - mouseDownY;
+  const minDrag = 24;
+  if (Math.abs(dx) < minDrag && Math.abs(dy) < minDrag) return;
+  if (Math.abs(dx) > Math.abs(dy)) doMove(dx > 0 ? 'right' : 'left');
+  else doMove(dy > 0 ? 'down' : 'up');
+});
+
+/* ================= Buttons ================= */
+function rippleEffect(btn, e){
+  const circle = document.createElement('span');
+  circle.className = 'ripple';
+  const rect = btn.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  circle.style.width = circle.style.height = size + 'px';
+  circle.style.left = (e.clientX - rect.left - size/2) + 'px';
+  circle.style.top = (e.clientY - rect.top - size/2) + 'px';
+  btn.appendChild(circle);
+  setTimeout(() => circle.remove(), 500);
+}
+
+document.querySelectorAll('.icon-btn, .power-btn, .action-btn, .btn').forEach(btn => {
+  btn.addEventListener('click', e => rippleEffect(btn, e));
+});
+
+document.getElementById('undo-btn').addEventListener('click', () => {
+  if (!game || game.over || paused || game.history.length === 0) return;
+  if (sessionUndosUsed >= 10){ audio.invalid(); ui.showToast('No undos left'); return; }
+  if (game.undo()){
+    sessionUndosUsed++;
+    audio.button();
+    render();
+    updatePowerUpBadges();
+  }
+});
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+  audio.button();
+  newGame();
+});
+
+document.getElementById('pause-btn').addEventListener('click', () => {
+  if (!game || game.over) return;
+  paused = true;
+  document.getElementById('overlay-pause').classList.add('show');
+  audio.button();
+});
+
+document.getElementById('resume-btn').addEventListener('click', () => {
+  paused = false;
+  document.getElementById('overlay-pause').classList.remove('show');
+  audio.button();
+});
+
+document.getElementById('settings-btn').addEventListener('click', () => {
+  document.getElementById('overlay-settings').classList.add('show');
+  audio.button();
+});
+
+document.getElementById('close-settings-btn').addEventListener('click', () => {
+  document.getElementById('overlay-settings').classList.remove('show');
+  audio.button();
+});
+
+document.getElementById('leaderboard-btn').addEventListener('click', () => {
+  openInfo('leaderboard');
+});
+
+document.getElementById('achievements-btn').addEventListener('click', () => {
+  openInfo('achievements');
+});
+
+document.getElementById('continue-btn').addEventListener('click', () => {
+  document.getElementById('overlay-win').classList.remove('show');
+  game.continuedPastWin = true;
+  audio.button();
+});
+
+document.getElementById('win-restart-btn').addEventListener('click', () => {
+  document.getElementById('overlay-win').classList.remove('show');
+  audio.button();
+  newGame();
+});
+
+document.getElementById('over-restart-btn').addEventListener('click', () => {
+  document.getElementById('overlay-over').classList.remove('show');
+  audio.button();
+  newGame();
+});
+
+document.getElementById('over-replay-btn').addEventListener('click', () => {
+  document.getElementById('overlay-over').classList.remove('show');
+  audio.button();
+  newGame(game.seed);
+});
+
+document.getElementById('close-info-btn').addEventListener('click', () => {
+  document.getElementById('overlay-info').classList.remove('show');
+  audio.button();
+});
+
+document.getElementById('daily-btn').addEventListener('click', () => {
+  renderDaily();
+  document.getElementById('overlay-daily').classList.add('show');
+  audio.button();
+});
+
+document.getElementById('close-daily-btn').addEventListener('click', () => {
+  document.getElementById('overlay-daily').classList.remove('show');
+  audio.button();
+});
+
+/* ================= Power-ups ================= */
+document.getElementById('power-destroy').addEventListener('click', () => {
+  if (!game || game.over || paused || !powerUps.canUse('destroy')) return;
+  audio.button();
+  ui.showToast('Tap a tile to destroy it');
+  const handler = e => {
+    const tileEl = e.target.closest('.tile');
+    if (!tileEl) return;
+    const id = parseInt(tileEl.dataset.id, 10);
+    for (let r=0;r<game.size;r++){
+      for (let c=0;c<game.size;c++){
+        if (game.grid[r][c] && game.grid[r][c].id === id){
+          game.grid[r][c] = null;
+          powerUps.consume('destroy');
+          stats.powerUpsUsed.destroy++;
+          SaveManager.saveStats(stats);
+          game.spawnRandomTile();
+          render();
+          updatePowerUpBadges();
+          ui.showToast('Tile destroyed!');
+          ui.el.tilesLayer.removeEventListener('click', handler);
+          runAchievementCheck();
+          return;
+        }
+      }
+    }
+  };
+  ui.el.tilesLayer.addEventListener('click', handler);
+});
+
+document.getElementById('power-shuffle').addEventListener('click', () => {
+  if (!game || game.over || paused || !powerUps.canUse('shuffle')) return;
+  audio.button();
+  const tiles = [];
+  for (let r=0;r<game.size;r++) for (let c=0;c<game.size;c++) if (game.grid[r][c]){ tiles.push({ ...game.grid[r][c] }); game.grid[r][c] = null; }
+  for (let i=tiles.length-1;i>0;i--){ const j = Math.floor(game.rng()*(i+1)); [tiles[i], tiles[j]] = [tiles[j], tiles[i]]; }
+  const empties = game.emptyCells();
+  tiles.forEach((tile, i) => { const [r,c] = empties[i]; tile.r = r; tile.c = c; tile.mergedFrom = null; game.grid[r][c] = tile; });
+  powerUps.consume('shuffle');
+  stats.powerUpsUsed.shuffle++;
+  SaveManager.saveStats(stats);
+  render();
+  updatePowerUpBadges();
+  ui.showToast('Board shuffled!');
+  runAchievementCheck();
+});
+
+document.getElementById('power-hint').addEventListener('click', () => {
+  if (!game || game.over || paused || !powerUps.canUse('hint')) return;
+  audio.button();
+  const dirs = ['left','right','up','down'];
+  const good = dirs.filter(d => game.canMove(d));
+  if (good.length === 0){ ui.showToast('No moves available'); return; }
+  // Simple heuristic: pick direction that gives most merges
+  let bestDir = good[0], bestMerges = -1;
+  for (const d of good){
+    const res = game.move(d, { commit:false });
+    if (res.mergedCount > bestMerges){ bestMerges = res.mergedCount; bestDir = d; }
+  }
+  const arrows = { left:'←', right:'→', up:'↑', down:'↓' };
+  ui.showToast(`Hint: try ${arrows[bestDir] || bestDir}`);
+  powerUps.consume('hint');
+  stats.powerUpsUsed.hint++;
+  SaveManager.saveStats(stats);
+  updatePowerUpBadges();
+  runAchievementCheck();
+});
+
+document.getElementById('power-double').addEventListener('click', () => {
+  if (!game || game.over || paused || !powerUps.canUse('double')) return;
+  audio.button();
+  powerUps.consume('double');
+  powerUps.doubleActive = true;
+  powerUps.doubleMergesLeft = 5;
+  stats.powerUpsUsed.double++;
+  SaveManager.saveStats(stats);
+  updatePowerUpBadges();
+  ui.showToast('2x Score active for 5 merges!');
+  runAchievementCheck();
+});
+
+/* ================= Settings ================= */
+function toggleSwitch(id, key, callback){
+  const el = document.getElementById(id);
+  el.classList.toggle('on', settings[key]);
+  el.addEventListener('click', () => {
+    settings[key] = !settings[key];
+    el.classList.toggle('on', settings[key]);
+    SaveManager.saveSettings(settings);
+    audio.button();
+    if (callback) callback();
+  });
+}
+
+toggleSwitch('switch-sound', 'sound');
+toggleSwitch('switch-music', 'music', () => audio.refreshMusic());
+toggleSwitch('switch-dark', 'dark', applyTheme);
+toggleSwitch('switch-contrast', 'contrast', applyTheme);
+toggleSwitch('switch-motion', 'reducedMotion', applyTheme);
+
+document.getElementById('reset-progress-btn').addEventListener('click', () => {
+  if (!confirm('Reset ALL progress, stats, and achievements? This cannot be undone.')) return;
+  localStorage.removeItem(SaveManager.K.settings);
+  localStorage.removeItem(SaveManager.K.stats);
+  localStorage.removeItem(SaveManager.K.achievements);
+  localStorage.removeItem(SaveManager.K.leaderboard);
+  localStorage.removeItem(SaveManager.K.challenges);
+  localStorage.removeItem(SaveManager.K.slots);
+  location.reload();
+});
+
+/* ================= Mode / Size / Difficulty chips ================= */
+function buildChips(containerId, items, currentKey, onSelect){
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  Object.entries(items).forEach(([key, item]) => {
+    const btn = document.createElement('button');
+    btn.className = 'mode-chip' + (key === currentKey ? ' active' : '');
+    btn.textContent = item.label;
+    btn.addEventListener('click', () => {
+      onSelect(key);
+      buildChips(containerId, items, key, onSelect);
+      audio.button();
+    });
+    container.appendChild(btn);
+  });
+}
+
+buildChips('mode-row', MODES, settings.mode, (key) => {
+  settings.mode = key;
+  SaveManager.saveSettings(settings);
+  newGame();
+});
+
+buildChips('size-row', {4:{label:'4x4'},5:{label:'5x5'},6:{label:'6x6'}}, settings.boardSize, (key) => {
+  settings.boardSize = parseInt(key, 10);
+  SaveManager.saveSettings(settings);
+  newGame();
+});
+
+buildChips('difficulty-row', DIFFICULTIES, settings.difficulty, (key) => {
+  settings.difficulty = key;
+  SaveManager.saveSettings(settings);
+  newGame();
+});
+
+/* ================= Info Modal (Achievements / Stats / Leaderboard) ================= */
+function openInfo(tab){
+  document.getElementById('overlay-info').classList.add('show');
+  const tabs = document.querySelectorAll('#info-tabs .tab-btn');
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  renderInfoBody(tab);
+}
+
+document.querySelectorAll('#info-tabs .tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderInfoBody(btn.dataset.tab);
+    audio.button();
+  });
+});
+
+function renderInfoBody(tab){
+  const body = document.getElementById('info-body');
+  body.innerHTML = '';
+  if (tab === 'achievements'){
+    achievements.defs.forEach(def => {
+      const unlocked = achievements.unlocked.has(def.id);
+      const row = document.createElement('div');
+      row.className = 'ach-item' + (unlocked ? '' : ' locked');
+      row.innerHTML = `<div class="ico">${def.icon}</div><div class="txt"><b>${def.label}</b><small>${def.desc}</small></div>`;
+      body.appendChild(row);
+    });
+  } else if (tab === 'stats'){
+    const lines = [
+      ['Best Score', stats.bestScore.toLocaleString()],
+      ['Games Played', stats.gamesPlayed],
+      ['Best Tile', stats.bestTile],
+      ['Total Merges', stats.totalMerges],
+      ['Wins', stats.winsCount],
+      ['Wins (No Undo)', stats.winsNoUndo],
+      ['Total Play Time', fmtTime(stats.totalPlayTimeMs)],
+    ];
+    lines.forEach(([k,v]) => {
+      const row = document.createElement('div');
+      row.className = 'stat-line';
+      row.innerHTML = `<span>${k}</span><b>${v}</b>`;
+      body.appendChild(row);
+    });
+  } else if (tab === 'leaderboard'){
+    const lb = SaveManager.loadLeaderboard();
+    if (lb.length === 0){ body.innerHTML = '<p class="sub">No scores yet. Play a game!</p>'; return; }
+    lb.slice(0, 20).forEach((entry, i) => {
+      const row = document.createElement('div');
+      row.className = 'lb-row';
+      row.innerHTML = `<span>#${i+1} — ${entry.mode} ${entry.size}x${entry.size}</span><b>${entry.score.toLocaleString()}</b>`;
+      body.appendChild(row);
+    });
+  }
+}
+
+function fmtTime(ms){
+  const s = Math.floor(ms/1000);
+  const m = Math.floor(s/60);
+  const h = Math.floor(m/60);
+  if (h > 0) return `${h}h ${m%60}m`;
+  if (m > 0) return `${m}m ${s%60}s`;
+  return `${s}s`;
+}
+
+/* ================= Daily Challenges ================= */
+function renderDaily(){
+  const body = document.getElementById('daily-body');
+  body.innerHTML = '';
+  const now = new Date();
+  const dailyKey = ChallengeManager.dailyKey(now);
+  const weeklyKey = ChallengeManager.weeklyKey(now);
+  const monthlyKey = ChallengeManager.monthlyKey(now);
+
+  const makeCard = (label, key, type) => {
+    const target = challenges.targetFor(key);
+    const completed = challenges.isCompleted(key);
+    const div = document.createElement('div');
+    div.className = 'settings-row';
+    div.style.borderBottom = '1px solid rgba(128,128,128,0.1)';
+    div.innerHTML = `<div style="text-align:left"><b style="font-size:13px">${label}</b><br><small style="color:var(--text-dim)">Reach ${target} tile</small></div><span style="font-weight:800;color:${completed?'var(--teal)':'var(--text-dim)'};font-size:13px">${completed ? '✅ Done' : '⏳ Open'}</span>`;
+    if (!completed){
+      const btn = document.createElement('button');
+      btn.className = 'btn btn-primary';
+      btn.style.marginTop = '8px';
+      btn.style.width = 'auto';
+      btn.style.padding = '8px 14px';
+      btn.style.fontSize = '12px';
+      btn.textContent = 'Start Challenge';
+      btn.addEventListener('click', () => {
+        settings.mode = 'classic';
+        settings.boardSize = 4;
+        settings.difficulty = 'normal';
+        SaveManager.saveSettings(settings);
+        newGame(challenges.seedFor(key));
+        document.getElementById('overlay-daily').classList.remove('show');
+        audio.button();
+      });
+      div.appendChild(document.createElement('div')).appendChild(btn);
+    }
+    return div;
+  };
+
+  body.appendChild(makeCard('Daily Challenge', dailyKey, 'daily'));
+  body.appendChild(makeCard('Weekly Challenge', weeklyKey, 'weekly'));
+  body.appendChild(makeCard('Monthly Challenge', monthlyKey, 'monthly'));
+}
+
+/* ================= Init ================= */
+applyTheme();
+audio.refreshMusic();
+newGame();
+
+/* ================= Expose for debugging ================= */
+window._game = () => game;
+</script>
+</body>
+</html>
