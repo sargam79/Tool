@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Snake Evolution - Full Edition</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #05050a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.25);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #00f0ff;
+        }
+        canvas {
+            display: block;
+        }
+        #ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 12px;
+            pointer-events: none;
+        }
+        .hud-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+        }
+        .evolution-badge {
+            background: linear-gradient(135deg, #ff0055, #ff5500);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+        }
+        #active-powerup {
+            font-size: 13px;
+            color: #ffe600;
+            text-shadow: 0 0 6px #ffe600;
+            margin-top: 4px;
+        }
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 10, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .hidden { display: none !important; }
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 34px;
+            background: linear-gradient(90deg, #00f0ff, #ff0055);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p { margin: 4px 0; font-size: 16px; color: #ccc; }
+        label { margin-top: 10px; font-size: 14px; color: #00f0ff; font-weight: bold; }
+        select {
+            margin: 6px 0 14px 0;
+            padding: 8px 16px;
+            font-size: 15px;
+            background: #121220;
+            color: #fff;
+            border: 1px solid #00f0ff;
+            border-radius: 8px;
+            outline: none;
+        }
+        button {
+            margin-top: 14px;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #05050a;
+            background: #00f0ff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00f0ff;
+            transition: transform 0.1s;
+        }
+        button:hover { transform: scale(1.05); }
+        #controls-hint { margin-top: 10px; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <canvas id="gameCanvas" width="500" height="500"></canvas>
+        
+        <div id="ui-overlay">
+            <div class="hud-top">
+                <div>
+                    <div>SCORE: <span id="score">0</span></div>
+                    <div id="timer-display" class="hidden">TIME: <span id="timer">120</span>s</div>
+                    <div id="active-powerup"></div>
+                </div>
+                <div class="evolution-badge" id="evo-badge">Lv. 1: Green Snake</div>
+            </div>
+        </div>
+
+        <!-- Start / Menu Screen -->
+        <div id="menu-screen" class="screen">
+            <h1>SNAKE EVOLUTION</h1>
+            <p>Evolve, survive, and dominate!</p>
+
+            <label for="mode-select">SELECT GAME MODE</label>
+            <select id="mode-select">
+                <option value="classic">Classic (Standard)</option>
+                <option value="time">Time Attack (2 Mins)</option>
+                <option value="maze">Maze Mode (Obstacles)</option>
+                <option value="boss">Boss Mode (Moving Enemies)</option>
+            </select>
+
+            <label for="theme-select">SELECT WORLD THEME</label>
+            <select id="theme-select">
+                <option value="space">Space Cyber</option>
+                <option value="grass">Classic Grass</option>
+                <option value="desert">Neon Desert</option>
+                <option value="snow">Frozen Tundra</option>
+                <option value="cyber">Cyber City</option>
+                <option value="jungle">Deep Jungle</option>
+            </select>
+
+            <button onclick="startGame()">START GAME</button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen hidden">
+            <h1>GAME OVER</h1>
+            <p id="final-score">Score: 0</p>
+            <p id="highest-evo">Evolution: Green Snake</p>
+            <button onclick="showMenu()">MAIN MENU</button>
+        </div>
+    </div>
+
+    <div id="controls-hint">Desktop: Arrow Keys / WASD | Mobile: Swipe Screen</div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Responsive Mobile Sizing
+        const size = Math.min(window.innerWidth - 20, 500);
+        canvas.width = size;
+        canvas.height = size;
+
+        const GRID_SIZE = 20;
+        const TILE_COUNT = canvas.width / GRID_SIZE;
+
+        // Audio System (Synthesized Web Audio API)
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(freq, duration, type = 'sine') {
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {}
+        }
+
+        // Game State
+        let snake = [], velocity = { x: 1, y: 0 }, nextVelocity = { x: 1, y: 0 };
+        let food = { x: 10, y: 10 };
+        let powerup = null, activePowerup = null;
+        let score = 0, level = 1, gameInterval = null, gameRunning = false;
+        let shieldActive = false, shakeTimer = 0;
+        let particles = [], obstacles = [], enemies = [];
+        let gameMode = 'classic', theme = 'space', timeRemaining = 120;
+
+        // Themes Config
+        const THEMES = {
+            space:  { bg: '#0b0b1a', grid: '#151530', wall: '#ff0055' },
+            grass:  { bg: '#0a1a0a', grid: '#142a14', wall: '#00ff66' },
+            desert: { bg: '#1a1205', grid: '#2a1e0a', wall: '#ffaa00' },
+            snow:   { bg: '#0a1820', grid: '#122530', wall: '#00ccff' },
+            cyber:  { bg: '#12051a', grid: '#220a30', wall: '#ff00ff' },
+            jungle: { bg: '#05140a', grid: '#0a2414', wall: '#88ff00' }
+        };
+
+        // Evolution Stages
+        const EVOLUTIONS = [
+            { level: 1,  name: 'Green Snake',    color: '#00ff66', glow: '#00ff66' },
+            { level: 5,  name: 'Fire Snake',     color: '#ff3300', glow: '#ff6600' },
+            { level: 10, name: 'Ice Snake',      color: '#00ccff', glow: '#88efff' },
+            { level: 20, name: 'Electric Snake', color: '#ffe600', glow: '#ffff88' },
+            { level: 30, name: 'Dragon Snake',   color: '#ff00ff', glow: '#ff88ff' }
+        ];
+
+        function getCurrentEvolution() {
+            let current = EVOLUTIONS[0];
+            for (let evo of EVOLUTIONS) {
+                if (level >= evo.level) current = evo;
+            }
+            return current;
+        }
+
+        function showMenu() {
+            document.getElementById('game-over-screen').classList.add('hidden');
+            document.getElementById('menu-screen').classList.remove('hidden');
+        }
+
+        function startGame() {
+            gameMode = document.getElementById('mode-select').value;
+            theme = document.getElementById('theme-select').value;
+
+            snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+            velocity = { x: 1, y: 0 }; nextVelocity = { x: 1, y: 0 };
+            score = 0; level = 1; shieldActive = false; activePowerup = null; powerup = null;
+            particles = []; obstacles = []; enemies = []; timeRemaining = 120;
+
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('game-over-screen').classList.add('hidden');
+            document.getElementById('score').innerText = '0';
+
+            const timerDisp = document.getElementById('timer-display');
+            if (gameMode === 'time') timerDisp.classList.remove('hidden');
+            else timerDisp.classList.add('hidden');
+
+            // Generate Maze Walls
+            if (gameMode === 'maze') {
+                for (let i = 5; i < 15; i++) {
+                    obstacles.push({ x: i, y: 5 }, { x: i, y: 19 });
+                }
+            }
+
+            // Spawn Moving Boss Enemies
+            if (gameMode === 'boss') {
+                enemies.push(
+                    { x: 5, y: 5, vx: 1, vy: 0 },
+                    { x: 18, y: 18, vx: -1, vy: 0 }
+                );
+            }
+
+            updateUI();
+            spawnFood();
+
+            if (gameInterval) clearInterval(gameInterval);
+            gameRunning = true;
+            gameInterval = setInterval(gameLoop, 90);
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+        }
+
+        function update() {
+            velocity = { ...nextVelocity };
+            const head = { x: snake[0].x + velocity.x, y: snake[0].y + velocity.y };
+
+            // Handle Time Attack Timer
+            if (gameMode === 'time') {
+                timeRemaining -= 0.09;
+                document.getElementById('timer').innerText = Math.max(0, Math.ceil(timeRemaining));
+                if (timeRemaining <= 0) { gameOver(); return; }
+            }
+
+            // Move Boss Enemies
+            enemies.forEach(e => {
+                e.x += e.vx;
+                if (e.x <= 1 || e.x >= TILE_COUNT - 2) e.vx *= -1;
+                if (head.x === e.x && head.y === e.y) {
+                    if (shieldActive) consumeShield();
+                    else gameOver();
+                }
+            });
+
+            // Handle Powerup Expiration
+            if (activePowerup && Date.now() > activePowerup.expiresAt) activePowerup = null;
+
+            // Wall Collisions
+            if (head.x < 0 || head.x >= TILE_COUNT || head.y < 0 || head.y >= TILE_COUNT) {
+                if (shieldActive) { consumeShield(); clamp(head); }
+                else { gameOver(); return; }
+            }
+
+            // Obstacle Collisions
+            if (obstacles.some(o => o.x === head.x && o.y === head.y)) {
+                if (shieldActive) consumeShield();
+                else { gameOver(); return; }
+            }
+
+            // Tail Collisions
+            for (let seg of snake) {
+                if (seg.x === head.x && seg.y === head.y) {
+                    if (shieldActive) consumeShield();
+                    else { gameOver(); return; }
+                }
+            }
+
+            snake.unshift(head);
+
+            // Magnet Effect
+            if (activePowerup && activePowerup.type === 'magnet') {
+                if (food.x < head.x) food.x++;
+                else if (food.x > head.x) food.x--;
+                if (food.y < head.y) food.y++;
+                else if (food.y > head.y) food.y--;
+            }
+
+            // Food Collection
+            if (head.x === food.x && head.y === food.y) {
+                let pts = 10;
+                if (activePowerup && activePowerup.type === 'double') pts *= 2;
+                score += pts;
+
+                const oldLevel = level;
+                level = 1 + Math.floor(score / 30);
+                
+                // Level Up Event
+                if (level > oldLevel) {
+                    shakeTimer = 10;
+                    playSound(600, 0.3, 'square');
+                } else {
+                    playSound(350, 0.1, 'sine');
+                }
+
+                spawnParticles(food.x, food.y, getCurrentEvolution().color);
+                document.getElementById('score').innerText = score;
+                updateUI();
+                spawnFood();
+
+                if (!powerup && Math.random() < 0.25) spawnPowerup();
+            } else {
+                snake.pop();
+            }
+
+            // Powerup Collection
+            if (powerup && head.x === powerup.x && head.y === powerup.y) {
+                activatePowerup(powerup.type);
+                playSound(800, 0.2, 'triangle');
+                powerup = null;
+            }
+
+            // Update Particles
+            particles.forEach((p, idx) => {
+                p.x += p.vx; p.y += p.vy; p.alpha -= 0.04;
+                if (p.alpha <= 0) particles.splice(idx, 1);
+            });
+        }
+
+        function clamp(pos) {
+            pos.x = Math.max(0, Math.min(TILE_COUNT - 1, pos.x));
+            pos.y = Math.max(0, Math.min(TILE_COUNT - 1, pos.y));
+        }
+
+        function consumeShield() {
+            shieldActive = false; activePowerup = null;
+            playSound(150, 0.3, 'sawtooth');
+            document.getElementById('active-powerup').innerText = 'Shield Broken!';
+        }
+
+        function activatePowerup(type) {
+            activePowerup = { type, expiresAt: Date.now() + 7000 };
+            if (type === 'shield') shieldActive = true;
+            const names = { magnet: '🧲 MAGNET', shield: '🛡️ SHIELD', double: '⚡ 2X SCORE' };
+            document.getElementById('active-powerup').innerText = names[type];
+        }
+
+        function spawnFood() {
+            food = { x: Math.floor(Math.random() * TILE_COUNT), y: Math.floor(Math.random() * TILE_COUNT) };
+        }
+
+        function spawnPowerup() {
+            const types = ['magnet', 'shield', 'double'];
+            powerup = {
+                x: Math.floor(Math.random() * TILE_COUNT),
+                y: Math.floor(Math.random() * TILE_COUNT),
+                type: types[Math.floor(Math.random() * types.length)]
+            };
+        }
+
+        function spawnParticles(x, y, color) {
+            for (let i = 0; i < 12; i++) {
+                particles.push({
+                    x: x * GRID_SIZE + GRID_SIZE / 2,
+                    y: y * GRID_SIZE + GRID_SIZE / 2,
+                    vx: (Math.random() - 0.5) * 6,
+                    vy: (Math.random() - 0.5) * 6,
+                    alpha: 1, color
+                });
+            }
+        }
+
+        function updateUI() {
+            const evo = getCurrentEvolution();
+            const badge = document.getElementById('evo-badge');
+            badge.innerText = `Lv. ${level}: ${evo.name}`;
+            badge.style.background = `linear-gradient(135deg, ${evo.color}, ${evo.glow})`;
+        }
+
+        function draw() {
+            ctx.save();
+            
+            // Screen Shake Effect
+            if (shakeTimer > 0) {
+                const rx = (Math.random() - 0.5) * 8;
+                const ry = (Math.random() - 0.5) * 8;
+                ctx.translate(rx, ry);
+                shakeTimer--;
+            }
+
+            const currentTheme = THEMES[theme];
+            ctx.fillStyle = currentTheme.bg;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Theme Grid
+            ctx.strokeStyle = currentTheme.grid; ctx.lineWidth = 1;
+            for (let i = 0; i < canvas.width; i += GRID_SIZE) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height);
+                ctx.moveTo(0, i); ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+
+            // Draw Maze Obstacles
+            ctx.fillStyle = currentTheme.wall;
+            ctx.shadowColor = currentTheme.wall; ctx.shadowBlur = 10;
+            obstacles.forEach(o => {
+                ctx.fillRect(o.x * GRID_SIZE + 1, o.y * GRID_SIZE + 1, GRID_SIZE - 2, GRID_SIZE - 2);
+            });
+
+            // Draw Boss Enemies
+            ctx.fillStyle = '#ff0000'; ctx.shadowColor = '#ff0000';
+            enemies.forEach(e => {
+                ctx.fillRect(e.x * GRID_SIZE + 1, e.y * GRID_SIZE + 1, GRID_SIZE - 2, GRID_SIZE - 2);
+            });
+
+            const evo = getCurrentEvolution();
+
+            // Draw Snake
+            for (let i = 0; i < snake.length; i++) {
+                const seg = snake[i];
+                ctx.fillStyle = i === 0 ? '#ffffff' : evo.color;
+                ctx.shadowColor = evo.glow; ctx.shadowBlur = i === 0 ? 15 : 8;
+                ctx.fillRect(seg.x * GRID_SIZE + 1, seg.y * GRID_SIZE + 1, GRID_SIZE - 2, GRID_SIZE - 2);
+            }
+
+            // Draw Food
+            ctx.fillStyle = '#ff0055'; ctx.shadowColor = '#ff0055'; ctx.shadowBlur = 12;
+            ctx.beginPath();
+            ctx.arc(food.x * GRID_SIZE + GRID_SIZE / 2, food.y * GRID_SIZE + GRID_SIZE / 2, GRID_SIZE / 2 - 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Draw Powerups
+            if (powerup) {
+                const colors = { magnet: '#00f0ff', shield: '#00ff66', double: '#ffe600' };
+                ctx.fillStyle = colors[powerup.type]; ctx.shadowColor = colors[powerup.type]; ctx.shadowBlur = 14;
+                ctx.fillRect(powerup.x * GRID_SIZE + 3, powerup.y * GRID_SIZE + 3, GRID_SIZE - 6, GRID_SIZE - 6);
+            }
+
+            // Draw Particles
+            particles.forEach(p => {
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color; ctx.shadowBlur = 0;
+                ctx.fillRect(p.x, p.y, 4, 4);
+            });
+            ctx.globalAlpha = 1.0;
+
+            ctx.restore();
+        }
+
+        function gameOver() {
+            gameRunning = false; clearInterval(gameInterval);
+            playSound(100, 0.5, 'sawtooth');
+            const evo = getCurrentEvolution();
+            document.getElementById('final-score').innerText = `Score: ${score}`;
+            document.getElementById('highest-evo').innerText = `Evolution: ${evo.name}`;
+            document.getElementById('game-over-screen').classList.remove('hidden');
+        }
+
+        // --- Controls: Keyboard & Touch Swipe ---
+        window.addEventListener('keydown', e => {
+            if (!gameRunning) return;
+            switch (e.key.toLowerCase()) {
+                case 'arrowup': case 'w': if (velocity.y === 0) nextVelocity = { x: 0, y: -1 }; break;
+                case 'arrowdown': case 's': if (velocity.y === 0) nextVelocity = { x: 0, y: 1 }; break;
+                case 'arrowleft': case 'a': if (velocity.x === 0) nextVelocity = { x: -1, y: 0 }; break;
+                case 'arrowright': case 'd': if (velocity.x === 0) nextVelocity = { x: 1, y: 0 }; break;
+            }
+        });
+
+        let touchStartX = 0, touchStartY = 0;
+        window.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        window.addEventListener('touchend', e => {
+            if (!gameRunning) return;
+            let dx = e.changedTouches[0].clientX - touchStartX;
+            let dy = e.changedTouches[0].clientY - touchStartY;
+
+            if (Math.abs(dx) > Math.abs(dy)) {
+                if (dx > 30 && velocity.x === 0) nextVelocity = { x: 1, y: 0 };
+                else if (dx < -30 && velocity.x === 0) nextVelocity = { x: -1, y: 0 };
+            } else {
+                if (dy > 30 && velocity.y === 0) nextVelocity = { x: 0, y: 1 };
+                else if (dy < -30 && velocity.y === 0) nextVelocity = { x: 0, y: -1 };
+            }
+        });
+    </script>
+</body>
+</html>
