@@ -24,7 +24,8 @@
     }
     #game-container {
       position: relative;
-      width: 800px;
+      width: 100%;
+      max-width: 800px;
       height: 600px;
       box-shadow: 0 16px 50px rgba(0, 0, 0, 0.9);
       border-radius: 20px;
@@ -34,6 +35,8 @@
     canvas {
       display: block;
       background-color: #1a2318;
+      width: 100%;
+      height: 100%;
     }
 
     /* Top HUD Bar */
@@ -189,7 +192,7 @@
 
       <div class="btn-group">
         <img id="pause-btn" class="btn icon-btn" src="pausebutton.png" alt="Pause" />
-        <img id="sound-btn" class="btn icon-btn" src="file_000000004af4820bafe51502a527e7dd.png" alt="Sound" />
+        <img id="sound-btn" class="btn icon-btn" src="soundonbutton.png" alt="Sound" />
         <img id="settings-btn" class="btn icon-btn" src="settings.png" alt="Settings" />
       </div>
     </div>
@@ -250,7 +253,7 @@
     const restartBtn = document.getElementById('restart-btn');
     const gameoverHomeBtn = document.getElementById('gameover-home-btn');
 
-    // Asset Loader
+    // Exact Asset Mapping matching your repo files
     const assets = {};
     const assetSources = {
       bg: 'background.png',
@@ -264,23 +267,35 @@
       potion: 'potion.png',
       heart: 'heart.png',
       trophy: 'trophy.png',
-      eatEffect: 'eat-effect.png',
-      sparkEffect: 'spark-effect.png'
+      eatEffect: 'eat-effect.png'
     };
 
     let loadedCount = 0;
     const totalAssets = Object.keys(assetSources).length;
+    let initialRenderDone = false;
+
+    function onAssetLoad() {
+      loadedCount++;
+      if ((loadedCount >= totalAssets || loadedCount >= 3) && !initialRenderDone) {
+        initialRenderDone = true;
+        renderInitialBackground();
+      }
+    }
 
     for (const [key, src] of Object.entries(assetSources)) {
       assets[key] = new Image();
       assets[key].src = src;
-      assets[key].onload = () => {
-        loadedCount++;
-        if (loadedCount === totalAssets) {
-          renderInitialBackground();
-        }
-      };
+      assets[key].onload = onAssetLoad;
+      assets[key].onerror = onAssetLoad; // Prevent hanging on broken images
     }
+
+    // Safety fallback timeout in case browser caches delay image events
+    setTimeout(() => {
+      if (!initialRenderDone) {
+        initialRenderDone = true;
+        renderInitialBackground();
+      }
+    }, 500);
 
     // Grid Setup
     const GRID_SIZE = 32;
@@ -469,11 +484,9 @@
             break;
           case 'gem':
             score += 35;
-            fxImg = assets.sparkEffect;
             break;
           case 'chest':
             score += 100;
-            fxImg = assets.sparkEffect;
             break;
           case 'potion':
             score = Math.max(0, score - 15);
@@ -481,7 +494,6 @@
             break;
           case 'heart':
             lives++;
-            fxImg = assets.sparkEffect;
             break;
         }
 
@@ -519,7 +531,9 @@
     }
 
     function renderInitialBackground() {
-      if (assets.bg.complete) {
+      ctx.fillStyle = '#1a2318';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      if (assets.bg && assets.bg.complete && assets.bg.naturalWidth !== 0) {
         ctx.drawImage(assets.bg, 0, 0, canvas.width, canvas.height);
       }
     }
@@ -528,9 +542,7 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // 1. Draw Background
-      if (assets.bg.complete) {
-        ctx.drawImage(assets.bg, 0, 0, canvas.width, canvas.height);
-      }
+      renderInitialBackground();
 
       const evo = getEvolution(level);
 
@@ -546,8 +558,14 @@
         if (item.type === 'potion') img = assets.potion;
         if (item.type === 'heart') img = assets.heart;
 
-        if (img.complete) {
+        if (img && img.complete && img.naturalWidth !== 0) {
           ctx.drawImage(img, ix + 2, iy + 2, GRID_SIZE - 4, GRID_SIZE - 4);
+        } else {
+          // Fallback colored circle if image fails to render
+          ctx.fillStyle = item.type === 'apple' ? '#ff4757' : '#ffa502';
+          ctx.beginPath();
+          ctx.arc(ix + GRID_SIZE / 2, iy + GRID_SIZE / 2, GRID_SIZE / 2 - 4, 0, Math.PI * 2);
+          ctx.fill();
         }
       }
 
@@ -565,17 +583,32 @@
           ctx.rotate(angle + Math.PI / 2);
           ctx.shadowColor = evo.glow;
           ctx.shadowBlur = 12;
-          ctx.drawImage(assets.snakeHead, -GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          if (assets.snakeHead && assets.snakeHead.complete && assets.snakeHead.naturalWidth !== 0) {
+            ctx.drawImage(assets.snakeHead, -GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          } else {
+            ctx.fillStyle = '#2ed573';
+            ctx.fillRect(-GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          }
         } else if (i === snake.length - 1) {
           const prev = snake[i - 1];
           let angle = Math.atan2(seg.y - prev.y, seg.x - prev.x);
           ctx.rotate(angle);
-          ctx.drawImage(assets.snakeTail, -GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          if (assets.snakeTail && assets.snakeTail.complete && assets.snakeTail.naturalWidth !== 0) {
+            ctx.drawImage(assets.snakeTail, -GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          } else {
+            ctx.fillStyle = '#26de81';
+            ctx.fillRect(-GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          }
         } else {
           const prev = snake[i - 1];
           let angle = Math.atan2(prev.y - seg.y, prev.x - seg.x);
           ctx.rotate(angle);
-          ctx.drawImage(assets.snakeBody, -GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          if (assets.snakeBody && assets.snakeBody.complete && assets.snakeBody.naturalWidth !== 0) {
+            ctx.drawImage(assets.snakeBody, -GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          } else {
+            ctx.fillStyle = '#2bcbba';
+            ctx.fillRect(-GRID_SIZE / 2, -GRID_SIZE / 2, GRID_SIZE, GRID_SIZE);
+          }
         }
 
         ctx.restore();
@@ -583,7 +616,7 @@
 
       // 4. Draw Effects
       for (const fx of effects) {
-        if (fx.img.complete) {
+        if (fx.img && fx.img.complete && fx.img.naturalWidth !== 0) {
           ctx.save();
           ctx.globalAlpha = Math.max(0, fx.alpha);
           const size = GRID_SIZE * 3.5 * fx.scale;
