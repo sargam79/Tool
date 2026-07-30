@@ -2,400 +2,582 @@
 <html class="dark" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<title>Velocity Legends | In-Race HUD</title>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" name="viewport"/>
+<title>Velocity Legends | Race</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
-        :root {
-            --velocity-orange: #ff4d00;
-            --electric-cyan: #00dbe7;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: #0e0e0e;
-            font-family: 'Hanken Grotesk', sans-serif;
-            color: #e5e2e1;
-            min-height: 100dvh;
-        }
-
-        .hud-glass {
-            background: rgba(19, 19, 19, 0.4);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(0, 219, 231, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hud-glass::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1) 0px,
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-        }
-
-        .slant-cut {
-            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-        }
-
-        .reverse-slant-cut {
-            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-        }
-
-        .speedo-arc {
-            transform: rotate(-90deg);
-            transition: stroke-dashoffset 0.3s ease;
-        }
-
-        @keyframes scanline-flicker {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.9; }
-        }
-
-        .flicker {
-            animation: scanline-flicker 0.1s infinite;
-        }
-
-        .motion-blur-edge {
-            box-shadow: inset 0 0 100px 50px rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-        }
-
-        .glitch-text {
-            text-shadow: 2px 0 var(--electric-cyan), -2px 0 var(--velocity-orange);
-        }
-
-        .skew-container {
-            transform: skewX(-15deg);
-        }
-        .skew-content {
-            transform: skewX(15deg);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hud-minimap { display: none !important; }
-            .hud-rearview { width: 280px !important; height: 50px !important; }
-            .hud-speedo { width: 200px !important; height: 200px !important; }
-            .hud-speedo-inner { width: 170px !important; height: 170px !important; }
-            .hud-speed-text { font-size: 48px !important; }
-            .hud-telemetry { display: none !important; }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .hud-rearview { width: 350px !important; }
-        }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-tertiary": "#2f3131",
-                        "surface-container-low": "#1c1b1b",
-                        "on-surface": "#e5e2e1",
-                        "on-secondary-container": "#006a70",
-                        "surface-container": "#201f1f",
-                        "tertiary-container": "#909191",
-                        "surface-container-high": "#2a2a2a",
-                        "surface-tint": "#ff4d00",
-                        "secondary": "#ddfcff",
-                        "tertiary": "#c6c6c7",
-                        "surface": "#131313",
-                        "secondary-fixed-dim": "#00dbe7",
-                        "primary-fixed": "#ffdbd0",
-                        "on-primary-fixed-variant": "#852400",
-                        "inverse-surface": "#e5e2e1",
-                        "surface-container-lowest": "#0e0e0e",
-                        "tertiary-fixed-dim": "#c6c6c7",
-                        "on-primary-container": "#521300",
-                        "inverse-primary": "#ae3200",
-                        "outline": "#ad897e",
-                        "on-primary": "#5e1700",
-                        "primary": "#ff4d00",
-                        "on-tertiary-fixed": "#1a1c1c",
-                        "inverse-on-surface": "#313030",
-                        "on-surface-variant": "#e6beb2",
-                        "error-container": "#93000a",
-                        "surface-bright": "#3a3939",
-                        "on-tertiary-fixed-variant": "#454747",
-                        "primary-container": "#ff571a",
-                        "surface-container-highest": "#353534",
-                        "on-error": "#690005",
-                        "primary-fixed-dim": "#ff4d00",
-                        "surface-dim": "#131313",
-                        "error": "#ffb4ab",
-                        "on-tertiary-container": "#282a2a",
-                        "secondary-container": "#00f1fe",
-                        "outline-variant": "#5c4037",
-                        "on-error-container": "#ffdad6",
-                        "background": "#131313",
-                        "on-primary-fixed": "#3a0b00",
-                        "on-secondary-fixed": "#002022",
-                        "tertiary-fixed": "#e2e2e2",
-                        "secondary-fixed": "#74f5ff",
-                        "on-background": "#e5e2e1",
-                        "on-secondary": "#00363a",
-                        "on-secondary-fixed-variant": "#004f54",
-                        "surface-variant": "#353534"
-                    },
-                    "spacing": {
-                        "margin-safe": "32px",
-                        "unit": "4px",
-                        "gutter": "16px",
-                        "container-padding": "24px"
-                    },
-                    "fontFamily": {
-                        "headline-md": ["Anybody"],
-                        "display-hero": ["Anybody"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "label-caps": ["Hanken Grotesk"],
-                        "headline-lg": ["Anybody"],
-                        "body-md": ["Hanken Grotesk"],
-                        "data-lg": ["JetBrains Mono"],
-                        "data-sm": ["JetBrains Mono"]
-                    },
-                    "fontSize": {
-                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                        "display-hero": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
-                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
-                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
-                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
-                        "data-lg": ["20px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                        "data-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
-                    }
-                }
-            }
-        }
-    </script>
+    :root { --velocity-orange: #ff4d00; --electric-cyan: #00dbe7; }
+    html, body {
+        margin: 0; padding: 0; overflow: hidden; background: #050508;
+        font-family: 'Hanken Grotesk', sans-serif; color: #e5e2e1;
+        height: 100dvh; width: 100vw; touch-action: none;
+    }
+    #track-canvas { position: fixed; inset: 0; z-index: 0; }
+    .hud-glass {
+        background: rgba(19, 19, 19, 0.45);
+        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 219, 231, 0.2);
+    }
+    .skew-container { transform: skewX(-15deg); }
+    .skew-content { transform: skewX(15deg); }
+    .font-display { font-family: 'Anybody', sans-serif; }
+    .font-data { font-family: 'JetBrains Mono', monospace; }
+    #countdown-overlay {
+        position: fixed; inset: 0; z-index: 100; display: flex;
+        align-items: center; justify-content: center; background: rgba(0,0,0,0.5);
+        pointer-events: none;
+    }
+    #countdown-num {
+        font-family: 'Anybody', sans-serif; font-weight: 900; font-style: italic;
+        font-size: 30vw; color: var(--velocity-orange);
+        text-shadow: 0 0 60px rgba(255,77,0,0.8);
+    }
+    #finish-overlay {
+        position: fixed; inset: 0; z-index: 200; display: none;
+        align-items: center; justify-content: center; background: rgba(10,10,10,0.9);
+    }
+    .touch-btn {
+        background: rgba(19,19,19,0.6); border: 2px solid rgba(0,219,231,0.3);
+        backdrop-filter: blur(10px); user-select: none; touch-action: none;
+    }
+    .touch-btn:active, .touch-btn.pressed { background: rgba(255,77,0,0.4); border-color: var(--velocity-orange); }
+    @media (min-width: 900px) { #touch-controls { display: none !important; } }
+</style>
 </head>
-<body class="bg-background select-none overflow-hidden">
+<body class="select-none">
 
-<!-- WORLD VIEW (BACKGROUND) -->
-<div class="fixed inset-0 z-0">
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000" style="background-image: url('assets/images/bg-race.png')">
-    </div>
-    <!-- Lighting & Atmosphere Overlays -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
-    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] opacity-40"></div>
-    <div class="absolute inset-0 motion-blur-edge pointer-events-none"></div>
-    <!-- Lens Flare -->
-    <div class="absolute top-20 right-40 w-1 h-1 bg-white rounded-full shadow-[0_0_100px_40px_rgba(255,77,0,0.6)]"></div>
-    <div class="absolute top-24 right-60 w-16 h-1 bg-primary/30 blur-md rotate-12"></div>
-</div>
-
-<!-- SHARED TOP APP BAR -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-8 py-4 bg-gradient-to-b from-surface-container-lowest/80 to-transparent">
-    <div class="flex items-center gap-4">
-        <a href="profile.html" class="w-12 h-12 rounded-full border-2 border-primary/50 overflow-hidden bg-surface-container shrink-0">
-            <img alt="Driver Avatar" class="w-full h-full object-cover" src="assets/images/avatar-player.png" loading="lazy" onerror="this.style.display='none'"/>
-        </a>
-        <div>
-            <h1 class="font-display-hero text-headline-md italic text-primary drop-shadow-[0_0_10px_rgba(255,77,0,0.5)] leading-none">VELOCITY LEGENDS</h1>
-            <p class="font-data-sm text-secondary-fixed-dim uppercase tracking-widest mt-1">PRO LEAGUE: SEASON 4</p>
-        </div>
-    </div>
-    <div class="flex flex-col items-end">
-        <span class="font-headline-md text-headline-md tracking-tight italic text-primary">1.2M CR | 500 GOLD</span>
-        <div class="flex gap-2 mt-1">
-            <span class="font-data-sm text-on-surface-variant/70 border-r border-outline-variant pr-2">PING: 24MS</span>
-            <span class="font-data-sm text-on-surface-variant/70">FPS: 120</span>
-        </div>
-    </div>
-</header>
+<canvas id="track-canvas"></canvas>
 
 <!-- TOP LEFT: RACE INFO -->
-<div class="fixed top-24 left-4 md:left-8 z-40 flex flex-col gap-2">
-    <div class="hud-glass p-4 skew-container min-w-[200px]">
+<div class="fixed top-4 left-4 z-40 flex flex-col gap-2">
+    <div class="hud-glass p-3 skew-container min-w-[160px]">
         <div class="skew-content">
-            <div class="flex justify-between items-end mb-2">
-                <span class="font-label-caps text-on-surface-variant">POSITION</span>
-                <span class="font-display-hero text-headline-lg italic text-primary leading-none">02<span class="text-headline-md text-on-surface-variant/50">/12</span></span>
-            </div>
-            <div class="h-1 w-full bg-surface-container-highest overflow-hidden">
-                <div class="h-full bg-primary w-2/3 shadow-[0_0_8px_var(--velocity-orange)]"></div>
+            <div class="flex justify-between items-end mb-1">
+                <span class="font-data text-[10px] tracking-widest text-on-surface-variant opacity-70">POSITION</span>
+                <span class="font-display text-2xl italic text-[color:var(--velocity-orange)] leading-none" id="position-el">1<span class="text-sm opacity-50">/1</span></span>
             </div>
         </div>
     </div>
-    <div class="hud-glass px-4 py-2 skew-container">
-        <div class="skew-content flex justify-between items-center">
-            <span class="font-label-caps text-on-surface-variant">LAP</span>
-            <span class="font-data-lg text-secondary-fixed-dim italic">03/05</span>
+    <div class="hud-glass px-3 py-2 skew-container">
+        <div class="skew-content flex justify-between items-center gap-4">
+            <span class="font-data text-[10px] tracking-widest text-on-surface-variant opacity-70">LAP</span>
+            <span class="font-data text-lg italic text-[color:var(--electric-cyan)]" id="lap-el">1/3</span>
         </div>
     </div>
-    <!-- Time Blocks -->
-    <div class="mt-4 flex flex-col gap-1">
-        <div class="flex items-center gap-2">
-            <div class="w-1 h-8 bg-electric-cyan shadow-[0_0_8px_var(--electric-cyan)]"></div>
-            <div class="hud-glass px-4 py-1 flex-1">
-                <span class="font-data-sm text-on-surface-variant block">CURRENT</span>
-                <span class="font-data-lg text-on-surface italic">01:14.432</span>
+    <div class="hud-glass px-3 py-2">
+        <span class="font-data text-[10px] block text-on-surface-variant opacity-70">TIME</span>
+        <span class="font-data text-lg italic" id="time-el">00:00.000</span>
+    </div>
+</div>
+
+<!-- EXIT -->
+<button onclick="window.location.href='index.html'" class="fixed top-4 right-4 z-40 hud-glass px-4 py-2 text-[color:var(--velocity-orange)] border border-[color:var(--velocity-orange)]/30">
+    <span class="font-data text-[11px] tracking-widest">EXIT</span>
+</button>
+
+<!-- SPEEDOMETER -->
+<div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+    <div class="hud-glass w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-white/10 flex flex-col items-center justify-center">
+        <span class="font-data text-[10px] tracking-[0.3em] text-on-surface-variant opacity-70">KM/H</span>
+        <h2 class="font-display text-5xl md:text-7xl italic leading-none" id="speed-el">0</h2>
+        <span class="font-display text-sm italic text-[color:var(--velocity-orange)] mt-2" id="gear-el">GEAR 1</span>
+    </div>
+</div>
+
+<!-- MOBILE TOUCH CONTROLS -->
+<div id="touch-controls" class="fixed bottom-0 inset-x-0 z-40 flex justify-between items-end p-4 pb-8">
+    <div class="flex gap-3">
+        <button id="btn-left" class="touch-btn w-16 h-16 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined text-3xl">chevron_left</span>
+        </button>
+        <button id="btn-right" class="touch-btn w-16 h-16 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined text-3xl">chevron_right</span>
+        </button>
+    </div>
+    <div class="flex gap-3">
+        <button id="btn-brake" class="touch-btn w-16 h-16 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined text-3xl">arrow_downward</span>
+        </button>
+        <button id="btn-gas" class="touch-btn w-20 h-20 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined text-4xl text-[color:var(--velocity-orange)]">arrow_upward</span>
+        </button>
+    </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div id="countdown-overlay"><div id="countdown-num">3</div></div>
+
+<!-- FINISH SCREEN -->
+<div id="finish-overlay">
+    <div class="hud-glass p-8 md:p-12 text-center max-w-md mx-4">
+        <p class="font-data text-sm tracking-[0.3em] text-[color:var(--electric-cyan)] mb-2">RACE COMPLETE</p>
+        <h2 class="font-display text-4xl md:text-5xl italic text-[color:var(--velocity-orange)] mb-6">FINISHED!</h2>
+        <div class="flex justify-around mb-8">
+            <div>
+                <span class="font-data text-[10px] block opacity-60">TOTAL TIME</span>
+                <span class="font-data text-2xl" id="final-time">00:00.000</span>
+            </div>
+            <div>
+                <span class="font-data text-[10px] block opacity-60">BEST LAP</span>
+                <span class="font-data text-2xl" id="best-lap">00:00.000</span>
             </div>
         </div>
-        <div class="flex items-center gap-2 opacity-60">
-            <div class="w-1 h-8 bg-on-surface-variant"></div>
-            <div class="hud-glass px-4 py-1 flex-1">
-                <span class="font-data-sm text-on-surface-variant block">BEST</span>
-                <span class="font-data-lg text-on-surface italic">01:12.890</span>
-            </div>
+        <div class="flex gap-3 justify-center">
+            <button onclick="location.reload()" class="bg-[color:var(--velocity-orange)] px-6 py-3 font-display italic text-white">RACE AGAIN</button>
+            <button onclick="window.location.href='index.html'" class="border border-white/20 px-6 py-3 font-display italic">EXIT</button>
         </div>
     </div>
 </div>
 
-<!-- BOTTOM LEFT: MINIMAP -->
-<div class="hud-minimap fixed bottom-8 left-4 md:left-8 z-40">
-    <div class="hud-glass w-64 h-64 rounded-none border-l-4 border-primary">
-        <!-- Map Texture -->
-        <div class="absolute inset-2 bg-surface-container-lowest/80 overflow-hidden">
-            <img alt="Gameplay Minimap" class="w-full h-full object-cover opacity-80" src="assets/images/bg-minimap.png" loading="lazy" onerror="this.style.display='none'"/>
-            <!-- Player Indicator -->
-            <div class="absolute top-[80%] left-[20%] -translate-x-1/2 -translate-y-1/2">
-                <div class="w-4 h-4 bg-primary rotate-45 shadow-[0_0_15px_var(--velocity-orange)] flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[12px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">navigation</span>
-                </div>
-            </div>
-        </div>
-        <!-- Map Details -->
-        <div class="absolute bottom-2 left-2 bg-black/60 px-2 py-0.5">
-            <span class="font-data-sm text-primary tracking-tighter uppercase">PACIFIC COAST • SECTOR 2</span>
-        </div>
-    </div>
-</div>
-
-<!-- BOTTOM RIGHT: SPEEDOMETER & TELEMETRY -->
-<div class="fixed bottom-8 right-4 md:right-8 z-40 flex flex-col items-end gap-4">
-    <!-- Action Notification -->
-    <div class="flex items-center gap-4 animate-pulse">
-        <span class="font-label-caps text-electric-cyan italic tracking-[0.3em]">DRFT X1.5</span>
-        <div class="hud-glass px-4 py-2 skew-container bg-primary/10 border-primary shadow-[0_0_20px_rgba(255,77,0,0.2)]">
-            <span class="skew-content font-display-hero text-headline-md italic text-primary">+450 PTS</span>
-        </div>
-    </div>
-    <div class="relative flex items-end gap-4">
-        <!-- Telemetry Stack (hidden on mobile) -->
-        <div class="hud-telemetry flex flex-col gap-2 mb-4">
-            <div class="hud-glass px-3 py-1 slant-cut text-right min-w-[80px]">
-                <span class="font-data-sm text-on-surface-variant block opacity-50 uppercase">Tire Temp</span>
-                <span class="font-data-sm text-on-surface">82°C</span>
-            </div>
-            <div class="hud-glass px-3 py-1 slant-cut text-right min-w-[80px] border-r-4 border-electric-cyan">
-                <span class="font-data-sm text-on-surface-variant block opacity-50 uppercase">G-Force</span>
-                <span class="font-data-sm text-on-surface">1.4G</span>
-            </div>
-        </div>
-        <!-- Main Dial -->
-        <div class="hud-speedo relative w-72 h-72 flex items-center justify-center">
-            <!-- Outer Arc (NOS) -->
-            <svg class="absolute inset-0 w-full h-full -rotate-180" viewBox="0 0 100 100">
-                <path d="M 15 50 A 35 35 0 0 1 85 50" fill="none" stroke="rgba(0, 219, 231, 0.2)" stroke-linecap="square" stroke-width="4"></path>
-                <path class="shadow-[0_0_10px_rgba(0,219,231,1)]" d="M 15 50 A 35 35 0 0 1 70 50" fill="none" stroke="var(--electric-cyan)" stroke-linecap="square" stroke-width="4"></path>
-            </svg>
-            <div class="hud-speedo-inner hud-glass w-64 h-64 rounded-full border-4 border-surface-container-highest flex flex-col items-center justify-center shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
-                <span class="font-label-caps text-on-surface-variant tracking-[0.4em] mb-[-4px]">KM/H</span>
-                <h2 class="hud-speed-text font-display-hero text-[84px] italic text-on-surface leading-none flicker" id="speed-counter">184</h2>
-                <div class="flex items-center gap-2 mt-2">
-                    <span class="font-headline-md text-primary italic">GEAR 6</span>
-                </div>
-                <!-- Segmented Rev Bar -->
-                <div class="flex gap-1 mt-6 h-3 px-12 w-full">
-                    <div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
-                    <div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
-                    <div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
-                    <div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
-                    <div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
-                    <div class="flex-1 bg-electric-cyan shadow-[0_0_5px_var(--electric-cyan)]"></div>
-                    <div class="flex-1 bg-primary shadow-[0_0_5px_var(--velocity-orange)]"></div>
-                    <div class="flex-1 bg-surface-container-highest"></div>
-                    <div class="flex-1 bg-surface-container-highest"></div>
-                    <div class="flex-1 bg-surface-container-highest"></div>
-                </div>
-            </div>
-            <!-- NOS Indicator -->
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-surface p-1 border border-electric-cyan">
-                <div class="flex items-center gap-1">
-                    <span class="material-symbols-outlined text-electric-cyan text-[14px]">bolt</span>
-                    <span class="font-data-sm text-electric-cyan">NITROUS READY</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- REAR VIEW MIRROR (TOP CENTER) -->
-<div class="fixed top-8 left-1/2 -translate-x-1/2 z-40">
-    <div class="hud-rearview hud-glass w-[450px] h-20 rounded-b-2xl border-b-2 border-primary/40 shadow-2xl">
-        <div class="w-full h-full overflow-hidden opacity-90">
-            <img alt="Rearview Mirror" class="w-full h-full object-cover" src="assets/images/bg-rearview.png" loading="lazy" onerror="this.style.display='none'"/>
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/20 pointer-events-none"></div>
-        </div>
-    </div>
-</div>
-
-<!-- EXIT BUTTON (Top Right) -->
-<div class="fixed top-24 right-4 md:right-8 z-40">
-    <button class="hud-glass px-4 py-2 text-primary border border-primary/30 hover:bg-primary/20 transition-all" onclick="window.location.href='index.html'">
-        <span class="font-label-caps">EXIT RACE</span>
-    </button>
-</div>
-
-<!-- INTERACTIVE SCRIPTS -->
 <script>
-    // Simulate Speed Changes
-    const speedEl = document.getElementById('speed-counter');
-    let speed = 184;
-
-    const speedInterval = setInterval(() => {
-        const delta = Math.floor(Math.random() * 5) - 2;
-        speed = Math.max(170, Math.min(220, speed + delta));
-        if (speedEl) speedEl.textContent = speed;
-    }, 100);
-
-    // Simulate HUD Flicker
-    function randomFlicker() {
-        const hudElements = document.querySelectorAll('.hud-glass');
-        const target = hudElements[Math.floor(Math.random() * hudElements.length)];
-        if (target) {
-            target.style.opacity = '0.7';
-            setTimeout(() => {
-                target.style.opacity = '1';
-            }, 50);
-        }
-        setTimeout(randomFlicker, Math.random() * 3000 + 2000);
+(function() {
+    const canvas = document.getElementById('track-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H;
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
     }
-    randomFlicker();
+    resize();
+    window.addEventListener('resize', resize);
 
-    // Screen Interaction
+    // ---- SEEDED RANDOM (stable scenery, no flicker) ----
+    function mulberry32(seed) {
+        return function() {
+            seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+            let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+            t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+    }
+    const rand = mulberry32(1337);
+
+    // ---- WINDING CITY CIRCUIT (Catmull-Rom spline through control points) ----
+    const controlPts = [
+        { x: 900, y: -300 },
+        { x: 500, y: -680 },
+        { x: 50, y: -560 },
+        { x: -250, y: -780 },
+        { x: -750, y: -700 },
+        { x: -1000, y: -350 },
+        { x: -750, y: -50 },
+        { x: -950, y: 300 },
+        { x: -750, y: 650 },
+        { x: -300, y: 700 },
+        { x: -150, y: 400 },
+        { x: 150, y: 380 },
+        { x: 300, y: 650 },
+        { x: 750, y: 600 },
+        { x: 950, y: 250 },
+        { x: 700, y: 0 },
+    ];
+    const roadWidth = 210;
+
+    function catmullRom(p0, p1, p2, p3, t) {
+        const t2 = t * t, t3 = t2 * t;
+        return {
+            x: 0.5 * ((2 * p1.x) + (-p0.x + p2.x) * t + (2*p0.x - 5*p1.x + 4*p2.x - p3.x) * t2 + (-p0.x + 3*p1.x - 3*p2.x + p3.x) * t3),
+            y: 0.5 * ((2 * p1.y) + (-p0.y + p2.y) * t + (2*p0.y - 5*p1.y + 4*p2.y - p3.y) * t2 + (-p0.y + 3*p1.y - 3*p2.y + p3.y) * t3)
+        };
+    }
+
+    const centerline = [];
+    const SEG = 20;
+    const n = controlPts.length;
+    for (let i = 0; i < n; i++) {
+        const p0 = controlPts[(i - 1 + n) % n];
+        const p1 = controlPts[i];
+        const p2 = controlPts[(i + 1) % n];
+        const p3 = controlPts[(i + 2) % n];
+        for (let s = 0; s < SEG; s++) {
+            centerline.push(catmullRom(p0, p1, p2, p3, s / SEG));
+        }
+    }
+    const NUM_PTS = centerline.length;
+    const startPoint = centerline[0];
+    const checkpointIndex = Math.floor(NUM_PTS / 2);
+
+    function distToTrack(px, py) {
+        let best = Infinity, bestPt = null, bestI = 0;
+        for (let i = 0; i < centerline.length; i++) {
+            const p = centerline[i];
+            const d = (p.x - px) ** 2 + (p.y - py) ** 2;
+            if (d < best) { best = d; bestPt = p; bestI = i; }
+        }
+        return { dist: Math.sqrt(best), point: bestPt, index: bestI };
+    }
+
+    // ---- SCENERY: buildings + streetlights along the route ----
+    const buildings = [];
+    const lights = [];
+    const buildingColors = ['#14161c', '#191b22', '#111319', '#1c1e26'];
+    for (let i = 0; i < NUM_PTS; i += 5) {
+        const p = centerline[i];
+        const pNext = centerline[(i + 1) % NUM_PTS];
+        const dx = pNext.x - p.x, dy = pNext.y - p.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const nx = -dy / len, ny = dx / len; // perpendicular
+
+        [-1, 1].forEach(side => {
+            if (rand() > 0.35) {
+                const offset = roadWidth / 2 + 60 + rand() * 60;
+                const bw = 50 + rand() * 70;
+                const bh = 50 + rand() * 70;
+                const height = 80 + rand() * 260;
+                buildings.push({
+                    x: p.x + nx * offset * side,
+                    y: p.y + ny * offset * side,
+                    w: bw, h: bh, height,
+                    color: buildingColors[Math.floor(rand() * buildingColors.length)],
+                    windowSeed: rand()
+                });
+            }
+        });
+
+        if (i % 10 === 0) {
+            const offset = roadWidth / 2 + 18;
+            [-1, 1].forEach(side => {
+                lights.push({
+                    x: p.x + nx * offset * side,
+                    y: p.y + ny * offset * side,
+                    color: side > 0 ? '#00dbe7' : '#ff4d00'
+                });
+            });
+        }
+    }
+
+    // ---- CAR STATE ----
+    const car = {
+        x: startPoint.x, y: startPoint.y,
+        angle: 0, speed: 0,
+        maxSpeed: 300, accel: 170, brakeForce: 260, drag: 65,
+        turnRate: 3.0,
+        lap: 1, totalLaps: 3,
+        passedCheckpoint: false, finished: false
+    };
+    {
+        const p0 = centerline[0], p1 = centerline[1];
+        car.angle = Math.atan2(p1.y - p0.y, p1.x - p0.x);
+    }
+
+    const input = { up: false, down: false, left: false, right: false };
     window.addEventListener('keydown', (e) => {
-        if(e.code === 'Space') { 
-            document.body.classList.add('transition-transform', 'duration-75', 'scale-[1.005]');
-            setTimeout(() => {
-                document.body.classList.remove('scale-[1.005]');
-            }, 100);
-        }
-        if(e.code === 'Escape') {
-            window.location.href = 'index.html';
-        }
+        if (['ArrowUp','KeyW'].includes(e.code)) input.up = true;
+        if (['ArrowDown','KeyS'].includes(e.code)) input.down = true;
+        if (['ArrowLeft','KeyA'].includes(e.code)) input.left = true;
+        if (['ArrowRight','KeyD'].includes(e.code)) input.right = true;
+        if (e.code === 'Escape') window.location.href = 'index.html';
     });
+    window.addEventListener('keyup', (e) => {
+        if (['ArrowUp','KeyW'].includes(e.code)) input.up = false;
+        if (['ArrowDown','KeyS'].includes(e.code)) input.down = false;
+        if (['ArrowLeft','KeyA'].includes(e.code)) input.left = false;
+        if (['ArrowRight','KeyD'].includes(e.code)) input.right = false;
+    });
+    function bindTouch(id, key) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const on = (e) => { e.preventDefault(); input[key] = true; el.classList.add('pressed'); };
+        const off = (e) => { e.preventDefault(); input[key] = false; el.classList.remove('pressed'); };
+        el.addEventListener('touchstart', on, { passive: false });
+        el.addEventListener('touchend', off, { passive: false });
+        el.addEventListener('touchcancel', off, { passive: false });
+        el.addEventListener('mousedown', on);
+        el.addEventListener('mouseup', off);
+        el.addEventListener('mouseleave', off);
+    }
+    bindTouch('btn-gas', 'up');
+    bindTouch('btn-brake', 'down');
+    bindTouch('btn-left', 'left');
+    bindTouch('btn-right', 'right');
 
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => {
-        clearInterval(speedInterval);
-    });
+    // ---- RACE STATE ----
+    let raceStarted = false, raceFinished = false;
+    let startTime = 0, lapStartTime = 0, bestLapTime = Infinity, elapsed = 0;
+
+    const countdownEl = document.getElementById('countdown-overlay');
+    const countdownNum = document.getElementById('countdown-num');
+    let count = 3;
+    function runCountdown() {
+        countdownNum.textContent = count > 0 ? count : 'GO!';
+        count--;
+        if (count < -1) {
+            countdownEl.style.display = 'none';
+            raceStarted = true;
+            startTime = performance.now();
+            lapStartTime = startTime;
+        } else {
+            setTimeout(runCountdown, 800);
+        }
+    }
+    setTimeout(runCountdown, 400);
+
+    function update(dt) {
+        if (!raceStarted || raceFinished) return;
+        if (input.up) car.speed += car.accel * dt;
+        else if (input.down) car.speed -= car.brakeForce * dt;
+        else {
+            if (car.speed > 0) car.speed = Math.max(0, car.speed - car.drag * dt);
+            else if (car.speed < 0) car.speed = Math.min(0, car.speed + car.drag * dt);
+        }
+        car.speed = Math.max(-car.maxSpeed * 0.4, Math.min(car.maxSpeed, car.speed));
+
+        const steerFactor = Math.min(1, Math.abs(car.speed) / 60);
+        if (input.left) car.angle -= car.turnRate * dt * steerFactor * (car.speed < 0 ? -1 : 1);
+        if (input.right) car.angle += car.turnRate * dt * steerFactor * (car.speed < 0 ? -1 : 1);
+
+        const worldSpeed = car.speed * 0.9;
+        car.x += Math.cos(car.angle) * worldSpeed * dt;
+        car.y += Math.sin(car.angle) * worldSpeed * dt;
+
+        const info = distToTrack(car.x, car.y);
+        if (info.dist > roadWidth / 2) {
+            car.speed *= 0.9;
+            const pull = 0.05;
+            car.x += (info.point.x - car.x) * pull;
+            car.y += (info.point.y - car.y) * pull;
+        }
+
+        const nearIndex = info.index;
+        if (!car.passedCheckpoint && Math.abs(nearIndex - checkpointIndex) < 8) {
+            car.passedCheckpoint = true;
+        }
+        if (car.passedCheckpoint && (nearIndex < 8 || nearIndex > NUM_PTS - 8)) {
+            car.passedCheckpoint = false;
+            const now = performance.now();
+            const lapTime = now - lapStartTime;
+            if (lapTime > 3000) {
+                if (lapTime < bestLapTime) bestLapTime = lapTime;
+                lapStartTime = now;
+                if (car.lap >= car.totalLaps) finishRace();
+                else car.lap++;
+            }
+        }
+    }
+
+    function finishRace() {
+        raceFinished = true;
+        const totalMs = performance.now() - startTime;
+        document.getElementById('final-time').textContent = formatTime(totalMs);
+        document.getElementById('best-lap').textContent = formatTime(bestLapTime === Infinity ? totalMs : bestLapTime);
+        document.getElementById('finish-overlay').style.display = 'flex';
+    }
+
+    function formatTime(ms) {
+        const m = Math.floor(ms / 60000);
+        const s = Math.floor((ms % 60000) / 1000);
+        const msPart = Math.floor(ms % 1000);
+        return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${String(msPart).padStart(3,'0')}`;
+    }
+
+    // ---- RENDER ----
+    function drawSky() {
+        const g = ctx.createLinearGradient(0, 0, 0, H);
+        g.addColorStop(0, '#0a0a14');
+        g.addColorStop(0.6, '#0e0d12');
+        g.addColorStop(1, '#050508');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+        // ambient glow
+        const glow = ctx.createRadialGradient(W*0.7, H*0.2, 0, W*0.7, H*0.2, W*0.6);
+        glow.addColorStop(0, 'rgba(255,77,0,0.08)');
+        glow.addColorStop(1, 'rgba(255,77,0,0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, W, H);
+    }
+
+    function drawWorld() {
+        ctx.save();
+        ctx.translate(W/2, H/2);
+        ctx.rotate(-car.angle - Math.PI/2);
+        ctx.translate(-car.x, -car.y);
+
+        // ground
+        ctx.fillStyle = '#08090c';
+        ctx.fillRect(car.x - 3500, car.y - 3500, 7000, 7000);
+
+        // buildings (draw as simple lit blocks, farthest-first not critical at this scale)
+        buildings.forEach(b => {
+            ctx.fillStyle = b.color;
+            ctx.fillRect(b.x - b.w/2, b.y - b.h/2, b.w, b.h);
+            // rooftop glow edge
+            ctx.strokeStyle = 'rgba(0,219,231,0.15)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(b.x - b.w/2, b.y - b.h/2, b.w, b.h);
+            // lit windows
+            const rows = 3, cols = 3;
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const lit = ((b.windowSeed * 997 + r * 13 + c * 7) % 1) > 0.5;
+                    ctx.fillStyle = lit ? 'rgba(255,200,120,0.7)' : 'rgba(255,255,255,0.03)';
+                    const wx = b.x - b.w/2 + 6 + c * (b.w - 12) / cols;
+                    const wy = b.y - b.h/2 + 6 + r * (b.h - 12) / rows;
+                    ctx.fillRect(wx, wy, (b.w-12)/cols - 4, (b.h-12)/rows - 4);
+                }
+            }
+        });
+
+        // curb (red/white rumble strips) - wider stroke behind road
+        ctx.beginPath();
+        centerline.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.lineWidth = roadWidth + 22;
+        ctx.setLineDash([26, 26]);
+        ctx.lineDashOffset = 0;
+        ctx.strokeStyle = '#e8e8e8';
+        ctx.stroke();
+        ctx.lineDashOffset = 26;
+        ctx.strokeStyle = '#c81e1e';
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // road surface
+        ctx.strokeStyle = '#26262b';
+        ctx.lineWidth = roadWidth;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // subtle asphalt grain edge
+        ctx.strokeStyle = 'rgba(0,0,0,0.35)';
+        ctx.lineWidth = roadWidth + 2;
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.stroke();
+        ctx.globalCompositeOperation = 'source-over';
+
+        // center dashed lane line
+        ctx.strokeStyle = 'rgba(255,220,150,0.55)';
+        ctx.lineWidth = 4;
+        ctx.setLineDash([22, 22]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // streetlights (poles + glow)
+        lights.forEach(l => {
+            ctx.beginPath();
+            ctx.arc(l.x, l.y, 26, 0, Math.PI * 2);
+            const g = ctx.createRadialGradient(l.x, l.y, 0, l.x, l.y, 26);
+            g.addColorStop(0, l.color + 'aa');
+            g.addColorStop(1, l.color + '00');
+            ctx.fillStyle = g;
+            ctx.fill();
+            ctx.fillStyle = '#333';
+            ctx.fillRect(l.x - 2, l.y - 2, 4, 4);
+        });
+
+        // start/finish line
+        const sp = centerline[0], sp1 = centerline[1];
+        const perpAngle = Math.atan2(sp1.y - sp.y, sp1.x - sp.x) + Math.PI/2;
+        ctx.save();
+        ctx.translate(sp.x, sp.y);
+        ctx.rotate(perpAngle);
+        for (let k = -roadWidth/2; k < roadWidth/2; k += 20) {
+            ctx.fillStyle = (Math.floor((k + roadWidth/2) / 20) % 2 === 0) ? '#fff' : '#111';
+            ctx.fillRect(k, -8, 20, 16);
+        }
+        ctx.restore();
+
+        // checkpoint marker
+        const cp = centerline[checkpointIndex];
+        ctx.save();
+        ctx.translate(cp.x, cp.y);
+        ctx.beginPath(); ctx.arc(0, 0, 16, 0, Math.PI*2);
+        ctx.strokeStyle = 'rgba(0,219,231,0.8)'; ctx.lineWidth = 3; ctx.stroke();
+        ctx.restore();
+
+        ctx.restore();
+    }
+
+    function drawCar() {
+        ctx.save();
+        ctx.translate(W/2, H/2);
+        const carW = 26, carL = 46;
+        // shadow
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        ctx.beginPath();
+        ctx.ellipse(0, 6, carW/1.6, carL/2.2, 0, 0, Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle = '#ff4d00';
+        ctx.beginPath();
+        ctx.moveTo(0, -carL/2);
+        ctx.lineTo(carW/2, carL/2 - 6);
+        ctx.lineTo(carW/2 - 4, carL/2);
+        ctx.lineTo(-carW/2 + 4, carL/2);
+        ctx.lineTo(-carW/2, carL/2 - 6);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = 'rgba(0,219,231,0.85)';
+        ctx.fillRect(-carW/2 + 4, -carL/2 + 10, carW - 8, 12);
+        // headlight glow cone
+        const hl = ctx.createRadialGradient(0, -carL/2, 0, 0, -carL/2 - 40, 60);
+        hl.addColorStop(0, 'rgba(255,255,220,0.25)');
+        hl.addColorStop(1, 'rgba(255,255,220,0)');
+        ctx.fillStyle = hl;
+        ctx.beginPath();
+        ctx.moveTo(-carW/2, -carL/2);
+        ctx.lineTo(carW/2, -carL/2);
+        ctx.lineTo(carW*1.8, -carL/2 - 80);
+        ctx.lineTo(-carW*1.8, -carL/2 - 80);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function drawMinimap() {
+        const size = 130, margin = 16;
+        const ox = margin, oy = H - size - margin;
+        ctx.save();
+        ctx.fillStyle = 'rgba(19,19,19,0.6)';
+        ctx.fillRect(ox, oy, size, size);
+        ctx.strokeStyle = 'rgba(255,77,0,0.6)';
+        ctx.strokeRect(ox, oy, size, size);
+
+        const scale = size / 2600;
+        const cx = ox + size/2, cy = oy + size/2;
+
+        ctx.strokeStyle = 'rgba(0,219,231,0.5)';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        centerline.forEach((p, i) => {
+            const mx = cx + p.x * scale, my = cy + p.y * scale;
+            i === 0 ? ctx.moveTo(mx, my) : ctx.lineTo(mx, my);
+        });
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.fillStyle = '#ff4d00';
+        ctx.beginPath();
+        ctx.arc(cx + car.x * scale, cy + car.y * scale, 5, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function updateHUD() {
+        document.getElementById('speed-el').textContent = Math.abs(Math.round(car.speed));
+        const gear = Math.min(6, Math.max(1, Math.floor(Math.abs(car.speed) / 55) + 1));
+        document.getElementById('gear-el').textContent = 'GEAR ' + gear;
+        document.getElementById('lap-el').textContent = Math.min(car.lap, car.totalLaps) + '/' + car.totalLaps;
+        if (raceStarted && !raceFinished) elapsed = performance.now() - startTime;
+        document.getElementById('time-el').textContent = formatTime(elapsed);
+    }
+
+    let lastTime = performance.now();
+    function loop(now) {
+        const dt = Math.min(0.05, (now - lastTime) / 1000);
+        lastTime = now;
+        update(dt);
+        ctx.clearRect(0, 0, W, H);
+        drawSky();
+        drawWorld();
+        drawCar();
+        drawMinimap();
+        updateHUD();
+        requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+})();
 </script>
 </body>
 </html>
