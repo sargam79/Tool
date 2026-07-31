@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Snake Adventure - Premium HTML5 Game</title>
     <style>
         * {
@@ -18,8 +18,8 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #1a1a24;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121218;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,25 +29,27 @@
             position: relative;
             width: 100vw;
             height: 100vh;
-            max-width: 1200px;
-            max-height: 800px;
             background: #2b3a1a;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         canvas {
             display: block;
             width: 100%;
             height: 100%;
+            object-fit: contain;
         }
 
-        /* HUD Overlay */
+        /* Top HUD */
         #hud {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
+            top: env(safe-area-inset-top, 10px);
+            left: 10px;
+            right: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,87 +58,118 @@
         }
 
         .hud-card {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.65);
             border: 2px solid #e2b13c;
-            border-radius: 20px;
-            padding: 8px 16px;
+            border-radius: 16px;
+            padding: 6px 12px;
             color: #fff;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            text-shadow: 1px 1px 2px #000;
+            backdrop-filter: blur(4px);
         }
 
         .hud-left {
             display: flex;
-            gap: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .hud-right {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             pointer-events: auto;
         }
 
         .btn-icon {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            transition: transform 0.1s ease, filter 0.2s;
+            transition: transform 0.1s ease;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
         }
 
-        .btn-icon:hover {
-            transform: scale(1.1);
-        }
-
         .btn-icon:active {
-            transform: scale(0.95);
+            transform: scale(0.9);
         }
 
-        /* Active Powerups Indicator */
+        /* Powerup Status Bar */
         #powerup-bar {
             position: absolute;
-            bottom: 20px;
+            top: 65px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 15px;
+            gap: 10px;
             z-index: 10;
             pointer-events: none;
         }
 
         .powerup-indicator {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             border: 2px solid #58cc02;
             border-radius: 12px;
-            padding: 6px 12px;
+            padding: 4px 10px;
             color: white;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        /* UI Overlay Screens */
+        /* Mobile Virtual D-Pad Overlay */
+        #dpad {
+            position: absolute;
+            bottom: max(20px, env(safe-area-inset-bottom, 20px));
+            right: 20px;
+            width: 140px;
+            height: 140px;
+            z-index: 15;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 4px;
+            opacity: 0.75;
+        }
+
+        .dpad-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            backdrop-filter: blur(2px);
+        }
+
+        .dpad-btn:active {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        #dpad-up { grid-column: 2; grid-row: 1; }
+        #dpad-left { grid-column: 1; grid-row: 2; }
+        #dpad-right { grid-column: 3; grid-row: 2; }
+        #dpad-down { grid-column: 2; grid-row: 3; }
+
+        /* UI Overlays */
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 20;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
         }
 
         .overlay.active {
@@ -144,32 +177,20 @@
             pointer-events: auto;
         }
 
-        .panel {
-            position: relative;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        /* Game Over & Victory Custom Panels */
         .panel-dialog {
             background: #232b1e;
-            border: 4px solid #a47035;
+            border: 3px solid #a47035;
             border-radius: 20px;
-            width: 340px;
-            padding: 25px 20px;
+            width: 90%;
+            max-width: 320px;
+            padding: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.8);
             text-align: center;
             color: #fff;
         }
 
         .panel-title {
-            font-size: 32px;
+            font-size: 26px;
             color: #ffcc00;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px #000;
@@ -179,11 +200,11 @@
             background: rgba(0,0,0,0.4);
             border-radius: 12px;
             padding: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            font-size: 18px;
+            gap: 6px;
+            font-size: 16px;
         }
 
         .action-btns {
@@ -192,14 +213,13 @@
             gap: 15px;
         }
 
-        /* Setting Options */
         .setting-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-bottom: 15px;
-            font-size: 18px;
+            margin-bottom: 12px;
+            font-size: 16px;
             font-weight: bold;
         }
 
@@ -213,7 +233,7 @@
             cursor: pointer;
         }
 
-        /* Shake Effect */
+        /* Screen Shake */
         .shake {
             animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
         }
@@ -231,51 +251,59 @@
 <div id="game-container">
     <canvas id="gameCanvas"></canvas>
 
-    <!-- Top HUD -->
+    <!-- HUD -->
     <div id="hud">
         <div class="hud-left">
-            <div class="hud-card">🍎 Score: <span id="hud-score">0</span></div>
-            <div class="hud-card">👑 Best: <span id="hud-best">0</span></div>
-            <div class="hud-card">🪙 Coins: <span id="hud-coins">0</span></div>
+            <div class="hud-card">🍎 <span id="hud-score">0</span></div>
+            <div class="hud-card">👑 <span id="hud-best">0</span></div>
+            <div class="hud-card">🪙 <span id="hud-coins">0</span></div>
         </div>
         <div class="hud-right">
-            <img src="pause.png" id="btn-pause" class="btn-icon" alt="Pause">
-            <img src="settingsbutton.png" id="btn-settings" class="btn-icon" alt="Settings">
+            <img src="assets/pause.png" id="btn-pause" class="btn-icon" alt="Pause">
+            <img src="assets/settingsbutton.png" id="btn-settings" class="btn-icon" alt="Settings">
         </div>
     </div>
 
-    <!-- Active Powerups HUD -->
+    <!-- Powerups Indicator -->
     <div id="powerup-bar"></div>
 
-    <!-- Main Menu Overlay -->
+    <!-- On-screen Controls for Mobile -->
+    <div id="dpad">
+        <div class="dpad-btn" id="dpad-up">▲</div>
+        <div class="dpad-btn" id="dpad-left">◀</div>
+        <div class="dpad-btn" id="dpad-right">▶</div>
+        <div class="dpad-btn" id="dpad-down">▼</div>
+    </div>
+
+    <!-- Main Menu -->
     <div id="menu-overlay" class="overlay active">
         <div class="panel-dialog">
             <h1 class="panel-title">SNAKE ADVENTURE</h1>
-            <div style="margin-bottom: 25px;">
-                <img src="play.png" id="btn-start" class="btn-icon" style="width: 80px; height: 80px;" alt="Play">
+            <div style="margin-bottom: 20px;">
+                <img src="assets/play.png" id="btn-start" class="btn-icon" style="width: 70px; height: 70px;" alt="Play">
             </div>
-            <p style="color: #aaa; font-size: 14px;">Swipe or use WASD / Arrow Keys</p>
+            <p style="color: #aaa; font-size: 13px;">Swipe, tap D-Pad, or use WASD / Arrow Keys</p>
         </div>
     </div>
 
-    <!-- Pause Menu Overlay -->
+    <!-- Pause Menu -->
     <div id="pause-overlay" class="overlay">
         <div class="panel-dialog">
             <h2 class="panel-title">PAUSED</h2>
             <div class="action-btns">
-                <img src="play.png" id="btn-resume" class="btn-icon" alt="Resume">
-                <img src="homebutton.png" id="btn-pause-home" class="btn-icon" alt="Home">
+                <img src="assets/play.png" id="btn-resume" class="btn-icon" alt="Resume">
+                <img src="assets/homebutton.png" id="btn-pause-home" class="btn-icon" alt="Home">
             </div>
         </div>
     </div>
 
-    <!-- Settings Overlay -->
+    <!-- Settings Menu -->
     <div id="settings-overlay" class="overlay">
         <div class="panel-dialog">
             <h2 class="panel-title">SETTINGS</h2>
             <div class="setting-row">
                 <span>Audio:</span>
-                <img src="file_000000002b648207b37bccea37fc3fcb.png" id="btn-toggle-audio" class="btn-icon" alt="Mute/Unmute">
+                <img src="assets/sound-on.png" id="btn-toggle-audio" class="btn-icon" alt="Audio">
             </div>
             <div class="setting-row">
                 <span>Difficulty:</span>
@@ -287,7 +315,7 @@
         </div>
     </div>
 
-    <!-- Game Over Overlay -->
+    <!-- Game Over Menu -->
     <div id="gameover-overlay" class="overlay">
         <div class="panel-dialog">
             <h2 class="panel-title" style="color: #ff4d4d;">GAME OVER</h2>
@@ -297,37 +325,14 @@
                 <div>Coins: <span id="go-coins">0</span></div>
             </div>
             <div class="action-btns">
-                <img src="homebutton.png" id="btn-go-home" class="btn-icon" alt="Home">
-                <img src="soundoff.png" id="btn-go-restart" class="btn-icon" alt="Restart">
-            </div>
-        </div>
-    </div>
-
-    <!-- Victory Overlay -->
-    <div id="victory-overlay" class="overlay">
-        <div class="panel-dialog">
-            <h2 class="panel-title" style="color: #4caf50;">VICTORY!</h2>
-            <div style="font-size: 28px; margin-bottom: 10px;">⭐ ⭐ ⭐</div>
-            <div class="stats-box">
-                <div>Score: <span id="vic-score">0</span></div>
-                <div>Best Score: <span id="vic-best">0</span></div>
-                <div>Coins: <span id="vic-coins">0</span></div>
-            </div>
-            <div class="action-btns">
-                <img src="homebutton.png" id="btn-vic-home" class="btn-icon" alt="Home">
-                <img src="soundoff.png" id="btn-vic-restart" class="btn-icon" alt="Restart">
-                <img src="play.png" id="btn-vic-next" class="btn-icon" alt="Next">
+                <img src="assets/homebutton.png" id="btn-go-home" class="btn-icon" alt="Home">
+                <img src="assets/play.png" id="btn-go-restart" class="btn-icon" alt="Restart">
             </div>
         </div>
     </div>
 </div>
 
 <script>
-/**
- * Snake Adventure - Pure HTML5 Game Engine
- */
-
-// Asset Loader
 class AssetManager {
     constructor() {
         this.images = {};
@@ -357,12 +362,9 @@ class AssetManager {
         });
     }
 
-    get(key) {
-        return this.images[key];
-    }
+    get(key) { return this.images[key]; }
 }
 
-// Sound Synthesizer (No external audio files needed)
 class SoundManager {
     constructor() {
         this.ctx = null;
@@ -378,7 +380,6 @@ class SoundManager {
 
     play(type) {
         if (this.muted || !this.ctx) return;
-        
         const now = this.ctx.currentTime;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
@@ -417,7 +418,6 @@ class SoundManager {
     }
 }
 
-// Main Game Controller
 class Game {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
@@ -425,37 +425,30 @@ class Game {
         this.assets = new AssetManager();
         this.sound = new SoundManager();
 
-        // Grid properties
-        this.gridSize = 20;
+        this.gridSize = 18;
         this.tileWidth = 0;
         this.tileHeight = 0;
 
-        // State variables
-        this.state = 'MENU'; // MENU, PLAYING, PAUSED, GAMEOVER, VICTORY
+        this.state = 'MENU';
         this.score = 0;
         this.coins = 0;
         this.bestScore = parseInt(localStorage.getItem('snake_best') || '0');
         this.totalCoins = parseInt(localStorage.getItem('snake_coins') || '0');
-        this.difficulty = localStorage.getItem('snake_diff') || 'MEDIUM'; // EASY, MEDIUM, HARD
-        
-        // Snake
+        this.difficulty = localStorage.getItem('snake_diff') || 'MEDIUM';
+
         this.snake = [];
         this.dir = { x: 1, y: 0 };
         this.nextDir = { x: 1, y: 0 };
         this.growthPending = 0;
 
-        // Entities
         this.items = [];
         this.obstacles = [];
         this.particles = [];
         this.effects = [];
 
-        // Powerups active: { speedBoost: 0, shield: false, magnet: 0 }
         this.powerups = { speedBoost: 0, shield: false, magnet: 0 };
-
-        // Timing
         this.lastStepTime = 0;
-        this.baseSpeed = 150; // ms per tick
+        this.baseSpeed = 150;
         this.slideExtra = 0;
 
         this.init();
@@ -465,28 +458,32 @@ class Game {
         this.resize();
         window.addEventListener('resize', () => this.resize());
 
-        // Load asset mapping
         await this.assets.loadImages({
-            score: 'score.png',
-            victory: 'victory.png',
-            gameover: 'gameover.png',
-            play: 'play.png',
-            homebutton: 'homebutton.png',
-            settingsbutton: 'settingsbutton.png',
-            pause: 'pause.png',
-            ice: 'ice.png',
-            poisonmushroom: 'poisonmushroom.png',
-            magnet: 'magnet.png',
-            powersheild: 'powersheild.png',
-            speedboost: 'speedboost.png',
-            woodentiles: 'woodentiles.png',
-            grasstiles: 'grasstiles.png',
-            goldencoin: 'goldencoin.png',
-            stonetiles: 'stonetiles.png',
-            sparkeffect: 'sparkeffect.png',
-            eateffect: 'eateffect.png',
-            soundoff: 'soundoff.png',
-            file_audio: 'file_000000002b648207b37bccea37fc3fcb.png'
+            snakehead: 'assets/snakehead.png',
+            snakebody: 'assets/snakebody.png',
+            snaketail: 'assets/snaketail.png',
+            score: 'assets/score.png',
+            victory: 'assets/victory.png',
+            gameover: 'assets/gameover.png',
+            play: 'assets/play.png',
+            homebutton: 'assets/homebutton.png',
+            settingsbutton: 'assets/settingsbutton.png',
+            pause: 'assets/pause.png',
+            ice: 'assets/ice.png',
+            poisonmushroom: 'assets/poisonmushroom.png',
+            magnet: 'assets/magnet.png',
+            powersheild: 'assets/powersheild.png',
+            speedboost: 'assets/speedboost.png',
+            woodentiles: 'assets/woodentiles.png',
+            grasstiles: 'assets/grasstiles.png',
+            goldencoin: 'assets/goldencoin.png',
+            goldenapple: 'assets/goldenapple.png',
+            stonetiles: 'assets/stonetiles.png',
+            sparkeffect: 'assets/sparkeffect.png',
+            eateffect: 'assets/eateffect.png',
+            soundoff: 'assets/soundoff.png',
+            soundon: 'assets/sound-on.png',
+            bomb: 'assets/bomb.png'
         });
 
         this.setupControls();
@@ -498,10 +495,21 @@ class Game {
 
     resize() {
         const container = document.getElementById('game-container');
-        this.canvas.width = container.clientWidth;
-        this.canvas.height = container.clientHeight;
-        this.tileWidth = this.canvas.width / this.gridSize;
-        this.tileHeight = this.canvas.height / this.gridSize;
+        const dpr = window.devicePixelRatio || 1;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        this.canvas.width = width * dpr;
+        this.canvas.height = height * dpr;
+
+        this.ctx.scale(dpr, dpr);
+
+        const size = Math.min(width, height);
+        this.tileWidth = size / this.gridSize;
+        this.tileHeight = size / this.gridSize;
+
+        this.offsetX = (width - size) / 2;
+        this.offsetY = (height - size) / 2;
     }
 
     reset() {
@@ -513,7 +521,6 @@ class Game {
         this.slideExtra = 0;
         this.powerups = { speedBoost: 0, shield: false, magnet: 0 };
 
-        // Spawn initial snake (3 segments)
         const startX = Math.floor(this.gridSize / 2);
         const startY = Math.floor(this.gridSize / 2);
         this.snake = [
@@ -533,26 +540,22 @@ class Game {
     }
 
     generateLevelDesign() {
-        // Difficulty adjustments
-        let wallCount = 5;
+        let wallCount = 4;
         let bombCount = 2;
         if (this.difficulty === 'EASY') { wallCount = 2; bombCount = 1; }
-        if (this.difficulty === 'HARD') { wallCount = 10; bombCount = 4; }
+        if (this.difficulty === 'HARD') { wallCount = 8; bombCount = 3; }
 
-        // Generate Stone & Wooden Walls
         for (let i = 0; i < wallCount; i++) {
             const pos = this.getRandomFreePos();
             const type = Math.random() > 0.5 ? 'stone' : 'wooden';
             this.obstacles.push({ ...pos, type });
         }
 
-        // Generate Hazards
         for (let i = 0; i < bombCount; i++) {
             const pos = this.getRandomFreePos();
             this.obstacles.push({ ...pos, type: 'bomb' });
         }
 
-        // Poison Mushroom & Ice Block
         this.obstacles.push({ ...this.getRandomFreePos(), type: 'poison' });
         this.obstacles.push({ ...this.getRandomFreePos(), type: 'ice' });
     }
@@ -588,11 +591,11 @@ class Game {
             else type = 'power_magnet';
         }
 
-        this.items.push({ ...pos, type, pulse: 0 });
+        this.items.push({ ...pos, type });
     }
 
     setupControls() {
-        // Keyboard
+        // Keyboard controls
         window.addEventListener('keydown', (e) => {
             this.sound.init();
             if (this.state !== 'PLAYING') return;
@@ -613,21 +616,18 @@ class Game {
                 case ' ': case 'Escape':
                     this.togglePause();
                     break;
-                case 'r': case 'R':
-                    this.startGame();
-                    break;
             }
         });
 
-        // Touch Swipes
+        // Touch Swipe Gesture
         let startX = 0, startY = 0;
-        this.canvas.addEventListener('touchstart', (e) => {
+        window.addEventListener('touchstart', (e) => {
             this.sound.init();
             startX = e.touches[0].clientX;
             startY = e.touches[0].clientY;
         }, { passive: true });
 
-        this.canvas.addEventListener('touchend', (e) => {
+        window.addEventListener('touchend', (e) => {
             if (this.state !== 'PLAYING') return;
             const diffX = e.changedTouches[0].clientX - startX;
             const diffY = e.changedTouches[0].clientY - startY;
@@ -644,6 +644,24 @@ class Game {
                 }
             }
         }, { passive: true });
+
+        // Mobile D-Pad Buttons
+        const bindDPad = (id, dx, dy) => {
+            const btn = document.getElementById(id);
+            btn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.sound.init();
+                if (this.state === 'PLAYING') {
+                    if (dx !== 0 && this.dir.x === 0) this.nextDir = { x: dx, y: 0 };
+                    if (dy !== 0 && this.dir.y === 0) this.nextDir = { x: 0, y: dy };
+                }
+            });
+        };
+
+        bindDPad('dpad-up', 0, -1);
+        bindDPad('dpad-down', 0, 1);
+        bindDPad('dpad-left', -1, 0);
+        bindDPad('dpad-right', 1, 0);
     }
 
     setupUI() {
@@ -661,14 +679,12 @@ class Game {
         setClick('btn-pause-home', () => this.showMenu());
         setClick('btn-go-home', () => this.showMenu());
         setClick('btn-go-restart', () => this.startGame());
-        setClick('btn-vic-home', () => this.showMenu());
-        setClick('btn-vic-restart', () => this.startGame());
-        setClick('btn-vic-next', () => this.startGame());
         setClick('btn-settings', () => this.openSettings());
         setClick('btn-close-settings', () => this.closeSettings());
 
         setClick('btn-toggle-audio', () => {
             this.sound.muted = !this.sound.muted;
+            document.getElementById('btn-toggle-audio').src = this.sound.muted ? 'assets/soundoff.png' : 'assets/sound-on.png';
         });
 
         setClick('btn-difficulty', () => {
@@ -720,7 +736,6 @@ class Game {
         document.getElementById('hud-best').innerText = this.bestScore;
         document.getElementById('hud-coins').innerText = this.totalCoins;
 
-        // Render Active Powerups
         const bar = document.getElementById('powerup-bar');
         bar.innerHTML = '';
         if (this.powerups.speedBoost > 0) {
@@ -737,11 +752,10 @@ class Game {
     triggerShake() {
         const el = document.getElementById('game-container');
         el.classList.remove('shake');
-        void el.offsetWidth; // Force reflow
+        void el.offsetWidth;
         el.classList.add('shake');
     }
 
-    // Game Loop
     loop(time) {
         const delta = time - (this.lastFrameTime || time);
         this.lastFrameTime = time;
@@ -755,14 +769,12 @@ class Game {
     }
 
     update(time, delta) {
-        // Update powerup timers
         if (this.powerups.speedBoost > 0) this.powerups.speedBoost -= delta;
         if (this.powerups.magnet > 0) {
             this.powerups.magnet -= delta;
             this.applyMagnetEffect();
         }
 
-        // Calculate step interval based on score acceleration and powerups
         let currentSpeed = Math.max(60, this.baseSpeed - Math.floor(this.score / 50) * 10);
         if (this.powerups.speedBoost > 0) currentSpeed *= 0.6;
 
@@ -772,7 +784,6 @@ class Game {
             this.step();
         }
 
-        // Particle updates
         this.particles.forEach(p => {
             p.x += p.vx;
             p.y += p.vy;
@@ -780,7 +791,6 @@ class Game {
         });
         this.particles = this.particles.filter(p => p.life > 0);
 
-        // Visual effects update
         this.effects.forEach(e => e.life -= delta);
         this.effects = this.effects.filter(e => e.life > 0);
 
@@ -791,19 +801,16 @@ class Game {
         this.dir = { ...this.nextDir };
         const head = { x: this.snake[0].x + this.dir.x, y: this.snake[0].y + this.dir.y };
 
-        // Wall collisions (Wrap or Game Over)
         if (head.x < 0 || head.x >= this.gridSize || head.y < 0 || head.y >= this.gridSize) {
             this.handleCollision('wall');
             return;
         }
 
-        // Self collision
         if (this.snake.some(seg => seg.x === head.x && seg.y === head.y)) {
             this.handleCollision('self');
             return;
         }
 
-        // Obstacle collisions
         const obstacleIndex = this.obstacles.findIndex(o => o.x === head.x && o.y === head.y);
         if (obstacleIndex !== -1) {
             const obs = this.obstacles[obstacleIndex];
@@ -838,10 +845,8 @@ class Game {
             }
         }
 
-        // Move snake
         this.snake.unshift(head);
 
-        // Item collision
         const itemIndex = this.items.findIndex(i => i.x === head.x && i.y === head.y);
         if (itemIndex !== -1) {
             const item = this.items[itemIndex];
@@ -923,8 +928,8 @@ class Game {
     }
 
     spawnParticles(gx, gy, color) {
-        const px = (gx + 0.5) * this.tileWidth;
-        const py = (gy + 0.5) * this.tileHeight;
+        const px = this.offsetX + (gx + 0.5) * this.tileWidth;
+        const py = this.offsetY + (gy + 0.5) * this.tileHeight;
         for (let i = 0; i < 12; i++) {
             this.particles.push({
                 x: px, y: py,
@@ -936,23 +941,15 @@ class Game {
         }
     }
 
-    // Canvas Rendering
     render() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        const container = document.getElementById('game-container');
+        this.ctx.clearRect(0, 0, container.clientWidth, container.clientHeight);
 
-        // 1. Draw Grid Ground
         this.drawGrid();
-
-        // 2. Draw Obstacles
         this.obstacles.forEach(obs => this.drawObstacle(obs));
-
-        // 3. Draw Items
         this.items.forEach(item => this.drawItem(item));
-
-        // 4. Draw Snake
         this.drawSnake();
 
-        // 5. Draw Particles & Effects
         this.particles.forEach(p => {
             this.ctx.fillStyle = p.color;
             this.ctx.beginPath();
@@ -963,7 +960,7 @@ class Game {
         this.effects.forEach(e => {
             const img = this.assets.get('eateffect');
             if (img) {
-                this.ctx.drawImage(img, e.x * this.tileWidth, e.y * this.tileHeight, this.tileWidth, this.tileHeight);
+                this.ctx.drawImage(img, this.offsetX + e.x * this.tileWidth, this.offsetY + e.y * this.tileHeight, this.tileWidth, this.tileHeight);
             }
         });
     }
@@ -972,53 +969,82 @@ class Game {
         const grassImg = this.assets.get('grasstiles');
         for (let x = 0; x < this.gridSize; x++) {
             for (let y = 0; y < this.gridSize; y++) {
+                const drawX = this.offsetX + x * this.tileWidth;
+                const drawY = this.offsetY + y * this.tileHeight;
                 if (grassImg) {
-                    this.ctx.drawImage(grassImg, 0, 0, 100, 100, x * this.tileWidth, y * this.tileHeight, this.tileWidth, this.tileHeight);
+                    this.ctx.drawImage(grassImg, 0, 0, 100, 100, drawX, drawY, this.tileWidth, this.tileHeight);
                 } else {
                     this.ctx.fillStyle = (x + y) % 2 === 0 ? '#4a7c59' : '#3e6b48';
-                    this.ctx.fillRect(x * this.tileWidth, y * this.tileHeight, this.tileWidth, this.tileHeight);
+                    this.ctx.fillRect(drawX, drawY, this.tileWidth, this.tileHeight);
                 }
             }
         }
     }
 
     drawSnake() {
-        this.snake.forEach((seg, index) => {
-            const x = seg.x * this.tileWidth;
-            const y = seg.y * this.tileHeight;
+        const headImg = this.assets.get('snakehead');
+        const bodyImg = this.assets.get('snakebody');
+        const tailImg = this.assets.get('snaketail');
 
-            if (index === 0) {
-                // Head
-                this.ctx.fillStyle = this.powerups.shield ? '#00d2ff' : '#8bc34a';
-                this.ctx.beginPath();
-                this.ctx.arc(x + this.tileWidth/2, y + this.tileHeight/2, this.tileWidth/2, 0, Math.PI * 2);
-                this.ctx.fill();
-                
-                // Eyes
-                this.ctx.fillStyle = '#fff';
-                this.ctx.beginPath();
-                this.ctx.arc(x + this.tileWidth/3, y + this.tileHeight/3, 4, 0, Math.PI * 2);
-                this.ctx.arc(x + (this.tileWidth*2)/3, y + this.tileHeight/3, 4, 0, Math.PI * 2);
-                this.ctx.fill();
+        for (let i = 0; i < this.snake.length; i++) {
+            const seg = this.snake[i];
+            const centerX = this.offsetX + (seg.x + 0.5) * this.tileWidth;
+            const centerY = this.offsetY + (seg.y + 0.5) * this.tileHeight;
+
+            let img = bodyImg;
+            let dx = 0;
+            let dy = 0;
+
+            if (i === 0) {
+                img = headImg;
+                dx = this.dir.x;
+                dy = this.dir.y;
+            } else if (i === this.snake.length - 1) {
+                img = tailImg;
+                const prev = this.snake[i - 1];
+                dx = prev.x - seg.x;
+                dy = prev.y - seg.y;
             } else {
-                // Body
-                this.ctx.fillStyle = '#4caf50';
+                const prev = this.snake[i - 1];
+                dx = prev.x - seg.x;
+                dy = prev.y - seg.y;
+            }
+
+            let angle = Math.atan2(dy, dx);
+
+            this.ctx.save();
+            this.ctx.translate(centerX, centerY);
+            this.ctx.rotate(angle);
+
+            if (img) {
+                this.ctx.drawImage(
+                    img,
+                    -this.tileWidth / 2,
+                    -this.tileHeight / 2,
+                    this.tileWidth,
+                    this.tileHeight
+                );
+            } else {
+                this.ctx.fillStyle = i === 0 ? '#8bc34a' : '#4caf50';
                 this.ctx.beginPath();
-                this.ctx.roundRect(x + 2, y + 2, this.tileWidth - 4, this.tileHeight - 4, 8);
+                this.ctx.arc(0, 0, this.tileWidth / 2, 0, Math.PI * 2);
                 this.ctx.fill();
             }
-        });
+
+            this.ctx.restore();
+        }
     }
 
     drawObstacle(obs) {
-        const x = obs.x * this.tileWidth;
-        const y = obs.y * this.tileHeight;
+        const x = this.offsetX + obs.x * this.tileWidth;
+        const y = this.offsetY + obs.y * this.tileHeight;
         let img = null;
 
         if (obs.type === 'stone') img = this.assets.get('stonetiles');
         else if (obs.type === 'wooden') img = this.assets.get('woodentiles');
         else if (obs.type === 'poison') img = this.assets.get('poisonmushroom');
         else if (obs.type === 'ice') img = this.assets.get('ice');
+        else if (obs.type === 'bomb') img = this.assets.get('bomb');
 
         if (img) {
             this.ctx.drawImage(img, x, y, this.tileWidth, this.tileHeight);
@@ -1029,11 +1055,12 @@ class Game {
     }
 
     drawItem(item) {
-        const x = item.x * this.tileWidth;
-        const y = item.y * this.tileHeight;
+        const x = this.offsetX + item.x * this.tileWidth;
+        const y = this.offsetY + item.y * this.tileHeight;
         let img = null;
 
         if (item.type === 'coin') img = this.assets.get('goldencoin');
+        else if (item.type === 'golden_apple') img = this.assets.get('goldenapple');
         else if (item.type === 'power_speed') img = this.assets.get('speedboost');
         else if (item.type === 'power_shield') img = this.assets.get('powersheild');
         else if (item.type === 'power_magnet') img = this.assets.get('magnet');
@@ -1041,7 +1068,6 @@ class Game {
         if (img) {
             this.ctx.drawImage(img, x, y, this.tileWidth, this.tileHeight);
         } else {
-            // Default Apple / Golden Apple
             this.ctx.fillStyle = item.type === 'golden_apple' ? '#ffd700' : '#e74c3c';
             this.ctx.beginPath();
             this.ctx.arc(x + this.tileWidth/2, y + this.tileHeight/2, this.tileWidth/2.5, 0, Math.PI * 2);
@@ -1050,7 +1076,6 @@ class Game {
     }
 }
 
-// Initialize on Load
 window.addEventListener('load', () => {
     new Game();
 });
