@@ -633,6 +633,14 @@ class Game {
         ctx.drawImage(this.assets.get('shield'), -cs * 0.75, -cs * 0.75, cs * 1.5, cs * 1.5);
         ctx.restore();
       }
+      // The body/tail art has a top/bottom asymmetric color (dorsal scales vs
+      // pale belly), so a plain rotation looks upside-down once travel points
+      // upward (the belly ends up facing the wrong way). Mirroring vertically
+      // exactly cancels that, and fades to a no-op for rightward/leftward/
+      // downward travel where the plain rotation already looks correct.
+      const upness = Math.max(0, -Math.sin(angle));
+      const flipY = 1 - 2 * upness;
+      ctx.scale(1, flipY);
       if (img) ctx.drawImage(img, -size / 2, -size / 2, size, size);
       ctx.restore();
     }
