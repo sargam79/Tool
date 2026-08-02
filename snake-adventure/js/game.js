@@ -28,6 +28,7 @@ class Game {
     this.lastTime = 0;
 
     this.activeEffects = {}; // kind -> { expiresAt, totalMs }
+    this.headTrail = []; // continuous pixel-space path the head has traveled, used to render a smoothly curving body
 
     this._loadStorage();
     this._computeGrid();
@@ -116,6 +117,7 @@ class Game {
     const startY = Math.floor(this.rows / 2);
     this.snake = new Snake(startX, startY, 3);
     this.spawner.reset(cfg, this.cols, this.rows);
+    this._seedTrail();
 
     this.state = STATE.PLAYING;
     this.ui.showScreen(null);
@@ -249,7 +251,7 @@ class Game {
 
     if (powerup.kind === 'speedBoost') {
       this._activateEffect('speedBoost', CONFIG.POWERUP_DURATION.speed);
-      this.speedMultiplier = 1.8;
+      this.speedMultiplier = 1.5;
     } else if (powerup.kind === 'shield') {
       this.snake.shieldActive = true;
       this._activateEffect('shield', Infinity);
@@ -438,6 +440,7 @@ class Game {
     this._drawBackground(ctx, w, h);
 
     if (this.snake) {
+      this._updateTrail();
       this._drawObstacles(ctx);
       this._drawFood(ctx);
       this._drawPowerups(ctx);
@@ -530,33 +533,97 @@ class Game {
     });
   }
 
-  _drawSnake(ctx) {
+  /* ---- continuous path history, so the body can curve smoothly through
+     turns like a real snake instead of snapping between grid cells ---- */
+  _seedTrail() {
+    const cs = this.cellSize;
+    const dir = this.snake.direction;
+    const head = this.snake.head;
+    const totalNeeded = (this.snake.length() + 6) * cs;
+    const step = cs / 4;
+    this.headTrail = [];
+    for (let d = 0; d <= totalNeeded; d += step) {
+      this.headTrail.push({
+        x: (head.x + 0.5) * cs - dir.x * d,
+        y: (head.y + 0.5) * cs - dir.y * d,
+      });
+    }
+  }
+
+  _updateTrail() {
     const cs = this.cellSize;
     const t = Math.min(1, this.moveTimer / this.moveInterval);
-    const renderSegs = this.snake.getRenderSegments(t);
-    const now = performance.now();
+    const headSeg = this.snake.getRenderSegments(t)[0];
+    const px = (headSeg.x + 0.5) * cs;
+    const py = (headSeg.y + 0.5) * cs;
 
-    for (let i = renderSegs.length - 1; i >= 0; i--) {
-      const seg = renderSegs[i];
+    const last = this.headTrail[0];
+    if (!last || Math.hypot(px - last.x, py - last.y) > 0.5) {
+      this.headTrail.unshift({ x: px, y: py });
+    }
+
+    // trim to the length the current snake actually needs, with a hard cap as a safety net
+    const needed = (this.snake.length() + 6) * cs;
+    let acc = 0;
+    for (let i = 1; i < this.headTrail.length; i++) {
+      const a = this.headTrail[i - 1], b = this.headTrail[i];
+      acc += Math.hypot(b.x - a.x, b.y - a.y);
+      if (acc > needed) { this.headTrail.length = Math.min(this.headTrail.length, i + 1); break; }
+    }
+    if (this.headTrail.length > 1200) this.headTrail.length = 1200;
+  }
+
+  /** Sample a point + tangent angle at the given arc-length distance back from the head along the trail. */
+  _sampleTrail(distance) {
+    const trail = this.headTrail;
+    if (trail.length < 2) return { x: trail[0]?.x || 0, y: trail[0]?.y || 0, angle: 0 };
+
+    let acc = 0;
+    for (let i = 1; i < trail.length; i++) {
+      const a = trail[i - 1], b = trail[i];
+      const segLen = Math.hypot(b.x - a.x, b.y - a.y);
+      if (acc + segLen >= distance || i === trail.length - 1) {
+        const remain = distance - acc;
+        const frac = segLen > 0.0001 ? Math.min(1, remain / segLen) : 0;
+        return {
+          x: a.x + (b.x - a.x) * frac,
+          y: a.y + (b.y - a.y) * frac,
+          angle: Math.atan2(b.y - a.y, b.x - a.x),
+        };
+      }
+      acc += segLen;
+    }
+    const last = trail[trail.length - 1];
+    return { x: last.x, y: last.y, angle: 0 };
+  }
+
+  _drawSnake(ctx) {
+    const cs = this.cellSize;
+    const segments = this.snake.segments;
+    const now = performance.now();
+    const count = segments.length;
+
+    for (let i = count - 1; i >= 0; i--) {
       const isHead = i === 0;
-      const isTail = i === renderSegs.length - 1;
+      const isTail = i === count - 1;
       const img = isHead ? this.assets.get('snakeHead') : isTail ? this.assets.get('snakeTail') : this.assets.get('snakeBody');
 
-      let angle = 0;
-      const neighbor = isHead ? renderSegs[1] : renderSegs[i - 1];
-      if (neighbor) {
-        const dx = isHead ? seg.x - neighbor.x : neighbor.x - seg.x;
-        const dy = isHead ? seg.y - neighbor.y : neighbor.y - seg.y;
-        angle = Math.atan2(dy, dx);
-      }
+      const dist = i * cs;
+      const sample = this._sampleTrail(dist);
+      let angle = sample.angle;
 
+      // subtle perpendicular undulation for a slithering feel (fades on the head so aim/steering stays precise)
+      const wiggleAmp = isHead ? 0 : cs * 0.09;
+      const wiggle = Math.sin(now / 260 - i * 0.85) * wiggleAmp;
+      const perpX = Math.cos(angle + Math.PI / 2) * wiggle;
+      const perpY = Math.sin(angle + Math.PI / 2) * wiggle;
+
+      const seg = segments[i];
       const age = now - (seg.bornAt || 0);
       const popScale = isTail && age < 220 ? Math.min(1, age / 220) : 1;
 
-      const cx = (seg.x + 0.5) * cs;
-      const cy = (seg.y + 0.5) * cs;
       ctx.save();
-      ctx.translate(cx, cy);
+      ctx.translate(sample.x + perpX, sample.y + perpY);
       ctx.rotate(angle);
       const size = cs * 1.08 * popScale;
       if (this.snake.shieldActive && isHead) {
