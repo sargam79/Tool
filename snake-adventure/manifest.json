@@ -1,0 +1,14 @@
+{
+  "name": "Snake Adventure",
+  "short_name": "Snake Adv",
+  "description": "A premium jungle-themed Snake game with power-ups, hazards, and polished animations.",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#0e1f16",
+  "theme_color": "#1b3a2a",
+  "icons": [
+    { "src": "assets/images/golden_apple.png", "sizes": "300x300", "type": "image/png", "purpose": "any" },
+    { "src": "assets/images/snake_head.png", "sizes": "300x300", "type": "image/png" }
+  ]
+}

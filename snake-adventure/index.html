@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Snake Adventure</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/images/golden_apple.png">
+<link rel="apple-touch-icon" href="assets/images/golden_apple.png">
+<meta name="theme-color" content="#1b3a2a">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Loading screen -->
+  <div id="loadingScreen" class="loading-screen">
+    <img src="assets/images/golden_apple.png" class="loading-icon" alt="">
+    <div class="loading-bar-track"><div class="loading-bar-fill" id="loadingBarFill"></div></div>
+    <div class="loading-text">Loading Snake Adventure…</div>
+  </div>
+
+  <!-- Game canvas -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Particle / effect overlay canvas (kept separate for perf) -->
+  <canvas id="fxCanvas"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hud">
+    <div class="hud-panel" id="scorePanel">
+      <div class="hud-stat">
+        <span class="hud-label">SCORE</span>
+        <span class="hud-value" id="scoreValue">0</span>
+      </div>
+      <div class="hud-stat">
+        <span class="hud-label">BEST</span>
+        <span class="hud-value" id="bestValue">0</span>
+      </div>
+      <div class="hud-stat">
+        <span class="hud-label">COINS</span>
+        <span class="hud-value" id="coinValue">0</span>
+      </div>
+    </div>
+
+    <div class="hud-buttons">
+      <button class="icon-btn" id="pauseBtn" aria-label="Pause">
+        <img src="assets/images/pause_button.png" alt="Pause">
+      </button>
+      <button class="icon-btn" id="settingsBtn" aria-label="Settings">
+        <img src="assets/images/settings_button.png" alt="Settings">
+      </button>
+      <button class="icon-btn" id="muteBtn" aria-label="Mute">
+        <img src="assets/images/sound_on.png" alt="Sound">
+      </button>
+    </div>
+  </div>
+
+  <!-- Active power-up indicators -->
+  <div id="powerupBar" class="powerup-bar"></div>
+
+  <!-- Start Screen -->
+  <div id="startScreen" class="screen">
+    <div class="screen-inner">
+      <h1 class="game-title">Snake <span>Adventure</span></h1>
+      <p class="game-subtitle">Eat, grow, and survive the jungle!</p>
+
+      <div class="difficulty-select">
+        <span class="diff-label">Difficulty</span>
+        <div class="diff-options" id="diffOptions">
+          <button class="diff-btn" data-diff="easy">Easy</button>
+          <button class="diff-btn active" data-diff="medium">Medium</button>
+          <button class="diff-btn" data-diff="hard">Hard</button>
+        </div>
+      </div>
+
+      <button class="play-btn-large" id="startBtn">
+        <img src="assets/images/play_button.png" alt="Play">
+        <span>PLAY</span>
+      </button>
+
+      <div class="start-stats">
+        <img src="assets/images/coin.png" class="mini-icon" alt="coins">
+        <span id="startCoins">0</span>
+        <span class="dot">•</span>
+        <img src="assets/images/golden_apple.png" class="mini-icon" alt="best">
+        <span id="startBest">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause Menu -->
+  <div id="pauseScreen" class="screen hidden">
+    <div class="screen-inner pause-panel">
+      <h2 class="menu-title">Paused</h2>
+      <div class="menu-buttons">
+        <button class="menu-btn" id="resumeBtn">
+          <img src="assets/images/play_button.png" alt="Resume"><span>Resume</span>
+        </button>
+        <button class="menu-btn" id="restartFromPauseBtn">
+          <img src="assets/images/restart_button.png" alt="Restart"><span>Restart</span>
+        </button>
+        <button class="menu-btn" id="homeFromPauseBtn">
+          <img src="assets/images/home_button.png" alt="Home"><span>Home</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsScreen" class="screen hidden">
+    <div class="screen-inner settings-panel">
+      <h2 class="menu-title">Settings</h2>
+
+      <div class="setting-row">
+        <span>Sound</span>
+        <button class="toggle-btn" id="soundToggle">On</button>
+      </div>
+
+      <div class="setting-row">
+        <span>Difficulty</span>
+        <div class="diff-options small" id="settingsDiffOptions">
+          <button class="diff-btn" data-diff="easy">Easy</button>
+          <button class="diff-btn" data-diff="medium">Medium</button>
+          <button class="diff-btn" data-diff="hard">Hard</button>
+        </div>
+      </div>
+
+      <button class="menu-btn close-settings" id="closeSettingsBtn">
+        <span>Close</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="gameOverScreen" class="screen hidden">
+    <div class="screen-inner result-panel">
+      <img src="assets/images/gameover_banner.png" class="banner-image" alt="Game Over">
+      <div class="result-stats">
+        <div class="result-row"><span class="result-label">Score</span><span class="result-value" id="finalScore">0</span></div>
+        <div class="result-row"><span class="result-label">Best Score</span><span class="result-value gold" id="finalBest">0</span></div>
+        <div class="result-row"><span class="result-label">Coins Collected</span><span class="result-value"><img src="assets/images/coin.png" class="mini-icon"><span id="finalCoins">0</span></span></div>
+      </div>
+      <div class="result-buttons">
+        <button class="wood-btn" id="homeFromGameOverBtn"><img src="assets/images/home_button.png"><span>Home</span></button>
+        <button class="wood-btn" id="restartFromGameOverBtn"><img src="assets/images/restart_button.png"><span>Restart</span></button>
+        <button class="wood-btn primary" id="playAgainBtn"><img src="assets/images/play_button.png"><span>Play Again</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Victory Screen -->
+  <div id="victoryScreen" class="screen hidden">
+    <div class="screen-inner result-panel">
+      <img src="assets/images/victory_banner.png" class="banner-image" alt="Victory">
+      <div class="result-stats">
+        <div class="result-row"><span class="result-label">Score</span><span class="result-value" id="victoryScore">0</span></div>
+        <div class="result-row"><span class="result-label">Best Score</span><span class="result-value gold" id="victoryBest">0</span></div>
+        <div class="result-row"><span class="result-label">Coins Earned</span><span class="result-value"><img src="assets/images/coin.png" class="mini-icon"><span id="victoryCoins">0</span></span></div>
+      </div>
+      <div class="result-buttons">
+        <button class="wood-btn" id="homeFromVictoryBtn"><img src="assets/images/home_button.png"><span>Home</span></button>
+        <button class="wood-btn" id="restartFromVictoryBtn"><img src="assets/images/restart_button.png"><span>Restart</span></button>
+        <button class="wood-btn primary" id="nextLevelBtn"><img src="assets/images/play_button.png"><span>Next Level</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile swipe capture layer (invisible, sits above canvas, below UI) -->
+  <div id="touchLayer"></div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/assetLoader.js"></script>
+<script src="js/soundManager.js"></script>
+<script src="js/inputManager.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/snake.js"></script>
+<script src="js/collisionManager.js"></script>
+<script src="js/uiManager.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
