@@ -4,9 +4,6 @@
 class InputManager {
   constructor(game) {
     this.game = game;
-    this.touchStart = null;
-    this.minSwipeDist = 24;
-
     this._bindKeyboard();
     this._bindTouch();
   }
@@ -28,45 +25,45 @@ class InputManager {
   _bindTouch() {
     const layer = document.getElementById('touchLayer');
 
-    const start = (x, y) => { this.touchStart = { x, y }; };
-    const end = (x, y) => {
-      if (!this.touchStart) return;
-      const dx = x - this.touchStart.x;
-      const dy = y - this.touchStart.y;
-      const adx = Math.abs(dx), ady = Math.abs(dy);
-      if (Math.max(adx, ady) < this.minSwipeDist) { this.touchStart = null; return; }
-      if (adx > ady) {
-        this.game.requestDirection(dx > 0 ? DIR.RIGHT : DIR.LEFT);
+    // Tap-to-move: touching the screen immediately steers the snake toward
+    // that point (relative to the head's current on-screen position) —
+    // no drag/swipe distance required.
+    const handleTap = (x, y) => {
+      const game = this.game;
+      if (!game.snake || game.state !== STATE.PLAYING) return;
+      const cs = game.cellSize;
+      const head = game.snake.head;
+      const headPxX = (head.x + 0.5) * cs;
+      const headPxY = (head.y + 0.5) * cs;
+      const dx = x - headPxX;
+      const dy = y - headPxY;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        game.requestDirection(dx > 0 ? DIR.RIGHT : DIR.LEFT);
       } else {
-        this.game.requestDirection(dy > 0 ? DIR.DOWN : DIR.UP);
+        game.requestDirection(dy > 0 ? DIR.DOWN : DIR.UP);
       }
-      this.touchStart = null;
     };
 
     layer.addEventListener('touchstart', (e) => {
       if (e.touches.length > 1) return; // ignore pinch/multi-touch
       const t = e.touches[0];
-      start(t.clientX, t.clientY);
+      handleTap(t.clientX, t.clientY);
       e.preventDefault();
     }, { passive: false });
 
-    // Without this, mobile browsers treat the drag as a page scroll /
-    // back-forward navigation swipe and steal the gesture before touchend fires.
+    // Prevent the browser from turning any finger movement into a page
+    // scroll / back-forward navigation swipe.
     layer.addEventListener('touchmove', (e) => {
       e.preventDefault();
     }, { passive: false });
 
     layer.addEventListener('touchend', (e) => {
-      const t = e.changedTouches[0];
-      end(t.clientX, t.clientY);
       e.preventDefault();
     }, { passive: false });
 
-    layer.addEventListener('touchcancel', () => { this.touchStart = null; });
-
-    // Mouse fallback for desktop drag-swipe testing
-    let mouseDown = false;
-    layer.addEventListener('mousedown', (e) => { mouseDown = true; start(e.clientX, e.clientY); });
-    layer.addEventListener('mouseup', (e) => { if (mouseDown) end(e.clientX, e.clientY); mouseDown = false; });
+    // Mouse fallback for desktop click-to-steer testing
+    layer.addEventListener('mousedown', (e) => {
+      handleTap(e.clientX, e.clientY);
+    });
   }
 }
