@@ -8,14 +8,14 @@ const CONFIG = {
   },
 
   DIFFICULTY: {
-    easy:   { baseInterval: 170, obstacleCount: 4,  bombChance: 0.15, wallChance: 0.5, victoryScore: 400  },
-    medium: { baseInterval: 130, obstacleCount: 7,  bombChance: 0.30, wallChance: 0.65, victoryScore: 700  },
-    hard:   { baseInterval: 95,  obstacleCount: 11, bombChance: 0.45, wallChance: 0.8, victoryScore: 1000 },
+    easy:   { baseInterval: 240, obstacleCount: 4,  bombChance: 0.15, wallChance: 0.5, victoryScore: 400  },
+    medium: { baseInterval: 190, obstacleCount: 7,  bombChance: 0.30, wallChance: 0.65, victoryScore: 700  },
+    hard:   { baseInterval: 150, obstacleCount: 11, bombChance: 0.45, wallChance: 0.8, victoryScore: 1000 },
   },
 
   SPEED_UP_EVERY: 50,       // points
-  SPEED_UP_FACTOR: 0.94,    // multiply interval (faster) each speed-up step
-  MIN_INTERVAL: 55,
+  SPEED_UP_FACTOR: 0.97,    // multiply interval (faster) each speed-up step — gentle ramp
+  MIN_INTERVAL: 100,
 
   SCORES: {
     apple: 10,
