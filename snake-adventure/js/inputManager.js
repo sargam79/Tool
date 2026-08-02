@@ -44,14 +44,25 @@ class InputManager {
     };
 
     layer.addEventListener('touchstart', (e) => {
-      const t = e.changedTouches[0];
+      if (e.touches.length > 1) return; // ignore pinch/multi-touch
+      const t = e.touches[0];
       start(t.clientX, t.clientY);
-    }, { passive: true });
+      e.preventDefault();
+    }, { passive: false });
+
+    // Without this, mobile browsers treat the drag as a page scroll /
+    // back-forward navigation swipe and steal the gesture before touchend fires.
+    layer.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, { passive: false });
 
     layer.addEventListener('touchend', (e) => {
       const t = e.changedTouches[0];
       end(t.clientX, t.clientY);
-    }, { passive: true });
+      e.preventDefault();
+    }, { passive: false });
+
+    layer.addEventListener('touchcancel', () => { this.touchStart = null; });
 
     // Mouse fallback for desktop drag-swipe testing
     let mouseDown = false;
