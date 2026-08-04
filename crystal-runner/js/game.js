@@ -158,6 +158,7 @@ class Game {
 
   /* ---------------- collision resolution ---------------- */
   _resolveCollisions() {
+    if (this.player.state === 'dead') return; // already dying — ignore further hits during the death animation
     const nearby = this.track.items.filter((it) => Math.abs(it.z) <= 6);
 
     const hitObstacle = checkObstacleCollision(this.player, nearby, RUNNER_CONFIG.COLLISION_WINDOW);
@@ -223,6 +224,7 @@ class Game {
   }
 
   _killPlayer() {
+    if (this.player.state === 'dead') return; // already dead, ignore duplicate calls
     this.player.kill();
     this.player._deathT = 0;
     this.sound.playGameOver();
@@ -278,12 +280,16 @@ class Game {
 
     this._updateEffects(performance.now());
 
-    // advance world items toward the player
-    for (const item of this.track.items) {
-      item.z -= speed * dtSec;
-    }
-    this.track.fillAhead(this.distance + 60, difficulty);
+    // advance world items toward the player, staying in one consistent
+    // player-relative coordinate frame (player is always conceptually at z=0)
+    const scrollAmount = speed * dtSec;
+    this.track.scroll(scrollAmount);
+    this.track.fillAhead(60, difficulty);
     this.track.cullBehind(-8);
+
+    // ground/canyon segments must scroll by the same amount, or the world
+    // stops moving under the player entirely
+    this.scene.scrollTrackSegments(scrollAmount);
 
     // sync visuals
     const seen = new Set();
@@ -300,7 +306,7 @@ class Game {
       if (!seen.has(id)) { this.scene.removeItemVisual(mesh); this.visualsByItemId.delete(id); }
     }
 
-    this.scene.recycleTrackSegments(this.distance);
+    this.scene.recycleTrackSegments();
 
     this._resolveCollisions();
 
