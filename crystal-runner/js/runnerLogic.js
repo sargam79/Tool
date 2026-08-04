@@ -135,9 +135,18 @@ class SpawnTrack {
     this._nextSpawnZ = 40;
   }
 
-  /** Ensure the track has spawned content up to `aheadZ` distance from the player. */
-  fillAhead(aheadZ, difficulty) {
-    while (this._nextSpawnZ < aheadZ) {
+  /** Advance every item — and the internal spawn cursor — toward the player by `amount`.
+   *  Everything in this class lives in the same player-relative frame (player is
+   *  conceptually always at z=0), so the spawn cursor must scroll exactly like
+   *  the items do, or spawn positions silently drift into the wrong frame. */
+  scroll(amount) {
+    this._nextSpawnZ -= amount;
+    for (const it of this.items) it.z -= amount;
+  }
+
+  /** Ensure the track has spawned content up to `lookahead` distance ahead of the player. */
+  fillAhead(lookahead, difficulty) {
+    while (this._nextSpawnZ < lookahead) {
       this._spawnCluster(this._nextSpawnZ, difficulty);
       const gap = this._randRange(difficulty.minGap, difficulty.maxGap);
       this._nextSpawnZ += gap;
