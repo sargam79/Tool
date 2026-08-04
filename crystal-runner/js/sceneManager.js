@@ -154,6 +154,7 @@ class SceneManager {
     const tex = new THREE.CanvasTexture(c);
     tex.minFilter = THREE.NearestFilter;
     tex.magFilter = THREE.NearestFilter;
+    tex.generateMipmaps = false;
     this.toonGradient = tex;
   }
 
@@ -342,11 +343,22 @@ class SceneManager {
     return g;
   }
 
-  recycleTrackSegments(playerDistance) {
+  /** Move every ground/canyon segment toward the player by `amount`. Without
+   *  this the track geometry sits frozen in place while only the obstacles/
+   *  collectibles scroll, leaving the player floating over static, rapidly
+   *  mis-recycled ground. */
+  scrollTrackSegments(amount) {
     for (const seg of this.trackSegments) {
-      const relativeZ = seg.position.z - playerDistance;
-      if (relativeZ < -RUNNER_CONFIG.TRACK.segmentLength * (RUNNER_CONFIG.TRACK.segmentsBehind + 0.5)) {
-        seg.position.z += RUNNER_CONFIG.TRACK.segmentLength * this.trackSegments.length;
+      seg.position.z -= amount;
+    }
+  }
+
+  recycleTrackSegments() {
+    const total = this.trackSegments.length;
+    const behindThreshold = -RUNNER_CONFIG.TRACK.segmentLength * (RUNNER_CONFIG.TRACK.segmentsBehind + 0.5);
+    for (const seg of this.trackSegments) {
+      if (seg.position.z < behindThreshold) {
+        seg.position.z += RUNNER_CONFIG.TRACK.segmentLength * total;
       }
     }
   }
