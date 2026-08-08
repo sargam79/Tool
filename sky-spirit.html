@@ -113,35 +113,32 @@ function drP(){for(const p of pts){if(!p.a)continue;const al=p.l/p.ml;X.globalAl
 /* ===== Background Data ===== */
 // Stars with twinkle phase and size variation
 const stars=[];
-for(let i=0;i<180;i++)stars.push({x:Math.random(),y:Math.random()*.7,s:Math.random()*2.2+.4,tw:Math.random()*6.28,sp:Math.random()*.02+.008,col:Math.random()>.85?`hsl(${Math.random()*60+200},80%,90%)`:'#fff'});
+for(let i=0;i<70;i++)stars.push({x:Math.random(),y:Math.random()*.7,s:Math.random()*1.8+.5,tw:Math.random()*6.28,sp:Math.random()*.02+.008});
 // Moon
 const moon={ph:Math.random()*6.28};
 // Sun
 const sun={ph:0};
 // Clouds — 3 layers: far(0), mid(1), near(2)
 const bCl=[];
-for(let i=0;i<20;i++)bCl.push({x:Math.random()*2.2-.3,y:Math.random()*.5+.04,w:Math.random()*220+90,h:Math.random()*48+18,sp:Math.random()*.18+.05,ly:Math.floor(Math.random()*3),op:Math.random()*.3+.1,puffs:Math.floor(Math.random()*3)+4});
+for(let i=0;i<10;i++)bCl.push({x:Math.random()*2.2-.3,y:Math.random()*.5+.04,w:Math.random()*220+90,h:Math.random()*48+18,sp:Math.random()*.035+.01,ly:Math.floor(Math.random()*3),op:Math.random()*.3+.1,puffs:3});
 // Floating islands — richer data
 const bIs=[];
-for(let i=0;i<9;i++)bIs.push({
+for(let i=0;i<5;i++)bIs.push({
   x:Math.random()*2.2,y:Math.random()*.42+.28,
   w:Math.random()*130+55,h:Math.random()*30+14,
   ly:Math.floor(Math.random()*2),
-  wf:Math.random()>.4,tr:Math.random()>.3,
-  nTr:Math.floor(Math.random()*3)+1,
-  sp:Math.random()*.09+.03,
+  wf:false,tr:Math.random()>.3,
+  nTr:Math.floor(Math.random()*2)+1,
+  sp:Math.random()*.017+.006,
   rock:Math.random()>.5,
-  wfPh:Math.random()*6.28
+  wfPh:0
 });
 // Mountains — two depth layers
 const mts=[];
-for(let i=0;i<14;i++)mts.push({x:i*.1-.05,h:Math.random()*.16+.05,w:Math.random()*.2+.09,ly:i%2,snow:Math.random()>.45});
+for(let i=0;i<8;i++)mts.push({x:i*.17-.05,h:Math.random()*.16+.05,w:Math.random()*.2+.09,ly:i%2,snow:Math.random()>.45});
 // Birds
 const brds=[];
-for(let i=0;i<8;i++)brds.push({x:Math.random()*2,y:Math.random()*.38+.04,sp:Math.random()*.9+.3,wp:Math.random()*6.28,s:Math.random()*3+1.5,flock:i<3});
-// Shooting stars
-const sSt=[];
-let ssTimer=0;
+for(let i=0;i<4;i++)brds.push({x:Math.random()*2,y:Math.random()*.38+.04,sp:Math.random()*.2+.07,wp:Math.random()*6.28,s:Math.random()*3+1.5,flock:i<2});
 
 /* ===== Sky Colors ===== */
 function lc(a,b,t){return[a[0]+(b[0]-a[0])*t|0,a[1]+(b[1]-a[1])*t|0,a[2]+(b[2]-a[2])*t|0]}
@@ -186,17 +183,14 @@ if(sunRise){
   const sp2=(dayT-.05)/.5;
   const sx=W*.75,sy=H*(1-sp2*.82);
   const bright=Math.min(1,Math.sin(sp2*Math.PI)*1.2);
-  // Glow halo
-  const sg=X.createRadialGradient(sx,sy,0,sx,sy,H*.28);
-  sg.addColorStop(0,`rgba(255,240,160,${.35*bright})`);
-  sg.addColorStop(.35,`rgba(255,180,60,${.18*bright})`);
-  sg.addColorStop(1,'rgba(255,120,0,0)');
-  X.fillStyle=sg;X.fillRect(0,0,W,H);
-  // Sun disc
   const sr=H*.048;
-  const sd=X.createRadialGradient(sx-sr*.2,sy-sr*.2,0,sx,sy,sr);
-  sd.addColorStop(0,'#fffde0');sd.addColorStop(.55,'#ffe066');sd.addColorStop(1,'rgba(255,160,30,.7)');
-  X.fillStyle=sd;X.beginPath();X.arc(sx,sy,sr,0,Math.PI*2);X.fill();
+  // Small local glow (cheaper than full-screen fill)
+  const sg=X.createRadialGradient(sx,sy,0,sx,sy,sr*3.5);
+  sg.addColorStop(0,`rgba(255,220,140,${.4*bright})`);
+  sg.addColorStop(1,'rgba(255,150,40,0)');
+  X.fillStyle=sg;X.beginPath();X.arc(sx,sy,sr*3.5,0,Math.PI*2);X.fill();
+  // Sun disc
+  X.fillStyle='#ffe066';X.beginPath();X.arc(sx,sy,sr,0,Math.PI*2);X.fill();
 }
 
 // --- Moon (night) ---
@@ -205,37 +199,21 @@ if(na>.05){
   const mx=W*.72,my=H*.15;
   const mr=H*.042;
   // Moon glow
-  const mg=X.createRadialGradient(mx,my,0,mx,my,mr*4.5);
+  const mg=X.createRadialGradient(mx,my,0,mx,my,mr*3);
   mg.addColorStop(0,`rgba(200,225,255,${.22*na})`);mg.addColorStop(1,'rgba(180,210,255,0)');
-  X.fillStyle=mg;X.beginPath();X.arc(mx,my,mr*4.5,0,Math.PI*2);X.fill();
+  X.fillStyle=mg;X.beginPath();X.arc(mx,my,mr*3,0,Math.PI*2);X.fill();
   // Moon disc
   X.fillStyle=`rgba(235,245,255,${na})`;X.beginPath();X.arc(mx,my,mr,0,Math.PI*2);X.fill();
   // Crescent shadow
   X.fillStyle=`rgba(${sk.tp[0]},${sk.tp[1]},${sk.tp[2]},${na*.85})`;
   X.beginPath();X.arc(mx+mr*.3,my,mr*.88,0,Math.PI*2);X.fill();
-  // Craters
-  X.fillStyle=`rgba(180,200,230,${na*.4})`;
-  [[-.3,-.25,.18],[.22,.1,.12],[-.12,.3,.09]].forEach(([dx,dy,r])=>{X.beginPath();X.arc(mx+dx*mr,my+dy*mr,r*mr,0,Math.PI*2);X.fill()});
 }
 
 // --- Stars ---
 if(na>0&&!RM){
-  ssTimer++;if(ssTimer>90&&Math.random()<.015){ssTimer=0;sSt.push({x:Math.random()*.8+.1,y:Math.random()*.35,vx:-.008,vy:.003,l:1,a:1})}
-  for(let i=sSt.length-1;i>=0;i--){const s=sSt[i];s.x+=s.vx;s.y+=s.vy;s.a-=.012;if(s.a<=0){sSt.splice(i,1);continue}
-    X.globalAlpha=s.a*na;X.strokeStyle='#fff';X.lineWidth=1.5;X.beginPath();X.moveTo(s.x*W,s.y*H);X.lineTo((s.x-s.vx*22)*W,(s.y-s.vy*22)*H);X.stroke()}
+  X.fillStyle='#fff';
   for(const s of stars){s.tw+=s.sp;const tw=Math.sin(s.tw)*.35+.65;X.globalAlpha=na*tw*.8;
-    X.fillStyle=s.col;X.beginPath();X.arc(s.x*W,s.y*H,s.s*tw,0,Math.PI*2);X.fill()}
-  X.globalAlpha=1
-}
-
-// --- Aurora (deep night) ---
-if(na>.3&&!RM){
-  const tm=Date.now()*.00025;
-  const bands=[{c:'rgba(0,255,140,',y:.1,amp:32},{c:'rgba(0,180,255,',y:.18,amp:24},{c:'rgba(160,80,255,',y:.08,amp:18}];
-  for(const b of bands){
-    X.globalAlpha=na*.3;X.fillStyle=b.c+'.3)';X.beginPath();X.moveTo(0,H*(b.y-.02));
-    for(let x=0;x<=W;x+=6){X.lineTo(x,H*b.y+Math.sin(x*.004+tm+b.y*8)*b.amp+Math.sin(x*.009+tm*1.4)*b.amp*.5)}
-    X.lineTo(W,H*(b.y+.14));X.lineTo(0,H*(b.y+.14));X.fill()}
+    X.beginPath();X.arc(s.x*W,s.y*H,s.s*tw,0,Math.PI*2);X.fill()}
   X.globalAlpha=1
 }
 
@@ -246,35 +224,21 @@ if((ds||ss)&&!nt){
   X.fillStyle=hg;X.fillRect(0,0,W,H)
 }
 
-// --- Far mountains (layer 0) ---
+// --- Mountains (single flat layer) ---
 const nt2=isNt(dayT);
-for(let pass=0;pass<2;pass++){
-  const ly=pass;
-  const depthF=ly===0?.28:.5;
-  const nr=nt2?.3+depthF*.1:1;
-  const mc=ly===0?[45,55,75]:[65,80,100];
+{
+  const nr=nt2?.4:1;
+  const mc=[55,65,88];
+  X.fillStyle=`rgba(${mc[0]*nr|0},${mc[1]*nr|0},${mc[2]*nr|0},.5)`;
   for(const m of mts){
-    if(m.ly!==ly)continue;
-    const mx2=((m.x-dist*.000035*(1+ly*.5))%1.5+1.5)%1.5-.1;
-    const bx=mx2*W,bh=m.h*H*(ly===0?.9:1.1),bw=m.w*W;
+    const mx2=((m.x-dist*.000007)%1.4+1.4)%1.4-.1;
+    const bx=mx2*W,bh=m.h*H,bw=m.w*W;
     const baseY=H*.8;
-    // Mountain body
-    const mg2=X.createLinearGradient(bx+bw*.5,baseY-bh,bx+bw*.5,baseY);
-    mg2.addColorStop(0,`rgba(${mc[0]*nr|0},${mc[1]*nr|0},${mc[2]*nr|0},${ly===0?.55:.7})`);
-    mg2.addColorStop(1,`rgba(${mc[0]*nr*.6|0},${mc[1]*nr*.6|0},${mc[2]*nr*.6|0},${ly===0?.4:.55})`);
-    X.fillStyle=mg2;
-    X.beginPath();X.moveTo(bx,baseY);
-    // Jagged peak
-    X.lineTo(bx+bw*.25,baseY-bh*.55);X.lineTo(bx+bw*.42,baseY-bh*.38);
-    X.lineTo(bx+bw*.5,baseY-bh);X.lineTo(bx+bw*.6,baseY-bh*.42);
-    X.lineTo(bx+bw*.78,baseY-bh*.62);X.lineTo(bx+bw,baseY);X.fill();
-    // Snow cap
+    X.beginPath();X.moveTo(bx,baseY);X.lineTo(bx+bw*.5,baseY-bh);X.lineTo(bx+bw,baseY);X.fill();
     if(m.snow&&!nt2){
-      X.fillStyle=`rgba(230,240,255,${ly===0?.45:.55})`;
-      X.beginPath();X.moveTo(bx+bw*.5,baseY-bh);
-      X.lineTo(bx+bw*.38,baseY-bh*.78);X.lineTo(bx+bw*.44,baseY-bh*.7);
-      X.lineTo(bx+bw*.5,baseY-bh*.72);X.lineTo(bx+bw*.56,baseY-bh*.7);
-      X.lineTo(bx+bw*.62,baseY-bh*.78);X.closePath();X.fill()
+      X.fillStyle='rgba(230,240,255,.5)';
+      X.beginPath();X.moveTo(bx+bw*.5,baseY-bh);X.lineTo(bx+bw*.4,baseY-bh*.75);X.lineTo(bx+bw*.6,baseY-bh*.75);X.closePath();X.fill();
+      X.fillStyle=`rgba(${mc[0]*nr|0},${mc[1]*nr|0},${mc[2]*nr|0},.5)`;
     }
   }
 }
@@ -380,10 +344,6 @@ X.bezierCurveTo(ix+iw*.3,iy-ih*.35,ix+iw*.52,iy-ih*.15,ix+iw*.48,iy+ih*.1);
 X.bezierCurveTo(ix+iw*.48,iy+ih*1.4,ix-iw*.48,iy+ih*1.4,ix-iw*.48,iy+ih*.1);
 X.fill();
 
-// Rock face detail (lighter stripe)
-X.fillStyle=`rgba(${rc1[0]*nf+20|0},${rc1[1]*nf+15|0},${rc1[2]*nf+10|0},.35)`;
-X.beginPath();X.moveTo(ix-iw*.2,iy-ih*.3);X.lineTo(ix+iw*.05,iy-ih*.36);X.lineTo(ix+iw*.1,iy+ih*.5);X.lineTo(ix-iw*.15,iy+ih*.45);X.closePath();X.fill();
-
 // Grass top
 const gg2=X.createRadialGradient(ix,iy-ih*.3,0,ix,iy-ih*.3,iw*.5);
 gg2.addColorStop(0,`rgb(${gc1[0]*nf|0},${gc1[1]*nf|0},${gc1[2]*nf|0})`);
@@ -396,34 +356,19 @@ X.beginPath();X.ellipse(ix,iy-ih*.3,iw*.3,ih*.1,0,Math.PI,Math.PI*2);X.fill();
 
 // Trees
 if(isl.tr){
-  const tn=isl.nTr||2;
+  const tn=isl.nTr||1;
+  X.fillStyle=`rgb(${65*nf|0},${45*nf|0},${28*nf|0})`;
   for(let t2=0;t2<tn;t2++){
     const tx=ix+(t2/(tn-1||1)-.5)*iw*.55,ty=iy-ih*.24;
-    const ts=iw*.065+Math.random()*.02;
-    // Trunk
-    X.fillStyle=`rgb(${65*nf|0},${45*nf|0},${28*nf|0})`;
+    const ts=iw*.065;
     X.fillRect(tx-ts*.35,ty-ih*.35,ts*.7,ih*.38);
-    // Canopy layers
-    [[0,0,1],[0,-ih*.14,.82],[0,-ih*.26,.62]].forEach(([dx,dy,rs],li)=>{
-      const cg3=X.createRadialGradient(tx+dx,ty+dy-ts*2,0,tx+dx,ty+dy-ts*2,ts*rs*3.5);
-      cg3.addColorStop(0,`rgba(${(45+li*15)*nf|0},${(145+li*18)*nf|0},${(48+li*12)*nf|0},1)`);
-      cg3.addColorStop(1,`rgba(${35*nf|0},${100*nf|0},${35*nf|0},.4)`);
-      X.fillStyle=cg3;X.beginPath();X.arc(tx+dx,ty+dy-ts*2,ts*rs*3.5,0,Math.PI*2);X.fill()
-    })
   }
-}
-
-// Waterfall
-if(isl.wf&&!RM){
-  const fx=ix+iw*.28,fy=iy-ih*.1;
-  X.strokeStyle=`rgba(160,210,255,${.55*nf})`;X.lineWidth=2.2*p;
-  X.beginPath();X.moveTo(fx,fy);
-  for(let wy=fy;wy<fy+ih*2;wy+=3){
-    X.lineTo(fx+Math.sin(wy*.12+Date.now()*.004+isl.wfPh)*3.5,wy)
-  }X.stroke();
-  // Mist pool
-  X.fillStyle=`rgba(180,225,255,${.18*nf})`;
-  X.beginPath();X.ellipse(fx,fy+ih*2,iw*.14,ih*.14,0,0,Math.PI*2);X.fill()
+  X.fillStyle=`rgba(${55*nf|0},${150*nf|0},${55*nf|0},.9)`;
+  for(let t2=0;t2<tn;t2++){
+    const tx=ix+(t2/(tn-1||1)-.5)*iw*.55,ty=iy-ih*.24;
+    const ts=iw*.065;
+    X.beginPath();X.arc(tx,ty-ts*2,ts*3,0,Math.PI*2);X.fill()
+  }
 }
 }
 
