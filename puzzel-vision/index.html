@@ -409,6 +409,7 @@ class PuzzleBoard{
     this.scene=new THREE.Scene();this.scene.fog=new THREE.FogExp2(0x0a0a1a,0.03);
     this.camera=new THREE.PerspectiveCamera(42,w/h,0.1,100);
     this.camera.position.set(0,0,11);this.camera.lookAt(0,0,0);
+    this.boardHalfSize=3.5;
     this.renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
     this.renderer.setSize(w,h);this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
@@ -452,11 +453,17 @@ class PuzzleBoard{
           if(x===size-1&&y===size-1)continue;
           const u1=(cx+x*twt)/iw,v1=1-(cy+(y+1)*tht)/ih;
           const u2=(cx+(x+1)*twt)/iw,v2=1-(cy+y*tht)/ih;
-          const tg=new THREE.PlaneGeometry(this.tileSize-0.02,this.tileSize-0.02);
           const tm=new THREE.MeshPhysicalMaterial({map:tex,metalness:0.05,roughness:0.22,clearcoat:0.25});
-          const uv=tg.attributes.uv;
-          uv.setXY(0,u1,v2);uv.setXY(1,u2,v2);uv.setXY(2,u1,v1);uv.setXY(3,u2,v1);
           const bg=new THREE.BoxGeometry(this.tileSize,this.tileSize,0.12);
+          // BoxGeometry ships every face with a default full 0..1 UV rect, so
+          // without this the front face (material index 4, the "pz" face)
+          // shows the ENTIRE source image on every tile instead of its own
+          // slice. Vertices 16-19 are that face's 4 corners (r128 box
+          // vertex layout: px,nx,py,ny,pz,nz, 4 verts each) — remap them to
+          // this tile's (u1,v1)-(u2,v2) sub-rectangle of the source image.
+          const buv=bg.attributes.uv;
+          buv.setXY(16,u1,v2);buv.setXY(17,u2,v2);buv.setXY(18,u1,v1);buv.setXY(19,u2,v1);
+          buv.needsUpdate=true;
           const mesh=new THREE.Mesh(bg,[side,side,side,side,tm,back]);
           mesh.position.set((x*(this.tileSize+this.gap))-off,-(y*(this.tileSize+this.gap))+off,0);
           mesh.castShadow=true;mesh.receiveShadow=true;
@@ -474,6 +481,10 @@ class PuzzleBoard{
       const pl=new THREE.Mesh(new THREE.BoxGeometry(fw,fh,0.05),new THREE.MeshPhysicalMaterial({color:0x060610,metalness:0.3,roughness:0.8}));
       pl.position.set(0,0,-0.15);this.frameGroup.add(pl);
       this.scene.add(this.tileGroup);this.scene.add(this.frameGroup);
+      // Half-width of the framed board, including its border, with a
+      // small margin so tile edges/shadows never touch the viewport edge.
+      this.boardHalfSize=(fw/2)*1.12;
+      this.fitCamera();
       if(cb)cb();
     };
     new THREE.TextureLoader().load(src,(tex)=>{
@@ -539,6 +550,23 @@ class PuzzleBoard{
     const w=this.container.clientWidth,h=this.container.clientHeight;
     this.camera.aspect=w/h;this.camera.updateProjectionMatrix();
     this.renderer.setSize(w,h);
+    this.fitCamera();
+  }
+  fitCamera(){
+    // A PerspectiveCamera's horizontal FOV shrinks below its vertical FOV
+    // whenever aspect (w/h) < 1 — exactly the case on most phones held
+    // upright. Left at a fixed distance, the square board then overflows
+    // past the left/right edges of the screen even though it fits
+    // vertically. Push the camera back just enough that BOTH the width
+    // and height of the board fit inside the frustum at z=0.
+    if(!this.camera)return;
+    const vFov=THREE.MathUtils.degToRad(this.camera.fov);
+    const distForHeight=this.boardHalfSize/Math.tan(vFov/2);
+    const hFov=2*Math.atan(Math.tan(vFov/2)*this.camera.aspect);
+    const distForWidth=this.boardHalfSize/Math.tan(hFov/2);
+    const dist=Math.max(distForHeight,distForWidth,6);
+    this._baseCameraZ=dist;
+    this.camera.position.z=dist;
   }
   animate(){
     requestAnimationFrame(()=>this.animate());
@@ -602,8 +630,9 @@ class PuzzleBoard{
     this.glow.intensity=2.5;
     const fade=()=>{this.glow.intensity*=0.985;if(this.glow.intensity>0.05)requestAnimationFrame(fade);else this.glow.intensity=0;};
     setTimeout(fade,1500);
-    this.anim(this.camera.position,'z',6.5,1600,function(t){return 1-Math.pow(1-t,2);});
-    setTimeout(()=>this.anim(this.camera.position,'z',11,1200),2600);
+    const zoomZ=Math.max((this._baseCameraZ||11)*0.6,4);
+    this.anim(this.camera.position,'z',zoomZ,1600,function(t){return 1-Math.pow(1-t,2);});
+    setTimeout(()=>this.anim(this.camera.position,'z',this._baseCameraZ||11,1200),2600);
   }
   destroy(){
     if(this._resizeHandler)window.removeEventListener('resize',this._resizeHandler);
