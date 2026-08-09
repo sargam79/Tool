@@ -196,17 +196,6 @@ header{ display:flex; align-items:center; justify-content:space-between; padding
 .how-to-play li{ margin-bottom:6px; }
 .how-to-play li strong{ color:var(--text); }
 
-.more-games{ margin-top:20px; }
-.more-games-head{ display:flex; justify-content:space-between; align-items:baseline; padding:0 2px 10px;
-  font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
-.more-games-all{ color:var(--teal); text-decoration:none; font-weight:800; text-transform:none; font-size:13px; }
-.more-games-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.game-card{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; background:var(--panel-solid);
-  border-radius:14px; padding:12px 10px; text-decoration:none; color:var(--text); box-shadow:var(--shadow); }
-.game-card-emoji{ font-size:19px; }
-.game-card-name{ font-weight:800; font-size:12px; line-height:1.2; }
-.game-card-tag{ font-size:10px; color:var(--text-dim); font-weight:700; }
-
 .site-footer{ margin-top:18px; text-align:center; font-size:12px; color:var(--text-dim); padding-bottom:4px; }
 .site-footer a{ color:var(--text-dim); text-decoration:none; }
 .site-footer span{ margin:0 6px; opacity:0.5; }
@@ -263,18 +252,6 @@ header{ display:flex; align-items:center; justify-content:space-between; padding
       <li>Use <strong>Undo</strong>, <strong>Hint</strong>, <strong>Shuffle</strong>, or <strong>Destroy Tile</strong> power-ups if you get stuck.</li>
       <li>Try <strong>Timed</strong> or <strong>Zen</strong> mode, or the seeded <strong>Daily Challenge</strong>, for a different pace.</li>
     </ol>
-  </section>
-
-  <section class="more-games" aria-label="More free games on ToolPond Pro">
-    <div class="more-games-head"><span>More Free Games</span>
-      <a href="https://toolpond.org/games.html" class="more-games-all">All Games →</a>
-    </div>
-    <div class="more-games-grid">
-      <a class="game-card" href="https://toolpond.org/aquasort.html"><span class="game-card-emoji">💧</span><span class="game-card-name">AquaSort</span><span class="game-card-tag">Water Sort</span></a>
-      <a class="game-card" href="https://toolpond.org/block-blast-arena.html"><span class="game-card-emoji">💥</span><span class="game-card-name">Block Blast Arena</span><span class="game-card-tag">Block Puzzle</span></a>
-      <a class="game-card" href="https://toolpond.org/bloxdoku.html"><span class="game-card-emoji">🔷</span><span class="game-card-name">Bloxdoku</span><span class="game-card-tag">Block Puzzle</span></a>
-      <a class="game-card" href="https://toolpond.org/sky-spirit.html"><span class="game-card-emoji">✨</span><span class="game-card-name">Sky Spirit: Wind Runner</span><span class="game-card-tag">Tap to Fly</span></a>
-    </div>
   </section>
 
   <footer class="site-footer">
@@ -1416,6 +1393,15 @@ newGame();
 
 /* ================= Expose for debugging ================= */
 window._game = () => game;
+
+/* ================= Service Worker (offline play) ================= */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/2048-fusion-sw.js').catch((err) => {
+      console.warn('Service worker registration failed:', err);
+    });
+  });
+}
 </script>
 </body>
 </html>
