@@ -4,27 +4,27 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
-<title>Block Blast Arena — Free Block Puzzle Game Online | ToolPond Pro</title>
-<meta name="description" content="Play Block Blast Arena free online — an advanced HTML5 block puzzle game with bomb power-ups, combos, and achievements. Drag blocks onto a 9x9 grid, blast rows, columns and boxes. No download, no login, works on mobile & desktop."/>
-<meta name="keywords" content="block blast, block blast game, block blast arena, block blast online, block blast free, block puzzle game, block puzzle online, free block puzzle, block sudoku, drag and drop puzzle game, 9x9 grid puzzle, HTML5 block puzzle, no download puzzle game, mobile block puzzle, casual puzzle game online, puzzle game with power ups"/>
+<title>Block Blast Arena – Free Block Puzzle Game Online | ToolPond</title>
+<meta name="description" content="Play Block Blast Arena free online — drag blocks onto a 9x9 grid, blast rows, columns & boxes, trigger bomb power-ups, and chase combos. No download, no login."/>
+<meta name="keywords" content="block blast, block blast game, block blast online, block blast free, block puzzle game, block puzzle online, free block puzzle game, block sudoku game, blockudoku, wood block puzzle, drag and drop puzzle game, 9x9 grid puzzle, block blast unblocked, HTML5 block puzzle, no download puzzle game, mobile block puzzle, casual puzzle game online, puzzle game with power ups"/>
 <meta name="author" content="ToolPond Pro"/>
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
 <link rel="canonical" href="https://toolpond.org/block-blast-arena.html"/>
 
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Block Blast Arena — Free Block Puzzle Game Online"/>
-<meta property="og:description" content="Drag blocks onto a 9x9 grid, blast rows, columns and boxes, trigger bomb power-ups, and chase combos. Free, no download, no login."/>
+<meta property="og:title" content="Block Blast Arena – Free Block Puzzle Game Online"/>
+<meta property="og:description" content="Drag blocks onto a 9x9 grid, blast rows, columns and boxes, trigger bomb power-ups, and chase combos. Free to play, no download, no login."/>
 <meta property="og:url" content="https://toolpond.org/block-blast-arena.html"/>
 <meta property="og:site_name" content="ToolPond Pro Games"/>
-<meta property="og:image" content="https://toolpond.org/og-block-blast-arena.png"/>
+<meta property="og:image" content="https://toolpond.org/images/games/block-blast-arena-og.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:locale" content="en_US"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Block Blast Arena — Free Block Puzzle Game Online"/>
+<meta name="twitter:title" content="Block Blast Arena – Free Block Puzzle Game Online"/>
 <meta name="twitter:description" content="Blast rows, columns and boxes, trigger bomb power-ups, and chase combos. Free block puzzle game, no download needed."/>
-<meta name="twitter:image" content="https://toolpond.org/og-block-blast-arena.png"/>
+<meta name="twitter:image" content="https://toolpond.org/images/games/block-blast-arena-og.jpg"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -34,16 +34,30 @@
   "@type": "VideoGame",
   "name": "Block Blast Arena",
   "url": "https://toolpond.org/block-blast-arena.html",
+  "image": "https://toolpond.org/images/games/block-blast-arena.webp",
   "description": "Block Blast Arena is a free online block puzzle game with bomb power-ups, combos, and achievements. Drag blocks onto a 9x9 grid and blast rows, columns and boxes. No download, no login required.",
   "genre": ["Puzzle", "Block Puzzle", "Casual", "Arcade"],
-  "gamePlatform": ["Web Browser", "Android", "iOS"],
+  "gamePlatform": ["Web Browser", "Mobile Browser", "Desktop Browser"],
   "applicationCategory": "Game",
   "operatingSystem": "Any",
   "isAccessibleForFree": true,
+  "playMode": "SinglePlayer",
   "publisher": {
     "@type": "Organization",
-    "name": "ToolPond Pro"
+    "name": "ToolPond Pro",
+    "url": "https://toolpond.org"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/index.html" },
+    { "@type": "ListItem", "position": 2, "name": "Free Browser Games", "item": "https://toolpond.org/games.html" },
+    { "@type": "ListItem", "position": 3, "name": "Block Blast Arena", "item": "https://toolpond.org/block-blast-arena.html" }
+  ]
 }
 </script>
 <style>
@@ -197,19 +211,6 @@
   #confetti-layer{ position:fixed; inset:0; pointer-events:none; z-index:250; overflow:hidden; }
   .confetto{ position:absolute; width:8px; height:8px; border-radius:2px; opacity:1; }
 
-  .more-games{ margin-top:28px; }
-  .more-games-head{ display:flex; justify-content:space-between; align-items:baseline; padding:0 2px 10px;
-    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
-  .more-games-all{ color:var(--purple); text-decoration:none; font-weight:800; text-transform:none; font-size:13px; }
-  .more-games-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
-  .game-card{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; background:var(--panel-solid);
-    border-radius:14px; padding:12px 10px; text-decoration:none; color:var(--text); box-shadow:var(--shadow);
-    transition: transform .15s ease; }
-  .game-card:active{ transform:scale(0.96); }
-  .game-card-emoji{ font-size:19px; }
-  .game-card-name{ font-weight:800; font-size:11.5px; line-height:1.2; }
-  .game-card-tag{ font-size:10px; color:var(--text-dim); font-weight:700; }
-
   .site-footer{ margin-top:20px; text-align:center; font-size:12px; color:var(--text-dim); padding-bottom:4px; }
   .site-footer a{ color:var(--text-dim); text-decoration:none; }
   .site-footer a:hover{ color:var(--text); }
@@ -274,17 +275,6 @@
       <li>Unlock <strong>achievements</strong> as you score points, chain combos, and use bombs.</li>
       <li>The game ends when none of your 3 tray pieces fit anywhere on the board.</li>
     </ol>
-  </section>
-
-  <section class="more-games" aria-label="More free games on ToolPond Pro">
-    <div class="more-games-head"><span>More Free Games</span>
-      <a href="https://toolpond.org/games.html" class="more-games-all">All Games →</a>
-    </div>
-    <div class="more-games-grid">
-      <a class="game-card" href="https://toolpond.org/bloxdoku.html"><span class="game-card-emoji">🔷</span><span class="game-card-name">Bloxdoku</span><span class="game-card-tag">Block Puzzle</span></a>
-      <a class="game-card" href="https://toolpond.org/sky-spirit.html"><span class="game-card-emoji">✨</span><span class="game-card-name">Sky Spirit: Wind Runner</span><span class="game-card-tag">Tap to Fly</span></a>
-      <a class="game-card" href="https://toolpond.org/bubble-pop-quest.html"><span class="game-card-emoji">🫧</span><span class="game-card-name">Bubble Pop Quest</span><span class="game-card-tag">Match 3</span></a>
-    </div>
   </section>
 
   <footer class="site-footer">
