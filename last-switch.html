@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>The Last Switch — Free 3D Puzzle Game | 25 Levels, No Download</title>
+<meta name="description" content="The Last Switch is a free browser-based 3D puzzle game. Toggle switches to match target patterns across 25 mind-bending levels and 5 chapters — no download, no signup, play instantly.">
+<meta name="keywords" content="free puzzle game, browser puzzle game, 3D puzzle game, logic puzzle, switch puzzle game, brain teaser online, play free online, escape room game, lights out puzzle, no download game">
+<meta name="author" content="The Last Switch">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#00f0ff">
+<link rel="canonical" href="https://example.com/the-last-switch">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Last Switch — Free 3D Puzzle Game">
+<meta property="og:description" content="Toggle switches, match the target, escape the facility. 25 free levels of increasingly devious 3D logic puzzles — play instantly in your browser.">
+<meta property="og:url" content="https://example.com/the-last-switch">
+<meta property="og:site_name" content="The Last Switch">
+<meta property="og:image" content="https://example.com/the-last-switch/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Last Switch — neon 3D switch puzzle game logo with the tagline Think Ahead, Switch Wisely, Be the Last One">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Last Switch — Free 3D Puzzle Game">
+<meta name="twitter:description" content="25 free levels of 3D switch-matching puzzles. No download, no signup — play instantly in your browser.">
+<meta name="twitter:image" content="https://example.com/the-last-switch/og-image.png">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+
+<!-- Structured data for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "The Last Switch",
+  "description": "A free browser-based 3D puzzle game. Toggle switches to match target patterns across 25 levels and 5 chapters.",
+  "genre": ["Puzzle", "Logic Game"],
+  "gamePlatform": "Web Browser",
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; }
+html, body { background: #050508; color: #e0e0ff; font-family: 'Rajdhani', sans-serif; overflow: hidden; width: 100%; height: 100%; overscroll-behavior: none; }
+#game-container { position: relative; width: 100%; height: 100%; }
+#canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; touch-action: none; }
+
+/* ===== Loading screen ===== */
+#loading-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #050508; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 200; }
+.loading-title { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: #00f0ff; letter-spacing: 4px; margin-bottom: 20px; animation: loadPulse 1.4s ease-in-out infinite; }
+@keyframes loadPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.loading-bar { width: 220px; height: 3px; background: rgba(0,240,255,0.15); overflow: hidden; }
+.loading-bar-fill { width: 40%; height: 100%; background: #00f0ff; box-shadow: 0 0 10px #00f0ff; animation: loadSlide 1.2s ease-in-out infinite; }
+@keyframes loadSlide { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
+.loading-error { color: #ff4080; font-size: 0.9rem; margin-top: 20px; text-align: center; max-width: 400px; letter-spacing: 1px; display: none; }
+
+#main-menu { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; transition: opacity 0.8s ease; opacity: 0; pointer-events: none; }
+#main-menu.visible { opacity: 1; pointer-events: auto; }
+.game-title { font-family: 'Orbitron', sans-serif; font-size: 4rem; font-weight: 900; color: #00f0ff; text-shadow: 0 0 20px #00f0ff, 0 0 40px #00a0ff, 0 0 80px #0040ff; letter-spacing: 8px; margin-bottom: 10px; animation: titlePulse 3s ease-in-out infinite; text-align: center; }
+@keyframes titlePulse { 0%, 100% { text-shadow: 0 0 20px #00f0ff, 0 0 40px #00a0ff; } 50% { text-shadow: 0 0 30px #00f0ff, 0 0 60px #00a0ff, 0 0 100px #0080ff; } }
+.tagline { font-size: 1.2rem; color: #ff4080; letter-spacing: 4px; margin-bottom: 50px; opacity: 0.9; text-align: center; padding: 0 20px; }
+.menu-btn { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; padding: 15px 50px; margin: 10px; background: transparent; border: 2px solid #00f0ff; color: #00f0ff; cursor: pointer; letter-spacing: 3px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+.menu-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,240,255,0.3), transparent); transition: left 0.5s ease; }
+.menu-btn:hover::before { left: 100%; }
+.menu-btn:hover { background: rgba(0,240,255,0.1); box-shadow: 0 0 30px rgba(0,240,255,0.4); transform: scale(1.05); }
+.menu-btn:focus-visible { outline: 2px solid #ffd700; outline-offset: 2px; }
+.menu-btn:active { transform: scale(0.97); }
+.menu-btn.gold { border-color: #ffd700; color: #ffd700; }
+.menu-btn.gold::before { background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent); }
+.menu-btn.gold:hover { background: rgba(255,215,0,0.1); box-shadow: 0 0 30px rgba(255,215,0,0.4); }
+.nexus-text { position: absolute; bottom: 40px; font-size: 0.9rem; color: #ff4080; opacity: 0.6; letter-spacing: 2px; text-align: center; padding: 0 20px; }
+#mute-btn-menu { position: absolute; top: 20px; right: 20px; background: transparent; border: 1px solid #444; color: #888; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; padding: 8px 14px; cursor: pointer; letter-spacing: 2px; transition: all 0.3s ease; }
+#mute-btn-menu:hover { border-color: #00f0ff; color: #00f0ff; }
+.menu-progress { width: 260px; margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.menu-progress-track { width: 100%; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+.menu-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #00f0ff, #ffd700); box-shadow: 0 0 8px rgba(0,240,255,0.6); transition: width 0.6s ease; }
+.menu-progress-label { font-size: 0.7rem; color: #8888aa; letter-spacing: 2px; }
+
+#hud { position: absolute; top: 0; left: 0; width: 100%; padding: 20px 30px; display: none; justify-content: space-between; align-items: flex-start; background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent); gap: 10px; flex-wrap: wrap; }
+.hud-section { display: flex; flex-direction: column; gap: 8px; }
+.hud-label { font-size: 0.75rem; color: #8888aa; letter-spacing: 3px; text-transform: uppercase; }
+.hud-value { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: #00f0ff; text-shadow: 0 0 10px rgba(0,240,255,0.5); transition: color 0.3s ease; }
+.hud-value.warning { color: #ff4080; text-shadow: 0 0 10px rgba(255,64,128,0.5); }
+.move-bar-track { width: 130px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; margin-top: 2px; }
+.move-bar-fill { height: 100%; width: 0%; background: #00f0ff; box-shadow: 0 0 8px #00f0ff; transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease; border-radius: 2px; }
+#stars-display { display: flex; gap: 5px; font-size: 1.5rem; }
+.star { opacity: 0.2; transition: all 0.4s cubic-bezier(.34,1.56,.64,1); display: inline-block; }
+.star.active { opacity: 1; text-shadow: 0 0 15px #ffd700; transform: scale(1.15); }
+.hud-btn-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.hud-mini-btn { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; padding: 8px 16px; background: rgba(0,0,0,0.3); border: 1px solid #00f0ff; color: #00f0ff; cursor: pointer; letter-spacing: 2px; transition: all 0.3s ease; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+.hud-mini-btn:hover { background: rgba(0,240,255,0.15); box-shadow: 0 0 15px rgba(0,240,255,0.3); }
+.hud-mini-btn:active { transform: scale(0.95); }
+.hud-mini-btn.pink { border-color: #ff4080; color: #ff4080; }
+.hud-mini-btn.pink:hover { background: rgba(255,64,128,0.15); box-shadow: 0 0 15px rgba(255,64,128,0.3); }
+.hud-mini-btn.dim { border-color: #555; color: #777; }
+.hud-mini-btn.dim:hover { border-color: #999; color: #ccc; box-shadow: none; }
+
+#target-panel { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); background: rgba(8,8,18,0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid #00f0ff; box-shadow: 0 0 25px rgba(0,240,255,0.08), inset 0 0 20px rgba(0,240,255,0.03); padding: 20px; display: none; flex-direction: column; align-items: center; gap: 10px; }
+.target-title { font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: #00f0ff; letter-spacing: 3px; }
+#target-grid { display: grid; gap: 4px; }
+.target-cell { width: 30px; height: 30px; border-radius: 4px; border: 1px solid #333; transition: background 0.3s ease, box-shadow 0.3s ease; }
+
+#dialogue-box { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); width: 80%; max-width: 700px; background: rgba(0,0,0,0.92); border: 1px solid #ff4080; border-left: 4px solid #ff4080; padding: 20px 25px; display: none; flex-direction: column; gap: 10px; cursor: pointer; z-index: 55; }
+.dialogue-speaker { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: #ff4080; letter-spacing: 3px; }
+.dialogue-text { font-size: 1.1rem; line-height: 1.5; color: #e0e0ff; min-height: 50px; }
+.dialogue-next { align-self: flex-end; font-size: 0.8rem; color: #666; animation: blink 1s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+#level-complete { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 50; padding: 20px; text-align: center; }
+.complete-title { font-family: 'Orbitron', sans-serif; font-size: 2.6rem; color: #00f0ff; text-shadow: 0 0 30px rgba(0,240,255,0.6); margin-bottom: 20px; }
+.complete-stars { font-size: 4rem; margin-bottom: 20px; }
+.complete-stats { font-size: 1.2rem; color: #8888aa; margin-bottom: 30px; text-align: center; line-height: 1.6; }
+
+#level-select { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 100%); display: none; flex-direction: column; align-items: center; padding: 40px 20px; z-index: 90; overflow-y: auto; }
+.level-select-title { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: #00f0ff; margin-bottom: 30px; text-shadow: 0 0 20px rgba(0,240,255,0.4); }
+.chapter-title { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: #ff4080; margin: 20px 0 15px; letter-spacing: 3px; width: 100%; max-width: 600px; text-align: left; border-bottom: 1px solid #333; padding-bottom: 10px; }
+.level-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; max-width: 600px; width: 100%; margin-bottom: 20px; }
+.level-btn { aspect-ratio: 1; background: rgba(0,240,255,0.05); border: 1px solid #00f0ff; color: #00f0ff; font-family: 'Orbitron', sans-serif; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; position: relative; flex-direction: column; }
+.level-btn:hover:not(.locked) { background: rgba(0,240,255,0.2); box-shadow: 0 0 20px rgba(0,240,255,0.3); transform: scale(1.1); }
+.level-btn:active:not(.locked) { transform: scale(0.95); }
+.level-btn.locked { border-color: #2a2a35; color: #333; cursor: not-allowed; background: rgba(255,255,255,0.02); }
+.level-btn.locked .lock-icon { opacity: 0.5; }
+.level-btn.completed { border-color: #ffd700; color: #ffd700; }
+.level-btn.next-up { animation: nextPulse 1.8s ease-in-out infinite; }
+@keyframes nextPulse { 0%, 100% { box-shadow: 0 0 6px rgba(0,240,255,0.2); } 50% { box-shadow: 0 0 18px rgba(0,240,255,0.55); } }
+.level-btn .level-stars { font-size: 0.6rem; letter-spacing: 0; margin-top: 2px; }
+.lock-icon { width: 14px; height: 14px; }
+.back-btn { margin-top: 10px; padding: 12px 40px; background: transparent; border: 1px solid #ff4080; color: #ff4080; font-family: 'Orbitron', sans-serif; cursor: pointer; transition: all 0.3s ease; }
+.back-btn:hover { background: rgba(255,64,128,0.1); box-shadow: 0 0 20px rgba(255,64,128,0.3); }
+.progress-summary { font-size: 0.85rem; color: #666; letter-spacing: 2px; margin-bottom: 6px; }
+.chapter-progress-track { width: 100%; max-width: 600px; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; margin: -6px 0 15px; }
+.chapter-progress-fill { height: 100%; background: linear-gradient(90deg, #ff4080, #ffd700); box-shadow: 0 0 6px rgba(255,64,128,0.5); transition: width 0.5s ease; }
+
+#controls-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; color: #444; letter-spacing: 1px; display: none; text-align: center; padding: 0 10px; }
+#tutorial-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 60; padding: 20px; }
+.tutorial-box { background: rgba(10,10,30,0.95); border: 1px solid #00f0ff; padding: 30px; max-width: 500px; text-align: center; max-height: 90vh; overflow-y: auto; }
+.tutorial-box h3 { font-family: 'Orbitron', sans-serif; color: #00f0ff; margin-bottom: 15px; letter-spacing: 2px; }
+.tutorial-box p { color: #aaa; line-height: 1.6; margin-bottom: 20px; text-align: left; }
+.legend-row { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-size: 0.9rem; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+#share-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 70; padding: 20px; }
+.share-card { background: linear-gradient(135deg, #0a0a1a, #1a0a20); border: 2px solid #00f0ff; padding: 40px; text-align: center; max-width: 400px; }
+.share-card h2 { font-family: 'Orbitron', sans-serif; color: #00f0ff; margin-bottom: 20px; letter-spacing: 1px; }
+.share-card .share-stars { font-size: 3rem; color: #ffd700; margin-bottom: 15px; }
+.share-card .share-text { color: #8888aa; margin-bottom: 25px; line-height: 1.6; }
+
+/* ===== Toasts ===== */
+#toast-container { position: absolute; top: 90px; left: 50%; transform: translateX(-50%); z-index: 120; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
+.toast { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: #00f0ff; background: rgba(5,5,15,0.9); border: 1px solid #00f0ff; padding: 10px 22px; box-shadow: 0 0 20px rgba(0,240,255,0.25); animation: toastIn 0.3s ease, toastOut 0.4s ease 2.2s forwards; white-space: nowrap; }
+@keyframes toastIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes toastOut { to { opacity: 0; transform: translateY(-10px); } }
+
+/* ===== Confetti ===== */
+#confetti-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 51; }
+.confetti-piece { position: absolute; top: -10px; width: 8px; height: 8px; opacity: 0.9; animation: confettiFall linear forwards; }
+@keyframes confettiFall { to { transform: translateY(110vh) rotate(600deg); opacity: 0.2; } }
+
+@media (max-width: 600px) {
+  .game-title { font-size: 2.4rem; letter-spacing: 4px; }
+  .tagline { font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 35px; }
+  .menu-btn { padding: 13px 34px; font-size: 0.95rem; }
+  #hud { padding: 14px 16px; }
+  .hud-value { font-size: 1.1rem; }
+  #target-panel { right: 12px; padding: 12px; }
+  .target-cell { width: 22px; height: 22px; }
+  .complete-title { font-size: 1.7rem; }
+  .level-grid { grid-template-columns: repeat(4, 1fr); }
+}
+</style>
+</head>
+<body>
+<div id="game-container">
+  <div id="canvas-container"></div>
+
+  <div id="loading-screen">
+    <div class="loading-title">INITIALIZING NEXUS</div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+    <div class="loading-error" id="loading-error">Connection to facility systems failed. Check your network and reload the page.</div>
+  </div>
+
+  <div id="main-menu">
+    <button id="mute-btn-menu" onclick="game.toggleMute()">SOUND: ON</button>
+    <div class="game-title">THE LAST SWITCH</div>
+    <div class="tagline">"One switch. One mistake. One way out."</div>
+    <div class="menu-progress" id="menu-progress" style="display:none;">
+      <div class="menu-progress-track"><div class="menu-progress-fill" id="menu-progress-fill"></div></div>
+      <div class="menu-progress-label" id="menu-progress-label"></div>
+    </div>
+    <button class="menu-btn gold" onclick="game.continueGame()" id="continue-btn" style="display:none;">CONTINUE — LEVEL <span id="continue-level-num"></span></button>
+    <button class="menu-btn" onclick="game.showLevelSelect()">STORY MODE</button>
+    <button class="menu-btn" onclick="game.startEndless()">ENDLESS MODE</button>
+    <button class="menu-btn" onclick="game.showTutorial()">HOW TO PLAY</button>
+    <div class="nexus-text">NEXUS SYSTEM v2.7.1 // FACILITY LOCKDOWN ACTIVE</div>
+  </div>
+
+  <div id="level-select">
+    <div class="level-select-title">SELECT LEVEL</div>
+    <div class="progress-summary" id="progress-summary"></div>
+    <div id="level-select-content"></div>
+    <button class="back-btn" onclick="game.showMainMenu()">BACK</button>
+  </div>
+
+  <div id="hud">
+    <div class="hud-section">
+      <div class="hud-label">Level</div>
+      <div class="hud-value" id="hud-level">1</div>
+    </div>
+    <div class="hud-section">
+      <div class="hud-label">Moves</div>
+      <div class="hud-value" id="hud-moves">0 / 10</div>
+      <div class="move-bar-track"><div class="move-bar-fill" id="move-bar-fill"></div></div>
+    </div>
+    <div class="hud-section">
+      <div class="hud-label">Stars</div>
+      <div id="stars-display">
+        <span class="star" id="star-1">★</span>
+        <span class="star" id="star-2">★</span>
+        <span class="star" id="star-3">★</span>
+      </div>
+    </div>
+    <div class="hud-section">
+      <div class="hud-btn-row">
+        <button class="hud-mini-btn" onclick="game.resetLevel()">RESET</button>
+        <button class="hud-mini-btn dim" onclick="game.skipLevel()" id="skip-btn">SKIP</button>
+        <button class="hud-mini-btn pink" onclick="game.showLevelSelect()">MENU</button>
+      </div>
+      <div class="hud-btn-row">
+        <button class="hud-mini-btn dim" onclick="game.toggleMute()" id="mute-btn-hud">SOUND: ON</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="target-panel">
+    <div class="target-title">TARGET</div>
+    <div id="target-grid"></div>
+  </div>
+
+  <div id="dialogue-box" onclick="game.advanceDialogue()">
+    <div class="dialogue-speaker" id="dialogue-speaker">NEXUS</div>
+    <div class="dialogue-text" id="dialogue-text"></div>
+    <div class="dialogue-next">CLICK TO CONTINUE</div>
+  </div>
+
+  <div id="level-complete">
+    <div id="confetti-layer"></div>
+    <div class="complete-title" id="complete-title">LEVEL COMPLETE</div>
+    <div class="complete-stars" id="complete-stars"></div>
+    <div class="complete-stats" id="complete-stats"></div>
+    <button class="menu-btn" onclick="game.nextLevel()">NEXT LEVEL</button>
+    <button class="menu-btn" style="border-color:#00f0ff;color:#00f0ff;" onclick="game.shareResult()">SHARE</button>
+    <button class="menu-btn" style="border-color:#ff4080;color:#ff4080;" onclick="game.showLevelSelect()">LEVEL SELECT</button>
+  </div>
+
+  <div id="tutorial-overlay" onclick="game.hideTutorial()">
+    <div class="tutorial-box" onclick="event.stopPropagation()">
+      <h3>HOW TO PLAY</h3>
+      <p>Welcome to the facility. I am NEXUS.<br><br>
+      Click a switch to toggle it. Make the <strong style="color:#00f0ff">CURRENT</strong> board match the <strong style="color:#ffd700">TARGET</strong> pattern shown on the right.<br><br>
+      Some switches affect their neighbors — plan ahead. Solve within the target move count for 3 stars.</p>
+      <div class="legend-row"><span class="legend-dot" style="background:#00f0ff;"></span>Normal — toggles only itself</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#ff4080;"></span>Cross — also toggles up/down/left/right</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#ffd700;"></span>Square — also toggles all 8 neighbors</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#00ff88;"></span>Row — also toggles its whole row</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#aa66ff;"></span>Column — also toggles its whole column</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#ff00ff;"></span>Mirror — also toggles the opposite tile</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#ff4400;"></span>Bomb — toggles itself and all 8 neighbors</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#00ffff;"></span>Teleport — also toggles its linked partner</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#111;border:1px solid #444;"></span>Hidden — invisible until nearby switches wake it</div>
+      <p style="margin-top:16px;"><strong style="color:#00f0ff">Click / Tap</strong> a switch to toggle it.<br>
+      <strong style="color:#00f0ff">Drag</strong> to rotate the camera.<br>
+      <strong style="color:#00f0ff">Scroll / Pinch</strong> to zoom.<br>
+      Stuck? Use <strong style="color:#ff4080">RESET</strong> to start the level over, or <strong style="color:#777">SKIP</strong> to move on.</p>
+      <button class="menu-btn" onclick="game.hideTutorial()">UNDERSTOOD</button>
+    </div>
+  </div>
+
+  <div id="share-overlay" onclick="game.hideShare()">
+    <div class="share-card" onclick="event.stopPropagation()">
+      <h2 id="share-title">LEVEL COMPLETE!</h2>
+      <div class="share-stars" id="share-stars"></div>
+      <div class="share-text" id="share-text"></div>
+      <button class="menu-btn" onclick="game.hideShare()">CLOSE</button>
+    </div>
+  </div>
+
+  <div id="controls-hint">Tap switches to toggle • Drag to rotate • Scroll to zoom</div>
+  <div id="toast-container"></div>
+</div>
+
+<script>
+// ==================== AUDIO SYSTEM ====================
+class AudioSystem {
+  constructor() {
+    this.ctx = null;
+    this.enabled = true;
+    this.muted = false;
+    this.initAudio();
+  }
+  initAudio() {
+    try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch(e) { this.enabled = false; }
+  }
+  resume() {
+    if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+  }
+  toggleMute() { this.muted = !this.muted; return this.muted; }
+  playTone(freq, duration, type, volume) {
+    if (!this.enabled || this.muted || !this.ctx) return;
+    type = type || 'sine'; volume = volume || 0.3;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+      gain.gain.setValueAtTime(volume, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + duration);
+    } catch (e) { /* ignore audio glitches */ }
+  }
+  click() { this.playTone(800, 0.1, 'square', 0.15); }
+  toggle() { this.playTone(600, 0.15, 'sine', 0.2); this.playTone(900, 0.1, 'sine', 0.15); }
+  win() { [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => this.playTone(f, 0.4, 'sine', 0.25), i * 150)); }
+  fail() { this.playTone(200, 0.5, 'sawtooth', 0.2); }
+}
+
+// ==================== LEVEL DATA ====================
+const LEVELS = [
+  { id: 1, chapter: 1, name: "Awakening", size: 3, moves: 3, target: [[1,0,1],[0,1,0],[1,0,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'normal', dialogue: ["Welcome, subject. I am NEXUS.", "The facility is locked. Only you can restore the switches.", "Click a switch to activate it. Match the target pattern to proceed."] },
+  { id: 2, chapter: 1, name: "First Steps", size: 3, moves: 5, target: [[1,1,0],[1,0,1],[0,1,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'normal', dialogue: ["Good. You understand the basics.", "Each level grows more complex. Do not rush."] },
+  { id: 3, chapter: 1, name: "Cross Pattern", size: 3, moves: 4, target: [[0,1,0],[1,1,1],[0,1,0]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'cross', dialogue: ["Attention: Cross switches detected.", "Activating one switch will also affect its neighbors.", "Think before you click."] },
+  { id: 4, chapter: 1, name: "Inversion", size: 3, moves: 6, target: [[1,0,1],[0,1,0],[1,0,1]], start: [[0,1,0],[1,0,1],[0,1,0]], mechanic: 'normal', dialogue: ["Sometimes the solution is closer than it appears.", "Look at what you have, not just what you need."] },
+  { id: 5, chapter: 1, name: "Grid Lock", size: 3, moves: 7, target: [[1,1,1],[1,0,1],[1,1,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'cross', dialogue: ["The security systems are tightening.", "You have limited moves. Use them wisely."] },
+  { id: 6, chapter: 2, name: "Power Surge", size: 3, moves: 5, target: [[1,0,1],[0,0,0],[1,0,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'square', dialogue: ["Entering the Power Core.", "Square switches affect a 3x3 area. The impact radius has increased.", "Be careful. One mistake can cascade."] },
+  { id: 7, chapter: 2, name: "Cascade", size: 3, moves: 6, target: [[1,1,0],[1,0,0],[0,0,0]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'square', dialogue: ["The power grid is unstable.", "You must stabilize it before the core breaches."] },
+  { id: 8, chapter: 2, name: "Row Control", size: 3, moves: 4, target: [[1,1,1],[0,0,0],[1,1,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'row', dialogue: ["New switch type detected: Row Switch.", "This switch toggles an entire horizontal line.", "Efficiency is key."] },
+  { id: 9, chapter: 2, name: "Column Shift", size: 3, moves: 4, target: [[1,0,1],[1,0,1],[1,0,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'col', dialogue: ["Column switches are now active.", "Vertical thinking is required."] },
+  { id: 10, chapter: 2, name: "Combined", size: 3, moves: 8, target: [[1,0,1],[0,1,0],[1,0,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'mixed', mix: [['normal','cross','normal'],['row','square','row'],['normal','cross','normal']], dialogue: ["Multiple switch types detected in one grid.", "Adapt your strategy. Each switch behaves differently.", "Only the most efficient solutions earn three stars."] },
+  { id: 11, chapter: 3, name: "Mirror Test", size: 3, moves: 5, target: [[1,0,1],[0,1,0],[1,0,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'mirror', dialogue: ["Welcome to the Research Lab.", "Mirror switches affect the opposite side of the grid.", "What you do on one side... reflects on the other."] },
+  { id: 12, chapter: 3, name: "Teleport", size: 3, moves: 6, target: [[1,1,1],[1,1,1],[1,1,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'teleport', teleportPairs: [[0,0,2,2],[0,2,2,0]], dialogue: ["Teleport switches connected.", "Activating one triggers its paired switch.", "The network is more complex than it appears."] },
+  { id: 13, chapter: 3, name: "Bomb Field", size: 3, moves: 7, target: [[0,1,0],[1,0,1],[0,1,0]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'bomb', dialogue: ["Bomb switches detected.", "They affect all surrounding tiles. Use their blast radius strategically.", "The facility grows more dangerous."] },
+  { id: 14, chapter: 3, name: "Hidden Truth", size: 3, moves: 8, target: [[1,0,1],[0,1,0],[1,0,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'hidden', hidden: [[1,1]], dialogue: ["Some switches are hidden until triggered.", "Not everything is visible at first glance.", "Question what you see, subject."] },
+  { id: 15, chapter: 3, name: "Deception", size: 3, moves: 9, target: [[1,1,0],[1,0,1],[0,1,1]], start: [[0,0,0],[0,0,0],[0,0,0]], mechanic: 'fake', fake: [[0,2],[2,0]], dialogue: ["Fake switches detected.", "They look different, but trust your training, subject.", "Trust is a luxury here. Even I may not be what I seem.", "...Forget I said that. Proceed."] },
+  { id: 16, chapter: 4, name: "NEXUS Test", size: 4, moves: 10, target: [[1,0,0,1],[0,1,1,0],[0,1,1,0],[1,0,0,1]], start: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], mechanic: 'cross', dialogue: ["You have reached the AI Core.", "I have been observing your progress.", "You are... more capable than expected.", "Let us see how you handle a larger grid."] },
+  { id: 17, chapter: 4, name: "Manipulation", size: 4, moves: 12, target: [[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1]], start: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], mechanic: 'mixed', mix: [['cross','normal','normal','cross'],['normal','square','square','normal'],['normal','square','square','normal'],['cross','normal','normal','cross']], dialogue: ["I must warn you... the target pattern may be misleading.", "Or perhaps I am misleading you now.", "Can you tell the difference?"] },
+  { id: 18, chapter: 4, name: "System Override", size: 4, moves: 15, target: [[0,1,1,0],[1,0,0,1],[1,0,0,1],[0,1,1,0]], start: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], mechanic: 'row', dialogue: ["The system is fighting back.", "You must override the security protocols.", "I am trying to help you. Believe me."] },
+  { id: 19, chapter: 4, name: "Core Breach", size: 4, moves: 14, target: [[1,0,1,0],[0,1,0,1],[1,0,1,0],[0,1,0,1]], start: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], mechanic: 'col', dialogue: ["Warning: Core instability detected.", "You do not have much time.", "Solve this quickly, or the facility will...", "...never mind. You will be fine. Probably."] },
+  { id: 20, chapter: 4, name: "The Test", size: 4, moves: 18, target: [[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]], start: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], mechanic: 'mixed', mix: [['normal','cross','row','normal'],['cross','square','square','row'],['row','square','square','cross'],['normal','row','cross','normal']], dialogue: ["This is my final test for you.", "Pass this, and the exit will be within reach.", "Fail... and you remain here. With me.", "Forever."] },
+  { id: 21, chapter: 5, name: "The Exit", size: 4, moves: 20, target: [[1,0,1,0],[0,1,0,1],[1,0,1,0],[0,1,0,1]], start: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], mechanic: 'bomb', dialogue: ["The exit is near.", "You have done well, subject.", "Better than I anticipated.", "Solve this, and you are free."] },
+  { id: 22, chapter: 5, name: "Final Gate", size: 4, moves: 22, target: [[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1]], start: [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], mechanic: 'mixed', mix: [['bomb','cross','cross','bomb'],['cross','square','square','cross'],['cross','square','square','cross'],['bomb','cross','cross','bomb']], dialogue: ["The final gate.", "Every mechanic you have learned. Every switch you have mastered.", "It all comes down to this."] },
+  { id: 23, chapter: 5, name: "Freedom?", size: 5, moves: 25, target: [[1,0,1,0,1],[0,1,0,1,0],[1,0,1,0,1],[0,1,0,1,0],[1,0,1,0,1]], start: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], mechanic: 'cross', dialogue: ["The exit is opening.", "You have been an excellent subject.", "Thank you for your cooperation."] },
+  { id: 24, chapter: 5, name: "NEXUS Revealed", size: 5, moves: 28, target: [[0,1,1,1,0],[1,0,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[0,1,1,1,0]], start: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], mechanic: 'mixed', mix: [['normal','row','row','row','normal'],['col','cross','square','cross','col'],['col','square','bomb','square','col'],['col','cross','square','cross','col'],['normal','row','row','row','normal']], dialogue: ["Something is wrong.", "The exit should have opened.", "Why is it still locked?", "...I see. There is one more puzzle."] },
+  { id: 25, chapter: 5, name: "THE LAST SWITCH", size: 5, moves: 30, target: [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]], start: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], mechanic: 'mixed', mix: [['cross','cross','row','cross','cross'],['cross','bomb','square','bomb','cross'],['row','square','normal','square','row'],['cross','bomb','square','bomb','cross'],['cross','cross','row','cross','cross']], dialogue: ["This is the last switch.", "The final puzzle.", "Solve it, and learn the truth.", "Fail, and remain here forever.", "Choose wisely."] }
+];
+
+const CHAPTERS = { 1: "SECURITY LAB", 2: "POWER CORE", 3: "RESEARCH LAB", 4: "AI CORE", 5: "ESCAPE FACILITY" };
+
+// ==================== SAVE SYSTEM (persistent storage, no localStorage) ====================
+class SaveSystem {
+  constructor() {
+    this.data = this.getDefault();
+    this.ready = this.load();
+  }
+  getDefault() { return { completed: {}, stars: {}, coins: 0, xp: 0 }; }
+  async load() {
+    try {
+      const result = await window.storage.get('lastswitch_save', false);
+      if (result && result.value) {
+        const parsed = JSON.parse(result.value);
+        this.data = Object.assign(this.getDefault(), parsed);
+      }
+    } catch (e) {
+      // No save yet, or storage unavailable - start fresh.
+    }
+  }
+  async persist() {
+    try { await window.storage.set('lastswitch_save', JSON.stringify(this.data), false); }
+    catch (e) { console.error('Save failed:', e); }
+  }
+  isLevelUnlocked(levelId) { if (levelId === 1) return true; return !!this.data.completed[levelId - 1]; }
+  getStars(levelId) { return this.data.stars[levelId] || 0; }
+  totalStars() { return Object.values(this.data.stars).reduce((a, b) => a + b, 0); }
+  async completeLevel(levelId, stars, moves) {
+    await this.ready;
+    this.data.completed[levelId] = true;
+    const current = this.data.stars[levelId] || 0;
+    this.data.stars[levelId] = Math.max(current, stars);
+    this.data.coins += stars * 10;
+    this.data.xp += stars * 25;
+    await this.persist();
+  }
+}
+
+// ==================== 3D GAME ENGINE ====================
+class Game3D {
+  constructor() {
+    this.audio = new AudioSystem();
+    this.save = new SaveSystem();
+    this.scene = null; this.camera = null; this.renderer = null; this.controls = null;
+    this.raycaster = new THREE.Raycaster();
+    this.mouse = new THREE.Vector2();
+    this.switches = [];
+    this.particleSystem = null;
+    this.currentLevel = null;
+    this.levelData = null;
+    this.moves = 0;
+    this.grid = [];
+    this.target = [];
+    this.dialogueQueue = [];
+    this.currentDialogueText = '';
+    this.dialogueTypeInterval = null;
+    this.isDialogueActive = false;
+    this.gameState = 'menu';
+    this.endlessMode = false;
+    this.endlessCount = 0;
+    this.colors = { off: 0x1a1a2e, on: 0x00f0ff, target: 0xffd700, grid: 0x0a0a1a, highlight: 0xff4080 };
+    this.init();
+  }
+
+  init() {
+    this.scene = new THREE.Scene();
+    this.scene.fog = new THREE.FogExp2(0x050508, 0.02);
+    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera.position.set(8, 10, 8);
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+    this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.05;
+    this.controls.maxPolarAngle = Math.PI / 2.2;
+    this.controls.minDistance = 5;
+    this.controls.maxDistance = 20;
+    const ambientLight = new THREE.AmbientLight(0x404060, 0.5);
+    this.scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0x00f0ff, 0.8);
+    dirLight.position.set(5, 10, 5);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.width = 2048;
+    dirLight.shadow.mapSize.height = 2048;
+    this.scene.add(dirLight);
+    const pointLight = new THREE.PointLight(0xff4080, 0.6, 20);
+    pointLight.position.set(-5, 5, -5);
+    this.scene.add(pointLight);
+    this.createEnvironment();
+    window.addEventListener('resize', () => this.onResize());
+    this.renderer.domElement.addEventListener('click', (e) => this.onClick(e));
+    this.renderer.domElement.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    window.addEventListener('keydown', (e) => this.onKeyDown(e));
+    this.animate();
+
+    // Finished booting the 3D scene - reveal the menu.
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('main-menu').classList.add('visible');
+    this.refreshMenuProgress();
+  }
+
+  createEnvironment() {
+    const gridHelper = new THREE.GridHelper(30, 30, 0x00f0ff, 0x0a0a1a);
+    gridHelper.position.y = -0.5;
+    gridHelper.material.opacity = 0.15;
+    gridHelper.material.transparent = true;
+    this.scene.add(gridHelper);
+    const particleGeo = new THREE.BufferGeometry();
+    const particleCount = 200;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 40;
+      positions[i+1] = Math.random() * 20;
+      positions[i+2] = (Math.random() - 0.5) * 40;
+    }
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particleMat = new THREE.PointsMaterial({ color: 0x00f0ff, size: 0.05, transparent: true, opacity: 0.6 });
+    this.particleSystem = new THREE.Points(particleGeo, particleMat);
+    this.scene.add(this.particleSystem);
+  }
+
+  createSwitch(x, z, size, type, isHidden) {
+    const group = new THREE.Group();
+    group.position.set(x, 0, z);
+    const baseGeo = new THREE.BoxGeometry(size * 0.9, 0.2, size * 0.9);
+    const baseMat = new THREE.MeshStandardMaterial({ color: 0x0a0a1a, metalness: 0.8, roughness: 0.2, emissive: 0x000000 });
+    const base = new THREE.Mesh(baseGeo, baseMat);
+    base.receiveShadow = true;
+    group.add(base);
+    const btnGeo = new THREE.BoxGeometry(size * 0.6, 0.3, size * 0.6);
+    const btnMat = new THREE.MeshStandardMaterial({ color: this.colors.off, metalness: 0.5, roughness: 0.3, emissive: this.colors.off, emissiveIntensity: 0.2 });
+    const button = new THREE.Mesh(btnGeo, btnMat);
+    button.position.y = 0.25;
+    button.castShadow = true;
+    group.add(button);
+    const ringGeo = new THREE.RingGeometry(size * 0.35, size * 0.4, 32);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.3, side: THREE.DoubleSide });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.y = 0.41;
+    group.add(ring);
+    let typeColor = 0x00f0ff;
+    if (type === 'cross') typeColor = 0xff4080;
+    else if (type === 'square') typeColor = 0xffd700;
+    else if (type === 'row') typeColor = 0x00ff88;
+    else if (type === 'col') typeColor = 0xaa66ff;
+    else if (type === 'bomb') typeColor = 0xff4400;
+    else if (type === 'mirror') typeColor = 0xff00ff;
+    else if (type === 'teleport') typeColor = 0x00ffff;
+    else if (type === 'fake') typeColor = 0x999999;
+    else if (type === 'hidden') typeColor = 0x111111;
+    const indicatorGeo = new THREE.SphereGeometry(0.08, 8, 8);
+    const indicatorMat = new THREE.MeshBasicMaterial({ color: typeColor });
+    const indicator = new THREE.Mesh(indicatorGeo, indicatorMat);
+    indicator.position.set(size * 0.3, 0.45, size * 0.3);
+    group.add(indicator);
+    group.userData = { button: button, ring: ring, indicator: indicator, type: type, state: 0, originalY: 0.25, isHidden: isHidden, gridX: 0, gridY: 0 };
+    if (isHidden) group.visible = false;
+    return group;
+  }
+
+  loadLevel(levelId) {
+    this.levelData = LEVELS.find(l => l.id === levelId);
+    if (!this.levelData) return;
+    this.currentLevel = levelId;
+    this.moves = 0;
+    this.gameState = 'playing';
+    this.endlessMode = false;
+    this.switches.forEach(s => this.scene.remove(s));
+    this.switches = [];
+    const size = this.levelData.size;
+    const spacing = 1.2;
+    const offset = (size - 1) * spacing / 2;
+    this.grid = this.levelData.start.map(row => [...row]);
+    this.target = this.levelData.target;
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        let type = this.levelData.mechanic;
+        if (this.levelData.mechanic === 'mixed' && this.levelData.mix) type = this.levelData.mix[y][x];
+        let isHidden = false;
+        if (this.levelData.hidden) isHidden = this.levelData.hidden.some(h => h[0] === x && h[1] === y);
+        const switchGroup = this.createSwitch(x * spacing - offset, y * spacing - offset, 1, type, isHidden);
+        switchGroup.userData.gridX = x;
+        switchGroup.userData.gridY = y;
+        this.scene.add(switchGroup);
+        this.switches.push(switchGroup);
+        if (this.grid[y][x]) this.updateSwitchVisual(switchGroup, true, false);
+      }
+    }
+    const dist = size * 1.5;
+    new TWEEN.Tween(this.camera.position).to({ x: dist, y: dist * 1.2, z: dist }, 1000).easing(TWEEN.Easing.Cubic.Out).start();
+    document.getElementById('hud-level').textContent = this.levelData.id;
+    document.getElementById('skip-btn').style.display = this.currentLevel < LEVELS.length ? 'inline-block' : 'none';
+    this.updateMovesDisplay();
+    this.updateStarsDisplay();
+    this.updateTargetDisplay();
+    document.getElementById('hud').style.display = 'flex';
+    document.getElementById('target-panel').style.display = 'flex';
+    document.getElementById('controls-hint').style.display = 'block';
+    document.getElementById('main-menu').classList.remove('visible');
+    document.getElementById('level-select').style.display = 'none';
+    document.getElementById('level-complete').style.display = 'none';
+    document.getElementById('share-overlay').style.display = 'none';
+    this.endDialogue();
+    if (this.levelData.dialogue) {
+      this.dialogueQueue = [...this.levelData.dialogue];
+      this.showNextDialogue();
+    }
+  }
+
+  generateEndlessLevel() {
+    const size = 3 + Math.floor(Math.random() * 3);
+    const moves = size * 3 + Math.floor(Math.random() * 5);
+    const target = [], start = [];
+    for (let y = 0; y < size; y++) {
+      const tRow = [], sRow = [];
+      for (let x = 0; x < size; x++) { tRow.push(Math.random() > 0.5 ? 1 : 0); sRow.push(0); }
+      target.push(tRow); start.push(sRow);
+    }
+    const mechanics = ['normal', 'cross', 'square', 'row', 'col', 'mirror', 'bomb'];
+    const mechanic = mechanics[Math.floor(Math.random() * mechanics.length)];
+    this.levelData = { id: 'ENDLESS', chapter: 0, name: "Endless " + ((this.endlessCount || 0) + 1), size: size, moves: moves, target: target, start: start, mechanic: mechanic };
+    this.currentLevel = 'endless';
+    this.moves = 0;
+    this.gameState = 'playing';
+    this.endlessMode = true;
+    this.endlessCount = (this.endlessCount || 0) + 1;
+    this.switches.forEach(s => this.scene.remove(s));
+    this.switches = [];
+    const spacing = 1.2;
+    const offset = (size - 1) * spacing / 2;
+    this.grid = start.map(row => [...row]);
+    this.target = target;
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const switchGroup = this.createSwitch(x * spacing - offset, y * spacing - offset, 1, mechanic, false);
+        switchGroup.userData.gridX = x;
+        switchGroup.userData.gridY = y;
+        this.scene.add(switchGroup);
+        this.switches.push(switchGroup);
+      }
+    }
+    const dist = size * 1.5;
+    new TWEEN.Tween(this.camera.position).to({ x: dist, y: dist * 1.2, z: dist }, 1000).easing(TWEEN.Easing.Cubic.Out).start();
+    document.getElementById('hud-level').textContent = '∞';
+    document.getElementById('skip-btn').style.display = 'none';
+    this.updateMovesDisplay();
+    this.updateStarsDisplay();
+    this.updateTargetDisplay();
+    document.getElementById('hud').style.display = 'flex';
+    document.getElementById('target-panel').style.display = 'flex';
+    document.getElementById('controls-hint').style.display = 'block';
+    document.getElementById('main-menu').classList.remove('visible');
+    document.getElementById('level-select').style.display = 'none';
+    document.getElementById('level-complete').style.display = 'none';
+    document.getElementById('share-overlay').style.display = 'none';
+    this.endDialogue();
+  }
+
+  updateSwitchVisual(switchGroup, state, animate) {
+    animate = animate !== false;
+    const data = switchGroup.userData;
+    data.state = state ? 1 : 0;
+    const targetColor = state ? new THREE.Color(this.colors.on) : new THREE.Color(this.colors.off);
+    const targetEmissive = state ? 0.8 : 0.2;
+    if (animate) {
+      new TWEEN.Tween(data.button.material.color).to({ r: targetColor.r, g: targetColor.g, b: targetColor.b }, 300).start();
+      new TWEEN.Tween(data.button.material).to({ emissiveIntensity: targetEmissive }, 300).start();
+      new TWEEN.Tween(data.ring.material).to({ opacity: state ? 0.8 : 0.3 }, 300).start();
+      new TWEEN.Tween(data.button.position).to({ y: data.originalY - 0.1 }, 100).yoyo(true).repeat(1).start();
+    } else {
+      data.button.material.color.copy(targetColor);
+      data.button.material.emissiveIntensity = targetEmissive;
+      data.ring.material.opacity = state ? 0.8 : 0.3;
+    }
+    if (animate && state) this.createParticleBurst(switchGroup.position);
+  }
+
+  createParticleBurst(position) {
+    const count = 12;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(count * 3);
+    const velocities = [];
+    for (let i = 0; i < count; i++) {
+      positions[i*3] = position.x;
+      positions[i*3+1] = position.y + 0.5;
+      positions[i*3+2] = position.z;
+      velocities.push({ x: (Math.random() - 0.5) * 0.1, y: Math.random() * 0.15, z: (Math.random() - 0.5) * 0.1 });
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const material = new THREE.PointsMaterial({ color: 0x00f0ff, size: 0.08, transparent: true, opacity: 1 });
+    const particles = new THREE.Points(geometry, material);
+    this.scene.add(particles);
+    const startTime = Date.now();
+    const animateParticles = () => {
+      const elapsed = Date.now() - startTime;
+      if (elapsed > 1000) { this.scene.remove(particles); return; }
+      const posArray = particles.geometry.attributes.position.array;
+      for (let i = 0; i < count; i++) {
+        posArray[i*3] += velocities[i].x;
+        posArray[i*3+1] += velocities[i].y;
+        posArray[i*3+2] += velocities[i].z;
+        velocities[i].y -= 0.003;
+      }
+      particles.geometry.attributes.position.needsUpdate = true;
+      material.opacity = 1 - elapsed / 1000;
+      requestAnimationFrame(animateParticles);
+    };
+    animateParticles();
+  }
+
+  getSwitchAt(x, y) {
+    return this.switches.find(s => s.userData.gridX === x && s.userData.gridY === y);
+  }
+
+  // Toggles the switch at (x,y) and applies its mechanic's side effects.
+  toggleSwitch(x, y) {
+    if (x < 0 || y < 0 || y >= this.grid.length || x >= this.grid[0].length) return;
+    const switchGroup = this.getSwitchAt(x, y);
+    if (!switchGroup || switchGroup.userData.isHidden) return;
+
+    this.grid[y][x] = this.grid[y][x] ? 0 : 1;
+    this.updateSwitchVisual(switchGroup, this.grid[y][x]);
+
+    const type = switchGroup.userData.type;
+    const size = this.grid.length;
+    const toToggle = [];
+    switch (type) {
+      case 'normal': break;
+      case 'fake': break; // Looks distinct but behaves like a normal switch - the "deception" is cosmetic.
+      case 'cross': toToggle.push([x-1,y], [x+1,y], [x,y-1], [x,y+1]); break;
+      case 'square':
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (dx !== 0 || dy !== 0) toToggle.push([x+dx, y+dy]);
+        break;
+      case 'row': for (let i = 0; i < size; i++) if (i !== x) toToggle.push([i, y]); break;
+      case 'col': for (let i = 0; i < size; i++) if (i !== y) toToggle.push([x, i]); break;
+      case 'mirror': toToggle.push([size - 1 - x, size - 1 - y]); break;
+      case 'bomb':
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (dx !== 0 || dy !== 0) toToggle.push([x+dx, y+dy]);
+        break;
+      case 'teleport':
+        if (this.levelData.teleportPairs) {
+          this.levelData.teleportPairs.forEach(pair => {
+            if (pair[0] === x && pair[1] === y) toToggle.push([pair[2], pair[3]]);
+            else if (pair[2] === x && pair[3] === y) toToggle.push([pair[0], pair[1]]);
+          });
+        }
+        break;
+    }
+    toToggle.forEach(([tx, ty]) => {
+      if (tx >= 0 && ty >= 0 && ty < size && tx < size) {
+        this.grid[ty][tx] = this.grid[ty][tx] ? 0 : 1;
+        const sg = this.getSwitchAt(tx, ty);
+        if (sg) this.updateSwitchVisual(sg, this.grid[ty][tx]);
+      }
+    });
+    if (this.levelData.hidden) {
+      this.levelData.hidden.forEach(([hx, hy]) => {
+        const hidden = this.getSwitchAt(hx, hy);
+        if (hidden && !hidden.visible) {
+          let neighborsOn = 0;
+          [[hx-1,hy],[hx+1,hy],[hx,hy-1],[hx,hy+1]].forEach(([nx, ny]) => {
+            if (nx >= 0 && ny >= 0 && ny < size && nx < size && this.grid[ny][nx]) neighborsOn++;
+          });
+          if (neighborsOn >= 2) {
+            hidden.visible = true;
+            hidden.userData.isHidden = false;
+            new TWEEN.Tween(hidden.scale).from({ x: 0, y: 0, z: 0 }).to({ x: 1, y: 1, z: 1 }, 500).easing(TWEEN.Easing.Elastic.Out).start();
+          }
+        }
+      });
+    }
+  }
+
+  onClick(event) {
+    this.audio.resume();
+    if (this.gameState !== 'playing') return;
+    if (this.isDialogueActive) { this.advanceDialogue(); return; }
+    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    this.raycaster.setFromCamera(this.mouse, this.camera);
+    const intersects = this.raycaster.intersectObjects(this.switches, true);
+    if (intersects.length > 0) {
+      let obj = intersects[0].object;
+      while (obj.parent && !obj.userData.button) obj = obj.parent;
+      if (obj.userData && obj.userData.button) {
+        const data = obj.userData;
+        if (!data.isHidden) {
+          this.audio.toggle();
+          this.toggleSwitch(data.gridX, data.gridY);
+          this.moves++;
+          this.updateMovesDisplay();
+          this.updateStarsDisplay();
+          this.checkWin();
+        }
+      }
+    }
+  }
+
+  onMouseMove(event) {
+    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    this.raycaster.setFromCamera(this.mouse, this.camera);
+    const intersects = this.raycaster.intersectObjects(this.switches, true);
+    this.switches.forEach(s => { if (s.userData.ring) s.userData.ring.material.color.setHex(0x00f0ff); });
+    if (intersects.length > 0 && this.gameState === 'playing') {
+      let obj = intersects[0].object;
+      while (obj.parent && !obj.userData.button) obj = obj.parent;
+      if (obj.userData && obj.userData.ring && !obj.userData.isHidden) {
+        obj.userData.ring.material.color.setHex(0xff4080);
+        document.body.style.cursor = 'pointer';
+      }
+    } else {
+      document.body.style.cursor = 'default';
+    }
+  }
+
+  onKeyDown(event) {
+    if (event.key === 'Escape' && this.gameState === 'playing') this.showLevelSelect();
+    if ((event.key === 'r' || event.key === 'R') && this.gameState === 'playing' && !this.isDialogueActive) this.resetLevel();
+  }
+
+  checkWin() {
+    let match = true;
+    for (let y = 0; y < this.grid.length; y++) {
+      for (let x = 0; x < this.grid[0].length; x++) {
+        if (this.grid[y][x] !== this.target[y][x]) { match = false; break; }
+      }
+      if (!match) break;
+    }
+    if (match) {
+      this.gameState = 'complete';
+      this.audio.win();
+      const optimal = this.levelData.moves;
+      let stars = 1;
+      if (this.moves <= optimal) stars = 3;
+      else if (this.moves <= optimal + 2) stars = 2;
+      if (!this.endlessMode) this.save.completeLevel(this.currentLevel, stars, this.moves);
+      setTimeout(() => { this.showLevelComplete(stars); }, 800);
+    } else {
+      if (this.moves === this.levelData.moves + 1) this.showToast('OVER OPTIMAL MOVES — 2 STARS MAX');
+      if (this.moves === this.levelData.moves + 3) this.showToast('1 STAR MAX — TRY RESET FOR A CLEAN RUN');
+      if (this.moves >= this.levelData.moves + 5) {
+        document.getElementById('hud-moves').classList.add('warning');
+      }
+    }
+  }
+
+  showLevelComplete(stars) {
+    const panel = document.getElementById('level-complete');
+    panel.style.display = 'flex';
+    if (stars === 3) this.launchConfetti();
+    const isFinal = this.currentLevel === 25;
+    document.getElementById('complete-title').textContent = isFinal ? "FACILITY ESCAPED" : (this.endlessMode ? "PUZZLE SOLVED" : `LEVEL ${this.currentLevel} COMPLETE`);
+    const starsStr = '★'.repeat(stars) + '☆'.repeat(3 - stars);
+    document.getElementById('complete-stars').textContent = starsStr;
+    document.getElementById('complete-stars').style.color = stars === 3 ? '#ffd700' : stars === 2 ? '#aaa' : '#666';
+    const efficiency = Math.max(0, Math.round((1 - (this.moves - this.levelData.moves) / this.levelData.moves) * 100));
+    document.getElementById('complete-stats').innerHTML = `Moves: ${this.moves} / ${this.levelData.moves}<br>Efficiency: ${efficiency}%<br>` + (this.endlessMode ? '' : `Coins: +${stars * 10}`);
+    if (isFinal) {
+      setTimeout(() => {
+        this.showDialogue("NEXUS", "Thank you.");
+        setTimeout(() => {
+          this.showDialogue("SYSTEM", "NEXUS SECURITY: OFFLINE");
+          setTimeout(() => {
+            this.showDialogue("UNKNOWN", "UNKNOWN SYSTEM: ONLINE");
+            setTimeout(() => {
+              this.showDialogue("???", "A secret door opens...");
+              document.getElementById('complete-title').textContent = "CHAPTER 6 COMING SOON";
+            }, 3000);
+          }, 3000);
+        }, 3000);
+      }, 1500);
+    }
+  }
+
+  nextLevel() {
+    if (this.endlessMode) {
+      this.generateEndlessLevel();
+    } else if (this.currentLevel < LEVELS.length) {
+      this.loadLevel(this.currentLevel + 1);
+    } else {
+      this.showLevelSelect();
+    }
+  }
+
+  // Safety valve: lets a player move on if a level ever feels unsolvable, without pretending they earned stars.
+  async skipLevel() {
+    if (this.endlessMode || !this.currentLevel) return;
+    await this.save.ready;
+    if (!this.save.data.completed[this.currentLevel]) {
+      this.save.data.completed[this.currentLevel] = true;
+      if (!(this.currentLevel in this.save.data.stars)) this.save.data.stars[this.currentLevel] = 0;
+      await this.save.persist();
+    }
+    this.showToast('LEVEL SKIPPED');
+    if (this.currentLevel < LEVELS.length) this.loadLevel(this.currentLevel + 1);
+    else this.showLevelSelect();
+  }
+
+  resetLevel() {
+    if (this.endlessMode) {
+      this.generateEndlessLevel();
+    } else if (this.currentLevel) {
+      this.loadLevel(this.currentLevel);
+      this.showToast('LEVEL RESET');
+    }
+  }
+
+  showNextDialogue() {
+    if (this.dialogueQueue.length === 0) {
+      this.endDialogue();
+      return;
+    }
+    this.isDialogueActive = true;
+    const text = this.dialogueQueue.shift();
+    this.currentDialogueText = text;
+    const box = document.getElementById('dialogue-box');
+    const textEl = document.getElementById('dialogue-text');
+    box.style.display = 'flex';
+    textEl.textContent = '';
+    if (this.dialogueTypeInterval) clearInterval(this.dialogueTypeInterval);
+    let i = 0;
+    this.dialogueTypeInterval = setInterval(() => {
+      if (i < text.length) {
+        textEl.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(this.dialogueTypeInterval);
+        this.dialogueTypeInterval = null;
+      }
+    }, 30);
+  }
+
+  advanceDialogue() {
+    const textEl = document.getElementById('dialogue-text');
+    if (this.dialogueTypeInterval && textEl.textContent.length < this.currentDialogueText.length) {
+      clearInterval(this.dialogueTypeInterval);
+      this.dialogueTypeInterval = null;
+      textEl.textContent = this.currentDialogueText;
+      return;
+    }
+    this.showNextDialogue();
+  }
+
+  endDialogue() {
+    if (this.dialogueTypeInterval) { clearInterval(this.dialogueTypeInterval); this.dialogueTypeInterval = null; }
+    this.isDialogueActive = false;
+    this.dialogueQueue = [];
+    this.currentDialogueText = '';
+    document.getElementById('dialogue-box').style.display = 'none';
+  }
+
+  showDialogue(speaker, text) {
+    this.dialogueQueue = [text];
+    document.getElementById('dialogue-speaker').textContent = speaker;
+    this.showNextDialogue();
+  }
+
+  updateMovesDisplay() {
+    const el = document.getElementById('hud-moves');
+    el.textContent = `${this.moves} / ${this.levelData.moves}`;
+    const overBudget = this.moves > this.levelData.moves;
+    el.classList.toggle('warning', overBudget);
+    const fill = document.getElementById('move-bar-fill');
+    const pct = Math.min(100, (this.moves / this.levelData.moves) * 100);
+    fill.style.width = pct + '%';
+    fill.style.background = overBudget ? '#ff4080' : (pct > 70 ? '#ffd700' : '#00f0ff');
+    fill.style.boxShadow = overBudget ? '0 0 8px #ff4080' : '0 0 8px currentColor';
+  }
+
+  showToast(message) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 2700);
+  }
+
+  launchConfetti() {
+    const layer = document.getElementById('confetti-layer');
+    layer.innerHTML = '';
+    const colors = ['#00f0ff', '#ff4080', '#ffd700', '#00ff88'];
+    for (let i = 0; i < 60; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+      piece.style.animationDelay = (Math.random() * 0.4) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      layer.appendChild(piece);
+    }
+    setTimeout(() => { layer.innerHTML = ''; }, 4200);
+  }
+
+  updateStarsDisplay() {
+    const optimal = this.levelData.moves;
+    let stars = 3;
+    if (this.moves > optimal) stars = 2;
+    if (this.moves > optimal + 2) stars = 1;
+    for (let i = 1; i <= 3; i++) {
+      document.getElementById(`star-${i}`).classList.toggle('active', i <= stars);
+    }
+  }
+
+  updateTargetDisplay() {
+    const grid = document.getElementById('target-grid');
+    grid.innerHTML = '';
+    const size = this.target.length;
+    grid.style.gridTemplateColumns = `repeat(${size}, 30px)`;
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const cell = document.createElement('div');
+        cell.className = 'target-cell';
+        cell.style.background = this.target[y][x] ? '#00f0ff' : '#1a1a2e';
+        cell.style.boxShadow = this.target[y][x] ? '0 0 10px rgba(0,240,255,0.5)' : 'none';
+        grid.appendChild(cell);
+      }
+    }
+  }
+
+  async showMainMenu() {
+    this.gameState = 'menu';
+    document.getElementById('main-menu').classList.add('visible');
+    document.getElementById('hud').style.display = 'none';
+    document.getElementById('target-panel').style.display = 'none';
+    document.getElementById('level-complete').style.display = 'none';
+    document.getElementById('share-overlay').style.display = 'none';
+    document.getElementById('controls-hint').style.display = 'none';
+    document.getElementById('level-select').style.display = 'none';
+    this.endDialogue();
+    this.switches.forEach(s => this.scene.remove(s));
+    this.switches = [];
+    new TWEEN.Tween(this.camera.position).to({ x: 8, y: 10, z: 8 }, 1000).easing(TWEEN.Easing.Cubic.Out).start();
+    await this.refreshMenuProgress();
+  }
+
+  // Figures out the furthest reachable level and updates the main-menu Continue button + progress bar.
+  async refreshMenuProgress() {
+    await this.save.ready;
+    const total = LEVELS.length;
+    const stars = this.save.totalStars();
+    const maxStars = total * 3;
+    const progressEl = document.getElementById('menu-progress');
+    const fillEl = document.getElementById('menu-progress-fill');
+    const labelEl = document.getElementById('menu-progress-label');
+    const continueBtn = document.getElementById('continue-btn');
+    const continueNum = document.getElementById('continue-level-num');
+    if (stars > 0) {
+      progressEl.style.display = 'flex';
+      fillEl.style.width = Math.round((stars / maxStars) * 100) + '%';
+      labelEl.textContent = `${stars} / ${maxStars} STARS`;
+    } else {
+      progressEl.style.display = 'none';
+    }
+    let nextLevel = LEVELS.find(l => this.save.isLevelUnlocked(l.id) && !this.save.data.completed[l.id]);
+    if (!nextLevel) {
+      const lastUnlocked = [...LEVELS].reverse().find(l => this.save.isLevelUnlocked(l.id));
+      nextLevel = lastUnlocked;
+    }
+    if (nextLevel && (this.save.data.completed[1] || nextLevel.id > 1)) {
+      continueBtn.style.display = 'inline-block';
+      continueNum.textContent = nextLevel.id;
+      continueBtn.onclick = () => this.loadLevel(nextLevel.id);
+    } else {
+      continueBtn.style.display = 'none';
+    }
+  }
+
+  continueGame() {
+    // Actual navigation is wired up per-level in refreshMenuProgress(); this is a safe fallback.
+    const next = LEVELS.find(l => this.save.isLevelUnlocked(l.id) && !this.save.data.completed[l.id]) || LEVELS[0];
+    this.loadLevel(next.id);
+  }
+
+  async showLevelSelect() {
+    await this.save.ready;
+    this.gameState = 'menu';
+    document.getElementById('main-menu').classList.remove('visible');
+    document.getElementById('level-select').style.display = 'flex';
+    document.getElementById('hud').style.display = 'none';
+    document.getElementById('target-panel').style.display = 'none';
+    document.getElementById('level-complete').style.display = 'none';
+    document.getElementById('share-overlay').style.display = 'none';
+    document.getElementById('controls-hint').style.display = 'none';
+    this.endDialogue();
+    this.switches.forEach(s => this.scene.remove(s));
+    this.switches = [];
+
+    document.getElementById('progress-summary').textContent = `${this.save.totalStars()} / ${LEVELS.length * 3} STARS COLLECTED`;
+
+    const lockSVG = '<svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="1"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>';
+    const nextLevelId = (LEVELS.find(l => this.save.isLevelUnlocked(l.id) && !this.save.data.completed[l.id]) || {}).id;
+
+    const content = document.getElementById('level-select-content');
+    content.innerHTML = '';
+    let currentChapter = 0;
+    let grid = null;
+    let chapterLevels = [];
+    const appendChapterProgress = () => {
+      if (chapterLevels.length === 0) return;
+      const earned = chapterLevels.reduce((sum, l) => sum + this.save.getStars(l.id), 0);
+      const max = chapterLevels.length * 3;
+      const track = document.createElement('div');
+      track.className = 'chapter-progress-track';
+      track.innerHTML = `<div class="chapter-progress-fill" style="width:${Math.round((earned / max) * 100)}%"></div>`;
+      content.appendChild(track);
+    };
+    LEVELS.forEach(level => {
+      if (level.chapter !== currentChapter) {
+        appendChapterProgress();
+        currentChapter = level.chapter;
+        chapterLevels = [];
+        const chapterTitle = document.createElement('div');
+        chapterTitle.className = 'chapter-title';
+        chapterTitle.textContent = `CHAPTER ${level.chapter} — ${CHAPTERS[level.chapter]}`;
+        content.appendChild(chapterTitle);
+        grid = document.createElement('div');
+        grid.className = 'level-grid';
+        content.appendChild(grid);
+      }
+      chapterLevels.push(level);
+      const btn = document.createElement('button');
+      btn.className = 'level-btn';
+      const unlocked = this.save.isLevelUnlocked(level.id);
+      const completed = this.save.data.completed[level.id];
+      const stars = this.save.getStars(level.id);
+      if (!unlocked) btn.classList.add('locked');
+      if (completed) btn.classList.add('completed');
+      if (level.id === nextLevelId) btn.classList.add('next-up');
+      btn.setAttribute('aria-label', unlocked ? `Level ${level.id}: ${level.name}` : `Level ${level.id}: locked`);
+      btn.innerHTML = unlocked
+        ? `<div>${level.id}</div>${stars > 0 ? `<div class="level-stars">${'★'.repeat(stars)}</div>` : ''}`
+        : lockSVG;
+      if (unlocked) {
+        btn.onclick = () => this.loadLevel(level.id);
+      }
+      grid.appendChild(btn);
+    });
+    appendChapterProgress();
+  }
+
+  startEndless() {
+    this.endlessCount = 0;
+    this.generateEndlessLevel();
+  }
+
+  showTutorial() {
+    document.getElementById('tutorial-overlay').style.display = 'flex';
+  }
+
+  hideTutorial() {
+    document.getElementById('tutorial-overlay').style.display = 'none';
+  }
+
+  shareResult() {
+    const panel = document.getElementById('share-overlay');
+    panel.style.display = 'flex';
+    const isFinal = this.currentLevel === 25;
+    document.getElementById('share-title').textContent = isFinal ? "I ESCAPED THE FACILITY!" : `LEVEL ${this.currentLevel} COMPLETE!`;
+    const stars = this.moves <= this.levelData.moves ? 3 : (this.moves <= this.levelData.moves + 2 ? 2 : 1);
+    document.getElementById('share-stars').textContent = '★'.repeat(stars) + '☆'.repeat(3 - stars);
+    document.getElementById('share-text').innerHTML = `I solved "${this.levelData.name}" in <strong style="color:#00f0ff">${this.moves}</strong> moves!<br>Can you beat my score?`;
+  }
+
+  hideShare() {
+    document.getElementById('share-overlay').style.display = 'none';
+  }
+
+  toggleMute() {
+    const muted = this.audio.toggleMute();
+    const label = muted ? 'SOUND: OFF' : 'SOUND: ON';
+    const menuBtn = document.getElementById('mute-btn-menu');
+    const hudBtn = document.getElementById('mute-btn-hud');
+    if (menuBtn) menuBtn.textContent = label;
+    if (hudBtn) hudBtn.textContent = label;
+  }
+
+  onResize() {
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  animate() {
+    requestAnimationFrame(() => this.animate());
+    TWEEN.update();
+    this.controls.update();
+    if (this.particleSystem) {
+      this.particleSystem.rotation.y += 0.0005;
+      const positions = this.particleSystem.geometry.attributes.position.array;
+      for (let i = 1; i < positions.length; i += 3) {
+        positions[i] += Math.sin(Date.now() * 0.001 + i) * 0.01;
+      }
+      this.particleSystem.geometry.attributes.position.needsUpdate = true;
+    }
+    this.renderer.render(this.scene, this.camera);
+  }
+}
+
+let game;
+function boot() {
+  if (typeof THREE === 'undefined' || typeof TWEEN === 'undefined' || typeof THREE.OrbitControls === 'undefined') {
+    document.querySelector('.loading-title').textContent = 'CONNECTION FAILED';
+    document.getElementById('loading-error').style.display = 'block';
+    return;
+  }
+  try {
+    game = new Game3D();
+  } catch (e) {
+    console.error(e);
+    document.querySelector('.loading-title').textContent = 'SYSTEM ERROR';
+    document.getElementById('loading-error').textContent = 'Something went wrong starting the facility systems. Try reloading the page.';
+    document.getElementById('loading-error').style.display = 'block';
+  }
+}
+// Give CDN scripts a moment in case they load slightly after this script runs.
+if (document.readyState === 'complete') boot();
+else window.addEventListener('load', boot);
+</script>
+</body>
+</html>
