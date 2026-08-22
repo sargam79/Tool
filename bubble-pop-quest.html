@@ -10,7 +10,6 @@
 <meta name="author" content="ToolPond Pro">
 <meta name="theme-color" content="#1A1A2E">
 <link rel="canonical" href="https://toolpond.org/bubble-pop-quest.html">
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bubble Pop Quest – Free Online Bubble Shooter Game">
 <meta property="og:description" content="Match colorful bubbles, complete hundreds of levels, unlock power-ups, and enjoy a fun puzzle adventure. No download, no login — play instantly.">
@@ -20,7 +19,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bubble Pop Quest – Free Online Bubble Shooter Game">
 <meta name="twitter:description" content="Match colorful bubbles, complete hundreds of levels, unlock power-ups. No download, no login.">
@@ -152,6 +150,7 @@ h1.game-title{font-size:clamp(28px,7vw,42px);font-weight:700;background:linear-g
 <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
 <button class="btn btn-primary" style="width:200px" onclick="showWorlds()">Play</button>
 <button class="btn btn-secondary" style="width:200px" onclick="showDailyReward()">Daily Reward</button>
+<a href="https://toolpond.org/bubble-pop-quest-guide.html" class="btn btn-secondary" style="width:200px;text-decoration:none;box-sizing:border-box">Guide &amp; Tips</a>
 <button class="btn btn-secondary btn-icon" onclick="showSettings()" aria-label="Settings">&#9881;</button>
 </div>
 </div>
@@ -229,10 +228,7 @@ h1.game-title{font-size:clamp(28px,7vw,42px);font-weight:700;background:linear-g
 <div class="toast" id="toast"></div>
 </div>
 <script>
-/* ===== CONSTANTS ===== */
 const W=420,H=720,R=17,D=R*2,RH=R*Math.sqrt(3),GT=42,SY=665,DL=590,MAXR=18,SPD=650;
-
-/* Crystal-bright color palette — vivid, saturated, gem-like, extra-luminous */
 const BC=[
   {n:'red',   f:'#FF3366',l:'#FFB3C6',d:'#C4103A',gl:'#FF4D79'},
   {n:'green', f:'#12FF8C',l:'#B6FFDE',d:'#00A854',gl:'#3DFFA3'},
@@ -241,7 +237,6 @@ const BC=[
   {n:'cyan',  f:'#26F0FF',l:'#B3F9FF',d:'#00B2CC',gl:'#5DF5FF'},
   {n:'pink',  f:'#FF5C9E',l:'#FFC2DD',d:'#C4295E',gl:'#FF77AE'}
 ];
-
 const WC=[
   {name:'Sunny Meadow',t1:'#4ECDC4',t2:'#A8E6CF',acc:'#FFD93D',bg:'linear-gradient(180deg,#87CEEB 0%,#90EE90 100%)'},
   {name:'Crystal Cave',t1:'#0F2027',t2:'#2C5364',acc:'#00D2FF',bg:'linear-gradient(180deg,#0F2027 0%,#203A43 50%,#2C5364 100%)'},
@@ -251,8 +246,6 @@ const WC=[
 ];
 const LPL=20;
 const DAILY_REWARDS=[10,15,20,25,30,50,100];
-
-/* ===== STATE ===== */
 let canvas,ctx,scale=1,dpr=1;
 let grid=[],gridOY=0,gridSpeed=0,movingBubble=null,curColor=null,nextColor=null;
 let aimAngle=null,aimActive=false;
@@ -263,8 +256,6 @@ let powerUpActive=null;
 let descendPulse=0;
 let dangerRatio=0,dangerSoundCooldown=0;
 let saveData=null;
-
-/* ===== AUDIO ===== */
 const Audio={
   ctx:null,on:true,
   init(){try{this.ctx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}},
@@ -342,8 +333,6 @@ const Audio={
     o.start();o.stop(this.ctx.currentTime+.14);
   }
 };
-
-/* ===== SAVE/LOAD ===== */
 function defaultSave(){
   return{levels:{},coins:0,totalStars:0,lastDaily:null,dailyStreak:0,sound:true,vib:true,aim:true,
     pu:{rainbow:3,bomb:3,lightning:0,fire:0,freeze:0,aim:0}};
@@ -363,8 +352,6 @@ function isLevelUnlocked(w,l){
 }
 function isWorldUnlocked(w){return w===0||(getLevelData(w-1,LPL-1)&&getLevelData(w-1,LPL-1).completed)}
 function getWorldStars(w){let s=0;for(let i=0;i<LPL;i++){const d=getLevelData(w,i);if(d)s+=d.stars||0}return s}
-
-/* ===== GRID HELPERS ===== */
 function maxCols(r){return r%2===0?Math.floor(W/D):Math.floor((W-D)/D)+1}
 function g2p(r,c){
   const x=r%2===0?c*D+R:c*D+D;
@@ -384,15 +371,12 @@ function getNeighbors(r,c){
   const dirs=even?[[-1,-1],[-1,0],[0,-1],[0,1],[1,-1],[1,0]]:[[-1,0],[-1,1],[0,-1],[0,1],[1,0],[1,1]];
   return dirs.map(([dr,dc])=>[r+dr,c+dc]).filter(([nr,nc])=>validCell(nr,nc));
 }
-
-/* ===== PARTICLES ===== */
 function spawnParticles(x,y,color,count=12){
   for(let i=0;i<count;i++){
     const a=Math.random()*Math.PI*2,sp=60+Math.random()*200;
     particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,maxLife:.35+Math.random()*.35,
       r:2+Math.random()*4,color,type:'circle'});
   }
-  /* Crystal sparkle particles — bright white/gold tiny flashes */
   for(let i=0;i<6;i++){
     const a=Math.random()*Math.PI*2,sp=30+Math.random()*80;
     particles.push({x:x+(Math.random()-.5)*R,y:y+(Math.random()-.5)*R,
@@ -422,7 +406,6 @@ function drawParticles(){
     if(p.type==='star'){
       drawStarShape(p.x,p.y,p.r,p.color);
     }else if(p.type==='sparkle'){
-      /* Tiny bright cross sparkle */
       const sz=p.r*p.life*2;
       ctx.strokeStyle=p.color;ctx.lineWidth=1;
       ctx.beginPath();ctx.moveTo(p.x-sz,p.y);ctx.lineTo(p.x+sz,p.y);ctx.stroke();
@@ -447,8 +430,6 @@ function drawStarShape(x,y,r,color){
   }
   ctx.closePath();ctx.fill();ctx.restore();
 }
-
-/* ===== ANIMATIONS ===== */
 function addScoreText(x,y,text,color='#F7C948'){
   animations.push({type:'text',x,y,text,color,t:0,dur:.9,alpha:1});
 }
@@ -482,17 +463,12 @@ function drawAnims(){
   }
   ctx.globalAlpha=1;
 }
-
-/* ===== CRYSTAL-BRIGHT BUBBLE RENDERING ===== */
 function getColorObj(name){
   return BC.find(c=>c.n===name)||BC[0];
 }
-
 function drawCrystalBubble(x,y,radius,co,glow=false,star=false,stone=false){
   const r=Math.max(1,radius);
   const cx=x,cy=y;
-
-  /* Outer glow halo — brighter, more crystal-like luminosity */
   if(!stone){
     ctx.save();
     ctx.shadowColor=co.gl;
@@ -501,11 +477,8 @@ function drawCrystalBubble(x,y,radius,co,glow=false,star=false,stone=false){
     ctx.fillStyle='rgba(0,0,0,0)';ctx.fill();
     ctx.restore();
   }
-
-  /* Drop shadow */
   ctx.beginPath();ctx.arc(cx+1.5,cy+2.5,r,0,Math.PI*2);
   ctx.fillStyle='rgba(0,0,0,0.15)';ctx.fill();
-
   if(stone){
     const sg=ctx.createRadialGradient(cx-r*.25,cy-r*.25,r*.05,cx,cy,r);
     sg.addColorStop(0,'#A0A0A0');sg.addColorStop(0.7,'#6A6A6A');sg.addColorStop(1,'#3A3A3A');
@@ -516,8 +489,6 @@ function drawCrystalBubble(x,y,radius,co,glow=false,star=false,stone=false){
     ctx.strokeStyle='rgba(0,0,0,0.3)';ctx.lineWidth=1.2;ctx.stroke();
     return;
   }
-
-  /* Crystal body — main radial gradient offset to top-left for 3D depth */
   const bodyG=ctx.createRadialGradient(cx-r*.32,cy-r*.32,r*.05,cx+r*.1,cy+r*.1,r*1.05);
   bodyG.addColorStop(0,'#FFFFFF');
   bodyG.addColorStop(0.15,co.l);
@@ -526,24 +497,16 @@ function drawCrystalBubble(x,y,radius,co,glow=false,star=false,stone=false){
   bodyG.addColorStop(1,co.d);
   ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
   ctx.fillStyle=bodyG;ctx.fill();
-
-  /* Edge bright ring — gives the crystal "facet" look, extra luminous */
   ctx.beginPath();ctx.arc(cx,cy,r-0.5,0,Math.PI*2);
   ctx.strokeStyle=co.l;ctx.lineWidth=1.4;ctx.globalAlpha=0.75;ctx.stroke();ctx.globalAlpha=1;
-
-  /* Primary specular highlight — large, soft, top-left, brighter core */
   const specG=ctx.createRadialGradient(cx-r*.28,cy-r*.28,0,cx-r*.28,cy-r*.28,r*.6);
   specG.addColorStop(0,'rgba(255,255,255,1)');
   specG.addColorStop(0.35,'rgba(255,255,255,0.55)');
   specG.addColorStop(1,'rgba(255,255,255,0)');
   ctx.beginPath();ctx.arc(cx-r*.28,cy-r*.28,r*.6,0,Math.PI*2);
   ctx.fillStyle=specG;ctx.fill();
-
-  /* Secondary sharp specular — tiny bright dot */
   ctx.beginPath();ctx.arc(cx-r*.3,cy-r*.35,r*.14,0,Math.PI*2);
   ctx.fillStyle='rgba(255,255,255,1)';ctx.fill();
-
-  /* Thin glassy shine streak — crescent highlight along the upper rim */
   ctx.save();
   ctx.beginPath();
   ctx.arc(cx,cy,r*.82,-2.5,-0.6);
@@ -551,27 +514,20 @@ function drawCrystalBubble(x,y,radius,co,glow=false,star=false,stone=false){
   ctx.strokeStyle='rgba(255,255,255,0.5)';
   ctx.stroke();
   ctx.restore();
-
-  /* Bottom reflection — subtle light bounce from below */
   const btmG=ctx.createRadialGradient(cx+r*.15,cy+r*.3,0,cx+r*.15,cy+r*.3,r*.35);
   btmG.addColorStop(0,'rgba(255,255,255,0.18)');
   btmG.addColorStop(1,'rgba(255,255,255,0)');
   ctx.beginPath();ctx.arc(cx+r*.15,cy+r*.3,r*.35,0,Math.PI*2);
   ctx.fillStyle=btmG;ctx.fill();
-
-  /* Star inside */
   if(star){
     ctx.save();ctx.translate(cx,cy);
     ctx.rotate(Math.sin(Date.now()*.004)*.35);
     drawStarShape(0,0,r*.42,'#FFD600');
-    /* Star glow */
     ctx.shadowColor='#FFD600';ctx.shadowBlur=8;
     drawStarShape(0,0,r*.38,'#FFF9C4');
     ctx.shadowBlur=0;
     ctx.restore();
   }
-
-  /* Rainbow ring for rainbow power-up */
   if(glow&&!stone){
     ctx.beginPath();ctx.arc(cx,cy,r-1.5,0,Math.PI*2);
     const rg=ctx.createLinearGradient(cx-r,cy-r,cx+r,cy+r);
@@ -579,19 +535,10 @@ function drawCrystalBubble(x,y,radius,co,glow=false,star=false,stone=false){
     rg.addColorStop(0.5,'#00E676');rg.addColorStop(0.67,'#00E5FF');rg.addColorStop(0.83,'#FF4081');rg.addColorStop(1,'#FF2D55');
     ctx.strokeStyle=rg;ctx.lineWidth=2.8;ctx.stroke();
   }
-
-  /* Bomb icon */
-  if(glow&&stone===false&&co.n==='orange'){
-    /* Handled externally */
-  }
 }
-
-/* Legacy wrapper for compatibility */
 function drawBubble(x,y,r,co,glow,star,stone){
   drawCrystalBubble(x,y,r,co,glow,star,stone);
 }
-
-/* ===== LEVEL GENERATION ===== */
 function generateLevel(w,l){
   const gl=w*LPL+l;
   const nc=Math.min(3+Math.floor(gl/20),6);
@@ -600,8 +547,6 @@ function generateLevel(w,l){
   const di=Math.max(5,8-Math.floor(gl/25));
   const hasStone=gl>=25;
   const hasStars=gl>=5;
-  /* Continuous descent speed in px/sec — the grid always glides steadily
-     downward from top to bottom throughout the level, ramping up on later levels */
   const spd=6+Math.floor(gl/12)*1.5;
   const avail=BC.slice(0,nc);
   const g=[];
@@ -620,8 +565,6 @@ function generateLevel(w,l){
   }
   return{grid:g,shots,dropInterval:di,numColors:nc,descentSpeed:spd};
 }
-
-/* ===== GAME LOGIC ===== */
 function initLevel(w,l){
   curWorld=w;curLevel=l;
   const lv=generateLevel(w,l);
@@ -637,14 +580,12 @@ function initLevel(w,l){
   gameActive=true;
   updateHUD();buildPowerBar();
 }
-
 function randomGridColor(){
   const cs=new Set();
   for(let r=0;r<MAXR;r++)for(let c=0;c<maxCols(r);c++){const b=grid[r][c];if(b&&b.type==='normal')cs.add(b.color);}
   if(cs.size===0)return BC[Math.floor(Math.random()*3)].n;
   const a=[...cs];return a[Math.floor(Math.random()*a.length)];
 }
-
 function shoot(){
   if(!gameActive||movingBubble||!aimAngle||shotsLeft<=0)return;
   Audio.shoot();
@@ -655,7 +596,6 @@ function shoot(){
   powerUpActive=null;
   updateHUD();
 }
-
 function updateMoving(dt){
   if(!movingBubble)return;
   const steps=6,sd=SPD*dt/steps;
@@ -668,7 +608,6 @@ function updateMoving(dt){
     if(checkGridCollision(movingBubble))return;
   }
 }
-
 function checkGridCollision(mb){
   for(let r=0;r<MAXR;r++){
     for(let c=0;c<maxCols(r);c++){
@@ -680,7 +619,6 @@ function checkGridCollision(mb){
   }
   return false;
 }
-
 function snapBubble(mb){
   const snap=findSnap(mb.x,mb.y);
   if(!snap){movingBubble=null;checkLose();return;}
@@ -700,12 +638,8 @@ function snapBubble(mb){
   }else{
     processMatches(snap.row,snap.col);
   }
-  /* Descent is purely continuous (handled every frame in the game loop) —
-     no extra discrete jump here, so the whole grid glides smoothly and
-     steadily from top to bottom rather than stepping in sudden jumps. */
   if(gameActive)checkWin();
 }
-
 function findSnap(mx,my){
   const{row,col}=p2g(mx,my);
   if(validCell(row,col)&&!grid[row][col])return{row,col};
@@ -721,7 +655,6 @@ function findSnap(mx,my){
   }
   return br>=0?{row:br,col:bc}:null;
 }
-
 function processMatches(row,col){
   const bubble=grid[row][col];
   if(!bubble||bubble.type!=='normal')return;
@@ -751,7 +684,6 @@ function processMatches(row,col){
     updateHUD();
   }else{combo=0;}
 }
-
 function findMatches(row,col,color){
   const visited=new Set();const queue=[[row,col]];const matched=[];
   visited.add(`${row},${col}`);
@@ -765,7 +697,6 @@ function findMatches(row,col,color){
   }
   return matched.length>=3?matched:[];
 }
-
 function findFloating(){
   const conn=new Set();const queue=[];
   for(let c=0;c<maxCols(0);c++){if(grid[0][c]){queue.push([0,c]);conn.add(`0,${c}`);}}
@@ -782,7 +713,6 @@ function findFloating(){
   }
   return floating;
 }
-
 function explodeBomb(row,col){
   combo++;
   const cleared=[];
@@ -808,7 +738,6 @@ function explodeBomb(row,col){
   }
   updateHUD();
 }
-
 function checkWin(){
   let hasBubbles=false;
   for(let r=0;r<MAXR&&!hasBubbles;r++)for(let c=0;c<maxCols(r);c++){if(grid[r][c]){hasBubbles=true;break;}}
@@ -827,7 +756,6 @@ function checkWin(){
     setTimeout(()=>showWin(stars,coinsEarned),600);
   }
 }
-
 function checkLose(){
   for(let r=0;r<MAXR;r++)for(let c=0;c<maxCols(r);c++){
     if(grid[r][c]){const p=g2p(r,c);if(p.y+R>=DL)return true;}
@@ -839,7 +767,6 @@ function checkLose(){
   }
   return false;
 }
-
 function computeDangerRatio(){
   let lowY=0;
   for(let r=0;r<MAXR;r++)for(let c=0;c<maxCols(r);c++){
@@ -847,13 +774,10 @@ function computeDangerRatio(){
   }
   return Math.max(0,Math.min(1,(lowY-(DL-100))/100));
 }
-
 function handleLose(){
   gameActive=false;Audio.lose();
   setTimeout(()=>showLose(),500);
 }
-
-/* ===== BACKGROUND ===== */
 function initBgParticles(){
   bgParticles=[];
   for(let i=0;i<30;i++){
@@ -874,19 +798,16 @@ function drawBackground(){
   const g=ctx.createLinearGradient(0,0,0,H);
   g.addColorStop(0,theme.t1);g.addColorStop(1,theme.t2);
   ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-  /* Subtle dot pattern */
   ctx.globalAlpha=.025;
   for(let x=0;x<W;x+=28)for(let y=0;y<H;y+=28){
     ctx.beginPath();ctx.arc(x,y,1,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
   }
   ctx.globalAlpha=1;
-  /* Floating bg particles */
   for(const p of bgParticles){
     ctx.globalAlpha=p.alpha;
     ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
   }
   ctx.globalAlpha=1;
-  /* Danger zone lighting when the wall of bubbles nears the end line */
   if(gameState==='playing'||gameState==='paused'){
     if(dangerRatio>0){
       const pulse=0.65+0.35*Math.sin(Date.now()*.008);
@@ -894,7 +815,6 @@ function drawBackground(){
       dg.addColorStop(0,`rgba(255,45,85,0)`);
       dg.addColorStop(1,`rgba(255,45,85,${dangerRatio*0.35*pulse})`);
       ctx.fillStyle=dg;ctx.fillRect(0,DL-90,W,90);
-      /* Bright glowing warning bar right on the end line */
       ctx.save();
       ctx.shadowColor='#FF2D55';
       ctx.shadowBlur=14*dangerRatio*pulse;
@@ -902,13 +822,10 @@ function drawBackground(){
       ctx.fillRect(0,DL-2,W,4);
       ctx.restore();
     }
-    /* Danger line */
     ctx.setLineDash([6,4]);ctx.strokeStyle=`rgba(255,45,85,${0.2+dangerRatio*0.6})`;ctx.lineWidth=1.5+dangerRatio*1.5;
     ctx.beginPath();ctx.moveTo(0,DL);ctx.lineTo(W,DL);ctx.stroke();ctx.setLineDash([]);
   }
 }
-
-/* ===== RENDERING ===== */
 function drawGrid(){
   for(let r=0;r<MAXR;r++){
     for(let c=0;c<maxCols(r);c++){
@@ -920,7 +837,6 @@ function drawGrid(){
     }
   }
 }
-
 function drawAimLine(){
   if(!aimActive||!aimAngle||!saveData.aim||movingBubble)return;
   let x=W/2,y=SY,dx=Math.cos(aimAngle),dy=Math.sin(aimAngle);
@@ -945,14 +861,11 @@ function drawAimLine(){
   }
   ctx.restore();
 }
-
 function drawShooter(){
-  /* Platform base */
   ctx.beginPath();ctx.arc(W/2,SY,R+7,0,Math.PI*2);
   ctx.fillStyle='rgba(0,0,0,0.25)';ctx.fill();
   ctx.beginPath();ctx.arc(W/2,SY,R+4,Math.PI,0);
   ctx.fillStyle='rgba(255,255,255,0.06)';ctx.fill();
-  /* Current bubble */
   if(curColor&&!movingBubble){
     const co=powerUpActive==='rainbow'?BC[0]:powerUpActive==='bomb'?BC[2]:getColorObj(curColor);
     const glow=powerUpActive==='rainbow'||powerUpActive==='bomb';
@@ -962,7 +875,6 @@ function drawShooter(){
       ctx.fillStyle='#fff';ctx.fillText('B',W/2,SY+1);
     }
   }
-  /* Next bubble preview */
   if(nextColor){
     const co=getColorObj(nextColor);
     drawCrystalBubble(W/2+R*2.5,SY+R*1.2,R*.65,co,false,false,false);
@@ -970,30 +882,24 @@ function drawShooter(){
     ctx.fillText('NEXT',W/2+R*2.5,SY+R*2.3);
   }
 }
-
 function drawMovingBubble(){
   if(!movingBubble)return;
   const co=getColorObj(movingBubble.color);
   drawCrystalBubble(movingBubble.x,movingBubble.y,R,co,movingBubble.type==='rainbow',false,false);
 }
-
 function drawDescendIndicator(){
-  /* Show a subtle pulsing arrow on the sides when descending */
   if(descendPulse>0){
     descendPulse=Math.max(0,descendPulse-.02);
     const a=descendPulse*.4;
     ctx.globalAlpha=a;
     ctx.strokeStyle='#FF2D55';ctx.lineWidth=2;
-    /* Left arrow */
     ctx.beginPath();ctx.moveTo(8,DL-30);ctx.lineTo(8,DL-10);ctx.stroke();
     ctx.beginPath();ctx.moveTo(3,DL-16);ctx.lineTo(8,DL-10);ctx.lineTo(13,DL-16);ctx.stroke();
-    /* Right arrow */
     ctx.beginPath();ctx.moveTo(W-8,DL-30);ctx.lineTo(W-8,DL-10);ctx.stroke();
     ctx.beginPath();ctx.moveTo(W-13,DL-16);ctx.lineTo(W-8,DL-10);ctx.lineTo(W-3,DL-16);ctx.stroke();
     ctx.globalAlpha=1;
   }
 }
-
 function render(){
   ctx.clearRect(0,0,W,H);
   drawBackground();
@@ -1010,8 +916,6 @@ function render(){
     drawAnims();
   }
 }
-
-/* ===== HUD ===== */
 function updateHUD(){
   document.getElementById('hudLevel').textContent=`${WC[curWorld].name} ${curLevel+1}`;
   document.getElementById('hudScore').textContent=score;
@@ -1035,11 +939,8 @@ function activatePower(type){
   saveData.pu[type]=count-1;writeSave();
   powerUpActive=type;Audio.click();buildPowerBar();
 }
-
-/* ===== UI SCREENS ===== */
 function hideAll(){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));}
 function showScreen(id){hideAll();document.getElementById(id).classList.add('active');}
-
 function showMenu(){
   gameState='menu';hideAll();showScreen('screenMenu');
   document.getElementById('menuCoins').textContent=saveData.coins;
@@ -1159,15 +1060,11 @@ function toggleSetting(type){
   document.getElementById('toggleVib').className='toggle'+(saveData.vib?' on':'');
   document.getElementById('toggleAim').className='toggle'+(saveData.aim?' on':'');
 }
-
-/* ===== TOAST ===== */
 let toastTimer=null;
 function showToast(msg){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2000);
 }
-
-/* ===== INPUT ===== */
 function getCanvasPos(e){
   const rect=canvas.getBoundingClientRect();
   const cx=(e.clientX!==undefined?e.clientX:e.touches[0].clientX)-rect.left;
@@ -1201,7 +1098,6 @@ function updateAim(p){
   a=Math.max(-Math.PI+.12,Math.min(-.12,a));
   aimAngle=a;
 }
-
 canvas=document.getElementById('gc');
 ctx=canvas.getContext('2d');
 canvas.addEventListener('mousedown',onPointerDown);
@@ -1213,8 +1109,6 @@ canvas.addEventListener('touchmove',onPointerMove,{passive:false});
 canvas.addEventListener('touchend',onPointerUp,{passive:false});
 canvas.addEventListener('touchcancel',onPointerUp,{passive:false});
 canvas.addEventListener('contextmenu',e=>e.preventDefault());
-
-/* ===== RESIZE ===== */
 function resize(){
   dpr=window.devicePixelRatio||1;
   const ratio=W/H;
@@ -1228,36 +1122,23 @@ function resize(){
   ui.style.width=cw+'px';ui.style.height=ch+'px';
 }
 window.addEventListener('resize',resize);
-
-/* ===== GAME LOOP ===== */
 let lastTime=0;
 function loop(time){
   const dt=Math.min((time-lastTime)/1000,.05);lastTime=time;
   updateBgParticles(dt);
-
   if(gameState==='playing'){
-    /* Continuous grid descent — the whole wall of bubbles creeps downward
-       gradually every frame, whether or not a shot is in flight, and stops
-       a little distance short of the shooter (the dashed danger line). */
     if(gameActive){
       gridOY+=gridSpeed*dt;
     }
-
     updateMoving(dt);
     updateParticles(dt);
     updateAnims(dt);
-
-    /* Light up and sound a warning as the wall nears the end line */
     dangerRatio=computeDangerRatio();
     dangerSoundCooldown-=dt;
     if(dangerRatio>0.15&&dangerSoundCooldown<=0){
       Audio.danger();
       dangerSoundCooldown=Math.max(0.25,1.1-dangerRatio*0.9);
     }
-
-    /* If the descending wall reaches the danger line — the small buffer
-       zone above the shooter — before the player has cleared it, the
-       game ends immediately. */
     if(gameActive&&checkLose())handleLose();
     if(!movingBubble&&gameActive&&shotsLeft<=0){
       let has=false;
@@ -1267,12 +1148,9 @@ function loop(time){
   }else{
     updateParticles(dt);updateAnims(dt);
   }
-
   render();
   requestAnimationFrame(loop);
 }
-
-/* ===== INIT ===== */
 function init(){
   saveData=loadSave();
   Audio.init();Audio.on=saveData.sound;
