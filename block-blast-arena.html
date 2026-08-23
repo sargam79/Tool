@@ -275,12 +275,13 @@
       <li>Unlock <strong>achievements</strong> as you score points, chain combos, and use bombs.</li>
       <li>The game ends when none of your 3 tray pieces fit anywhere on the board.</li>
     </ol>
+    <p style="margin:12px 0 0;font-size:13px"><a href="https://toolpond.org/block-blast-arena-guide.html" style="color:var(--purple);text-decoration:none;font-weight:700">📖 Full Block Blast Arena Guide, Tips &amp; FAQ →</a></p>
   </section>
 
   <footer class="site-footer">
     <a href="https://toolpond.org/index.html">Home</a><span>·</span>
     <a href="https://toolpond.org/games.html">Games</a><span>·</span>
-    <a href="https://toolpond.org/index.html">Tools</a><span>·</span>
+    <a href="https://toolpond.org/block-blast-arena-guide.html">Guide &amp; Tips</a><span>·</span>
     <a href="https://toolpond.org/about.html">About</a>
   </footer>
 
@@ -301,11 +302,6 @@
 </div>
 
 <script>
-/* =========================================================
-   BLOCK BLAST ARENA — vanilla JS, advanced block puzzle engine
-   9x9 board, bomb power-ups, undo, achievements, confetti, combos
-   ========================================================= */
-
 const SIZE = 9;
 const BOX = 3;
 const K_BEST = 'bba_best_score';
@@ -353,7 +349,6 @@ const ACHIEVEMENTS = [
   { id:'blocks_50',   label:'🧱 50 Blocks Placed!', check: s => s.totalBlocksPlaced >= 50 },
 ];
 
-/* ---------------- State ---------------- */
 let board = createEmptyBoard();
 let tray = [];
 let score = 0;
@@ -374,7 +369,6 @@ let isMuted = false;
 let undoAvailable = true;
 let undoSnapshot = null;
 
-/* ---------------- DOM refs ---------------- */
 const boardEl = document.getElementById('board');
 const trayEl = document.getElementById('tray');
 const scoreEl = document.getElementById('score');
@@ -397,7 +391,6 @@ const statBombsEl = document.getElementById('stat-bombs');
 
 let cellEls = [];
 
-/* ================= Init ================= */
 function createEmptyBoard(){ return Array.from({length:SIZE}, () => Array(SIZE).fill(null)); }
 
 function init(){
@@ -426,9 +419,7 @@ function buildBoardDOM(){
   }
 }
 
-/* ================= Piece generation ================= */
 function randomPiece(){
-  // ~1 in 9 chance of a bomb piece (never as the very first piece of a game)
   const isBomb = piecesPlacedSinceStart > 2 && Math.random() < 0.11;
   if (isBomb){
     return { shape:[[0,0]], color:'bomb', isBomb:true, id:Math.random().toString(36).slice(2) };
@@ -448,7 +439,6 @@ function pieceHex(piece){
   return piece.isBomb ? '#3A2E52' : COLORS[piece.color].hex;
 }
 
-/* ================= Rendering ================= */
 function render(){
   for (let r=0; r<SIZE; r++){
     for (let c=0; c<SIZE; c++){
@@ -522,7 +512,6 @@ function buildPieceGridEl(piece, cellPx){
   return grid;
 }
 
-/* ================= Placement logic ================= */
 function canPlace(shape, originR, originC){
   for (const [dr,dc] of shape){
     const r=originR+dr, c=originC+dc;
@@ -597,7 +586,6 @@ function clearLines(fullRows, fullCols, fullBoxes){
   return cellsToClear.size;
 }
 
-/* ================= Scoring ================= */
 function scorePlacement(cellCount){ score += cellCount; }
 
 function scoreClears(lineCount, cellsCleared){
@@ -638,7 +626,6 @@ function triggerShake(){
   app.classList.remove('shake'); void app.offsetWidth; app.classList.add('shake');
 }
 
-/* ================= Confetti ================= */
 function spawnConfetti(cellElements){
   const sample = cellElements.slice(0, 40);
   sample.forEach(el => {
@@ -663,7 +650,6 @@ function spawnConfetti(cellElements){
   });
 }
 
-/* ================= Achievements ================= */
 function checkAchievements(){
   const s = { score, linesCleared: linesClearedThisGame, bestComboThisGame, bombsUsedThisGame, totalBlocksPlaced };
   ACHIEVEMENTS.forEach(a => {
@@ -676,7 +662,6 @@ function checkAchievements(){
   });
 }
 
-/* ================= Undo ================= */
 function saveUndoSnapshot(){
   if (!undoAvailable) return;
   undoSnapshot = {
@@ -698,7 +683,6 @@ function performUndo(){
   render();
 }
 
-/* ================= Game over ================= */
 function checkGameOver(){
   const stillPlayable = tray.some(p => p && anyValidPlacement(p));
   if (!stillPlayable) setTimeout(() => triggerGameOver(), 350);
@@ -733,7 +717,6 @@ function resetGame(){
   render();
 }
 
-/* ================= Drag & Drop ================= */
 function attachDragHandlers(gridEl, piece){
   gridEl.addEventListener('pointerdown', (e) => startDrag(e, piece, gridEl));
 }
@@ -878,7 +861,6 @@ function onDragEnd(e){
   dragState = null;
 }
 
-/* ================= Audio ================= */
 let audioCtx = null;
 function ensureAudio(){
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -943,7 +925,6 @@ function stopAmbient(){
   ambientNodes = null;
 }
 
-/* ================= UI events ================= */
 function bindGlobalEvents(){
   soundToggleBtn.addEventListener('click', () => {
     isMuted = !isMuted;
@@ -959,7 +940,6 @@ function bindGlobalEvents(){
   document.body.addEventListener('pointerdown', () => { ensureAudio(); startAmbient(); }, { once:true });
 }
 
-/* ================= Boot ================= */
 init();
 
 </script>
