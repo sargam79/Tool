@@ -213,12 +213,13 @@ header{ display:flex; align-items:center; justify-content:space-between; padding
       <li>Fewer rotations earns more <strong>stars</strong> — the "Best Known" chip shows the minimum possible.</li>
       <li>Stuck? Use <strong>Hint</strong> to reveal one correct rotation, or <strong>Undo</strong> to take back your last move.</li>
     </ol>
+    <p style="margin:12px 0 0;font-size:13px"><a href="https://toolpond.org/laser-mirrors-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">📖 Full Laser Mirrors Guide, Strategy &amp; FAQ →</a></p>
   </section>
 
   <footer class="site-footer">
     <a href="https://toolpond.org/index.html">Home</a><span>·</span>
     <a href="https://toolpond.org/games.html">Games</a><span>·</span>
-    <a href="https://toolpond.org/index.html">Tools</a><span>·</span>
+    <a href="https://toolpond.org/laser-mirrors-guide.html">Guide &amp; Tips</a><span>·</span>
     <a href="https://toolpond.org/about.html">About</a>
   </footer>
 
@@ -273,11 +274,6 @@ header{ display:flex; align-items:center; justify-content:space-between; padding
 </div>
 
 <script>
-/* =========================================================
-   LASER MIRRORS — core engine (no DOM dependencies)
-   Tested standalone in Node before any UI is wired to it.
-   ========================================================= */
-
 function mulberry32(seed){
   let a = seed;
   return function(){
@@ -292,19 +288,17 @@ const VECTORS = { up:[-1,0], down:[1,0], left:[0,-1], right:[0,1] };
 const CW = { up:'right', right:'down', down:'left', left:'up' };
 
 function reflect(dir, orientation){
-  // orientation 0 = '/' mirror, orientation 1 = '\' mirror
   const table0 = { right:'up', up:'right', left:'down', down:'left' };
   const table1 = { right:'down', down:'right', left:'up', up:'left' };
   return orientation === 0 ? table0[dir] : table1[dir];
 }
 
 class LaserEngine {
-  /** board = { size, grid (2D array of cell or null), emitters, crystalPositions } */
   constructor(board){
     this.size = board.size;
     this.grid = board.grid;
     this.emitters = board.emitters;
-    this.crystalPositions = board.crystalPositions; // array of "r,c" keys
+    this.crystalPositions = board.crystalPositions;
   }
 
   rotatableCells(){
@@ -330,10 +324,6 @@ class LaserEngine {
     return null;
   }
 
-  /** Traces every beam from every emitter through the current mirror/splitter/
-   *  portal/filter configuration. Returns which crystals are lit and which
-   *  cells the beam passes through (for rendering), with a hard step cap to
-   *  guarantee termination even if mirrors/portals form a cycle. */
   traceBeams(){
     const litCrystals = new Set();
     const beamCells = new Set();
@@ -348,10 +338,10 @@ class LaserEngine {
       const { r, c, dir, color } = queue.shift();
       const [dr, dc] = VECTORS[dir];
       const nr = r + dr, nc = c + dc;
-      if (nr < 0 || nr >= this.size || nc < 0 || nc >= this.size) continue; // edge of board
+      if (nr < 0 || nr >= this.size || nc < 0 || nc >= this.size) continue;
 
       const stateKey = `${nr},${nc}|${dir}|${color}`;
-      if (visited.has(stateKey)) continue; // prevents infinite loops through portals/mirrors
+      if (visited.has(stateKey)) continue;
       visited.add(stateKey);
 
       const cell = this.grid[nr][nc];
@@ -364,7 +354,7 @@ class LaserEngine {
       beamCells.add(`${nr},${nc}`);
       switch (cell.type){
         case 'wall':
-          break; // absorbed
+          break;
         case 'mirror':
         case 'movableMirror': {
           const newDir = reflect(dir, cell.orientation);
@@ -406,9 +396,6 @@ class LaserEngine {
     return this.crystalPositions.every(key => litCrystals.has(key));
   }
 
-  /** Iterative-deepening search over mirror orientation flips (Hamming
-   *  distance from the current state) to find the minimum number of taps
-   *  needed to solve from here. Returns { distance, flips } or null. */
   findMinimalSolution(maxDistance = 10){
     const cells = this.rotatableCells();
     const n = cells.length;
@@ -447,30 +434,25 @@ class LaserEngine {
 
 class LevelGenerator {
   static tierFor(level){
-    if (level <= 10) return 1;   // single mirror, single crystal
-    if (level <= 30) return 2;   // multiple mirrors, walls, longer paths
-    if (level <= 60) return 3;   // splitters, portals, multiple targets
-    return 4;                    // colored lasers, color filters
+    if (level <= 10) return 1;
+    if (level <= 30) return 2;
+    if (level <= 60) return 3;
+    return 4;
   }
 
   static sizeFor(level){
     return Math.min(9, 6 + Math.floor(level / 25));
   }
 
-  /** Builds a guaranteed-solvable level: constructs an actual working beam
-   *  path first (recording the CORRECT mirror orientations), then scrambles
-   *  those mirrors, then verifies solvability with the real solver before
-   *  handing it back. Regenerates on the rare failure. */
   static generate(level, rng){
     for (let attempt = 0; attempt < 40; attempt++){
       const result = this._attempt(level, rng);
       if (!result) continue;
       const engine = new LaserEngine(result.board);
       const solution = engine.findMinimalSolution(12);
-      if (!solution || solution.distance === 0) continue; // unsolvable or no scramble happened
+      if (!solution || solution.distance === 0) continue;
       return { board: result.board, par: solution.distance, tier: result.tier };
     }
-    // Should not realistically be reached; fall back to the simplest possible level.
     return this._fallbackLevel();
   }
 
@@ -485,7 +467,6 @@ class LevelGenerator {
     const occupied = new Set();
     const key = (r,c) => `${r},${c}`;
 
-    // --- emitter on a border cell, pointing inward ---
     const side = rand(4);
     let er, ec, edir;
     if (side === 0){ er = 0; ec = 1 + rand(size-2); edir = 'down'; }
@@ -496,9 +477,6 @@ class LevelGenerator {
 
     const emitterColor = tier >= 4 && rng() < 0.6 ? ['red','blue','green'][rand(3)] : 'white';
 
-    /** Walks a random path from (r,c,dir) turning occasionally, placing the
-     *  correctly-oriented mirror at each turn. Returns the path's mirror
-     *  list and final crystal position, or null if it ran out of room. */
     const buildPath = (startR, startC, startDir, minLen) => {
       let r = startR, c = startC, dir = startDir;
       const mirrorsPlaced = [];
@@ -510,8 +488,8 @@ class LevelGenerator {
       while (steps < maxSteps){
         const [dr, dc] = VECTORS[dir];
         const nr = r + dr, nc = c + dc;
-        if (nr < 0 || nr >= size || nc < 0 || nc >= size) break; // ran off the edge
-        if (occupied.has(key(nr,nc))) break; // collided with something already placed
+        if (nr < 0 || nr >= size || nc < 0 || nc >= size) break;
+        if (occupied.has(key(nr,nc))) break;
         r = nr; c = nc; steps++; stepsSinceTurn++;
 
         const longEnough = steps >= minLen;
@@ -519,15 +497,13 @@ class LevelGenerator {
         const mustStop = longEnough && (shouldTurn === false) && rng() < 0.35;
 
         if (mustStop){
-          // place the crystal here, ending the path
           return { mirrors: mirrorsPlaced, endR: r, endC: c, endDir: dir };
         }
         if (shouldTurn){
-          // pick a new direction (not the same, not directly backward)
           const options = DIR_LIST.filter(d => d !== dir && d !== OPPOSITE[dir]);
           const newDir = options[rand(options.length)];
           const orientation = this._orientationFor(dir, newDir);
-          if (orientation === null){ continue; } // shouldn't happen given the filter above
+          if (orientation === null){ continue; }
           occupied.add(key(r,c));
           mirrorsPlaced.push({ r, c, orientation, correctOrientation: orientation });
           grid[r][c] = { type:'mirror', orientation };
@@ -549,19 +525,14 @@ class LevelGenerator {
     const allMirrors = [...firstPath.mirrors];
     let usedSplitter = false, usedPortal = false;
 
-    // --- tier 3+: add a second target via a splitter branching off the first path ---
     if (tier >= 3 && firstPath.mirrors.length > 0 && rng() < 0.85){
       const branchMirror = firstPath.mirrors[rand(firstPath.mirrors.length)];
-      // Only branch from a mirror cell that isn't the very first or last for variety; convert it to a splitter instead
-      const dirIntoMirror = null; // not needed; splitter forks based on incoming direction at runtime
+      const dirIntoMirror = null;
       grid[branchMirror.r][branchMirror.c] = { type:'splitter' };
-      // remove it from the "mirrors to scramble" list since splitters aren't rotatable
       const idx = allMirrors.indexOf(branchMirror);
       if (idx >= 0) allMirrors.splice(idx, 1);
       usedSplitter = true;
 
-      // Build a second path forward from a cell adjacent to the splitter, in the "turned" direction
-      // Approximate: just start a fresh path from a random open border-adjacent point for reliability.
       const secondStart = this._randomOpenBorderStart(size, rng, occupied);
       if (secondStart){
         const secondPath = buildPath(secondStart.r, secondStart.c, secondStart.dir, Math.min(3, size-2));
@@ -570,13 +541,11 @@ class LevelGenerator {
           grid[secondPath.endR][secondPath.endC] = { type:'crystal', color: emitterColor };
           crystalPositions.push(key(secondPath.endR, secondPath.endC));
           allMirrors.push(...secondPath.mirrors);
-          // this second path needs its own emitter to actually be reachable
           var secondEmitter = { r: secondStart.r - VECTORS[secondStart.dir][0], c: secondStart.c - VECTORS[secondStart.dir][1], dir: secondStart.dir, color: emitterColor };
         }
       }
     }
 
-    // --- decoys: sprinkle a few extra mirrors in unused cells for visual density ---
     const decoyCount = Math.min(4, Math.floor(size * size * 0.06));
     for (let i = 0; i < decoyCount; i++){
       const r = rand(size), c = rand(size);
@@ -585,7 +554,6 @@ class LevelGenerator {
       occupied.add(key(r,c));
     }
 
-    // --- tier 2+: a couple of wall obstacles for visual variety (never on solution cells) ---
     if (tier >= 2){
       const wallCount = Math.min(3, Math.floor(size * size * 0.04));
       for (let i = 0; i < wallCount; i++){
@@ -596,7 +564,6 @@ class LevelGenerator {
       }
     }
 
-    // --- scramble every solution mirror so the player has to fix it ---
     allMirrors.forEach(m => { grid[m.r][m.c].orientation = rand(2); });
 
     const emitters = [{ r: er, c: ec, dir: edir, color: emitterColor }];
@@ -622,8 +589,6 @@ class LevelGenerator {
     return null;
   }
 
-  /** Returns the mirror orientation (0 or 1) that turns an incoming beam
-   *  travelling `fromDir` into `toDir`, or null if no single mirror can. */
   static _orientationFor(fromDir, toDir){
     if (reflect(fromDir, 0) === toDir) return 0;
     if (reflect(fromDir, 1) === toDir) return 1;
@@ -632,7 +597,7 @@ class LevelGenerator {
 
   static _fallbackLevel(){
     const grid = Array.from({ length: 6 }, () => Array(6).fill(null));
-    grid[2][2] = { type:'mirror', orientation: 1 }; // scrambled; correct is 0
+    grid[2][2] = { type:'mirror', orientation: 1 };
     grid[0][2] = { type:'crystal', color:'white' };
     return {
       board: { size:6, grid, emitters:[{ r:2, c:0, dir:'right', color:'white' }], crystalPositions:['0,2'] },
@@ -646,14 +611,8 @@ if (typeof module !== 'undefined') module.exports = { LaserEngine, mulberry32, r
 
 </script>
 <script>
-/* =========================================================
-   LASER MIRRORS — UI wiring layer
-   Uses LaserEngine/LevelGenerator from engine.js (loaded first).
-   ========================================================= */
-
 const BEAM_COLOR_HEX = { white:'#00FFD4', red:'#FF4B4B', blue:'#3EA8FF', green:'#3ADC7C' };
 
-/* ================= SaveManager ================= */
 class SaveManager {
   static K = { settings:'lm_settings', stats:'lm_stats', achievements:'lm_achievements', level:'lm_level', daily:'lm_daily' };
   static loadSettings(){
@@ -680,7 +639,6 @@ class SaveManager {
   static saveDaily(d){ localStorage.setItem(this.K.daily, JSON.stringify(d)); }
 }
 
-/* ================= AudioManager ================= */
 class AudioManager {
   constructor(settings){ this.settings = settings; this.ctx = null; this.musicHandle = null; this.padNodes = null; }
   ensure(){ if (!this.ctx) this.ctx = new (window.AudioContext||window.webkitAudioContext)(); if (this.ctx.state==='suspended') this.ctx.resume(); }
@@ -729,7 +687,6 @@ class AudioManager {
   refreshMusic(){ if (this.settings.music) this.startMusic(); else this.stopMusic(); }
 }
 
-/* ================= AchievementManager ================= */
 class AchievementManager {
   constructor(){ this.defs = this.buildDefs(); this.unlocked = SaveManager.loadAchievements(); }
   buildDefs(){
@@ -767,7 +724,6 @@ class AchievementManager {
   }
 }
 
-/* ================= ChallengeManager (daily puzzle, local) ================= */
 class ChallengeManager {
   static todayKey(){ const d=new Date(); return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`; }
   static seedForToday(){
@@ -779,7 +735,6 @@ class ChallengeManager {
   static canClaimToday(daily){ return daily.lastCompleted !== this.todayKey(); }
 }
 
-/* ================= UIManager ================= */
 class UIManager {
   constructor(){
     this.el = {
@@ -900,7 +855,6 @@ class UIManager {
   }
 }
 
-/* ================= Boot / wiring ================= */
 const settings = SaveManager.loadSettings();
 const stats = SaveManager.loadStats();
 let level = SaveManager.loadLevel();
@@ -1048,7 +1002,6 @@ function useHint(){
   runAchievementCheck();
 }
 
-/* ---- settings ---- */
 function refreshSwitches(){
   document.getElementById('switch-sound').classList.toggle('on', settings.sound);
   document.getElementById('switch-music').classList.toggle('on', settings.music);
