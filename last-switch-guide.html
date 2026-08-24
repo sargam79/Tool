@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Last Switch Guide: How to Play, Tips & FAQ | ToolPond</title>
+<meta name="description" content="Learn how to play The Last Switch, the free online 3D switch puzzle game. Switch types, chapters, star scoring, strategy tips, and FAQ — then jump into the game."/>
+<meta name="keywords" content="the last switch how to play, switch puzzle game guide, 3d puzzle game tips, lights out puzzle strategy, free 3d puzzle game guide"/>
+<meta name="author" content="ToolPond Pro"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://toolpond.org/last-switch-guide.html"/>
+
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="The Last Switch Guide: How to Play, Tips & FAQ"/>
+<meta property="og:description" content="Switch types, chapters, star scoring, and strategy for The Last Switch, the free online 3D puzzle game. No download, no login."/>
+<meta property="og:url" content="https://toolpond.org/last-switch-guide.html"/>
+<meta property="og:site_name" content="ToolPond Pro Games"/>
+<meta property="og:image" content="https://toolpond.org/images/games/last-switch-og.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="en_US"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="The Last Switch Guide: How to Play, Tips & FAQ"/>
+<meta name="twitter:description" content="Switch types, chapters, star scoring, and strategy for The Last Switch, the free online 3D puzzle game."/>
+<meta name="twitter:image" content="https://toolpond.org/images/games/last-switch-og.jpg"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- VideoGame Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "The Last Switch",
+  "url": "https://toolpond.org/last-switch.html",
+  "image": "https://toolpond.org/images/games/last-switch-og.jpg",
+  "description": "A free browser-based 3D puzzle game. Toggle switches to match target patterns across 25 levels and 5 chapters. No download or login required.",
+  "genre": ["Puzzle", "Logic Game"],
+  "gamePlatform": ["Web Browser", "Mobile Browser", "Desktop Browser"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "playMode": "SinglePlayer",
+  "publisher": { "@type": "Organization", "name": "ToolPond Pro", "url": "https://toolpond.org" }
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/index.html" },
+    { "@type": "ListItem", "position": 2, "name": "Free Browser Games", "item": "https://toolpond.org/games.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Last Switch", "item": "https://toolpond.org/last-switch.html" },
+    { "@type": "ListItem", "position": 4, "name": "The Last Switch Guide", "item": "https://toolpond.org/last-switch-guide.html" }
+  ]
+}
+</script>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is The Last Switch?", "acceptedAnswer": { "@type": "Answer", "text": "The Last Switch is a free online 3D puzzle game. Toggle switches on a grid to make the current pattern match a target pattern, across 25 levels and 5 chapters with a light story woven through the dialogue." } },
+    { "@type": "Question", "name": "How do you play The Last Switch?", "acceptedAnswer": { "@type": "Answer", "text": "Click or tap a switch to toggle it. Depending on the switch type, toggling it may also toggle nearby or connected switches. Match the current board to the target pattern shown on the side panel to complete the level." } },
+    { "@type": "Question", "name": "Is The Last Switch free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, The Last Switch is completely free to play in your browser. No download, signup, or login is required." } },
+    { "@type": "Question", "name": "What do the different switch types do?", "acceptedAnswer": { "@type": "Answer", "text": "Normal switches toggle only themselves. Cross switches also toggle up/down/left/right neighbors. Square switches toggle all 8 neighbors. Row and column switches toggle their entire line. Mirror switches also toggle the opposite tile on the grid. Bomb switches toggle themselves and all 8 neighbors. Teleport switches also toggle a linked partner switch elsewhere on the board. Hidden switches stay invisible until nearby switches wake them." } },
+    { "@type": "Question", "name": "How does star scoring work?", "acceptedAnswer": { "@type": "Answer", "text": "Each level has a target number of moves. Solving at or under that number earns 3 stars, solving within 2 extra moves earns 2 stars, and any solve earns at least 1 star." } },
+    { "@type": "Question", "name": "What does Skip do?", "acceptedAnswer": { "@type": "Answer", "text": "Skip marks the current level as completed with 0 stars and moves you on to the next one, so you're never stuck if a level feels too difficult." } },
+    { "@type": "Question", "name": "What is the best strategy for The Last Switch?", "acceptedAnswer": { "@type": "Answer", "text": "Identify each switch's type before clicking anything, work out which switches affect the fewest other tiles and use those to fine-tune your solution last, and use Reset freely rather than trying to recover from a badly tangled board." } },
+    { "@type": "Question", "name": "What is Endless Mode?", "acceptedAnswer": { "@type": "Answer", "text": "Endless Mode generates a fresh random puzzle each time using one switch type at a time, for open-ended play once you've finished or want a break from the 25 story levels." } }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --cyan:#00f0ff; --pink:#ff4080; --gold:#ffd700;
+    --text:#e0e0ff; --text-dim:#8888aa;
+    --panel-solid:rgba(10,10,26,0.9);
+    --bg1:#050508;
+    --shadow: 0 14px 34px rgba(0,0,0,0.5);
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0;
+    background: radial-gradient(1000px 600px at 50% -10%, rgba(0,240,255,0.08), transparent 60%), var(--bg1);
+    color: var(--text); font-family:'Rajdhani', sans-serif; line-height:1.65;
+  }
+  .wrap{ max-width: 720px; margin:0 auto; padding: 20px 18px 40px; }
+  header{ display:flex; align-items:center; justify-content:space-between; padding: 4px 0 18px; }
+  .logo{ font-family:'Orbitron', sans-serif; font-weight:900; font-size:16px; text-decoration:none; color:var(--cyan); letter-spacing:2px; }
+  nav a{ color: var(--text-dim); text-decoration:none; font-size:13px; font-weight:600; margin-left:14px; }
+  nav a:hover{ color:#fff; }
+
+  .breadcrumbs{ font-size:12px; color:var(--text-dim); margin-bottom:14px; }
+  .breadcrumbs a{ color:var(--text-dim); text-decoration:none; }
+  .breadcrumbs a:hover{ color:#fff; }
+
+  .hero{ background:var(--panel-solid); border:1px solid rgba(0,240,255,0.15); border-radius:4px; padding:26px 22px; margin-bottom:24px; box-shadow: var(--shadow); }
+  .hero h1{ font-family:'Orbitron', sans-serif; font-size:20px; margin:0 0 10px; letter-spacing:1px; }
+  .hero p{ color: var(--text-dim); font-size:15px; margin:0 0 18px; }
+  .play-btn{ display:inline-flex; align-items:center; gap:8px; background:transparent; border:2px solid var(--cyan); color:var(--cyan); font-family:'Orbitron', sans-serif; font-weight:700; padding:12px 24px; text-decoration:none; font-size:13px; letter-spacing:1px; }
+
+  section.block{ background: var(--panel-solid); border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:20px 22px; margin-bottom:20px; box-shadow: var(--shadow); }
+  section.block h2{ font-family:'Orbitron', sans-serif; font-size:15px; margin:0 0 12px; color:var(--cyan); letter-spacing:1px; }
+  section.block h3{ font-size:15px; margin:18px 0 6px; color:var(--text); font-weight:700; }
+  section.block p{ color: var(--text-dim); font-size:14px; margin:0 0 10px; }
+  section.block ol, section.block ul{ color: var(--text-dim); font-size:14px; padding-left:20px; margin:0 0 10px; }
+  section.block li{ margin-bottom:6px; }
+  section.block li strong{ color: var(--text); }
+
+  .faq-item{ margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .faq-item:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .faq-item h3{ margin:0 0 6px; font-size:15px; }
+  .faq-item p{ margin:0; }
+
+  .cta-bottom{ text-align:center; background:linear-gradient(135deg,rgba(0,240,255,0.08),rgba(255,64,128,0.06)); }
+
+  footer.site-footer{ text-align:center; font-size:12px; color:var(--text-dim); padding-top:10px; }
+  footer.site-footer a{ color: var(--text-dim); text-decoration:none; }
+  footer.site-footer a:hover{ color:#fff; }
+  footer.site-footer span{ margin:0 6px; opacity:0.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a href="https://toolpond.org/index.html" class="logo">THE LAST SWITCH</a>
+    <nav>
+      <a href="https://toolpond.org/games.html">Games</a>
+      <a href="https://toolpond.org/last-switch.html">Play Now</a>
+    </nav>
+  </header>
+
+  <p class="breadcrumbs">
+    <a href="https://toolpond.org/index.html">Home</a> ›
+    <a href="https://toolpond.org/games.html">Games</a> ›
+    <a href="https://toolpond.org/last-switch.html">The Last Switch</a> ›
+    Guide
+  </p>
+
+  <div class="hero">
+    <h1>The Last Switch: How to Play, Tips &amp; Strategy</h1>
+    <p>The Last Switch is a free online 3D puzzle game — toggle switches to match target patterns across 25 levels and 5 chapters. This guide covers the switch types, scoring, and strategy — then you can jump straight into the game.</p>
+    <a class="play-btn" href="https://toolpond.org/last-switch.html">▶ PLAY THE LAST SWITCH FREE</a>
+  </div>
+
+  <section class="block">
+    <h2>What Is The Last Switch?</h2>
+    <p>The Last Switch is a browser-based 3D logic puzzle game where you toggle switches on a grid until the current pattern matches a target pattern. What makes it more than a simple toggle puzzle is that different switch types affect their neighbors in different ways — some flip a whole row, some flip a linked partner elsewhere on the board, and some stay hidden until triggered. The game unfolds across 25 levels in 5 chapters, with a light AI-facility story told through dialogue between puzzles, plus an Endless Mode for open-ended play. It's free with no download, signup, or login required.</p>
+  </section>
+
+  <section class="block">
+    <h2>How to Play The Last Switch</h2>
+    <ol>
+      <li><strong>Click or tap a switch</strong> to toggle it on or off.</li>
+      <li>Depending on its <strong>type</strong>, toggling a switch may also toggle nearby or linked switches.</li>
+      <li>Match the <strong>current board</strong> (cyan) to the <strong>target pattern</strong> (gold) shown in the side panel.</li>
+      <li><strong>Drag</strong> to rotate the camera and <strong>scroll or pinch</strong> to zoom for a better view of the grid.</li>
+      <li>Solve within the level's target move count for the best <strong>star rating</strong>.</li>
+      <li>Use <strong>Reset</strong> to start the level over, or <strong>Skip</strong> to move on if you're stuck.</li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <h2>Switch Types</h2>
+    <ul>
+      <li><strong>Normal (cyan):</strong> toggles only itself.</li>
+      <li><strong>Cross (pink):</strong> also toggles its up/down/left/right neighbors.</li>
+      <li><strong>Square (gold):</strong> also toggles all 8 surrounding neighbors.</li>
+      <li><strong>Row (green):</strong> also toggles its entire row.</li>
+      <li><strong>Column (purple):</strong> also toggles its entire column.</li>
+      <li><strong>Mirror (magenta):</strong> also toggles the tile directly opposite it on the grid.</li>
+      <li><strong>Bomb (orange):</strong> toggles itself and all 8 surrounding neighbors.</li>
+      <li><strong>Teleport (light cyan):</strong> also toggles its linked partner switch elsewhere on the board.</li>
+      <li><strong>Hidden (dark):</strong> invisible until enough nearby switches are toggled on to reveal it.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Scoring &amp; Chapters</h2>
+    <p>Each level has a target move count. Solving at or under that number earns 3 stars, solving within 2 extra moves earns 2 stars, and any successful solve earns at least 1 star. The 25 levels are split across 5 chapters — Security Lab, Power Core, Research Lab, AI Core, and Escape Facility — each introducing new switch types and progressively larger grids.</p>
+  </section>
+
+  <section class="block">
+    <h2>Strategy Tips</h2>
+    <h3>1. Identify switch types before clicking</h3>
+    <p>Each switch type has a distinct color. Take a moment to spot cross, square, row, column, and other special switches before making your first move — this avoids accidental cascades you didn't plan for.</p>
+    <h3>2. Save simple switches for last</h3>
+    <p>Normal switches that only toggle themselves are the easiest to use for fine-tuning. Solve the broader pattern with your wide-effect switches first, then clean up individual tiles with normal switches.</p>
+    <h3>3. Don't be afraid to Reset</h3>
+    <p>If a board gets tangled beyond what you can mentally track, Reset and start over with a clearer plan rather than trying to blindly recover.</p>
+    <h3>4. Use Skip without guilt</h3>
+    <p>Skip completes a level with 0 stars so you can keep progressing — useful if a particular level's mechanic just isn't clicking for you yet.</p>
+  </section>
+
+  <section class="block">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item"><h3>What is The Last Switch?</h3><p>A free online 3D puzzle game — toggle switches to match target patterns across 25 levels and 5 chapters.</p></div>
+    <div class="faq-item"><h3>How do you play The Last Switch?</h3><p>Click switches to toggle them, matching the current board to the target pattern shown in the side panel.</p></div>
+    <div class="faq-item"><h3>Is it free to play?</h3><p>Yes — no download, signup, or login required.</p></div>
+    <div class="faq-item"><h3>What do the different switch types do?</h3><p>Each type toggles a different set of tiles — from just itself to its whole row, column, neighbors, or a linked partner.</p></div>
+    <div class="faq-item"><h3>How does star scoring work?</h3><p>Solving at or under the target move count earns 3 stars, within 2 extra moves earns 2, and any solve earns at least 1.</p></div>
+    <div class="faq-item"><h3>What does Skip do?</h3><p>Marks the level complete with 0 stars and moves you to the next one.</p></div>
+    <div class="faq-item"><h3>What is the best strategy?</h3><p>Identify switch types first, save simple switches for fine-tuning, and reset rather than fight a tangled board.</p></div>
+    <div class="faq-item"><h3>What is Endless Mode?</h3><p>Generates fresh random puzzles using one switch type at a time for open-ended play.</p></div>
+  </section>
+
+  <section class="block cta-bottom">
+    <h2>Ready to Play?</h2>
+    <p>Put these tips to the test and see how many stars you can collect.</p>
+    <a class="play-btn" href="https://toolpond.org/last-switch.html">▶ PLAY THE LAST SWITCH FREE</a>
+  </section>
+
+  <footer class="site-footer">
+    <a href="https://toolpond.org/index.html">Home</a>
+    <span>·</span>
+    <a href="https://toolpond.org/games.html">All Games</a>
+    <span>·</span>
+    <a href="https://toolpond.org/last-switch.html">Play The Last Switch</a>
+    <span>·</span>
+    <a href="https://toolpond.org/about.html">About</a>
+  </footer>
+
+</div>
+</body>
+</html>
