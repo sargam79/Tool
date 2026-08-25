@@ -205,6 +205,7 @@
     <div class="foot-links">
       <a href="https://toolpond.org/index.html">Home</a>
       <a href="https://toolpond.org/games.html">All Games</a>
+      <a href="https://toolpond.org/penalty-duel-guide.html">Guide &amp; Tips</a>
       <a href="https://toolpond.org/index.html">Calculators</a>
       <a href="https://toolpond.org/contact.html">Suggest a Game</a>
     </div>
@@ -232,7 +233,6 @@
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('orientationchange', ()=>setTimeout(resizeCanvas,200));
 
-  // ---------- constants ----------
   const SPOT = { x: 240, y: 660 };
   const GOAL = { left:70, right:410, top:140, bottom:330 };
   const GOAL_W = GOAL.right-GOAL.left, GOAL_H = GOAL.bottom-GOAL.top;
@@ -247,33 +247,29 @@
   };
 
   let difficulty = 'rookie';
-  let state = 'menu'; // menu, aim, kickAnim, saveWaitRunup, saveAnim, banner, matchOver
+  let state = 'menu';
   let frame = 0;
 
-  // match state
-  let phase = 'normal'; // normal, suddenDeath
+  let phase = 'normal';
   let round = 0;
   let playerScore=0, cpuScore=0, playerAttempts=0, cpuAttempts=0;
   let playerHistory=[], cpuHistory=[];
   let bestStreak = parseInt(localStorage.getItem('penaltyDuelBestStreak')||'0',10);
   let currentStreak = parseInt(localStorage.getItem('penaltyDuelCurrentStreak')||'0',10);
 
-  // aim/kick working vars
   let reticle = { x:240, y:235 };
   let dragging = false;
   let charging = false;
   let chargeStart = 0;
   let power = 0;
 
-  // ball + keeper animation state
   let ball = { x:SPOT.x, y:SPOT.y, scale:1, rot:0, visible:true };
   let keeper = { x:ZONE_X.C, dive:'C', diveT:0, pose:'idle' };
   let kickerFig = { x:SPOT.x, run:0 };
   let netRipple = 0, netRippleX = 240;
-  let anim = null; // {startT, dur, from, to, power}
+  let anim = null;
   let pendingResolve = null;
 
-  // save-phase specific
   let cpuTarget = null, cpuPowerVal = 0, cpuThird = 'C', cpuHeight = 'mid';
   let playerZoneChoice = null;
   let reactWindowStart = 0, reactWindowDur = 0;
@@ -283,7 +279,6 @@
   let screenFlash = 0;
   let soundOn = true;
 
-  // ---------- DOM refs ----------
   const overlay = document.getElementById('overlay');
   const titleText = document.getElementById('titleText');
   const subText = document.getElementById('subText');
@@ -312,7 +307,6 @@
     difficulty = b.dataset.diff;
   }));
 
-  // ---------- sound engine ----------
   let audioCtx = null;
   function ac(){ try{ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); return audioCtx; }catch(e){ soundOn=false; return null; } }
   function tone(freq, dur, type, vol, glideTo){
@@ -352,7 +346,6 @@
   function sfxPost(){ tone(1800,0.25,'sine',0.08,600); }
   function sfxCountdownTick(){ tone(700,0.05,'square',0.04); }
 
-  // ---------- helpers ----------
   function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
   function thirdOf(x){ if (x < GOAL.left+THIRD_W) return 'L'; if (x > GOAL.right-THIRD_W) return 'R'; return 'C'; }
   function heightOf(y){
@@ -373,7 +366,6 @@
     return clamp(base, 0.03, 0.95);
   }
 
-  // ---------- UI update ----------
   function renderDots(){
     playerDots.innerHTML = '';
     cpuDots.innerHTML = '';
@@ -404,7 +396,6 @@
     setTimeout(()=>{ bannerText.style.opacity='0'; }, 900);
   }
 
-  // ---------- match flow ----------
   function startMatch(){
     phase='normal'; round=0;
     playerScore=0; cpuScore=0; playerAttempts=0; cpuAttempts=0;
@@ -517,7 +508,6 @@
     else { if (checkMatchEnd()) return; round++; beginPlayerKick(); }
   }
 
-  // ---------- resolve outcomes ----------
   function finalizePlayerKick(){
     const t = reticle;
     playerAttempts++;
@@ -563,7 +553,6 @@
     setTimeout(()=>{ advanceAfter('cpu'); }, 950);
   }
 
-  // ---------- input: aiming/kicking ----------
   function clientToLogical(clientX, clientY){
     const rect = canvas.getBoundingClientRect();
     return { x:(clientX-rect.left)*(W/rect.width), y:(clientY-rect.top)*(H/rect.height) };
@@ -599,7 +588,6 @@
   canvas.addEventListener('touchmove', e => { const t=e.touches[0]; pointerMove(t.clientX,t.clientY); e.preventDefault(); }, {passive:false});
   canvas.addEventListener('touchend', e => { pointerUp(); e.preventDefault(); }, {passive:false});
 
-  // ---------- input: zone buttons (defending) ----------
   document.querySelectorAll('.zoneBtn').forEach(btn => {
     btn.addEventListener('click', () => {
       if (state !== 'saveWaitRunup' && state !== 'saveAnim') return;
@@ -621,12 +609,10 @@
   function startGameClick(){ startMatch(); }
   playBtn.addEventListener('click', startGameClick);
 
-  // ---------- particles ----------
   function spawnParticles(x,y,color,n){
     for (let i=0;i<n;i++) particles.push({x,y,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6-2,life:24,color});
   }
 
-  // ---------- drawing ----------
   function roundRect(x,y,w,h,r){
     ctx.beginPath();
     ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
@@ -638,13 +624,11 @@
     sky.addColorStop(0,'#0d2b1a'); sky.addColorStop(1,'#123d24');
     ctx.fillStyle = sky; ctx.fillRect(0,0,W,GOAL.top+20);
 
-    // floodlight glows
     for (const fx of [40, W-40]) {
       const g = ctx.createRadialGradient(fx,30,4,fx,30,90);
       g.addColorStop(0,'rgba(255,255,220,0.5)'); g.addColorStop(1,'rgba(255,255,220,0)');
       ctx.fillStyle = g; ctx.beginPath(); ctx.arc(fx,30,90,0,Math.PI*2); ctx.fill();
     }
-    // crowd stands
     ctx.fillStyle = 'rgba(0,0,0,0.35)';
     ctx.fillRect(0,0,W,58);
     for (let i=0;i<40;i++){
@@ -654,14 +638,12 @@
       ctx.fillRect(cx, cy, 6, 6);
     }
 
-    // pitch
     const pitch = ctx.createLinearGradient(0,GOAL.top+20,0,H);
     pitch.addColorStop(0,'#1c5c34'); pitch.addColorStop(1,'#0f3a20');
     ctx.fillStyle = pitch; ctx.fillRect(0,GOAL.top+20,W,H-(GOAL.top+20));
     ctx.fillStyle = 'rgba(255,255,255,0.04)';
     for (let i=0;i<10;i++) ctx.fillRect(0, GOAL.top+20+i*((H-GOAL.top-20)/10), W, ((H-GOAL.top-20)/10)/2);
 
-    // penalty arc + box lines
     ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.ellipse(SPOT.x, SPOT.y-40, 90, 30, 0, 0, Math.PI*2); ctx.stroke();
     ctx.beginPath(); ctx.arc(SPOT.x, SPOT.y, 4, 0, Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.8)'; ctx.fill();
@@ -670,7 +652,6 @@
   }
 
   function drawGoal(){
-    // net mesh
     ctx.save();
     ctx.beginPath();
     ctx.rect(GOAL.left, GOAL.top, GOAL_W, GOAL_H);
@@ -698,7 +679,6 @@
     }
     ctx.restore();
 
-    // posts
     ctx.fillStyle = '#f4f4f4';
     ctx.fillRect(GOAL.left-7, GOAL.top-8, 7, GOAL_H+8+10);
     ctx.fillRect(GOAL.right, GOAL.top-8, 7, GOAL_H+8+10);
@@ -718,22 +698,18 @@
     ctx.save();
     ctx.translate(curX, GOAL.bottom-6+dy);
     ctx.rotate(lean*0.6);
-    // shadow
     ctx.fillStyle='rgba(0,0,0,0.3)';
     ctx.beginPath(); ctx.ellipse(0,10,22,6,0,0,Math.PI*2); ctx.fill();
-    // body
     const grad = ctx.createLinearGradient(0,-46,0,0);
     grad.addColorStop(0,'#ffd23f'); grad.addColorStop(1,'#e0a500');
     ctx.fillStyle = grad;
     roundRect(-14,-46,28,40,8); ctx.fill();
-    // arms stretched toward dive
     ctx.strokeStyle = '#ffe9a8'; ctx.lineWidth=7; ctx.lineCap='round';
     const armSpread = 14 + easeOutQuad(t)*18;
     ctx.beginPath();
     ctx.moveTo(-10,-38); ctx.lineTo(-armSpread*Math.sign(lean||-1)-8, -30-easeOutQuad(t)*10);
     ctx.moveTo(10,-38); ctx.lineTo(armSpread*Math.sign(lean||1)+8, -30-easeOutQuad(t)*10);
     ctx.stroke();
-    // head
     ctx.fillStyle = '#ffcf9e';
     ctx.beginPath(); ctx.arc(0,-52,10,0,Math.PI*2); ctx.fill();
     ctx.restore();
@@ -803,7 +779,6 @@
       ctx.fillRect(0,0,W,H);
     }
 
-    // phase indicator
     if (phase === 'suddenDeath' && state !== 'menu' && state !== 'matchOver') {
       ctx.fillStyle = 'rgba(255,92,92,0.85)';
       ctx.font = 'bold 13px sans-serif';
@@ -812,11 +787,9 @@
     }
   }
 
-  // ---------- update ----------
   function update(){
     frame++;
 
-    // particles
     for (const p of particles) { p.x+=p.vx; p.y+=p.vy; p.vy+=0.25; p.life--; }
     particles = particles.filter(p=>p.life>0);
     if (netRipple>0) netRipple *= 0.94;
