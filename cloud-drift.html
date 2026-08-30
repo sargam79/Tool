@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Cloud Drift: Wind Runner — Free Online Endless Runner Game | Toolpond</title>
+<meta name="description" content="Play Cloud Drift: Wind Runner free in your browser — glide, dash, and dodge through the clouds in an endless runner with wind gusts, coins, and power-ups. No download, works on desktop and mobile.">
+<meta name="keywords" content="sky spirit wind runner, endless runner game, free runner game online, flying game online, dodge obstacles game, browser game, html5 game, mobile arcade game, no download game, toolpond games">
+<meta name="author" content="Toolpond">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolpond.org/cloud-drift.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cloud Drift: Wind Runner — Free Online Endless Runner Game">
+<meta property="og:description" content="Glide, dash, and dodge through the clouds in an endless runner with wind gusts, coins, and power-ups. Play instantly in your browser, no download required.">
+<meta property="og:url" content="https://toolpond.org/cloud-drift.html">
+<meta property="og:site_name" content="Toolpond">
+<meta property="og:image" content="https://toolpond.org/sky-spirit-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cloud Drift: Wind Runner — Free Online Endless Runner Game">
+<meta name="twitter:description" content="Glide, dash, and dodge through the clouds in this free endless runner. No download needed.">
+<meta name="twitter:image" content="https://toolpond.org/sky-spirit-og.jpg">
+
+<meta name="theme-color" content="#0b1330">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Cloud Drift: Wind Runner",
+  "url": "https://toolpond.org/cloud-drift.html",
+  "description": "A free online endless runner — glide, dash, and dodge obstacles through the clouds while riding wind gusts, collecting coins, and grabbing power-ups. Play free in your browser on desktop or mobile.",
+  "applicationCategory": "Game",
+  "genre": "Arcade, Endless Runner",
+  "gamePlatform": ["Web Browser", "Mobile"],
+  "operatingSystem": "Any",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Toolpond",
+    "url": "https://toolpond.org"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/index.html" },
+    { "@type": "ListItem", "position": 2, "name": "Free Browser Games", "item": "https://toolpond.org/games.html" },
+    { "@type": "ListItem", "position": 3, "name": "Cloud Drift: Wind Runner", "item": "https://toolpond.org/cloud-drift.html" }
+  ]
+}
+</script>
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  html,body { width:100%; overflow-x:hidden; overflow-y:auto; background:#0b1330; font-family:'Segoe UI',system-ui,-apple-system,sans-serif; }
+  #wrap { position:relative; width:100%; height:100vh; display:flex; align-items:center; justify-content:center; }
+  canvas { display:block; touch-action:none; background:linear-gradient(180deg,#4fa8ff 0%,#bfe4ff 55%,#eaf6ff 100%); border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,0.45); }
+
+  #hud { position:absolute; top:12px; left:0; right:0; display:flex; justify-content:space-between; padding:0 16px; pointer-events:none; }
+  .pill { background:rgba(10,20,50,0.55); border:1px solid rgba(255,255,255,0.25); backdrop-filter:blur(4px); border-radius:16px; padding:6px 14px; color:#fff; font-weight:800; font-size:15px; letter-spacing:0.5px; }
+  #coinsHud { color:#ffd23f; }
+  #distHud { color:#bfe4ff; }
+  #windHud { position:absolute; top:52px; left:50%; transform:translateX(-50%); pointer-events:none; text-align:center; font-size:13px; font-weight:800; letter-spacing:1px; color:#7ee0ff; opacity:0; transition:opacity 0.2s; text-shadow:0 0 10px rgba(126,224,255,0.7); }
+  #pauseBtn { display:none; position:absolute; top:12px; left:50%; transform:translateX(-50%); background:rgba(10,20,50,0.55); border:1px solid rgba(255,255,255,0.25); color:#fff; width:34px; height:34px; border-radius:10px; font-size:15px; cursor:pointer; }
+
+  #overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 30%, rgba(20,40,90,0.92), rgba(4,8,20,0.97)); text-align:center; padding:24px; }
+  #overlay h1 { font-size:clamp(28px,7.5vw,46px); font-weight:900; letter-spacing:1px; margin-bottom:6px; background:linear-gradient(90deg,#7ee0ff,#ffffff,#ffd23f); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  #overlay .sub { color:#a8c0e8; font-size:13.5px; margin-bottom:20px; max-width:320px; }
+  #bestLine { color:#ffd23f; font-size:12px; font-weight:700; letter-spacing:1px; margin-bottom:16px; opacity:0.9; }
+  .stat-row { display:flex; gap:26px; margin-bottom:22px; }
+  .stat { color:#fff; }
+  .stat .num { font-size:26px; font-weight:900; display:block; }
+  .stat .lbl { font-size:10px; color:#9ab0d8; letter-spacing:1.5px; text-transform:uppercase; }
+  #playBtn { background:linear-gradient(180deg,#7ee0ff,#2e9bff); color:#04101a; border:none; border-bottom:4px solid #1c6bb0; padding:14px 46px; font-size:17px; font-weight:900; letter-spacing:1px; border-radius:14px; cursor:pointer; box-shadow:0 8px 22px rgba(46,155,255,0.4); }
+  #playBtn:active { transform:translateY(2px); border-bottom-width:2px; }
+  #muteBtn { margin-top:16px; background:none; border:none; color:rgba(255,255,255,0.55); font-size:12px; letter-spacing:0.5px; cursor:pointer; text-decoration:underline; }
+  #hint { position:absolute; bottom:14px; left:0; right:0; text-align:center; color:rgba(10,20,50,0.55); font-size:11.5px; pointer-events:none; }
+  .hidden { display:none !important; }
+
+  #siteFooter { width:100%; background:#0b1330; border-top:1px solid rgba(255,255,255,0.08); padding:40px 20px 30px; }
+  #siteFooter .inner { max-width:760px; margin:0 auto; }
+  #siteFooter .breadcrumb { font-size:12px; color:#7a90c0; margin-bottom:22px; letter-spacing:0.3px; }
+  #siteFooter .breadcrumb a { color:#7ee0ff; text-decoration:none; }
+  #siteFooter .breadcrumb a:hover { text-decoration:underline; }
+  #siteFooter h2 { color:#fff; font-size:16px; letter-spacing:0.5px; margin-bottom:10px; }
+  #siteFooter p { color:#a8c0e8; font-size:13.5px; line-height:1.7; margin-bottom:26px; max-width:640px; }
+  #siteFooter .games-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:30px; }
+  #siteFooter .game-card { display:block; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.15s, background 0.15s; }
+  #siteFooter .game-card:hover { border-color:rgba(126,224,255,0.5); background:rgba(255,255,255,0.08); }
+  #siteFooter .game-card .name { color:#fff; font-weight:700; font-size:14px; display:block; margin-bottom:3px; }
+  #siteFooter .game-card .desc { color:#8aa8d8; font-size:11.5px; }
+  #siteFooter .foot-links { display:flex; flex-wrap:wrap; gap:16px; font-size:12.5px; }
+  #siteFooter .foot-links a { color:#a8c0e8; text-decoration:none; }
+  #siteFooter .foot-links a:hover { color:#7ee0ff; }
+  #siteFooter .copyright { margin-top:20px; color:#5a7098; font-size:11.5px; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="420" height="720"></canvas>
+  <div id="hud">
+    <div class="pill" id="distHud">0m</div>
+    <div class="pill" id="coinsHud">🪙 0</div>
+  </div>
+  <div id="windHud">WIND GUST!</div>
+  <button id="pauseBtn">❚❚</button>
+  <div id="overlay">
+    <h1 id="titleText">SKY SPIRIT</h1>
+    <div class="sub" id="subText">tap/click to jump · hold to glide · dodge clouds, birds, and gusts</div>
+    <div id="bestLine"></div>
+    <div class="stat-row hidden" id="statsRow">
+      <div class="stat"><span class="num" id="finalDist">0m</span><span class="lbl">distance</span></div>
+      <div class="stat"><span class="num" id="finalCoins">0</span><span class="lbl">coins</span></div>
+    </div>
+    <button id="playBtn">PLAY</button>
+    <button id="muteBtn">🔊 sound on</button>
+  </div>
+  <div id="hint">tap/click and hold to glide · release to fall faster</div>
+</div>
+
+<footer id="siteFooter">
+  <div class="inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://toolpond.org/index.html">Home</a> ›
+      <a href="https://toolpond.org/games.html">Games</a> ›
+      <span>Cloud Drift: Wind Runner</span>
+    </nav>
+
+    <h2>About Cloud Drift: Wind Runner</h2>
+    <p>
+      Cloud Drift: Wind Runner is a free online endless runner. Glide through the clouds, dash past birds
+      and floating obstacles, and ride wind gusts to cover more ground. Collect coins along the way and
+      chase a new personal best distance every run. Plays instantly in your browser on desktop or mobile,
+      no download or install required.
+    </p>
+
+    <h2>More free games on Toolpond</h2>
+    <div class="games-grid">
+      <a class="game-card" href="https://toolpond.org/prism-smash.html">
+        <span class="name">Prism Smash</span>
+        <span class="desc">Neon brick breaker with combos & power-ups</span>
+      </a>
+      <a class="game-card" href="https://toolpond.org/penalty-duel.html">
+        <span class="name">Penalty Duel</span>
+        <span class="desc">Aim, power up, and save penalty kicks</span>
+      </a>
+      <a class="game-card" href="https://toolpond.org/bubble-pop-quest.html">
+        <span class="name">Bubble Pop Quest</span>
+        <span class="desc">Match and pop colorful bubble puzzles</span>
+      </a>
+      <a class="game-card" href="https://toolpond.org/games.html">
+        <span class="name">All Games</span>
+        <span class="desc">Browse the full free games library</span>
+      </a>
+    </div>
+
+    <div class="foot-links">
+      <a href="https://toolpond.org/index.html">Home</a>
+      <a href="https://toolpond.org/games.html">All Games</a>
+      <a href="https://toolpond.org/cloud-drift-guide.html">Guide &amp; Tips</a>
+      <a href="https://toolpond.org/index.html">Calculators</a>
+      <a href="https://toolpond.org/contact.html">Suggest a Game</a>
+    </div>
+    <div class="copyright">© Toolpond — Free browser games, no download required.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const W = 420, H = 720;
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const availW = window.innerWidth * 0.97;
+    const availH = window.innerHeight * 0.97;
+    const scale = Math.min(availW / W, availH / H, 2.0);
+    canvas.style.width = Math.round(W*scale)+'px';
+    canvas.style.height = Math.round(H*scale)+'px';
+  }
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('orientationchange', ()=>setTimeout(resizeCanvas,200));
+  resizeCanvas();
+
+  let state = 'menu'; // menu, playing, paused, dead
+  let frame = 0;
+  let distance = 0, coins = 0;
+  let bestDistance = parseInt(localStorage.getItem('cloudDriftBest')||'0',10);
+  let soundOn = true;
+  let scrollSpeed = 4.2;
+  let gustTimer = 0, gustActive = false, gustDir = 1;
+  let obstacles = [];
+  let coinItems = [];
+  let particles = [];
+  let clouds = [];
+
+  const player = { x: 130, y: H/2, vy: 0, r: 16, gliding: false, wingPhase: 0 };
+  const GRAVITY = 0.42, GLIDE_GRAVITY = 0.12, FLAP = -6.4, MAX_FALL = 9;
+
+  for (let i=0;i<18;i++){
+    clouds.push({ x: Math.random()*W, y: Math.random()*H*0.85, s: 0.5+Math.random()*1.1, speed: 0.3+Math.random()*0.6 });
+  }
+
+  const overlay = document.getElementById('overlay');
+  const titleText = document.getElementById('titleText');
+  const subText = document.getElementById('subText');
+  const bestLine = document.getElementById('bestLine');
+  const statsRow = document.getElementById('statsRow');
+  const finalDist = document.getElementById('finalDist');
+  const finalCoins = document.getElementById('finalCoins');
+  const playBtn = document.getElementById('playBtn');
+  const muteBtn = document.getElementById('muteBtn');
+  const distHud = document.getElementById('distHud');
+  const coinsHud = document.getElementById('coinsHud');
+  const windHud = document.getElementById('windHud');
+  const pauseBtn = document.getElementById('pauseBtn');
+
+  bestLine.textContent = bestDistance > 0 ? ('BEST DISTANCE ' + bestDistance + 'm') : '';
+
+  let audioCtx = null;
+  function ac(){ try{ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); return audioCtx; }catch(e){ soundOn=false; return null; } }
+  function tone(freq, dur, type, vol, glideTo){
+    if(!soundOn) return;
+    try{
+      const c = ac();
+      const osc = c.createOscillator(), gain = c.createGain();
+      osc.type = type||'sine'; osc.frequency.value = freq;
+      gain.gain.value = vol||0.08;
+      if (glideTo) osc.frequency.exponentialRampToValueAtTime(glideTo, c.currentTime+dur);
+      osc.connect(gain); gain.connect(c.destination);
+      osc.start();
+      gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime+dur);
+      osc.stop(c.currentTime+dur);
+    }catch(e){}
+  }
+  function sfxFlap(){ tone(420,0.09,'sine',0.08,620); }
+  function sfxCoin(){ tone(1100,0.06,'sine',0.09); tone(1500,0.07,'sine',0.07,0.03); }
+  function sfxHit(){ tone(180,0.3,'sawtooth',0.14); tone(120,0.35,'sawtooth',0.1,0.15); }
+  function sfxGust(){ tone(300,0.4,'sine',0.05,500); }
+  muteBtn.addEventListener('click', () => { soundOn = !soundOn; muteBtn.textContent = soundOn ? '🔊 sound on' : '🔇 sound off'; });
+
+  function resetGame(){
+    distance = 0; coins = 0;
+    player.x = 130; player.y = H/2; player.vy = 0; player.gliding = false;
+    scrollSpeed = 4.2;
+    gustTimer = 180; gustActive = false;
+    obstacles = []; coinItems = []; particles = [];
+    distHud.textContent = '0m'; coinsHud.textContent = '🪙 0';
+  }
+
+  function startGame(){
+    resetGame();
+    state = 'playing';
+    overlay.classList.add('hidden');
+    pauseBtn.style.display = 'block';
+  }
+
+  function endGame(){
+    state = 'dead';
+    sfxHit();
+    const distM = Math.floor(distance/10);
+    if (distM > bestDistance) { bestDistance = distM; localStorage.setItem('cloudDriftBest', bestDistance); }
+    titleText.textContent = 'GROUNDED';
+    titleText.style.background = 'linear-gradient(90deg,#ff5c8a,#ff9a5c)';
+    titleText.style.webkitBackgroundClip='text'; titleText.style.backgroundClip='text';
+    subText.textContent = 'tap play to soar again';
+    bestLine.textContent = 'BEST DISTANCE ' + bestDistance + 'm';
+    finalDist.textContent = distM + 'm';
+    finalCoins.textContent = coins;
+    statsRow.classList.remove('hidden');
+    playBtn.textContent = 'RETRY';
+    overlay.classList.remove('hidden');
+    pauseBtn.style.display = 'none';
+  }
+
+  playBtn.addEventListener('click', startGame);
+  pauseBtn.addEventListener('click', () => {
+    if (state === 'playing') { state = 'paused'; pauseBtn.textContent = '▶'; }
+    else if (state === 'paused') { state = 'playing'; pauseBtn.textContent = '❚❚'; }
+  });
+
+  function flap(){
+    if (state !== 'playing') return;
+    player.vy = FLAP;
+    sfxFlap();
+  }
+  function onDown(){
+    if (state === 'menu' || state === 'dead') return;
+    player.gliding = true;
+    flap();
+  }
+  function onUp(){ player.gliding = false; }
+
+  canvas.addEventListener('mousedown', onDown);
+  canvas.addEventListener('mouseup', onUp);
+  canvas.addEventListener('touchstart', e => { onDown(); e.preventDefault(); }, {passive:false});
+  canvas.addEventListener('touchend', e => { onUp(); e.preventDefault(); }, {passive:false});
+  document.addEventListener('keydown', e => { if (e.key===' '){ e.preventDefault(); onDown(); } });
+  document.addEventListener('keyup', e => { if (e.key===' ') onUp(); });
+
+  function spawnObstacle(){
+    const types = ['cloudPuff','bird','gustZone'];
+    const type = types[Math.floor(Math.random()*types.length)];
+    const y = 80 + Math.random()*(H-260);
+    obstacles.push({ x: W+40, y, type, r: type==='bird'?14:22, phase: Math.random()*Math.PI*2 });
+  }
+  function spawnCoin(){
+    const y = 80 + Math.random()*(H-260);
+    coinItems.push({ x: W+40, y, r: 9, collected:false });
+  }
+
+  function update(){
+    frame++;
+    if (state !== 'playing') return;
+
+    scrollSpeed = Math.min(8.5, 4.2 + distance*0.0009);
+    distance += scrollSpeed;
+    distHud.textContent = Math.floor(distance/10) + 'm';
+
+    gustTimer--;
+    if (gustTimer <= 0 && !gustActive) {
+      gustActive = true;
+      gustDir = Math.random() < 0.5 ? -1 : 1;
+      gustTimer = 130;
+      windHud.style.opacity = '1';
+      sfxGust();
+    } else if (gustActive && gustTimer <= -130) {
+      gustActive = false;
+      gustTimer = 220 + Math.random()*160;
+      windHud.style.opacity = '0';
+    }
+    if (gustActive) gustTimer--;
+
+    if (player.gliding) player.vy += GLIDE_GRAVITY;
+    else player.vy += GRAVITY;
+    player.vy = Math.min(player.vy, MAX_FALL);
+    if (gustActive) player.y += gustDir * 1.3;
+    player.y += player.vy;
+    player.wingPhase += player.gliding ? 0.15 : 0.35;
+
+    if (player.y - player.r < 20) { player.y = 20+player.r; player.vy = 0; }
+    if (player.y + player.r > H - 20) { endGame(); return; }
+
+    if (frame % Math.max(40, 90 - Math.floor(distance/50)) === 0) spawnObstacle();
+    if (frame % 70 === 0) spawnCoin();
+
+    for (const o of obstacles) { o.x -= scrollSpeed; o.phase += 0.05; }
+    obstacles = obstacles.filter(o => o.x > -50);
+    for (const c of coinItems) c.x -= scrollSpeed;
+    coinItems = coinItems.filter(c => c.x > -50 && !c.collected);
+
+    for (const o of obstacles) {
+      const oy = o.type === 'bird' ? o.y + Math.sin(o.phase)*22 : o.y;
+      const d = Math.hypot(player.x - o.x, player.y - oy);
+      if (d < player.r + o.r - 4) { endGame(); return; }
+    }
+    for (const c of coinItems) {
+      if (c.collected) continue;
+      const d = Math.hypot(player.x - c.x, player.y - c.y);
+      if (d < player.r + c.r) { c.collected = true; coins++; coinsHud.textContent = '🪙 ' + coins; sfxCoin(); spawnParticles(c.x,c.y,'#ffd23f'); }
+    }
+
+    for (const cl of clouds) { cl.x -= cl.speed; if (cl.x < -60) { cl.x = W+60; cl.y = Math.random()*H*0.85; } }
+
+    for (const p of particles) { p.x+=p.vx; p.y+=p.vy; p.vy+=0.2; p.life--; }
+    particles = particles.filter(p=>p.life>0);
+  }
+
+  function spawnParticles(x,y,color){
+    for (let i=0;i<8;i++) particles.push({x,y,vx:(Math.random()-0.5)*4,vy:(Math.random()-0.5)*4-1,life:20,color});
+  }
+
+  function drawPlayer(){
+    ctx.save();
+    ctx.translate(player.x, player.y);
+    const tilt = Math.max(-0.5, Math.min(0.5, player.vy*0.05));
+    ctx.rotate(tilt);
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.ellipse(0,0,player.r,player.r*0.85,0,0,Math.PI*2); ctx.fill();
+    const wingFlap = Math.sin(player.wingPhase)*14;
+    ctx.fillStyle = '#7ee0ff';
+    ctx.beginPath(); ctx.ellipse(-6, wingFlap*0.4, 14, 6, -0.3, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(6, -wingFlap*0.4, 14, 6, 0.3, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#2c3e70';
+    ctx.beginPath(); ctx.arc(6, -3, 2.4, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawObstacle(o){
+    const oy = o.type === 'bird' ? o.y + Math.sin(o.phase)*22 : o.y;
+    ctx.save();
+    if (o.type === 'bird') {
+      ctx.fillStyle = '#2c3e70';
+      ctx.beginPath(); ctx.ellipse(o.x, oy, o.r, o.r*0.7, 0, 0, Math.PI*2); ctx.fill();
+      const flap = Math.sin(o.phase*3)*8;
+      ctx.strokeStyle = '#2c3e70'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(o.x-o.r, oy); ctx.lineTo(o.x-o.r-10, oy-flap); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(o.x+o.r, oy); ctx.lineTo(o.x+o.r+10, oy-flap); ctx.stroke();
+    } else if (o.type === 'gustZone') {
+      ctx.strokeStyle = 'rgba(126,224,255,0.6)'; ctx.lineWidth = 3;
+      for (let i=0;i<3;i++){ ctx.beginPath(); ctx.arc(o.x, oy, o.r+i*8+Math.sin(frame*0.1+i)*3, 0, Math.PI*1.4); ctx.stroke(); }
+    } else {
+      ctx.fillStyle = 'rgba(255,255,255,0.92)';
+      ctx.beginPath(); ctx.arc(o.x, oy, o.r, 0, Math.PI*2); ctx.arc(o.x-o.r*0.7, oy+4, o.r*0.7, 0, Math.PI*2); ctx.arc(o.x+o.r*0.7, oy+4, o.r*0.7, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const grad = ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'#4fa8ff'); grad.addColorStop(0.55,'#bfe4ff'); grad.addColorStop(1,'#eaf6ff');
+    ctx.fillStyle = grad; ctx.fillRect(0,0,W,H);
+
+    for (const cl of clouds) {
+      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.beginPath();
+      ctx.arc(cl.x, cl.y, 18*cl.s, 0, Math.PI*2);
+      ctx.arc(cl.x-16*cl.s, cl.y+6*cl.s, 12*cl.s, 0, Math.PI*2);
+      ctx.arc(cl.x+16*cl.s, cl.y+6*cl.s, 12*cl.s, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    if (state === 'playing' || state === 'paused') {
+      for (const c of coinItems) {
+        ctx.fillStyle = '#ffd23f';
+        ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, Math.PI*2); ctx.fill();
+        ctx.strokeStyle = '#e0a500'; ctx.lineWidth = 1.5; ctx.stroke();
+      }
+      for (const o of obstacles) drawObstacle(o);
+      for (const p of particles) {
+        ctx.globalAlpha = Math.max(p.life/20,0);
+        ctx.fillStyle = p.color;
+        ctx.beginPath(); ctx.arc(p.x,p.y,3,0,Math.PI*2); ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      drawPlayer();
+    }
+
+    if (state === 'paused') {
+      ctx.fillStyle = 'rgba(6,10,25,0.55)';
+      ctx.fillRect(0,0,W,H);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 28px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('PAUSED', W/2, H/2);
+    }
+  }
+
+  function loop(){ update(); draw(); requestAnimationFrame(loop); }
+  loop();
+})();
+</script>
+</body>
+</html>
