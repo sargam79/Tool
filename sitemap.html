@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap - ToolPond Pro | 38+ Free Online Tools</title>
+    <meta name="description" content="Complete sitemap of ToolPond Pro. Access all 38+ free online calculators, converters, generators, and productivity tools.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolpond.org/sitemap.html">
+    
+    <meta property="og:title" content="Sitemap - ToolPond Pro">
+    <meta property="og:description" content="Full directory of all ToolPond Pro tools and calculators.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolpond.org/sitemap.html">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #6366f1; --dark: #1f2937; --light: #f9fafb; --border: #e5e7eb; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background: var(--light);
+        }
+        
+        nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), #ec4899);
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        .sitemap-section {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .sitemap-section h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .sitemap-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .sitemap-item {
+            padding: 0.75rem;
+            background: var(--light);
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .sitemap-item:hover {
+            background: #fff;
+            transform: translateX(4px);
+        }
+        
+        .sitemap-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .sitemap-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .sitemap-item a::after {
+            content: '→';
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sitemap-item:hover a::after {
+            opacity: 1;
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: #fff;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .stats-box {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--primary);
+            text-align: center;
+        }
+        
+        .stats-box h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .sitemap-list { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Tools</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+                <div class="page-header">
+            <h1>📍 ToolPond Pro Sitemap</h1>
+            <p>Complete directory of all free online tools, calculators, and browser games</p>
+        </div>
+
+                <div class="stats-box">
+            <h3>Site Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">38</div>
+                    <div class="stat-label">Tools</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">16</div>
+                    <div class="stat-label">Games</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Game Guides</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Free Forever</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Hidden Fees</div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Main Pages -->
+        <div class="sitemap-section">
+            <h2>📄 Main Pages (7 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="index.html">Home</a></div>
+                <div class="sitemap-item"><a href="index.html">All Calculators</a></div>
+                <div class="sitemap-item"><a href="about.html">About Us</a></div>
+                <div class="sitemap-item"><a href="contact.html">Contact</a></div>
+                <div class="sitemap-item"><a href="privacy-policy.html">Privacy Policy</a></div>
+                <div class="sitemap-item"><a href="sitemap.html">Sitemap HTML</a></div>
+                <div class="sitemap-item"><a href="blog.html">Blog</a></div>
+            </div>
+        </div>
+
+        <!-- Free Online Games -->
+        <div class="sitemap-section">
+            <h2>🎮 Free Online Games (16 games)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="games.html">All Games</a></div>
+                <div class="sitemap-item"><a href="sky-spirit.html">Sky Spirit: Wind Runner</a></div>
+                <div class="sitemap-item"><a href="bubble-pop-quest.html">Bubble Pop Quest</a></div>
+                <div class="sitemap-item"><a href="bloxdoku.html">Bloxdoku</a></div>
+                <div class="sitemap-item"><a href="block-blast-arena.html">Block Blast Arena</a></div>
+                <div class="sitemap-item"><a href="aquasort.html">AquaSort</a></div>
+                <div class="sitemap-item"><a href="2048-fusion.html">2048 Fusion</a></div>
+                <div class="sitemap-item"><a href="laser-mirrors.html">Laser Mirrors</a></div>
+                <div class="sitemap-item"><a href="puzzel-vision/index.html">Puzzle Vision</a></div>
+                <div class="sitemap-item"><a href="snake-adventure/index.html">Snake Adventure</a></div>
+                <div class="sitemap-item"><a href="crossword-craze.html">Crossword Craze</a></div>
+                <div class="sitemap-item"><a href="shadow-match.html">Shadow Match</a></div>
+                <div class="sitemap-item"><a href="last-switch.html">The Last Switch</a></div>
+                <div class="sitemap-item"><a href="penalty-duel.html">Penalty Duel</a></div>
+                <div class="sitemap-item"><a href="pharaohs-marble-quest.html">Pharaoh's Marble Quest</a></div>
+                <div class="sitemap-item"><a href="prism-smash.html">Prism Smash</a></div>
+                <div class="sitemap-item"><a href="cloud-drift.html">Cloud Drift: Wind Runner</a></div>
+            </div>
+        </div>
+
+        <!-- Game Guides -->
+        <div class="sitemap-section">
+            <h2>📖 Game Guides (15 guides)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="sky-spirit-guide.html">Sky Spirit Guide</a></div>
+                <div class="sitemap-item"><a href="bubble-pop-quest-guide.html">Bubble Pop Quest Guide</a></div>
+                <div class="sitemap-item"><a href="bloxdoku-guide.html">Bloxdoku Guide</a></div>
+                <div class="sitemap-item"><a href="block-blast-arena-guide.html">Block Blast Arena Guide</a></div>
+                <div class="sitemap-item"><a href="aquasort-guide.html">AquaSort Guide</a></div>
+                <div class="sitemap-item"><a href="2048-fusion-guide.html">2048 Fusion Guide</a></div>
+                <div class="sitemap-item"><a href="laser-mirrors-guide.html">Laser Mirrors Guide</a></div>
+                <div class="sitemap-item"><a href="puzzle-vision-guide.html">Puzzle Vision Guide</a></div>
+                <div class="sitemap-item"><a href="snake-adventure/guide.html">Snake Adventure Guide</a></div>
+                <div class="sitemap-item"><a href="crossword-craze-guide.html">Crossword Craze Guide</a></div>
+                <div class="sitemap-item"><a href="last-switch-guide.html">The Last Switch Guide</a></div>
+                <div class="sitemap-item"><a href="penalty-duel-guide.html">Penalty Duel Guide</a></div>
+                <div class="sitemap-item"><a href="pharaohs-marble-quest-guide.html">Pharaoh's Marble Quest Guide</a></div>
+                <div class="sitemap-item"><a href="prism-smash-guide.html">Prism Smash Guide</a></div>
+                <div class="sitemap-item"><a href="cloud-drift-guide.html">Cloud Drift Guide</a></div>
+            </div>
+        </div>
+
+        <!-- Health & Fitness Calculators -->
+        <div class="sitemap-section">
+            <h2>💪 Health & Fitness Calculators (10 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="calorie-calculator.html">Calorie Calculator</a></div>
+                <div class="sitemap-item"><a href="macros-calculator.html">Macros Calculator</a></div>
+                <div class="sitemap-item"><a href="water-intake-calculator.html">Water Intake Calculator</a></div>
+                <div class="sitemap-item"><a href="bmi-calculator.html">BMI Calculator</a></div>
+                <div class="sitemap-item"><a href="body-fat-calculator.html">Body Fat Calculator</a></div>
+                <div class="sitemap-item"><a href="age-calculator.html">Age Calculator</a></div>
+                <div class="sitemap-item"><a href="pregnancy-calculator.html">Pregnancy Calculator</a></div>
+                <div class="sitemap-item"><a href="ovulation-calculator.html">Ovulation Calculator</a></div>
+                <div class="sitemap-item"><a href="stride-calculator.html">Stride Calculator</a></div>
+                <div class="sitemap-item"><a href="nutrition-calculator.html">Nutrition Calculator</a></div>
+            </div>
+        </div>
+
+        <!-- Academic & Math Calculators -->
+        <div class="sitemap-section">
+            <h2>📚 Academic & Math Calculators (2 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="gpa-calculator.html">GPA Calculator</a></div>
+                <div class="sitemap-item"><a href="percentage-calculator.html">Percentage Calculator</a></div>
+            </div>
+        </div>
+
+        <!-- Financial Calculators -->
+        <div class="sitemap-section">
+            <h2>💰 Financial Calculators (11 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="salary-calculator.html">Salary Calculator</a></div>
+                <div class="sitemap-item"><a href="compound-interest-calculator.html">Compound Interest Calculator</a></div>
+                <div class="sitemap-item"><a href="retirement-calculator.html">Retirement Calculator</a></div>
+                <div class="sitemap-item"><a href="payment-calculator.html">Payment Calculator</a></div>
+                <div class="sitemap-item"><a href="budget-planner.html">Budget Planner</a></div>
+                <div class="sitemap-item"><a href="mortgage-calculator.html">Mortgage Calculator</a></div>
+                <div class="sitemap-item"><a href="loan-calculator.html">Loan Calculator</a></div>
+                <div class="sitemap-item"><a href="credit-card.html">Credit Card Calculator</a></div>
+                <div class="sitemap-item"><a href="currency-converter.html">Currency Converter</a></div>
+                <div class="sitemap-item"><a href="youtube-earnings-calculator.html">YouTube Earnings Calculator</a></div>
+                <div class="sitemap-item"><a href="tiktok-instagram-calculators.html">Social Media Earnings</a></div>
+            </div>
+        </div>
+
+        <!-- Converters & Generators -->
+        <div class="sitemap-section">
+            <h2>🔄 Converters & Generators (6 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="converter.html">Unit Converter</a></div>
+                <div class="sitemap-item"><a href="converter-png.html">PNG Converter</a></div>
+                <div class="sitemap-item"><a href="qr-code-generator.html">QR Code Generator</a></div>
+                <div class="sitemap-item"><a href="color-palette-generator.html">Color Palette Generator</a></div>
+                <div class="sitemap-item"><a href="password-generator.html">Password Generator</a></div>
+                <div class="sitemap-item"><a href="hashtag-generator.html">Hashtag Generator</a></div>
+            </div>
+        </div>
+
+        <!-- Writing & Content Tools -->
+        <div class="sitemap-section">
+            <h2>✍️ Writing & Content Tools (3 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="word-counter-tool.html">Word Counter</a></div>
+                <div class="sitemap-item"><a href="ai-writing-assistant.html">AI Writing Assistant</a></div>
+                <div class="sitemap-item"><a href="resume-score-ai.html">Resume Score AI</a></div>
+            </div>
+        </div>
+
+        <!-- Entertainment & Fun -->
+        <div class="sitemap-section">
+            <h2>🎮 Entertainment & Fun (2 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="ai-face-compatibility.html">Face Compatibility</a></div>
+                <div class="sitemap-item"><a href="matrix-destiny-calculator.html">Destiny Calculator</a></div>
+            </div>
+        </div>
+
+        <!-- Utility Tools -->
+        <div class="sitemap-section">
+            <h2>🛠️ Utility Tools (4 tools)</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="background-remover.html">Background Remover</a></div>
+                <div class="sitemap-item"><a href="json-schema-generator-pro.html">JSON Schema Generator</a></div>
+                <div class="sitemap-item"><a href="meal-planner.html">Meal Planner</a></div>
+                <div class="sitemap-item"><a href="content-calendar-generator.html">Content Calendar Generator</a></div>
+            </div>
+        </div>
+
+        <!-- Sitemaps -->
+        <div class="sitemap-section">
+            <h2>🗺️ Sitemaps</h2>
+            <div class="sitemap-list">
+                <div class="sitemap-item"><a href="sitemapnew.xml">XML Sitemap</a></div>
+                <div class="sitemap-item"><a href="sitemap.html">HTML Sitemap</a></div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html">All Tools</a>
+            <a href="games.html">Games</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <p>&copy; 2026 ToolPond Pro. All rights reserved. | <a href="privacy-policy.html" style="color: #d1d5db; text-decoration: none;">Privacy Policy</a></p>
+        <p style="margin-top: 1rem; color: #9ca3af; font-size: 0.9rem;">Free online tools, calculators, and browser games. No signup, no fees, 100% secure and unlimited use.</p>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+    
+    <script>
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
+        });
+    </script>
+</body>
+</html>
