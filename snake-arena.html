@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#070d1a">
+<title>Snake Arena – Play Multiplayer Snake Game Online Free (Unblocked)</title>
+<meta name="description" content="Play Snake Arena, a free multiplayer snake game online. Eat orbs, grow your snake, and fight to become king of the arena. No download, no signup — play free in your browser, unblocked at school or work.">
+<meta name="keywords" content="snake game, snake, snake game online, snake game unblocked, play snake, google snake game, multiplayer snake game, io snake game, snake io, free snake game">
+<link rel="canonical" href="https://toolpond.org/snake-arena.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Snake Arena – Play Multiplayer Snake Game Online Free">
+<meta property="og:description" content="A free multiplayer snake game online. Eat orbs, grow your snake, and become king of the arena. No download required.">
+<meta property="og:url" content="https://toolpond.org/snake-arena.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Snake Arena – Play Multiplayer Snake Game Online Free">
+<meta name="twitter:description" content="Eat orbs, grow your snake, and become king of the arena. Free multiplayer snake game, no download.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Snake Arena",
+  "url": "https://toolpond.org/snake-arena.html",
+  "description": "A free multiplayer snake game online. Eat orbs to grow, dodge rival snakes, and become king of the arena. No download required.",
+  "genre": ["Arcade", "Action", "Multiplayer"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "publisher": { "@type": "Organization", "name": "Toolpond" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/index.html" },
+    { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://toolpond.org/games.html" },
+    { "@type": "ListItem", "position": 3, "name": "Snake Arena", "item": "https://toolpond.org/snake-arena.html" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is Snake Arena?", "acceptedAnswer": { "@type": "Answer", "text": "Snake Arena is a free multiplayer snake game you play in your browser. Eat orbs to grow, avoid crashing into rival snakes, and try to become the king of the arena." } },
+    { "@type": "Question", "name": "How do you play Snake Arena?", "acceptedAnswer": { "@type": "Answer", "text": "Move your mouse, use arrow keys/WASD, or drag on touchscreens to steer. Hold click, space, shift, or the on-screen boost button to sprint. Eating orbs grows your snake and raises your score." } },
+    { "@type": "Question", "name": "Is Snake Arena free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Snake Arena is completely free to play online, with no download, signup, or account required." } },
+    { "@type": "Question", "name": "Can I play Snake Arena unblocked at school or work?", "acceptedAnswer": { "@type": "Answer", "text": "Snake Arena runs entirely in the browser with no download, so it plays wherever a browser tab is allowed, including most school and work networks." } },
+    { "@type": "Question", "name": "Is Snake Arena the same as Google Snake?", "acceptedAnswer": { "@type": "Answer", "text": "No. Google Snake is a single-player recreation of the original Nokia snake game. Snake Arena is a multiplayer twist where you compete against other snakes on the same board in real time." } },
+    { "@type": "Question", "name": "Does Snake Arena work on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Snake Arena supports touch controls — drag to steer and hold the boost button to sprint — and works on phones, tablets, and desktop browsers." } }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --deep:  #070d1a;
+    --ink:   #dce7ff;
+    --dim:   rgba(220,231,255,0.55);
+    --gold:  #ffd166;
+    --safeb: env(safe-area-inset-bottom, 0px);
+    --safel: env(safe-area-inset-left, 0px);
+    --safer: env(safe-area-inset-right, 0px);
+    --safet: env(safe-area-inset-top, 0px);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; width: 100%;
+    background: var(--deep); color: var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  }
+  #gameStage {
+    position: relative; width: 100%; height: 100vh; height: 100dvh;
+    overflow: hidden; overscroll-behavior: none; touch-action: none;
+    -webkit-user-select: none; user-select: none;
+  }
+  #game { position: absolute; inset: 0; display: block; width: 100%; height: 100%; cursor: crosshair; }
+
+  .hud { position: absolute; pointer-events: none; z-index: 2; text-shadow: 0 1px 4px #000; }
+  #stats { top: calc(10px + var(--safet)); left: calc(14px + var(--safel)); font-size: clamp(12px, 3.2vw, 15px); line-height: 1.4; }
+  #stats b { display: block; font-size: clamp(22px, 6.5vw, 30px); font-weight: 700; line-height: 1.1; }
+  #stats.king b { color: var(--gold); }
+  #board { top: calc(10px + var(--safet)); right: calc(14px + var(--safer)); text-align: right; font-size: clamp(11px, 3vw, 14px); line-height: 1.55; }
+  #board .me { color: var(--gold); }
+  #board .rank { color: var(--dim); margin-right: 5px; }
+  #hint { bottom: calc(10px + var(--safeb)); left: 50%; transform: translateX(-50%); font-size: clamp(11px, 2.9vw, 13px); color: var(--dim); text-align: center; width: 90%; }
+
+  #boost {
+    position: absolute; z-index: 4; display: none;
+    right: calc(20px + var(--safer)); bottom: calc(26px + var(--safeb));
+    width: 92px; height: 92px; border-radius: 50%;
+    border: 2px solid rgba(126,240,196,.55);
+    background: radial-gradient(circle at 50% 42%, rgba(126,240,196,.28), rgba(126,240,196,.08));
+    color: #bdffe6; font: inherit; font-size: 14px; font-weight: 700; letter-spacing: .06em;
+  }
+  #boost.on { background: radial-gradient(circle at 50% 42%, rgba(126,240,196,.6), rgba(126,240,196,.22)); color: #04140d; transform: scale(0.94); }
+  body.touch #boost { display: block; }
+  body.touch #game { cursor: none; }
+  #boost, #mute { transition: transform .12s ease, background .12s ease; }
+
+  #mute {
+    position: absolute; z-index: 4; top: calc(14px + var(--safet)); left: 50%; transform: translateX(-50%);
+    width: 40px; height: 40px; border-radius: 50%; font-size: 17px; line-height: 1;
+    border: 1px solid rgba(220,231,255,.22); background: rgba(13,23,48,.55); color: var(--ink); cursor: pointer;
+  }
+  #mute:active { transform: translateX(-50%) scale(0.92); }
+  #mute.off { opacity: .55; }
+
+  #veil {
+    position: absolute; inset: 0; z-index: 5;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: clamp(12px, 3vh, 20px); text-align: center;
+    padding: calc(20px + var(--safet)) 22px calc(20px + var(--safeb));
+    background: radial-gradient(circle at 50% 45%, rgba(13,23,48,.84), rgba(7,13,26,.96));
+  }
+  #veil.hidden { display: none; }
+  #veil h1 {
+    margin: 0; font-size: clamp(30px, 8.5vw, 58px); letter-spacing: .04em; font-weight: 700;
+    background: linear-gradient(180deg, #fff, #9fe6c8);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 2px 12px rgba(126,240,196,.35));
+  }
+  #veil p { margin: 0; max-width: 36ch; color: var(--dim); font-size: clamp(13px, 3.6vw, 15px); line-height: 1.6; }
+  #veil p b { color: var(--gold); font-weight: 600; }
+  #name {
+    width: min(280px, 78vw); padding: 12px 16px; font: inherit; font-size: 16px;
+    color: var(--ink); background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.18); border-radius: 10px; text-align: center; outline: none;
+  }
+  #name:focus { border-color: #5ad1ff; box-shadow: 0 0 0 3px rgba(90,209,255,.18); }
+  #play {
+    position: relative; padding: 15px 50px; font: inherit; font-size: 19px; font-weight: 700; letter-spacing: .04em;
+    color: #041018; background: linear-gradient(180deg, #8ffbd0, #2fd39a 60%, #1fae7f);
+    border: 0; border-radius: 14px; cursor: pointer; min-height: 54px;
+    box-shadow: 0 6px 0 #14805c, 0 10px 22px rgba(47,211,154,.35);
+    transition: transform .08s ease, box-shadow .08s ease;
+  }
+  #play:hover { filter: brightness(1.05); }
+  #play:active { transform: translateY(5px); box-shadow: 0 1px 0 #14805c, 0 3px 10px rgba(47,211,154,.3); }
+  #play:focus-visible { outline: 3px solid #5ad1ff; outline-offset: 3px; }
+  #play span { position: relative; }
+  #final { color: var(--gold); font-size: clamp(14px, 4vw, 17px); }
+  #keys { color: var(--dim); font-size: clamp(11px, 3vw, 13px); line-height: 1.7; }
+
+  @media (max-height: 430px) {
+    #veil { gap: 9px; }
+    #veil h1 { font-size: clamp(24px, 7vh, 34px); }
+    #veil p { display: none; }
+  }
+
+  #seoContent {
+    background: var(--deep);
+    color: var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.65;
+    padding: 44px 6vw 56px;
+    border-top: 1px solid rgba(220,231,255,.12);
+  }
+  #seoContent .inner { max-width: 720px; margin: 0 auto; }
+  #seoContent h1 { font-size: 22px; margin: 0 0 12px; color: #fff; }
+  #seoContent h2 { font-size: 18px; margin: 28px 0 10px; color: var(--gold); }
+  #seoContent p, #seoContent li { font-size: 14px; color: var(--dim); }
+  #seoContent .faq-item { margin-bottom: 14px; }
+  #seoContent .faq-item h3 { font-size: 15px; margin: 0 0 4px; color: #fff; }
+  #seoContent .faq-item p { margin: 0; }
+  #seoContent .more-games { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 8px; }
+  #seoContent .more-games a { color: #3ad0ff; text-decoration: none; font-weight: 700; font-size: 13.5px; }
+  #seoContent .more-games a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div id="gameStage">
+<canvas id="game"></canvas>
+
+<div class="hud" id="stats">Length <b id="score">0</b></div>
+<div class="hud" id="board"></div>
+<div class="hud" id="hint"></div>
+
+<button id="boost" aria-label="Boost">BOOST</button>
+<button id="mute" aria-label="Mute sound">🔊</button>
+
+<div id="veil">
+  <h1>Snake Arena</h1>
+  <p>Eat orbs to grow. Reach 120 and lead the board to become <b>king</b>: faster, cheaper boost, and a target on your back.</p>
+  <input id="name" maxlength="12" placeholder="Your name" autocomplete="off" autocorrect="off" spellcheck="false" value="Player">
+  <button id="play"><span>Play</span></button>
+  <div id="keys"></div>
+  <div id="final"></div>
+</div>
+</div>
+
+<!-- On-page SEO content: real, readable text below the game so search
+     engines have something to index beyond the meta tags and JS UI. -->
+<section id="seoContent">
+  <div class="inner">
+    <h1>Snake Arena: A Free Multiplayer Snake Game Online</h1>
+    <p>Snake Arena is a free multiplayer snake game you can play online, right in your browser. Eat orbs to grow your snake, dodge rival players, and race to become the king of the arena — no download, no signup, and no install required. It's playable on desktop and mobile, and works unblocked wherever a browser tab is allowed, including most school and work networks.</p>
+
+    <h2>How to Play Snake Arena</h2>
+    <p>On desktop, steer with your mouse or the arrow keys/WASD, and hold click, space, or shift to boost. On mobile, drag anywhere to steer and hold the boost pad to sprint. Every orb you eat adds to your length and score. Reach a score of 120 to become king — you'll move faster and boost cheaper, but every other snake will be gunning for your crown.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is Snake Arena?</h3>
+      <p>A free multiplayer snake game online — eat orbs to grow, avoid rival snakes, and try to become king of the arena.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do you play Snake Arena?</h3>
+      <p>Steer with your mouse, arrow keys/WASD, or by dragging on touchscreens. Hold boost to sprint. Eating orbs grows your snake and score.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is Snake Arena free to play?</h3>
+      <p>Yes — no download, signup, or account required.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I play Snake Arena unblocked at school or work?</h3>
+      <p>It runs entirely in the browser with nothing to install, so it plays wherever a browser tab is allowed.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is Snake Arena the same as Google Snake?</h3>
+      <p>No — Google Snake is single-player. Snake Arena is a multiplayer twist where you compete against other snakes in real time.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does Snake Arena work on mobile?</h3>
+      <p>Yes, touch controls are fully supported on phones and tablets.</p>
+    </div>
+
+    <p><a href="snake-arena-guide.html" style="color:#3ad0ff;font-weight:700;text-decoration:none;">See the full guide, king mechanic, and strategy tips →</a></p>
+
+    <h2>More Free Games</h2>
+    <ul class="more-games">
+      <li><a href="https://toolpond.org/snake-adventure/index.html">Snake Adventure</a></li>
+      <li><a href="https://toolpond.org/bloxdoku.html">Bloxdoku</a></li>
+      <li><a href="https://toolpond.org/2048-fusion.html">2048 Fusion</a></li>
+      <li><a href="https://toolpond.org/aquasort.html">AquaSort</a></li>
+      <li><a href="https://toolpond.org/bubble-pop-quest.html">Bubble Pop Quest</a></li>
+      <li><a href="https://toolpond.org/block-blast-arena.html">Block Blast Arena</a></li>
+      <li><a href="https://toolpond.org/laser-mirrors.html">Laser Mirrors</a></li>
+      <li><a href="https://toolpond.org/puzzel-vision/index.html">Puzzle Vision</a></li>
+      <li><a href="https://toolpond.org/crossword-craze.html">Crossword Craze</a></li>
+      <li><a href="https://toolpond.org/shadow-match.html">Shadow Match</a></li>
+      <li><a href="https://toolpond.org/last-switch.html">Last Switch</a></li>
+      <li><a href="https://toolpond.org/penalty-duel.html">Penalty Duel</a></li>
+      <li><a href="https://toolpond.org/pharaohs-marble-quest.html">Pharaoh's Marble Quest</a></li>
+      <li><a href="https://toolpond.org/prism-smash.html">Prism Smash</a></li>
+      <li><a href="https://toolpond.org/cloud-drift.html">Cloud Drift</a></li>
+      <li><a href="https://toolpond.org/sky-spirit.html">Sky Spirit</a></li>
+      <li><a href="https://toolpond.org/games.html">See all free games →</a></li>
+    </ul>
+  </div>
+</section>
+
+<script>
+(() => {
+"use strict";
+
+/* ─────────── 0. DEVICE ─────────── */
+const TOUCH = matchMedia("(hover: none) and (pointer: coarse)").matches
+           || ("ontouchstart" in window && navigator.maxTouchPoints > 0);
+if (TOUCH) document.body.classList.add("touch");
+const SMALL = Math.min(screen.width, screen.height) < 820;
+
+/* ─────────── 1. TUNING KNOBS ─────────── */
+const WORLD_R    = 2500;
+const FOOD_COUNT = SMALL ? 620 : 950;
+const BOT_COUNT  = SMALL ? 15  : 22;     // more company in the arena
+const BASE_SPEED = 3.05;                 // was 2.5
+const BOOST_MULT = 1.85;
+const TURN_RATE  = 0.092;                // faster snake needs a tighter turn
+const START_LEN  = 150;
+const BOOST_COST = 0.55;
+
+/* King: the biggest snake on the board, once it clears this score, wears the
+   crown. One at a time, anyone can take it, and it can be lost by dying. */
+const KING_SCORE    = 120;
+const KING_SPEED    = 1.09;
+const KING_DISCOUNT = 0.7;               // boost costs less while crowned
+
+// wider, more saturated spread so 22 snakes on screen stay visually distinct
+const PALETTE = ["#3ad0ff","#ff4fa3","#ffce3d","#3df2a3","#a16bff","#ff8a3d",
+                 "#5bef5b","#ff4d6d","#20d3d3","#ff5ce0","#c4ff3d","#ff9d00"];
+const BOT_NAMES = ["Vip","Coil","Nox","Zed","Mamba","Rex","Juno","Kobra","Slink","Ash","Wisp","Dart",
+                   "Fang","Pip","Echo","Rune","Onyx","Tide","Hex","Silo","Vex","Moss","Quill","Nyx"];
+
+/* ─────────── 2. YOUR ART GOES HERE ───────────
+   Leave these null and the game draws itself with plain canvas shapes
+   (now gradient-shaded and glossy, not flat circles). Point any of them
+   at a file and it uses that instead. Nothing else changes.
+
+     head  square PNG/WebP, art facing RIGHT (0 radians), ~128px
+     skin  a snake-skin STRIP, wide rectangle (e.g. 256x96), tileable
+           left-to-right — this is what makes the body look like one
+           continuous flowing snake instead of a chain of stamped parts
+     food  square orb, ~64px
+     bg    seamless tile for the arena floor, ~256px                         */
+const ASSETS = { head: null, skin: null, food: null, bg: null };
+const IMG = {};
+let bgPattern = null;
+
+/* ─────────── SOUND ───────────
+   Every effect is synthesized with oscillators — no audio files to host or
+   load. AudioContext only starts after a user gesture (browsers block it
+   otherwise), so it's created lazily on the first Play tap/click.        */
+const SFX = (() => {
+  let ctxA = null, muted = false;
+  const savedMute = localStorage.getItem("snakeArenaMuted");
+  if (savedMute === "1") muted = true;
+
+  function ensure() {
+    if (!ctxA) ctxA = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctxA.state === "suspended") ctxA.resume();
+    return ctxA;
+  }
+
+  // one flexible tone: frequency slide + volume envelope covers every effect below
+  function tone(freq, dur, opts = {}) {
+    if (muted) return;
+    const ac = ensure();
+    const t0 = ac.currentTime;
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.type = opts.type || "sine";
+    osc.frequency.setValueAtTime(freq, t0);
+    if (opts.to) osc.frequency.exponentialRampToValueAtTime(opts.to, t0 + dur);
+    const vol = opts.vol ?? 0.16;
+    gain.gain.setValueAtTime(0.0001, t0);
+    gain.gain.exponentialRampToValueAtTime(vol, t0 + (opts.attack || 0.01));
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    osc.connect(gain); gain.connect(ac.destination);
+    osc.start(t0); osc.stop(t0 + dur + 0.02);
+  }
+
+  return {
+    eat()    { tone(rand(520, 680), 0.09, { type: "triangle", to: rand(760, 900), vol: 0.11 }); },
+    boostOn(){ tone(140, 0.14, { type: "sawtooth", to: 90, vol: 0.05 }); },
+    king()   { tone(392, 0.5, { type: "triangle", to: 784, attack: 0.02, vol: 0.14 }); },
+    death()  { tone(220, 0.45, { type: "sawtooth", to: 40, attack: 0.005, vol: 0.16 }); },
+    click()  { tone(300, 0.06, { type: "square", to: 460, vol: 0.08 }); },
+    toggleMute(force) {
+      muted = force !== undefined ? force : !muted;
+      localStorage.setItem("snakeArenaMuted", muted ? "1" : "0");
+      return muted;
+    },
+    isMuted() { return muted; }
+  };
+})();
+
+const muteBtn = document.getElementById("mute");
+function syncMuteBtn() {
+  muteBtn.textContent = SFX.isMuted() ? "🔇" : "🔊";
+  muteBtn.classList.toggle("off", SFX.isMuted());
+}
+muteBtn.addEventListener("click", () => { SFX.toggleMute(); syncMuteBtn(); });
+syncMuteBtn();
+
+function loadAssets() {
+  const jobs = Object.keys(ASSETS).filter(k => ASSETS[k]).map(k => new Promise(done => {
+    const img = new Image();
+    img.onload  = () => { IMG[k] = img; done(); };
+    img.onerror = () => { console.warn("Asset failed, using shapes instead:", ASSETS[k]); done(); };
+    img.src = ASSETS[k];
+  }));
+  return Promise.all(jobs);
+}
+
+/* ─────────── 3. CANVAS SIZING ─────────── */
+const cv = document.getElementById("game");
+const ctx = cv.getContext("2d", { alpha: false });
+let W = 0, H = 0, DPR = 1, UI = 1;
+
+function resize() {
+  const vv = window.visualViewport;
+  W = Math.round(vv ? vv.width  : window.innerWidth);
+  H = Math.round(vv ? vv.height : window.innerHeight);
+  DPR = Math.min(window.devicePixelRatio || 1, TOUCH ? 1.6 : 2);
+  cv.width = Math.round(W * DPR);
+  cv.height = Math.round(H * DPR);
+  cv.style.width = W + "px";
+  cv.style.height = H + "px";
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  UI = Math.min(1.25, Math.max(0.75, Math.min(W, H) / 780));
+}
+window.addEventListener("resize", resize);
+window.addEventListener("orientationchange", () => setTimeout(resize, 250));
+if (window.visualViewport) window.visualViewport.addEventListener("resize", resize);
+resize();
+
+const rand  = (a, b) => a + Math.random() * (b - a);
+const pick  = arr => arr[(Math.random() * arr.length) | 0];
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+
+function randomSpot(margin = 120) {
+  const a = Math.random() * Math.PI * 2;
+  const r = Math.sqrt(Math.random()) * (WORLD_R - margin);
+  return { x: Math.cos(a) * r, y: Math.sin(a) * r };
+}
+
+/* ─────────── 4. STATE ─────────── */
+let snakes = [], food = [], player = null, running = false, kingRef = null;
+const cam = { x: 0, y: 0, zoom: 1 };
+let banner = { text: "", color: "#fff", until: 0 };
+const flash = (text, color) => { banner = { text, color: color || "#fff", until: performance.now() + 2200 }; };
+
+function makeFood(x, y, value = 1) {
+  return { x, y, v: value, r: 3 + value * 1.6, c: pick(PALETTE), phase: Math.random() * 6.28 };
+}
+
+function makeSnake(isBot, name, color) {
+  const s = randomSpot(300);
+  const a = Math.random() * Math.PI * 2;
+  return {
+    isBot, name, color,
+    path: [{ x: s.x, y: s.y }],
+    angle: a, aim: a,
+    len: START_LEN, score: 0,
+    radius: 9, alive: true, boost: false, isKing: false, body: []
+  };
+}
+
+function reset(playerName) {
+  snakes = []; food = []; kingRef = null; banner.until = 0;
+  for (let i = 0; i < FOOD_COUNT; i++) { const p = randomSpot(); food.push(makeFood(p.x, p.y)); }
+  player = makeSnake(false, playerName || "Player", "#7ef0c4");
+  snakes.push(player);
+  const names = BOT_NAMES.slice().sort(() => Math.random() - 0.5);
+  for (let i = 0; i < BOT_COUNT; i++) snakes.push(makeSnake(true, names[i % names.length], PALETTE[i % PALETTE.length]));
+  cam.x = player.path[0].x; cam.y = player.path[0].y;
+}
+
+/* ─────────── 5. INPUT ─────────── */
+const IN = {
+  mode: TOUCH ? "stick" : "point",
+  px: 0, py: 0, hasPointer: false,
+  dir: 0, hasDir: false,
+  boostPointer: false, boostKey: false, boostBtn: false, boostTouch: 0
+};
+const boosting = () => IN.boostPointer || IN.boostKey || IN.boostBtn || IN.boostTouch > 0;
+
+window.addEventListener("mousemove", e => { IN.px = e.clientX; IN.py = e.clientY; IN.hasPointer = true; IN.mode = "point"; });
+cv.addEventListener("mousedown", e => { if (e.button === 0) IN.boostPointer = true; });
+window.addEventListener("mouseup", () => IN.boostPointer = false);
+window.addEventListener("contextmenu", e => e.preventDefault());
+
+const held = new Set();
+const KEYDIR = {
+  ArrowUp: [0,-1], KeyW: [0,-1], ArrowDown: [0,1], KeyS: [0,1],
+  ArrowLeft: [-1,0], KeyA: [-1,0], ArrowRight: [1,0], KeyD: [1,0]
+};
+window.addEventListener("keydown", e => {
+  if (e.code === "Space" || e.code === "ShiftLeft" || e.code === "ShiftRight") { IN.boostKey = true; e.preventDefault(); return; }
+  if (e.code === "Enter" && !running) { startRun(); return; }
+  if (KEYDIR[e.code]) { held.add(e.code); applyKeys(); e.preventDefault(); }
+});
+window.addEventListener("keyup", e => {
+  if (e.code === "Space" || e.code === "ShiftLeft" || e.code === "ShiftRight") IN.boostKey = false;
+  if (KEYDIR[e.code]) { held.delete(e.code); applyKeys(); }
+});
+function applyKeys() {
+  let x = 0, y = 0;
+  for (const k of held) { x += KEYDIR[k][0]; y += KEYDIR[k][1]; }
+  if (x || y) { IN.dir = Math.atan2(y, x); IN.hasDir = true; IN.mode = "stick"; }
+}
+
+const stick = { id: null, ox: 0, oy: 0, dx: 0, dy: 0, live: false };
+const STICK_R = 54, DEAD = 7;
+
+cv.addEventListener("touchstart", e => {
+  e.preventDefault();
+  for (const t of e.changedTouches) {
+    if (stick.id === null) {
+      stick.id = t.identifier; stick.ox = t.clientX; stick.oy = t.clientY;
+      stick.dx = 0; stick.dy = 0; stick.live = true;
+      IN.mode = "stick";
+    } else IN.boostTouch++;
+  }
+}, { passive: false });
+
+cv.addEventListener("touchmove", e => {
+  e.preventDefault();
+  for (const t of e.changedTouches) {
+    if (t.identifier !== stick.id) continue;
+    const dx = t.clientX - stick.ox, dy = t.clientY - stick.oy;
+    const d = Math.hypot(dx, dy);
+    if (d > DEAD) { IN.dir = Math.atan2(dy, dx); IN.hasDir = true; }
+    const k = d > STICK_R ? STICK_R / d : 1;
+    stick.dx = dx * k; stick.dy = dy * k;
+    if (d > STICK_R * 2.2) { stick.ox = t.clientX - stick.dx; stick.oy = t.clientY - stick.dy; }
+  }
+}, { passive: false });
+
+function endTouch(e) {
+  for (const t of e.changedTouches) {
+    if (t.identifier === stick.id) { stick.id = null; stick.live = false; }
+    else if (IN.boostTouch > 0) IN.boostTouch--;
+  }
+}
+cv.addEventListener("touchend", endTouch, { passive: true });
+cv.addEventListener("touchcancel", endTouch, { passive: true });
+
+const btn = document.getElementById("boost");
+const btnOn  = e => { e.preventDefault(); IN.boostBtn = true;  btn.classList.add("on"); };
+const btnOff = e => { e.preventDefault(); IN.boostBtn = false; btn.classList.remove("on"); };
+btn.addEventListener("touchstart", btnOn, { passive: false });
+btn.addEventListener("touchend", btnOff, { passive: false });
+btn.addEventListener("touchcancel", btnOff, { passive: false });
+btn.addEventListener("mousedown", btnOn);
+btn.addEventListener("mouseup", btnOff);
+btn.addEventListener("mouseleave", btnOff);
+
+/* ─────────── 6. GEOMETRY ─────────── */
+function sampleBody(s) {
+  const spacing = s.radius * 0.5;
+  const path = s.path;
+  const out = [{ x: path[0].x, y: path[0].y }];
+  let need = spacing, px = path[0].x, py = path[0].y, i = 1;
+  while (i < path.length && out.length < 400) {
+    const p = path[i];
+    const dx = p.x - px, dy = p.y - py;
+    const d = Math.hypot(dx, dy);
+    if (d < 1e-6) { i++; continue; }
+    if (d >= need) {
+      const t = need / d;
+      px += dx * t; py += dy * t;
+      out.push({ x: px, y: py });
+      need = spacing;
+    } else { need -= d; px = p.x; py = p.y; i++; }
+  }
+  return out;
+}
+
+function trimPath(s) {
+  let acc = 0;
+  for (let i = 1; i < s.path.length; i++) {
+    acc += Math.hypot(s.path[i].x - s.path[i-1].x, s.path[i].y - s.path[i-1].y);
+    if (acc >= s.len) { s.path.length = i + 1; return; }
+  }
+}
+
+const radiusFor = score => 9 + Math.min(16, Math.sqrt(score) * 0.55);
+
+function angleDelta(a, b) {
+  let d = (b - a) % (Math.PI * 2);
+  if (d > Math.PI) d -= Math.PI * 2;
+  if (d < -Math.PI) d += Math.PI * 2;
+  return d;
+}
+
+/* ─────────── 7. BRAINS ─────────── */
+function steerPlayer(s) {
+  if (IN.mode === "point" && IN.hasPointer) {
+    const head = s.path[0];
+    const wx = (IN.px - W / 2) / cam.zoom + cam.x;
+    const wy = (IN.py - H / 2) / cam.zoom + cam.y;
+    s.aim = Math.atan2(wy - head.y, wx - head.x);
+  } else if (IN.hasDir) {
+    s.aim = IN.dir;
+  }
+  const wasBoost = s.boost;
+  s.boost = boosting() && s.score > 8;
+  if (s.boost && !wasBoost) SFX.boostOn();
+}
+
+function steerBot(s) {
+  const head = s.path[0];
+  const probe = 60 + s.radius * 2.6;
+  const px = head.x + Math.cos(s.angle) * probe;
+  const py = head.y + Math.sin(s.angle) * probe;
+
+  if (Math.hypot(px, py) > WORLD_R - 40) { s.aim = Math.atan2(-head.y, -head.x); s.boost = false; return; }
+
+  for (const o of snakes) {
+    if (o === s || !o.alive) continue;
+    const oh = o.path[0];
+    if (Math.hypot(oh.x - head.x, oh.y - head.y) > o.len + probe + o.radius) continue;  // broad phase
+    for (const b of o.body) {
+      if (Math.abs(b.x - px) > 70 || Math.abs(b.y - py) > 70) continue;
+      if (Math.hypot(b.x - px, b.y - py) < s.radius + o.radius + 18) {
+        s.aim = s.angle + (Math.random() < 0.5 ? 1.1 : -1.1);
+        s.boost = false;
+        return;
+      }
+    }
+  }
+
+  let best = null, bestD = 520;
+  for (const f of food) {
+    const d = Math.hypot(f.x - head.x, f.y - head.y);
+    if (d < bestD) { bestD = d; best = f; }
+  }
+  if (best) s.aim = Math.atan2(best.y - head.y, best.x - head.x);
+  else if (Math.random() < 0.02) s.aim += rand(-0.8, 0.8);
+  s.boost = s.score > 30 && (s.boost ? Math.random() > 0.05 : Math.random() < 0.004);
+}
+
+/* ─────────── 8. SIMULATION ─────────── */
+function kill(s) {
+  s.alive = false;
+  const rich = s.isKing ? 1.9 : 1;                 // the crown is worth hunting
+  for (let i = 0; i < s.body.length; i += 3) {
+    const b = s.body[i];
+    food.push(makeFood(b.x + rand(-6, 6), b.y + rand(-6, 6), (2 + Math.random() * 3) * rich));
+  }
+  if (s.isKing && s !== player) flash("The crown is up for grabs", "#ffd166");
+  if (s === player) { SFX.death(); endRun(); }
+  else setTimeout(() => {
+    const i = snakes.indexOf(s);
+    if (running && i !== -1) snakes[i] = makeSnake(true, s.name, s.color);
+  }, 1200);
+}
+
+function crownKing() {
+  let best = null;
+  for (const s of snakes) if (s.alive && s.score >= KING_SCORE && (!best || s.score > best.score)) best = s;
+  for (const s of snakes) s.isKing = (s === best);
+  if (best !== kingRef) {
+    if (best === player) { flash("You are the king", "#ffd166"); SFX.king(); }
+    else if (best && kingRef === player) flash(best.name + " took your crown", "#ff6fb5");
+    else if (best) flash(best.name + " is the king", "#ffd166");
+    kingRef = best;
+  }
+  document.getElementById("stats").classList.toggle("king", player.isKing);
+}
+
+function update(dt) {
+  for (const s of snakes) {
+    if (!s.alive) continue;
+    s.isBot ? steerBot(s) : steerPlayer(s);
+
+    const maxTurn = TURN_RATE * dt * (s.boost ? 1.15 : 1);
+    s.angle += clamp(angleDelta(s.angle, s.aim), -maxTurn, maxTurn);
+
+    const speed = BASE_SPEED * (s.boost ? BOOST_MULT : 1) * (s.isKing ? KING_SPEED : 1) * dt;
+    const head = s.path[0];
+    const nx = head.x + Math.cos(s.angle) * speed;
+    const ny = head.y + Math.sin(s.angle) * speed;
+    s.path.unshift({ x: nx, y: ny });
+
+    if (s.boost) {
+      s.len = Math.max(START_LEN, s.len - BOOST_COST * (s.isKing ? KING_DISCOUNT : 1) * dt);
+      s.score = Math.max(0, s.score - 0.12 * dt);
+      if (Math.random() < 0.12) {
+        const tail = s.path[s.path.length - 1];
+        food.push(makeFood(tail.x + rand(-8, 8), tail.y + rand(-8, 8), 1.5));
+      }
+    }
+
+    s.radius = radiusFor(s.score);
+    trimPath(s);
+    s.body = sampleBody(s);
+
+    if (Math.hypot(nx, ny) > WORLD_R - s.radius) { kill(s); continue; }
+
+    const eatR = s.radius + 16;
+    for (let i = food.length - 1; i >= 0; i--) {
+      const f = food[i];
+      if (Math.abs(f.x - nx) > eatR || Math.abs(f.y - ny) > eatR) continue;
+      if (Math.hypot(f.x - nx, f.y - ny) < eatR) { s.score += f.v; s.len += f.v * 3.2; food.splice(i, 1); if (s === player) SFX.eat(); }
+    }
+  }
+
+  for (const s of snakes) {
+    if (!s.alive) continue;
+    const h = s.path[0];
+    for (const o of snakes) {
+      if (o === s || !o.alive) continue;
+      const hitR = s.radius + o.radius * 0.85;
+      // Broad phase: a body never reaches further from its own head than its
+      // length, so one distance test can skip an entire snake. This is what
+      // lets the bot count grow without the framerate falling over.
+      const oh = o.path[0];
+      if (Math.hypot(oh.x - h.x, oh.y - h.y) > o.len + hitR) continue;
+      for (const b of o.body) {
+        if (Math.abs(b.x - h.x) > hitR || Math.abs(b.y - h.y) > hitR) continue;
+        if (Math.hypot(b.x - h.x, b.y - h.y) < hitR) { kill(s); break; }
+      }
+      if (!s.alive) break;
+    }
+  }
+
+  while (food.length < FOOD_COUNT) { const p = randomSpot(); food.push(makeFood(p.x, p.y)); }
+  crownKing();
+
+  if (player.alive) {
+    const h = player.path[0];
+    cam.x += (h.x - cam.x) * Math.min(1, 0.12 * dt);
+    cam.y += (h.y - cam.y) * Math.min(1, 0.12 * dt);
+  }
+  const minZoom = SMALL ? 0.72 : 0.52;
+  const want = clamp(1.05 - player.score / 2600, minZoom, 1.15);
+  cam.zoom += (want - cam.zoom) * Math.min(1, 0.03 * dt);
+}
+
+/* ─────────── 9. DRAWING ─────────── */
+function drawCrown(x, y, r) {
+  const w = r * 1.5, hh = r * 1.05;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.beginPath();
+  ctx.moveTo(-w, hh * 0.45);
+  ctx.lineTo(-w, -hh * 0.5);
+  ctx.lineTo(-w * 0.42, 0);
+  ctx.lineTo(0, -hh * 0.8);
+  ctx.lineTo(w * 0.42, 0);
+  ctx.lineTo(w, -hh * 0.5);
+  ctx.lineTo(w, hh * 0.45);
+  ctx.closePath();
+  ctx.fillStyle = "#ffd166"; ctx.fill();
+  ctx.lineWidth = Math.max(1, r * 0.09); ctx.strokeStyle = "#8a5d05"; ctx.stroke();
+  ctx.restore();
+}
+
+// A snake needs a second colour to look painted instead of flat — this
+// derives a lighter shade from the base one, so one hex code per snake is
+// still enough for a two-tone gradient body.
+function shade(hex, amt) {
+  const n = parseInt(hex.slice(1), 16);
+  const clamp255 = v => v < 0 ? 0 : v > 255 ? 255 : v;
+  const r = clamp255((n >> 16) + amt), g = clamp255((n >> 8 & 255) + amt), b = clamp255((n & 255) + amt);
+  return `rgb(${r},${g},${b})`;
+}
+const lighten = (hex, amt) => shade(hex, amt);
+
+function drawSnake(s) {
+  const pts = s.body;
+  if (pts.length < 2) return;
+  const h = pts[0], r = s.radius;
+
+  if (IMG.skin) {
+    // Sprite body: walk the path tail-to-head, stamping a rotated slice of
+    // the skin strip at each point so the strip's own pattern flows around
+    // every turn. Overlapping stamps (every point, not every few) is what
+    // hides the seams and makes it read as one continuous snake.
+    const d = r * 2.3;
+    for (let i = pts.length - 2; i >= 0; i--) {
+      const p = pts[i], prev = pts[i + 1];
+      const a = Math.atan2(p.y - prev.y, p.x - prev.x);
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(a);
+      ctx.drawImage(IMG.skin, -d / 2, -d / 2, d, d);
+      ctx.restore();
+    }
+  } else {
+    // Procedural body: a soft glow pass, a two-tone gradient fill along the
+    // snake's own bounding box (so it shifts naturally as it moves), a dark
+    // scale-banding pass, then a thin bright stripe offset to one side for
+    // a glossy highlight — four thin passes read as "rendered", one flat
+    // stroke reads as "placeholder".
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+
+    ctx.strokeStyle = s.isKing ? "#ffd166" : s.color;
+    ctx.globalAlpha = s.isKing ? 0.45 : (s.boost ? 0.4 : 0.22);
+    ctx.lineWidth = r * (s.isKing ? 3.6 : 3.1);
+    ctx.stroke();
+
+    let minX = pts[0].x, maxX = pts[0].x, minY = pts[0].y, maxY = pts[0].y;
+    for (const p of pts) { if (p.x < minX) minX = p.x; if (p.x > maxX) maxX = p.x; if (p.y < minY) minY = p.y; if (p.y > maxY) maxY = p.y; }
+    const grad = ctx.createLinearGradient(minX, minY, maxX, maxY);
+    grad.addColorStop(0, lighten(s.color, 45));
+    grad.addColorStop(0.5, s.color);
+    grad.addColorStop(1, shade(s.color, -35));
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = r * 2;
+    ctx.stroke();
+
+    ctx.globalAlpha = 0.25;
+    ctx.strokeStyle = "#04070f";
+    ctx.beginPath();
+    for (let i = 2; i < pts.length - 1; i += 6) { ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[i+1].x, pts[i+1].y); }
+    ctx.lineWidth = r * 2;
+    ctx.stroke();
+
+    ctx.globalAlpha = 0.5;
+    ctx.strokeStyle = lighten(s.color, 90);
+    ctx.lineWidth = Math.max(1, r * 0.5);
+    ctx.beginPath();
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p = pts[i], q = pts[i + 1];
+      const nx = -(q.y - p.y), ny = q.x - p.x;
+      const nd = Math.hypot(nx, ny) || 1;
+      const ox = (nx / nd) * r * 0.38, oy = (ny / nd) * r * 0.38;
+      i === 0 ? ctx.moveTo(p.x + ox, p.y + oy) : ctx.lineTo(p.x + ox, p.y + oy);
+    }
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  if (IMG.head) {
+    ctx.save();
+    ctx.translate(h.x, h.y);
+    ctx.rotate(s.angle);                 // art is drawn facing right, so angle maps straight across
+    const d = r * 3;
+    ctx.drawImage(IMG.head, -d / 2, -d / 2, d, d);
+    ctx.restore();
+  } else {
+    // a rounded head cap, shaded to match the body gradient, so the head
+    // reads as part of the same snake rather than a bolted-on dot
+    ctx.fillStyle = shade(s.color, 25);
+    ctx.beginPath(); ctx.arc(h.x, h.y, r * 1.08, 0, 6.29); ctx.fill();
+    for (const side of [-1, 1]) {
+      const a = s.angle + side * 0.62;
+      const ex = h.x + Math.cos(a) * r * 0.62, ey = h.y + Math.sin(a) * r * 0.62;
+      ctx.fillStyle = "#fff";
+      ctx.beginPath(); ctx.arc(ex, ey, r * 0.36, 0, 6.29); ctx.fill();
+      ctx.fillStyle = "#08111f";
+      ctx.beginPath(); ctx.arc(ex + Math.cos(s.angle) * r * 0.16, ey + Math.sin(s.angle) * r * 0.16, r * 0.18, 0, 6.29); ctx.fill();
+    }
+  }
+
+  if (s.isKing) drawCrown(h.x, h.y - r * 1.7, r);
+
+  ctx.fillStyle = s.isKing ? "#ffd166" : "rgba(220,231,255,.75)";
+  ctx.font = `${Math.max(12, r * 1.15)}px "Trebuchet MS", sans-serif`;
+  ctx.textAlign = "center";
+  ctx.fillText(s.name, h.x, h.y - r * (s.isKing ? 3.2 : 2.1));
+}
+
+function drawStick() {
+  if (!stick.live) return;
+  ctx.save();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "rgba(220,231,255,.28)";
+  ctx.beginPath(); ctx.arc(stick.ox, stick.oy, STICK_R, 0, 6.29); ctx.stroke();
+  ctx.fillStyle = "rgba(126,240,196,.45)";
+  ctx.beginPath(); ctx.arc(stick.ox + stick.dx, stick.oy + stick.dy, 24, 0, 6.29); ctx.fill();
+  ctx.restore();
+}
+
+function drawMinimap() {
+  const size = Math.min(130 * UI, W * 0.26, H * 0.26);
+  const cx = TOUCH ? size / 2 + 14 : W - size / 2 - 14;
+  const cy = H - size / 2 - 14;
+  const rr = size / 2;
+  ctx.save();
+  ctx.globalAlpha = 0.75;
+  ctx.fillStyle = "rgba(7,13,26,.65)";
+  ctx.beginPath(); ctx.arc(cx, cy, rr, 0, 6.29); ctx.fill();
+  ctx.strokeStyle = "rgba(120,170,255,.25)"; ctx.lineWidth = 1; ctx.stroke();
+  const k = rr / WORLD_R;
+  for (const s of snakes) {
+    if (!s.alive) continue;
+    const hd = s.path[0];
+    ctx.fillStyle = s.isKing ? "#ffd166" : (s === player ? "#fff" : s.color);
+    ctx.beginPath(); ctx.arc(cx + hd.x * k, cy + hd.y * k, s === player || s.isKing ? 3 : 1.8, 0, 6.29); ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawBanner() {
+  const t = performance.now();
+  if (t > banner.until) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, (banner.until - t) / 500);
+  ctx.fillStyle = banner.color;
+  ctx.font = `700 ${Math.round(30 * UI)}px "Trebuchet MS", sans-serif`;
+  ctx.textAlign = "center";
+  ctx.shadowColor = "#000"; ctx.shadowBlur = 10;
+  ctx.fillText(banner.text, W / 2, H * 0.22);
+  ctx.restore();
+}
+
+function render() {
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.fillStyle = "#070d1a";
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.save();
+  ctx.translate(W / 2, H / 2);
+  ctx.scale(cam.zoom, cam.zoom);
+  ctx.translate(-cam.x, -cam.y);
+
+  ctx.fillStyle = bgPattern || "#0d1730";
+  ctx.beginPath(); ctx.arc(0, 0, WORLD_R, 0, 6.29); ctx.fill();
+
+  const halfW = W / 2 / cam.zoom, halfH = H / 2 / cam.zoom;
+  if (!bgPattern) {
+    const step = 110;
+    const x0 = Math.floor((cam.x - halfW) / step) * step, x1 = cam.x + halfW;
+    const y0 = Math.floor((cam.y - halfH) / step) * step, y1 = cam.y + halfH;
+    ctx.strokeStyle = "rgba(120,170,255,.07)"; ctx.lineWidth = 1 / cam.zoom;
+    ctx.beginPath();
+    for (let x = x0; x < x1; x += step) { ctx.moveTo(x, y0); ctx.lineTo(x, y1); }
+    for (let y = y0; y < y1; y += step) { ctx.moveTo(x0, y); ctx.lineTo(x1, y); }
+    ctx.stroke();
+  }
+
+  ctx.strokeStyle = "#ff4d6d"; ctx.lineWidth = 6 / cam.zoom; ctx.globalAlpha = .8;
+  ctx.beginPath(); ctx.arc(0, 0, WORLD_R, 0, 6.29); ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  const t = performance.now() / 400;
+  for (const f of food) {
+    if (f.x < cam.x - halfW - 20 || f.x > cam.x + halfW + 20 || f.y < cam.y - halfH - 20 || f.y > cam.y + halfH + 20) continue;
+    const pulse = 1 + Math.sin(t + f.phase) * 0.18;
+    if (IMG.food) {
+      const d = f.r * 3.4 * pulse;
+      ctx.drawImage(IMG.food, f.x - d / 2, f.y - d / 2, d, d);
+    } else {
+      ctx.fillStyle = f.c;
+      ctx.globalAlpha = 0.22;
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r * 2.4 * pulse, 0, 6.29); ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r * pulse, 0, 6.29); ctx.fill();
+    }
+  }
+
+  for (const s of snakes) if (s.alive && s !== player && !s.isKing) drawSnake(s);
+  for (const s of snakes) if (s.alive && s.isKing && s !== player) drawSnake(s);
+  if (player.alive) drawSnake(player);
+  ctx.restore();
+
+  drawMinimap();
+  drawStick();
+  drawBanner();
+}
+
+/* ─────────── 10. LOOP ─────────── */
+const elScore = document.getElementById("score");
+const elBoard = document.getElementById("board");
+const elVeil  = document.getElementById("veil");
+const elFinal = document.getElementById("final");
+const elName  = document.getElementById("name");
+
+let hudTick = 0;
+function hud() {
+  elScore.textContent = Math.floor(player.score);
+  const top = snakes.filter(s => s.alive).sort((a, b) => b.score - a.score).slice(0, 5);
+  elBoard.innerHTML = top.map((s, i) =>
+    `<div class="${s === player ? "me" : ""}"><span class="rank">${i + 1}</span>${s.isKing ? "👑 " : ""}${s.name} ${Math.floor(s.score)}</div>`
+  ).join("");
+}
+
+let last = performance.now();
+function loop(now) {
+  const dt = Math.min((now - last) / 16.67, 2.2);
+  last = now;
+  if (running) update(dt);
+  render();
+  if (++hudTick % 10 === 0) hud();
+  requestAnimationFrame(loop);
+}
+
+document.addEventListener("visibilitychange", () => { if (!document.hidden) last = performance.now(); });
+window.addEventListener("blur", () => { IN.boostPointer = IN.boostKey = IN.boostBtn = false; IN.boostTouch = 0; held.clear(); });
+
+function startRun() {
+  SFX.click();
+  if (TOUCH && document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().catch(() => {});
+    if (screen.orientation && screen.orientation.lock) screen.orientation.lock("landscape").catch(() => {});
+  }
+  elName.blur();
+  reset(elName.value.trim().slice(0, 12) || "Player");
+  elVeil.classList.add("hidden");
+  elFinal.textContent = "";
+  running = true;
+  last = performance.now();
+  setTimeout(resize, 350);
+}
+
+function endRun() {
+  running = false;
+  stick.live = false; stick.id = null;
+  const wasKing = player.isKing;
+  const rank = snakes.filter(s => s.alive && s.score > player.score).length + 1;
+  elFinal.textContent = (wasKing ? "Died as king · " : "") + `length ${Math.floor(player.score)} · rank ${rank}`;
+  document.querySelector("#veil h1").textContent = wasKing ? "The king has fallen" : "You died";
+  document.getElementById("play").textContent = "Play again";
+  elVeil.classList.remove("hidden");
+}
+
+document.getElementById("play").addEventListener("click", startRun);
+elName.addEventListener("keydown", e => { if (e.key === "Enter") startRun(); });
+
+document.getElementById("hint").textContent = TOUCH
+  ? "Drag anywhere to steer · hold BOOST to sprint"
+  : "Move: mouse or arrow keys / WASD · Boost: hold click, space or shift";
+document.getElementById("keys").textContent = TOUCH
+  ? "Drag anywhere to steer. Hold the boost pad to sprint."
+  : "Mouse or WASD to steer. Click, space or shift to boost.";
+
+reset("Player");
+loadAssets().then(() => { if (IMG.bg) bgPattern = ctx.createPattern(IMG.bg, "repeat"); });
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
