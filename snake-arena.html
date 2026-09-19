@@ -6,60 +6,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#070d1a">
-<title>Snake Arena – Play Multiplayer Snake Game Online Free (Unblocked)</title>
-<meta name="description" content="Play Snake Arena, a free multiplayer snake game online. Eat orbs, grow your snake, and fight to become king of the arena. No download, no signup — play free in your browser, unblocked at school or work.">
-<meta name="keywords" content="snake game, snake, snake game online, snake game unblocked, play snake, google snake game, multiplayer snake game, io snake game, snake io, free snake game">
-<link rel="canonical" href="https://toolpond.org/snake-arena.html">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Snake Arena – Play Multiplayer Snake Game Online Free">
-<meta property="og:description" content="A free multiplayer snake game online. Eat orbs, grow your snake, and become king of the arena. No download required.">
-<meta property="og:url" content="https://toolpond.org/snake-arena.html">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Snake Arena – Play Multiplayer Snake Game Online Free">
-<meta name="twitter:description" content="Eat orbs, grow your snake, and become king of the arena. Free multiplayer snake game, no download.">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "Snake Arena",
-  "url": "https://toolpond.org/snake-arena.html",
-  "description": "A free multiplayer snake game online. Eat orbs to grow, dodge rival snakes, and become king of the arena. No download required.",
-  "genre": ["Arcade", "Action", "Multiplayer"],
-  "applicationCategory": "Game",
-  "operatingSystem": "Any",
-  "publisher": { "@type": "Organization", "name": "Toolpond" }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://toolpond.org/games.html" },
-    { "@type": "ListItem", "position": 3, "name": "Snake Arena", "item": "https://toolpond.org/snake-arena.html" }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What is Snake Arena?", "acceptedAnswer": { "@type": "Answer", "text": "Snake Arena is a free multiplayer snake game you play in your browser. Eat orbs to grow, avoid crashing into rival snakes, and try to become the king of the arena." } },
-    { "@type": "Question", "name": "How do you play Snake Arena?", "acceptedAnswer": { "@type": "Answer", "text": "Move your mouse, use arrow keys/WASD, or drag on touchscreens to steer. Hold click, space, shift, or the on-screen boost button to sprint. Eating orbs grows your snake and raises your score." } },
-    { "@type": "Question", "name": "Is Snake Arena free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Snake Arena is completely free to play online, with no download, signup, or account required." } },
-    { "@type": "Question", "name": "Can I play Snake Arena unblocked at school or work?", "acceptedAnswer": { "@type": "Answer", "text": "Snake Arena runs entirely in the browser with no download, so it plays wherever a browser tab is allowed, including most school and work networks." } },
-    { "@type": "Question", "name": "Is Snake Arena the same as Google Snake?", "acceptedAnswer": { "@type": "Answer", "text": "No. Google Snake is a single-player recreation of the original Nokia snake game. Snake Arena is a multiplayer twist where you compete against other snakes on the same board in real time." } },
-    { "@type": "Question", "name": "Does Snake Arena work on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Snake Arena supports touch controls — drag to steer and hold the boost button to sprint — and works on phones, tablets, and desktop browsers." } }
-  ]
-}
-</script>
-
+<title>Snake Arena</title>
 <style>
   :root {
     --deep:  #070d1a;
@@ -73,18 +20,15 @@
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
-    margin: 0; padding: 0; width: 100%;
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    overflow: hidden; overscroll-behavior: none;
     background: var(--deep); color: var(--ink);
     font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    touch-action: none; user-select: none; -webkit-user-select: none;
   }
-  #gameStage {
-    position: relative; width: 100%; height: 100vh; height: 100dvh;
-    overflow: hidden; overscroll-behavior: none; touch-action: none;
-    -webkit-user-select: none; user-select: none;
-  }
-  #game { position: absolute; inset: 0; display: block; width: 100%; height: 100%; cursor: crosshair; }
+  #game { position: fixed; inset: 0; display: block; width: 100%; height: 100%; cursor: crosshair; }
 
-  .hud { position: absolute; pointer-events: none; z-index: 2; text-shadow: 0 1px 4px #000; }
+  .hud { position: fixed; pointer-events: none; z-index: 2; text-shadow: 0 1px 4px #000; }
   #stats { top: calc(10px + var(--safet)); left: calc(14px + var(--safel)); font-size: clamp(12px, 3.2vw, 15px); line-height: 1.4; }
   #stats b { display: block; font-size: clamp(22px, 6.5vw, 30px); font-weight: 700; line-height: 1.1; }
   #stats.king b { color: var(--gold); }
@@ -94,7 +38,7 @@
   #hint { bottom: calc(10px + var(--safeb)); left: 50%; transform: translateX(-50%); font-size: clamp(11px, 2.9vw, 13px); color: var(--dim); text-align: center; width: 90%; }
 
   #boost {
-    position: absolute; z-index: 4; display: none;
+    position: fixed; z-index: 4; display: none;
     right: calc(20px + var(--safer)); bottom: calc(26px + var(--safeb));
     width: 92px; height: 92px; border-radius: 50%;
     border: 2px solid rgba(126,240,196,.55);
@@ -107,7 +51,7 @@
   #boost, #mute { transition: transform .12s ease, background .12s ease; }
 
   #mute {
-    position: absolute; z-index: 4; top: calc(14px + var(--safet)); left: 50%; transform: translateX(-50%);
+    position: fixed; z-index: 4; top: calc(14px + var(--safet)); left: 50%; transform: translateX(-50%);
     width: 40px; height: 40px; border-radius: 50%; font-size: 17px; line-height: 1;
     border: 1px solid rgba(220,231,255,.22); background: rgba(13,23,48,.55); color: var(--ink); cursor: pointer;
   }
@@ -115,7 +59,7 @@
   #mute.off { opacity: .55; }
 
   #veil {
-    position: absolute; inset: 0; z-index: 5;
+    position: fixed; inset: 0; z-index: 5;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: clamp(12px, 3vh, 20px); text-align: center;
     padding: calc(20px + var(--safet)) 22px calc(20px + var(--safeb));
@@ -155,30 +99,10 @@
     #veil h1 { font-size: clamp(24px, 7vh, 34px); }
     #veil p { display: none; }
   }
-
-  #seoContent {
-    background: var(--deep);
-    color: var(--ink);
-    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-    line-height: 1.65;
-    padding: 44px 6vw 56px;
-    border-top: 1px solid rgba(220,231,255,.12);
-  }
-  #seoContent .inner { max-width: 720px; margin: 0 auto; }
-  #seoContent h1 { font-size: 22px; margin: 0 0 12px; color: #fff; }
-  #seoContent h2 { font-size: 18px; margin: 28px 0 10px; color: var(--gold); }
-  #seoContent p, #seoContent li { font-size: 14px; color: var(--dim); }
-  #seoContent .faq-item { margin-bottom: 14px; }
-  #seoContent .faq-item h3 { font-size: 15px; margin: 0 0 4px; color: #fff; }
-  #seoContent .faq-item p { margin: 0; }
-  #seoContent .more-games { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 8px; }
-  #seoContent .more-games a { color: #3ad0ff; text-decoration: none; font-weight: 700; font-size: 13.5px; }
-  #seoContent .more-games a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<div id="gameStage">
 <canvas id="game"></canvas>
 
 <div class="hud" id="stats">Length <b id="score">0</b></div>
@@ -196,68 +120,6 @@
   <div id="keys"></div>
   <div id="final"></div>
 </div>
-</div>
-
-<!-- On-page SEO content: real, readable text below the game so search
-     engines have something to index beyond the meta tags and JS UI. -->
-<section id="seoContent">
-  <div class="inner">
-    <h1>Snake Arena: A Free Multiplayer Snake Game Online</h1>
-    <p>Snake Arena is a free multiplayer snake game you can play online, right in your browser. Eat orbs to grow your snake, dodge rival players, and race to become the king of the arena — no download, no signup, and no install required. It's playable on desktop and mobile, and works unblocked wherever a browser tab is allowed, including most school and work networks.</p>
-
-    <h2>How to Play Snake Arena</h2>
-    <p>On desktop, steer with your mouse or the arrow keys/WASD, and hold click, space, or shift to boost. On mobile, drag anywhere to steer and hold the boost pad to sprint. Every orb you eat adds to your length and score. Reach a score of 120 to become king — you'll move faster and boost cheaper, but every other snake will be gunning for your crown.</p>
-
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3>What is Snake Arena?</h3>
-      <p>A free multiplayer snake game online — eat orbs to grow, avoid rival snakes, and try to become king of the arena.</p>
-    </div>
-    <div class="faq-item">
-      <h3>How do you play Snake Arena?</h3>
-      <p>Steer with your mouse, arrow keys/WASD, or by dragging on touchscreens. Hold boost to sprint. Eating orbs grows your snake and score.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Is Snake Arena free to play?</h3>
-      <p>Yes — no download, signup, or account required.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Can I play Snake Arena unblocked at school or work?</h3>
-      <p>It runs entirely in the browser with nothing to install, so it plays wherever a browser tab is allowed.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Is Snake Arena the same as Google Snake?</h3>
-      <p>No — Google Snake is single-player. Snake Arena is a multiplayer twist where you compete against other snakes in real time.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Does Snake Arena work on mobile?</h3>
-      <p>Yes, touch controls are fully supported on phones and tablets.</p>
-    </div>
-
-    <p><a href="snake-arena-guide.html" style="color:#3ad0ff;font-weight:700;text-decoration:none;">See the full guide, king mechanic, and strategy tips →</a></p>
-
-    <h2>More Free Games</h2>
-    <ul class="more-games">
-      <li><a href="https://toolpond.org/snake-adventure/index.html">Snake Adventure</a></li>
-      <li><a href="https://toolpond.org/bloxdoku.html">Bloxdoku</a></li>
-      <li><a href="https://toolpond.org/2048-fusion.html">2048 Fusion</a></li>
-      <li><a href="https://toolpond.org/aquasort.html">AquaSort</a></li>
-      <li><a href="https://toolpond.org/bubble-pop-quest.html">Bubble Pop Quest</a></li>
-      <li><a href="https://toolpond.org/block-blast-arena.html">Block Blast Arena</a></li>
-      <li><a href="https://toolpond.org/laser-mirrors.html">Laser Mirrors</a></li>
-      <li><a href="https://toolpond.org/puzzel-vision/index.html">Puzzle Vision</a></li>
-      <li><a href="https://toolpond.org/crossword-craze.html">Crossword Craze</a></li>
-      <li><a href="https://toolpond.org/shadow-match.html">Shadow Match</a></li>
-      <li><a href="https://toolpond.org/last-switch.html">Last Switch</a></li>
-      <li><a href="https://toolpond.org/penalty-duel.html">Penalty Duel</a></li>
-      <li><a href="https://toolpond.org/pharaohs-marble-quest.html">Pharaoh's Marble Quest</a></li>
-      <li><a href="https://toolpond.org/prism-smash.html">Prism Smash</a></li>
-      <li><a href="https://toolpond.org/cloud-drift.html">Cloud Drift</a></li>
-      <li><a href="https://toolpond.org/sky-spirit.html">Sky Spirit</a></li>
-      <li><a href="https://toolpond.org/games.html">See all free games →</a></li>
-    </ul>
-  </div>
-</section>
 
 <script>
 (() => {
@@ -638,7 +500,10 @@ function update(dt) {
     const maxTurn = TURN_RATE * dt * (s.boost ? 1.15 : 1);
     s.angle += clamp(angleDelta(s.angle, s.aim), -maxTurn, maxTurn);
 
-    const speed = BASE_SPEED * (s.boost ? BOOST_MULT : 1) * (s.isKing ? KING_SPEED : 1) * dt;
+    // a small, capped bonus for size — enough to feel earned, never enough
+    // to make a giant snake unmanageable to steer
+    const growthMult = 1 + Math.min(0.22, s.score / 900);
+    const speed = BASE_SPEED * growthMult * (s.boost ? BOOST_MULT : 1) * (s.isKing ? KING_SPEED : 1) * dt;
     const head = s.path[0];
     const nx = head.x + Math.cos(s.angle) * speed;
     const ny = head.y + Math.sin(s.angle) * speed;
