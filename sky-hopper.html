@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a2340">
+
+<title>Sky Hopper: Free Online Jump & Run Platformer Game | ToolPond Pro</title>
+<meta name="description" content="Play Sky Hopper free online, no download. Auto-run, jump and double jump over gaps and spikes, stomp enemies, and collect coins to beat your best distance.">
+<link rel="canonical" href="https://toolpond.org/sky-hopper.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sky Hopper: Free Online Jump & Run Platformer Game">
+<meta property="og:description" content="An endless auto-running platformer — jump and double jump over gaps and spikes, stomp enemies, and collect coins. Free to play in your browser, no download.">
+<meta property="og:url" content="https://toolpond.org/sky-hopper.html">
+<meta property="og:site_name" content="ToolPond Pro">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sky Hopper: Free Online Jump & Run Platformer Game">
+<meta name="twitter:description" content="Jump, double jump, stomp enemies and collect coins in this free browser platformer. No download required.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Sky Hopper",
+  "url": "https://toolpond.org/sky-hopper.html",
+  "description": "Sky Hopper is a free online auto-running platformer. Jump and double jump to clear gaps and spikes, stomp enemies from above, and collect coins to beat your best distance.",
+  "genre": ["Platformer", "Arcade", "Endless Runner"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Any (Web Browser)",
+  "playMode": "SinglePlayer",
+  "publisher": { "@type": "Organization", "name": "ToolPond Pro", "url": "https://toolpond.org" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root {
+    --ink:   #16202e;
+    --dim:   rgba(22,32,46,0.6);
+    --gold:  #ff9f43;
+    --safeb: env(safe-area-inset-bottom, 0px);
+    --safel: env(safe-area-inset-left, 0px);
+    --safer: env(safe-area-inset-right, 0px);
+    --safet: env(safe-area-inset-top, 0px);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    overflow: hidden; overscroll-behavior: none;
+    background: #1a2340; color: var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    touch-action: none; user-select: none; -webkit-user-select: none;
+  }
+  #game { position: fixed; inset: 0; display: block; width: 100%; height: 100%; cursor: pointer; }
+
+  .hud { position: fixed; pointer-events: none; z-index: 2; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.35); }
+  #stats { top: calc(10px + var(--safet)); left: calc(14px + var(--safel)); font-size: clamp(12px, 3.2vw, 15px); line-height: 1.4; }
+  #stats b { display: block; font-size: clamp(22px, 6.5vw, 30px); font-weight: 700; line-height: 1.1; }
+  #side { top: calc(10px + var(--safet)); right: calc(14px + var(--safer)); text-align: right; font-size: clamp(11px, 3vw, 14px); line-height: 1.55; }
+  #side .gold { color: var(--gold); }
+  #hint { bottom: calc(10px + var(--safeb)); left: 50%; transform: translateX(-50%); font-size: clamp(11px, 2.9vw, 13px); color: rgba(255,255,255,.75); text-align: center; width: 92%; text-shadow: 0 1px 4px rgba(0,0,0,.4); }
+
+  #mute {
+    position: fixed; z-index: 4; top: calc(14px + var(--safet)); left: 50%; transform: translateX(-50%);
+    width: 40px; height: 40px; border-radius: 50%; font-size: 17px; line-height: 1;
+    border: 1px solid rgba(255,255,255,.28); background: rgba(20,28,48,.5); color: #fff; cursor: pointer;
+    transition: transform .12s ease;
+  }
+  #mute:active { transform: translateX(-50%) scale(0.92); }
+  #mute.off { opacity: .55; }
+
+  #veil {
+    position: fixed; inset: 0; z-index: 5;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: clamp(12px, 3vh, 20px); text-align: center;
+    padding: calc(20px + var(--safet)) 22px calc(20px + var(--safeb));
+    background: radial-gradient(circle at 50% 35%, rgba(46,64,110,.92), rgba(16,22,40,.97));
+  }
+  #veil.hidden { display: none; }
+  #veil h1 {
+    margin: 0; font-size: clamp(30px, 8.5vw, 58px); letter-spacing: .03em; font-weight: 700;
+    background: linear-gradient(180deg, #fff, #ffcf8a);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 2px 12px rgba(255,159,67,.35));
+  }
+  #veil p { margin: 0; max-width: 34ch; color: rgba(255,255,255,.68); font-size: clamp(13px, 3.6vw, 15px); line-height: 1.6; }
+  #veil p b { color: var(--gold); font-weight: 600; }
+  #play {
+    position: relative; padding: 15px 50px; font: inherit; font-size: 19px; font-weight: 700; letter-spacing: .04em;
+    color: #241200; background: linear-gradient(180deg, #ffd39a, #ff9f43 60%, #e67e1f);
+    border: 0; border-radius: 14px; cursor: pointer; min-height: 54px;
+    box-shadow: 0 6px 0 #a35414, 0 10px 22px rgba(255,159,67,.35);
+    transition: transform .08s ease, box-shadow .08s ease;
+  }
+  #play:hover { filter: brightness(1.05); }
+  #play:active { transform: translateY(5px); box-shadow: 0 1px 0 #a35414, 0 3px 10px rgba(255,159,67,.3); }
+  #play:focus-visible { outline: 3px solid #5ad1ff; outline-offset: 3px; }
+  #final { color: var(--gold); font-size: clamp(14px, 4vw, 17px); }
+  #best { color: rgba(255,255,255,.55); font-size: clamp(12px, 3.2vw, 14px); }
+  #keys { color: rgba(255,255,255,.55); font-size: clamp(11px, 3vw, 13px); line-height: 1.7; }
+
+  @media (max-height: 430px) {
+    #veil { gap: 8px; }
+    #veil h1 { font-size: clamp(24px, 7vh, 34px); }
+    #veil p { display: none; }
+  }  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="game"></canvas>
+
+<div class="hud" id="stats">Distance <b id="score">0</b></div>
+<div class="hud" id="side"></div>
+<div class="hud" id="hint"></div>
+
+<button id="mute" aria-label="Mute sound">🔊</button>
+
+<div id="veil">
+  <h1>Sky Hopper — Free Online Jump &amp; Run Platformer</h1>
+  <p>You run on your own. Tap or press <b>jump</b> to clear gaps and spikes — tap again in mid-air for a <b>double jump</b>. Land on an enemy's head to stomp it; touch it any other way and you're out.</p>
+  <button id="play"><span>Play</span></button>
+  <div id="best"></div>
+  <div id="keys"></div>
+  <div id="final"></div>
+</div>
+
+<script>
+(() => {
+"use strict";
+
+/* ─────────── 0. DEVICE ─────────── */
+const TOUCH = matchMedia("(hover: none) and (pointer: coarse)").matches
+           || ("ontouchstart" in window && navigator.maxTouchPoints > 0);
+if (TOUCH) document.body.classList.add("touch");
+
+/* ─────────── 1. PHYSICS + PACING KNOBS ─────────── */
+const GRAVITY        = 0.85;
+const JUMP_VEL        = -14.5;
+const DOUBLE_JUMP_VEL  = -12.5;
+const RUN_SPEED_START = 4.2;
+const RUN_SPEED_MAX   = 8.6;
+const RUN_RAMP_PER_S  = 0.045;
+const PLAYER_W = 30, PLAYER_H = 34;
+const GROUND_FALL_LIMIT = 480;
+const SAFE_CHUNKS = 5;
+const MAX_STEP_DOWN = 16;
+
+const JUMP_AIRTIME = (2 * Math.abs(JUMP_VEL)) / GRAVITY;
+const MAX_JUMP_HEIGHT = (JUMP_VEL * JUMP_VEL) / (2 * GRAVITY);
+
+const PALETTE_SPIKE = "#ff5c6c";
+const PALETTE_ENEMY = "#8a5cff";
+const PALETTE_COIN  = "#ffd166";
+
+/* ─────────── 2. SOUND ─────────── */
+const SFX = (() => {
+  let ctxA = null, muted = localStorage.getItem("skyHopperMuted") === "1";
+  function ensure() {
+    if (!ctxA) ctxA = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctxA.state === "suspended") ctxA.resume();
+    return ctxA;
+  }
+  function tone(freq, dur, opts = {}) {
+    if (muted) return;
+    try {
+      const ac = ensure();
+      const t0 = ac.currentTime;
+      const osc = ac.createOscillator(), gain = ac.createGain();
+      osc.type = opts.type || "sine";
+      osc.frequency.setValueAtTime(freq, t0);
+      if (opts.to) osc.frequency.exponentialRampToValueAtTime(opts.to, t0 + dur);
+      const vol = opts.vol ?? 0.15;
+      gain.gain.setValueAtTime(0.0001, t0);
+      gain.gain.exponentialRampToValueAtTime(vol, t0 + (opts.attack || 0.008));
+      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      osc.connect(gain); gain.connect(ac.destination);
+      osc.start(t0); osc.stop(t0 + dur + 0.02);
+    } catch (err) { /* no sound this time — gameplay carries on regardless */ }
+  }
+  return {
+    jump()    { tone(340, 0.1, { type: "square", to: 520, vol: 0.09 }); },
+    jump2()   { tone(460, 0.1, { type: "square", to: 700, vol: 0.09 }); },
+    land()    { tone(160, 0.07, { type: "sine", to: 90, vol: 0.07 }); },
+    milestone(){ tone(523, 0.18, { type: "triangle", to: 659, vol: 0.1 }); },
+    coin()    { tone(rand(700, 820), 0.12, { type: "triangle", to: rand(1000, 1200), vol: 0.1 }); },
+    stomp()   { tone(200, 0.14, { type: "sawtooth", to: 90, vol: 0.13 }); },
+    best()    { tone(392, 0.5, { type: "triangle", to: 784, attack: 0.02, vol: 0.14 }); },
+    death()   { tone(220, 0.5, { type: "sawtooth", to: 35, attack: 0.005, vol: 0.16 }); },
+    click()   { tone(300, 0.06, { type: "square", to: 460, vol: 0.08 }); },
+    toggleMute() { muted = !muted; localStorage.setItem("skyHopperMuted", muted ? "1" : "0"); return muted; },
+    isMuted() { return muted; }
+  };
+})();
+
+/* ─────────── 3. CANVAS SIZING ─────────── */
+const cv = document.getElementById("game");
+const ctx = cv.getContext("2d", { alpha: false });
+let W = 0, H = 0, DPR = 1, UI = 1;
+
+function resize() {
+  const vv = window.visualViewport;
+  const newW = Math.round(vv ? vv.width  : window.innerWidth);
+  const newH = Math.round(vv ? vv.height : window.innerHeight);
+  // An embedded page can briefly report 0 (or a tiny, not-yet-laid-out size)
+  // for its own viewport right as it's first mounted — before the browser
+  // has finished sizing the surrounding frame. Gameplay physics is entirely
+  // in world coordinates and doesn't care about screen size, but WHERE
+  // things are DRAWN depends on it completely: computing a player position
+  // from H=0 draws the character off-screen or squashed to a single pixel,
+  // which looks exactly like an instant, inexplicable fall even though
+  // nothing about the game state is actually wrong. Refusing an obviously
+  // invalid reading — and keeping the last good size instead — closes that
+  // gap entirely, regardless of why the bad reading happened.
+  if (newW >= 100 && newH >= 100) { W = newW; H = newH; }
+  else if (W === 0 || H === 0) { W = Math.max(newW, 360); H = Math.max(newH, 640); }
+  DPR = Math.min(window.devicePixelRatio || 1, TOUCH ? 1.6 : 2);
+  cv.width = Math.round(W * DPR);
+  cv.height = Math.round(H * DPR);
+  cv.style.width = W + "px";
+  cv.style.height = H + "px";
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  UI = Math.min(1.25, Math.max(0.75, Math.min(W, H) / 780));
+}
+window.addEventListener("resize", resize);
+window.addEventListener("orientationchange", () => setTimeout(resize, 250));
+if (window.visualViewport) window.visualViewport.addEventListener("resize", resize);
+resize();
+setTimeout(resize, 50);
+setTimeout(resize, 200);
+setTimeout(resize, 600);
+
+const rand  = (a, b) => a + Math.random() * (b - a);
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const PLAYER_SCREEN_X = () => Math.min(180, W * 0.28);
+const PLAYER_SCREEN_Y = () => H * 0.5;
+
+/* ─────────── 4. STATE ─────────── */
+let running = false, gameOver = false;
+let camX = 0, camY = 0, runSpeed = RUN_SPEED_START, elapsed = 0;
+let platforms = [], spikes = [], enemies = [], coins = [], particles = [];
+let genX = 0;
+let chunkCount = 0;
+let player, score = 0, coinCount = 0, best = Number(localStorage.getItem("skyHopperBest") || 0);
+let banner = { text: "", color: "#fff", until: 0 };
+const flashMsg = (text, color) => { banner = { text, color: color || "#fff", until: performance.now() + 1800 }; };
+
+function makePlayer(startY) {
+  return { x: 0, y: startY - PLAYER_H / 2, vy: 0, onGround: true, jumps: 0, wobble: 0, dead: false, lastGroundY: startY };
+}
+
+/* ─────────── 5. LEVEL GENERATION ─────────── */
+function genChunk() {
+  const last = platforms[platforms.length - 1];
+  const lastY = last ? last.y : 0;
+  const maxGap  = runSpeed * JUMP_AIRTIME * 0.7;
+  const minGap  = runSpeed * JUMP_AIRTIME * 0.18;
+  const roll = chunkCount < SAFE_CHUNKS ? 0 : Math.random();
+  chunkCount++;
+  const diff = clamp(elapsed / 25, 0, 1);
+  const flatChance = 0.68 - diff * 0.32;
+
+  let gap = 0, dy = 0;
+  if (roll < flatChance) { gap = 0; dy = 0; }
+  else if (roll < flatChance + 0.42) { gap = rand(minGap, maxGap * (0.55 + diff * 0.3)); dy = rand(-30, 45); }
+  else if (roll < flatChance + 0.68) { gap = rand(minGap * 0.6, maxGap * (0.4 + diff * 0.3)); dy = -rand(30, Math.min(80, MAX_JUMP_HEIGHT * 0.65)); }
+  else { gap = rand(minGap * 0.5, maxGap * 0.5); dy = rand(60, 130); }
+
+  const y = clamp(lastY + dy, -260, 260);
+  const len = rand(160, 340);
+  const x1 = genX + gap, x2 = x1 + len;
+  platforms.push({ x1, x2, y });
+
+  const decor = chunkCount > SAFE_CHUNKS ? Math.random() : 1;
+  if (decor < 0.22 && len > 120) {
+    const sx = x1 + rand(60, len - 60);
+    spikes.push({ x: sx, y, w: rand(26, 44) });
+  } else if (decor < 0.4 && len > 140) {
+    const range = Math.min(90, len * 0.4);
+    const ex = x1 + len / 2;
+    enemies.push({ x: ex, baseX: ex, y, range, dir: Math.random() < 0.5 ? 1 : -1, speed: rand(1.1, 1.9), alive: true, squash: 0 });
+  }
+
+  if (gap > 30) {
+    const n = 3;
+    for (let i = 1; i <= n; i++) {
+      const t = i / (n + 1);
+      const cx = genX + gap * t;
+      const arc = Math.sin(t * Math.PI) * Math.min(60, gap * 0.35);
+      coins.push({ x: cx, y: Math.min(lastY, y) - 34 - arc, taken: false });
+    }
+  } else if (Math.random() < 0.5 && len > 100) {
+    const cx = x1 + len / 2;
+    coins.push({ x: cx, y: y - 46, taken: false });
+  }
+
+  genX = x2;
+}
+
+function ensureGenerated() {
+  while (genX < camX + W * 2.2) genChunk();
+  const cut = camX - 300;
+  if (platforms.length > 4) platforms = platforms.filter(p => p.x2 > cut || p === platforms[platforms.length - 1]);
+  spikes   = spikes.filter(s => s.x > cut);
+  enemies  = enemies.filter(e => e.baseX > cut);
+  coins    = coins.filter(c => c.x > cut);
+}
+
+function reset() {
+  const startY = 0;
+  platforms = [{ x1: -400, x2: 260, y: startY }];
+  spikes = []; enemies = []; coins = []; particles = [];
+  genX = 260;
+  chunkCount = 0;
+  camX = 0; runSpeed = RUN_SPEED_START; elapsed = 0;
+  player = makePlayer(startY);
+  camY = player.y;
+  score = 0; coinCount = 0; gameOver = false;
+  banner.until = 0;
+  jumpQueued = false;
+  ensureGenerated();
+}
+
+/* ─────────── 6. INPUT ─────────── */
+let jumpQueued = false;
+function requestJump() { jumpQueued = true; }
+
+cv.addEventListener("pointerdown", e => { e.preventDefault(); if (!running) return; requestJump(); });
+cv.addEventListener("touchstart", e => { e.preventDefault(); if (!running) return; requestJump(); }, { passive: false });
+cv.addEventListener("mousedown", e => { if (e.button !== 0) return; if (!running) return; requestJump(); });
+window.addEventListener("keydown", e => {
+  if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW") {
+    if (!e.repeat) { if (running) requestJump(); else if (!gameOver) startRun(); }
+    e.preventDefault();
+  }
+  if (e.code === "Enter" && !running) startRun();
+});
+
+const muteBtn = document.getElementById("mute");
+function syncMuteBtn() { muteBtn.textContent = SFX.isMuted() ? "🔇" : "🔊"; muteBtn.classList.toggle("off", SFX.isMuted()); }
+muteBtn.addEventListener("click", () => { SFX.toggleMute(); syncMuteBtn(); });
+syncMuteBtn();
+
+/* ─────────── 7. SIMULATION ─────────── */
+function platformUnder(worldX) {
+  for (const p of platforms) if (worldX >= p.x1 && worldX <= p.x2) return p;
+  return null;
+}
+
+function spawnBurst(x, y, color) {
+  for (let i = 0; i < 7; i++) {
+    particles.push({ x, y, vx: rand(-2.4, 2.4), vy: rand(-3.5, -0.5), life: 1, color });
+  }
+}
+
+function die() {
+  if (player.dead) return;
+  player.dead = true;
+  running = false;
+  SFX.death();
+  spawnBurst(player.x, player.y, "#ff5c6c");
+  const dist = Math.floor(score);
+  if (dist > best) { best = dist; localStorage.setItem("skyHopperBest", String(best)); flashMsg("New best!", "#ffd166"); SFX.best(); }
+  setTimeout(showGameOver, 420);
+}
+
+function update(dt) {
+  elapsed += dt / 60;
+  runSpeed = Math.min(RUN_SPEED_MAX, RUN_SPEED_START + elapsed * RUN_RAMP_PER_S);
+
+  player.x += runSpeed * dt;
+  const prevScore = score;
+  score = player.x / 10;
+  if (Math.floor(score / 100) > Math.floor(prevScore / 100) && score > 0) SFX.milestone();
+
+  if (jumpQueued) {
+    jumpQueued = false;
+    if (player.onGround) { player.vy = JUMP_VEL; player.onGround = false; player.jumps = 1; SFX.jump(); }
+    else if (player.jumps < 2) { player.vy = DOUBLE_JUMP_VEL; player.jumps = 2; SFX.jump2(); spawnBurst(player.x, player.y + PLAYER_H / 2, "#8fe3ff"); }
+  }
+
+  const prevBottom = player.y + PLAYER_H / 2;
+  player.vy += GRAVITY * dt;
+  player.y += player.vy * dt;
+  const bottom = player.y + PLAYER_H / 2;
+
+  const wasOnGround = player.onGround;
+  const under = platformUnder(player.x);
+  player.onGround = false;
+  let landed = false;
+  if (under && player.vy >= 0 && prevBottom <= under.y + 1 && bottom >= under.y) {
+    player.y = under.y - PLAYER_H / 2;
+    player.vy = 0; player.onGround = true; player.jumps = 0;
+    player.lastGroundY = under.y;
+    landed = true;
+    if (!wasOnGround) SFX.land();
+  } else if (under && wasOnGround && player.vy >= 0 && bottom >= under.y - 4 && bottom - under.y <= MAX_STEP_DOWN) {
+    player.y = under.y - PLAYER_H / 2;
+    player.vy = 0; player.onGround = true; player.jumps = 0;
+    player.lastGroundY = under.y;
+    landed = true;
+  }
+  if (!landed && !under && bottom > player.lastGroundY + GROUND_FALL_LIMIT) {
+    die();
+  }
+  if (player.y > GROUND_FALL_LIMIT + 300) die();
+
+  for (const s of spikes) {
+    if (Math.abs(s.x - player.x) < (s.w / 2 + PLAYER_W / 2 - 4) && Math.abs((s.y - PLAYER_H * 0.9) - player.y) < 22) die();
+  }
+
+  for (const e of enemies) {
+    if (!e.alive) continue;
+    e.x += e.dir * e.speed * dt;
+    if (e.x > e.baseX + e.range) { e.x = e.baseX + e.range; e.dir = -1; }
+    if (e.x < e.baseX - e.range) { e.x = e.baseX - e.range; e.dir = 1; }
+    e.squash = Math.max(0, e.squash - dt * 0.08);
+
+    const dx = Math.abs(e.x - player.x), dy = (player.y + PLAYER_H / 2) - e.y;
+    if (dx < 24) {
+      if (player.vy > 2 && dy < 6 && dy > -18) {
+        e.alive = false; e.squash = 1;
+        player.vy = JUMP_VEL * 0.55; player.jumps = 1;
+        score += 3;
+        SFX.stomp();
+        spawnBurst(e.x, e.y, PALETTE_ENEMY);
+      } else if (dy > -20 && dy < 22) {
+        die();
+      }
+    }
+  }
+  enemies = enemies.filter(e => e.alive || e.squash > 0);
+
+  for (const c of coins) {
+    if (c.taken) continue;
+    if (Math.hypot(c.x - player.x, c.y - player.y) < 22) { c.taken = true; coinCount++; SFX.coin(); spawnBurst(c.x, c.y, PALETTE_COIN); }
+  }
+
+  for (const p of particles) { p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 0.15 * dt; p.life -= 0.035 * dt; }
+  particles = particles.filter(p => p.life > 0);
+
+  camX = player.x - PLAYER_SCREEN_X();
+  camY += (player.y - camY) * Math.min(1, 0.09 * dt);
+  ensureGenerated();
+}
+
+/* ─────────── 8. DRAWING ─────────── */
+function worldToScreenX(wx) { return wx - camX; }
+function worldToScreenY(wy) { return PLAYER_SCREEN_Y() + (wy - camY); }
+
+function drawBackground() {
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, "#2e4a86"); g.addColorStop(0.55, "#4869a8"); g.addColorStop(1, "#7fa3d6");
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+  const drawHills = (speedMul, color, baseY, amp) => {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(0, H);
+    const off = -(camX * speedMul) % 240;
+    for (let x = off - 240; x < W + 240; x += 40) {
+      const y = baseY + Math.sin((x + camX * speedMul) * 0.01) * amp;
+      ctx.lineTo(x, y);
+    }
+    ctx.lineTo(W, H); ctx.closePath(); ctx.fill();
+  };
+  drawHills(0.15, "rgba(255,255,255,0.10)", H * 0.5, 26);
+  drawHills(0.32, "rgba(255,255,255,0.14)", H * 0.58, 18);
+}
+
+function drawPlatform(p) {
+  const sx1 = worldToScreenX(p.x1), sx2 = worldToScreenX(p.x2), sy = worldToScreenY(p.y);
+  if (sx2 < -40 || sx1 > W + 40) return;
+  const w = sx2 - sx1;
+  ctx.fillStyle = "#3f6b3a";
+  ctx.fillRect(sx1, sy, w, 14);
+  ctx.fillStyle = "#5c8f4f";
+  ctx.fillRect(sx1, sy, w, 6);
+  ctx.fillStyle = "#2c4a2a";
+  ctx.fillRect(sx1, sy + 14, w, Math.max(0, Math.min(H - sy - 14, 600)));
+}
+
+function drawSpike(s) {
+  const sx = worldToScreenX(s.x), sy = worldToScreenY(s.y);
+  if (sx < -40 || sx > W + 40) return;
+  ctx.fillStyle = PALETTE_SPIKE;
+  const n = 3, seg = s.w / n;
+  for (let i = 0; i < n; i++) {
+    const bx = sx - s.w / 2 + seg * i;
+    ctx.beginPath();
+    ctx.moveTo(bx, sy);
+    ctx.lineTo(bx + seg / 2, sy - 20);
+    ctx.lineTo(bx + seg, sy);
+    ctx.closePath(); ctx.fill();
+  }
+}
+
+function drawEnemy(e) {
+  const sx = worldToScreenX(e.x), sy = worldToScreenY(e.y);
+  if (sx < -40 || sx > W + 40) return;
+  const sq = 1 - e.squash * 0.8;
+  ctx.save();
+  ctx.translate(sx, sy - 12 * sq);
+  ctx.scale(1 + e.squash * 0.5, sq);
+  ctx.fillStyle = PALETTE_ENEMY;
+  ctx.beginPath(); ctx.arc(0, 0, 14, Math.PI, 0); ctx.lineTo(14, 6); ctx.lineTo(-14, 6); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = "#fff";
+  ctx.beginPath(); ctx.arc(-5, -6, 3.4, 0, 6.29); ctx.arc(5, -6, 3.4, 0, 6.29); ctx.fill();
+  ctx.fillStyle = "#1a0f3a";
+  ctx.beginPath(); ctx.arc(-5, -6, 1.6, 0, 6.29); ctx.arc(5, -6, 1.6, 0, 6.29); ctx.fill();
+  ctx.restore();
+}
+
+function drawCoin(c) {
+  if (c.taken) return;
+  const sx = worldToScreenX(c.x), sy = worldToScreenY(c.y);
+  if (sx < -30 || sx > W + 30) return;
+  const spin = Math.abs(Math.sin(performance.now() / 220 + c.x));
+  ctx.save();
+  ctx.translate(sx, sy);
+  ctx.scale(Math.max(0.18, spin), 1);
+  ctx.fillStyle = PALETTE_COIN;
+  ctx.beginPath(); ctx.arc(0, 0, 10, 0, 6.29); ctx.fill();
+  ctx.strokeStyle = "#c98a1a"; ctx.lineWidth = 2; ctx.stroke();
+  ctx.restore();
+}
+
+function drawPlayer() {
+  const sx = PLAYER_SCREEN_X(), sy = worldToScreenY(player.y);
+
+  const under = platformUnder(player.x);
+  if (under) {
+    const groundSy = worldToScreenY(under.y);
+    const airHeight = Math.max(0, groundSy - (sy + PLAYER_H / 2));
+    const shrink = clamp(1 - airHeight / 160, 0.25, 1);
+    ctx.save();
+    ctx.globalAlpha = 0.28 * shrink;
+    ctx.fillStyle = "#000";
+    ctx.beginPath();
+    ctx.ellipse(sx, groundSy + 2, 14 * shrink, 4.5 * shrink, 0, 0, 6.29);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  const squash = clamp(1 - player.vy * 0.012, 0.72, 1.22);
+  ctx.save();
+  ctx.translate(sx, sy);
+  ctx.scale(1 / squash, squash);
+  const grad = ctx.createRadialGradient(-8, -10, 4, 0, 0, PLAYER_W);
+  grad.addColorStop(0, "#8ffbd0"); grad.addColorStop(1, "#2fbf8a");
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.roundRect ? ctx.roundRect(-PLAYER_W/2, -PLAYER_H/2, PLAYER_W, PLAYER_H, 10) : ctx.rect(-PLAYER_W/2, -PLAYER_H/2, PLAYER_W, PLAYER_H);
+  ctx.fill();
+  ctx.strokeStyle = "#1a7a55"; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = "#0c2a20";
+  ctx.beginPath(); ctx.arc(4, -4, 3.6, 0, 6.29); ctx.fill();
+  ctx.fillStyle = "#fff";
+  ctx.beginPath(); ctx.arc(5, -5.2, 1.2, 0, 6.29); ctx.fill();
+  ctx.restore();
+}
+
+function drawParticles() {
+  for (const p of particles) {
+    ctx.globalAlpha = clamp(p.life, 0, 1);
+    ctx.fillStyle = p.color;
+    ctx.beginPath(); ctx.arc(worldToScreenX(p.x), worldToScreenY(p.y), 3.4, 0, 6.29); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+
+function drawBanner() {
+  const t = performance.now();
+  if (t > banner.until) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, (banner.until - t) / 400);
+  ctx.fillStyle = banner.color;
+  ctx.font = `700 ${Math.round(28 * UI)}px "Trebuchet MS", sans-serif`;
+  ctx.textAlign = "center"; ctx.shadowColor = "#000"; ctx.shadowBlur = 8;
+  ctx.fillText(banner.text, W / 2, H * 0.24);
+  ctx.restore();
+}
+
+function render() {
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  drawBackground();
+  for (const p of platforms) drawPlatform(p);
+  for (const s of spikes) drawSpike(s);
+  for (const c of coins) drawCoin(c);
+  for (const e of enemies) drawEnemy(e);
+  drawParticles();
+  if (player && !player.dead) drawPlayer();
+  drawBanner();
+}
+
+/* ─────────── 9. LOOP + UI ─────────── */
+const elScore = document.getElementById("score");
+const elSide  = document.getElementById("side");
+const elVeil  = document.getElementById("veil");
+const elFinal = document.getElementById("final");
+const elBest  = document.getElementById("best");
+
+function hud() {
+  elScore.textContent = Math.floor(score);
+  elSide.innerHTML = `<div class="gold">🪙 ${coinCount}</div><div>Best ${best}</div>`;
+}
+
+let last = performance.now();
+function loop(now) {
+  const dt = Math.min((now - last) / 16.67, 2.2);
+  last = now;
+  try {
+    if (running) update(dt);
+    render();
+    hud();
+  } catch (err) {
+    console.error("Sky Hopper frame error (recovered):", err);
+  }
+  requestAnimationFrame(loop);
+}
+
+document.addEventListener("visibilitychange", () => { if (!document.hidden) last = performance.now(); });
+
+function startRun() {
+  SFX.click();
+  resize();   // guarantee correct, current dimensions at the start of every single run, not just once at page load
+  elVeil.classList.add("hidden");
+  elFinal.textContent = "";
+  reset();
+  running = true;
+  last = performance.now();
+}
+
+function showGameOver() {
+  const dist = Math.floor(score);
+  elFinal.textContent = `Distance ${dist} · 🪙 ${coinCount}` + (dist === best && dist > 0 ? " · new best!" : "");
+  document.querySelector("#veil h1").textContent = "Wiped out";
+  document.getElementById("play").textContent = "Try again";
+  elBest.textContent = `Best distance: ${best}`;
+  elVeil.classList.remove("hidden");
+}
+
+document.getElementById("play").addEventListener("click", startRun);
+
+document.getElementById("hint").textContent = TOUCH
+  ? "Tap anywhere to jump · tap again in mid-air to double jump"
+  : "Space / Up / W to jump · press again mid-air to double jump";
+document.getElementById("keys").textContent = TOUCH
+  ? "Tap the screen to jump. Land on enemies to stomp them."
+  : "Space, ↑ or W to jump — press again mid-air for a double jump.";
+elBest.textContent = `Best distance: ${best}`;
+
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
