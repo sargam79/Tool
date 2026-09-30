@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Play free online games instantly — no download, no signup, no ads. Puzzle, arcade &amp; sports HTML5 games for mobile &amp; desktop. Play now!">
-    <meta name="keywords" content="free online games, free browser games, no download games, no signup games, instant play games, play games online free, HTML5 games free, mobile browser games, free arcade games online, free puzzle games online, block puzzle game, water sort puzzle, match 3 game, 2048 game, laser puzzle game, 3d shadow puzzle game, tap to fly game, endless runner game free, bubble shooter game free, brick breaker game free, penalty shootout game free, multiplayer snake game, snake io game, snake game unblocked, physics drawing puzzle game, draw a shield game, jump and run platformer game, double jump game, endless runner platformer, coin collector game, casual browser games, web games 2026">
+    <meta name="description" content="Play free online games instantly — no download, no signup required. Puzzle, arcade &amp; sports HTML5 games for mobile &amp; desktop. Play now!">
+    <meta name="keywords" content="free online games, free browser games, no download games, no signup games, instant play games, play games online free, HTML5 games free, mobile browser games, free arcade games online, free puzzle games online, block puzzle game, water sort puzzle, match 3 game, 2048 game, laser puzzle game, 3d shadow puzzle game, tap to fly game, endless runner game free, bubble shooter game free, brick breaker game free, penalty shootout game free, multiplayer snake game, snake io game, snake game unblocked, casual browser games, web games 2026">
     <meta name="author" content="ToolPond Pro">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -13,7 +13,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Free Browser Games — Play Online No Download | ToolPond Pro">
-    <meta property="og:description" content="Play free online games instantly — no download, no signup, no ads. Puzzle, arcade & sports HTML5 games for mobile & desktop. Play now!">
+    <meta property="og:description" content="Play free online games instantly — no download, no signup required. Puzzle, arcade & sports HTML5 games for mobile & desktop. Play now!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/games.html">
     <meta property="og:site_name" content="ToolPond Pro Games">
@@ -25,7 +25,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free Browser Games — Play Online No Download">
-    <meta name="twitter:description" content="Play free online games instantly — no download, no signup, no ads. Puzzle, arcade & sports HTML5 games. Play now!">
+    <meta name="twitter:description" content="Play free online games instantly — no download, no signup required. Puzzle, arcade & sports HTML5 games. Play now!">
     <meta name="twitter:image" content="https://toolpond.org/images/games/sky-spirit-og.jpg">
 
     <!-- ItemList Schema for Games Directory -->
@@ -70,7 +70,7 @@
       "url": "https://toolpond.org",
       "logo": "https://toolpond.org/logo.png",
       "sameAs": ["https://twitter.com/toolpond"],
-      "description": "Free browser games and online calculators. No download, no login, no ads."
+      "description": "Free browser games and online calculators. No download, no login required."
     }
     </script>
 
@@ -92,7 +92,7 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Are ToolPond browser games really free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All browser games on ToolPond Pro are 100% free to play. No download, no login, no ads, no in-app purchases required." } },
+        { "@type": "Question", "name": "Are ToolPond browser games really free to play?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All browser games on ToolPond Pro are 100% free to play. No download, no login, no in-app purchases required." } },
         { "@type": "Question", "name": "Can I play these games on my phone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All games are fully responsive and work on iPhone, Android, tablets, and desktops. Just tap or click to play — no app installation needed." } },
         { "@type": "Question", "name": "Do I need to download anything to play?", "acceptedAnswer": { "@type": "Answer", "text": "No downloads required. All games run directly in your web browser using HTML5 technology. Just open the page and start playing instantly." } },
         { "@type": "Question", "name": "Do the games work on school or work networks?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Since our games run entirely in the browser with no plugins, downloads, or external dependencies, they work on most school and work networks." } },
@@ -137,7 +137,29 @@
         .sidebar-link{ display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:10px; text-decoration:none; color:var(--text-dim); font-weight:600; font-size:0.92rem; transition: all 0.15s ease; cursor:pointer; border:none; background:none; width:100%; text-align:left; }
         .sidebar-link:hover{ background:var(--card-bg); color:#fff; }
         .sidebar-link.active{ background:var(--accent-dim); color:var(--accent); }
+        .sidebar-link.filter-btn.active.cat-puzzle{ background:rgba(167,139,250,0.15); color:#a78bfa; }
+        .sidebar-link.filter-btn.active.cat-arcade{ background:rgba(79,209,255,0.15); color:#4fd1ff; }
+        .sidebar-link.filter-btn.active.cat-multiplayer{ background:rgba(74,222,128,0.15); color:#4ade80; }
+        .sidebar-link.filter-btn.active.cat-sports{ background:rgba(251,191,36,0.15); color:#fbbf24; }
+        .sidebar-link.filter-btn.active.cat-endless{ background:rgba(244,114,182,0.15); color:#f472b6; }
+        .sidebar-link.filter-btn.active.cat-tap{ background:rgba(248,113,113,0.15); color:#f87171; }
+        .sidebar-link.filter-btn.active.cat-coming{ background:rgba(148,163,184,0.15); color:#94a3b8; }
         .sidebar-link .ico{ font-size:1.1rem; width:22px; text-align:center; }
+        .sidebar-link .ico-badge{ display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:9px; font-size:1.05rem; flex-shrink:0; }
+        .cat-puzzle .ico-badge{ background:rgba(167,139,250,0.2); }
+        .cat-arcade .ico-badge{ background:rgba(79,209,255,0.2); }
+        .cat-multiplayer .ico-badge{ background:rgba(74,222,128,0.2); }
+        .cat-sports .ico-badge{ background:rgba(251,191,36,0.2); }
+        .cat-endless .ico-badge{ background:rgba(244,114,182,0.2); }
+        .cat-tap .ico-badge{ background:rgba(248,113,113,0.2); }
+        .cat-coming .ico-badge{ background:rgba(148,163,184,0.2); }
+        .cat-all .ico-badge{ background:rgba(255,255,255,0.12); }
+        .mobile-cat-btn.cat-puzzle.active{ background:#a78bfa; border-color:#a78bfa; }
+        .mobile-cat-btn.cat-arcade.active{ background:#4fd1ff; border-color:#4fd1ff; color:#04202b; }
+        .mobile-cat-btn.cat-multiplayer.active{ background:#4ade80; border-color:#4ade80; color:#04220f; }
+        .mobile-cat-btn.cat-sports.active{ background:#fbbf24; border-color:#fbbf24; color:#2b1c00; }
+        .mobile-cat-btn.cat-endless.active{ background:#f472b6; border-color:#f472b6; color:#2b0416; }
+        .mobile-cat-btn.cat-coming.active{ background:#94a3b8; border-color:#94a3b8; color:#0d0d15; }
         .mobile-cats{ display:none; gap:8px; overflow-x:auto; padding:10px 16px; background:var(--sidebar-bg); border-bottom:1px solid var(--border); }
         .mobile-cats::-webkit-scrollbar{ display:none; }
         .mobile-cat-btn{ flex-shrink:0; background:var(--card-bg); border:1px solid var(--border); color:var(--text-dim); padding:8px 14px; border-radius:999px; font-weight:700; font-size:0.82rem; cursor:pointer; white-space:nowrap; }
@@ -154,7 +176,13 @@
         .content-pad{ padding:24px; max-width:1400px; margin:0 auto; }
         .page-heading{ font-size:0.95rem; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:0.2px; }
         .page-heading strong{ color:var(--text); }
-        .hero{ position:relative; border-radius:20px; overflow:hidden; padding:40px 32px; margin-bottom:32px; background: linear-gradient(120deg, #1b1030, #0d0d15 60%), radial-gradient(circle at 80% 20%, rgba(139,92,246,0.35), transparent 60%); border:1px solid var(--border); box-shadow:var(--shadow); }
+        .hero{ position:relative; border-radius:20px; overflow:hidden; padding:40px 32px; margin-bottom:32px; border:1px solid var(--border); box-shadow:var(--shadow); display:none; }
+        .hero.active{ display:block; animation: heroFade 0.5s ease; }
+        @keyframes heroFade{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:translateY(0); } }
+        .hero-carousel{ position:relative; }
+        .hero-dots{ display:flex; gap:8px; justify-content:center; margin:-14px 0 28px; }
+        .hero-dot{ width:9px; height:9px; border-radius:50%; border:none; background:var(--border); cursor:pointer; padding:0; transition:all 0.2s ease; }
+        .hero-dot.active{ background:var(--accent2); width:24px; border-radius:5px; }
         .hero-badge{ display:inline-block; background:var(--accent2); color:#04140c; font-size:0.7rem; font-weight:800; padding:4px 12px; border-radius:999px; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:14px; }
         .hero h2{ font-size:2.1rem; font-weight:800; margin-bottom:10px; max-width:600px; }
         .hero p{ color:var(--text-dim); max-width:520px; margin-bottom:20px; font-size:0.98rem; line-height:1.7; }
@@ -168,8 +196,13 @@
         .section-head h2{ font-size:1.15rem; font-weight:800; display:flex; align-items:center; gap:8px; }
         .section-head .count{ color:var(--text-dim); font-size:0.82rem; font-weight:600; }
         .tile-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px; }
-        .game-tile{ position:relative; border-radius:14px; overflow:hidden; text-decoration:none; color:#fff; background:var(--card-bg); border:1px solid var(--border); transition: transform 0.18s ease, box-shadow 0.18s ease; display:flex; flex-direction:column; }
-        .game-tile:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 14px 30px rgba(139,92,246,0.25); border-color:var(--accent); }
+        .game-tile{ position:relative; border-radius:14px; overflow:hidden; text-decoration:none; color:#fff; background:var(--card-bg); border:1px solid var(--border); transition: transform 0.28s cubic-bezier(.2,.8,.2,1), box-shadow 0.28s ease, border-color 0.28s ease; display:flex; flex-direction:column; }
+        .game-tile:hover{ transform:translateY(-7px) scale(1.045); box-shadow:0 22px 44px rgba(139,92,246,0.4); border-color:var(--accent); z-index:5; }
+        .tile-thumb{ overflow:hidden; }
+        .tile-thumb img{ transition:transform 0.45s ease; }
+        .game-tile:hover .tile-thumb img{ transform:scale(1.1); }
+        .tile-play-overlay{ transition:transform 0.25s ease, opacity 0.25s ease; }
+        .game-tile:hover .tile-play-overlay{ transform:scale(1.15); }
         .tile-thumb{ aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; font-size:2.6rem; position:relative; overflow:hidden; }
         .tile-thumb img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
         .tile-thumb::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55)); z-index:1; }
@@ -198,6 +231,13 @@
         .thumb-18{ background:linear-gradient(135deg,#070d1a,#1E5C4F 55%,#F5B942); }
         .thumb-19{ background:linear-gradient(135deg,#2563eb,#f43f5e 60%,#f59e0b); }
         .thumb-20{ background:linear-gradient(135deg,#2563eb,#38bdf8 55%,#22c55e); }
+        .section-desc{ color:var(--text-dim); font-size:0.85rem; margin:-8px 0 14px; max-width:640px; line-height:1.6; }
+        .section-head-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:4px; }
+        .sort-select{ background:var(--card-bg); color:var(--text); border:1px solid var(--border); border-radius:999px; padding:7px 14px; font-size:0.8rem; font-weight:600; cursor:pointer; }
+        .sort-select:focus{ outline:none; border-color:var(--accent); }
+        .tile-play-count{ position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:0.62rem; font-weight:700; padding:2px 7px; border-radius:999px; z-index:3; }
+        .recently-played{ display:none; }
+        .recently-played.has-items{ display:block; }
         .seo-block{ background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:24px; margin-bottom:24px; }
         .seo-block h2{ font-size:1.15rem; font-weight:800; margin-bottom:12px; }
         .seo-block h3{ font-size:1rem; font-weight:700; margin:14px 0 8px; color:var(--text); }
@@ -238,14 +278,14 @@
     <a href="index.html" class="sidebar-link"><span class="ico">🧮</span>Tools</a>
     <a href="about.html" class="sidebar-link"><span class="ico">ℹ️</span>About</a>
     <div class="sidebar-section-label">Categories</div>
-    <button class="sidebar-link filter-btn active" onclick="filterByCategory('all', this)"><span class="ico">⭐</span>All Games</button>
-    <button class="sidebar-link filter-btn" onclick="filterByCategory('puzzle', this)"><span class="ico">🧩</span>Puzzle</button>
-    <button class="sidebar-link filter-btn" onclick="filterByCategory('arcade', this)"><span class="ico">🕹️</span>Arcade</button>
-    <button class="sidebar-link filter-btn" onclick="filterByCategory('multiplayer', this)"><span class="ico">🐍</span>Multiplayer</button>
-    <button class="sidebar-link filter-btn" onclick="filterByCategory('sports', this)"><span class="ico">⚽</span>Sports</button>
-    <button class="sidebar-link filter-btn" onclick="filterByCategory('endless', this)"><span class="ico">🏃</span>Endless Runner</button>
-    <button class="sidebar-link filter-btn" onclick="filterByCategory('tap', this)"><span class="ico">👆</span>Tap to Play</button>
-    <button class="sidebar-link filter-btn" onclick="filterByCategory('coming', this)"><span class="ico">⏳</span>Coming Soon</button>
+    <button class="sidebar-link filter-btn active cat-all" onclick="filterByCategory('all', this)"><span class="ico ico-badge">⭐</span>All Games</button>
+    <button class="sidebar-link filter-btn cat-puzzle" onclick="filterByCategory('puzzle', this)"><span class="ico ico-badge">🧩</span>Puzzle</button>
+    <button class="sidebar-link filter-btn cat-arcade" onclick="filterByCategory('arcade', this)"><span class="ico ico-badge">🕹️</span>Arcade</button>
+    <button class="sidebar-link filter-btn cat-multiplayer" onclick="filterByCategory('multiplayer', this)"><span class="ico ico-badge">🐍</span>Multiplayer</button>
+    <button class="sidebar-link filter-btn cat-sports" onclick="filterByCategory('sports', this)"><span class="ico ico-badge">⚽</span>Sports</button>
+    <button class="sidebar-link filter-btn cat-endless" onclick="filterByCategory('endless', this)"><span class="ico ico-badge">🏃</span>Endless Runner</button>
+    <button class="sidebar-link filter-btn cat-tap" onclick="filterByCategory('tap', this)"><span class="ico ico-badge">👆</span>Tap to Play</button>
+    <button class="sidebar-link filter-btn cat-coming" onclick="filterByCategory('coming', this)"><span class="ico ico-badge">⏳</span>Coming Soon</button>
     <div class="sidebar-section-label">Company</div>
     <a href="contact.html" class="sidebar-link"><span class="ico">✉️</span>Contact</a>
     <a href="privacy-policy.html" class="sidebar-link"><span class="ico">🔒</span>Privacy</a>
@@ -258,13 +298,13 @@
     </div>
 
     <div class="mobile-cats">
-      <button class="mobile-cat-btn active" onclick="filterByCategory('all', this)">⭐ All</button>
-      <button class="mobile-cat-btn" onclick="filterByCategory('puzzle', this)">🧩 Puzzle</button>
-      <button class="mobile-cat-btn" onclick="filterByCategory('arcade', this)">🕹️ Arcade</button>
-      <button class="mobile-cat-btn" onclick="filterByCategory('multiplayer', this)">🐍 Multiplayer</button>
-      <button class="mobile-cat-btn" onclick="filterByCategory('sports', this)">⚽ Sports</button>
-      <button class="mobile-cat-btn" onclick="filterByCategory('endless', this)">🏃 Runner</button>
-      <button class="mobile-cat-btn" onclick="filterByCategory('coming', this)">⏳ Soon</button>
+      <button class="mobile-cat-btn active cat-all" onclick="filterByCategory('all', this)">⭐ All</button>
+      <button class="mobile-cat-btn cat-puzzle" onclick="filterByCategory('puzzle', this)">🧩 Puzzle</button>
+      <button class="mobile-cat-btn cat-arcade" onclick="filterByCategory('arcade', this)">🕹️ Arcade</button>
+      <button class="mobile-cat-btn cat-multiplayer" onclick="filterByCategory('multiplayer', this)">🐍 Multiplayer</button>
+      <button class="mobile-cat-btn cat-sports" onclick="filterByCategory('sports', this)">⚽ Sports</button>
+      <button class="mobile-cat-btn cat-endless" onclick="filterByCategory('endless', this)">🏃 Runner</button>
+      <button class="mobile-cat-btn cat-coming" onclick="filterByCategory('coming', this)">⏳ Soon</button>
     </div>
 
     <div class="content-pad">
@@ -273,21 +313,63 @@
 
       <div class="quick-answer">
         <strong>Quick Answer</strong>
-        <p>ToolPond offers 19 free browser games — puzzle, arcade, sports, and multiplayer — playable instantly with no download, signup, or ads. The newest additions are Save the Ball, Sky Hopper, and Snake Arena, a real-time multiplayer snake game.</p>
+        <p>ToolPond offers 19 free browser games — puzzle, arcade, sports, and multiplayer — playable instantly with no download or signup required. The newest additions are Save the Ball, Sky Hopper, and Snake Arena, a real-time multiplayer snake game.</p>
       </div>
 
-      <div class="hero">
-        <span class="hero-icon">✨</span>
-        <span class="hero-badge">Featured</span>
-        <h2>Sky Spirit: Wind Runner</h2>
-        <p>Tap or click to fly a glowing spirit through wind rings. Collect crystals, grab power-ups, and unlock 8 spirit color skins in this addictive endless runner.</p>
-        <div class="hero-meta"><span>🕹️ Arcade</span><span>🏃 Endless Runner</span><span>👆 Tap to Fly</span><span>📱 Mobile Ready</span></div>
-        <a href="sky-spirit.html" class="hero-play">▶ Play Now</a>
+      <div class="no-results" id="noResultsMsg" style="display:none; text-align:center; padding:40px 20px; color:var(--text-dim);">
+        <p style="font-size:1.1rem; margin-bottom:6px;">😕 No games found</p>
+        <p style="font-size:0.9rem;">Try a different search term or browse by category.</p>
+      </div>
+
+      <div class="hero-carousel" id="heroCarousel">
+        <div class="hero active" data-slide="0" style="background: linear-gradient(120deg, #1b1030, #0d0d15 60%), radial-gradient(circle at 80% 20%, rgba(139,92,246,0.35), transparent 60%);">
+          <span class="hero-icon">✨</span>
+          <span class="hero-badge">Featured</span>
+          <h2>Sky Spirit: Wind Runner</h2>
+          <p>Tap or click to fly a glowing spirit through wind rings. Collect crystals, grab power-ups, and unlock 8 spirit color skins in this addictive endless runner.</p>
+          <div class="hero-meta"><span>🕹️ Arcade</span><span>🏃 Endless Runner</span><span>👆 Tap to Fly</span><span>📱 Mobile Ready</span></div>
+          <a href="sky-spirit.html" class="hero-play">▶ Play Now</a>
+        </div>
+        <div class="hero" data-slide="1" style="background: linear-gradient(120deg, #0a2e1f, #0d0d15 60%), radial-gradient(circle at 80% 20%, rgba(74,222,128,0.3), transparent 60%);">
+          <span class="hero-icon">🐍</span>
+          <span class="hero-badge">Multiplayer</span>
+          <h2>Snake Arena</h2>
+          <p>Grow your snake, eat orbs, and outlast the competition in this real-time multiplayer arena. Become the biggest snake on the board.</p>
+          <div class="hero-meta"><span>🐍 Multiplayer</span><span>⚡ Real-time</span><span>📱 Mobile Ready</span></div>
+          <a href="snake-arena.html" class="hero-play">▶ Play Now</a>
+        </div>
+        <div class="hero" data-slide="2" style="background: linear-gradient(120deg, #2e1a0a, #0d0d15 60%), radial-gradient(circle at 80% 20%, rgba(251,191,36,0.3), transparent 60%);">
+          <span class="hero-icon">🧩</span>
+          <span class="hero-badge">Puzzle</span>
+          <h2>Bloxdoku</h2>
+          <p>A satisfying mashup of block puzzle and sudoku logic. Clear rows, columns, and grids as the pieces keep coming.</p>
+          <div class="hero-meta"><span>🧩 Puzzle</span><span>🧠 Logic</span><span>📱 Mobile Ready</span></div>
+          <a href="bloxdoku.html" class="hero-play">▶ Play Now</a>
+        </div>
+        <div class="hero-dots">
+          <button class="hero-dot active" onclick="goToHeroSlide(0)" aria-label="Slide 1"></button>
+          <button class="hero-dot" onclick="goToHeroSlide(1)" aria-label="Slide 2"></button>
+          <button class="hero-dot" onclick="goToHeroSlide(2)" aria-label="Slide 3"></button>
+        </div>
+      </div>
+
+      <div class="section recently-played" id="recentlyPlayedSection" data-section="recent">
+        <div class="section-head"><h2>🕐 Recently Played</h2><span class="count" id="recentCount">0 games</span></div>
+        <p class="section-desc">Games you've opened on this device — picks up right where you left off, stored only in your browser.</p>
+        <div class="tile-grid" id="recentlyPlayedGrid"></div>
       </div>
 
       <div class="section" data-section="trending">
-        <div class="section-head"><h2>🔥 New &amp; Trending</h2><span class="count">19 games</span></div>
-        <div class="tile-grid">
+        <div class="section-head-row">
+          <div class="section-head"><h2>🔥 New &amp; Trending</h2><span class="count">19 games</span></div>
+          <select class="sort-select" id="sortSelect" onchange="sortTrending()" aria-label="Sort games">
+            <option value="default">Sort: Featured</option>
+            <option value="az">Sort: A–Z</option>
+            <option value="newest">Sort: Newest Added</option>
+          </select>
+        </div>
+        <p class="section-desc">Our most-played and most recently added titles — a good starting point if you're not sure what to try first.</p>
+        <div class="tile-grid" id="trendingGrid">
           <a class="game-tile" href="save-the-ball.html" data-category="puzzle physics">
             <div class="tile-thumb thumb-19"><img src="/images/games/save-the-ball.webp" alt="Save the Ball — free online physics drawing puzzle game" loading="lazy" width="512" height="512" onerror="this.style.display='none'"><span class="tile-badge">New</span><div class="tile-play-overlay">▶</div></div>
             <div class="tile-info"><h3>Save the Ball</h3><p>Drawing Puzzle</p></div>
@@ -369,6 +451,7 @@
 
       <div class="section" data-section="puzzle">
         <div class="section-head"><h2>🧩 Puzzle Games</h2><span class="count">13 games</span></div>
+        <p class="section-desc">Block puzzles, water sorting, laser logic, and more — slower-paced games built for focus rather than reflexes.</p>
         <div class="tile-grid">
           <a class="game-tile" href="save-the-ball.html" data-category="puzzle physics"><div class="tile-thumb thumb-19"><img src="/images/games/save-the-ball.webp" alt="Save the Ball — free online physics drawing puzzle game" loading="lazy" width="512" height="512" onerror="this.style.display='none'"><div class="tile-play-overlay">▶</div></div><div class="tile-info"><h3>Save the Ball</h3><p>Drawing Puzzle</p></div></a>
           <a class="game-tile" href="bloxdoku.html" data-category="puzzle"><div class="tile-thumb"><img src="/images/games/bloxdoku.webp" alt="Bloxdoku — free online block puzzle sudoku game" loading="lazy" width="512" height="512"><div class="tile-play-overlay">▶</div></div><div class="tile-info"><h3>Bloxdoku</h3><p>Block Puzzle</p></div></a>
@@ -387,6 +470,7 @@
 
       <div class="section" data-section="arcade">
         <div class="section-head"><h2>🕹️ Arcade &amp; Sports</h2><span class="count">6 games</span></div>
+        <p class="section-desc">Fast, reflex-driven games — endless runners, brick breakers, and a penalty shootout for quick sessions.</p>
         <div class="tile-grid">
           <a class="game-tile" href="sky-hopper.html" data-category="arcade endless tap"><div class="tile-thumb thumb-20"><img src="/images/games/sky-hopper.webp" alt="Sky Hopper — free online jump-and-run platformer game" loading="lazy" width="512" height="512" onerror="this.style.display='none'"><div class="tile-play-overlay">▶</div></div><div class="tile-info"><h3>Sky Hopper</h3><p>Jump &amp; Run</p></div></a>
           <a class="game-tile" href="sky-spirit.html" data-category="arcade endless tap"><div class="tile-thumb"><img src="/images/games/sky-spirit.webp" alt="Sky Spirit: Wind Runner — free online tap-to-fly arcade game" loading="lazy" width="512" height="512"><div class="tile-play-overlay">▶</div></div><div class="tile-info"><h3>Sky Spirit</h3><p>Endless Runner</p></div></a>
@@ -399,6 +483,7 @@
 
       <div class="section" data-section="multiplayer">
         <div class="section-head"><h2>🐍 Multiplayer</h2><span class="count">1 game</span></div>
+        <p class="section-desc">Compete against other players in real time instead of the clock or a level goal.</p>
         <div class="tile-grid">
           <a class="game-tile" href="snake-arena.html" data-category="multiplayer arcade">
             <div class="tile-thumb thumb-18"><img src="/images/games/snake-arena.webp" alt="Snake Arena — free online multiplayer snake game, grow, survive, dominate" loading="lazy" width="512" height="512" onerror="this.style.display='none'"><div class="tile-play-overlay">▶</div></div>
@@ -409,6 +494,7 @@
 
       <div class="section" data-section="coming">
         <div class="section-head"><h2>⏳ Coming Soon</h2><span class="count">2 games</span></div>
+        <p class="section-desc">In active development — check back soon, or suggest a game idea on our contact page.</p>
         <div class="tile-grid">
           <div class="game-tile disabled" data-category="arcade endless coming"><div class="tile-thumb thumb-13"><span class="tile-badge soon">Soon</span>🌌</div><div class="tile-info"><h3>Space Drifter</h3><p>Arcade</p></div></div>
           <div class="game-tile disabled" data-category="arcade endless coming"><div class="tile-thumb thumb-14"><span class="tile-badge soon">Soon</span>🐉</div><div class="tile-info"><h3>Dragon Dash</h3><p>Runner</p></div></div>
@@ -441,25 +527,25 @@
       </div>
 
       <div class="seo-block">
-        <h2>Play Free Online Games — No Download, No Signup, No Ads</h2>
-        <p>ToolPond Pro brings you a curated collection of the best free online games you can play instantly. No downloads, no accounts, no ads — just pure fun in your web browser, on any device.</p>
+        <h2>Play Free Online Games — No Download, No Signup Required</h2>
+        <p>ToolPond Pro brings you a curated collection of the best free online games you can play instantly. No downloads, no accounts — just pure fun in your web browser, on any device.</p>
         <div class="benefits-grid">
           <div class="benefit-item"><h3>⚡ Instant Play</h3><p>Click and play in seconds — no installs.</p></div>
           <div class="benefit-item"><h3>📱 Mobile Optimized</h3><p>Touch controls built for iPhone and Android.</p></div>
-          <div class="benefit-item"><h3>🚫 Zero Ads</h3><p>No banners, no pop-ups, no interruptions.</p></div>
+          <div class="benefit-item"><h3>🎮 Always Free</h3><p>Every game on ToolPond is free to play, always.</p></div>
           <div class="benefit-item"><h3>🔒 No Account Needed</h3><p>Play anonymously, nothing to sign up for.</p></div>
         </div>
       </div>
 
       <div class="seo-block calc-teaser">
         <h3>🧮 Need Free Calculators?</h3>
-        <p>Explore 37+ free online calculators for health, finance, and productivity — no signup, no ads.</p>
+        <p>Explore 37+ free online calculators for health, finance, and productivity — no signup required.</p>
         <a href="index.html">Browse Free Calculators →</a>
       </div>
 
       <div class="seo-block">
         <h2>Frequently Asked Questions</h2>
-        <div class="faq-item"><h3>Are ToolPond browser games really free to play?</h3><p>Yes. All browser games on ToolPond Pro are 100% free to play. No download, no login, no ads, no in-app purchases required.</p></div>
+        <div class="faq-item"><h3>Are ToolPond browser games really free to play?</h3><p>Yes. All browser games on ToolPond Pro are 100% free to play. No download, no login, no in-app purchases required.</p></div>
         <div class="faq-item"><h3>Can I play these games on my phone?</h3><p>Yes. All games are fully responsive and work on iPhone, Android, tablets, and desktops.</p></div>
         <div class="faq-item"><h3>Do I need to download anything to play?</h3><p>No. All games run directly in your browser using HTML5 technology.</p></div>
         <div class="faq-item"><h3>What is Sky Spirit: Wind Runner?</h3><p>A free tap-to-fly arcade game where you guide a glowing spirit through wind rings, collect crystals, and unlock power-ups and skins.</p></div>
@@ -494,15 +580,136 @@
 </div>
 
 <script>
+  // ---- Real play tracking (localStorage only, no fake numbers) ----
+  const PLAY_KEY = 'tp_play_counts';
+  const RECENT_KEY = 'tp_recent_games';
+
+  function getPlayCounts(){ try{ return JSON.parse(localStorage.getItem(PLAY_KEY)) || {}; }catch(e){ return {}; } }
+  function getRecent(){ try{ return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; }catch(e){ return []; } }
+
+  function recordPlay(tile){
+    const href = tile.getAttribute('href');
+    if(!href) return;
+    const counts = getPlayCounts();
+    counts[href] = (counts[href]||0) + 1;
+    localStorage.setItem(PLAY_KEY, JSON.stringify(counts));
+
+    let recent = getRecent().filter(h => h !== href);
+    recent.unshift(href);
+    recent = recent.slice(0, 6);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
+  }
+
+  function renderPlayCounts(){
+    const counts = getPlayCounts();
+    document.querySelectorAll('.game-tile[href]').forEach(tile => {
+      const href = tile.getAttribute('href');
+      const n = counts[href];
+      if(n && n > 0){
+        let badge = tile.querySelector('.tile-play-count');
+        if(!badge){
+          badge = document.createElement('span');
+          badge.className = 'tile-play-count';
+          tile.querySelector('.tile-thumb')?.appendChild(badge);
+        }
+        badge.textContent = n === 1 ? '1 play' : n + ' plays';
+      }
+    });
+  }
+
+  function renderRecentlyPlayed(){
+    const recent = getRecent();
+    const section = document.getElementById('recentlyPlayedSection');
+    const grid = document.getElementById('recentlyPlayedGrid');
+    if(!recent.length){ section.classList.remove('has-items'); return; }
+    grid.innerHTML = '';
+    recent.forEach(href => {
+      const original = document.querySelector('.game-tile[href="'+CSS.escape(href)+'"]');
+      if(original){ grid.appendChild(original.cloneNode(true)); }
+    });
+    document.getElementById('recentCount').textContent = recent.length + (recent.length===1?' game':' games');
+    if(grid.children.length){ section.classList.add('has-items'); }
+  }
+
+  document.addEventListener('click', e => {
+    const tile = e.target.closest('.game-tile[href]');
+    if(tile) recordPlay(tile);
+  });
+
+  function sortTrending(){
+    const mode = document.getElementById('sortSelect').value;
+    const grid = document.getElementById('trendingGrid');
+    const tiles = Array.from(grid.children);
+    if(!grid.dataset.originalOrder){
+      grid.dataset.originalOrder = '1';
+      grid._originalTiles = tiles.slice();
+    }
+    let sorted;
+    if(mode === 'az'){
+      sorted = tiles.slice().sort((a,b) => a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent));
+    } else if(mode === 'newest'){
+      // Uses each game's existing "New" badge (already curated on the site) rather than invented dates
+      const withBadge = tiles.filter(t => t.querySelector('.tile-badge') && t.querySelector('.tile-badge').textContent.trim()==='New');
+      const withoutBadge = tiles.filter(t => !(t.querySelector('.tile-badge') && t.querySelector('.tile-badge').textContent.trim()==='New'));
+      sorted = withBadge.concat(withoutBadge);
+    } else {
+      sorted = grid._originalTiles.slice();
+    }
+    sorted.forEach(t => grid.appendChild(t));
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    renderPlayCounts();
+    renderRecentlyPlayed();
+  });
+
+  // ---- Hero carousel ----
+  let heroIndex = 0;
+  let heroTimer = null;
+  function goToHeroSlide(i){
+    document.querySelectorAll('.hero').forEach(h => h.classList.remove('active'));
+    document.querySelectorAll('.hero-dot').forEach(d => d.classList.remove('active'));
+    document.querySelector('.hero[data-slide="'+i+'"]').classList.add('active');
+    document.querySelectorAll('.hero-dot')[i].classList.add('active');
+    heroIndex = i;
+    resetHeroTimer();
+  }
+  function nextHeroSlide(){
+    const total = document.querySelectorAll('.hero').length;
+    goToHeroSlide((heroIndex + 1) % total);
+  }
+  function resetHeroTimer(){
+    if(heroTimer) clearInterval(heroTimer);
+    heroTimer = setInterval(nextHeroSlide, 6000);
+  }
+  const heroCarouselEl = document.getElementById('heroCarousel');
+  if(heroCarouselEl){
+    heroCarouselEl.addEventListener('mouseenter', () => { if(heroTimer) clearInterval(heroTimer); });
+    heroCarouselEl.addEventListener('mouseleave', resetHeroTimer);
+  }
+  resetHeroTimer();
+
   function filterGames() {
     const q = document.getElementById('searchInput').value.toLowerCase();
+    let anyMatch = false;
     document.querySelectorAll('.game-tile').forEach(tile => {
-      tile.style.display = tile.textContent.toLowerCase().includes(q) ? '' : 'none';
+      const match = tile.textContent.toLowerCase().includes(q);
+      tile.style.display = match ? '' : 'none';
+      if(match) anyMatch = true;
     });
     document.querySelectorAll('.section').forEach(sec => {
       const anyVisible = [...sec.querySelectorAll('.game-tile')].some(t => t.style.display !== 'none');
       sec.style.display = anyVisible ? '' : 'none';
     });
+    const noResults = document.getElementById('noResultsMsg');
+    const heroC = document.getElementById('heroCarousel');
+    if(q && !anyMatch){
+      noResults.style.display = '';
+      if(heroC) heroC.style.display = 'none';
+    } else {
+      noResults.style.display = 'none';
+      if(heroC) heroC.style.display = '';
+    }
   }
   function filterByCategory(category, btn) {
     document.querySelectorAll('.filter-btn, .mobile-cat-btn').forEach(b => b.classList.remove('active'));
