@@ -277,7 +277,7 @@
 </url>
 <url>
 <loc>https://toolpond.org/stride-calculator.html</loc>
-<lastmod>2026-07-28</lastmod>
+<lastmod>2026-10-05</lastmod>
 <priority>0.7</priority>
 </url>
 <url>
@@ -421,5 +421,48 @@
 <loc>https://toolpond.org/matrix-destiny-calculator.html</loc>
 <lastmod>2026-07-28</lastmod>
 <priority>0.7</priority>
+</url>
+<!--   ============================================
+       BLOG
+       ============================================   -->
+<url>
+<loc>https://toolpond.org/blog.html</loc>
+<lastmod>2026-10-06</lastmod>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/stride-length-guide.html</loc>
+<lastmod>2026-10-05</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/how-to-use-bmi-calculator.html</loc>
+<lastmod>2026-06-02</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/how-to-use-mortgage-calculator.html</loc>
+<lastmod>2026-06-03</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/body-fat-percentage-guide.html</loc>
+<lastmod>2026-06-05</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/daily-calorie-needs.html</loc>
+<lastmod>2026-06-05</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/how-to-calculate-bmi.html</loc>
+<lastmod>2026-06-02</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/macros-breakdown-guide.html</loc>
+<lastmod>2026-06-05</lastmod>
+<priority>0.6</priority>
 </url>
 </urlset>
