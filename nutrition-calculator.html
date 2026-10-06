@@ -8,10 +8,9 @@
     <meta name="msvalidate.01" content="3EBE223AA61B4AE987184F8F4F12353F" />
     <meta charset="UTF-8">
     <meta name="google-adsense-account" content="ca-pub-7280526621945427">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
-     crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Track daily calories and macronutrients: protein, carbs, and fat. Add foods with quantities and see running totals. Free, no signup, works in your browser.">
+    <title>Nutrition Calculator: Calories, Protein, Carbs &amp; Fat</title>
+    <meta name="description" content="Free nutrition calculator with 60 foods built in. Search a food, enter grams or servings, and get calories, protein, carbs, fat, fiber and net carbs.">
     <meta name="author" content="ToolPond Pro">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://toolpond.org/nutrition-calculator.html">
@@ -19,391 +18,583 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/nutrition-calculator.html">
-    <meta property="og:title" content="Nutrition Calculator — Track Calories & Macros">
-    <meta property="og:description" content="Track daily calories and macronutrients: protein, carbs, and fat. Add foods with quantities and see running totals. Free, no signup.">
+    <meta property="og:title" content="Nutrition Calculator: Calories, Protein, Carbs &amp; Fat">
+    <meta property="og:description" content="Free nutrition calculator with 60 foods built in. Search a food, enter grams or servings, and get calories, protein, carbs, fat, fiber and net carbs.">
+    <meta property="og:site_name" content="ToolPond Pro">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Nutrition Calculator — Track Calories & Macros">
-    <meta property="twitter:description" content="Track daily calories and macronutrients: protein, carbs, and fat. Free, no signup.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nutrition Calculator: Calories, Protein, Carbs &amp; Fat">
+    <meta name="twitter:description" content="Free nutrition calculator with 60 foods built in. Search a food, enter grams or servings, and get calories, protein, carbs, fat, fiber and net carbs.">
 
-    <!-- Schema: SoftwareApplication -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Nutrition Calculator",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free browser-based nutrition calculator with a built-in food list. Get calories, protein, carbs, fat, fiber and net carbs for any meal or day, with calorie and macro goals.",
+  "url": "https://toolpond.org/nutrition-calculator.html",
+  "dateModified": "2026-10-06",
+  "featureList": "Searchable food list, Grams or servings, Calories protein carbs fat, Fiber and net carbs, Daily calorie and macro goals, Custom foods, Saved in your browser, No signup"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "Question",
+      "name": "How does this nutrition calculator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Search a food, choose an amount in grams or servings, and add it to a meal. The calculator scales the per-100 g values for that food to your amount and keeps running totals for calories, protein, carbs, fat, fiber and net carbs. If a food is missing, enter its label values in the custom food box."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do the food values come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The built-in foods use typical values from the USDA FoodData Central database, rounded to one decimal. Real foods vary by brand, ripeness, cooking method and cut, so treat the numbers as good estimates and use the package label when you have one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many calories are in a gram of protein, carbs and fat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Protein and carbohydrate each provide about 4 calories per gram and fat provides about 9. Alcohol provides about 7. The calculator uses the calorie figure listed for each food and shows your protein, carb and fat split using the 4/4/9 values."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are net carbs and how are they calculated here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Net carbs are total carbohydrates minus dietary fiber. This calculator shows both numbers. Sugar alcohols are not tracked, so if you eat products that contain them, subtract them yourself using the label."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the calculator save my food log?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your log and calorie goal are saved only in this browser on this device, using local storage, so they are still there when you come back. Nothing is sent to a server. Use Clear all to erase the log, or clear your browser data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do my totals differ from a food label or another app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common reasons are raw versus cooked weight, different brands, rounding on labels, and different database entries for the same food. Weigh food the same way each time, either raw or cooked, and pick the matching entry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much protein do I need per day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The US recommended dietary allowance is 0.8 g of protein per kg of body weight per day, which is about 56 g for a 70 kg adult. Active people and athletes often aim for 1.2 to 2.0 g per kg. Your needs depend on your health and goals, so ask a doctor or dietitian if you are unsure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which macro split should I choose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The presets are common starting points, not medical advice: balanced is 25% protein, 50% carbs and 25% fat; weight loss is 40/30/30; muscle gain is 30/40/30; keto is 20/5/75. Pick one that you can follow consistently and adjust it based on how you feel and your results."
+      }
+    }
+  ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://toolpond.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://toolpond.org/#tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
       "name": "Nutrition Calculator",
-      "applicationCategory": "WebApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "A browser-based tool for tracking daily calories and macronutrients. Add foods with protein, carbs, fat, and quantities. See running totals in real-time. All processing happens locally.",
-      "url": "https://toolpond.org/nutrition-calculator.html",
-      "featureList": "Calorie tracking, Protein carb fat logging, Quantity multiplier, Running totals, Local browser processing, No signup required"
+      "item": "https://toolpond.org/nutrition-calculator.html"
     }
+  ]
+}
     </script>
-
-    <!-- Schema: FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How accurate are the calculations?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The tool performs basic arithmetic on the values you enter. Accuracy depends entirely on the nutritional data you input. For best results, use verified sources like USDA FoodData Central, nutrition labels, or reputable food tracking apps. The tool does not contain a food database — you must enter values manually."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does this tool store my food log?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. All calculations happen in your browser. Food entries are not stored, synced, or transmitted. When you close the page, your log is lost. For persistent tracking, use a dedicated nutrition app like MyFitnessPal or Cronometer."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are macronutrients?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Macronutrients (macros) are the three main nutrients your body needs in large amounts: protein (4 calories per gram), carbohydrates (4 calories per gram), and fat (9 calories per gram). Alcohol is technically a fourth macro at 7 calories per gram. Tracking macros helps ensure you're getting balanced nutrition beyond just counting calories."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <!-- Schema: BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://toolpond.org/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Tools",
-          "item": "https://toolpond.org/#tools"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Nutrition Calculator",
-          "item": "https://toolpond.org/nutrition-calculator.html"
-        }
-      ]
-    }
-    </script>
-
-    <title>Nutrition Calculator — Track Calories & Macros</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#6366f1;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:var(--text);background:var(--light);padding-top:70px}nav{background:#fff;border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1000px;margin:0 auto;padding:0 2rem}.tool-header{background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;padding:3rem 2rem;text-align:center}.tool-header h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}.tool-content{padding:3rem 2rem;background:#fff}.food-section{background:var(--light);padding:2rem;border-radius:8px;margin-bottom:2rem}.input-group{margin-bottom:1.5rem}.input-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark)}.input-field{width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem}.input-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}.food-list{background:#fff;padding:1.5rem;border-radius:8px;margin:1.5rem 0}.food-item{display:flex;justify-content:space-between;align-items:center;padding:1rem;border-bottom:1px solid var(--border)}.food-name{font-weight:600;color:var(--dark)}.food-cal{color:var(--primary);font-weight:600}.remove-btn{background:#fee2e2;color:#991b1b;border:none;padding:0.25rem 0.75rem;border-radius:4px;cursor:pointer;font-size:0.85rem}.remove-btn:hover{background:#fecaca}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin:2rem 0}.stat-card{background:linear-gradient(135deg,#f0f4ff,#faf5ff);padding:1.5rem;border-radius:8px;text-align:center;border:1px solid var(--border)}.stat-label{color:#6b7280;font-size:0.9rem;margin-bottom:0.5rem}.stat-value{font-size:2rem;font-weight:700;color:var(--primary)}.action-buttons{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}.btn{padding:0.75rem 1.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:all 0.3s}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#4f46e5;transform:translateY(-2px)}.btn-secondary{background:#f3f4f6;color:var(--dark);border:1px solid var(--border)}.btn-secondary:hover{background:#e5e7eb}.content-section{margin:3rem 0;padding:2rem;background:var(--light);border-radius:8px}.content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem}.content-section h3{color:#4b5563;margin:1.5rem 0 0.5rem;font-size:1.2rem;font-weight:600}.content-section p{margin-bottom:1rem;color:#4b5563;line-height:1.8}.content-section ul{margin:1rem 0 1rem 1.5rem}.content-section li{margin-bottom:0.75rem;color:#4b5563;line-height:1.6}.use-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1.5rem 0}.use-case{background:#fff;padding:1.5rem;border-radius:8px;border-top:4px solid var(--primary)}.use-case h4{color:var(--dark);margin-bottom:0.5rem}.use-case p{color:#6b7280;font-size:0.95rem}.faq{margin:2rem 0}.faq-item{margin-bottom:1rem;background:#fff;padding:1.5rem;border-radius:8px;border-left:4px solid var(--primary)}.faq-item h4{color:var(--dark);margin-bottom:0.5rem}.faq-item p{color:#6b7280;font-size:0.95rem}.related-tools{margin:3rem 0}.related-tools h3{color:var(--dark);margin-bottom:1.5rem}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.related-tool{background:#fff;padding:1rem;border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer;transition:all 0.3s;text-decoration:none;color:inherit}.related-tool:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.1)}.related-tool h4{color:var(--dark);margin-bottom:0.5rem}footer{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.footer-links{margin-bottom:1.5rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}.back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999}.back-to-top.show{opacity:1;visibility:visible}@media (max-width:768px){.tool-header h1{font-size:1.8rem}.action-buttons{flex-direction:column}}
+*{margin:0;padding:0;box-sizing:border-box}:root{--primary:#6366f1;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',sans-serif;line-height:1.6;color:var(--text);background:var(--light);padding-top:70px}nav{background:#fff;border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--primary),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.container{max-width:1000px;margin:0 auto;padding:0 2rem}.tool-header{background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;padding:3rem 2rem;text-align:center}.tool-header h1{font-size:2.5rem;margin-bottom:1rem;font-weight:800}.tool-content{padding:3rem 2rem;background:#fff}.food-section{background:var(--light);padding:2rem;border-radius:8px;margin-bottom:2rem}.input-group{margin-bottom:1.5rem}.input-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--dark)}.input-field{width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem}.input-field:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.1)}.food-list{background:#fff;padding:1.5rem;border-radius:8px;margin:1.5rem 0}.food-item{display:flex;justify-content:space-between;align-items:center;padding:1rem;border-bottom:1px solid var(--border)}.food-name{font-weight:600;color:var(--dark)}.food-cal{color:var(--primary);font-weight:600}.remove-btn{background:#fee2e2;color:#991b1b;border:none;padding:0.25rem 0.75rem;border-radius:4px;cursor:pointer;font-size:0.85rem}.remove-btn:hover{background:#fecaca}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin:2rem 0}.stat-card{background:linear-gradient(135deg,#f0f4ff,#faf5ff);padding:1.5rem;border-radius:8px;text-align:center;border:1px solid var(--border)}.stat-label{color:#6b7280;font-size:0.9rem;margin-bottom:0.5rem}.stat-value{font-size:2rem;font-weight:700;color:var(--primary)}.action-buttons{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}.btn{padding:0.75rem 1.5rem;border:none;border-radius:6px;font-weight:600;cursor:pointer;transition:all 0.3s}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:#4f46e5;transform:translateY(-2px)}.btn-secondary{background:#f3f4f6;color:var(--dark);border:1px solid var(--border)}.btn-secondary:hover{background:#e5e7eb}.content-section{margin:3rem 0;padding:2rem;background:var(--light);border-radius:8px}.content-section h2{color:var(--dark);margin-bottom:1.5rem;font-size:1.8rem;border-bottom:3px solid var(--primary);padding-bottom:0.75rem}.content-section h3{color:#4b5563;margin:1.5rem 0 0.5rem;font-size:1.2rem;font-weight:600}.content-section p{margin-bottom:1rem;color:#4b5563;line-height:1.8}.content-section ul{margin:1rem 0 1rem 1.5rem}.content-section li{margin-bottom:0.75rem;color:#4b5563;line-height:1.6}.use-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1.5rem 0}.use-case{background:#fff;padding:1.5rem;border-radius:8px;border-top:4px solid var(--primary)}.use-case h4{color:var(--dark);margin-bottom:0.5rem}.use-case p{color:#6b7280;font-size:0.95rem}.faq{margin:2rem 0}.faq-item{margin-bottom:1rem;background:#fff;padding:1.5rem;border-radius:8px;border-left:4px solid var(--primary)}.faq-item h4{color:var(--dark);margin-bottom:0.5rem}.faq-item p{color:#6b7280;font-size:0.95rem}.related-tools{margin:3rem 0}.related-tools h3{color:var(--dark);margin-bottom:1.5rem}.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.related-tool{background:#fff;padding:1rem;border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer;transition:all 0.3s;text-decoration:none;color:inherit}.related-tool:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.1)}.related-tool h4{color:var(--dark);margin-bottom:0.5rem}footer{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.footer-links{margin-bottom:1.5rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}.back-to-top{position:fixed;bottom:2rem;right:2rem;background:var(--primary);color:#fff;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999}.back-to-top.show{opacity:1;visibility:visible}@media (max-width:768px){.tool-header h1{font-size:1.8rem}.action-buttons{flex-direction:column}}
+
+.nutri-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0 0}
+.chip{background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;border-radius:999px;padding:.35rem .8rem;font-size:.85rem;cursor:pointer}
+.chip:hover{background:#e0e7ff}
+.results{list-style:none;margin:.5rem 0 0;background:#fff;border:1px solid var(--border);border-radius:8px;max-height:260px;overflow:auto}
+.results:empty{display:none}
+.results li button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--border);padding:.65rem .85rem;cursor:pointer;font-size:.95rem;color:var(--dark)}
+.results li:last-child button{border-bottom:0}
+.results li button:hover,.results li button:focus{background:#f5f3ff;outline:none}
+.results small{display:block;color:#6b7280}
+.selected{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;margin:1rem 0;display:none}
+.selected.show{display:block}
+.selected b{color:var(--dark)}
+.preview{color:#4338ca;font-weight:600;margin-top:.5rem}
+.msg{min-height:1.4rem;color:#b91c1c;font-size:.9rem;margin:.5rem 0}
+details.custom{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-top:1rem}
+details.custom summary{cursor:pointer;font-weight:600;color:var(--dark)}
+.goal-box{background:var(--light);border-radius:8px;padding:1.5rem;margin:2rem 0}
+.bars{margin-top:1rem;display:grid;gap:.9rem}
+.bar-row .bar-top{display:flex;justify-content:space-between;font-size:.9rem;color:var(--dark);margin-bottom:.25rem}
+.bar{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden}
+.bar>span{display:block;height:100%;background:var(--primary);border-radius:999px;width:0}
+.bar>span.over{background:#f59e0b}
+.split{display:flex;height:14px;border-radius:999px;overflow:hidden;background:#e5e7eb;margin:.5rem 0}
+.split span{display:block;height:100%}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:#4b5563}
+.meal-title{display:flex;justify-content:space-between;font-weight:700;color:var(--dark);margin:1.2rem 0 .25rem;padding-bottom:.25rem;border-bottom:2px solid var(--primary)}
+.food-item small{color:#6b7280;display:block}
+.table-wrap{overflow-x:auto;margin:1rem 0}
+.table-wrap table{width:100%;border-collapse:collapse;font-size:.9rem;background:#fff}
+.table-wrap th{background:var(--dark);color:#fff;padding:.6rem .75rem;text-align:left;white-space:nowrap}
+.table-wrap td{padding:.55rem .75rem;border-bottom:1px solid var(--border)}
+.table-wrap tr:nth-child(even) td{background:#f9fafb}
+.note{font-size:.85rem;color:#6b7280}
+.updated{font-size:.85rem;opacity:.9}
+@media (max-width:768px){.nutri-grid{grid-template-columns:1fr}.nav-container{padding:.75rem 1rem;flex-wrap:wrap;gap:.5rem}.nav-links{gap:1rem;font-size:.85rem}.tool-content{padding:2rem 1rem}.stat-value{font-size:1.5rem}body{padding-top:96px}.container{padding:0 1rem}.content-section{padding:1.25rem}.content-section h2{font-size:1.4rem}.stats-grid{grid-template-columns:1fr 1fr;gap:.75rem}.stat-card{padding:1rem}.food-section,.goal-box{padding:1.25rem}}
+
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">🥗 ToolPond Pro</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="tool-header">
-        <div class="container">
-            <h1>Nutrition Calculator</h1>
-            <p>Track calories, protein, carbs, and fat for any meal</p>
-            <p style="opacity:0.9">Add foods • Adjust quantities • See running totals</p>
-        </div>
+<nav>
+  <div class="nav-container">
+    <div class="logo">🥗 ToolPond Pro</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="tool-header">
+  <div class="container">
+    <h1>Nutrition Calculator</h1>
+    <p>Calories, protein, carbs, fat, fiber and net carbs for any meal or day</p>
+    <p style="opacity:0.9">Search a food • Enter grams or servings • Track your daily goal</p>
+  </div>
+</div>
+
+<div class="container">
+<div class="tool-content">
+
+  <div class="food-section">
+    <h2 style="color:var(--dark);margin-bottom:1rem;font-size:1.3rem">Add a food</h2>
+    <div class="input-group">
+      <label class="input-label" for="foodSearch">Search foods (60 built in)</label>
+      <input type="search" id="foodSearch" class="input-field" placeholder="Try: chicken, rice, banana, oats..." autocomplete="off" aria-controls="results">
+      <ul class="results" id="results" role="listbox" aria-label="Matching foods"></ul>
+      <div class="chips" id="chips" aria-label="Popular foods"></div>
     </div>
 
-    <div class="container">
-        <div class="tool-content">
-            <div class="food-section">
-                <h3 style="color:var(--dark);margin-bottom:1rem">Add Food Item</h3>
-                <div class="input-group">
-                    <label class="input-label">Food Name:</label>
-                    <input type="text" id="foodName" class="input-field" placeholder="e.g., Chicken Breast">
-                </div>
-                <div class="input-group">
-                    <label class="input-label">Calories per serving:</label>
-                    <input type="number" id="calories" class="input-field" placeholder="0" min="0">
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-                    <div class="input-group">
-                        <label class="input-label">Protein (g):</label>
-                        <input type="number" id="protein" class="input-field" placeholder="0" min="0">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Carbs (g):</label>
-                        <input type="number" id="carbs" class="input-field" placeholder="0" min="0">
-                    </div>
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-                    <div class="input-group">
-                        <label class="input-label">Fat (g):</label>
-                        <input type="number" id="fat" class="input-field" placeholder="0" min="0">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Quantity (servings):</label>
-                        <input type="number" id="quantity" class="input-field" placeholder="1" min="1" value="1">
-                    </div>
-                </div>
-            </div>
-
-            <div class="action-buttons">
-                <button class="btn btn-primary" onclick="addFood()">➕ Add Food</button>
-                <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear All</button>
-            </div>
-
-            <div id="foodListSection" style="display:none">
-                <h3 style="color:var(--dark);margin:2rem 0 1rem">Foods Added:</h3>
-                <div class="food-list" id="foodList"></div>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Total Calories</div>
-                    <div class="stat-value" id="totalCal">0</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Protein</div>
-                    <div class="stat-value" id="totalProtein">0g</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Carbs</div>
-                    <div class="stat-value" id="totalCarbs">0g</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Fat</div>
-                    <div class="stat-value" id="totalFat">0g</div>
-                </div>
-            </div>
-
-            <div class="content-section">
-                <h2>What This Tool Does</h2>
-                <p>Enter any food item with its calories and macronutrients (protein, carbs, fat) to see <strong>running totals</strong> for your meal or day. Adjust the quantity multiplier to account for multiple servings — the tool scales all values automatically.</p>
-
-                <p>This is a <strong>manual entry calculator</strong>, not a food database. You must input nutritional values from food labels, apps, or websites. For quick reference, here are common per-100g values:</p>
-
-                <ul>
-                    <li><strong>Chicken breast (skinless):</strong> 165 cal, 31g protein, 0g carbs, 3.6g fat</li>
-                    <li><strong>White rice (cooked):</strong> 130 cal, 2.7g protein, 28g carbs, 0.3g fat</li>
-                    <li><strong>Broccoli (raw):</strong> 34 cal, 2.8g protein, 7g carbs, 0.4g fat</li>
-                    <li><strong>Salmon (cooked):</strong> 206 cal, 22g protein, 0g carbs, 12g fat</li>
-                    <li><strong>Egg (large):</strong> 72 cal, 6.3g protein, 0.4g carbs, 4.8g fat</li>
-                    <li><strong>Oats (dry):</strong> 389 cal, 16.9g protein, 66g carbs, 6.9g fat</li>
-                </ul>
-
-                <h3>How to Use</h3>
-                <ul>
-                    <li><strong>Enter food details:</strong> Type the name and nutritional values per serving</li>
-                    <li><strong>Set quantity:</strong> If you ate 2 servings, enter 2 — values multiply automatically</li>
-                    <li><strong>Add to log:</strong> Click Add Food to see it in your list with running totals</li>
-                    <li><strong>Remove items:</strong> Click Remove next to any food to delete it and update totals</li>
-                    <li><strong>Clear all:</strong> Reset everything to start a new meal or day</li>
-                </ul>
-            </div>
-
-            <div class="content-section">
-                <h2>Understanding Macronutrients</h2>
-
-                <h3>Protein (4 calories per gram)</h3>
-                <p>Essential for muscle repair, enzyme production, and immune function. The RDA is 0.8g per kg of body weight (56g for a 70kg person), but athletes and active individuals often need 1.2–2.0g per kg. Good sources: chicken, fish, eggs, Greek yogurt, legumes, tofu.</p>
-
-                <h3>Carbohydrates (4 calories per gram)</h3>
-                <p>The body's primary energy source. Complex carbs (oats, quinoa, sweet potato) provide sustained energy and fiber. Simple carbs (sugar, white bread) spike blood sugar and crash energy. The USDA recommends 45–65% of daily calories from carbs, but low-carb diets (under 130g) are common for weight loss.</p>
-
-                <h3>Fat (9 calories per gram)</h3>
-                <p>More than twice as calorie-dense as protein or carbs. Essential for hormone production, brain health, and vitamin absorption. Prioritize unsaturated fats (olive oil, avocado, nuts) over saturated (butter, red meat) and trans fats (processed foods). The USDA recommends 20–35% of daily calories from fat.</p>
-
-                <h3>Macro Ratios by Goal</h3>
-                <ul>
-                    <li><strong>Weight loss:</strong> 40% protein, 30% carbs, 30% fat — higher protein preserves muscle while in a deficit</li>
-                    <li><strong>Muscle gain:</strong> 30% protein, 40% carbs, 30% fat — carbs fuel workouts and recovery</li>
-                    <li><strong>Keto:</strong> 20% protein, 5% carbs, 75% fat — forces ketosis for fat burning</li>
-                    <li><strong>Maintenance:</strong> 25% protein, 50% carbs, 25% fat — balanced for general health</li>
-                </ul>
-            </div>
-
-            <div class="content-section">
-                <h2>When to Use This Tool</h2>
-                <div class="use-cases">
-                    <div class="use-case">
-                        <h4>🍽️ Meal Analysis</h4>
-                        <p>Just ate a complex meal? Break it into ingredients and enter each one. See the full nutritional profile — you might be surprised by hidden calories in sauces or oils.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>💪 Macro Tracking</h4>
-                        <p>Following a specific macro split? Add foods throughout the day and watch your totals. Adjust your next meal based on what you're missing (more protein? fewer carbs?).</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>📊 Recipe Development</h4>
-                        <p>Creating a new recipe? Enter each ingredient with quantities to calculate the full nutritional profile per serving. Useful for food bloggers, meal prep businesses, or home cooks.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>🏥 Dietary Awareness</h4>
-                        <p>Monitoring sodium, sugar, or specific allergens? While this tool tracks the big three macros, the manual entry approach lets you note any dietary concern in the food name field.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq">
-                <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
-
-                <div class="faq-item">
-                    <h4>How accurate are the calculations?</h4>
-                    <p>The tool performs basic arithmetic on the values you enter. Accuracy depends entirely on the nutritional data you input. For best results, use verified sources like USDA FoodData Central, nutrition labels, or reputable food tracking apps. The tool does not contain a food database — you must enter values manually.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Does this tool store my food log?</h4>
-                    <p>No. All calculations happen in your browser. Food entries are not stored, synced, or transmitted. When you close the page, your log is lost. For persistent tracking, use a dedicated nutrition app like MyFitnessPal or Cronometer.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What are macronutrients?</h4>
-                    <p>Macronutrients (macros) are the three main nutrients your body needs in large amounts: protein (4 calories per gram), carbohydrates (4 calories per gram), and fat (9 calories per gram). Alcohol is technically a fourth macro at 7 calories per gram. Tracking macros helps ensure you're getting balanced nutrition beyond just counting calories.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Should I track net carbs or total carbs?</h4>
-                    <p>For general health, track total carbs. For keto or low-carb diets, track net carbs (total carbs minus fiber and sugar alcohols). This tool tracks total carbs — subtract fiber manually if you need net carbs.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Why does fat have more calories than protein or carbs?</h4>
-                    <p>Fat is more energy-dense at 9 calories per gram versus 4 for protein and carbs. This is why high-fat foods (nuts, oils, avocado) are calorie-dense even in small portions. It's also why low-fat diets can help with calorie control, though healthy fats are essential for bodily functions.</p>
-                </div>
-            </div>
-
-            <div class="related-tools">
-                <h3>Related Tools</h3>
-                <div class="tools-grid">
-                    <a href="meal-planner.html" class="related-tool">
-                        <h4>🍽️</h4>
-                        <h4>Meal Planner</h4>
-                    </a>
-                    <a href="converter.html" class="related-tool">
-                        <h4>⚙️</h4>
-                        <h4>Unit Converter</h4>
-                    </a>
-                    <a href="word-counter-tool.html" class="related-tool">
-                        <h4>📝</h4>
-                        <h4>Word Counter</h4>
-                    </a>
-                    <a href="password-generator.html" class="related-tool">
-                        <h4>🔐</h4>
-                        <h4>Password Gen</h4>
-                    </a>
-                </div>
-            </div>
+    <div class="selected" id="selected">
+      <div><b id="selName"></b></div>
+      <div class="note" id="selInfo"></div>
+      <div class="nutri-grid" style="margin-top:1rem">
+        <div>
+          <label class="input-label" for="amount">Amount</label>
+          <input type="number" id="amount" class="input-field" value="1" min="0.01" step="any" inputmode="decimal">
         </div>
+        <div>
+          <label class="input-label" for="unit">Unit</label>
+          <select id="unit" class="input-field"></select>
+        </div>
+      </div>
+      <div style="margin-top:1rem">
+        <label class="input-label" for="meal">Add to</label>
+        <select id="meal" class="input-field">
+          <option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snacks</option>
+        </select>
+      </div>
+      <div class="preview" id="preview" aria-live="polite"></div>
+      <div class="action-buttons" style="margin-bottom:0">
+        <button class="btn btn-primary" id="addBtn" type="button">➕ Add to log</button>
+      </div>
     </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy</a>
-        </div>
-        <p>&copy; 2026 ToolPond Pro. Free online tools.</p>
-    </footer>
+    <details class="custom" id="custom">
+      <summary>Food not listed? Add your own from a label</summary>
+      <div class="input-group" style="margin-top:1rem">
+        <label class="input-label" for="cName">Food name</label>
+        <input type="text" id="cName" class="input-field" placeholder="e.g., Protein bar" maxlength="80">
+      </div>
+      <div class="nutri-grid">
+        <div class="input-group"><label class="input-label" for="cKcal">Calories per serving</label><input type="number" id="cKcal" class="input-field" min="0" step="any" inputmode="decimal"></div>
+        <div class="input-group"><label class="input-label" for="cProtein">Protein (g)</label><input type="number" id="cProtein" class="input-field" min="0" step="any" inputmode="decimal"></div>
+        <div class="input-group"><label class="input-label" for="cCarbs">Carbs (g)</label><input type="number" id="cCarbs" class="input-field" min="0" step="any" inputmode="decimal"></div>
+        <div class="input-group"><label class="input-label" for="cFat">Fat (g)</label><input type="number" id="cFat" class="input-field" min="0" step="any" inputmode="decimal"></div>
+        <div class="input-group"><label class="input-label" for="cFiber">Fiber (g, optional)</label><input type="number" id="cFiber" class="input-field" min="0" step="any" inputmode="decimal"></div>
+        <div class="input-group"><label class="input-label" for="cQty">Servings eaten</label><input type="number" id="cQty" class="input-field" value="1" min="0.01" step="any" inputmode="decimal"></div>
+      </div>
+      <div class="input-group"><label class="input-label" for="cMeal">Add to</label>
+        <select id="cMeal" class="input-field"><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snacks</option></select></div>
+      <button class="btn btn-primary" id="addCustomBtn" type="button">➕ Add custom food</button>
+    </details>
+    <div class="msg" id="msg" role="alert"></div>
+  </div>
 
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+  <div class="goal-box">
+    <h2 style="color:var(--dark);font-size:1.3rem">Your daily goal</h2>
+    <div class="nutri-grid" style="margin-top:1rem">
+      <div>
+        <label class="input-label" for="goalKcal">Calorie target per day</label>
+        <input type="number" id="goalKcal" class="input-field" value="2000" min="500" max="10000" step="10" inputmode="numeric">
+        <p class="note" style="margin-top:.4rem">Not sure? Use the <a href="calorie-calculator.html">calorie calculator</a> or read <a href="blog/daily-calorie-needs.html">how to calculate daily calorie needs</a>.</p>
+      </div>
+      <div>
+        <label class="input-label" for="goalPreset">Macro split (protein / carbs / fat)</label>
+        <select id="goalPreset" class="input-field">
+          <option value="balanced">Balanced 25 / 50 / 25</option>
+          <option value="loss">Weight loss 40 / 30 / 30</option>
+          <option value="gain">Muscle gain 30 / 40 / 30</option>
+          <option value="keto">Keto 20 / 5 / 75</option>
+        </select>
+      </div>
+    </div>
+    <div class="bars" id="bars"></div>
+  </div>
 
-    <script>
-        let foods = [];
+  <div id="foodListSection" style="display:none">
+    <h2 style="color:var(--dark);margin:2rem 0 .5rem;font-size:1.3rem">Today's log</h2>
+    <div class="food-list" id="foodList"></div>
+  </div>
 
-        function addFood() {
-            const name = document.getElementById('foodName').value;
-            const calories = parseFloat(document.getElementById('calories').value) || 0;
-            const protein = parseFloat(document.getElementById('protein').value) || 0;
-            const carbs = parseFloat(document.getElementById('carbs').value) || 0;
-            const fat = parseFloat(document.getElementById('fat').value) || 0;
-            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-label">Calories</div><div class="stat-value" id="totalCal">0</div></div>
+    <div class="stat-card"><div class="stat-label">Protein</div><div class="stat-value" id="totalProtein">0 g</div></div>
+    <div class="stat-card"><div class="stat-label">Carbs</div><div class="stat-value" id="totalCarbs">0 g</div></div>
+    <div class="stat-card"><div class="stat-label">Fat</div><div class="stat-value" id="totalFat">0 g</div></div>
+    <div class="stat-card"><div class="stat-label">Fiber</div><div class="stat-value" id="totalFiber">0 g</div></div>
+    <div class="stat-card"><div class="stat-label">Net carbs</div><div class="stat-value" id="totalNet">0 g</div></div>
+  </div>
 
-            if (!name || calories === 0) {
-                alert('Enter food name and calories');
-                return;
-            }
+  <div>
+    <div class="note" style="margin-bottom:.25rem">Share of calories from macros</div>
+    <div class="split" id="split" aria-hidden="true"><span style="width:0;background:#6366f1"></span><span style="width:0;background:#10b981"></span><span style="width:0;background:#f59e0b"></span></div>
+    <div class="legend" id="legend" aria-live="polite">Add a food to see your split.</div>
+  </div>
 
-            foods.push({name, calories: calories * quantity, protein: protein * quantity, carbs: carbs * quantity, fat: fat * quantity, quantity});
-            displayFoods();
-            clearInputs();
-            updateStats();
-        }
+  <div class="action-buttons">
+    <button class="btn btn-secondary" id="clearBtn" type="button">🗑️ Clear all</button>
+  </div>
+  <p class="note">Estimates only. This tool is for general information and is not medical or dietary advice.</p>
 
-        function displayFoods() {
-            if (foods.length === 0) {
-                document.getElementById('foodListSection').style.display = 'none';
-                return;
-            }
-            document.getElementById('foodListSection').style.display = 'block';
-            const listDiv = document.getElementById('foodList');
-            listDiv.innerHTML = foods.map((food, index) => `
-                <div class="food-item">
-                    <div><div class="food-name">${food.name} (x${food.quantity})</div><div style="font-size:0.85rem;color:#6b7280">P: ${food.protein.toFixed(1)}g | C: ${food.carbs.toFixed(1)}g | F: ${food.fat.toFixed(1)}g</div></div>
-                    <div style="display:flex;gap:1rem;align-items:center"><div class="food-cal">${food.calories.toFixed(0)} cal</div><button class="remove-btn" onclick="removeFood(${index})">Remove</button></div>
-                </div>
-            `).join('');
-        }
+  <div class="content-section">
+    <h2>How this nutrition calculator works</h2>
+    <p>Pick a food from the list, enter how much you ate in grams or in normal servings, and add it to a meal. The calculator scales the food's per-100 g values to your amount and adds everything into running totals for the day. You also get <strong>fiber</strong> and <strong>net carbs</strong> (total carbs minus fiber), plus progress bars against your own calorie and macro goals.</p>
+    <h3>Worked examples</h3>
+    <ul>
+      <li><strong>150 g of cooked chicken breast = 248 kcal, 46.5 g protein, 0 g carbs, 5.4 g fat.</strong></li>
+      <li><strong>1 cup (158 g) of cooked white rice = 205 kcal, 44.6 g carbs, 4.3 g protein, 0.5 g fat.</strong></li>
+      <li><strong>1 cup (172 g) of cooked black beans has 40.8 g carbs and 15 g fiber, so about 25.8 g net carbs.</strong></li>
+    </ul>
+    <h3>How to use it</h3>
+    <ul>
+      <li><strong>Search or tap a popular food</strong> and check the per-100 g values shown.</li>
+      <li><strong>Choose the amount.</strong> Use grams if you weigh your food, or servings for a cup, slice or piece.</li>
+      <li><strong>Add it to a meal</strong>, then repeat for the rest of the day.</li>
+      <li><strong>Set your goal</strong> and watch the bars. Orange means you went over that target.</li>
+      <li><strong>Missing a food?</strong> Add it with the numbers from its label.</li>
+    </ul>
+  </div>
 
-        function removeFood(index) {
-            foods.splice(index, 1);
-            displayFoods();
-            updateStats();
-        }
+  <div class="content-section">
+    <h2>Calories and macros in common foods</h2>
+    <p>These are the values behind the search list, per 100 g, with a typical serving for quick reference. Cooked foods are weighed cooked, and foods marked raw are weighed raw.</p>
+    <h3>Meat, fish &amp; eggs</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>Chicken breast, cooked, skinless</td><td>165</td><td>31</td><td>0</td><td>3.6</td><td>0</td><td>3 oz (85 g): 140 kcal</td></tr><tr><td>Chicken thigh, cooked, skinless</td><td>179</td><td>24.8</td><td>0</td><td>8.2</td><td>0</td><td>3 oz (85 g): 152 kcal</td></tr><tr><td>Ground beef 85% lean, cooked</td><td>250</td><td>26</td><td>0</td><td>15</td><td>0</td><td>3 oz (85 g): 212 kcal</td></tr><tr><td>Salmon, farmed, cooked</td><td>206</td><td>22.1</td><td>0</td><td>12.4</td><td>0</td><td>3 oz (85 g): 175 kcal</td></tr><tr><td>Tuna, canned in water, drained</td><td>116</td><td>25.5</td><td>0</td><td>0.8</td><td>0</td><td>3 oz (85 g): 99 kcal</td></tr><tr><td>Cod, cooked</td><td>105</td><td>22.8</td><td>0</td><td>0.9</td><td>0</td><td>3 oz (85 g): 89 kcal</td></tr><tr><td>Shrimp, cooked</td><td>99</td><td>24</td><td>0.2</td><td>0.3</td><td>0</td><td>3 oz (85 g): 84 kcal</td></tr><tr><td>Egg, whole, large</td><td>143</td><td>12.6</td><td>0.7</td><td>9.5</td><td>0</td><td>1 large egg (50 g): 72 kcal</td></tr><tr><td>Egg white, raw</td><td>52</td><td>10.9</td><td>0.7</td><td>0.2</td><td>0</td><td>1 large white (33 g): 17 kcal</td></tr></tbody></table></div>
+<h3>Dairy</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>Whole milk</td><td>61</td><td>3.2</td><td>4.8</td><td>3.3</td><td>0</td><td>1 cup (244 g): 149 kcal</td></tr><tr><td>Skim milk</td><td>34</td><td>3.4</td><td>5</td><td>0.1</td><td>0</td><td>1 cup (245 g): 83 kcal</td></tr><tr><td>Greek yogurt, plain, nonfat</td><td>59</td><td>10.2</td><td>3.6</td><td>0.4</td><td>0</td><td>1 container (170 g): 100 kcal</td></tr><tr><td>Cheddar cheese</td><td>403</td><td>24.9</td><td>1.3</td><td>33.1</td><td>0</td><td>1 oz (28 g): 113 kcal</td></tr><tr><td>Mozzarella, part-skim</td><td>254</td><td>24.3</td><td>2.8</td><td>15.9</td><td>0</td><td>1 oz (28 g): 71 kcal</td></tr><tr><td>Butter</td><td>717</td><td>0.9</td><td>0.1</td><td>81.1</td><td>0</td><td>1 tbsp (14 g): 100 kcal</td></tr></tbody></table></div>
+<h3>Grains &amp; starches</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>White rice, cooked</td><td>130</td><td>2.7</td><td>28.2</td><td>0.3</td><td>0.4</td><td>1 cup (158 g): 205 kcal</td></tr><tr><td>Brown rice, cooked</td><td>123</td><td>2.7</td><td>25.6</td><td>1</td><td>1.6</td><td>1 cup (195 g): 240 kcal</td></tr><tr><td>Oats, dry (rolled)</td><td>389</td><td>16.9</td><td>66.3</td><td>6.9</td><td>10.6</td><td>½ cup (40 g): 156 kcal</td></tr><tr><td>Pasta, cooked</td><td>158</td><td>5.8</td><td>30.9</td><td>0.9</td><td>1.8</td><td>1 cup (140 g): 221 kcal</td></tr><tr><td>White bread</td><td>265</td><td>9</td><td>49</td><td>3.2</td><td>2.7</td><td>1 slice (27 g): 72 kcal</td></tr><tr><td>Whole-wheat bread</td><td>252</td><td>12.5</td><td>42.7</td><td>3.5</td><td>6</td><td>1 slice (28 g): 71 kcal</td></tr><tr><td>Quinoa, cooked</td><td>120</td><td>4.4</td><td>21.3</td><td>1.9</td><td>2.8</td><td>1 cup (185 g): 222 kcal</td></tr><tr><td>Potato, baked, with skin</td><td>93</td><td>2.5</td><td>21.2</td><td>0.1</td><td>2.2</td><td>1 medium (173 g): 161 kcal</td></tr><tr><td>Sweet potato, baked</td><td>90</td><td>2</td><td>20.7</td><td>0.2</td><td>3.3</td><td>1 medium (114 g): 103 kcal</td></tr></tbody></table></div>
+<h3>Legumes &amp; soy</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>Lentils, cooked</td><td>116</td><td>9</td><td>20.1</td><td>0.4</td><td>7.9</td><td>1 cup (198 g): 230 kcal</td></tr><tr><td>Chickpeas, cooked</td><td>164</td><td>8.9</td><td>27.4</td><td>2.6</td><td>7.6</td><td>1 cup (164 g): 269 kcal</td></tr><tr><td>Black beans, cooked</td><td>132</td><td>8.9</td><td>23.7</td><td>0.5</td><td>8.7</td><td>1 cup (172 g): 227 kcal</td></tr><tr><td>Kidney beans, cooked</td><td>127</td><td>8.7</td><td>22.8</td><td>0.5</td><td>6.4</td><td>1 cup (177 g): 225 kcal</td></tr><tr><td>Tofu, raw, regular</td><td>76</td><td>8.1</td><td>1.9</td><td>4.8</td><td>0.3</td><td>½ cup (126 g): 96 kcal</td></tr><tr><td>Hummus</td><td>166</td><td>7.9</td><td>14.3</td><td>9.6</td><td>6</td><td>2 tbsp (30 g): 50 kcal</td></tr></tbody></table></div>
+<h3>Fruit</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>Apple, with skin</td><td>52</td><td>0.3</td><td>13.8</td><td>0.2</td><td>2.4</td><td>1 medium (182 g): 95 kcal</td></tr><tr><td>Banana</td><td>89</td><td>1.1</td><td>22.8</td><td>0.3</td><td>2.6</td><td>1 medium (118 g): 105 kcal</td></tr><tr><td>Orange</td><td>47</td><td>0.9</td><td>11.8</td><td>0.1</td><td>2.4</td><td>1 medium (131 g): 62 kcal</td></tr><tr><td>Strawberries</td><td>32</td><td>0.7</td><td>7.7</td><td>0.3</td><td>2</td><td>1 cup (152 g): 49 kcal</td></tr><tr><td>Blueberries</td><td>57</td><td>0.7</td><td>14.5</td><td>0.3</td><td>2.4</td><td>1 cup (148 g): 84 kcal</td></tr><tr><td>Grapes</td><td>69</td><td>0.7</td><td>18.1</td><td>0.2</td><td>0.9</td><td>1 cup (151 g): 104 kcal</td></tr><tr><td>Watermelon</td><td>30</td><td>0.6</td><td>7.6</td><td>0.2</td><td>0.4</td><td>1 cup (152 g): 46 kcal</td></tr><tr><td>Mango</td><td>60</td><td>0.8</td><td>15</td><td>0.4</td><td>1.6</td><td>1 cup (165 g): 99 kcal</td></tr><tr><td>Avocado</td><td>160</td><td>2</td><td>8.5</td><td>14.7</td><td>6.7</td><td>½ avocado (100 g): 160 kcal</td></tr></tbody></table></div>
+<h3>Vegetables</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>Broccoli, raw</td><td>34</td><td>2.8</td><td>6.6</td><td>0.4</td><td>2.6</td><td>1 cup chopped (91 g): 31 kcal</td></tr><tr><td>Spinach, raw</td><td>23</td><td>2.9</td><td>3.6</td><td>0.4</td><td>2.2</td><td>1 cup (30 g): 7 kcal</td></tr><tr><td>Carrot, raw</td><td>41</td><td>0.9</td><td>9.6</td><td>0.2</td><td>2.8</td><td>1 medium (61 g): 25 kcal</td></tr><tr><td>Tomato, raw</td><td>18</td><td>0.9</td><td>3.9</td><td>0.2</td><td>1.2</td><td>1 medium (123 g): 22 kcal</td></tr><tr><td>Onion, raw</td><td>40</td><td>1.1</td><td>9.3</td><td>0.1</td><td>1.7</td><td>1 medium (110 g): 44 kcal</td></tr><tr><td>Cauliflower, raw</td><td>25</td><td>1.9</td><td>5</td><td>0.3</td><td>2</td><td>1 cup (107 g): 27 kcal</td></tr><tr><td>Bell pepper, red, raw</td><td>31</td><td>1</td><td>6</td><td>0.3</td><td>2.1</td><td>1 medium (119 g): 37 kcal</td></tr><tr><td>Mushrooms, white, raw</td><td>22</td><td>3.1</td><td>3.3</td><td>0.3</td><td>1</td><td>1 cup sliced (70 g): 15 kcal</td></tr></tbody></table></div>
+<h3>Nuts, seeds &amp; oils</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>Almonds</td><td>579</td><td>21.2</td><td>21.6</td><td>49.9</td><td>12.5</td><td>1 oz (28 g): 162 kcal</td></tr><tr><td>Walnuts</td><td>654</td><td>15.2</td><td>13.7</td><td>65.2</td><td>6.7</td><td>1 oz (28 g): 183 kcal</td></tr><tr><td>Cashews</td><td>553</td><td>18.2</td><td>30.2</td><td>43.9</td><td>3.3</td><td>1 oz (28 g): 155 kcal</td></tr><tr><td>Peanut butter</td><td>588</td><td>25</td><td>20</td><td>50</td><td>6</td><td>2 tbsp (32 g): 188 kcal</td></tr><tr><td>Chia seeds</td><td>486</td><td>16.5</td><td>42.1</td><td>30.7</td><td>34.4</td><td>1 tbsp (12 g): 58 kcal</td></tr><tr><td>Olive oil</td><td>884</td><td>0</td><td>0</td><td>100</td><td>0</td><td>1 tbsp (14 g): 124 kcal</td></tr></tbody></table></div>
+<h3>Snacks &amp; drinks</h3><div class="table-wrap"><table><thead><tr><th>Food (per 100 g)</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Fiber g</th><th>Typical serving</th></tr></thead><tbody><tr><td>Dark chocolate, 70-85% cocoa</td><td>598</td><td>7.8</td><td>45.9</td><td>42.6</td><td>10.9</td><td>1 oz (28 g): 167 kcal</td></tr><tr><td>Potato chips</td><td>536</td><td>7</td><td>53</td><td>35</td><td>4.8</td><td>1 oz (28 g): 150 kcal</td></tr><tr><td>Cheese pizza, regular crust</td><td>266</td><td>11.4</td><td>33</td><td>10.4</td><td>2.3</td><td>1 slice (107 g): 285 kcal</td></tr><tr><td>Honey</td><td>304</td><td>0.3</td><td>82.4</td><td>0</td><td>0.2</td><td>1 tbsp (21 g): 64 kcal</td></tr><tr><td>Sugar, white</td><td>387</td><td>0</td><td>100</td><td>0</td><td>0</td><td>1 tsp (4 g): 15 kcal</td></tr><tr><td>Cola</td><td>42</td><td>0</td><td>10.6</td><td>0</td><td>0</td><td>1 can (355 g): 149 kcal</td></tr><tr><td>Orange juice</td><td>45</td><td>0.7</td><td>10.4</td><td>0.2</td><td>0.2</td><td>1 cup (248 g): 112 kcal</td></tr></tbody></table></div>
+    <p class="note">Values are typical figures rounded from USDA FoodData Central. Brands and cooking methods vary, so use a package label when you have one.</p>
+  </div>
 
-        function updateStats() {
-            const totalCal = foods.reduce((sum, f) => sum + f.calories, 0);
-            const totalProtein = foods.reduce((sum, f) => sum + f.protein, 0);
-            const totalCarbs = foods.reduce((sum, f) => sum + f.carbs, 0);
-            const totalFat = foods.reduce((sum, f) => sum + f.fat, 0);
-            document.getElementById('totalCal').textContent = totalCal.toFixed(0);
-            document.getElementById('totalProtein').textContent = totalProtein.toFixed(1) + 'g';
-            document.getElementById('totalCarbs').textContent = totalCarbs.toFixed(1) + 'g';
-            document.getElementById('totalFat').textContent = totalFat.toFixed(1) + 'g';
-        }
+  <div class="content-section">
+    <h2>Understanding macronutrients</h2>
+    <h3>Protein (4 calories per gram)</h3>
+    <p>Supports muscle repair, enzymes and immune function. The US RDA is 0.8 g per kg of body weight (about 56 g for a 70 kg adult), and active people often aim for 1.2–2.0 g per kg. Good sources: chicken, fish, eggs, Greek yogurt, lentils, tofu.</p>
+    <h3>Carbohydrates (4 calories per gram)</h3>
+    <p>Your body's main fuel. Whole sources such as oats, quinoa, beans and sweet potato bring fiber and steady energy. Dietary guidelines suggest roughly 45–65% of calories from carbohydrate for most adults.</p>
+    <h3>Fat (9 calories per gram)</h3>
+    <p>More than twice as calorie-dense as protein or carbs, and needed for hormones and absorbing vitamins A, D, E and K. Favor unsaturated fats like olive oil, nuts, avocado and fish. Dietary guidelines suggest roughly 20–35% of calories from fat.</p>
+    <h3>Macro presets in this calculator</h3>
+    <ul>
+      <li><strong>Balanced:</strong> 25% protein, 50% carbs, 25% fat</li>
+      <li><strong>Weight loss:</strong> 40% protein, 30% carbs, 30% fat. More protein helps you feel full.</li>
+      <li><strong>Muscle gain:</strong> 30% protein, 40% carbs, 30% fat. Carbs fuel training.</li>
+      <li><strong>Keto:</strong> 20% protein, 5% carbs, 75% fat. Very low carb.</li>
+    </ul>
+    <p>These are common starting points, not prescriptions. For a personal plan, use the <a href="macros-calculator.html">macros calculator</a> or read the <a href="blog/macros-breakdown-guide.html">macros breakdown guide</a>.</p>
+  </div>
 
-        function clearInputs() {
-            document.getElementById('foodName').value = '';
-            document.getElementById('calories').value = '';
-            document.getElementById('protein').value = '';
-            document.getElementById('carbs').value = '';
-            document.getElementById('fat').value = '';
-            document.getElementById('quantity').value = '1';
-        }
+  <div class="content-section">
+    <h2>When to use this tool</h2>
+    <div class="use-cases">
+      <div class="use-case"><h4>🍽️ Check a meal</h4><p>Add each ingredient and see the full calories and macros, including oil, butter and sauces that are easy to forget.</p></div>
+      <div class="use-case"><h4>💪 Hit a macro target</h4><p>Pick a split, log through the day, and see which macro you still need to fill.</p></div>
+      <div class="use-case"><h4>🥑 Watch net carbs</h4><p>Fiber and net carbs show up next to total carbs, so you can compare foods quickly.</p></div>
+      <div class="use-case"><h4>📊 Plan recipes</h4><p>Add every ingredient in grams to get the total for a recipe, then divide by the number of servings.</p></div>
+    </div>
+  </div>
 
-        function clearAll() {
-            foods = [];
-            displayFoods();
-            updateStats();
-            clearInputs();
-        }
+  <div class="faq">
+    <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
+    <div class="faq-item"><h4>How does this nutrition calculator work?</h4><p>Search a food, choose an amount in grams or servings, and add it to a meal. The calculator scales the per-100 g values for that food to your amount and keeps running totals for calories, protein, carbs, fat, fiber and net carbs. If a food is missing, enter its label values in the custom food box.</p></div><div class="faq-item"><h4>Where do the food values come from?</h4><p>The built-in foods use typical values from the USDA FoodData Central database, rounded to one decimal. Real foods vary by brand, ripeness, cooking method and cut, so treat the numbers as good estimates and use the package label when you have one.</p></div><div class="faq-item"><h4>How many calories are in a gram of protein, carbs and fat?</h4><p>Protein and carbohydrate each provide about 4 calories per gram and fat provides about 9. Alcohol provides about 7. The calculator uses the calorie figure listed for each food and shows your protein, carb and fat split using the 4/4/9 values.</p></div><div class="faq-item"><h4>What are net carbs and how are they calculated here?</h4><p>Net carbs are total carbohydrates minus dietary fiber. This calculator shows both numbers. Sugar alcohols are not tracked, so if you eat products that contain them, subtract them yourself using the label.</p></div><div class="faq-item"><h4>Does the calculator save my food log?</h4><p>Your log and calorie goal are saved only in this browser on this device, using local storage, so they are still there when you come back. Nothing is sent to a server. Use Clear all to erase the log, or clear your browser data.</p></div><div class="faq-item"><h4>Why do my totals differ from a food label or another app?</h4><p>Common reasons are raw versus cooked weight, different brands, rounding on labels, and different database entries for the same food. Weigh food the same way each time, either raw or cooked, and pick the matching entry.</p></div><div class="faq-item"><h4>How much protein do I need per day?</h4><p>The US recommended dietary allowance is 0.8 g of protein per kg of body weight per day, which is about 56 g for a 70 kg adult. Active people and athletes often aim for 1.2 to 2.0 g per kg. Your needs depend on your health and goals, so ask a doctor or dietitian if you are unsure.</p></div><div class="faq-item"><h4>Which macro split should I choose?</h4><p>The presets are common starting points, not medical advice: balanced is 25% protein, 50% carbs and 25% fat; weight loss is 40/30/30; muscle gain is 30/40/30; keto is 20/5/75. Pick one that you can follow consistently and adjust it based on how you feel and your results.</p></div>
+  </div>
 
-        function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
-        window.addEventListener('scroll', () => {
-            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
-        });
-    </script>
+  <div class="related-tools">
+    <h3>Related Tools</h3>
+    <div class="tools-grid">
+      <a href="calorie-calculator.html" class="related-tool"><h4>🔥</h4><h4>Calorie Calculator</h4></a>
+      <a href="macros-calculator.html" class="related-tool"><h4>🥩</h4><h4>Macros Calculator</h4></a>
+      <a href="meal-planner.html" class="related-tool"><h4>🍽️</h4><h4>Meal Planner</h4></a>
+      <a href="water-intake-calculator.html" class="related-tool"><h4>💧</h4><h4>Water Intake</h4></a>
+      <a href="bmi-calculator.html" class="related-tool"><h4>⚖️</h4><h4>BMI Calculator</h4></a>
+      <a href="converter.html" class="related-tool"><h4>⚙️</h4><h4>Unit Converter</h4></a>
+    </div>
+  </div>
+  <p class="updated">Last updated October 2026</p>
+</div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+  </div>
+  <p>&copy; 2026 ToolPond Pro. Free online tools.</p>
+</footer>
+
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+<script>
+
+const FOODS = [{"n":"Chicken breast, cooked, skinless","k":165,"p":31,"c":0,"f":3.6,"fi":0,"sg":85,"sl":"3 oz (85 g)","cat":"Meat, fish & eggs"},{"n":"Chicken thigh, cooked, skinless","k":179,"p":24.8,"c":0,"f":8.2,"fi":0,"sg":85,"sl":"3 oz (85 g)","cat":"Meat, fish & eggs"},{"n":"Ground beef 85% lean, cooked","k":250,"p":26,"c":0,"f":15,"fi":0,"sg":85,"sl":"3 oz (85 g)","cat":"Meat, fish & eggs"},{"n":"Salmon, farmed, cooked","k":206,"p":22.1,"c":0,"f":12.4,"fi":0,"sg":85,"sl":"3 oz (85 g)","cat":"Meat, fish & eggs"},{"n":"Tuna, canned in water, drained","k":116,"p":25.5,"c":0,"f":0.8,"fi":0,"sg":85,"sl":"3 oz (85 g)","cat":"Meat, fish & eggs"},{"n":"Cod, cooked","k":105,"p":22.8,"c":0,"f":0.9,"fi":0,"sg":85,"sl":"3 oz (85 g)","cat":"Meat, fish & eggs"},{"n":"Shrimp, cooked","k":99,"p":24,"c":0.2,"f":0.3,"fi":0,"sg":85,"sl":"3 oz (85 g)","cat":"Meat, fish & eggs"},{"n":"Egg, whole, large","k":143,"p":12.6,"c":0.7,"f":9.5,"fi":0,"sg":50,"sl":"1 large egg (50 g)","cat":"Meat, fish & eggs"},{"n":"Egg white, raw","k":52,"p":10.9,"c":0.7,"f":0.2,"fi":0,"sg":33,"sl":"1 large white (33 g)","cat":"Meat, fish & eggs"},{"n":"Whole milk","k":61,"p":3.2,"c":4.8,"f":3.3,"fi":0,"sg":244,"sl":"1 cup (244 g)","cat":"Dairy"},{"n":"Skim milk","k":34,"p":3.4,"c":5,"f":0.1,"fi":0,"sg":245,"sl":"1 cup (245 g)","cat":"Dairy"},{"n":"Greek yogurt, plain, nonfat","k":59,"p":10.2,"c":3.6,"f":0.4,"fi":0,"sg":170,"sl":"1 container (170 g)","cat":"Dairy"},{"n":"Cheddar cheese","k":403,"p":24.9,"c":1.3,"f":33.1,"fi":0,"sg":28,"sl":"1 oz (28 g)","cat":"Dairy"},{"n":"Mozzarella, part-skim","k":254,"p":24.3,"c":2.8,"f":15.9,"fi":0,"sg":28,"sl":"1 oz (28 g)","cat":"Dairy"},{"n":"Butter","k":717,"p":0.9,"c":0.1,"f":81.1,"fi":0,"sg":14,"sl":"1 tbsp (14 g)","cat":"Dairy"},{"n":"White rice, cooked","k":130,"p":2.7,"c":28.2,"f":0.3,"fi":0.4,"sg":158,"sl":"1 cup (158 g)","cat":"Grains & starches"},{"n":"Brown rice, cooked","k":123,"p":2.7,"c":25.6,"f":1,"fi":1.6,"sg":195,"sl":"1 cup (195 g)","cat":"Grains & starches"},{"n":"Oats, dry (rolled)","k":389,"p":16.9,"c":66.3,"f":6.9,"fi":10.6,"sg":40,"sl":"½ cup (40 g)","cat":"Grains & starches"},{"n":"Pasta, cooked","k":158,"p":5.8,"c":30.9,"f":0.9,"fi":1.8,"sg":140,"sl":"1 cup (140 g)","cat":"Grains & starches"},{"n":"White bread","k":265,"p":9,"c":49,"f":3.2,"fi":2.7,"sg":27,"sl":"1 slice (27 g)","cat":"Grains & starches"},{"n":"Whole-wheat bread","k":252,"p":12.5,"c":42.7,"f":3.5,"fi":6,"sg":28,"sl":"1 slice (28 g)","cat":"Grains & starches"},{"n":"Quinoa, cooked","k":120,"p":4.4,"c":21.3,"f":1.9,"fi":2.8,"sg":185,"sl":"1 cup (185 g)","cat":"Grains & starches"},{"n":"Potato, baked, with skin","k":93,"p":2.5,"c":21.2,"f":0.1,"fi":2.2,"sg":173,"sl":"1 medium (173 g)","cat":"Grains & starches"},{"n":"Sweet potato, baked","k":90,"p":2,"c":20.7,"f":0.2,"fi":3.3,"sg":114,"sl":"1 medium (114 g)","cat":"Grains & starches"},{"n":"Lentils, cooked","k":116,"p":9,"c":20.1,"f":0.4,"fi":7.9,"sg":198,"sl":"1 cup (198 g)","cat":"Legumes & soy"},{"n":"Chickpeas, cooked","k":164,"p":8.9,"c":27.4,"f":2.6,"fi":7.6,"sg":164,"sl":"1 cup (164 g)","cat":"Legumes & soy"},{"n":"Black beans, cooked","k":132,"p":8.9,"c":23.7,"f":0.5,"fi":8.7,"sg":172,"sl":"1 cup (172 g)","cat":"Legumes & soy"},{"n":"Kidney beans, cooked","k":127,"p":8.7,"c":22.8,"f":0.5,"fi":6.4,"sg":177,"sl":"1 cup (177 g)","cat":"Legumes & soy"},{"n":"Tofu, raw, regular","k":76,"p":8.1,"c":1.9,"f":4.8,"fi":0.3,"sg":126,"sl":"½ cup (126 g)","cat":"Legumes & soy"},{"n":"Hummus","k":166,"p":7.9,"c":14.3,"f":9.6,"fi":6,"sg":30,"sl":"2 tbsp (30 g)","cat":"Legumes & soy"},{"n":"Apple, with skin","k":52,"p":0.3,"c":13.8,"f":0.2,"fi":2.4,"sg":182,"sl":"1 medium (182 g)","cat":"Fruit"},{"n":"Banana","k":89,"p":1.1,"c":22.8,"f":0.3,"fi":2.6,"sg":118,"sl":"1 medium (118 g)","cat":"Fruit"},{"n":"Orange","k":47,"p":0.9,"c":11.8,"f":0.1,"fi":2.4,"sg":131,"sl":"1 medium (131 g)","cat":"Fruit"},{"n":"Strawberries","k":32,"p":0.7,"c":7.7,"f":0.3,"fi":2,"sg":152,"sl":"1 cup (152 g)","cat":"Fruit"},{"n":"Blueberries","k":57,"p":0.7,"c":14.5,"f":0.3,"fi":2.4,"sg":148,"sl":"1 cup (148 g)","cat":"Fruit"},{"n":"Grapes","k":69,"p":0.7,"c":18.1,"f":0.2,"fi":0.9,"sg":151,"sl":"1 cup (151 g)","cat":"Fruit"},{"n":"Watermelon","k":30,"p":0.6,"c":7.6,"f":0.2,"fi":0.4,"sg":152,"sl":"1 cup (152 g)","cat":"Fruit"},{"n":"Mango","k":60,"p":0.8,"c":15,"f":0.4,"fi":1.6,"sg":165,"sl":"1 cup (165 g)","cat":"Fruit"},{"n":"Avocado","k":160,"p":2,"c":8.5,"f":14.7,"fi":6.7,"sg":100,"sl":"½ avocado (100 g)","cat":"Fruit"},{"n":"Broccoli, raw","k":34,"p":2.8,"c":6.6,"f":0.4,"fi":2.6,"sg":91,"sl":"1 cup chopped (91 g)","cat":"Vegetables"},{"n":"Spinach, raw","k":23,"p":2.9,"c":3.6,"f":0.4,"fi":2.2,"sg":30,"sl":"1 cup (30 g)","cat":"Vegetables"},{"n":"Carrot, raw","k":41,"p":0.9,"c":9.6,"f":0.2,"fi":2.8,"sg":61,"sl":"1 medium (61 g)","cat":"Vegetables"},{"n":"Tomato, raw","k":18,"p":0.9,"c":3.9,"f":0.2,"fi":1.2,"sg":123,"sl":"1 medium (123 g)","cat":"Vegetables"},{"n":"Onion, raw","k":40,"p":1.1,"c":9.3,"f":0.1,"fi":1.7,"sg":110,"sl":"1 medium (110 g)","cat":"Vegetables"},{"n":"Cauliflower, raw","k":25,"p":1.9,"c":5,"f":0.3,"fi":2,"sg":107,"sl":"1 cup (107 g)","cat":"Vegetables"},{"n":"Bell pepper, red, raw","k":31,"p":1,"c":6,"f":0.3,"fi":2.1,"sg":119,"sl":"1 medium (119 g)","cat":"Vegetables"},{"n":"Mushrooms, white, raw","k":22,"p":3.1,"c":3.3,"f":0.3,"fi":1,"sg":70,"sl":"1 cup sliced (70 g)","cat":"Vegetables"},{"n":"Almonds","k":579,"p":21.2,"c":21.6,"f":49.9,"fi":12.5,"sg":28,"sl":"1 oz (28 g)","cat":"Nuts, seeds & oils"},{"n":"Walnuts","k":654,"p":15.2,"c":13.7,"f":65.2,"fi":6.7,"sg":28,"sl":"1 oz (28 g)","cat":"Nuts, seeds & oils"},{"n":"Cashews","k":553,"p":18.2,"c":30.2,"f":43.9,"fi":3.3,"sg":28,"sl":"1 oz (28 g)","cat":"Nuts, seeds & oils"},{"n":"Peanut butter","k":588,"p":25,"c":20,"f":50,"fi":6,"sg":32,"sl":"2 tbsp (32 g)","cat":"Nuts, seeds & oils"},{"n":"Chia seeds","k":486,"p":16.5,"c":42.1,"f":30.7,"fi":34.4,"sg":12,"sl":"1 tbsp (12 g)","cat":"Nuts, seeds & oils"},{"n":"Olive oil","k":884,"p":0,"c":0,"f":100,"fi":0,"sg":14,"sl":"1 tbsp (14 g)","cat":"Nuts, seeds & oils"},{"n":"Dark chocolate, 70-85% cocoa","k":598,"p":7.8,"c":45.9,"f":42.6,"fi":10.9,"sg":28,"sl":"1 oz (28 g)","cat":"Snacks & drinks"},{"n":"Potato chips","k":536,"p":7,"c":53,"f":35,"fi":4.8,"sg":28,"sl":"1 oz (28 g)","cat":"Snacks & drinks"},{"n":"Cheese pizza, regular crust","k":266,"p":11.4,"c":33,"f":10.4,"fi":2.3,"sg":107,"sl":"1 slice (107 g)","cat":"Snacks & drinks"},{"n":"Honey","k":304,"p":0.3,"c":82.4,"f":0,"fi":0.2,"sg":21,"sl":"1 tbsp (21 g)","cat":"Snacks & drinks"},{"n":"Sugar, white","k":387,"p":0,"c":100,"f":0,"fi":0,"sg":4,"sl":"1 tsp (4 g)","cat":"Snacks & drinks"},{"n":"Cola","k":42,"p":0,"c":10.6,"f":0,"fi":0,"sg":355,"sl":"1 can (355 g)","cat":"Snacks & drinks"},{"n":"Orange juice","k":45,"p":0.7,"c":10.4,"f":0.2,"fi":0.2,"sg":248,"sl":"1 cup (248 g)","cat":"Snacks & drinks"}];
+const MEALS = ['Breakfast','Lunch','Dinner','Snacks'];
+const PRESETS = { balanced:[25,50,25], loss:[40,30,30], gain:[30,40,30], keto:[20,5,75] };
+const POPULAR = ['Chicken breast, cooked, skinless','White rice, cooked','Egg, whole, large','Banana','Oats, dry (rolled)','Salmon, farmed, cooked','Greek yogurt, plain, nonfat','Almonds','Avocado','Broccoli, raw'];
+
+function round1(x){ return Math.round(x*10)/10; }
+function calcEntry(food, grams){
+  const m = grams/100;
+  return { kcal:food.k*m, p:food.p*m, c:food.c*m, f:food.f*m, fi:food.fi*m };
+}
+function sumLog(log){
+  const t = {kcal:0,p:0,c:0,f:0,fi:0};
+  for (const e of log){ t.kcal+=e.kcal; t.p+=e.p; t.c+=e.c; t.f+=e.f; t.fi+=e.fi; }
+  t.net = Math.max(0, t.c - t.fi);
+  return t;
+}
+function targets(kcal, preset){
+  const s = PRESETS[preset] || PRESETS.balanced;
+  return { kcal:kcal, p:kcal*s[0]/100/4, c:kcal*s[1]/100/4, f:kcal*s[2]/100/9 };
+}
+function macroSplit(t){
+  const pc=t.p*4, cc=t.c*4, fc=t.f*9, sum=pc+cc+fc;
+  if (sum<=0) return null;
+  return { p:pc/sum*100, c:cc/sum*100, f:fc/sum*100 };
+}
+function searchFoods(q){
+  const words = q.toLowerCase().split(/\s+/).filter(Boolean);
+  if (!words.length) return [];
+  return FOODS.filter(x => { const n=x.n.toLowerCase(); return words.every(w => n.includes(w)); }).slice(0,8);
+}
+
+if (typeof document !== 'undefined') (function(){
+  const $ = id => document.getElementById(id);
+  const STORE = 'toolpond_nutrition_v1';
+  let log = [];
+  let goal = { kcal:2000, preset:'balanced' };
+  let sel = null;
+  let nextId = 1;
+
+  function load(){
+    try {
+      const d = JSON.parse(localStorage.getItem(STORE) || 'null');
+      if (d && Array.isArray(d.log)) {
+        log = d.log.filter(e => e && typeof e.name==='string' && isFinite(e.kcal) && MEALS.includes(e.meal));
+        nextId = log.reduce((m,e)=>Math.max(m,e.id||0),0)+1;
+      }
+      if (d && d.goal && isFinite(d.goal.kcal) && PRESETS[d.goal.preset]) goal = d.goal;
+    } catch(e) {}
+  }
+  function save(){ try { localStorage.setItem(STORE, JSON.stringify({log, goal})); } catch(e) {} }
+  function say(t){ $('msg').textContent = t || ''; }
+
+  function el(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+
+  function showResults(list){
+    const ul = $('results'); ul.textContent='';
+    list.forEach(x => {
+      const li = el('li'); li.setAttribute('role','option');
+      const b = el('button'); b.type='button';
+      b.appendChild(document.createTextNode(x.n));
+      b.appendChild(el('small',null,Math.round(x.k)+' kcal per 100 g'));
+      b.addEventListener('click', () => choose(x));
+      li.appendChild(b); ul.appendChild(li);
+    });
+  }
+  function choose(food){
+    sel = food; say('');
+    $('foodSearch').value = '';
+    showResults([]);
+    $('selName').textContent = food.n;
+    $('selInfo').textContent = 'Per 100 g: ' + food.k + ' kcal, ' + food.p + ' g protein, ' + food.c + ' g carbs, ' + food.f + ' g fat, ' + food.fi + ' g fiber';
+    const u = $('unit'); u.textContent='';
+    const o1 = el('option',null,'serving: '+food.sl); o1.value='serving'; u.appendChild(o1);
+    const o2 = el('option',null,'grams'); o2.value='grams'; u.appendChild(o2);
+    $('amount').value = 1;
+    $('selected').classList.add('show');
+    preview();
+  }
+  function amountGrams(){
+    const a = parseFloat($('amount').value);
+    if (!sel || !isFinite(a) || a<=0) return null;
+    return $('unit').value==='grams' ? a : a*sel.sg;
+  }
+  function preview(){
+    const g = amountGrams();
+    if (g==null){ $('preview').textContent=''; return; }
+    const e = calcEntry(sel, g);
+    $('preview').textContent = Math.round(g)+' g = '+Math.round(e.kcal)+' kcal · P '+round1(e.p)+' g · C '+round1(e.c)+' g · F '+round1(e.f)+' g';
+  }
+  function addSelected(){
+    const g = amountGrams();
+    if (!sel){ say('Search and choose a food first.'); return; }
+    if (g==null){ say('Enter an amount greater than 0.'); return; }
+    if (g>20000){ say('That amount looks too large. Check the number.'); return; }
+    const e = calcEntry(sel, g);
+    log.push({ id:nextId++, meal:$('meal').value, name:sel.n, amt:Math.round(g)+' g', kcal:e.kcal, p:e.p, c:e.c, f:e.f, fi:e.fi });
+    say(''); save(); render();
+  }
+  function num(id){ const v=parseFloat($(id).value); return isFinite(v)&&v>=0 ? v : 0; }
+  function addCustom(){
+    const name = $('cName').value.trim();
+    const qty = parseFloat($('cQty').value);
+    const kcal = num('cKcal');
+    if (!name){ say('Enter a name for your food.'); return; }
+    if (!(kcal>0)){ say('Enter the calories per serving.'); return; }
+    if (!isFinite(qty) || qty<=0){ say('Servings eaten must be greater than 0.'); return; }
+    log.push({ id:nextId++, meal:$('cMeal').value, name:name.slice(0,80), amt:qty+' serving'+(qty===1?'':'s'),
+      kcal:kcal*qty, p:num('cProtein')*qty, c:num('cCarbs')*qty, f:num('cFat')*qty, fi:num('cFiber')*qty });
+    ['cName','cKcal','cProtein','cCarbs','cFat','cFiber'].forEach(i=>$(i).value=''); $('cQty').value='1';
+    say(''); save(); render();
+  }
+  function removeEntry(id){ log = log.filter(e=>e.id!==id); save(); render(); }
+
+  function renderBars(t){
+    const tg = targets(goal.kcal, goal.preset);
+    const rows = [['Calories',t.kcal,tg.kcal,' kcal'],['Protein',t.p,tg.p,' g'],['Carbs',t.c,tg.c,' g'],['Fat',t.f,tg.f,' g']];
+    const box = $('bars'); box.textContent='';
+    rows.forEach(r => {
+      const pct = r[2]>0 ? r[1]/r[2]*100 : 0;
+      const row = el('div','bar-row');
+      const top = el('div','bar-top');
+      top.appendChild(el('span',null,r[0]));
+      top.appendChild(el('span',null,Math.round(r[1])+' / '+Math.round(r[2])+r[3]));
+      const bar = el('div','bar'); bar.setAttribute('role','progressbar'); bar.setAttribute('aria-label',r[0]+' progress');
+      bar.setAttribute('aria-valuemin','0'); bar.setAttribute('aria-valuemax','100'); bar.setAttribute('aria-valuenow',String(Math.min(100,Math.round(pct))));
+      const fill = el('span', pct>100?'over':''); fill.style.width = Math.min(100,pct)+'%';
+      bar.appendChild(fill); row.appendChild(top); row.appendChild(bar); box.appendChild(row);
+    });
+  }
+  function render(){
+    const t = sumLog(log);
+    $('totalCal').textContent = Math.round(t.kcal);
+    $('totalProtein').textContent = round1(t.p)+' g';
+    $('totalCarbs').textContent = round1(t.c)+' g';
+    $('totalFat').textContent = round1(t.f)+' g';
+    $('totalFiber').textContent = round1(t.fi)+' g';
+    $('totalNet').textContent = round1(t.net)+' g';
+    renderBars(t);
+    const sp = macroSplit(t); const spans = $('split').children;
+    if (sp){
+      spans[0].style.width=sp.p+'%'; spans[1].style.width=sp.c+'%'; spans[2].style.width=sp.f+'%';
+      $('legend').textContent = 'Protein '+Math.round(sp.p)+'% · Carbs '+Math.round(sp.c)+'% · Fat '+Math.round(sp.f)+'%';
+    } else {
+      for (const s of spans) s.style.width='0'; $('legend').textContent='Add a food to see your split.';
+    }
+    const sec = $('foodListSection'), list = $('foodList');
+    list.textContent='';
+    if (!log.length){ sec.style.display='none'; return; }
+    sec.style.display='block';
+    MEALS.forEach(m => {
+      const items = log.filter(e=>e.meal===m);
+      if (!items.length) return;
+      const mk = items.reduce((s,e)=>s+e.kcal,0);
+      const h = el('div','meal-title'); h.appendChild(el('span',null,m)); h.appendChild(el('span',null,Math.round(mk)+' kcal'));
+      list.appendChild(h);
+      items.forEach(e => {
+        const row = el('div','food-item');
+        const left = el('div'); left.appendChild(el('div','food-name',e.name));
+        left.appendChild(el('small',null,e.amt+' · P '+round1(e.p)+' g · C '+round1(e.c)+' g · F '+round1(e.f)+' g'));
+        const right = el('div'); right.style.cssText='display:flex;gap:1rem;align-items:center';
+        right.appendChild(el('div','food-cal',Math.round(e.kcal)+' kcal'));
+        const b = el('button','remove-btn','Remove'); b.type='button'; b.setAttribute('aria-label','Remove '+e.name);
+        b.addEventListener('click', () => removeEntry(e.id));
+        right.appendChild(b); row.appendChild(left); row.appendChild(right); list.appendChild(row);
+      });
+    });
+  }
+
+  load();
+  const chips = $('chips');
+  POPULAR.forEach(n => { const f = FOODS.find(x=>x.n===n); if(!f) return;
+    const b = el('button','chip',n.split(',')[0]); b.type='button'; b.addEventListener('click',()=>choose(f)); chips.appendChild(b); });
+  $('foodSearch').addEventListener('input', e => showResults(searchFoods(e.target.value)));
+  $('foodSearch').addEventListener('keydown', e => { if (e.key==='Enter'){ e.preventDefault(); const r=searchFoods(e.target.value); if(r[0]) choose(r[0]); } });
+  $('amount').addEventListener('input', preview);
+  $('unit').addEventListener('change', preview);
+  $('addBtn').addEventListener('click', addSelected);
+  $('addCustomBtn').addEventListener('click', addCustom);
+  $('clearBtn').addEventListener('click', () => { log=[]; save(); render(); say(''); });
+  $('goalKcal').value = goal.kcal; $('goalPreset').value = goal.preset;
+  $('goalKcal').addEventListener('input', () => { const v=parseFloat($('goalKcal').value); if (isFinite(v)&&v>=500&&v<=10000){ goal.kcal=v; save(); render(); } });
+  $('goalPreset').addEventListener('change', () => { goal.preset=$('goalPreset').value; save(); render(); });
+  window.scrollToTop = function(){ window.scrollTo({top:0,behavior:'smooth'}); };
+  window.addEventListener('scroll', () => { $('backToTop').classList.toggle('show', window.scrollY>300); });
+  render();
+})();
+if (typeof module !== 'undefined') module.exports = { FOODS, calcEntry, sumLog, targets, macroSplit, searchFoods, PRESETS };
+
+</script>
 </body>
 </html>
