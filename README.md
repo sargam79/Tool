@@ -5,6 +5,7 @@
 ### Featured Calculators
 
 - [Mortgage Calculator](https://toolpond.org/mortgage-calculator.html)
+- [Stride Calculator](https://toolpond.org/stride-calculator.html)
 -  [Snake Arena](https://toolpond.org/snake-arena.html)
 - [Salary Calculator](https://toolpond.org/salary-calculator.html)
 - [Currency Converter](https://toolpond.org/currency-converter.html)
