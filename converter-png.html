@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online image converter. Convert PNG to JPG, JPG to PNG, WebP, and PDF instantly. Compress images, adjust quality, and shrink file size. 100% private — everything happens in your browser, nothing is uploaded.">
+    <meta name="description" content="Free online image converter. Convert PNG to JPG, JPG to PNG, WebP, and PDF instantly. Compress images, adjust quality, and shrink file size.">
     <meta name="keywords" content="image converter, png to jpg converter, jpg to png converter, convert png to webp, webp to jpg converter, image to pdf converter, compress image online, reduce image file size, free image converter 2026, online photo converter no upload, lossless image converter, best image format for website">
-    <meta name="author" content="ToolPond Pro">
+    <meta name="author" content="ToolPond">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://toolpond.org/converter-png.html">
 
@@ -13,7 +13,7 @@
     <meta property="og:description" content="Convert images instantly. PNG to JPG, JPG to PNG, WebP, PDF. Adjust quality and compress. 100% private, no uploads.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/converter-png.html">
-    <meta property="og:site_name" content="ToolPond Pro">
+    <meta property="og:site_name" content="ToolPond">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free Image Converter — PNG, JPG, WebP, PDF">
@@ -50,7 +50,7 @@
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "How to Convert an Image Online",
-      "description": "Steps to convert an image between PNG, JPG, WebP, and PDF using the ToolPond Pro image converter.",
+      "description": "Steps to convert an image between PNG, JPG, WebP, and PDF using the ToolPond image converter.",
       "step": [
         {"@type": "HowToStep", "name": "Upload image", "text": "Click or drag an image file (PNG, JPG, or WebP) into the upload area."},
         {"@type": "HowToStep", "name": "Choose output format", "text": "Select the format you want to convert to: JPG, PNG, WebP, or PDF."},
@@ -62,25 +62,95 @@
     </script>
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type": "Question", "name": "Will converting PNG to JPG reduce quality?", "acceptedAnswer": {"@type": "Answer", "text": "JPG uses lossy compression, so some quality is lost. At 85-90% quality the loss is imperceptible to most people, while file size typically drops 50-80% compared to PNG."}},
-        {"@type": "Question", "name": "Can I convert JPG back to PNG and restore quality?", "acceptedAnswer": {"@type": "Answer", "text": "No. JPG compression is destructive, so detail lost during the original JPG save cannot be recovered. Converting JPG to PNG only changes the container format; it does not restore lost data. Always keep your original file."}},
-        {"@type": "Question", "name": "What happens to transparent areas when converting PNG to JPG?", "acceptedAnswer": {"@type": "Answer", "text": "JPG does not support transparency. This tool fills transparent areas with a white background before converting, so logos and graphics with transparent backgrounds will get a solid white background in the JPG output."}},
-        {"@type": "Question", "name": "Is there a file size limit?", "acceptedAnswer": {"@type": "Answer", "text": "This converter handles files up to 50MB, processed entirely in your browser. For larger files, use desktop software such as GIMP or Photoshop."}},
-        {"@type": "Question", "name": "Does WebP work in all browsers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, as of 2026 WebP is supported by all major browsers, including Chrome, Firefox, Safari, and Edge. It generally compresses better than JPG at the same visual quality."}},
-        {"@type": "Question", "name": "Is my image uploaded to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No. All conversion happens locally in your browser using the Canvas API. Files are never uploaded, stored, or transmitted anywhere."}},
-        {"@type": "Question", "name": "What is the best image format for a website in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "WebP is generally the best default for web use because it compresses more efficiently than JPG or PNG at comparable quality. Use JPG as a fallback for older tooling, and PNG only when you need transparency or perfectly lossless graphics."}},
-        {"@type": "Question", "name": "Can I convert an image to PDF for free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, select PDF as the output format. The tool embeds your image into a single-page PDF sized to match the image dimensions, generated entirely in your browser."}},
-        {"@type": "Question", "name": "Why did my converted file end up larger than the original?", "acceptedAnswer": {"@type": "Answer", "text": "This can happen when converting a compressed format like JPG into a lossless format like PNG, since PNG stores more data. If you need a smaller file, convert to JPG or WebP instead and lower the quality setting."}},
-        {"@type": "Question", "name": "Can I convert HEIC photos from an iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Not directly. HEIC requires a licensed decoder that most browsers do not expose to web pages. Export or share the photo as JPG from your phone first, then use this tool to convert it further."}}
-      ]
-    }
-    </script>
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Will converting PNG to JPG reduce quality? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "JPG uses lossy compression, so yes — some quality is lost. But at 85-90% quality, the loss is imperceptible to most people while file size typically drops 50-80%. Test different quality levels to find your sweet spot."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I convert JPG back to PNG and restore quality? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. JPG compresses data destructively — once lost, it's gone for good. Converting JPG to PNG just changes the file format but won't restore lost quality. Always keep the original file before converting."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens to transparent areas when converting PNG to JPG? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "JPG doesn't support transparency. This tool fills transparent areas with a solid white background before converting, so a logo with a transparent background will end up with a white background in JPG. If you need to keep transparency, convert to PNG or WebP instead."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What's the maximum file size? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "This converter handles files up to 50MB, processed entirely in your browser. For larger files, use desktop image editor software like Photoshop or free alternatives like GIMP."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is WebP supported by all browsers? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, as of 2026 WebP is supported by all modern browsers — Chrome, Firefox, Safari, and Edge. It generally offers better compression than JPG while maintaining comparable quality, and it supports transparency."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is my image data private? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, 100% private. All conversions happen in your browser using the Canvas API. No files are uploaded to a server, no data is collected, and nothing is tracked."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the best image format for a website in 2026? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "WebP is generally the best default — it compresses more efficiently than JPG or PNG at comparable quality and supports transparency. Use JPG as a fallback for older tooling, and PNG only when you need guaranteed lossless quality."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I convert an image to PDF for free? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — select PDF as the output format. The tool embeds your image into a single-page PDF sized to match the image dimensions, built entirely in your browser with no upload required."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why did my converted file end up larger than the original? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "This happens when converting a compressed format like JPG into a lossless format like PNG, since PNG stores more data per pixel. If you need a smaller file, convert to JPG or WebP instead and lower the quality setting."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I convert HEIC photos from an iPhone? ▼",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not directly — HEIC requires a licensed decoder that browsers don't expose to web pages. Export or share the photo as JPG from your phone first (most phones offer this option), then use this tool to convert it further."
+   }
+  }
+ ]
+}
+</script>
 
-    <title>Free Image Converter 2026 | PNG to JPG, WebP & PDF Online | ToolPond Pro</title>
+    <title>Free Image Converter 2026 | PNG to JPG, WebP &amp; PDF Online</title>
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
@@ -235,19 +305,43 @@
             .toc-grid{grid-template-columns:1fr}
         }
     </style>
+<meta property="og:image" content="https://toolpond.org/og-image.jpg">
+<meta name="twitter:image" content="https://toolpond.org/og-image.jpg">
+<meta name="google-adsense-account" content="ca-pub-7280526621945427">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">🌊 ToolPond Pro</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html">Tools</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+
+    
 
     <div class="breadcrumb">
         <div class="container">
@@ -263,7 +357,7 @@
             <p>Convert images between PNG, JPG, WebP, and PDF instantly. Compress images, adjust quality, and shrink file size. No uploads — everything happens in your browser.</p>
         </div>
     </div>
-    <p class="byline">Written and maintained by the <strong>ToolPond Pro Editorial Team</strong> · Last updated July 2026</p>
+    <p class="byline">Written and maintained by the <strong>ToolPond Editorial Team</strong> · Last updated July 2026</p>
 
     <div class="container">
 
@@ -705,34 +799,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Company</h4>
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="privacy-policy.html">Privacy</a>
-            </div>
-            <div class="footer-col">
-                <h4>Conversion Tools</h4>
-                <a href="converter.html">Unit Converter</a>
-                <a href="converter-png.html">Image Converter</a>
-                <a href="currency-converter.html">Currency</a>
-                <a href="index.html">All Tools</a>
-            </div>
-            <div class="footer-col">
-                <h4>Design Tools</h4>
-                <a href="color-palette-generator.html">Color Palette</a>
-                <a href="background-remover.html">Background Remover</a>
-                <a href="qr-code-generator.html">QR Code</a>
-                <a href="password-generator.html">Password Generator</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 ToolPond Pro. All rights reserved.</p>
-        </div>
-    </footer>
+    <div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fconverter-png.html&amp;text=Free%20Image%20Converter%202026%20%7C%20PNG%20to%20JPG%2C%20WebP%20%26%20PDF%20Online" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fconverter-png.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fconverter-png.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Image%20Converter%202026%20%7C%20PNG%20to%20JPG%2C%20WebP%20%26%20PDF%20Online%20https%3A%2F%2Ftoolpond.org%2Fconverter-png.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fconverter-png.html&amp;text=Free%20Image%20Converter%202026%20%7C%20PNG%20to%20JPG%2C%20WebP%20%26%20PDF%20Online" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/converter-png.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>

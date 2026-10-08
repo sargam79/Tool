@@ -3,27 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Compound Interest Calculator - Project investment growth with year-by-year breakdowns. Learn the Rule of 72, compound vs simple interest, and investing strategies. Built by Shahid Abbas.">
+    <meta name="description" content="Compound Interest Calculator - Project investment growth with year-by-year breakdowns. Learn the Rule of 72, compound vs simple interest, and investing.">
     <meta name="author" content="Shahid Abbas">
     <link rel="canonical" href="https://toolpond.org/compound-interest-calculator.html">
     <title>Compound Interest Calculator - Investment Growth Projector</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#0066cc;--dark:#1f2937;--light:#f9fafb;--border:#e5e7eb;--text:#374151}body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--text);background:var(--light)}nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo{font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}.nav-links a{text-decoration:none;color:var(--text);font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--primary)}.page-header{background:var(--dark);color:#fff;padding:3rem 2rem;text-align:center}.page-header h1{font-size:2.2rem;margin-bottom:0.5rem}.page-header p{font-size:1rem;opacity:0.9;max-width:700px;margin:0 auto}.container{max-width:900px;margin:0 auto;padding:0 2rem}.content-section{background:#fff;padding:2.5rem;margin:2rem 0;border-radius:8px;border:1px solid var(--border)}.content-section h2{color:var(--dark);margin-bottom:1rem;font-size:1.4rem;border-bottom:2px solid var(--primary);padding-bottom:0.5rem;display:inline-block}.content-section h3{color:var(--dark);margin:1.5rem 0 0.75rem 0;font-size:1.1rem}.content-section p{color:#4b5563;margin-bottom:1rem;line-height:1.8}.content-section ul{margin-left:1.5rem;color:#4b5563;margin-bottom:1rem}.content-section li{margin-bottom:0.5rem}.content-section table{width:100%;border-collapse:collapse;margin:1rem 0}.content-section th,.content-section td{border:1px solid var(--border);padding:0.75rem;text-align:left}.content-section th{background:var(--light);font-weight:600;color:var(--dark)}.highlight{background:#f0f9ff;border-left:4px solid var(--primary);padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.highlight p{color:#4b5563;margin:0}.warning{background:#fff7ed;border-left:4px solid #f97316;padding:1rem 1.5rem;margin:1rem 0;border-radius:6px}.warning p{color:#7c2d12;margin:0}.author-footer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);color:#6b7280;font-size:0.9rem}footer{background:var(--dark);color:#fff;padding:2rem;text-align:center}.footer-links{margin-bottom:1rem}.footer-links a{color:#d1d5db;text-decoration:none;margin:0 1rem;transition:color 0.3s}.footer-links a:hover{color:#fff}@media(max-width:768px){.page-header h1{font-size:1.8rem}}
     </style>
+<meta property="og:title" content="Compound Interest Calculator - Investment Growth Projector">
+<meta property="og:description" content="Compound Interest Calculator - Project investment growth with year-by-year breakdowns. Learn the Rule of 72, compound vs simple interest, and investing.">
+<meta property="og:url" content="https://toolpond.org/compound-interest-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ToolPond">
+<meta property="og:image" content="https://toolpond.org/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compound Interest Calculator - Investment Growth Projector">
+<meta name="twitter:description" content="Compound Interest Calculator - Project investment growth with year-by-year breakdowns. Learn the Rule of 72, compound vs simple interest, and investing.">
+<meta name="twitter:image" content="https://toolpond.org/og-image.jpg">
+<script type="application/ld+json" id="seo-bc">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://toolpond.org/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Calculators and tools",
+   "item": "https://toolpond.org/index.html#calculators"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Compound Interest Calculator",
+   "item": "https://toolpond.org/compound-interest-calculator.html"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json" id="seo-app">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Compound Interest Calculator",
+ "url": "https://toolpond.org/compound-interest-calculator.html",
+ "description": "Compound Interest Calculator - Project investment growth with year-by-year breakdowns. Learn the Rule of 72, compound vs simple interest, and investing.",
+ "applicationCategory": "FinanceApplication",
+ "operatingSystem": "Any (web browser)",
+ "browserRequirements": "Requires JavaScript",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "USD"
+ },
+ "author": {
+  "@type": "Person",
+  "name": "Shahid Abbas",
+  "url": "https://toolpond.org/about.html"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "ToolPond",
+  "url": "https://toolpond.org/",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://toolpond.org/assets/logo.png"
+  }
+ },
+ "dateModified": "2026-10-08"
+}
+</script>
+<style>.tp-geo{max-width:1000px;margin:1.5rem auto;padding:0 1.25rem;font-family:inherit}.tp-qa{background:#eff6ff;border-left:4px solid #0f4c81;border-radius:10px;padding:1rem 1.25rem;margin:0 0 1rem;color:#1f2937;line-height:1.7}.tp-qa strong.t{display:block;margin-bottom:.3rem;color:#0f4c81}.tp-how{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:1rem 1.25rem;color:#374151;line-height:1.7}.tp-how h2{font-size:1.1rem;margin:0 0 .4rem;color:#111827}.tp-how ol{margin:.3rem 0 0 1.2rem;padding:0}</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "HowTo",
+ "name": "How to calculate compound interest",
+ "step": [
+  {
+   "@type": "HowToStep",
+   "position": 1,
+   "name": "Enter your starting amount and any regular contribution",
+   "text": "Enter your starting amount and any regular contribution."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 2,
+   "name": "Enter the expected annual return and the number of years",
+   "text": "Enter the expected annual return and the number of years."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 3,
+   "name": "Choose how often interest compounds",
+   "text": "Choose how often interest compounds."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 4,
+   "name": "Read the final balance and the year-by-year breakdown",
+   "text": "Read the final balance and the year-by-year breakdown."
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "url": "https://toolpond.org/compound-interest-calculator.html",
+ "dateModified": "2026-10-08",
+ "speakable": {
+  "@type": "SpeakableSpecification",
+  "cssSelector": [
+   ".tp-qa"
+  ]
+ }
+}
+</script>
+<meta name="google-adsense-account" content="ca-pub-7280526621945427">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">ToolPond</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html">Tools</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy-policy.html">Privacy</a></li>
-            </ul>
-        </div>
-    </nav>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+
+    
 
     <div class="page-header">
         <div class="container">
@@ -31,6 +168,8 @@
             <p>Project your investment growth with year-by-year breakdowns. Understand the power of compounding and the Rule of 72.</p>
         </div>
     </div>
+<div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>Compound interest: final amount = P × (1 + r)<sup>t</sup>. For example, $10,000 growing at 7% a year for 10 years becomes <strong>$19,671.51</strong>, so $9,671.51 of that is interest. Real returns vary and are not guaranteed.</div><div class="tp-how"><h2>How to calculate compound interest</h2><ol><li>Enter your starting amount and any regular contribution.</li><li>Enter the expected annual return and the number of years.</li><li>Choose how often interest compounds.</li><li>Read the final balance and the year-by-year breakdown.</li></ol></div></div>
+
 
     <div class="container">
         <div class="content-section">
@@ -150,15 +289,6 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="index.html">Tools</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy</a>
-        </div>
-        <p>&copy; 2026 ToolPond. Built by Shahid Abbas.</p>
-    </footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Projects growth at a constant assumed rate of return with the contributions you enter. Real returns vary, can be negative, and are not guaranteed. Taxes, fees and inflation are not included unless you enter them.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html&amp;text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector%20https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html&amp;text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/compound-interest-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 </body>
 </html>
