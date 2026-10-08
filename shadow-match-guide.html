@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shadow Match Guide: How to Play, Scoring &amp; Tips | ToolPond</title>
+<meta name="description" content="How to play Shadow Match, the free 3D shadow puzzle: controls, 90% pass rule, star scoring, hints, daily puzzle and tips for matching every silhouette."/>
+<meta name="keywords" content="shadow match guide, shadow puzzle game tips, 3d shadow puzzle, silhouette puzzle, free spatial reasoning game"/>
+<meta name="author" content="Toolpond">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://toolpond.org/shadow-match-guide.html"/>
+
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Shadow Match Guide: How to Play, Scoring &amp; Tips | ToolPond"/>
+<meta property="og:description" content="How to play Shadow Match, the free 3D shadow puzzle: controls, 90% pass rule, star scoring, hints, daily puzzle and tips for matching every silhouette."/>
+<meta property="og:url" content="https://toolpond.org/shadow-match-guide.html"/>
+<meta property="og:site_name" content="Toolpond"/>
+<meta property="og:image" content="https://toolpond.org/og-image.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Shadow Match Guide: How to Play, Scoring &amp; Tips | ToolPond"/>
+<meta name="twitter:description" content="How to play Shadow Match, the free 3D shadow puzzle: controls, 90% pass rule, star scoring, hints, daily puzzle and tips for matching every silhouette."/>
+<meta name="twitter:image" content="https://toolpond.org/og-image.jpg"/>
+
+<meta name="theme-color" content="#0b1330">
+
+<style>
+  :root{
+    --cyan:#7ee0ff; --blue:#2e9bff; --gold:#ffd23f;
+    --text:#e0eaff; --text-dim:#8aa0c8;
+    --panel-solid:#111c3f;
+    --bg:#0b1330;
+    --shadow: 0 14px 34px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0;
+    background: radial-gradient(900px 500px at 50% -10%, rgba(126,224,255,0.1), transparent 60%), var(--bg);
+    color: var(--text); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; line-height:1.65;
+  }
+  .wrap{ max-width: 720px; margin:0 auto; padding: 20px 18px 40px; }
+  header{ display:flex; align-items:center; justify-content:space-between; padding: 4px 0 18px; }
+  .logo{ font-weight:900; font-size:17px; text-decoration:none; background:linear-gradient(90deg,var(--cyan),#fff,var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:0.5px; }
+  nav a{ color: var(--text-dim); text-decoration:none; font-size:13px; font-weight:600; margin-left:14px; }
+  nav a:hover{ color:#fff; }
+
+  .breadcrumbs{ font-size:12px; color:var(--text-dim); margin-bottom:14px; }
+  .breadcrumbs a{ color:var(--text-dim); text-decoration:none; }
+  .breadcrumbs a:hover{ color:#fff; }
+
+  .hero{ background:var(--panel-solid); border:1px solid rgba(126,224,255,0.15); border-radius:18px; padding:26px 22px; margin-bottom:24px; box-shadow: var(--shadow); }
+  .hero h1{ font-size:24px; margin:0 0 10px; font-weight:900; }
+  .hero p{ color: var(--text-dim); font-size:15px; margin:0 0 18px; }
+  .play-btn{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(180deg,var(--cyan),var(--blue)); color:#04101a; font-weight:900; padding:13px 26px; border-radius:12px; text-decoration:none; font-size:15px; }
+
+  section.block{ background: var(--panel-solid); border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:20px 22px; margin-bottom:20px; box-shadow: var(--shadow); }
+  section.block h2{ font-size:17px; margin:0 0 12px; font-weight:800; color:var(--cyan); }
+  section.block h3{ font-size:15px; margin:18px 0 6px; color:var(--text); font-weight:700; }
+  section.block p{ color: var(--text-dim); font-size:14px; margin:0 0 10px; }
+  section.block ol, section.block ul{ color: var(--text-dim); font-size:14px; padding-left:20px; margin:0 0 10px; }
+  section.block li{ margin-bottom:6px; }
+  section.block li strong{ color: var(--text); }
+
+  .faq-item{ margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .faq-item:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .faq-item h3{ margin:0 0 6px; font-size:15px; }
+  .faq-item p{ margin:0; }
+
+  .cta-bottom{ text-align:center; background:linear-gradient(135deg,rgba(126,224,255,0.1),rgba(46,155,255,0.08)); }
+
+  footer.site-footer{ text-align:center; font-size:12px; color:var(--text-dim); padding-top:10px; }
+  footer.site-footer a{ color: var(--text-dim); text-decoration:none; }
+  footer.site-footer a:hover{ color:#fff; }
+  footer.site-footer span{ margin:0 6px; opacity:0.5; }
+</style>
+<meta name="google-adsense-account" content="ca-pub-7280526621945427">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoGame", "name": "Shadow Match", "url": "https://toolpond.org/shadow-match.html", "description": "A free online 3D puzzle where you rotate an object until its shadow matches a target silhouette.", "genre": "Puzzle", "applicationCategory": "Game", "operatingSystem": "Any (web browser)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "image": "https://toolpond.org/og-image.jpg"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/"}, {"@type": "ListItem", "position": 2, "name": "Games", "item": "https://toolpond.org/games.html"}, {"@type": "ListItem", "position": 3, "name": "Shadow Match", "item": "https://toolpond.org/shadow-match.html"}, {"@type": "ListItem", "position": 4, "name": "Guide", "item": "https://toolpond.org/shadow-match-guide.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Shadow Match?", "acceptedAnswer": {"@type": "Answer", "text": "A free 3D puzzle where you rotate an object until the shadow it casts matches a target silhouette."}}, {"@type": "Question", "name": "How do I rotate the object?", "acceptedAnswer": {"@type": "Answer", "text": "Drag with one finger or the left mouse button. Two fingers or the right mouse button move the camera, and pinch or scroll zooms."}}, {"@type": "Question", "name": "How accurate does the shadow need to be?", "acceptedAnswer": {"@type": "Answer", "text": "The level completes automatically at 90% accuracy. 90% earns 1 star, 95% earns 2 stars and a 100% match earns 3 stars."}}, {"@type": "Question", "name": "How many hints do I get?", "acceptedAnswer": {"@type": "Answer", "text": "You start with 3 hints. A hint nudges the object toward the correct rotation."}}, {"@type": "Question", "name": "Is Shadow Match free to play?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It runs in your browser with no download, signup or login."}}, {"@type": "Question", "name": "Why does the game say WebGL is not supported?", "acceptedAnswer": {"@type": "Answer", "text": "Shadow Match draws in 3D using WebGL. Use a recent version of Chrome, Safari, Firefox or Edge."}}, {"@type": "Question", "name": "What is the daily puzzle?", "acceptedAnswer": {"@type": "Answer", "text": "One mystery object per day, the same for every player. Completing it on consecutive days builds a streak."}}, {"@type": "Question", "name": "Is my progress saved?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, your level, stats and settings are saved locally in your browser. Clearing site data resets them."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Shadow Match: How to Play, Scoring & Tips", "description": "How to play Shadow Match, the free 3D shadow puzzle: controls, 90% pass rule, star scoring, hints, daily puzzle and tips for matching every silhouette.", "mainEntityOfPage": "https://toolpond.org/shadow-match-guide.html", "author": {"@type": "Person", "name": "Shahid Abbas", "url": "https://toolpond.org/about.html"}, "publisher": {"@type": "Organization", "name": "ToolPond", "url": "https://toolpond.org/", "logo": {"@type": "ImageObject", "url": "https://toolpond.org/assets/logo.png"}}, "image": "https://toolpond.org/og-image.jpg", "dateModified": "2026-10-08", "datePublished": "2026-10-08"}</script>
+</head>
+<body>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+
+<div class="wrap">
+
+  <header>
+    <a href="https://toolpond.org/index.html" class="logo">Shadow Match</a>
+    
+  </header>
+
+  <p class="breadcrumbs">
+    <a href="https://toolpond.org/index.html">Home</a> ›
+    <a href="https://toolpond.org/games.html">Games</a> ›
+    <a href="https://toolpond.org/shadow-match.html">Shadow Match</a> ›
+    Guide
+  </p>
+
+  <div class="hero">
+ <h1>Shadow Match: How to Play, Scoring &amp; Tips</h1>
+ <p>Shadow Match is a free online 3D puzzle: rotate an object until the shadow it casts matches a target silhouette. This guide covers the controls, the scoring rules and the techniques that help you match shapes faster, then you can jump straight into the game.</p>
+ <a class="play-btn" href="https://toolpond.org/shadow-match.html">▶ Play Shadow Match Free</a>
+ </div>
+
+ <section class="block">
+ <h2>What Is Shadow Match?</h2>
+ <p>Shadow Match is a browser-based spatial reasoning puzzle. A 3D object floats above the ground and casts a live shadow, while a target silhouette is shown in the corner of the screen. You rotate the object, and the shadow changes in real time. When your shadow overlaps the target closely enough, the level is complete. It is free to play with no download, signup or login, and it works on desktop and mobile browsers that support WebGL.</p>
+ </section>
+
+ <section class="block">
+ <h2>How to Play Shadow Match</h2>
+ <ol>
+ <li><strong>Drag with one finger</strong> (or left-click drag) to rotate the 3D object.</li>
+ <li><strong>Two fingers</strong> (or right-click drag) rotate the camera around the scene. <strong>Pinch or scroll</strong> to zoom in and out.</li>
+ <li>Watch the <strong>live shadow</strong> on the ground and compare it to the <strong>target silhouette</strong> in the corner.</li>
+ <li>The level <strong>completes automatically</strong> once your shadow reaches the match threshold.</li>
+ <li><strong>Double-tap</strong> or press <strong>Reset</strong> to return the object to its starting rotation.</li>
+ <li>Use <strong>Undo</strong> to take back your last rotation, <strong>Hint</strong> to nudge the object toward the answer, or <strong>Skip</strong> to move on.</li>
+ </ol>
+ </section>
+
+ <section class="block">
+ <h2>Scoring &amp; Stars</h2>
+ <ul>
+ <li><strong>90% accuracy</strong> is the pass mark. The level ends as soon as you reach it.</li>
+ <li><strong>1 star</strong> for 90% or more, <strong>2 stars</strong> for 95% or more and <strong>3 stars</strong> for a 100% match.</li>
+ <li>Your score combines accuracy points with a time bonus and a rotation bonus, so faster and tidier solutions score higher.</li>
+ <li>Achievements unlock for milestones such as clearing levels, earning 3 stars, and winning without a hint or without undo.</li>
+ </ul>
+ </section>
+
+ <section class="block">
+ <h2>Levels &amp; the Daily Puzzle</h2>
+ <ul>
+ <li><strong>Levels 1 to 20:</strong> simple shapes, and the target only needs two-axis rotation.</li>
+ <li><strong>Levels 21 to 100:</strong> more complex shapes that need rotation on all three axes.</li>
+ <li><strong>Level 101 and beyond:</strong> extra twists can appear, such as a second object, a moving light or a timer.</li>
+ <li><strong>Daily puzzle:</strong> one mystery object per day, the same for every player. Completing it on consecutive days builds a streak.</li>
+ </ul>
+ </section>
+
+ <section class="block">
+ <h2>Tips for Matching Shadows Faster</h2>
+ <h3>1. Rotate one axis at a time</h3>
+ <p>Turning on several axes at once makes it hard to see what changed. Fix the overall width and height of the shadow first, then fine-tune the details.</p>
+ <h3>2. Match the most distinctive edge</h3>
+ <p>Find the longest edge or the most unusual feature of the target silhouette and line that up first. The rest of the shape usually falls into place nearby.</p>
+ <h3>3. Move the camera to understand the shape</h3>
+ <p>If you cannot picture how the object will project, rotate the camera for a different view. Seeing the shape from the side often shows which way it needs to turn.</p>
+ <h3>4. Save hints for harder levels</h3>
+ <p>You start with 3 hints. They are most useful on the later, more complex shapes. Winning without a hint or undo also counts toward achievements.</p>
+ <h3>5. Use Reset when you are lost</h3>
+ <p>If the object ends up in an awkward angle, Reset takes it back to the starting rotation so you can approach the target from a clean position.</p>
+ </section>
+
+ <section class="block">
+ <h2>Frequently Asked Questions</h2>
+ <div class="faq-item"><h3>What is Shadow Match?</h3><p>A free 3D puzzle where you rotate an object until the shadow it casts matches a target silhouette.</p></div>
+ <div class="faq-item"><h3>How do I rotate the object?</h3><p>Drag with one finger or the left mouse button. Two fingers or the right mouse button move the camera, and pinch or scroll zooms.</p></div>
+ <div class="faq-item"><h3>How accurate does the shadow need to be?</h3><p>The level completes automatically at 90% accuracy. 90% earns 1 star, 95% earns 2 stars and a 100% match earns 3 stars.</p></div>
+ <div class="faq-item"><h3>How many hints do I get?</h3><p>You start with 3 hints. A hint nudges the object toward the correct rotation.</p></div>
+ <div class="faq-item"><h3>Is Shadow Match free to play?</h3><p>Yes. It runs in your browser with no download, signup or login.</p></div>
+ <div class="faq-item"><h3>Why does the game say WebGL is not supported?</h3><p>Shadow Match draws in 3D using WebGL. Use a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+ <div class="faq-item"><h3>What is the daily puzzle?</h3><p>One mystery object per day, the same for every player. Completing it on consecutive days builds a streak.</p></div>
+ <div class="faq-item"><h3>Is my progress saved?</h3><p>Yes, your level, stats and settings are saved locally in your browser. Clearing site data resets them.</p></div>
+ </section>
+
+ <section class="block">
+ <h2>If You Like Shadow Match</h2>
+ <p>Shadow Match trains the same skills as other spatial and logic puzzles on ToolPond. <a href="https://toolpond.org/laser-mirrors-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Laser Mirrors</a> asks you to rotate mirrors to light every crystal, <a href="https://toolpond.org/puzzle-vision-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Puzzle Vision</a> is a 3D sliding puzzle, and <a href="https://toolpond.org/bloxdoku-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Bloxdoku</a> blends block placement with sudoku logic.</p>
+ </section>
+
+ <section class="block">
+    <h2>More Free Games</h2>
+    <ul>
+      <li><a href="https://toolpond.org/bloxdoku-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Bloxdoku</a> — block puzzle meets sudoku logic.</li>
+      <li><a href="https://toolpond.org/2048-fusion-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">2048 Fusion</a> — merge tiles to reach 2048 and beyond.</li>
+      <li><a href="https://toolpond.org/aquasort-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">AquaSort</a> — sort colored liquid between bottles.</li>
+      <li><a href="https://toolpond.org/snake-adventure/guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Snake Adventure</a> — the classic snake game reborn.</li>
+      <li><a href="https://toolpond.org/puzzle-vision-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Puzzle Vision</a> — a free online 3D sliding puzzle.</li>
+      <li><a href="https://toolpond.org/bubble-pop-quest-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Bubble Pop Quest</a> — match colorful bubbles across hundreds of levels.</li>
+      <li><a href="https://toolpond.org/block-blast-arena-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Block Blast Arena</a> — blast rows, columns &amp; boxes with bomb power-ups.</li>
+      <li><a href="https://toolpond.org/laser-mirrors-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Laser Mirrors</a> — rotate mirrors to light every crystal.</li>
+      <li><a href="https://toolpond.org/last-switch-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">The Last Switch</a> — toggle switches to match target patterns.</li>
+      <li><a href="https://toolpond.org/penalty-duel-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Penalty Duel</a> — aim, power up, and save penalty kicks.</li>
+      <li><a href="https://toolpond.org/pharaohs-marble-quest-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Pharaoh's Marble Quest</a> — shoot marbles to clear the chain.</li>
+      <li><a href="https://toolpond.org/prism-smash-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Prism Smash</a> — neon brick breaker with combos &amp; power-ups.</li>
+      <li><a href="https://toolpond.org/sky-spirit-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Sky Spirit</a> — dodge lanes, collect orbs, survive boss waves.</li>
+      <li><a href="https://toolpond.org/cloud-drift-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Cloud Drift: Wind Runner</a> — glide through the clouds and ride the wind.</li>
+ <li><a href="https://toolpond.org/crossword-craze-guide.html" style="color:var(--cyan);text-decoration:none;font-weight:700">Crossword Craze</a> — solve themed crossword puzzles on a world map.</li>
+      <li><a href="https://toolpond.org/games.html" style="color:var(--cyan);text-decoration:none;font-weight:700">See all free games →</a></li>
+    </ul>
+  </section>
+
+  <section class="block cta-bottom">
+    <h2>Ready to Play?</h2>
+    <p>Put these tips to the test and see how many stars you can earn.</p>
+    <a class="play-btn" href="https://toolpond.org/shadow-match.html">▶ Play Shadow Match Free</a>
+  </section>
+
+  <div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fshadow-match-guide.html&amp;text=Shadow%20Match%20Guide%3A%20How%20to%20Play%2C%20Scoring%20%26%20Tips%20%7C%20ToolPond" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fshadow-match-guide.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fshadow-match-guide.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Shadow%20Match%20Guide%3A%20How%20to%20Play%2C%20Scoring%20%26%20Tips%20%7C%20ToolPond%20https%3A%2F%2Ftoolpond.org%2Fshadow-match-guide.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fshadow-match-guide.html&amp;text=Shadow%20Match%20Guide%3A%20How%20to%20Play%2C%20Scoring%20%26%20Tips%20%7C%20ToolPond" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/shadow-match-guide.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+
+</div>
+</body>
+</html>
