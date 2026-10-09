@@ -3,43 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolPond | Free Online Translation Tool - Translate 50+</title>
-    <meta name="description" content="ToolPond offers free AI-powered translation for 50+ languages. Translate text, documents, and websites instantly with high accuracy. No signup required.">
-    <meta name="keywords" content="free translation tool, online translator, AI translation, language translator, translate text free, document translation, website translator, multilingual translator, instant translation, ToolPond, toolpond.org, best free translator 2026, neural machine translation, translate English Spanish French German Chinese Japanese Arabic Russian Portuguese Italian">
+    <title>Free Online Translator: 20 Languages, No Signup | ToolPond</title>
+    <meta name="description" content="Translate text between 20 languages for free, no signup. Paste your text, copy the result or listen to it. Includes tips for accurate machine translation.">
+    <meta name="keywords" content="free online translator, translate text online, english to spanish translator, text translator no signup, translate english to french, translate text between languages">
     <meta name="author" content="ToolPond">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta property="og:title" content="ToolPond | Free Online Translation Tool - 50+ Languages">
-    <meta property="og:description" content="Free online translator supporting 50+ languages. AI-powered, instant, accurate translations. No signup needed.">
-    <meta property="og:url" content="https://toolpond.org">
+    <meta property="og:title" content="Free Online Translator: 20 Languages, No Signup | ToolPond">
+    <meta property="og:description" content="Translate text between 20 languages for free, no signup. Paste your text, copy the result or listen to it. Includes tips for accurate machine translation.">
+    <meta property="og:url" content="https://toolpond.org/translation-tool.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://toolpond.org/og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ToolPond | Free Online Translation Tool">
-    <meta name="twitter:description" content="Translate 50+ languages instantly with ToolPond. Free, fast, and accurate.">
+    <meta name="twitter:title" content="Free Online Translator: 20 Languages, No Signup | ToolPond">
+    <meta name="twitter:description" content="Translate text between 20 languages for free, no signup. Paste your text, copy the result or listen to it. Includes tips for accurate machine translation.">
     <link rel="canonical" href="https://toolpond.org/translation-tool.html">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "ToolPond Translation Tool",
-      "url": "https://toolpond.org",
-      "description": "Free AI-powered online translation tool supporting 50+ languages with text, document, and voice translation features.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "15243"
-      }
-    }
-    </script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ToolPond Translation Tool",
+  "url": "https://toolpond.org/translation-tool.html",
+  "description": "Translate text between 20 languages for free, no signup. Paste your text, copy the result or listen to it. Includes tips for accurate machine translation.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}</script>
 
     <style>
         :root {
@@ -785,13 +778,13 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Free Online Translation Tool <span>ToolPond</span></h1>
-        <p>Translate text, documents, and websites across 50+ languages instantly. No signup, no limits, 100% free online translator.</p>
+        <h1>Free Online Translator <span>for 20 Languages</span></h1>
+        <p>Paste text, choose a language and get a machine translation in seconds. Free, no signup, with copy, download and text-to-speech.</p>
         <div class="hero-badges">
-            <span class="badge">🚀 50+ Languages</span>
-            <span class="badge">⚡ Instant Results</span>
-            <span class="badge">🔒 No Data Stored</span>
-            <span class="badge">💯 Free Forever</span>
+            <span class="badge">🌍 20 Languages</span>
+            <span class="badge">⚡ Fast Results</span>
+            <span class="badge">🔊 Text-to-Speech</span>
+            <span class="badge">💯 Free, No Signup</span>
         </div>
     </section>
 
@@ -803,11 +796,8 @@
                 <button class="mode-tab active" onclick="setMode('text')" data-mode="text">
                     📝 Text Translation
                 </button>
-                <button class="mode-tab" onclick="setMode('document')" data-mode="document">
-                    📄 Document Translation
-                </button>
                 <button class="mode-tab" onclick="setMode('website')" data-mode="website">
-                    🌐 Website Translation
+                    🌐 Web Page (opens Google Translate)
                 </button>
             </div>
 
@@ -898,24 +888,13 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Document Mode -->
-            <div class="upload-zone" id="documentMode">
-                <div class="icon">📁</div>
-                <h3>Upload Document for Translation</h3>
-                <p>Supported formats: .txt, .docx, .pdf, .html (Max 10MB)</p>
-                <input type="file" class="file-input" id="docInput" accept=".txt,.docx,.pdf,.html" onchange="handleFileUpload(this)">
-                <button class="btn btn-secondary" onclick="document.getElementById('docInput').click()">Choose File</button>
-                <div id="fileInfo" style="margin-top:15px;color:#94a3b8;"></div>
-            </div>
-
             <!-- Website Mode -->
             <div class="upload-zone" id="websiteMode">
                 <div class="icon">🌐</div>
-                <h3>Translate a Website</h3>
-                <p>Enter any website URL to translate its content</p>
+                <h3>Translate a Web Page</h3>
+                <p>Enter a page address. The translated page opens in a new tab on Google Translate, not on ToolPond.</p>
                 <input type="url" class="text-area" id="websiteUrl" placeholder="https://example.com" style="min-height:50px;margin-bottom:15px;">
-                <button class="btn btn-primary" onclick="translateWebsite()">Translate Website</button>
+                <button class="btn btn-primary" onclick="translateWebsite()">Open in Google Translate</button>
             </div>
 
             <!-- Action Buttons -->
@@ -948,77 +927,52 @@
 
         <!-- Features Section -->
         <section class="features-section" id="features">
-            <h2 class="section-title">Why Choose ToolPond?</h2>
+            <h2 class="section-title">What This Translator Does</h2>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(99,102,241,0.2);">🎯</div>
-                    <h3>AI-Powered Accuracy</h3>
-                    <p>Neural machine translation technology delivers context-aware, natural-sounding translations in 50+ languages.</p>
+                <div class="feature-card"><div class="feature-icon">🎯</div><h3>Machine Translation</h3><p>Text is translated by the MyMemory machine translation service. Results are good for understanding and everyday messages, but should be checked before you rely on them.</p></div>
+                <div class="feature-card"><div class="feature-icon">⚡</div><h3>Fast Results</h3><p>Short messages usually translate in a second or two. Longer text is sent in small pieces, so it can take a little longer.</p></div>
+                <div class="feature-card"><div class="feature-icon">🔒</div><h3>Your Text and Privacy</h3><p>To translate, your text is sent to the MyMemory service. ToolPond does not keep a copy. Your 20 most recent translations are saved only in your own browser, and you can clear them any time.</p></div>
+                <div class="feature-card"><div class="feature-icon">💯</div><h3>Free, No Signup</h3><p>No account or card needed. The free translation service has daily limits, so if you reach one, try again later.</p></div>
+                <div class="feature-card"><div class="feature-icon">📱</div><h3>Works on Any Device</h3><p>Use it on a phone, tablet or computer in a normal web browser.</p></div>
+                <div class="feature-card"><div class="feature-icon">🗣️</div><h3>Text-to-Speech</h3><p>Play the original or the translation aloud using the voices built into your browser. Available voices depend on your device.</p></div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(236,72,153,0.2);">⚡</div>
-                    <h3>Instant Results</h3>
-                    <p>Get translations in milliseconds. No waiting, no queues. Real-time processing for all your translation needs.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(6,182,212,0.2);">🔒</div>
-                    <h3>Privacy First</h3>
-                    <p>Your text is never stored on our servers. All translations happen in real-time with end-to-end security.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(34,197,94,0.2);">💯</div>
-                    <h3>100% Free</h3>
-                    <p>No hidden fees, no credit card required, no usage limits. Free online translator for everyone, forever.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(245,158,11,0.2);">📱</div>
-                    <h3>Works Everywhere</h3>
-                    <p>Responsive design works perfectly on desktop, tablet, and mobile. Translate on any device, anywhere.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(239,68,68,0.2);">🗣️</div>
-                    <h3>Text-to-Speech</h3>
-                    <p>Listen to translations with native-sounding voice playback. Perfect for learning pronunciation.</p>
-                </div>
-            </div>
         </section>
 
         <!-- Stats -->
         <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Languages</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">10M+</div>
-                <div class="stat-label">Translations</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">0ms</div>
-                <div class="stat-label">Avg. Response</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Free</div>
-            </div>
+            <div class="stat-item"><div class="stat-number">20</div><div class="stat-label">Languages</div></div>
+            <div class="stat-item"><div class="stat-number">5,000</div><div class="stat-label">Characters per translation</div></div>
+            <div class="stat-item"><div class="stat-number">20</div><div class="stat-label">Recent translations kept in your browser</div></div>
+            <div class="stat-item"><div class="stat-number">Free</div><div class="stat-label">No signup</div></div>
         </div>
     </main>
 
-    <!-- Hashtags for SEO -->
-    <section class="hashtags">
-        <p>
-            #FreeTranslationTool #OnlineTranslator #AITranslation #LanguageTranslator #TranslateTextFree 
-            #DocumentTranslation #WebsiteTranslator #MultilingualTranslator #InstantTranslation 
-            #ToolPondPro #ToolPond #FreeTranslator2026 #NeuralMachineTranslation #TranslateEnglish 
-            #TranslateSpanish #TranslateFrench #TranslateGerman #TranslateChinese #TranslateJapanese 
-            #TranslateArabic #TranslateRussian #TranslatePortuguese #TranslateItalian #TranslateKorean 
-            #TranslateHindi #BestFreeTranslator #NoSignUpTranslator #PrivacyFirstTranslation 
-            #TextToSpeechTranslation #AI PoweredTranslator #FreeOnlineTranslationTool
-        </p>
-    </section>
-
     <!-- Footer -->
-    <div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html&amp;text=ToolPond%20%7C%20Free%20Online%20Translation%20Tool%20-%20Translate%2050%2B" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=ToolPond%20%7C%20Free%20Online%20Translation%20Tool%20-%20Translate%2050%2B%20https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html&amp;text=ToolPond%20%7C%20Free%20Online%20Translation%20Tool%20-%20Translate%2050%2B" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/translation-tool.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <section class="tp-note tp-gsec tp-geo" aria-label="Translation guide" style="border-left-color:#4f46e5;background:#f8fafc;max-width:1000px">
+<h2>How to Translate Text Online</h2>
+<p class="tp-qa"><strong>Quick answer:</strong> choose the language your text is in (or Auto Detect), choose the language you want, paste up to 5,000 characters, and click Translate Now. Copy the result, download it as a text file or play it aloud.</p>
+<ol>
+<li>Pick the <strong>source language</strong>, or leave Auto Detect on.</li>
+<li>Pick the <strong>target language</strong>. Use the swap button to reverse the pair.</li>
+<li>Type or paste your text into the left box.</li>
+<li>Click <strong>Translate Now</strong>. The translation appears in the right box.</li>
+<li>Use the buttons to <strong>copy</strong>, <strong>download</strong>, <strong>share</strong> or <strong>listen</strong>.</li>
+</ol>
+<h3>How to get a more accurate translation</h3>
+<ul>
+<li><strong>Use short, complete sentences.</strong> Long sentences with several clauses are more likely to be translated wrongly.</li>
+<li><strong>Avoid idioms and slang.</strong> Say "I am very tired" instead of an expression that only makes sense in one language.</li>
+<li><strong>Choose the source language yourself</strong> for short phrases, names or mixed-language text.</li>
+<li><strong>Translate back to check.</strong> Paste the result in again with the languages reversed. If the meaning changed a lot, rewrite the original more simply.</li>
+<li><strong>Keep names and numbers outside the sentence</strong> where you can, and check them after translation.</li>
+</ul>
+<h3>When not to rely on machine translation</h3>
+<p>Do not use a free machine translation as the final version of a contract, legal notice, medical instruction, visa or official application, or anything where a mistake could cost money or harm someone. Use it to understand the text, then ask a qualified human translator for the final version.</p>
+<h3>Languages you can translate between</h3>
+<p>English, Spanish, French, German, Italian, Portuguese, Russian, Japanese, Chinese (Simplified), Arabic, Korean, Hindi, Turkish, Dutch, Polish, Swedish, Thai, Vietnamese and Indonesian. Any of these can be the source or target language.</p>
+<h3>Frequently asked questions</h3>
+<p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">Is this translator free?</p><p>Yes. There is no signup or payment. The translation service behind it has free daily limits, so heavy use can hit a limit. If that happens, wait and try again later.</p><p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">How many languages does it support?</p><p>20: English, Spanish, French, German, Italian, Portuguese, Russian, Japanese, Chinese (Simplified), Arabic, Korean, Hindi, Turkish, Dutch, Polish, Swedish, Thai, Vietnamese and Indonesian, plus Auto Detect for the source language.</p><p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">How much text can I translate at once?</p><p>Up to 5,000 characters. Longer text is split into short pieces and sent one after another.</p><p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">Is machine translation accurate?</p><p>It is usually good enough to understand the meaning of a message, email or web text. It can mistranslate idioms, jokes, names, technical terms and ambiguous words, so have a fluent speaker check anything important.</p><p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">Is my text private?</p><p>Your text is sent to the MyMemory translation service so it can be translated. ToolPond does not store it on its servers. Do not paste passwords, ID numbers or confidential documents.</p><p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">Can it translate documents?</p><p>Not at the moment. Copy and paste the text into the box instead. For a full web page, the web page tab opens it in Google Translate.</p><p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">Why does auto detect get the language wrong?</p><p>Very short text, mixed languages and names can confuse language detection. Choose the source language yourself for short phrases.</p><p style="font-weight:600;color:#111827;margin:.7rem 0 .15rem">Does it save my translations?</p><p>Your 20 most recent translations are saved in your own browser. They are not sent anywhere else. Use Clear All to remove them.</p>
+</section><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this translator free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. There is no signup or payment. The translation service behind it has free daily limits, so heavy use can hit a limit. If that happens, wait and try again later."}}, {"@type": "Question", "name": "How many languages does it support?", "acceptedAnswer": {"@type": "Answer", "text": "20: English, Spanish, French, German, Italian, Portuguese, Russian, Japanese, Chinese (Simplified), Arabic, Korean, Hindi, Turkish, Dutch, Polish, Swedish, Thai, Vietnamese and Indonesian, plus Auto Detect for the source language."}}, {"@type": "Question", "name": "How much text can I translate at once?", "acceptedAnswer": {"@type": "Answer", "text": "Up to 5,000 characters. Longer text is split into short pieces and sent one after another."}}, {"@type": "Question", "name": "Is machine translation accurate?", "acceptedAnswer": {"@type": "Answer", "text": "It is usually good enough to understand the meaning of a message, email or web text. It can mistranslate idioms, jokes, names, technical terms and ambiguous words, so have a fluent speaker check anything important."}}, {"@type": "Question", "name": "Is my text private?", "acceptedAnswer": {"@type": "Answer", "text": "Your text is sent to the MyMemory translation service so it can be translated. ToolPond does not store it on its servers. Do not paste passwords, ID numbers or confidential documents."}}, {"@type": "Question", "name": "Can it translate documents?", "acceptedAnswer": {"@type": "Answer", "text": "Not at the moment. Copy and paste the text into the box instead. For a full web page, the web page tab opens it in Google Translate."}}, {"@type": "Question", "name": "Why does auto detect get the language wrong?", "acceptedAnswer": {"@type": "Answer", "text": "Very short text, mixed languages and names can confuse language detection. Choose the source language yourself for short phrases."}}, {"@type": "Question", "name": "Does it save my translations?", "acceptedAnswer": {"@type": "Answer", "text": "Your 20 most recent translations are saved in your own browser. They are not sent anywhere else. Use Clear All to remove them."}}]}</script><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html&amp;text=ToolPond%20%7C%20Free%20Online%20Translation%20Tool%20-%20Translate%2050%2B" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=ToolPond%20%7C%20Free%20Online%20Translation%20Tool%20-%20Translate%2050%2B%20https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Ftranslation-tool.html&amp;text=ToolPond%20%7C%20Free%20Online%20Translation%20Tool%20-%20Translate%2050%2B" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/translation-tool.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <!-- Toast -->
     <div class="toast" id="toast"></div>
@@ -1047,7 +1001,6 @@
                 tab.classList.toggle('active', tab.dataset.mode === mode);
             });
             document.getElementById('textMode').style.display = mode === 'text' ? 'block' : 'none';
-            document.getElementById('documentMode').classList.toggle('active', mode === 'document');
             document.getElementById('websiteMode').classList.toggle('active', mode === 'website');
         }
 
@@ -1097,10 +1050,6 @@
 
         // Translation
         async function translateText() {
-            if (currentMode === 'document') {
-                showToast('Document translation coming soon!', 'info');
-                return;
-            }
             if (currentMode === 'website') {
                 translateWebsite();
                 return;
@@ -1114,6 +1063,10 @@
                 showToast('Please enter text to translate', 'error');
                 return;
             }
+            if (text.length > 5000) {
+                showToast('Please keep your text under 5,000 characters', 'error');
+                return;
+            }
             if (sourceLang !== 'auto' && sourceLang === targetLang) {
                 showToast('Source and target languages must be different', 'error');
                 return;
@@ -1125,36 +1078,56 @@
             btn.disabled = true;
 
             try {
-                const pair = sourceLang === 'auto' ? `Auto|${targetLang}` : `${sourceLang}|${targetLang}`;
-                const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${pair}`;
-
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.responseStatus === 200) {
-                    document.getElementById('outputText').value = data.responseData.translatedText;
-                    document.getElementById('outputCharCount').textContent = 
-                        `${data.responseData.translatedText.length} characters`;
-                    if (sourceLang === 'auto' && data.responseData.detectedLanguage) {
-                        document.getElementById('detectedLang').textContent = 
-                            `Detected: ${data.responseData.detectedLanguage.toUpperCase()}`;
+                const pair = (sourceLang === 'auto' ? 'Autodetect' : sourceLang) + '|' + targetLang;
+                const parts = splitForTranslation(text, 400);
+                let out = [];
+                let detected = '';
+                for (const part of parts) {
+                    if (/^\s*$/.test(part)) { out.push(part); continue; }
+                    const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(part) + '&langpair=' + encodeURIComponent(pair);
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    if (Number(data.responseStatus) !== 200 || !data.responseData || typeof data.responseData.translatedText !== 'string') {
+                        throw new Error((data && data.responseDetails) || 'Translation failed');
                     }
-                    autoSaveToHistory(text, data.responseData.translatedText, 
-                        sourceLang === 'auto' ? 'Auto' : sourceLang, targetLang);
-                    showToast('Translation complete!', 'success');
-                } else {
-                    throw new Error(data.responseDetails || 'Translation failed');
+                    out.push(data.responseData.translatedText);
+                    if (!detected && data.responseData.detectedLanguage) detected = data.responseData.detectedLanguage;
                 }
+                const result = out.join('');
+                document.getElementById('outputText').value = result;
+                document.getElementById('outputCharCount').textContent = result.length + ' characters';
+                if (sourceLang === 'auto' && detected) {
+                    document.getElementById('detectedLang').textContent = 'Detected: ' + String(detected).toUpperCase();
+                }
+                autoSaveToHistory(text, result, sourceLang === 'auto' ? 'Auto' : sourceLang, targetLang);
+                showToast('Translation complete!', 'success');
             } catch (err) {
-                // Fallback simulation for demo
-                document.getElementById('outputText').value = `[Demo Mode] Translated to ${targetLang.toUpperCase()}: "${text.substring(0, 100)}${text.length > 100 ? '...' : ''}"`;
-                document.getElementById('outputCharCount').textContent = 
-                    `${document.getElementById('outputText').value.length} characters`;
-                showToast('Demo mode active (API limit reached)', 'info');
+                document.getElementById('outputText').value = '';
+                document.getElementById('outputCharCount').textContent = '0 characters';
+                showToast('Translation failed. The translation service may be busy or its free limit reached. Please try again later.', 'error');
             } finally {
                 loader.classList.remove('active');
                 btn.disabled = false;
             }
+        }
+
+        // Split text into pieces that fit the translation service's per-request limit
+        function splitForTranslation(text, maxLen) {
+            const pieces = text.match(/[^.!?\n]+[.!?]*\s*|\n+/g) || [text];
+            const chunks = [];
+            let cur = '';
+            for (let p of pieces) {
+                while (p.length > maxLen) {
+                    if (cur) { chunks.push(cur); cur = ''; }
+                    let cut = p.lastIndexOf(' ', maxLen);
+                    if (cut < maxLen / 2) cut = maxLen;
+                    chunks.push(p.slice(0, cut));
+                    p = p.slice(cut);
+                }
+                if ((cur + p).length > maxLen) { chunks.push(cur); cur = p; } else { cur += p; }
+            }
+            if (cur) chunks.push(cur);
+            return chunks.filter(c => c.length > 0);
         }
 
         // Text to Speech
@@ -1241,15 +1214,7 @@
             showToast('Opening website translator...', 'info');
         }
 
-        // File Upload
-        function handleFileUpload(input) {
-            const file = input.files[0];
-            if (!file) return;
-            const info = document.getElementById('fileInfo');
-            info.innerHTML = `📄 <strong>${file.name}</strong> (${(file.size/1024).toFixed(1)} KB)<br><span style="font-size:0.8rem;">Ready to translate</span>`;
-            showToast(`File "${file.name}" loaded`, 'success');
-        }
-
+        
         // History
         function autoSaveToHistory(source, target, from, to) {
             const item = {
@@ -1330,27 +1295,6 @@
             if (e.ctrlKey && e.key === 'Enter') translateText();
         });
 
-        // Drag & Drop
-        const uploadZone = document.getElementById('documentMode');
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
-            uploadZone.addEventListener(event, (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-            });
-        });
-        ['dragenter', 'dragover'].forEach(event => {
-            uploadZone.addEventListener(event, () => uploadZone.classList.add('dragover'));
-        });
-        ['dragleave', 'drop'].forEach(event => {
-            uploadZone.addEventListener(event, () => uploadZone.classList.remove('dragover'));
-        });
-        uploadZone.addEventListener('drop', (e) => {
-            const files = e.dataTransfer.files;
-            if (files.length) {
-                document.getElementById('docInput').files = files;
-                handleFileUpload(document.getElementById('docInput'));
-            }
-        });
     </script>
 </body>
 </html>
