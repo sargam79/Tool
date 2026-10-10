@@ -180,7 +180,7 @@
    "name": "How is federal income tax calculated? ▼",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Federal income tax is progressive using tax brackets. Each bracket has a percentage rate. You pay 10% on the first $11,000 (if single), 12% on the next bracket, etc. Your \"average tax rate\" is total taxes divided by income (usually 12-24% for most workers). The calculator uses accurate 2024 brackets."
+    "text": "Federal income tax is progressive using tax brackets. Each bracket has a percentage rate. You pay 10% on the first $12,400 of taxable income (if single, 2026), 12% on the next bracket, etc. Your \"average tax rate\" is total taxes divided by income (usually 12-24% for most workers). The calculator uses accurate 2024 brackets."
    }
   },
   {
@@ -188,7 +188,7 @@
    "name": "What are Social Security and Medicare taxes? ▼",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "FICA taxes (Federal Insurance Contributions Act) fund Social Security and Medicare. You pay 6.2% for Social Security (capped at $168,600 income in 2024) and 1.45% Medicare on all income. Your employer matches these, but you only see your portion deducted from paychecks. Total is 15.3% when including employer's share."
+    "text": "FICA taxes (Federal Insurance Contributions Act) fund Social Security and Medicare. You pay 6.2% for Social Security (capped at $184,500 of wages in 2026) and 1.45% Medicare on all income. Your employer matches these, but you only see your portion deducted from paychecks. Total is 15.3% when including employer's share."
    }
   },
   {
@@ -212,7 +212,7 @@
    "name": "How accurate is this calculator? ▼",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Very accurate for federal and FICA taxes using 2024 brackets. State taxes are simplified—some states have local taxes not included. If this shows $45,000 net but you take home $43,500, the difference is likely pre-tax deductions (401k, insurance) not entered. Compare with actual paychecks to verify accuracy for your situation."
+    "text": "Very accurate for federal and FICA taxes using 2026 federal brackets. State taxes are simplified—some states have local taxes not included. If this shows $45,000 net but you take home $43,500, the difference is likely pre-tax deductions (401k, insurance) not entered. Compare with actual paychecks to verify accuracy for your situation."
    }
   },
   {
@@ -346,7 +346,7 @@
             <p><strong>What taxes affect your paycheck?</strong> Multiple taxes take a portion of your income:</p>
             <ul style="margin-left:1.5rem;margin:1rem 0">
                 <li><strong>Federal Income Tax:</strong> Progressive tax system (6-37% depending on income bracket)</li>
-                <li><strong>Social Security:</strong> 6.2% of gross income (capped at $168,600 in 2023)</li>
+                <li><strong>Social Security:</strong> 6.2% of gross income (capped at $184,500 in 2026)</li>
                 <li><strong>Medicare:</strong> 1.45% of all income plus 0.9% additional on high earners</li>
                 <li><strong>State Income Tax:</strong> Varies by state (0-13.3% depending on location)</li>
                 <li><strong>Other Deductions:</strong> 401(k), health insurance, FSA, HSA, etc.</li>
@@ -436,7 +436,7 @@
                     </div>
 
                     <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Tax Breakdown</h3>
-                    <div class="breakdown-table">
+                    <table class="breakdown-table">
                         <thead>
                             <tr>
                                 <th>Tax Type</th>
@@ -470,8 +470,7 @@
                                 <td class="amount" id="totalTax">$0</td>
                                 <td style="text-align:right;color:var(--primary)" id="totalTaxPercent">0%</td>
                             </tr>
-                        </tbody>
-                    </div>
+                        </tbody></table>
 
                     <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Your Paycheck</h3>
                     <div class="paycheck-breakdown">
@@ -524,8 +523,8 @@
 
         <!-- Tax Brackets Section -->
         <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
-            <h2 style="color:var(--dark);margin-bottom:1.5rem">2024 Federal Tax Brackets (Single)</h2>
-            <div class="breakdown-table">
+            <h2 style="color:var(--dark);margin-bottom:1.5rem">2026 Federal Tax Brackets (Single, Taxable Income)</h2>
+            <table class="breakdown-table">
                 <thead>
                     <tr>
                         <th>Tax Bracket</th>
@@ -536,42 +535,41 @@
                 <tbody>
                     <tr>
                         <td class="label">10% Bracket</td>
-                        <td style="text-align:right">$0 - $11,000</td>
+                        <td style="text-align:right">$0 - $12,400</td>
                         <td style="text-align:right;color:var(--primary);font-weight:700">10%</td>
                     </tr>
                     <tr>
                         <td class="label">12% Bracket</td>
-                        <td style="text-align:right">$11,001 - $44,725</td>
+                        <td style="text-align:right">$12,401 - $50,400</td>
                         <td style="text-align:right;color:var(--primary);font-weight:700">12%</td>
                     </tr>
                     <tr>
                         <td class="label">22% Bracket</td>
-                        <td style="text-align:right">$44,726 - $95,375</td>
+                        <td style="text-align:right">$50,401 - $105,700</td>
                         <td style="text-align:right;color:var(--primary);font-weight:700">22%</td>
                     </tr>
                     <tr>
                         <td class="label">24% Bracket</td>
-                        <td style="text-align:right">$95,376 - $182,100</td>
+                        <td style="text-align:right">$105,701 - $201,775</td>
                         <td style="text-align:right;color:var(--primary);font-weight:700">24%</td>
                     </tr>
                     <tr>
                         <td class="label">32% Bracket</td>
-                        <td style="text-align:right">$182,101 - $231,250</td>
+                        <td style="text-align:right">$201,776 - $256,225</td>
                         <td style="text-align:right;color:var(--primary);font-weight:700">32%</td>
                     </tr>
                     <tr>
                         <td class="label">35% Bracket</td>
-                        <td style="text-align:right">$231,251 - $578,125</td>
+                        <td style="text-align:right">$256,226 - $640,600</td>
                         <td style="text-align:right;color:var(--primary);font-weight:700">35%</td>
                     </tr>
                     <tr>
                         <td class="label">37% Bracket</td>
-                        <td style="text-align:right">$578,126+</td>
+                        <td style="text-align:right">$640,601+</td>
                         <td style="text-align:right;color:var(--primary);font-weight:700">37%</td>
                     </tr>
-                </tbody>
-            </div>
-            <p style="color:#4b5563;line-height:1.8;margin-top:1rem"><strong>Important:</strong> These are marginal tax brackets. You don't pay the top rate on all income—only on income within each bracket. This is why $60,000 income doesn't result in 22% tax on all earnings.</p>
+                </tbody></table>
+            <p style="color:#4b5563;line-height:1.8;margin-top:1rem"><strong>Important:</strong> These are marginal tax brackets applied to taxable income, which is your pay minus the standard deduction ($16,100 single, $32,200 married filing jointly, $24,150 head of household in 2026) and any other deductions you enter. Married and head-of-household filers use their own brackets in the calculator. You don't pay the top rate on all income—only on income within each bracket. This is why $60,000 income doesn't result in 22% tax on all earnings.</p>
         </div>
 
         <!-- How to Use Section -->
@@ -628,7 +626,7 @@
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Federal income tax is progressive using tax brackets. Each bracket has a percentage rate. You pay 10% on the first $11,000 (if single), 12% on the next bracket, etc. Your "average tax rate" is total taxes divided by income (usually 12-24% for most workers). The calculator uses accurate 2024 brackets.</p>
+                    <p>Federal income tax is progressive using tax brackets. Each bracket has a percentage rate. You pay 10% on the first $12,400 of taxable income (if single, 2026), 12% on the next bracket, etc. Your "average tax rate" is total taxes divided by income (usually 12-24% for most workers). The calculator uses accurate 2024 brackets.</p>
                 </div>
             </div>
 
@@ -638,7 +636,7 @@
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>FICA taxes (Federal Insurance Contributions Act) fund Social Security and Medicare. You pay 6.2% for Social Security (capped at $168,600 income in 2024) and 1.45% Medicare on all income. Your employer matches these, but you only see your portion deducted from paychecks. Total is 15.3% when including employer's share.</p>
+                    <p>FICA taxes (Federal Insurance Contributions Act) fund Social Security and Medicare. You pay 6.2% for Social Security (capped at $184,500 of wages in 2026) and 1.45% Medicare on all income. Your employer matches these, but you only see your portion deducted from paychecks. Total is 15.3% when including employer's share.</p>
                 </div>
             </div>
 
@@ -668,7 +666,7 @@
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Very accurate for federal and FICA taxes using 2024 brackets. State taxes are simplified—some states have local taxes not included. If this shows $45,000 net but you take home $43,500, the difference is likely pre-tax deductions (401k, insurance) not entered. Compare with actual paychecks to verify accuracy for your situation.</p>
+                    <p>Very accurate for federal and FICA taxes using 2026 federal brackets. State taxes are simplified—some states have local taxes not included. If this shows $45,000 net but you take home $43,500, the difference is likely pre-tax deductions (401k, insurance) not entered. Compare with actual paychecks to verify accuracy for your situation.</p>
                 </div>
             </div>
 
@@ -699,20 +697,20 @@
             
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: $50,000 Annual Salary (Single, CA)</h3>
-                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Gross Income:</strong> $50,000 | <strong>Federal Tax:</strong> $4,200 | <strong>FICA:</strong> $3,825 | <strong>CA State:</strong> $2,200</p>
-                <p style="color:#4b5563"><strong>Take-Home:</strong> ~$39,775 (79.5%) | <strong>Monthly:</strong> ~$3,315 | <strong>Biweekly:</strong> ~$1,530</p>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Gross Income:</strong> $50,000 | <strong>Federal Tax:</strong> $3,820 | <strong>FICA:</strong> $3,825 | <strong>CA State (simplified 9.3% flat):</strong> $4,650</p>
+                <p style="color:#4b5563"><strong>Take-Home:</strong> ~$37,705 (75.4%) | <strong>Monthly:</strong> ~$3,142 | <strong>Biweekly:</strong> ~$1,450</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: $80,000 Annual Salary (Married, TX)</h3>
-                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Gross Income:</strong> $80,000 | <strong>Federal Tax:</strong> $6,800 | <strong>FICA:</strong> $6,120 | <strong>TX State:</strong> $0</p>
-                <p style="color:#4b5563"><strong>Take-Home:</strong> ~$67,080 (83.9%) | <strong>Monthly:</strong> ~$5,590 | <strong>Biweekly:</strong> ~$2,580</p>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Gross Income:</strong> $80,000 | <strong>Federal Tax:</strong> $5,240 | <strong>FICA:</strong> $6,120 | <strong>TX State:</strong> $0</p>
+                <p style="color:#4b5563"><strong>Take-Home:</strong> ~$68,640 (85.8%) | <strong>Monthly:</strong> ~$5,720 | <strong>Biweekly:</strong> ~$2,640</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: $100,000 Annual + $15,000 401(k) (Single, NY)</h3>
-                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Gross:</strong> $100,000 | <strong>401(k):</strong> -$15,000 = Taxable $85,000</p>
-                <p style="color:#4b5563"><strong>Result:</strong> 401(k) saves ~$4,200 in taxes! Take-home is ~$65,000 instead of $61,000.</p>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Gross:</strong> $100,000 | <strong>401(k):</strong> -$15,000 = $85,000 left to tax</p>
+                <p style="color:#4b5563"><strong>Result:</strong> the contribution lowers federal tax from $13,170 to $9,870 (saving $3,300) and the simplified NY state tax from $6,500 to $5,525 (saving $975). Take-home after setting aside the $15,000 is about $61,955, versus $72,680 with no contribution, so a $15,000 contribution reduces your paycheck income by about $10,725. Figures use 2026 federal brackets and the simplified state rates in this tool.</p>
             </div>
         </div>
 
@@ -728,7 +726,7 @@
         </div>
     </div>
 
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Provides a simplified take-home pay estimate using the tax brackets shown on the page. Tax rules, deductions and state or local taxes change and vary by person. Check your own tax authority or an accountant for exact figures.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html&amp;text=Free%20Salary%20Calculator%202026%20%7C%20Gross%20to%20Net%20Pay%20%26%20Tax%20Calculator" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Salary%20Calculator%202026%20%7C%20Gross%20to%20Net%20Pay%20%26%20Tax%20Calculator%20https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html&amp;text=Free%20Salary%20Calculator%202026%20%7C%20Gross%20to%20Net%20Pay%20%26%20Tax%20Calculator" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/salary-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Provides a simplified take-home pay estimate using 2026 US federal tax brackets, the 2026 standard deduction, a $2,200 child tax credit per dependent, Social Security tax up to $184,500 of wages and a flat state rate. It ignores extra Medicare tax, credit phase-outs, local taxes and pre-tax benefits. Tax rules, deductions and state or local taxes change and vary by person. Check your own tax authority or an accountant for exact figures.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html&amp;text=Free%20Salary%20Calculator%202026%20%7C%20Gross%20to%20Net%20Pay%20%26%20Tax%20Calculator" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Salary%20Calculator%202026%20%7C%20Gross%20to%20Net%20Pay%20%26%20Tax%20Calculator%20https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fsalary-calculator.html&amp;text=Free%20Salary%20Calculator%202026%20%7C%20Gross%20to%20Net%20Pay%20%26%20Tax%20Calculator" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/salary-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <script>
         let incomeType = 'annual';
@@ -784,30 +782,27 @@
                 selectedState = document.getElementById('stateInput').value.toUpperCase();
             }
             
-            // Calculate federal tax (simplified 2024 brackets)
-            let federalTax = 0;
-            const standardDeduction = filingStatus === 'married' ? 29200 : 14600;
+            // Federal income tax: 2026 IRS brackets and standard deduction (Rev. Proc. 2025-32)
+            const BRACKETS = {
+                single:  { ded: 16100, b: [[12400,0.10],[50400,0.12],[105700,0.22],[201775,0.24],[256225,0.32],[640600,0.35],[Infinity,0.37]] },
+                married: { ded: 32200, b: [[24800,0.10],[100800,0.12],[211400,0.22],[403550,0.24],[512450,0.32],[768700,0.35],[Infinity,0.37]] },
+                head:    { ded: 24150, b: [[17700,0.10],[67450,0.12],[105700,0.22],[201750,0.24],[256200,0.32],[640600,0.35],[Infinity,0.37]] }
+            };
+            const cfg = BRACKETS[filingStatus] || BRACKETS.single;
+            const standardDeduction = cfg.ded;
             let taxableIncome = Math.max(0, grossIncome - additionalDeductions - standardDeduction);
-            
-            if (filingStatus === 'single') {
-                if (taxableIncome > 578125) federalTax = (578125 * 0.37) + ((taxableIncome - 578125) * 0.37);
-                else if (taxableIncome > 231250) federalTax = (231250 * 0.35) + ((taxableIncome - 231250) * 0.35);
-                else if (taxableIncome > 182100) federalTax = (182100 * 0.32) + ((taxableIncome - 182100) * 0.32);
-                else if (taxableIncome > 95375) federalTax = (95375 * 0.24) + ((taxableIncome - 95375) * 0.24);
-                else if (taxableIncome > 44725) federalTax = (44725 * 0.22) + ((taxableIncome - 44725) * 0.22);
-                else if (taxableIncome > 11000) federalTax = (11000 * 0.10) + ((taxableIncome - 11000) * 0.12);
-                else federalTax = taxableIncome * 0.10;
-            } else {
-                // Simplified married brackets
-                federalTax = taxableIncome * 0.22;
+            let federalTax = 0, lower = 0;
+            for (const [upper, rate] of cfg.b) {
+                if (taxableIncome > lower) federalTax += (Math.min(taxableIncome, upper) - lower) * rate;
+                lower = upper;
             }
             
             federalTax = Math.round(federalTax);
-            const childCredit = dependents * 2000;
+            const childCredit = dependents * 2200;
             federalTax = Math.max(0, federalTax - childCredit);
             
             // FICA taxes
-            const ssTax = Math.round(Math.min(grossIncome, 168600) * 0.062);
+            const ssTax = Math.round(Math.min(grossIncome, 184500) * 0.062);
             const medicareTax = Math.round(grossIncome * 0.0145);
             
             // State tax
