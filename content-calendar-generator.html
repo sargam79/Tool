@@ -397,11 +397,10 @@
                 return;
             }
 
-            let csv = 'Title,Platform,Date,Status,Description
-';
+            let csv = 'Title,Platform,Date,Status,Description\n';
+            const q = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
             posts.forEach(post => {
-                csv += `"${post.title}","${post.platform}","${post.date}","${post.status}","${post.description}"
-`;
+                csv += [post.title, post.platform, post.date, post.status, post.description].map(q).join(',') + '\n';
             });
 
             const blob = new Blob([csv], { type: 'text/csv' });
