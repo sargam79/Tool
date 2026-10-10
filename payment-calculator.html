@@ -786,7 +786,7 @@
                 return;
             }
 
-            const monthlyPayment = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            const monthlyPayment = r === 0 ? P / n : P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
             
             amortizationSchedule = [];
             let balance = P;

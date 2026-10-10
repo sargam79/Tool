@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://toolpond.org/mortgage-calculator.html">
 
     <meta property="og:title" content="Free Mortgage Calculator: Monthly Payment & Amortization">
-    <meta property="og:description" content="Accurate mortgage calculator with amortization schedule and recent average rate data. Calculate monthly payments, total interest, and loan scenarios. Completely free and 100% private.">
+    <meta property="og:description" content="Accurate mortgage calculator with amortization schedule and recent average rate data. Calculate monthly payments, total interest, and loan scenarios. Free to use, and your inputs stay in your browser.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/mortgage-calculator.html">
 
@@ -314,7 +314,7 @@
     <div class="hero">
         <div class="container">
             <h1>Mortgage Calculator</h1>
-            <p>Calculate your monthly mortgage payment instantly, pre-filled with today's recent average rate. See your complete loan breakdown with amortization schedule, refinance scenarios, and total interest cost. Completely free and 100% private.</p>
+            <p>Calculate your monthly mortgage payment instantly, pre-filled with today's recent average rate. See your complete loan breakdown with amortization schedule, refinance scenarios, and total interest cost. Free to use, and your inputs stay in your browser.</p>
         </div>
     </div>
 <div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>Monthly payment = loan × r ÷ (1 − (1 + r)<sup>−n</sup>), where r is the monthly rate and n the number of payments. A $300,000 loan at 6.5% over 30 years has a principal and interest payment of about <strong>$1,896.20</strong> a month, before taxes and insurance.</div><div class="tp-how"><h2>How to calculate a mortgage payment</h2><ol><li>Enter the home price and your down payment.</li><li>Enter the interest rate and loan term. Use your lender's quote if you have one.</li><li>Add property tax, insurance and fees if you want a full monthly cost.</li><li>Read the monthly payment, total interest and amortization schedule.</li></ol></div></div>
@@ -834,7 +834,7 @@
             const loanAmount = homePrice - downPayment;
             const monthlyRate = rate / 100 / 12;
             const numPayments = term * 12;
-            const monthlyPI = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+            const monthlyPI = monthlyRate === 0 ? loanAmount / numPayments : loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
             const totalPI = monthlyPI * numPayments;
             const totalInterest = totalPI - loanAmount;
             const monthlyTax = (homePrice * (taxRate / 100)) / 12;

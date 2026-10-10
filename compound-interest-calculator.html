@@ -175,9 +175,59 @@
         <div class="content-section">
             <h2>Calculate Compound Growth</h2>
             <p>Enter your initial investment, monthly contributions, expected annual return, and time horizon to see how compounding builds wealth over time.</p>
-            <div style="background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:1.5rem 0;">
-                <p style="color:#6b7280">[Your existing compound interest calculator tool goes here]</p>
-            </div>
+            <style id="tp-ci-style">
+.ci-box{background:var(--light);padding:1.5rem;border-radius:8px;margin:1.5rem 0;border:1px solid var(--border)}
+.ci-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.ci-grid label{display:block;font-weight:600;color:var(--dark);margin-bottom:.35rem;font-size:.95rem}
+.ci-grid input,.ci-grid select{width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:#fff}
+.ci-btn{margin-top:1.1rem;background:var(--primary);color:#fff;border:0;border-radius:8px;padding:.8rem 1.6rem;font-weight:700;font-size:1rem;cursor:pointer}
+.ci-btn:hover{filter:brightness(.92)}
+.ci-msg{color:#b91c1c;font-weight:600;margin-top:.8rem;min-height:1.2rem}
+.ci-res{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem}
+.ci-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
+.ci-card span{display:block;color:#6b7280;font-size:.85rem}
+.ci-card strong{display:block;font-size:1.45rem;color:var(--primary);margin-top:.25rem;overflow-wrap:anywhere}
+.ci-tbl{overflow-x:auto;margin-top:1.2rem;max-height:420px;overflow-y:auto}
+.ci-tbl table{width:100%;border-collapse:collapse;font-size:.92rem;background:#fff}
+.ci-tbl th{position:sticky;top:0;background:var(--primary);color:#fff;padding:.6rem;text-align:right}
+.ci-tbl th:first-child,.ci-tbl td:first-child{text-align:left}
+.ci-tbl td{padding:.55rem .6rem;border-bottom:1px solid var(--border);text-align:right}
+            </style>
+            <form class="ci-box" id="ciForm" novalidate aria-label="Compound interest calculator">
+                <div class="ci-grid">
+                    <div><label for="ciPrincipal">Initial investment ($)</label><input id="ciPrincipal" type="number" inputmode="decimal" min="0" step="any" value="10000"></div>
+                    <div><label for="ciMonthly">Monthly contribution ($)</label><input id="ciMonthly" type="number" inputmode="decimal" min="0" step="any" value="500"></div>
+                    <div><label for="ciRate">Annual return (%)</label><input id="ciRate" type="number" inputmode="decimal" min="0" max="100" step="any" value="7"></div>
+                    <div><label for="ciYears">Years to grow</label><input id="ciYears" type="number" inputmode="numeric" min="1" max="60" step="1" value="20"></div>
+                    <div><label for="ciFreq">Compounding</label><select id="ciFreq"><option value="1">Annually</option><option value="2">Semi-annually</option><option value="4">Quarterly</option><option value="12" selected>Monthly</option><option value="365">Daily</option></select></div>
+                </div>
+                <button type="submit" class="ci-btn">Calculate</button>
+                <div class="ci-msg" id="ciMsg" role="alert"></div>
+                <div class="ci-res" id="ciRes" aria-live="polite">
+                    <div class="ci-card"><span>Future value</span><strong id="ciFV">&ndash;</strong></div>
+                    <div class="ci-card"><span>Total you put in</span><strong id="ciPut">&ndash;</strong></div>
+                    <div class="ci-card"><span>Interest earned</span><strong id="ciInt">&ndash;</strong></div>
+                </div>
+                <div class="ci-tbl"><table><thead><tr><th scope="col">Year</th><th scope="col">Total contributed</th><th scope="col">Interest earned</th><th scope="col">Balance</th></tr></thead><tbody id="ciBody"></tbody></table></div>
+                <p style="color:#6b7280;font-size:.85rem;margin-top:.8rem">Contributions are added at the end of each month. Interest is compounded at the frequency you choose. Estimates only: no taxes, fees or inflation, and real returns vary.</p>
+            </form>
+            <script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var fmt=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+  function run(e){
+    if(e)e.preventDefault();
+    var P=parseFloat($('ciPrincipal').value),M=parseFloat($('ciMonthly').value),R=parseFloat($('ciRate').value),Y=parseInt($('ciYears').value,10),N=parseInt($('ciFreq').value,10);
+    var msg=$('ciMsg');msg.textContent='';
+    if(isNaN(P)||P<0||isNaN(M)||M<0||isNaN(R)||R<0||R>100||isNaN(Y)||Y<1||Y>60){msg.textContent='Please enter a non-negative amount, a return between 0 and 100%, and 1 to 60 years.';return;}
+    var im=Math.pow(1+R/100/N,N/12)-1,bal=P,put=P,body='';
+    for(var m=1;m<=Y*12;m++){bal=bal*(1+im)+M;put+=M;
+      if(m%12===0){body+='<tr><td>'+(m/12)+'</td><td>'+fmt.format(put)+'</td><td>'+fmt.format(bal-put)+'</td><td>'+fmt.format(bal)+'</td></tr>';}}
+    $('ciFV').textContent=fmt.format(bal);$('ciPut').textContent=fmt.format(put);$('ciInt').textContent=fmt.format(bal-put);$('ciBody').innerHTML=body;
+  }
+  $('ciForm').addEventListener('submit',run);run();
+})();
+            </script>
         </div>
 
         <div class="content-section">
