@@ -56,7 +56,7 @@
    "name": "How much water should I drink per day?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "The amount of water you should drink depends on your weight and activity level. As a general rule, aim for 30-35ml per kg of body weight. Our water intake calculator provides a personalized recommendation based on your specific metrics. For a 70kg person with moderate activity, this equals approximately 2.5 liters per day."
+    "text": "The amount of water you should drink depends on your weight and activity level. As a general rule, aim for 30-40ml per kg of body weight, rising with activity. Our water intake calculator provides a personalized recommendation based on your specific metrics. For a 70kg person with moderate activity, this equals approximately 2.5 liters per day."
    }
   },
   {
@@ -949,7 +949,7 @@
                 </ul>
 
                 <h3>The Science Behind Hydration</h3>
-                <p>Water makes up approximately <strong>60% of your body weight</strong> and is essential for virtually every bodily function. The general recommendation of drinking <strong>8 glasses (2 liters) per day</strong> is a rough estimate. Our calculator provides a more accurate, personalized target by factoring in your body mass and how much you sweat during exercise.</p>
+                <p>Water makes up approximately <strong>60% of your body weight</strong> and is essential for virtually every bodily function. The general recommendation of drinking <strong>8 glasses (2 liters) per day</strong> is a rough estimate. Our calculator adjusts a simple rule of thumb for your body weight and your activity level; it cannot measure how much you actually sweat.</p>
             </div>
 
             <!-- Benefits Section -->
@@ -993,7 +993,7 @@
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        The amount of water you should drink depends on your weight and activity level. As a general rule, aim for 30-35ml per kg of body weight. Our water intake calculator provides a personalized recommendation based on your specific metrics. For a 70kg person with moderate activity, this equals approximately 2.5 liters per day.
+                        The amount of water you should drink depends on your weight and activity level. As a general rule, aim for 30-40ml per kg of body weight, rising with activity. Our water intake calculator provides a personalized recommendation based on your specific metrics. For a 70kg person with moderate activity, this equals approximately 2.5 liters per day.
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1170,7 +1170,7 @@
 
             const mlTotal = weight * multiplier;
             const liters = (mlTotal / 1000).toFixed(1);
-            const cups = Math.round(mlTotal / 240);
+            const cups = Math.round(mlTotal / 236.588);
             const glasses = Math.round(mlTotal / 250);
 
             waterLiters.innerHTML = `${liters} Liters`;

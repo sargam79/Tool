@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://toolpond.org/converter.html">
 
     <meta property="og:title" content="Free Unit Converter 2026 - Convert Any Units">
-    <meta property="og:description" content="Fast, accurate unit conversion for temperature, length, weight, volume, and more. Completely free and 100% private.">
+    <meta property="og:description" content="Fast, accurate unit conversion for temperature, length, weight, volume, and more. Free to use, and your inputs stay in your browser.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/converter.html">
 
@@ -206,7 +206,7 @@
    "name": "Is my data private? ▼",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Yes, 100% private. All conversions happen in your browser. We never see, store, or collect your conversion data. No login required, no tracking, no ads. Your data stays completely private."
+    "text": "Yes. All conversions happen in your browser. We never see, store, or collect your conversion data. No login required. The site itself may show ads and use analytics, as described in our Privacy Policy. Your data stays completely private."
    }
   }
  ]
@@ -259,7 +259,7 @@
     <div class="hero">
         <div class="container">
             <h1>Universal Unit Converter</h1>
-            <p>Convert between units instantly and accurately. Temperature, length, weight, volume, speed, and more. Real-time calculations with instant results. Completely free and 100% private.</p>
+            <p>Convert between units instantly and accurately. Temperature, length, weight, volume, speed, and more. Real-time calculations with instant results. Free to use, and your inputs stay in your browser.</p>
         </div>
     </div>
 
@@ -508,7 +508,7 @@
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes, 100% private. All conversions happen in your browser. We never see, store, or collect your conversion data. No login required, no tracking, no ads. Your data stays completely private.</p>
+                    <p>Yes. All conversions happen in your browser. We never see, store, or collect your conversion data. No login required. The site itself may show ads and use analytics, as described in our Privacy Policy. Your data stays completely private.</p>
                 </div>
             </div>
         </div>
@@ -560,28 +560,29 @@
                     'F->C': (v) => (v - 32) * 5/9,
                     'F->K': (v) => ((v - 32) * 5/9) + 273.15,
                     'K->C': (v) => v - 273.15,
-                    'K->F': (v) => ((v - 273.15) * 9/5) + 32
+                    'K->F': (v) => ((v - 273.15) * 9/5) + 32,
+                    'C->C': (v) => v, 'F->F': (v) => v, 'K->K': (v) => v
                 }
             },
             'length': {
                 'units': ['Meter', 'Kilometer', 'Mile', 'Foot', 'Inch', 'Centimeter'],
-                'toMeter': {'Meter': 1, 'Kilometer': 1000, 'Mile': 1609.34, 'Foot': 0.3048, 'Inch': 0.0254, 'Centimeter': 0.01}
+                'toMeter': {'Meter': 1, 'Kilometer': 1000, 'Mile': 1609.344, 'Foot': 0.3048, 'Inch': 0.0254, 'Centimeter': 0.01}
             },
             'weight': {
                 'units': ['Kilogram', 'Pound', 'Gram', 'Ounce', 'Stone', 'Ton'],
-                'toKg': {'Kilogram': 1, 'Pound': 0.453592, 'Gram': 0.001, 'Ounce': 0.0283495, 'Stone': 6.35029, 'Ton': 1000}
+                'toKg': {'Kilogram': 1, 'Pound': 0.45359237, 'Gram': 0.001, 'Ounce': 0.028349523125, 'Stone': 6.35029318, 'Ton': 1000}
             },
             'volume': {
                 'units': ['Liter', 'Milliliter', 'Gallon (US)', 'Cup (US)', 'Ounce (US)', 'Pint (US)'],
-                'toLiter': {'Liter': 1, 'Milliliter': 0.001, 'Gallon (US)': 3.78541, 'Cup (US)': 0.236588, 'Ounce (US)': 0.0295735, 'Pint (US)': 0.473176}
+                'toLiter': {'Liter': 1, 'Milliliter': 0.001, 'Gallon (US)': 3.785411784, 'Cup (US)': 0.2365882365, 'Ounce (US)': 0.0295735295625, 'Pint (US)': 0.473176473}
             },
             'speed': {
                 'units': ['KPH', 'MPH', 'Knot', 'Meter/Second'],
-                'toMps': {'KPH': 0.277778, 'MPH': 0.44704, 'Knot': 0.514444, 'Meter/Second': 1}
+                'toMps': {'KPH': 1/3.6, 'MPH': 0.44704, 'Knot': 1852/3600, 'Meter/Second': 1}
             },
             'area': {
                 'units': ['Square Meter', 'Square Kilometer', 'Square Foot', 'Square Mile', 'Hectare', 'Acre'],
-                'toM2': {'Square Meter': 1, 'Square Kilometer': 1000000, 'Square Foot': 0.092903, 'Square Mile': 2.58999e6, 'Hectare': 10000, 'Acre': 4046.86}
+                'toM2': {'Square Meter': 1, 'Square Kilometer': 1000000, 'Square Foot': 0.09290304, 'Square Mile': 2589988.110336, 'Hectare': 10000, 'Acre': 4046.8564224}
             }
         };
 

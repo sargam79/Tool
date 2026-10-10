@@ -365,17 +365,17 @@
             <table>
                 <thead><tr><th>Cycle Length</th><th>Ovulation Day</th><th>Days After Period Ends (5-day)</th><th>Fertile Window</th><th>Luteal Phase</th></tr></thead>
                 <tbody>
-                    <tr><td>21 days</td><td>Day 7</td><td>2 days after</td><td>Days 2-8</td><td>14 days</td></tr>
-                    <tr><td>23 days</td><td>Day 9</td><td>4 days after</td><td>Days 4-10</td><td>14 days</td></tr>
-                    <tr><td>25 days</td><td>Day 11</td><td>6 days after</td><td>Days 6-12</td><td>14 days</td></tr>
-                    <tr><td>26 days</td><td>Day 12</td><td>7 days after</td><td>Days 7-13</td><td>14 days</td></tr>
-                    <tr><td>28 days</td><td>Day 14</td><td>9 days after</td><td>Days 9-15</td><td>14 days</td></tr>
-                    <tr><td>30 days</td><td>Day 16</td><td>11 days after</td><td>Days 11-17</td><td>14 days</td></tr>
-                    <tr><td>32 days</td><td>Day 18</td><td>13 days after</td><td>Days 13-19</td><td>14 days</td></tr>
-                    <tr><td>35 days</td><td>Day 21</td><td>16 days after</td><td>Days 16-22</td><td>14 days</td></tr>
-                    <tr><td>38 days</td><td>Day 24</td><td>19 days after</td><td>Days 19-25</td><td>14 days</td></tr>
-                    <tr><td>40 days</td><td>Day 26</td><td>21 days after</td><td>Days 21-27</td><td>14 days</td></tr>
-                    <tr><td>45 days</td><td>Day 31</td><td>26 days after</td><td>Days 26-32</td><td>14 days</td></tr>
+                    <tr><td>21 days</td><td>Day 7</td><td>2 days after</td><td>Days 2-7</td><td>14 days</td></tr>
+                    <tr><td>23 days</td><td>Day 9</td><td>4 days after</td><td>Days 4-9</td><td>14 days</td></tr>
+                    <tr><td>25 days</td><td>Day 11</td><td>6 days after</td><td>Days 6-11</td><td>14 days</td></tr>
+                    <tr><td>26 days</td><td>Day 12</td><td>7 days after</td><td>Days 7-12</td><td>14 days</td></tr>
+                    <tr><td>28 days</td><td>Day 14</td><td>9 days after</td><td>Days 9-14</td><td>14 days</td></tr>
+                    <tr><td>30 days</td><td>Day 16</td><td>11 days after</td><td>Days 11-16</td><td>14 days</td></tr>
+                    <tr><td>32 days</td><td>Day 18</td><td>13 days after</td><td>Days 13-18</td><td>14 days</td></tr>
+                    <tr><td>35 days</td><td>Day 21</td><td>16 days after</td><td>Days 16-21</td><td>14 days</td></tr>
+                    <tr><td>38 days</td><td>Day 24</td><td>19 days after</td><td>Days 19-24</td><td>14 days</td></tr>
+                    <tr><td>40 days</td><td>Day 26</td><td>21 days after</td><td>Days 21-26</td><td>14 days</td></tr>
+                    <tr><td>45 days</td><td>Day 31</td><td>26 days after</td><td>Days 26-31</td><td>14 days</td></tr>
                 </tbody>
             </table>
         </div>
@@ -539,19 +539,21 @@ function setPD(d){pd=d;document.querySelectorAll('.pd-btn').forEach(b=>{parseInt
 function fmtS(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}
 function fmtF(d){return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}
 function sameD(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate()}
-function addD(d,n){return new Date(d.getTime()+n*864e5)}
+function addD(d,n){const r=new Date(d.getFullYear(),d.getMonth(),d.getDate());r.setDate(r.getDate()+n);return r}
+function parseLocal(s){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s);return m?new Date(+m[1],+m[2]-1,+m[3]):null}
+function dayDiff(a,b){return Math.round((Date.UTC(a.getFullYear(),a.getMonth(),a.getDate())-Date.UTC(b.getFullYear(),b.getMonth(),b.getDate()))/864e5)}
 
 function calc(){
     const v=document.getElementById('lastPeriod').value;if(!v)return;
-    const cl=parseInt(document.getElementById('cycleLen').value),lp=parseInt(document.getElementById('luteal').value)||14;
-    const lp2=new Date(v),ov=addD(lp2,cl-lp),fs=addD(ov,-5),fe=addD(ov,1),np=addD(lp2,cl);
-    const b1=addD(ov,-2),b2=addD(ov,-1),iw1=addD(ov,6),iw2=addD(ov,12),testD=addD(ov,14);
-    const today=new Date(),cd=Math.floor((today-lp2)/864e5)+1;
+    const cl=parseInt(document.getElementById('cycleLen').value),lp=Math.min(16,Math.max(10,parseInt(document.getElementById('luteal').value)||14));
+    const lp2=parseLocal(v);if(!lp2||!(cl>=21&&cl<=45))return;const ov=addD(lp2,cl-lp-1),fs=addD(ov,-5),fe=ov,np=addD(lp2,cl);
+    const b1=addD(ov,-2),iw1=addD(ov,6),iw2=addD(ov,12),testD=addD(ov,14);
+    const today=new Date(),cd=dayDiff(today,lp2)+1;
 
     document.getElementById('sNextP').textContent=fmtS(np);
     document.getElementById('sOv').textContent=fmtS(ov);
     document.getElementById('sFW').textContent=fmtS(fs)+' - '+fmtS(fe);
-    document.getElementById('sBest').textContent=fmtS(b1)+' & '+fmtS(b2);
+    document.getElementById('sBest').textContent=fmtS(b1)+' - '+fmtS(ov);
     document.getElementById('sImpl').textContent=fmtS(iw1)+' - '+fmtS(iw2);
     document.getElementById('sTest').textContent=fmtS(testD);
     document.getElementById('sLut').textContent=lp+' days';
@@ -565,7 +567,7 @@ function calc(){
 
 function genCal(lp2,cl,ov,fs,fe,iw1,iw2){
     const g=document.getElementById('calGrid');g.innerHTML='';
-    const st=new Date(lp2);st.setDate(st.getDate()-st.getDay());
+    const st=addD(lp2,-lp2.getDay());
     for(let i=0;i<42;i++){
         const c=addD(st,i),el=document.createElement('div');
         el.className='calendar-day';el.textContent=c.getDate();
@@ -588,4 +590,55 @@ function genTL(lp2,cl,ov,fs,fe,np,iw1,iw2,testD){
         {d:fs,t:'Fertile Window Opens',desc:'Sperm can survive up to 5 days. Best time to start trying.',i:'heart',c:'text-primary',bg:'bg-pink-100',pulse:false},
         {d:addD(ov,-2),t:'Peak Fertility Begins',desc:'Highest conception probability. Egg-white mucus likely present.',i:'star',c:'text-secondary',bg:'bg-purple-100',pulse:false},
         {d:ov,t:'Ovulation Day',desc:'Egg released! Most fertile day. Egg lives 12-24 hours.',i:'egg',c:'text-primary',bg:'bg-primary',pulse:true},
-        {d:addD(ov,1),t
+        {d:addD(ov,1),t:'Luteal Phase Continues',desc:'Fertile window has closed. The egg survives only 12-24 hours after release.',i:'moon',c:'text-secondary',bg:'bg-purple-50',pulse:false},
+        {d:iw1,t:'Implantation Window Opens',desc:'Implantation usually happens 6-12 days after ovulation, most often day 8-10.',i:'seedling',c:'text-accent',bg:'bg-cyan-100',pulse:false},
+        {d:iw2,t:'Implantation Window Ends',desc:'Last likely day for implantation.',i:'seedling',c:'text-accent',bg:'bg-cyan-50',pulse:false},
+        {d:testD,t:'Pregnancy Test',desc:'A test is most reliable 14 days after ovulation.',i:'vial',c:'text-rose',bg:'bg-rose-100',pulse:false},
+        {d:np,t:'Next Period Expected',desc:'Day 1 of your next cycle.',i:'calendar',c:'text-blue-500',bg:'bg-blue-100',pulse:false}
+    ];
+    ev.sort((a,b)=>a.d-b.d);
+    ev.forEach(e=>{
+        const row=document.createElement('div');row.className='relative flex items-start gap-4';
+        const ic=document.createElement('div');ic.className='w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 z-10 '+e.bg+(e.pulse?' animate-pulse':'');
+        const i=document.createElement('i');i.className='fas fa-'+e.i+' '+(e.pulse?'text-white':e.c);ic.appendChild(i);
+        const bx=document.createElement('div');
+        const t=document.createElement('div');t.className='font-semibold text-sm';t.textContent=e.t+' - '+fmtF(e.d);
+        const p=document.createElement('p');p.className='text-sm text-gray-600';p.textContent=e.desc;
+        bx.appendChild(t);bx.appendChild(p);row.appendChild(ic);row.appendChild(bx);tl.appendChild(row);
+    });
+}
+
+function genChart(cl,lp){
+    if(typeof Chart==='undefined')return;
+    const cv=document.getElementById('fChart');if(!cv)return;
+    const ovDay=cl-lp;
+    const prob={'-5':10,'-4':16,'-3':14,'-2':27,'-1':31,'0':33};
+    const labels=[],data=[],colors=[];
+    for(let d=1;d<=cl;d++){
+        labels.push('Day '+d);
+        const k=d-ovDay;
+        const v=prob[String(k)]||0;
+        data.push(v);
+        colors.push(k===0?'#ec4899':(v>0?'#f9a8d4':'#e5e7eb'));
+    }
+    if(fChart)fChart.destroy();
+    fChart=new Chart(cv,{type:'bar',data:{labels:labels,datasets:[{label:'Chance of conception per cycle day (%)',data:data,backgroundColor:colors,borderRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'Conception probability (%)'}}}}});
+}
+
+function genForecast(lp2,cl,lp){
+    const sec=document.getElementById('forecastSection'),body=document.getElementById('fcBody');
+    if(!sec||!body)return;
+    body.innerHTML='';
+    for(let k=1;k<=3;k++){
+        const s=addD(lp2,k*cl),ov=addD(s,cl-lp-1),fs=addD(ov,-5),b1=addD(ov,-2),np=addD(s,cl);
+        const tr=document.createElement('tr');
+        [ 'Cycle '+k,fmtS(s),fmtS(ov),fmtS(fs)+' - '+fmtS(ov),fmtS(b1)+' - '+fmtS(ov),fmtS(np) ].forEach(x=>{const td=document.createElement('td');td.textContent=x;tr.appendChild(td);});
+        body.appendChild(tr);
+    }
+    sec.style.display='block';
+}
+
+calc();
+</script>
+</body>
+</html>

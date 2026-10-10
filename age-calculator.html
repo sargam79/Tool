@@ -506,8 +506,15 @@
                 return;
             }
 
-            const birthDate = new Date(birthDateInput);
-            const today = new Date();
+            const bm = /^(\d{4})-(\d{2})-(\d{2})$/.exec(birthDateInput);
+            if (!bm) {
+                resultBox.classList.remove('show');
+                return;
+            }
+            const now = new Date();
+            // Local calendar dates (avoids UTC parsing shifting the day)
+            const birthDate = new Date(+bm[1], +bm[2] - 1, +bm[3]);
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
             // Validate date is not in future
             if (birthDate > today) {
@@ -518,31 +525,35 @@
                 return;
             }
 
-            let years = today.getFullYear() - birthDate.getFullYear();
-            let months = today.getMonth() - birthDate.getMonth();
-            let days = today.getDate() - birthDate.getDate();
+            // Whole months elapsed, anchored on the birth day (clamped to month end, so Jan 31 + 1 month = Feb 28/29)
+            const addMonths = (d, n) => {
+                const t = d.getMonth() + n;
+                const y = d.getFullYear() + Math.floor(t / 12);
+                const m = ((t % 12) + 12) % 12;
+                const last = new Date(y, m + 1, 0).getDate();
+                return new Date(y, m, Math.min(d.getDate(), last));
+            };
+            let totalMonths = (today.getFullYear() - birthDate.getFullYear()) * 12 + (today.getMonth() - birthDate.getMonth());
+            if (addMonths(birthDate, totalMonths) > today) totalMonths--;
+            const years = Math.floor(totalMonths / 12);
+            const months = totalMonths % 12;
+            const anchor = addMonths(birthDate, totalMonths);
+            const dayMs = 1000 * 60 * 60 * 24;
+            const utc = d => Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+            const days = Math.round((utc(today) - utc(anchor)) / dayMs);
 
-            if (days < 0) {
-                months--;
-                const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-                days += prevMonth.getDate();
-            }
-
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
-            const totalDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+            const totalDays = Math.round((utc(today) - utc(birthDate)) / dayMs);
             const totalWeeks = Math.floor(totalDays / 7);
             const totalHours = totalDays * 24;
 
-            // Calculate next birthday
-            const nextBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+            // Calculate next birthday (today counts as 0 days away)
+            let nextBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+            if (nextBirthday.getMonth() !== birthDate.getMonth()) nextBirthday = new Date(today.getFullYear(), birthDate.getMonth() + 1, 0);
             if (nextBirthday < today) {
-                nextBirthday.setFullYear(today.getFullYear() + 1);
+                nextBirthday = new Date(today.getFullYear() + 1, birthDate.getMonth(), birthDate.getDate());
+                if (nextBirthday.getMonth() !== birthDate.getMonth()) nextBirthday = new Date(today.getFullYear() + 1, birthDate.getMonth() + 1, 0);
             }
-            const daysUntilBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+            const daysUntilBirthday = Math.round((utc(nextBirthday) - utc(today)) / dayMs);
 
             // Format birth date nicely
             const birthDateStr = birthDate.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'});
@@ -576,7 +587,8 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             // Set max date to today
-            const today = new Date().toISOString().split('T')[0];
+            const n = new Date(), pad = x => String(x).padStart(2, '0');
+            const today = n.getFullYear() + '-' + pad(n.getMonth() + 1) + '-' + pad(n.getDate());
             document.getElementById('birthDate').setAttribute('max', today);
         });
 
