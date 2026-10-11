@@ -963,14 +963,14 @@
                                 <label>Monthly Payment</label>
                                 <div class="tp-input-prefix">
                                     <span class="prefix">$</span>
-                                    <input type="number" class="tp-input" id="monthly-payment" value="500" min="0" step="10">
+                                    <input type="number" class="tp-input" id="monthly-payment" value="500" min="0" step="any">
                                 </div>
                             </div>
                             <div class="tp-form-group">
                                 <label>Extra Payment (Optional)</label>
                                 <div class="tp-input-prefix">
                                     <span class="prefix">$</span>
-                                    <input type="number" class="tp-input" id="extra-payment" value="100" min="0" step="10">
+                                    <input type="number" class="tp-input" id="extra-payment" value="100" min="0" step="any">
                                 </div>
                             </div>
                         </div>
@@ -1322,18 +1322,18 @@
                             <label>Balance</label>
                             <div class="tp-input-prefix">
                                 <span class="prefix">$</span>
-                                <input type="number" class="tp-input" value="${card.balance}" min="0" step="100" onchange="updateCard(${card.id}, 'balance', this.value)">
+                                <input type="number" class="tp-input" value="${card.balance}" min="0" step="any" onchange="updateCard(${card.id}, 'balance', this.value)">
                             </div>
                         </div>
                         <div class="tp-form-group">
                             <label>APR (%)</label>
-                            <input type="number" class="tp-input" value="${card.apr}" min="0" max="100" step="0.01" onchange="updateCard(${card.id}, 'apr', this.value)">
+                            <input type="number" class="tp-input" value="${card.apr}" min="0" max="100" step="any" onchange="updateCard(${card.id}, 'apr', this.value)">
                         </div>
                         <div class="tp-form-group">
                             <label>Min Payment</label>
                             <div class="tp-input-prefix">
                                 <span class="prefix">$</span>
-                                <input type="number" class="tp-input" value="${card.minPayment}" min="0" step="10" onchange="updateCard(${card.id}, 'minPayment', this.value)">
+                                <input type="number" class="tp-input" value="${card.minPayment}" min="0" step="any" onchange="updateCard(${card.id}, 'minPayment', this.value)">
                             </div>
                         </div>
                     </div>

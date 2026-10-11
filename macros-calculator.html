@@ -431,7 +431,7 @@
                 <div class="calc-grid">
                     <div class="input-group">
                         <label class="input-label" for="age">📅 Age (years):</label>
-                        <input type="number" id="age" class="input-field" placeholder="e.g., 30" value="30" min="10" max="120" oninput="calculateAll()" aria-label="Age in years">
+                        <input type="number" id="age" class="input-field" placeholder="e.g., 30" value="30" min="10" max="120" oninput="calculateAll()" aria-label="Age in years" step="any">
                         <div class="input-hint">10-120 years</div>
                     </div>
                     <div class="input-group">
@@ -443,17 +443,17 @@
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="weight">⚖️ Weight (kg):</label>
-                        <input type="number" id="weight" class="input-field" placeholder="e.g., 70" value="70" min="20" max="300" step="0.1" oninput="calculateAll()" aria-label="Weight in kg">
+                        <input type="number" id="weight" class="input-field" placeholder="e.g., 70" value="70" min="20" max="300" step="any" oninput="calculateAll()" aria-label="Weight in kg">
                         <div class="input-hint">20-300 kg</div>
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="height">📏 Height (cm):</label>
-                        <input type="number" id="height" class="input-field" placeholder="e.g., 175" value="175" min="50" max="300" step="0.1" oninput="calculateAll()" aria-label="Height in cm">
+                        <input type="number" id="height" class="input-field" placeholder="e.g., 175" value="175" min="50" max="300" step="any" oninput="calculateAll()" aria-label="Height in cm">
                         <div class="input-hint">50-300 cm</div>
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="bodyFat">📊 Body Fat % (optional):</label>
-                        <input type="number" id="bodyFat" class="input-field" placeholder="e.g., 20" min="1" max="60" step="0.1" oninput="calculateAll()" aria-label="Body fat percentage">
+                        <input type="number" id="bodyFat" class="input-field" placeholder="e.g., 20" min="1" max="60" step="any" oninput="calculateAll()" aria-label="Body fat percentage">
                         <div class="input-hint">Leave empty for Mifflin-St Jeor</div>
                     </div>
                     <div class="input-group">
@@ -494,9 +494,9 @@
                         <div class="input-group" id="customMacros" style="display:none">
                             <label class="input-label">Custom Ratios (%):</label>
                             <div style="display:flex;gap:0.5rem">
-                                <input type="number" id="customProtein" class="input-field" placeholder="Protein %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1">
-                                <input type="number" id="customCarbs" class="input-field" placeholder="Carbs %" min="0" max="100" value="40" oninput="calculateAll()" style="flex:1">
-                                <input type="number" id="customFats" class="input-field" placeholder="Fats %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1">
+                                <input type="number" id="customProtein" class="input-field" placeholder="Protein %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1" step="any">
+                                <input type="number" id="customCarbs" class="input-field" placeholder="Carbs %" min="0" max="100" value="40" oninput="calculateAll()" style="flex:1" step="any">
+                                <input type="number" id="customFats" class="input-field" placeholder="Fats %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1" step="any">
                             </div>
                             <div class="input-hint" id="customHint">Total must equal 100%</div>
                         </div>
