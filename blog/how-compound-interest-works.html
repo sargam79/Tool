@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Compound Interest Works: Formula and Examples</title>
+  <meta name="description" content="Learn how compound interest works with the formula, worked examples, the Rule of 72 and why starting early matters. Free calculator included." />
+  <meta name="author" content="ToolPond" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://toolpond.org/blog/how-compound-interest-works.html" />
+  <meta property="og:title" content="How Compound Interest Works: Formula and Examples" />
+  <meta property="og:description" content="Learn how compound interest works with the formula, worked examples, the Rule of 72 and why starting early matters. Free calculator included." />
+  <meta property="og:image" content="https://toolpond.org/og-image.jpg" />
+  <meta property="og:url" content="https://toolpond.org/blog/how-compound-interest-works.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ToolPond" />
+  <meta property="article:published_time" content="2026-10-11T10:00:00+00:00" />
+  <meta property="article:section" content="Finance" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How Compound Interest Works: Formula and Examples" />
+  <meta name="twitter:description" content="Learn how compound interest works with the formula, worked examples, the Rule of 72 and why starting early matters. Free calculator included." />
+  <meta name="twitter:image" content="https://toolpond.org/og-image.jpg" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How Compound Interest Works: Formula, Examples and the Rule of 72",
+  "description": "Learn how compound interest works with the formula, worked examples, the Rule of 72 and why starting early matters. Free calculator included.",
+  "datePublished": "2026-10-11",
+  "dateModified": "2026-10-11",
+  "mainEntityOfPage": "https://toolpond.org/blog/how-compound-interest-works.html",
+  "author": {
+    "@type": "Organization",
+    "name": "ToolPond"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ToolPond",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://toolpond.org/assets/logo.png"
+    }
+  },
+  "image": "https://toolpond.org/assets/logo.png"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between APR and APY?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "APR is the stated yearly rate before compounding. APY includes the effect of compounding, so it shows what you actually earn (or pay) over a year. A 6% rate compounded monthly has an APY of about 6.17%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should interest compound for the best result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "More frequent compounding gives slightly more, but the difference is small. For $10,000 at 6% over 10 years, daily compounding beats yearly by about $312. The interest rate and the length of time matter much more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate compound interest by hand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use A = P × (1 + r/n)^(n×t). For $10,000 at 7% compounded yearly for 20 years: 10,000 × 1.07^20 = about $38,697. Subtract the $10,000 principal to get $28,697 of interest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is compound interest guaranteed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only where the rate is fixed, such as some savings accounts and certificates of deposit. Investment returns change over time, so a projection using a steady rate is an estimate rather than a promise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the Rule of 72 tell me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It estimates how many years it takes money to double: divide 72 by the annual rate. At 8% that is about 9 years. It is a quick approximation, not an exact result."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://toolpond.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://toolpond.org/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How Compound Interest Works",
+      "item": "https://toolpond.org/blog/how-compound-interest-works.html"
+    }
+  ]
+}
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.75; color: #222; background: #fff; }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav { background: #0a2540; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { color: #fff; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: #ccd6f6; font-size: 0.88rem; text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+
+    .breadcrumb { background: #f4f6f8; padding: 10px 24px; font-size: 0.84rem; color: #666; }
+    .breadcrumb a { color: #0066cc; }
+
+    .hero { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
+    .hero .badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 4px 14px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(1.55rem, 4vw, 2.3rem); font-weight: 800; max-width: 780px; margin: 0 auto 14px; line-height: 1.25; }
+    .hero .meta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; font-size: 0.84rem; opacity: 0.85; }
+    .hero .subtitle { font-size: 1rem; opacity: 0.9; max-width: 620px; margin: 14px auto 0; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 64px; }
+
+    .toc { background: #fff0f5; border-left: 4px solid #f5576c; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 28px 0 36px; }
+    .toc h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; color: #0a2540; }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 5px; font-size: 0.88rem; }
+
+    h2 { font-size: 1.5rem; font-weight: 800; color: #0a2540; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #eee; }
+    h3 { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin: 26px 0 10px; }
+    p { margin-bottom: 15px; color: #333; }
+    ul, ol { margin: 10px 0 18px 22px; }
+    li { margin-bottom: 7px; color: #333; }
+    strong { color: #0a2540; }
+
+    .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: #0a2540; color: #fff; padding: 11px 15px; text-align: left; font-weight: 600; }
+    td { padding: 10px 15px; border-bottom: 1px solid #f0f0f0; }
+    tr:nth-child(even) td { background: #f8f9fa; }
+    tr:last-child td { border-bottom: none; }
+
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 22px 0; }
+    .callout-tip { background: #e8f5e9; border-left: 4px solid #43a047; }
+    .callout-info { background: #e3f2fd; border-left: 4px solid #1e88e5; }
+    .callout-warning { background: #fff8e1; border-left: 4px solid #f9a825; }
+    .callout-title { font-weight: 700; margin-bottom: 7px; font-size: 0.93rem; }
+    .callout p, .callout ul { margin-bottom: 0; }
+
+    .formula-box { background: #1a1a2e; color: #e2e8f0; border-radius: 10px; padding: 22px 26px; margin: 22px 0; font-family: 'Courier New', monospace; font-size: 0.92rem; line-height: 1.8; }
+    .formula-box .formula-title { font-family: -apple-system, sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #f5576c; margin-bottom: 10px; }
+    .formula-box .highlight { color: #63f5c8; font-weight: 700; }
+
+    .goal-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+    .goal-card { border-radius: 10px; padding: 18px; text-align: center; border: 2px solid; }
+    .goal-card.loss { background: #fff0f3; border-color: #f5576c; }
+    .goal-card.maintain { background: #e8f5e9; border-color: #43a047; }
+    .goal-card.gain { background: #e3f2fd; border-color: #1e88e5; }
+    .goal-card .goal-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .goal-card h4 { font-size: 0.95rem; font-weight: 700; color: #0a2540; margin-bottom: 6px; }
+    .goal-card .goal-cal { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+    .goal-card.loss .goal-cal { color: #f5576c; }
+    .goal-card.maintain .goal-cal { color: #43a047; }
+    .goal-card.gain .goal-cal { color: #1e88e5; }
+    .goal-card p { font-size: 0.82rem; color: #555; margin: 0; }
+
+    .cta-box { background: linear-gradient(135deg, #f093fb, #f5576c); color: #fff; border-radius: 12px; padding: 26px 30px; margin: 34px 0; text-align: center; }
+    .cta-box h3 { font-size: 1.15rem; margin-bottom: 8px; color: #fff; border: none; padding: 0; }
+    .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #fff; color: #f5576c; font-weight: 700; padding: 11px 26px; border-radius: 6px; font-size: 0.93rem; }
+    .cta-btn:hover { text-decoration: none; opacity: 0.95; }
+
+    .steps { margin: 20px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .step-num { background: #f5576c; color: #fff; font-weight: 800; min-width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px; font-size: 0.95rem; }
+    .step-body h4 { font-size: 0.98rem; font-weight: 700; color: #0a2540; margin-bottom: 5px; }
+    .step-body p { margin: 0; color: #444; font-size: 0.93rem; }
+
+    .faq-item { border-bottom: 1px solid #eee; padding: 16px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-weight: 700; color: #0a2540; margin-bottom: 7px; font-size: 0.97rem; }
+    .faq-a { color: #444; font-size: 0.93rem; }
+
+    .share-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 28px 0; }
+    .share-bar span { font-weight: 600; color: #444; font-size: 0.88rem; }
+    .share-btn { display: inline-block; padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; color: #fff; text-decoration: none; }
+    .tw { background: #1da1f2; } .fb { background: #1877f2; } .li { background: #0077b5; } .wa { background: #25d366; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 14px; }
+    .related-card { border: 1px solid #e4e4e4; border-radius: 10px; padding: 16px; display: block; text-decoration: none; transition: box-shadow 0.2s; }
+    .related-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.1); text-decoration: none; }
+    .related-card h4 { font-size: 0.92rem; font-weight: 700; color: #0a2540; margin-bottom: 5px; }
+    .related-card p { font-size: 0.83rem; color: #666; margin: 0; }
+
+    footer { background: #0a2540; color: #8892b0; padding: 40px 24px 24px; }
+    .footer-grid { max-width: 960px; margin: 0 auto 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; }
+    .footer-col h4 { color: #ccd6f6; font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 6px; }
+    .footer-col a { color: #8892b0; font-size: 0.83rem; text-decoration: none; }
+    .footer-col a:hover { color: #ccd6f6; }
+    .footer-bottom { text-align: center; padding-top: 18px; border-top: 1px solid #1d3557; font-size: 0.8rem; }
+    .footer-bottom a { color: #8892b0; }
+
+    @media (max-width: 600px) {
+      nav { height: auto; padding: 10px 16px; flex-wrap: wrap; gap: 6px; }
+      .nav-links { gap: 12px; flex-wrap: wrap; }
+      .hero { padding: 38px 16px 34px; }
+      .container { padding: 26px 16px 48px; }
+    }
+  </style>
+<meta name="google-adsense-account" content="ca-pub-7280526621945427">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
+</head>
+<body>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+
+
+
+
+<div class="breadcrumb">
+  <a href="https://toolpond.org/">Home</a> / <a href="https://toolpond.org/blog.html">Blog</a> / How Compound Interest Works
+</div>
+
+<header class="hero">
+  <div class="badge">💰 Savings &amp; Investing</div>
+  <h1>How Compound Interest Works: Formula, Examples and the Rule of 72</h1>
+  <div class="meta">
+    <span>📅 October 11, 2026</span>
+    <span>⏱️ 9 min read</span>
+    <span>✍️ ToolPond</span>
+  </div>
+  <p class="subtitle">Why interest on interest makes money grow faster over time, with worked examples you can check yourself</p>
+</header>
+
+<main class="container">
+  <article>
+    <p><strong>Compound interest is interest that earns interest.</strong> Each time interest is added to your balance, the next round of interest is calculated on the larger amount. Over a few months the effect is tiny. Over decades it becomes the main reason a savings or investment balance grows. This guide explains the formula, walks through real numbers, and shows how to test your own figures with our <a href="https://toolpond.org/compound-interest-calculator.html">compound interest calculator</a>.</p>
+    <div class="callout callout-info"><div class="callout-title">Quick answer</div><p>With compound interest, the balance after <em>t</em> years is <strong>A = P × (1 + r/n)<sup>n×t</sup></strong>. $10,000 at 7% a year, compounded annually, grows to about <strong>$38,697 after 20 years</strong>. Simple interest on the same amount would give only $24,000.</p></div>
+
+    <div class="toc">
+      <h3>📑 Table of Contents</h3>
+      <ol><li><a href="#simple">Simple vs compound interest</a></li><li><a href="#formula">The compound interest formula</a></li><li><a href="#example">A worked example, year by year</a></li><li><a href="#frequency">Does compounding frequency matter?</a></li><li><a href="#contributions">Adding money every month</a></li><li><a href="#early">Why starting early matters</a></li><li><a href="#rule72">The Rule of 72</a></li><li><a href="#debt">Compounding works against you on debt</a></li><li><a href="#limits">What these numbers do not tell you</a></li><li><a href="#use">How to use the calculator</a></li></ol>
+    </div>
+
+    <h2 id="simple">Simple vs compound interest</h2>
+    <p><strong>Simple interest</strong> is paid only on the original amount (the principal). If you put in $10,000 at 7% simple interest, you earn $700 every year, no more and no less. After 20 years you have $10,000 + 20 × $700 = <strong>$24,000</strong>.</p>
+    <p><strong>Compound interest</strong> is paid on the principal <em>and</em> on the interest already added. In year one you earn $700. In year two you earn 7% of $10,700, which is $749. In year three you earn 7% of $11,449, which is about $801. The yearly gain keeps growing because the balance it is calculated on keeps growing.</p>
+
+    <h2 id="formula">The compound interest formula</h2>
+    <div class="formula-box"><div class="formula-title">Compound interest formula</div>
+A = P × (1 + r / n) ^ (n × t)<br><br>
+<span class="highlight">A</span> = final amount<br>
+<span class="highlight">P</span> = starting amount (principal)<br>
+<span class="highlight">r</span> = annual interest rate as a decimal (7% = 0.07)<br>
+<span class="highlight">n</span> = times interest is added per year (1 = yearly, 12 = monthly)<br>
+<span class="highlight">t</span> = number of years</div>
+    <p>For yearly compounding, n = 1 and the formula simplifies to A = P × (1 + r)<sup>t</sup>. To find the interest earned, subtract the principal from the result: interest = A − P.</p>
+
+    <h2 id="example">A worked example, year by year</h2>
+    <p>Take $10,000 earning 7% a year, compounded annually, with no further deposits. Here is how the balance compares with simple interest:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Years</th><th>Compound balance</th><th>Simple-interest balance</th><th>Extra from compounding</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>$19,672</td><td>$17,000</td><td>$2,672</td></tr>
+        <tr><td>20</td><td>$38,697</td><td>$24,000</td><td>$14,697</td></tr>
+        <tr><td>30</td><td>$76,123</td><td>$31,000</td><td>$45,123</td></tr>
+        <tr><td>40</td><td>$149,745</td><td>$38,000</td><td>$111,745</td></tr>
+      </tbody></table></div>
+    <p>The gap is small at first and then widens quickly. Between year 30 and year 40 the compounded balance nearly doubles, while the simple-interest balance rises by only $7,000.</p>
+
+    <h2 id="frequency">Does compounding frequency matter?</h2>
+    <p>It matters, but less than most people expect. Here is $10,000 at 6% for 10 years, compounded at different frequencies:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Compounding</th><th>Times per year</th><th>Balance after 10 years</th></tr></thead>
+      <tbody>
+        <tr><td>Annually</td><td>1</td><td>$17,908</td></tr>
+        <tr><td>Quarterly</td><td>4</td><td>$18,140</td></tr>
+        <tr><td>Monthly</td><td>12</td><td>$18,194</td></tr>
+        <tr><td>Daily</td><td>365</td><td>$18,220</td></tr>
+      </tbody></table></div>
+    <p>Going from yearly to monthly adds $286. Going from monthly to daily adds only $26 more. The rate and the time period matter far more than the compounding schedule. When comparing accounts, look at the <strong>APY</strong> (annual percentage yield), which already includes the effect of compounding, so different accounts can be compared fairly.</p>
+
+    <h2 id="contributions">Adding money every month</h2>
+    <p>Most people do not invest a lump sum once. They add money regularly. If you deposit $200 at the end of every month and earn 7% a year compounded monthly, the balance after 30 years is about <strong>$243,994</strong>. You paid in $72,000 ($200 × 360 months), so roughly <strong>$171,994 of the final balance is interest</strong>.</p>
+    <p>That is the compounding effect: more than two-thirds of the end result came from growth rather than from your own deposits.</p>
+
+    <h2 id="early">Why starting early matters</h2>
+    <p>Time is the most powerful input in the formula. Compare two savers who both earn 7% a year, compounded monthly, and put in $200 a month:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th>Sam</th><th>Priya</th></tr></thead>
+      <tbody>
+        <tr><td>Starts saving at</td><td>Age 25</td><td>Age 35</td></tr>
+        <tr><td>Stops contributing at</td><td>Age 35 (10 years)</td><td>Age 65 (30 years)</td></tr>
+        <tr><td>Total paid in</td><td>$24,000</td><td>$72,000</td></tr>
+        <tr><td>Balance at age 65</td><td>about $280,968</td><td>about $243,994</td></tr>
+      </tbody></table></div>
+    <p>Sam pays in only a third as much money but ends up with more, because Sam's money had an extra 10 years to compound. This is an illustration with a constant 7% return. Real investment returns vary from year to year and are never guaranteed, but the principle holds: the earlier the money goes in, the longer it works.</p>
+
+    <h2 id="rule72">The Rule of 72</h2>
+    <p>The Rule of 72 is a quick mental shortcut to estimate how long it takes money to double. Divide 72 by the annual interest rate (as a whole number):</p>
+    <div class="formula-box"><div class="formula-title">Rule of 72</div>Years to double ≈ 72 ÷ interest rate<br><br>At 4%: 72 ÷ 4 = <span class="highlight">18 years</span><br>At 6%: 72 ÷ 6 = <span class="highlight">12 years</span><br>At 7%: 72 ÷ 7 = <span class="highlight">about 10.3 years</span><br>At 9%: 72 ÷ 9 = <span class="highlight">8 years</span></div>
+    <p>It is an approximation. The exact doubling time at 7% is 10.24 years, so the shortcut is close. It works best for rates between about 4% and 12%.</p>
+
+    <h2 id="debt">Compounding works against you on debt</h2>
+    <p>The same mathematics applies to money you owe. Suppose a credit card balance of $5,000 has a 24% annual rate, which is 2% per month. If you made no payments for a year, the balance would grow to $5,000 × 1.02<sup>12</sup> = <strong>about $6,341</strong>, which is more than the $6,200 that simple interest would give. This is why paying down high-interest debt is often treated as a guaranteed return: every dollar of balance you remove stops compounding against you.</p>
+
+    <h2 id="limits">What these numbers do not tell you</h2>
+    <div class="callout callout-warning"><div class="callout-title">Keep in mind</div><ul>
+      <li>The examples use a constant rate. Real investments rise and fall, and savings account rates change.</li>
+      <li>Inflation reduces what a future balance can buy, so $149,745 in 40 years will buy less than it does today.</li>
+      <li>Taxes and fund fees reduce the return you actually keep.</li>
+      <li>Results here are estimates for learning, not financial advice or a forecast.</li></ul></div>
+
+    <h2 id="use">How to use the compound interest calculator</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Enter your starting amount</h4><p>Put in the money you already have, or 0 if you are starting from nothing.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Add a monthly contribution</h4><p>Enter what you plan to add each month. Try a small and a larger amount to compare.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Set the rate and years</h4><p>Use a cautious rate you are comfortable with, not the best year you have seen.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Read the breakdown</h4><p>The calculator shows the future value, how much you put in, the interest earned and a year-by-year table.</p></div></div>
+    </div>
+    <div class="cta-box"><h3>Test your own numbers</h3><p>Change the amount, rate and years and see how the balance responds.</p><a class="cta-btn" href="https://toolpond.org/compound-interest-calculator.html">Open the Compound Interest Calculator</a></div>
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between APR and APY?</div>
+      <div class="faq-a">APR is the stated yearly rate before compounding. APY includes the effect of compounding, so it shows what you actually earn (or pay) over a year. A 6% rate compounded monthly has an APY of about 6.17%.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How often should interest compound for the best result?</div>
+      <div class="faq-a">More frequent compounding gives slightly more, but the difference is small. For $10,000 at 6% over 10 years, daily compounding beats yearly by about $312. The interest rate and the length of time matter much more.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I calculate compound interest by hand?</div>
+      <div class="faq-a">Use A = P × (1 + r/n)^(n×t). For $10,000 at 7% compounded yearly for 20 years: 10,000 × 1.07^20 = about $38,697. Subtract the $10,000 principal to get $28,697 of interest.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is compound interest guaranteed?</div>
+      <div class="faq-a">Only where the rate is fixed, such as some savings accounts and certificates of deposit. Investment returns change over time, so a projection using a steady rate is an estimate rather than a promise.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does the Rule of 72 tell me?</div>
+      <div class="faq-a">It estimates how many years it takes money to double: divide 72 by the annual rate. At 8% that is about 9 years. It is a quick approximation, not an exact result.</div>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Compound interest rewards time and consistency. The formula is simple, but its effect on a long timeline is large: a bigger starting balance, regular deposits and extra years all raise the result, while high-interest debt makes the same effect work against you. Try your own figures in the <a href="https://toolpond.org/compound-interest-calculator.html">compound interest calculator</a>, then see how loans work in our <a href="https://toolpond.org/loan-calculator.html">loan calculator</a>.</p>
+
+    <p style="font-size:0.88rem;color:#666"><em>This guide is for general education only and is not financial advice. Projections assume a constant rate of return, which real investments do not provide.</em></p>
+
+    <h2>📚 Related Guides and Tools</h2>
+    <div class="related-grid">
+      <a class="related-card" href="https://toolpond.org/compound-interest-calculator.html">
+        <h4>Compound Interest Calculator</h4>
+        <p>Project a balance with a starting amount and monthly contributions.</p>
+      </a>
+      <a class="related-card" href="https://toolpond.org/retirement-calculator.html">
+        <h4>Retirement Calculator</h4>
+        <p>Estimate how much you may need and whether your savings are on track.</p>
+      </a>
+      <a class="related-card" href="https://toolpond.org/loan-calculator.html">
+        <h4>Loan Calculator</h4>
+        <p>See monthly payments and total interest on a loan.</p>
+      </a>
+      <a class="related-card" href="https://toolpond.org/blog/how-to-calculate-percentage.html">
+        <h4>How to Calculate a Percentage</h4>
+        <p>Percentages, increases and decreases explained with examples.</p>
+      </a>
+    </div>
+
+  </article>
+</main>
+
+<footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+
+</body>
+</html>
