@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Count Calories and Log Food Accurately</title>
+  <meta name="description" content="A practical guide to counting calories: weigh food, log cooked vs raw correctly, track protein and carbs, with a worked example day. Free nutrition calculator." />
+  <meta name="author" content="ToolPond" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://toolpond.org/blog/how-to-count-calories-and-log-food.html" />
+  <meta property="og:title" content="How to Count Calories and Log Food Accurately" />
+  <meta property="og:description" content="A practical guide to counting calories: weigh food, log cooked vs raw correctly, track protein and carbs, with a worked example day. Free nutrition calculator." />
+  <meta property="og:image" content="https://toolpond.org/og-image.jpg" />
+  <meta property="og:url" content="https://toolpond.org/blog/how-to-count-calories-and-log-food.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ToolPond" />
+  <meta property="article:published_time" content="2026-10-11T10:00:00+00:00" />
+  <meta property="article:section" content="Nutrition" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Count Calories and Log Food Accurately" />
+  <meta name="twitter:description" content="A practical guide to counting calories: weigh food, log cooked vs raw correctly, track protein and carbs, with a worked example day. Free nutrition calculator." />
+  <meta name="twitter:image" content="https://toolpond.org/og-image.jpg" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Count Calories and Log Food Accurately",
+  "description": "A practical guide to counting calories: weigh food, log cooked vs raw correctly, track protein and carbs, with a worked example day. Free nutrition calculator.",
+  "datePublished": "2026-10-11",
+  "dateModified": "2026-10-11",
+  "mainEntityOfPage": "https://toolpond.org/blog/how-to-count-calories-and-log-food.html",
+  "author": {
+    "@type": "Organization",
+    "name": "ToolPond"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ToolPond",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://toolpond.org/assets/logo.png"
+    }
+  },
+  "image": "https://toolpond.org/assets/logo.png"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate calories in food?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply the kcal per 100 g by the grams you ate and divide by 100. For 150 g of chicken breast at 165 kcal per 100 g, that is 248 kcal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I weigh food raw or cooked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Either works if you log the matching entry. Cooked rice is about 130 kcal per 100 g, while dry rice is about 360, so use the entry that matches how you weighed it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is calorie counting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is an estimate. Databases and labels have margins of error, so treat the total as accurate to within about 10% and watch trends over several weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to track every day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Many people log for a few weeks to learn portion sizes, then check in occasionally. Consistency matters more than perfection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which foods are easiest to under-count?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cooking oil, nuts, nut butter, sauces and drinks. They are dense in calories and small amounts are easy to forget."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://toolpond.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://toolpond.org/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Count Calories and Log Food",
+      "item": "https://toolpond.org/blog/how-to-count-calories-and-log-food.html"
+    }
+  ]
+}
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.75; color: #222; background: #fff; }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav { background: #0a2540; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { color: #fff; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: #ccd6f6; font-size: 0.88rem; text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+
+    .breadcrumb { background: #f4f6f8; padding: 10px 24px; font-size: 0.84rem; color: #666; }
+    .breadcrumb a { color: #0066cc; }
+
+    .hero { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
+    .hero .badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 4px 14px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(1.55rem, 4vw, 2.3rem); font-weight: 800; max-width: 780px; margin: 0 auto 14px; line-height: 1.25; }
+    .hero .meta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; font-size: 0.84rem; opacity: 0.85; }
+    .hero .subtitle { font-size: 1rem; opacity: 0.9; max-width: 620px; margin: 14px auto 0; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 64px; }
+
+    .toc { background: #fff0f5; border-left: 4px solid #f5576c; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 28px 0 36px; }
+    .toc h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; color: #0a2540; }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 5px; font-size: 0.88rem; }
+
+    h2 { font-size: 1.5rem; font-weight: 800; color: #0a2540; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #eee; }
+    h3 { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin: 26px 0 10px; }
+    p { margin-bottom: 15px; color: #333; }
+    ul, ol { margin: 10px 0 18px 22px; }
+    li { margin-bottom: 7px; color: #333; }
+    strong { color: #0a2540; }
+
+    .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: #0a2540; color: #fff; padding: 11px 15px; text-align: left; font-weight: 600; }
+    td { padding: 10px 15px; border-bottom: 1px solid #f0f0f0; }
+    tr:nth-child(even) td { background: #f8f9fa; }
+    tr:last-child td { border-bottom: none; }
+
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 22px 0; }
+    .callout-tip { background: #e8f5e9; border-left: 4px solid #43a047; }
+    .callout-info { background: #e3f2fd; border-left: 4px solid #1e88e5; }
+    .callout-warning { background: #fff8e1; border-left: 4px solid #f9a825; }
+    .callout-title { font-weight: 700; margin-bottom: 7px; font-size: 0.93rem; }
+    .callout p, .callout ul { margin-bottom: 0; }
+
+    .formula-box { background: #1a1a2e; color: #e2e8f0; border-radius: 10px; padding: 22px 26px; margin: 22px 0; font-family: 'Courier New', monospace; font-size: 0.92rem; line-height: 1.8; }
+    .formula-box .formula-title { font-family: -apple-system, sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #f5576c; margin-bottom: 10px; }
+    .formula-box .highlight { color: #63f5c8; font-weight: 700; }
+
+    .goal-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+    .goal-card { border-radius: 10px; padding: 18px; text-align: center; border: 2px solid; }
+    .goal-card.loss { background: #fff0f3; border-color: #f5576c; }
+    .goal-card.maintain { background: #e8f5e9; border-color: #43a047; }
+    .goal-card.gain { background: #e3f2fd; border-color: #1e88e5; }
+    .goal-card .goal-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .goal-card h4 { font-size: 0.95rem; font-weight: 700; color: #0a2540; margin-bottom: 6px; }
+    .goal-card .goal-cal { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+    .goal-card.loss .goal-cal { color: #f5576c; }
+    .goal-card.maintain .goal-cal { color: #43a047; }
+    .goal-card.gain .goal-cal { color: #1e88e5; }
+    .goal-card p { font-size: 0.82rem; color: #555; margin: 0; }
+
+    .cta-box { background: linear-gradient(135deg, #f093fb, #f5576c); color: #fff; border-radius: 12px; padding: 26px 30px; margin: 34px 0; text-align: center; }
+    .cta-box h3 { font-size: 1.15rem; margin-bottom: 8px; color: #fff; border: none; padding: 0; }
+    .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #fff; color: #f5576c; font-weight: 700; padding: 11px 26px; border-radius: 6px; font-size: 0.93rem; }
+    .cta-btn:hover { text-decoration: none; opacity: 0.95; }
+
+    .steps { margin: 20px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .step-num { background: #f5576c; color: #fff; font-weight: 800; min-width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px; font-size: 0.95rem; }
+    .step-body h4 { font-size: 0.98rem; font-weight: 700; color: #0a2540; margin-bottom: 5px; }
+    .step-body p { margin: 0; color: #444; font-size: 0.93rem; }
+
+    .faq-item { border-bottom: 1px solid #eee; padding: 16px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-weight: 700; color: #0a2540; margin-bottom: 7px; font-size: 0.97rem; }
+    .faq-a { color: #444; font-size: 0.93rem; }
+
+    .share-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 28px 0; }
+    .share-bar span { font-weight: 600; color: #444; font-size: 0.88rem; }
+    .share-btn { display: inline-block; padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; color: #fff; text-decoration: none; }
+    .tw { background: #1da1f2; } .fb { background: #1877f2; } .li { background: #0077b5; } .wa { background: #25d366; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 14px; }
+    .related-card { border: 1px solid #e4e4e4; border-radius: 10px; padding: 16px; display: block; text-decoration: none; transition: box-shadow 0.2s; }
+    .related-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.1); text-decoration: none; }
+    .related-card h4 { font-size: 0.92rem; font-weight: 700; color: #0a2540; margin-bottom: 5px; }
+    .related-card p { font-size: 0.83rem; color: #666; margin: 0; }
+
+    footer { background: #0a2540; color: #8892b0; padding: 40px 24px 24px; }
+    .footer-grid { max-width: 960px; margin: 0 auto 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; }
+    .footer-col h4 { color: #ccd6f6; font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 6px; }
+    .footer-col a { color: #8892b0; font-size: 0.83rem; text-decoration: none; }
+    .footer-col a:hover { color: #ccd6f6; }
+    .footer-bottom { text-align: center; padding-top: 18px; border-top: 1px solid #1d3557; font-size: 0.8rem; }
+    .footer-bottom a { color: #8892b0; }
+
+    @media (max-width: 600px) {
+      nav { height: auto; padding: 10px 16px; flex-wrap: wrap; gap: 6px; }
+      .nav-links { gap: 12px; flex-wrap: wrap; }
+      .hero { padding: 38px 16px 34px; }
+      .container { padding: 26px 16px 48px; }
+    }
+  </style>
+<meta name="google-adsense-account" content="ca-pub-7280526621945427">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
+</head>
+<body>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+
+
+
+
+<div class="breadcrumb">
+  <a href="https://toolpond.org/">Home</a> / <a href="https://toolpond.org/blog.html">Blog</a> / How to Count Calories and Log Food
+</div>
+
+<header class="hero">
+  <div class="badge">🥗 Nutrition</div>
+  <h1>How to Count Calories and Log Food Accurately</h1>
+  <div class="meta">
+    <span>📅 October 11, 2026</span>
+    <span>⏱️ 9 min read</span>
+    <span>✍️ ToolPond</span>
+  </div>
+  <p class="subtitle">Weighing, logging and totalling a day of food, with a worked example you can repeat in the calculator</p>
+</header>
+
+<main class="container">
+  <article>
+    <p><strong>Counting calories comes down to three steps: weigh the food, look up its nutrition, and add it up.</strong> Most mistakes come from guessing portions or logging the wrong version of a food, such as raw rice instead of cooked. This guide shows how to avoid those errors and walks through a full sample day. You can follow along in our <a href="https://toolpond.org/nutrition-calculator.html">nutrition calculator</a>, which lists calories, protein, carbs, fat and fiber for each food.</p>
+    <div class="callout callout-info"><div class="callout-title">Quick answer</div><p>Calories for a food = (kcal per 100 g ÷ 100) × grams eaten. For example, 150 g of cooked chicken breast at 165 kcal per 100 g is <strong>248 kcal</strong> with <strong>46.5 g of protein</strong>.</p></div>
+
+    <div class="toc">
+      <h3>📑 Table of Contents</h3>
+      <ol><li><a href="#why">Why weigh instead of guess</a></li><li><a href="#math">The basic calculation</a></li><li><a href="#cooked">Cooked or raw: log the right one</a></li><li><a href="#day">A sample day, added up</a></li><li><a href="#hidden">Easy-to-miss calories</a></li><li><a href="#target">Comparing the total to your target</a></li><li><a href="#habits">Habits that keep logging simple</a></li><li><a href="#use">How to use the calculator</a></li></ol>
+    </div>
+
+    <h2 id="why">Why weigh instead of guess</h2>
+    <p>Portion size is where most logs go wrong. A "handful" of almonds can be 28 g or 50 g, which is about 160 kcal or 290 kcal. A kitchen scale takes a few seconds and removes that guesswork. Cups and spoons are fine when you cannot weigh, but they vary more, especially for foods that pack down such as rice or peanut butter.</p>
+
+    <h2 id="math">The basic calculation</h2>
+    <p>Nutrition data is usually given per 100 g, so you scale it to the amount you ate.</p>
+    <div class="formula-box"><div class="formula-title">Scaling a food</div>Calories = kcal per 100 g × grams eaten ÷ 100<br>Example: oats at 389 kcal per 100 g, 40 g eaten → 389 × 40 ÷ 100 = <span class="highlight">156 kcal</span></div>
+    <p>The same scaling works for protein, carbs, fat and fiber. The nutrition calculator does it for you when you pick a food and enter an amount.</p>
+
+    <h2 id="cooked">Cooked or raw: log the right one</h2>
+    <p>Rice, pasta and meat change weight when cooked, mostly because they absorb or lose water. Cooked rice is about 130 kcal per 100 g, while dry rice is roughly 360. If you weigh cooked food, log the cooked entry; if you weigh it dry, log the dry entry. Mixing these up is the most common way to under- or over-count by a large amount.</p>
+    <div class="callout callout-tip"><div class="callout-title">Tip</div><p>Pick one method per food and stick to it. Weighing everything cooked, on the plate, is often easiest.</p></div>
+
+    <h2 id="day">A sample day, added up</h2>
+    <p>Here is one day of food, using values from the calculator. Amounts are weights as eaten.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Food</th><th>Amount</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th></tr></thead>
+      <tbody>
+        <tr><td>Rolled oats, dry</td><td>40 g</td><td>156</td><td>6.8</td><td>26.5</td><td>2.8</td></tr>
+        <tr><td>Whole milk</td><td>244 g (1 cup)</td><td>149</td><td>7.8</td><td>11.7</td><td>8.1</td></tr>
+        <tr><td>Banana</td><td>118 g</td><td>105</td><td>1.3</td><td>26.9</td><td>0.4</td></tr>
+        <tr><td>Chicken breast, cooked</td><td>150 g</td><td>248</td><td>46.5</td><td>0.0</td><td>5.4</td></tr>
+        <tr><td>White rice, cooked</td><td>158 g (1 cup)</td><td>205</td><td>4.3</td><td>44.6</td><td>0.5</td></tr>
+        <tr><td>Broccoli, raw</td><td>91 g</td><td>31</td><td>2.5</td><td>6.0</td><td>0.4</td></tr>
+        <tr><td>Olive oil</td><td>14 g (1 tbsp)</td><td>124</td><td>0.0</td><td>0.0</td><td>14.0</td></tr>
+        <tr><td>Greek yogurt, nonfat</td><td>170 g</td><td>100</td><td>17.3</td><td>6.1</td><td>0.7</td></tr>
+        <tr><td>Almonds</td><td>28 g</td><td>162</td><td>5.9</td><td>6.0</td><td>14.0</td></tr>
+        <tr><td>Whole egg</td><td>100 g (2 large)</td><td>143</td><td>12.6</td><td>0.7</td><td>9.5</td></tr>
+        <tr><td><strong>Total</strong></td><td></td><td><strong>1,423</strong></td><td><strong>105</strong></td><td><strong>129</strong></td><td><strong>56</strong></td></tr>
+      </tbody></table></div>
+    <p>This day comes to about 1,423 kcal, with 105 g of protein. That is lighter than most adults need, so it is an example of the method, not a meal plan. Notice that one tablespoon of olive oil (124 kcal) adds nearly as much as the banana and the broccoli combined, which is why oils are worth measuring.</p>
+
+    <h2 id="hidden">Easy-to-miss calories</h2>
+    <ul>
+      <li><strong>Cooking oil and butter.</strong> 1 tbsp of olive oil is 124 kcal; 1 tbsp of butter is about 100 kcal.</li>
+      <li><strong>Drinks.</strong> A 355 g can of cola is about 149 kcal, and a cup of orange juice about 112 kcal.</li>
+      <li><strong>Nuts and nut butters.</strong> Dense in calories: 2 tbsp of peanut butter is about 188 kcal.</li>
+      <li><strong>Sauces and dressings.</strong> Small amounts add up, so weigh them when you can.</li>
+      <li><strong>Bites while cooking.</strong> Log what you actually eat, not just the plated meal.</li>
+    </ul>
+
+    <h2 id="target">Comparing the total to your target</h2>
+    <p>A log is only useful when you compare it to a target. To estimate how many calories you burn in a day, use our <a href="https://toolpond.org/calorie-calculator.html">calorie calculator</a> or read the <a href="https://toolpond.org/blog/daily-calorie-needs.html">daily calorie needs guide</a>. Eating below that number leads to gradual weight loss, and eating above it leads to gain. Protein and the other nutrients can be checked against the ranges in the <a href="https://toolpond.org/blog/macros-breakdown-guide.html">macros guide</a>.</p>
+    <div class="callout callout-warning"><div class="callout-title">Keep expectations realistic</div><p>Food databases and package labels are estimates, and labels are allowed to be off by a margin. Treat your total as accurate to within roughly 10% and judge progress over weeks, not single days.</p></div>
+
+    <h2 id="habits">Habits that keep logging simple</h2>
+    <ul>
+      <li><strong>Log as you eat,</strong> not at the end of the day, when you forget things.</li>
+      <li><strong>Save your regular meals.</strong> Most people eat the same 10 to 15 foods often.</li>
+      <li><strong>Weigh once, then reuse.</strong> After you know your usual bowl of cereal is 40 g, you can log it from memory.</li>
+      <li><strong>Do not give up after a missed meal.</strong> An approximate entry is better than a blank day.</li>
+    </ul>
+
+    <h2 id="use">How to use the calculator</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Search for a food</h4><p>Type the name, such as chicken, rice or banana, and pick the closest match.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Enter the amount</h4><p>Choose grams or a serving, then add it to a meal.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Read the totals</h4><p>Check calories, protein, carbs, fat and fiber for the meal and the whole day.</p></div></div>
+    </div>
+    <div class="cta-box"><h3>Log your next meal</h3><p>Search a food, enter the weight and see the nutrition at once.</p><a class="cta-btn" href="https://toolpond.org/nutrition-calculator.html">Open the Nutrition Calculator</a></div>
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How do I calculate calories in food?</div>
+      <div class="faq-a">Multiply the kcal per 100 g by the grams you ate and divide by 100. For 150 g of chicken breast at 165 kcal per 100 g, that is 248 kcal.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should I weigh food raw or cooked?</div>
+      <div class="faq-a">Either works if you log the matching entry. Cooked rice is about 130 kcal per 100 g, while dry rice is about 360, so use the entry that matches how you weighed it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How accurate is calorie counting?</div>
+      <div class="faq-a">It is an estimate. Databases and labels have margins of error, so treat the total as accurate to within about 10% and watch trends over several weeks.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to track every day?</div>
+      <div class="faq-a">No. Many people log for a few weeks to learn portion sizes, then check in occasionally. Consistency matters more than perfection.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which foods are easiest to under-count?</div>
+      <div class="faq-a">Cooking oil, nuts, nut butter, sauces and drinks. They are dense in calories and small amounts are easy to forget.</div>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Accurate logging means weighing your food, picking the right cooked or raw entry, and adding up calories and protein. Try it with your own meals in the <a href="https://toolpond.org/nutrition-calculator.html">nutrition calculator</a>, then compare the total with your daily needs in the <a href="https://toolpond.org/calorie-calculator.html">calorie calculator</a>.</p>
+
+    <p style="font-size:0.88rem;color:#666"><em>This guide is general education, not medical or dietary advice. Nutrition values come from standard reference data and vary by brand and preparation. Talk to a doctor or registered dietitian before major diet changes.</em></p>
+
+    <h2>📚 Related Guides and Tools</h2>
+    <div class="related-grid">
+      <a class="related-card" href="https://toolpond.org/nutrition-calculator.html">
+        <h4>Nutrition Calculator</h4>
+        <p>Calories, protein, carbs, fat and fiber for common foods.</p>
+      </a>
+      <a class="related-card" href="https://toolpond.org/calorie-calculator.html">
+        <h4>Calorie Calculator</h4>
+        <p>Estimate daily calories for your goal.</p>
+      </a>
+      <a class="related-card" href="https://toolpond.org/blog/daily-calorie-needs.html">
+        <h4>Daily Calorie Needs Guide</h4>
+        <p>How many calories you burn and need each day.</p>
+      </a>
+      <a class="related-card" href="https://toolpond.org/blog/macros-breakdown-guide.html">
+        <h4>Macros Breakdown Guide</h4>
+        <p>Protein, carbs and fat explained with examples.</p>
+      </a>
+    </div>
+
+  </article>
+</main>
+
+<footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+
+</body>
+</html>
