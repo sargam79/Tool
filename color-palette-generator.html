@@ -9,7 +9,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
      crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate random color palettes with HEX, RGB, and HSL values. Click to copy colors for web design, graphic design, and UI projects. Free, no signup.">
+    <meta name="description" content="Free color palette generator with HEX, RGB and HSL values. Make monochromatic, complementary, analogous or triadic palettes and copy colors in one click.">
     <meta name="author" content="ToolPond">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://toolpond.org/color-palette-generator.html">
@@ -18,12 +18,12 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/color-palette-generator.html">
     <meta property="og:title" content="Color Palette Generator — HEX, RGB & HSL Values">
-    <meta property="og:description" content="Generate random color palettes instantly. Copy HEX, RGB, or HSL values for web and graphic design. Free, no signup.">
+    <meta property="og:description" content="Free color palette generator with HEX, RGB and HSL values. Make monochromatic, complementary, analogous or triadic palettes and copy colors in one click.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Color Palette Generator — HEX, RGB & HSL Values">
-    <meta property="twitter:description" content="Generate random color palettes instantly. Copy HEX, RGB, or HSL values for web and graphic design.">
+    <meta property="twitter:description" content="Free color palette generator with HEX, RGB and HSL values. Make monochromatic, complementary, analogous or triadic palettes and copy colors in one click.">
 
     <!-- Schema: SoftwareApplication -->
     <script type="application/ld+json">
@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://toolpond.org/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Color Palette Generator — HEX, RGB &amp; HSL Values">
-<meta name="twitter:description" content="Generate random color palettes with HEX, RGB, and HSL values. Click to copy colors for web design, graphic design, and UI projects. Free, no signup.">
+<meta name="twitter:description" content="Free color palette generator with HEX, RGB and HSL values. Make monochromatic, complementary, analogous or triadic palettes and copy colors in one click.">
 <meta name="twitter:image" content="https://toolpond.org/og-image.jpg">
 <style id="tp-style">
 .tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
@@ -164,6 +164,14 @@
         <div class="tool-content">
             <div class="content-grid">
                 <div>
+                    <div style="margin:0 0 1rem"><label for="schemeSelect" style="font-weight:600;color:#1f2937">Palette style:</label>
+                        <select id="schemeSelect" onchange="generatePalette()" style="display:block;margin-top:.4rem;width:100%;max-width:340px;padding:.5rem .75rem;border:2px solid #e5e7eb;border-radius:7px;font-size:1rem">
+                            <option value="random">Random</option>
+                            <option value="analogous">Analogous (neighbouring hues)</option>
+                            <option value="complementary">Complementary (opposite hues)</option>
+                            <option value="triadic">Triadic (three even hues)</option>
+                            <option value="mono">Monochrome (one hue, different lightness)</option>
+                        </select></div>
                     <div class="action-buttons">
                         <button class="btn btn-primary" onclick="generatePalette()">🎲 Generate Palette</button>
                         <button class="btn btn-secondary" onclick="copyAllColors()">📋 Copy All</button>
@@ -173,7 +181,7 @@
                     <div class="palette-container" id="paletteContainer"></div>
 
                     <div style="margin-top:2rem;padding:1.5rem;background:linear-gradient(135deg,#FEF3C7,#FCD34D);border-radius:10px;border-left:4px solid var(--primary)">
-                        <strong>💡 Tip:</strong> Click any color to copy its HEX value. Use the copy all button to get the complete palette.
+                        <strong>💡 Tip:</strong> Click any colour to copy its HEX value. Use the copy all button to get the complete palette. RGB and HSL values are shown on each swatch.
                     </div>
                 </div>
 
@@ -198,7 +206,7 @@
 
             <div class="content-section">
                 <h2>What This Tool Does</h2>
-                <p>Generate <strong>5-color random palettes</strong> instantly. Each color displays its HEX, RGB, and HSL values — the three standard formats used in web design, graphic design, and digital art.</p>
+                <p>Generate <strong>5-color palettes</strong> instantly, either fully random or based on a colour-wheel rule (analogous, complementary, triadic or monochrome). Each color displays its HEX, RGB, and HSL values — the three standard formats used in web design, graphic design, and digital art.</p>
 
                 <p>Click any color swatch to copy its HEX code to your clipboard. Use the "Copy All" button to grab the entire palette at once. All generation happens in your browser; no data is sent to any server.</p>
 
@@ -249,6 +257,17 @@
                 <h3>Contrast & Accessibility</h3>
                 <p>For text on backgrounds, aim for a contrast ratio of at least 4.5:1 (WCAG AA standard). Dark text on light backgrounds (or vice versa) is safer than mid-tone combinations. Tools like WebAIM's contrast checker can verify specific pairs.</p>
 
+                <h3>Color Wheel Schemes with Examples</h3>
+                <p>All examples start from one base blue, <code>#267FD9</code> (HSL 210°, 70%, 50%). Changing only the hue or lightness gives each scheme:</p>
+                <div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%"><thead><tr><th style="border:1px solid #e5e7eb;padding:.4rem;text-align:left">Scheme</th><th style="border:1px solid #e5e7eb;padding:.4rem;text-align:left">Rule</th><th style="border:1px solid #e5e7eb;padding:.4rem;text-align:left">Example colors</th></tr></thead><tbody>
+                <tr><td style="border:1px solid #e5e7eb;padding:.4rem">Monochromatic</td><td style="border:1px solid #e5e7eb;padding:.4rem">One hue, different lightness</td><td style="border:1px solid #e5e7eb;padding:.4rem">#0F3357, #1B5998, #267FD9, #67A6E4, #A8CCF0</td></tr>
+                <tr><td style="border:1px solid #e5e7eb;padding:.4rem">Complementary</td><td style="border:1px solid #e5e7eb;padding:.4rem">Opposite hue (+180°)</td><td style="border:1px solid #e5e7eb;padding:.4rem">#267FD9 with #D98026</td></tr>
+                <tr><td style="border:1px solid #e5e7eb;padding:.4rem">Analogous</td><td style="border:1px solid #e5e7eb;padding:.4rem">Neighbouring hues (±30°)</td><td style="border:1px solid #e5e7eb;padding:.4rem">#26D9D9, #267FD9, #2626D9</td></tr>
+                <tr><td style="border:1px solid #e5e7eb;padding:.4rem">Triadic</td><td style="border:1px solid #e5e7eb;padding:.4rem">Three hues 120° apart</td><td style="border:1px solid #e5e7eb;padding:.4rem">#267FD9, #D92680, #80D926</td></tr>
+                </tbody></table></div>
+                <p><strong>Monochromatic colors</strong> are the safest choice: they always match because they share a hue, so they suit clean UI and minimal design. <strong>Complementary colors</strong> sit opposite each other on the color wheel and give maximum contrast, best used with one dominant color and the other as an accent. <strong>Analogous colors</strong> feel calm and natural, and <strong>triadic colors</strong> are lively and work best when one color leads.</p>
+                <p>Tips for combining colors: use a 60-30-10 split (dominant, secondary, accent), keep text contrast at 4.5:1 or higher, and use HSL lightness changes to create tints and shades of the same hue.</p>
+
                 <h3>Color Psychology Quick Reference</h3>
                 <ul>
                     <li><strong>Red</strong> — Energy, urgency, attention (sales, warnings)</li>
@@ -286,7 +305,7 @@
 
                 <div class="faq-item">
                     <h4>Does this tool create harmonious palettes?</h4>
-                    <p>No — it generates completely random colors. For harmonious palettes (complementary, analogous, triadic), you would need a tool that applies color theory rules. This tool is best for sparking inspiration and exploring unexpected combinations.</p>
+                    <p>Yes, when you pick a scheme. Choose analogous, complementary, triadic or monochromatic and the tool builds the palette from a base hue using the color-wheel rule. Choose the random option if you want unexpected combinations for inspiration.</p>
                 </div>
             </div>
 
@@ -323,24 +342,50 @@
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        function generateColor() {
-            return '#' + Math.floor(Math.random()*16777215).toString(16).toUpperCase().padStart(6, '0');
+        function hslToRgb(h, s, l) {
+            s /= 100; l /= 100;
+            const k = n => (n + h / 30) % 12;
+            const a = s * Math.min(l, 1 - l);
+            const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+            return [Math.round(255 * f(0)), Math.round(255 * f(8)), Math.round(255 * f(4))];
+        }
+        function toHex(rgb) {
+            return '#' + rgb.map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+        }
+        function rand(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
+        function textOn(rgb) {
+            const lin = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+            const L = 0.2126 * lin(rgb[0]) + 0.7152 * lin(rgb[1]) + 0.0722 * lin(rgb[2]);
+            return L > 0.4 ? '#111827' : '#ffffff';
+        }
+
+        function makeColors(scheme) {
+            const base = rand(0, 359);
+            let hues;
+            if (scheme === 'analogous') hues = [-40, -20, 0, 20, 40].map(d => (base + d + 360) % 360);
+            else if (scheme === 'complementary') hues = [base, base, (base + 180) % 360, (base + 180) % 360, base];
+            else if (scheme === 'triadic') hues = [base, (base + 120) % 360, (base + 240) % 360, base, (base + 120) % 360];
+            else if (scheme === 'mono') hues = [base, base, base, base, base];
+            else hues = [0, 0, 0, 0, 0].map(() => rand(0, 359));
+            const lights = scheme === 'mono' ? [25, 40, 55, 70, 85] : null;
+            return hues.map((h, i) => {
+                const s = scheme === 'random' ? rand(40, 95) : rand(55, 85);
+                const l = lights ? lights[i] : rand(30, 75);
+                const rgb = hslToRgb(h, s, l);
+                return { hex: toHex(rgb), rgb: rgb, hsl: [h, s, l] };
+            });
         }
 
         function generatePalette() {
-            let palette = [];
-            for(let i = 0; i < 5; i++) {
-                palette.push(generateColor());
-            }
-
-            let html = palette.map((color, idx) => `
-                <div class="color-box" style="background-color:${color}" onclick="copyColor('${color}')">
-                    <div class="color-label">Color ${idx + 1}</div>
-                    <div class="color-value">${color}</div>
-                </div>
-            `).join('');
-
-            document.getElementById('paletteContainer').innerHTML = html;
+            const scheme = document.getElementById('schemeSelect') ? document.getElementById('schemeSelect').value : 'random';
+            const palette = makeColors(scheme);
+            document.getElementById('paletteContainer').innerHTML = palette.map((c, idx) => `
+                <div class="color-box" style="background-color:${c.hex}" onclick="copyColor('${c.hex}')">
+                    <div class="color-label" style="color:${textOn(c.rgb)}">Color ${idx + 1}</div>
+                    <div class="color-value" style="color:${textOn(c.rgb)};text-shadow:none">${c.hex}</div>
+                    <div class="color-label" style="color:${textOn(c.rgb)}">rgb(${c.rgb.join(', ')})</div>
+                    <div class="color-label" style="color:${textOn(c.rgb)}">hsl(${c.hsl[0]}, ${c.hsl[1]}%, ${c.hsl[2]}%)</div>
+                </div>`).join('');
         }
 
         function copyColor(color) {
@@ -350,7 +395,7 @@
 
         function copyAllColors() {
             const colors = Array.from(document.querySelectorAll('.color-value')).map(el => el.textContent).join(', ');
-            navigator.clipboard.writeText(colors).then(() => alert('All colors copied!'));
+            if (colors) navigator.clipboard.writeText(colors).then(() => alert('All colors copied!'));
         }
 
         function clearPalette() {

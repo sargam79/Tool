@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="google-site-verification" content="srQZGhXHmQzBnzWqOZOttu-hiXWULTA9sH76xsU2rxo" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
+<meta name="msvalidate.01" content="3EBE223AA61B4AE987184F8F4F12353F" />
+<meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-7280526621945427">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hex to ASCII Converter: Hex to Text and Back | ToolPond</title>
+<meta name="description" content="Free hex to ASCII converter. Turn hex bytes into text or text into hex, with decimal codes, UTF-8 support and 0x or \x formats. Runs in your browser.">
+<meta name="author" content="ToolPond">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://toolpond.org/hex-to-ascii-converter.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:type" content="website"><meta property="og:url" content="https://toolpond.org/hex-to-ascii-converter.html"><meta property="og:title" content="Hex to ASCII Converter: Hex to Text and Back | ToolPond"><meta property="og:description" content="Free hex to ASCII converter. Turn hex bytes into text or text into hex, with decimal codes, UTF-8 support and 0x or \x formats. Runs in your browser."><meta property="og:image" content="https://toolpond.org/og-image.jpg"><meta property="og:site_name" content="ToolPond">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hex to ASCII Converter: Hex to Text and Back | ToolPond"><meta name="twitter:description" content="Free hex to ASCII converter. Turn hex bytes into text or text into hex, with decimal codes, UTF-8 support and 0x or \x formats. Runs in your browser."><meta name="twitter:image" content="https://toolpond.org/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Hex to ASCII Converter", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free hex to ASCII converter. Turn hex bytes into text or text into hex, with decimal codes, UTF-8 support and 0x or \\x formats. Runs in your browser.", "url": "https://toolpond.org/hex-to-ascii-converter.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I convert hex to ASCII?", "acceptedAnswer": {"@type": "Answer", "text": "Split the hex into byte pairs, convert each pair to its decimal value, and look up the matching character. 48 65 6C 6C 6F becomes Hello. This tool does it automatically."}}, {"@type": "Question", "name": "Does it accept 0x prefixes and spaces?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Spaces, commas, colons, dashes and 0x or \\x prefixes are removed before decoding."}}, {"@type": "Question", "name": "Can it convert text back to hex?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Choose Text \u2192 Hex, type your text, and pick a separator and uppercase or lowercase output."}}, {"@type": "Question", "name": "What is the hex code for a space?", "acceptedAnswer": {"@type": "Answer", "text": "A space is 20 in hex, which is 32 in decimal."}}, {"@type": "Question", "name": "Does it support UTF-8?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Input bytes are decoded as UTF-8, so accented letters and other non-ASCII characters convert correctly."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/"}, {"@type": "ListItem", "position": 2, "name": "Hex to ASCII Converter", "item": "https://toolpond.org/hex-to-ascii-converter.html"}]}</script>
+<style>
+body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f3f6fa;color:#1f2937;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+.crumb{max-width:1000px;margin:1rem auto 0;padding:0 16px;font-size:.88rem;color:#6b7280}.crumb a{color:#0f4c81;text-decoration:none}
+.hero{text-align:center;padding:1.6rem 16px .6rem}.hero h1{margin:0 0 .4rem;font-size:clamp(1.6rem,4vw,2.2rem);color:#0f2d4a}.hero p{margin:0 auto;max-width:720px;color:#4b5563}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:1.2rem;margin:1rem auto;max-width:1000px;box-shadow:0 1px 3px rgba(0,0,0,.05);box-sizing:border-box}
+.card h2{margin-top:0;font-size:1.25rem;color:#0f2d4a}.card h3{color:#0f2d4a;font-size:1.05rem}
+label{display:block;font-weight:600;font-size:.9rem;margin:.6rem 0 .25rem}
+input[type=text],input[type=number],select,textarea{width:100%;box-sizing:border-box;padding:.6rem .7rem;border:1px solid #cbd5e1;border-radius:8px;font:inherit;background:#fff;color:#111827}
+textarea{min-height:140px;font-family:ui-monospace,Consolas,monospace;font-size:.95rem;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+button.b{background:#0f4c81;color:#fff;border:0;border-radius:8px;padding:.6rem 1.1rem;font:inherit;font-weight:600;cursor:pointer}
+button.b.sec{background:#e8eef5;color:#0f2d4a}button.b:hover{filter:brightness(1.08)}
+.out{background:#f8fafc;border:1px solid #dbe3ec;border-radius:10px;padding:.9rem;margin-top:.8rem;word-break:break-word;white-space:pre-wrap;font-family:ui-monospace,Consolas,monospace;min-height:2.4rem}
+.out.words{font-family:inherit;font-size:1.1rem;font-weight:600;color:#0f2d4a}
+.chk{display:flex;gap:.5rem;align-items:center;font-weight:500;margin:.3rem 0}.chk input{width:auto}
+.stat{font-size:.88rem;color:#6b7280;margin-top:.4rem}
+table{border-collapse:collapse;width:100%;font-size:.93rem}th,td{border:1px solid #e5e7eb;padding:.45rem .6rem;text-align:left}th{background:#f1f5f9}
+.tw{overflow-x:auto}.faq details{border-top:1px solid #e5e7eb;padding:.6rem 0}.faq summary{font-weight:600;cursor:pointer}
+.formula{background:#eef4fb;border-left:4px solid #0f4c81;padding:.7rem 1rem;border-radius:6px;margin:.8rem 0}
+.tp-note{max-width:1000px;margin:1.2rem auto;padding:1rem 1.25rem;border-left:4px solid #2563eb;background:#f8fafc;border-radius:8px;box-sizing:border-box}.tp-note a{color:#0f4c81}
+.err{color:#b91c1c;font-size:.9rem;margin-top:.4rem}
+@media(max-width:600px){.card{margin-left:12px;margin-right:12px}}
+</style>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
+</head>
+<body>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+<div class="crumb"><a href="/index.html">Home</a> / <span>Hex to ASCII Converter</span></div>
+<div class="hero"><h1>Hex to ASCII Converter</h1><p>Paste hex to read it as text, or type text to get its hex bytes. UTF-8 safe, with decimal codes shown too.</p></div>
+<div class="card" id="tool">
+<div class="row"><div><label for="mode">Direction</label><select id="mode"><option value="h2t">Hex → Text (ASCII / UTF-8)</option><option value="t2h">Text → Hex</option></select></div>
+<div><label for="sep">Hex separator (Text → Hex)</label><select id="sep"><option value=" ">Space</option><option value="">None</option><option value=",">Comma</option><option value=" 0x">0x prefix</option><option value=" \x">\x prefix</option></select></div></div>
+<label for="inp" id="lbl">Hex input</label>
+<textarea id="inp" spellcheck="false">48 65 6C 6C 6F 20 54 6F 6F 6C 50 6F 6E 64</textarea>
+<div class="chk"><input type="checkbox" id="up" checked><label for="up" style="margin:0;font-weight:500">Uppercase hex output</label></div>
+<div class="err" id="e"></div>
+<label>Result</label><div class="out" id="o"></div>
+<label>Decimal codes</label><div class="out" id="d"></div><div class="stat" id="s"></div>
+<div class="btns"><button class="b" type="button" onclick="cp('o',this)">Copy result</button><button class="b sec" type="button" onclick="swap()">Swap input and result</button><button class="b sec" type="button" onclick="document.getElementById('inp').value='';run()">Clear</button></div>
+</div>
+<div class="card"><h2>How to convert hex to ASCII</h2>
+<p>Each pair of hex digits is one byte, and each byte maps to a character. Paste your hex, and spaces, commas and <code>0x</code> or <code>\x</code> prefixes are ignored. For example:</p>
+<div class="formula"><code>48 65 6C 6C 6F</code> → H(48) e(65) l(6C) l(6C) o(6F) = <strong>Hello</strong></div>
+<p>Tool names work the same way: <code>54 6F 6F 6C 50 6F 6E 64</code> reads as "ToolPond".</p>
+<h3>How the conversion works by hand</h3>
+<ol><li>Split the hex string into two-digit pairs.</li><li>Convert each pair to decimal: 4×16 + 8 = 72 for <code>48</code>.</li><li>Look up decimal 72 in the ASCII table to find "H".</li></ol>
+<h3>Common ASCII codes</h3>
+<div class="tw"><table><thead><tr><th>Character</th><th>Hex</th><th>Decimal</th></tr></thead><tbody>
+<tr><td>Space</td><td>20</td><td>32</td></tr><tr><td>0</td><td>30</td><td>48</td></tr><tr><td>A</td><td>41</td><td>65</td></tr><tr><td>Z</td><td>5A</td><td>90</td></tr><tr><td>a</td><td>61</td><td>97</td></tr><tr><td>z</td><td>7A</td><td>122</td></tr><tr><td>New line (LF)</td><td>0A</td><td>10</td></tr></tbody></table></div>
+<p>Standard ASCII covers codes 0–127. Letters, digits and punctuation are in the range 32–126; codes below 32 and 127 are control characters.</p>
+<h3>ASCII vs UTF-8</h3>
+<p>ASCII characters use one byte each. Characters outside ASCII, such as é or 日, use two to four bytes in UTF-8. This tool decodes the bytes as UTF-8, so ASCII text is unchanged while accented letters and symbols also work. For example, <code>C3 A9</code> is the single character é.</p>
+<h3>Troubleshooting</h3>
+<ul><li><strong>Odd number of digits:</strong> every byte needs two hex digits, so write 0A, not A.</li><li><strong>Strange symbols:</strong> the bytes may not be text (for example, an image or compressed data) or may use a different encoding.</li><li><strong>Control characters:</strong> bytes below 20 hex are non-printable. The tool counts them for you.</li></ul></div>
+<div class="card faq"><h2>Frequently asked questions</h2><details><summary>How do I convert hex to ASCII?</summary><p>Split the hex into byte pairs, convert each pair to its decimal value, and look up the matching character. 48 65 6C 6C 6F becomes Hello. This tool does it automatically.</p></details><details><summary>Does it accept 0x prefixes and spaces?</summary><p>Yes. Spaces, commas, colons, dashes and 0x or \x prefixes are removed before decoding.</p></details><details><summary>Can it convert text back to hex?</summary><p>Yes. Choose Text → Hex, type your text, and pick a separator and uppercase or lowercase output.</p></details><details><summary>What is the hex code for a space?</summary><p>A space is 20 in hex, which is 32 in decimal.</p></details><details><summary>Does it support UTF-8?</summary><p>Yes. Input bytes are decoded as UTF-8, so accented letters and other non-ASCII characters convert correctly.</p></details></div>
+<aside class="tp-note tp-related" aria-label="Related tools"><strong>Related tools</strong><ul><li><a href="/json-schema-generator-pro.html">JSON Schema Generator</a> — schemas from JSON</li><li><a href="/password-generator.html">Password Generator</a> — strong random passwords</li><li><a href="/color-palette-generator.html">Color Palette Generator</a> — HEX, RGB and HSL palettes</li><li><a href="/comma-separator-tool.html">Comma Separator Tool</a> — columns to comma lists</li></ul></aside>
+<div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fhex-to-ascii-converter.html&amp;text=Hex%20to%20ASCII%20Converter" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fhex-to-ascii-converter.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fhex-to-ascii-converter.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Hex%20to%20ASCII%20Converter%20https%3A%2F%2Ftoolpond.org%2Fhex-to-ascii-converter.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fhex-to-ascii-converter.html&amp;text=Hex%20to%20ASCII%20Converter" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/hex-to-ascii-converter.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+<script>
+function cp(id,btn){var el=document.getElementById(id);var t=el.value!==undefined&&el.tagName==='TEXTAREA'?el.value:el.textContent;function ok(){var o=btn.textContent;btn.textContent='Copied';setTimeout(function(){btn.textContent=o},1200)}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,function(){})}else{var a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(a)}}
+function bytesToHex(by,sep,up){var a=[];for(var i=0;i<by.length;i++){var h=by[i].toString(16).padStart(2,'0');a.push(up?h.toUpperCase():h)}
+ if(sep===' 0x')return a.length?'0x'+a.join(' 0x'):'';if(sep===' \\x')return a.length?'\\x'+a.join(' \\x'):'';return a.join(sep)}
+function run(){var mode=document.getElementById('mode').value,inp=document.getElementById('inp').value,o=document.getElementById('o'),d=document.getElementById('d'),e=document.getElementById('e'),s=document.getElementById('s'),up=document.getElementById('up').checked,sep=document.getElementById('sep').value;
+ e.textContent='';s.textContent='';document.getElementById('lbl').textContent=mode==='h2t'?'Hex input':'Text input';
+ if(mode==='h2t'){var c=inp.replace(/0x/gi,'').replace(/\\x/gi,'').replace(/[\s,;:\-]/g,'');
+  if(!c){o.textContent='';d.textContent='';return}
+  if(!/^[0-9a-fA-F]+$/.test(c)){e.textContent='Hex can only contain 0-9 and A-F (spaces, commas and 0x prefixes are ignored).';o.textContent='';d.textContent='';return}
+  if(c.length%2){e.textContent='Odd number of hex digits. Each byte needs two digits, for example 4A not A.';o.textContent='';d.textContent='';return}
+  var by=new Uint8Array(c.length/2);for(var i=0;i<by.length;i++)by[i]=parseInt(c.substr(i*2,2),16);
+  var txt;try{txt=new TextDecoder('utf-8').decode(by)}catch(x){txt=String.fromCharCode.apply(null,by)}
+  var ctrl=0;for(i=0;i<by.length;i++)if(by[i]<32&&by[i]!==10&&by[i]!==13&&by[i]!==9||by[i]===127)ctrl++;
+  o.textContent=txt;d.textContent=Array.prototype.join.call(by,' ');s.textContent=by.length+' bytes'+(ctrl?' · '+ctrl+' non-printable control characters':'')}
+ else{var by2=new TextEncoder().encode(inp);o.textContent=bytesToHex(by2,sep,up);d.textContent=Array.prototype.join.call(by2,' ');s.textContent=by2.length+' bytes · '+inp.length+' characters'}}
+function swap(){var o=document.getElementById('o').textContent,m=document.getElementById('mode');var nm=m.value==='h2t'?'t2h':'h2t';
+ if(nm==='t2h'){document.getElementById('inp').value=o}else{document.getElementById('inp').value=o}m.value=nm;run()}
+['mode','inp','up','sep'].forEach(function(i){var el=document.getElementById(i);el.addEventListener('input',run);el.addEventListener('change',run)});run();
+
+</script>
+</body>
+</html>
