@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="google-site-verification" content="srQZGhXHmQzBnzWqOZOttu-hiXWULTA9sH76xsU2rxo" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
+<meta name="msvalidate.01" content="3EBE223AA61B4AE987184F8F4F12353F" />
+<meta charset="UTF-8">
+<meta name="google-adsense-account" content="ca-pub-7280526621945427">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Contrast Checker: WCAG AA and AAA Ratio | ToolPond</title>
+<meta name="description" content="Free color contrast checker. Enter a text and background color to get the WCAG contrast ratio and see AA and AAA pass or fail for normal and large text.">
+<meta name="author" content="ToolPond">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://toolpond.org/color-contrast-checker.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:type" content="website"><meta property="og:url" content="https://toolpond.org/color-contrast-checker.html"><meta property="og:title" content="Color Contrast Checker: WCAG AA and AAA Ratio | ToolPond"><meta property="og:description" content="Free color contrast checker. Enter a text and background color to get the WCAG contrast ratio and see AA and AAA pass or fail for normal and large text."><meta property="og:image" content="https://toolpond.org/og-image.jpg"><meta property="og:site_name" content="ToolPond">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Color Contrast Checker: WCAG AA and AAA Ratio | ToolPond"><meta name="twitter:description" content="Free color contrast checker. Enter a text and background color to get the WCAG contrast ratio and see AA and AAA pass or fail for normal and large text."><meta name="twitter:image" content="https://toolpond.org/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Color Contrast Checker", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free color contrast checker. Enter a text and background color to get the WCAG contrast ratio and see AA and AAA pass or fail for normal and large text.", "url": "https://toolpond.org/color-contrast-checker.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a good color contrast ratio?", "acceptedAnswer": {"@type": "Answer", "text": "At least 4.5 : 1 for normal text and 3 : 1 for large text meets WCAG AA. 7 : 1 and 4.5 : 1 meet the stricter AAA level."}}, {"@type": "Question", "name": "What counts as large text?", "acceptedAnswer": {"@type": "Answer", "text": "Text of at least 18 pt (about 24 px), or at least 14 pt (about 18.7 px) in bold."}}, {"@type": "Question", "name": "Is black on white the best contrast?", "acceptedAnswer": {"@type": "Answer", "text": "It has the maximum ratio of 21 : 1, but very high contrast can feel harsh for long reading. Dark grey on white still scores very high."}}, {"@type": "Question", "name": "Does contrast apply to buttons and icons?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. WCAG asks for at least 3 : 1 for interface components and meaningful graphics against adjacent colors."}}, {"@type": "Question", "name": "Does this tool store my colors?", "acceptedAnswer": {"@type": "Answer", "text": "No. The calculation happens in your browser."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolpond.org/"}, {"@type": "ListItem", "position": 2, "name": "Color Contrast Checker", "item": "https://toolpond.org/color-contrast-checker.html"}]}</script>
+<style>
+body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f3f6fa;color:#1f2937;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+.crumb{max-width:1000px;margin:1rem auto 0;padding:0 16px;font-size:.88rem;color:#6b7280}.crumb a{color:#0f4c81;text-decoration:none}
+.hero{text-align:center;padding:1.6rem 16px .6rem}.hero h1{margin:0 0 .4rem;font-size:clamp(1.6rem,4vw,2.2rem);color:#0f2d4a}.hero p{margin:0 auto;max-width:720px;color:#4b5563}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:1.2rem;margin:1rem auto;max-width:1000px;box-shadow:0 1px 3px rgba(0,0,0,.05);box-sizing:border-box}
+.card h2{margin-top:0;font-size:1.25rem;color:#0f2d4a}.card h3{color:#0f2d4a;font-size:1.05rem}
+label{display:block;font-weight:600;font-size:.9rem;margin:.6rem 0 .25rem}
+input[type=text],input[type=number],select,textarea{width:100%;box-sizing:border-box;padding:.6rem .7rem;border:1px solid #cbd5e1;border-radius:8px;font:inherit;background:#fff;color:#111827}
+textarea{min-height:140px;font-family:ui-monospace,Consolas,monospace;font-size:.95rem;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+button.b{background:#0f4c81;color:#fff;border:0;border-radius:8px;padding:.6rem 1.1rem;font:inherit;font-weight:600;cursor:pointer}
+button.b.sec{background:#e8eef5;color:#0f2d4a}button.b:hover{filter:brightness(1.08)}
+.out{background:#f8fafc;border:1px solid #dbe3ec;border-radius:10px;padding:.9rem;margin-top:.8rem;word-break:break-word;white-space:pre-wrap;font-family:ui-monospace,Consolas,monospace;min-height:2.4rem}
+.out.words{font-family:inherit;font-size:1.1rem;font-weight:600;color:#0f2d4a}
+.chk{display:flex;gap:.5rem;align-items:center;font-weight:500;margin:.3rem 0}.chk input{width:auto}
+.stat{font-size:.88rem;color:#6b7280;margin-top:.4rem}
+table{border-collapse:collapse;width:100%;font-size:.93rem}th,td{border:1px solid #e5e7eb;padding:.45rem .6rem;text-align:left}th{background:#f1f5f9}
+.tw{overflow-x:auto}.faq details{border-top:1px solid #e5e7eb;padding:.6rem 0}.faq summary{font-weight:600;cursor:pointer}
+.formula{background:#eef4fb;border-left:4px solid #0f4c81;padding:.7rem 1rem;border-radius:6px;margin:.8rem 0}
+.tp-note{max-width:1000px;margin:1.2rem auto;padding:1rem 1.25rem;border-left:4px solid #2563eb;background:#f8fafc;border-radius:8px;box-sizing:border-box}.tp-note a{color:#0f4c81}
+.err{color:#b91c1c;font-size:.9rem;margin-top:.4rem}
+@media(max-width:600px){.card{margin-left:12px;margin-right:12px}}
+</style>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
+</head>
+<body>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+<div class="crumb"><a href="/index.html">Home</a> / <span>Color Contrast Checker</span></div>
+<div class="hero"><h1>Color Contrast Checker</h1><p>Check whether your text and background colors meet WCAG AA and AAA contrast requirements.</p></div>
+<div class="card" id="tool">
+<div class="row">
+<div><label for="fg">Text color</label><div style="display:flex;gap:.4rem"><input type="color" id="fgp" value="#1f2937" style="width:56px;height:44px;padding:2px;border:1px solid #cbd5e1;border-radius:8px"><input type="text" id="fg" value="#1F2937" spellcheck="false"></div></div>
+<div><label for="bg">Background color</label><div style="display:flex;gap:.4rem"><input type="color" id="bgp" value="#ffffff" style="width:56px;height:44px;padding:2px;border:1px solid #cbd5e1;border-radius:8px"><input type="text" id="bg" value="#FFFFFF" spellcheck="false"></div></div>
+</div>
+<div class="btns"><button class="b sec" type="button" id="swap">Swap colors</button></div>
+<div class="err" id="e"></div>
+<div id="prev" style="border-radius:10px;border:1px solid #dbe3ec;padding:1rem;margin-top:.8rem"><div style="font-size:1.6rem;font-weight:700">Large text sample</div><div style="font-size:1rem">Normal text sample: The quick brown fox jumps over the lazy dog.</div></div>
+<div class="out words" id="ratio" style="margin-top:.8rem"></div>
+<div class="tw"><table><thead><tr><th>WCAG test</th><th>Needs</th><th>Result</th></tr></thead><tbody>
+<tr><td>AA, normal text</td><td>4.5 : 1</td><td id="t1"></td></tr>
+<tr><td>AA, large text</td><td>3 : 1</td><td id="t2"></td></tr>
+<tr><td>AAA, normal text</td><td>7 : 1</td><td id="t3"></td></tr>
+<tr><td>AAA, large text</td><td>4.5 : 1</td><td id="t4"></td></tr>
+<tr><td>UI components and graphics</td><td>3 : 1</td><td id="t5"></td></tr></tbody></table></div>
+</div>
+<div class="card"><h2>What is color contrast?</h2>
+<p>Contrast ratio compares the brightness of two colors, from 1 : 1 (identical) to 21 : 1 (black on white). The Web Content Accessibility Guidelines (WCAG) set minimum ratios so text stays readable for people with low vision or color-vision differences, and for anyone reading in bright light.</p>
+<h3>WCAG requirements</h3>
+<div class="tw"><table><thead><tr><th>Level</th><th>Normal text</th><th>Large text</th></tr></thead><tbody>
+<tr><td>AA (the usual target)</td><td>4.5 : 1</td><td>3 : 1</td></tr>
+<tr><td>AAA (enhanced)</td><td>7 : 1</td><td>4.5 : 1</td></tr></tbody></table></div>
+<p>"Large text" means at least 18 pt (about 24 px), or 14 pt (about 18.7 px) when bold. Button borders, icons and chart elements need at least 3 : 1 against nearby colors.</p>
+<h3>How the ratio is calculated</h3>
+<div class="formula">Ratio = (L1 + 0.05) ÷ (L2 + 0.05), where L1 is the lighter color's relative luminance and L2 the darker.<br>Luminance = 0.2126 R + 0.7152 G + 0.0722 B, after converting each channel from sRGB to linear light.</div>
+<p>Example: #267FD9 on white gives about 4.1 : 1, which fails AA for normal text. The darker #1B5998 gives about 7.2 : 1 and passes AAA. The tool shows the ratio rounded down to two decimals, so a result is never overstated.</p>
+<h3>Tips for passing</h3>
+<ul><li>Darken the text or lighten the background rather than tweaking both slightly.</li><li>Do not rely on color alone to show meaning, such as red for errors; add text or an icon.</li><li>Test text on images or gradients at the lowest-contrast spot.</li></ul>
+<p>Need a safe palette? Try the <a href="/color-palette-generator.html">color palette generator</a> and test your picks here, or read the <a href="/blog/monochromatic-and-complementary-colors.html">monochromatic and complementary colors guide</a>.</p></div>
+<div class="card faq"><h2>Frequently asked questions</h2><details><summary>What is a good color contrast ratio?</summary><p>At least 4.5 : 1 for normal text and 3 : 1 for large text meets WCAG AA. 7 : 1 and 4.5 : 1 meet the stricter AAA level.</p></details><details><summary>What counts as large text?</summary><p>Text of at least 18 pt (about 24 px), or at least 14 pt (about 18.7 px) in bold.</p></details><details><summary>Is black on white the best contrast?</summary><p>It has the maximum ratio of 21 : 1, but very high contrast can feel harsh for long reading. Dark grey on white still scores very high.</p></details><details><summary>Does contrast apply to buttons and icons?</summary><p>Yes. WCAG asks for at least 3 : 1 for interface components and meaningful graphics against adjacent colors.</p></details><details><summary>Does this tool store my colors?</summary><p>No. The calculation happens in your browser.</p></details></div>
+<aside class="tp-note tp-related" aria-label="Related tools"><strong>Related tools</strong><ul><li><a href="/hex-to-rgb-converter.html">HEX to RGB Converter</a> — HEX, RGB, HSL and CMYK</li><li><a href="/color-palette-generator.html">Color Palette Generator</a> — palettes with color wheel schemes</li><li><a href="/what-color-is-this.html">What Color Is This?</a> — find the name of any color</li><li><a href="/blog/monochromatic-and-complementary-colors.html">Monochromatic and Complementary Colors</a> — includes a contrast table</li></ul></aside>
+<div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcolor-contrast-checker.html&amp;text=Color%20Contrast%20Checker" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcolor-contrast-checker.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcolor-contrast-checker.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Color%20Contrast%20Checker%20https%3A%2F%2Ftoolpond.org%2Fcolor-contrast-checker.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcolor-contrast-checker.html&amp;text=Color%20Contrast%20Checker" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/color-contrast-checker.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+<script>
+
+function clamp(v,a,b){v=+v;if(isNaN(v))v=a;return Math.min(b,Math.max(a,v))}
+function parseHex(s){s=(s||'').trim().replace(/^#/,'');if(/^[0-9a-f]{3}$/i.test(s))s=s.split('').map(function(c){return c+c}).join('');if(!/^[0-9a-f]{6}$/i.test(s))return null;return[parseInt(s.substr(0,2),16),parseInt(s.substr(2,2),16),parseInt(s.substr(4,2),16)]}
+function toHex(r,g,b){return '#'+[r,g,b].map(function(x){return Math.round(x).toString(16).padStart(2,'0')}).join('').toUpperCase()}
+function rgb2hsl(r,g,b){r/=255;g/=255;b/=255;var mx=Math.max(r,g,b),mn=Math.min(r,g,b),h=0,s=0,l=(mx+mn)/2,d=mx-mn;if(d){s=l>.5?d/(2-mx-mn):d/(mx+mn);if(mx===r)h=((g-b)/d+(g<b?6:0));else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60}return[h,s*100,l*100]}
+function hsl2rgb(h,s,l){h=((h%360)+360)%360;s/=100;l/=100;var c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2,r=0,g=0,b=0;if(h<60){r=c;g=x}else if(h<120){r=x;g=c}else if(h<180){g=c;b=x}else if(h<240){g=x;b=c}else if(h<300){r=x;b=c}else{r=c;b=x}return[(r+m)*255,(g+m)*255,(b+m)*255]}
+function rgb2cmyk(r,g,b){r/=255;g/=255;b/=255;var k=1-Math.max(r,g,b);if(k>=1)return[0,0,0,100];return[(1-r-k)/(1-k)*100,(1-g-k)/(1-k)*100,(1-b-k)/(1-k)*100,k*100]}
+function lum(r,g,b){return[r,g,b].map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)}).reduce(function(a,v,i){return a+v*[.2126,.7152,.0722][i]},0)}
+function $(i){return document.getElementById(i)}
+
+function run(){var f=parseHex($('fg').value),b=parseHex($('bg').value);if(!f||!b){$('e').textContent='Enter both colors as HEX, for example #1F2937.';return}$('e').textContent='';
+ var l1=lum(f[0],f[1],f[2]),l2=lum(b[0],b[1],b[2]),hi=Math.max(l1,l2),lo=Math.min(l1,l2),ratio=(hi+.05)/(lo+.05),fl=Math.floor(ratio*100)/100;
+ $('fgp').value=toHex(f[0],f[1],f[2]).toLowerCase();$('bgp').value=toHex(b[0],b[1],b[2]).toLowerCase();
+ var p=$('prev');p.style.background=toHex(b[0],b[1],b[2]);p.style.color=toHex(f[0],f[1],f[2]);
+ $('ratio').textContent='Contrast ratio: '+fl.toFixed(2)+' : 1';
+ [[4.5,'t1'],[3,'t2'],[7,'t3'],[4.5,'t4'],[3,'t5']].forEach(function(t){var ok=fl>=t[0];var el=$(t[1]);el.textContent=ok?'Pass':'Fail';el.style.color=ok?'#15803d':'#b91c1c';el.style.fontWeight='700'})}
+$('fg').addEventListener('input',run);$('bg').addEventListener('input',run);
+$('fgp').addEventListener('input',function(){$('fg').value=this.value.toUpperCase();run()});
+$('bgp').addEventListener('input',function(){$('bg').value=this.value.toUpperCase();run()});
+$('swap').addEventListener('click',function(){var a=$('fg').value;$('fg').value=$('bg').value;$('bg').value=a;run()});run();
+
+</script>
+</body>
+</html>
