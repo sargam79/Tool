@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free calorie calculator to find your daily calorie needs &amp; TDEE. Calculate calories for weight loss, muscle gain, or maintenance.">
-    <meta name="keywords" content="calorie calculator, daily calorie needs, TDEE calculator, calorie counter, BMR calculator, how many calories should I eat, calories to lose weight, calorie intake calculator, maintenance calories, calories for muscle gain, macro calculator, free calorie tool, nutrition calculator">
+    <meta name="description" content="Free calorie calculator: find your TDEE, BMR and calories to lose or gain weight. Set a goal weight and date, compare 3 formulas, and get macros.">
+    <meta name="keywords" content="calorie calculator, TDEE calculator, calorie deficit calculator, maintenance calories calculator, BMR calculator, how many calories should I eat a day, calories to lose weight, calories to lose 1 pound a week, calorie calculator goal weight, weight loss calorie calculator, Katch-McArdle calculator, Harris-Benedict calculator, macro calculator, calories to build muscle">
     <meta name="author" content="ToolPond">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://toolpond.org/calorie-calculator.html">
 
-    <meta property="og:title" content="Free Calorie Calculator 2026 | TDEE & Daily Calorie Needs">
-    <meta property="og:description" content="Accurate calorie calculator with macro breakdown. Calculate your TDEE, daily calorie needs for weight loss, muscle gain, or maintenance. Free to use, and your inputs stay in your browser.">
+    <meta property="og:title" content="Calorie Calculator: TDEE, BMR &amp; Calorie Deficit (2026)">
+    <meta property="og:description" content="Free calorie calculator: find your TDEE, BMR and calories to lose or gain weight. Set a goal weight and date, compare 3 formulas, and get macros.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/calorie-calculator.html">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Calorie Calculator">
-    <meta name="twitter:description" content="Calculate your daily calorie needs with macronutrient breakdown">
+    <meta name="twitter:title" content="Calorie Calculator: TDEE, BMR &amp; Calorie Deficit (2026)">
+    <meta name="twitter:description" content="Free calorie calculator: find your TDEE, BMR and calories to lose or gain weight. Set a goal weight and date, compare 3 formulas, and get macros.">
 
     <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Free Calorie Calculator & TDEE Calculator",
-  "description": "Free online calorie calculator to calculate daily calorie needs, TDEE, BMR, and macros for weight loss, muscle gain, or maintenance. Browser-based tool; your inputs stay in your browser.",
+  "name": "Calorie Calculator: TDEE, BMR & Calorie Deficit",
+  "description": "Free online calorie calculator for TDEE, BMR, calorie deficit and surplus targets, goal-weight timelines and macros. Choose Mifflin-St Jeor, Harris-Benedict or Katch-McArdle. Your inputs stay in your browser.",
   "url": "https://toolpond.org/calorie-calculator.html",
   "applicationCategory": "HealthApplication",
   "offers": {
@@ -44,7 +44,7 @@
     }
     </script>
 
-    <title>Free Calorie Calculator 2026 | TDEE &amp; Daily Calorie Needs</title>
+    <title>Calorie Calculator: TDEE, BMR &amp; Calorie Deficit (2026)</title>
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
@@ -173,6 +173,29 @@
             .unit-toggle{grid-template-columns:1fr}
             .goal-cards{grid-template-columns:repeat(2,1fr)}
         }
+    
+        .adv{border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem;margin-bottom:1.25rem;background:#fafafa}
+        .adv summary{cursor:pointer;font-weight:700;color:var(--dark);margin-bottom:.75rem}
+        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .hint{font-size:.85rem;color:var(--text-light);line-height:1.5}
+        .form-msg{color:#b91c1c;font-weight:600;margin:.25rem 0 0;min-height:0}
+        .result-sub{font-size:.8rem;color:var(--text-light);margin-top:.25rem}
+        .plan-box{background:#fff;border-left:4px solid var(--success);border-radius:8px;padding:1.25rem;margin-top:1rem;line-height:1.7;color:#374151}
+        .plan-box strong.t{display:block;color:var(--dark);margin-bottom:.25rem}
+        .plan-box .warn{color:#b45309;font-weight:600;display:block;margin-top:.5rem}
+        .goal-card.low{border:2px solid #f59e0b}
+        .goal-card .flag{font-size:.75rem;color:#b45309;font-weight:700;margin-top:.35rem}
+        .goal-card.sel{border:2px solid var(--primary)}
+        .cal-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+        .cal-table{width:100%;border-collapse:collapse;background:#fff;font-size:.92rem}
+        .cal-table th,.cal-table td{border:1px solid var(--border);padding:.55rem .7rem;text-align:left;vertical-align:top}
+        .cal-table thead th{background:var(--primary-light);color:var(--dark)}
+        .cal-table tbody th{background:#f8fafc;color:var(--dark);font-weight:600}
+        .activity-btn.active .activity-label{color:#fff}
+        .activity-btn.active .activity-desc{color:#e0f2fe}
+        .main-content>*{min-width:0}
+        .goal-card h4,.goal-desc{overflow-wrap:anywhere}
+        @media(max-width:560px){.two-col{grid-template-columns:1fr}}
     </style>
 <meta property="og:site_name" content="ToolPond">
 <meta property="og:image" content="https://toolpond.org/og-image.jpg">
@@ -184,58 +207,114 @@
  "mainEntity": [
   {
    "@type": "Question",
-   "name": "What is the difference between BMR and TDEE? ▼",
+   "name": "How many calories should I eat a day to lose weight?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "BMR (Basal Metabolic Rate) is calories burned at rest doing nothing. TDEE (Total Daily Energy Expenditure) includes BMR plus activity. TDEE is what matters for weight management. Example: BMR might be 1,500 calories, but TDEE could be 2,200 calories with moderate activity."
+    "text": "Start with your TDEE (maintenance calories), then subtract 250 to 500 kcal for steady loss of roughly 0.5 to 1 lb (0.25 to 0.5 kg) a week. If your TDEE is 2,200 kcal, that means about 1,700 to 1,950 kcal a day. Many guidelines treat 1,200 kcal (women) and 1,500 kcal (men) as the lowest level to use without medical supervision."
    }
   },
   {
    "@type": "Question",
-   "name": "How accurate is this calculator? ▼",
+   "name": "How many calories do I need to cut to lose 1 pound a week?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "This calculator uses the widely used Mifflin-St Jeor formula—typically accurate within ±10-15% of actual TDEE. Real results vary based on metabolism, muscle mass, hormones, and food accuracy. Use this as a starting point and adjust based on actual weight changes over 2-4 weeks."
+    "text": "About 500 kcal a day. One pound of body weight is commonly estimated at 3,500 kcal, so 500 kcal × 7 days = 3,500 kcal. In metric terms, 1 kg is about 7,700 kcal, so losing 1 kg a week needs roughly 1,100 kcal a day, which is too aggressive for many people."
    }
   },
   {
    "@type": "Question",
-   "name": "Why am I not losing weight at my calculated calories? ▼",
+   "name": "What is a calorie deficit?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Common reasons: (1) Underestimating actual calorie intake (portion sizes are often larger than thought), (2) Activity level is lower than estimated, (3) Metabolic adaptation after prolonged dieting, (4) Medical conditions affecting metabolism. Try tracking more accurately for 2 weeks, then adjust down by 200-300 calories if not losing 1-2 lbs/week."
+    "text": "A calorie deficit means eating fewer calories than you burn. If your TDEE is 2,300 kcal and you eat 1,800 kcal, your deficit is 500 kcal a day. A moderate deficit of 10 to 25% of maintenance is easier to sustain and protects muscle better than a crash diet."
    }
   },
   {
    "@type": "Question",
-   "name": "How often should I recalculate my calories? ▼",
+   "name": "What is the difference between BMR and TDEE?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Recalculate every 10-15 pounds of weight change. As your weight changes, your calorie needs change—someone who weighs 150 lbs has different needs than when they weighed 180 lbs. This ensures your targets stay accurate for your current body."
+    "text": "BMR (basal metabolic rate) is the energy you burn at rest. TDEE (total daily energy expenditure) is BMR multiplied by an activity factor, so it includes walking, work and exercise. TDEE is the number that matters for weight management. For example, a BMR of 1,500 kcal can mean a TDEE of about 2,300 kcal at moderate activity."
    }
   },
   {
    "@type": "Question",
-   "name": "Should macros be 30/40/30 (P/C/F)? ▼",
+   "name": "How do I calculate calories to reach a goal weight by a date?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "The 30/40/30 split is a good starting point, but individual needs vary. More important: get 0.8-1g protein per pound for muscle building, then split remaining calories between carbs and fats based on preference. Some people thrive on higher carbs, others on higher fats. Experiment and adjust based on energy and results."
+    "text": "Subtract your goal weight from your current weight, multiply by 3,500 (per pound) and divide by the number of days. Losing 10 lb in 10 weeks needs 35,000 ÷ 70 = 500 kcal a day below maintenance. Enter a goal weight and the number of weeks in the calculator above and it does the sum, with a warning if the pace is too fast."
    }
   },
   {
    "@type": "Question",
-   "name": "Can I eat different amounts on rest vs training days? ▼",
+   "name": "Is 1,200 calories a day enough?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Absolutely. Eat slightly more on training days (+300-500 calories) and slightly less on rest days (-300-500 calories). This averages to your TDEE over the week while supporting workouts with energy when needed. Many athletes use flexible daily calories for this reason."
+    "text": "For most adults, 1,200 kcal is very low and hard to keep up. It is often cited as a minimum for women and 1,500 kcal for men, and only under medical or dietitian supervision. A smaller deficit over a longer time is safer and easier to maintain."
    }
   },
   {
    "@type": "Question",
-   "name": "Is my data private? ▼",
+   "name": "How many calories should I eat to build muscle?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Yes. All calculations happen in your browser. We never see, store, or collect your height, weight, age, or any personal data. No login required. The site itself may show ads and use analytics, as described in our Privacy Policy. The numbers you enter are not sent to our server."
+    "text": "Aim for a small surplus of about 250 to 500 kcal above maintenance, together with strength training and enough protein (roughly 1.6 to 2.2 g per kg of body weight). A larger surplus mostly adds body fat rather than extra muscle."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which formula is best: Mifflin-St Jeor, Harris-Benedict or Katch-McArdle?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Mifflin-St Jeor is the usual default because it has been validated in studies of healthy adults. Revised Harris-Benedict is an older equation that often gives a slightly higher result. Katch-McArdle uses lean body mass, so it can suit very lean or muscular people if you know your body fat percentage. The calculator shows all three so you can compare."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How accurate is this calorie calculator?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It gives an estimate, not a measurement. In validation studies the Mifflin-St Jeor equation predicted resting energy use within 10% for most adults, but not for everyone. Use the result as a starting point, track your weight for 2 to 4 weeks, and adjust by 100 to 200 kcal if the trend does not match your goal."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why am I not losing weight at my calculated calories?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Common reasons are underestimating how much you eat (portion sizes and cooking oils add up), overestimating activity, water-weight swings that hide fat loss for a week or two, and the fact that your needs fall as you lose weight. Track carefully for two weeks, then reduce intake by 100 to 200 kcal if your average weight has not moved."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How often should I recalculate my calories?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Recalculate every 10 to 15 lb (4.5 to 7 kg) of weight change, or when your activity changes a lot. Someone who weighs 150 lb burns fewer calories than they did at 180 lb, so old targets drift out of date."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should macros be 30/40/30 (protein/carbs/fat)?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is a reasonable starting point, not a rule. Set protein first (about 1.6 to 2.2 g per kg if you lift weights), keep fat at about 20 to 35% of calories, and fill the rest with carbohydrates based on how you feel and train. The calculator offers a higher-protein and a lower-carb split too."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I eat different amounts on rest days and training days?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Some people eat a little more on training days and a little less on rest days, as long as the weekly average matches their target. Keeping calories steady is also fine, so choose whichever is easier to stick to."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is my data private?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. All calculations happen in your browser. We never see, store or collect your height, weight, age or other personal data, and no login is required. The site itself may show ads and use analytics, as described in our Privacy Policy."
    }
   }
  ]
@@ -251,26 +330,32 @@
   {
    "@type": "HowToStep",
    "position": 1,
-   "name": "Enter your sex, age, height and weight",
-   "text": "Enter your sex, age, height and weight."
+   "name": "Enter your age, sex, height and weight.",
+   "text": "Enter your age, sex, height and weight."
   },
   {
    "@type": "HowToStep",
    "position": 2,
-   "name": "Pick the activity level that matches a typical week",
+   "name": "Pick the activity level that matches a typical week.",
    "text": "Pick the activity level that matches a typical week."
   },
   {
    "@type": "HowToStep",
    "position": 3,
-   "name": "Read your maintenance calories, then choose a goal to lose or gain weight",
-   "text": "Read your maintenance calories, then choose a goal to lose or gain weight."
+   "name": "Optionally choose a BMR formula and add a goal weight and number of weeks.",
+   "text": "Optionally choose a BMR formula and add a goal weight and number of weeks."
   },
   {
    "@type": "HowToStep",
    "position": 4,
-   "name": "Adjust after a few weeks based on how your weight actually changes",
-   "text": "Adjust after a few weeks based on how your weight actually changes."
+   "name": "Read your maintenance calories, goal targets and macros.",
+   "text": "Read your maintenance calories, goal targets and macros."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 5,
+   "name": "Adjust after 2 to 4 weeks based on how your weight actually changes.",
+   "text": "Adjust after 2 to 4 weeks based on how your weight actually changes."
   }
  ]
 }
@@ -280,7 +365,7 @@
  "@context": "https://schema.org",
  "@type": "WebPage",
  "url": "https://toolpond.org/calorie-calculator.html",
- "dateModified": "2026-10-08",
+ "dateModified": "2026-10-24",
  "speakable": {
   "@type": "SpeakableSpecification",
   "cssSelector": [
@@ -336,10 +421,10 @@
     <div class="hero">
         <div class="container">
             <h1>Calorie Calculator</h1>
-            <p>Calculate your daily calorie needs (TDEE) instantly. Get personalized nutrition plans for weight loss, muscle gain, or maintenance. Free to use, and your inputs stay in your browser.</p>
+            <p>Find your maintenance calories (TDEE), then get daily targets to lose or gain weight. Set a goal weight and date, compare three BMR formulas and see your macros. Free, and your inputs stay in your browser.</p>
         </div>
     </div>
-<div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>Daily calorie needs = resting energy (BMR) × an activity factor. With the Mifflin-St Jeor equation, a 30-year-old woman who is 165 cm and 65 kg has a BMR of about <strong>1,370 kcal</strong>. With little exercise (factor 1.2) that is about 1,644 kcal a day to maintain weight.</div><div class="tp-how"><h2>How to calculate your daily calories</h2><ol><li>Enter your sex, age, height and weight.</li><li>Pick the activity level that matches a typical week.</li><li>Read your maintenance calories, then choose a goal to lose or gain weight.</li><li>Adjust after a few weeks based on how your weight actually changes.</li></ol></div></div>
+<div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>Daily calorie needs = resting energy (BMR) × an activity factor. With the Mifflin-St Jeor equation, a 30-year-old woman who is 165 cm and 65 kg has a BMR of about <strong>1,370 kcal</strong>. With little exercise (factor 1.2) that is about 1,644 kcal a day to maintain weight. A 500 kcal daily deficit from there (about 1,144 kcal) would be below the usual 1,200 kcal minimum, so a gentler 250 kcal deficit is the safer starting point.</div><div class="tp-how"><h2>How to calculate your daily calories</h2><ol><li>Enter your age, sex, height and weight.</li><li>Pick the activity level that matches a typical week.</li><li>Optionally choose a BMR formula and add a goal weight and number of weeks.</li><li>Read your maintenance calories, goal targets and macros.</li><li>Adjust after 2 to 4 weeks based on how your weight actually changes.</li></ol></div></div>
 
 
     <div class="container">
@@ -352,8 +437,8 @@
             
             <p><strong>Why calculate your calorie needs?</strong> Knowing your TDEE allows you to:</p>
             <ul style="margin-left:1.5rem;margin:1rem 0">
-                <li><strong>Lose weight strategically:</strong> Eat 300-500 calories below TDEE for sustainable weight loss (1-2 lbs/week)</li>
-                <li><strong>Build muscle:</strong> Eat 300-500 calories above TDEE with proper strength training</li>
+                <li><strong>Lose weight strategically:</strong> Eat 250-500 calories below TDEE for steady weight loss of roughly 0.5-1 lb (0.25-0.5 kg) a week</li>
+                <li><strong>Build muscle:</strong> Eat 250-500 calories above TDEE with proper strength training</li>
                 <li><strong>Maintain weight:</strong> Eat at your TDEE to keep your current body composition</li>
                 <li><strong>Track progress:</strong> Monitor calorie intake against your calculated needs</li>
                 <li><strong>Optimize nutrition:</strong> Plan macronutrients (protein, carbs, fat) based on your calorie target</li>
@@ -367,20 +452,19 @@
             <div class="calculator-section">
                 <h2 style="color:var(--dark);margin-bottom:1.5rem">Calculate Your TDEE</h2>
 
-                <!-- Unit Toggle -->
-                <div class="unit-toggle">
-                    <button class="unit-btn active" onclick="setUnit('metric')">Metric (kg, cm)</button>
-                    <button class="unit-btn" onclick="setUnit('imperial')">Imperial (lbs, in)</button>
+                <div class="unit-toggle" role="group" aria-label="Units">
+                    <button type="button" class="unit-btn active" id="u-metric" onclick="setUnit('metric',this)">Metric (kg, cm)</button>
+                    <button type="button" class="unit-btn" id="u-imperial" onclick="setUnit('imperial',this)">Imperial (lb, in)</button>
                 </div>
 
-                <form onsubmit="calculateCalories(event)">
+                <form onsubmit="calculateCalories(event)" novalidate>
                     <div class="form-group">
-                        <label class="form-label">Age</label>
-                        <input type="number" id="age" class="form-input" placeholder="25" min="15" max="100" required step="any">
+                        <label class="form-label" for="age">Age (18 or older)</label>
+                        <input type="number" id="age" class="form-input" placeholder="30" min="18" max="100" step="any" inputmode="decimal">
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Sex</label>
+                        <label class="form-label" for="sex">Sex</label>
                         <select id="sex" class="form-input">
                             <option value="">Select...</option>
                             <option value="male">Male</option>
@@ -389,24 +473,24 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Height</label>
-                        <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:flex-end">
-                            <input type="number" id="height" class="form-input" placeholder="170" step="any" required>
+                        <label class="form-label" for="height">Height</label>
+                        <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center">
+                            <input type="number" id="height" class="form-input" placeholder="170" step="any" inputmode="decimal">
                             <span id="heightUnit" style="font-weight:600;color:var(--text-light)">cm</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Weight</label>
-                        <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:flex-end">
-                            <input type="number" id="weight" class="form-input" placeholder="70" step="any" required>
+                        <label class="form-label" for="weight">Weight</label>
+                        <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center">
+                            <input type="number" id="weight" class="form-input" placeholder="70" step="any" inputmode="decimal">
                             <span id="weightUnit" style="font-weight:600;color:var(--text-light)">kg</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Activity Level</label>
-                        <div class="activity-options">
+                        <span class="form-label" id="actLabel">Activity Level</span>
+                        <div class="activity-options" role="group" aria-labelledby="actLabel">
                             <button type="button" class="activity-btn active" onclick="setActivity(1.2, this)">
                                 <span class="activity-label">💤 Sedentary</span>
                                 <span class="activity-desc">Little or no exercise, desk job</span>
@@ -430,61 +514,100 @@
                         </div>
                     </div>
 
+                    <details class="adv" open>
+                        <summary>Formula, goal weight and macros (optional)</summary>
+                        <div class="form-group">
+                            <label class="form-label" for="formula">BMR formula</label>
+                            <select id="formula" class="form-input" onchange="toggleBf()">
+                                <option value="mifflin">Mifflin-St Jeor (default)</option>
+                                <option value="harris">Revised Harris-Benedict</option>
+                                <option value="katch">Katch-McArdle (needs body fat %)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="bfGroup" style="display:none">
+                            <label class="form-label" for="bodyfat">Body fat (%)</label>
+                            <input type="number" id="bodyfat" class="form-input" placeholder="20" min="3" max="60" step="any" inputmode="decimal">
+                            <p class="hint">Not sure? Try our <a href="body-fat-calculator.html">body fat calculator</a>.</p>
+                        </div>
+                        <div class="two-col">
+                            <div class="form-group">
+                                <label class="form-label" for="goalWeight">Goal weight (<span class="wUnit">kg</span>)</label>
+                                <input type="number" id="goalWeight" class="form-input" placeholder="65" step="any" inputmode="decimal">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="goalWeeks">Weeks to get there</label>
+                                <input type="number" id="goalWeeks" class="form-input" placeholder="12" min="1" max="260" step="1" inputmode="numeric">
+                            </div>
+                        </div>
+                        <p class="hint" style="margin-top:-.5rem">Leave weeks empty to see how long a steady pace would take.</p>
+                        <div class="two-col">
+                            <div class="form-group">
+                                <label class="form-label" for="planFor">Macros for</label>
+                                <select id="planFor" class="form-input">
+                                    <option value="0">Maintenance</option>
+                                    <option value="-250">Mild weight loss (−250)</option>
+                                    <option value="-500">Weight loss (−500)</option>
+                                    <option value="-750">Fast weight loss (−750)</option>
+                                    <option value="250">Lean gain (+250)</option>
+                                    <option value="500">Muscle gain (+500)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="split">Macro split</label>
+                                <select id="split" class="form-input">
+                                    <option value="30,40,30">Balanced 30/40/30</option>
+                                    <option value="35,35,30">Higher protein 35/35/30</option>
+                                    <option value="30,25,45">Lower carb 30/25/45</option>
+                                </select>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div id="formMsg" class="form-msg" role="alert" aria-live="polite"></div>
                     <button type="submit" class="btn">Calculate My Calories</button>
                 </form>
 
                 <!-- Results -->
-                <div id="result" class="result-box">
+                <div id="result" class="result-box" aria-live="polite">
                     <div class="result-grid">
                         <div class="result-item">
-                            <div class="result-label">Your TDEE (Daily Calories)</div>
+                            <div class="result-label">Your TDEE (Maintenance Calories)</div>
                             <div class="result-value" id="tdee">0</div>
+                            <div class="result-sub">kcal per day</div>
                         </div>
                         <div class="result-item">
                             <div class="result-label">Basal Metabolic Rate</div>
                             <div class="result-value" id="bmr">0</div>
+                            <div class="result-sub" id="bmrName">Mifflin-St Jeor</div>
                         </div>
                     </div>
 
-                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Goal-Based Calorie Targets</h3>
-                    <div class="goal-cards">
-                        <div class="goal-card">
-                            <h4>Weight Loss</h4>
-                            <div class="goal-value" id="lossCalories">0</div>
-                            <div class="goal-desc">-500 cal/day (1-2 lbs/week)</div>
-                        </div>
-                        <div class="goal-card">
-                            <h4>Maintenance</h4>
-                            <div class="goal-value" id="maintenanceCalories">0</div>
-                            <div class="goal-desc">Keep current weight</div>
-                        </div>
-                        <div class="goal-card">
-                            <h4>Muscle Gain</h4>
-                            <div class="goal-value" id="gainCalories">0</div>
-                            <div class="goal-desc">+300 cal/day (0.5-1 lb/week)</div>
-                        </div>
-                        <div class="goal-card">
-                            <h4>Aggressive Gain</h4>
-                            <div class="goal-value" id="aggGainCalories">0</div>
-                            <div class="goal-desc">+500 cal/day (1-2 lbs/week)</div>
-                        </div>
-                    </div>
+                    <div id="planBox" class="plan-box" style="display:none"></div>
 
-                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Macronutrient Breakdown (at Maintenance)</h3>
+                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Daily Calories by Goal</h3>
+                    <div class="goal-cards" id="goalCards"></div>
+                    <p class="hint" id="floorNote" style="margin-top:.75rem"></p>
+
+                    <h3 style="color:var(--dark);margin:1.5rem 0;font-size:1.1rem">Macros for <span id="macroFor">maintenance</span> (<span id="macroCal">0</span> kcal)</h3>
                     <div class="macro-breakdown">
                         <div class="macro-bar macro-protein">
-                            <div class="macro-label"><span>Protein (30%)</span><span id="proteinCals">0g</span></div>
-                            <div class="macro-track"><div class="macro-fill" style="width:30%"></div></div>
+                            <div class="macro-label"><span>Protein (<span id="pPct">30</span>%)</span><span id="proteinCals">0g</span></div>
+                            <div class="macro-track"><div class="macro-fill" id="pFill" style="width:30%"></div></div>
                         </div>
                         <div class="macro-bar macro-carbs">
-                            <div class="macro-label"><span>Carbohydrates (40%)</span><span id="carbsCals">0g</span></div>
-                            <div class="macro-track"><div class="macro-fill" style="width:40%"></div></div>
+                            <div class="macro-label"><span>Carbohydrates (<span id="cPct">40</span>%)</span><span id="carbsCals">0g</span></div>
+                            <div class="macro-track"><div class="macro-fill" id="cFill" style="width:40%"></div></div>
                         </div>
                         <div class="macro-bar macro-fat">
-                            <div class="macro-label"><span>Fats (30%)</span><span id="fatCals">0g</span></div>
-                            <div class="macro-track"><div class="macro-fill" style="width:30%"></div></div>
+                            <div class="macro-label"><span>Fats (<span id="fPct">30</span>%)</span><span id="fatCals">0g</span></div>
+                            <div class="macro-track"><div class="macro-fill" id="fFill" style="width:30%"></div></div>
                         </div>
+                        <p class="hint" id="proteinNote"></p>
                     </div>
+
+                    <h3 style="color:var(--dark);margin:1.5rem 0 .75rem;font-size:1.1rem">BMR by Formula</h3>
+                    <div class="cal-table-wrap"><table class="cal-table" id="cmpTable"><thead><tr><th scope="col">Formula</th><th scope="col">BMR</th><th scope="col">TDEE</th></tr></thead><tbody></tbody></table></div>
+                    <p class="hint">Estimates only. Real needs vary by 10% or more between people, so adjust after 2 to 4 weeks of tracking. Not medical advice.</p>
                 </div>
             </div>
 
@@ -503,8 +626,8 @@
                 <div class="sidebar-box">
                     <h3 style="color:var(--dark);margin-bottom:1rem">🍗 Protein Goals</h3>
                     <div class="stat-box">
-                        <h3>0.8-1g per lb</h3>
-                        <p style="color:var(--text-light);font-size:0.9rem">For muscle building, aim for 0.8-1g of protein per pound of body weight daily.</p>
+                        <h3>0.7-1g per lb</h3>
+                        <p style="color:var(--text-light);font-size:0.9rem">For people who lift weights, sports nutrition guides commonly suggest about 0.7-1g of protein per pound (1.6-2.2g per kg) of body weight daily.</p>
                     </div>
                 </div>
 
@@ -518,14 +641,24 @@
 
         <!-- BMR Formula Section -->
         <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
-            <h2 style="color:var(--dark);margin-bottom:1.5rem">The Mifflin-St Jeor Equation</h2>
-            <div class="formula-box">
-                <p><strong>This calculator uses the Mifflin-St Jeor formula (most accurate for BMR):</strong></p>
-                <p style="margin-top:1rem"><strong>For Men:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) + 5</p>
-                <p><strong>For Women:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) - 161</p>
-                <p style="margin-top:1rem"><strong>Then multiply BMR by activity factor to get TDEE</strong></p>
+            <h2 style="color:var(--dark);margin-bottom:1rem">Mifflin-St Jeor, Harris-Benedict and Katch-McArdle Compared</h2>
+            <p style="color:#4b5563;line-height:1.8;margin-bottom:1rem">All three equations estimate your BMR (the calories you burn at rest). The calculator lets you choose one, and the "BMR by formula" table in the results shows all three side by side so you can see how much they differ.</p>
+            <div class="cal-table-wrap"><table class="cal-table"><thead><tr><th scope="col">Formula</th><th scope="col">Inputs</th><th scope="col">Equation (weight in kg, height in cm)</th></tr></thead><tbody>
+            <tr><th scope="row">Mifflin-St Jeor (1990)</th><td>Age, sex, height, weight</td><td>Men: 10W + 6.25H − 5A + 5<br>Women: 10W + 6.25H − 5A − 161</td></tr>
+            <tr><th scope="row">Revised Harris-Benedict (1984)</th><td>Age, sex, height, weight</td><td>Men: 88.362 + 13.397W + 4.799H − 5.677A<br>Women: 447.593 + 9.247W + 3.098H − 4.330A</td></tr>
+            <tr><th scope="row">Katch-McArdle</th><td>Lean body mass (needs body fat %)</td><td>370 + 21.6 × lean mass (kg), where lean mass = weight × (1 − body fat %)</td></tr>
+            </tbody></table></div>
+            <div class="formula-box" style="margin-top:1rem">
+                <p><strong>TDEE = BMR × activity factor</strong></p>
+                <p>Sedentary 1.2 · Lightly active 1.375 · Moderately active 1.55 · Very active 1.725 · Extremely active 1.9</p>
             </div>
-            <p style="color:#4b5563;line-height:1.8;margin-top:1rem">The Mifflin-St Jeor equation is one of the most widely used and best validated formulas for calculating BMR in healthy adults. It accounts for age, sex, height, and weight for accuracy.</p>
+            <h3 style="color:var(--dark);margin:1.5rem 0 .5rem;font-size:1.05rem">Which one should you pick?</h3>
+            <ul style="margin-left:1.5rem;line-height:1.8;color:#4b5563">
+                <li><strong>Mifflin-St Jeor</strong> is the default because it is widely used and has been validated in studies of healthy adults, including people with overweight.</li>
+                <li><strong>Revised Harris-Benedict</strong> is an older equation and often gives a slightly higher result. It is useful as a second opinion.</li>
+                <li><strong>Katch-McArdle</strong> ignores sex and age and uses lean mass instead, so it can suit muscular or very lean people better, if you know your body fat percentage. If you only guess it, the result is only as good as the guess. Use our <a href="body-fat-calculator.html">body fat calculator</a> for an estimate.</li>
+            </ul>
+            <p style="color:#4b5563;line-height:1.8;margin-top:1rem">No equation can see your genetics, hormones or muscle distribution, so treat any result as a starting point and adjust it using your real weight trend over two to four weeks.</p>
         </div>
 
         <!-- How to Use Section -->
@@ -562,7 +695,7 @@
             <h3>💪 Expert Nutrition Tips</h3>
             <ul>
                 <li>Your calculated needs are estimates—individual variation is 10-20%, so adjust based on real results</li>
-                <li>Eat adequate protein (0.8-1g per pound)—it preserves muscle, increases satiety, and boosts metabolism</li>
+                <li>Eat adequate protein (about 0.7-1g per pound)—it preserves muscle, increases satiety, and boosts metabolism</li>
                 <li>Don't go too low—extreme calorie deficits slow metabolism and cause muscle loss; aim for 500 cal/day max</li>
                 <li>Include strength training when in a deficit—this preserves muscle mass while losing fat</li>
                 <li>Track consistently for 2 weeks before adjusting—weight fluctuates due to water, food volume, and hormones</li>
@@ -572,27 +705,126 @@
             </ul>
         </div>
 
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1rem">Maintenance Calories by Weight and Activity</h2>
+            <p style="color:#4b5563;line-height:1.8;margin-bottom:1rem">These tables show estimated daily maintenance calories (TDEE) from the Mifflin-St Jeor equation. They assume a 30-year-old, 175 cm (5'9") man and a 163 cm (5'4") woman. Height and age change the numbers, so use the calculator above for your own figure.</p>
+            <h3 style="color:var(--dark);margin:1rem 0 .5rem;font-size:1.05rem">Men (30 years, 175 cm)</h3>
+            <div class="cal-table-wrap"><table class="cal-table"><thead><tr><th scope="col">Weight</th><th scope="col">Sedentary</th><th scope="col">Lightly active</th><th scope="col">Moderately active</th><th scope="col">Very active</th></tr></thead><tbody><tr><th scope="row">60 kg (132 lb)</th><td>1,859</td><td>2,130</td><td>2,401</td><td>2,672</td></tr><tr><th scope="row">70 kg (154 lb)</th><td>1,979</td><td>2,267</td><td>2,556</td><td>2,844</td></tr><tr><th scope="row">80 kg (176 lb)</th><td>2,099</td><td>2,405</td><td>2,711</td><td>3,017</td></tr><tr><th scope="row">90 kg (198 lb)</th><td>2,219</td><td>2,542</td><td>2,866</td><td>3,189</td></tr><tr><th scope="row">100 kg (220 lb)</th><td>2,339</td><td>2,680</td><td>3,021</td><td>3,362</td></tr></tbody></table></div>
+            <h3 style="color:var(--dark);margin:1.5rem 0 .5rem;font-size:1.05rem">Women (30 years, 163 cm)</h3>
+            <div class="cal-table-wrap"><table class="cal-table"><thead><tr><th scope="col">Weight</th><th scope="col">Sedentary</th><th scope="col">Lightly active</th><th scope="col">Moderately active</th><th scope="col">Very active</th></tr></thead><tbody><tr><th scope="row">50 kg (110 lb)</th><td>1,449</td><td>1,661</td><td>1,872</td><td>2,083</td></tr><tr><th scope="row">60 kg (132 lb)</th><td>1,569</td><td>1,798</td><td>2,027</td><td>2,256</td></tr><tr><th scope="row">70 kg (154 lb)</th><td>1,689</td><td>1,936</td><td>2,182</td><td>2,428</td></tr><tr><th scope="row">80 kg (176 lb)</th><td>1,809</td><td>2,073</td><td>2,337</td><td>2,601</td></tr><tr><th scope="row">90 kg (198 lb)</th><td>1,929</td><td>2,211</td><td>2,492</td><td>2,773</td></tr></tbody></table></div>
+        </div>
+
+        <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
+            <h2 style="color:var(--dark);margin-bottom:1rem">Calorie Deficit Calculator: How Big Should It Be?</h2>
+            <p style="color:#4b5563;line-height:1.8;margin-bottom:1rem">A calorie deficit is the gap between what you eat and what you burn. The usual rule of thumb is that about 3,500 kcal equals 1 lb of body weight (about 7,700 kcal per kg), so the size of your daily deficit sets how fast the scale moves.</p>
+            <div class="cal-table-wrap"><table class="cal-table"><thead><tr><th scope="col">Daily deficit</th><th scope="col">Weekly change</th><th scope="col">Approx. loss per week</th><th scope="col">Comment</th></tr></thead><tbody>
+            <tr><th scope="row">250 kcal</th><td>1,750 kcal</td><td>0.5 lb (0.23 kg)</td><td>Gentle, easiest to keep up</td></tr>
+            <tr><th scope="row">500 kcal</th><td>3,500 kcal</td><td>1 lb (0.45 kg)</td><td>The common starting point</td></tr>
+            <tr><th scope="row">750 kcal</th><td>5,250 kcal</td><td>1.5 lb (0.68 kg)</td><td>Fast, suits people with more to lose</td></tr>
+            <tr><th scope="row">1,000 kcal</th><td>7,000 kcal</td><td>2 lb (0.91 kg)</td><td>Hard to sustain, can leave you under the usual minimum calories</td></tr>
+            </tbody></table></div>
+            <h3 style="color:var(--dark);margin:1.5rem 0 .5rem;font-size:1.05rem">How big a daily deficit do you need to hit a goal by a date?</h3>
+            <p style="color:#4b5563;line-height:1.8;margin-bottom:1rem">Daily deficit = pounds to lose × 3,500 ÷ number of days. This table shows the result for common goals.</p>
+            <div class="cal-table-wrap"><table class="cal-table"><thead><tr><th scope="col">Weight to lose</th><th scope="col">In 8 weeks</th><th scope="col">In 12 weeks</th><th scope="col">In 16 weeks</th></tr></thead><tbody>
+            <tr><th scope="row">5 lb (2.3 kg)</th><td>313 kcal/day</td><td>208 kcal/day</td><td>156 kcal/day</td></tr>
+            <tr><th scope="row">10 lb (4.5 kg)</th><td>625 kcal/day</td><td>417 kcal/day</td><td>313 kcal/day</td></tr>
+            <tr><th scope="row">15 lb (6.8 kg)</th><td>938 kcal/day</td><td>625 kcal/day</td><td>469 kcal/day</td></tr>
+            <tr><th scope="row">20 lb (9.1 kg)</th><td>1,250 kcal/day</td><td>833 kcal/day</td><td>625 kcal/day</td></tr>
+            </tbody></table></div>
+            <p style="color:#4b5563;line-height:1.8;margin-top:1rem">Compare the deficit with your TDEE. If the daily deficit is more than about 25% of your maintenance calories, or the result would put you below 1,200 kcal (women) or 1,500 kcal (men), choose a longer timeline. Losing more than about 1% of your body weight a week is generally considered too fast.</p>
+        </div>
+
         <!-- FAQ Section -->
         <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
             <h2 style="color:var(--dark);margin-bottom:1.5rem">Frequently Asked Questions</h2>
 
             <div class="faq-item open">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>What is the difference between BMR and TDEE?</span>
+                    <span>How many calories should I eat a day to lose weight?</span>
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>BMR (Basal Metabolic Rate) is calories burned at rest doing nothing. TDEE (Total Daily Energy Expenditure) includes BMR plus activity. TDEE is what matters for weight management. Example: BMR might be 1,500 calories, but TDEE could be 2,200 calories with moderate activity.</p>
+                    <p>Start with your TDEE (maintenance calories), then subtract 250 to 500 kcal for steady loss of roughly 0.5 to 1 lb (0.25 to 0.5 kg) a week. If your TDEE is 2,200 kcal, that means about 1,700 to 1,950 kcal a day. Many guidelines treat 1,200 kcal (women) and 1,500 kcal (men) as the lowest level to use without medical supervision.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>How accurate is this calculator?</span>
+                    <span>How many calories do I need to cut to lose 1 pound a week?</span>
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>This calculator uses the widely used Mifflin-St Jeor formula—typically accurate within ±10-15% of actual TDEE. Real results vary based on metabolism, muscle mass, hormones, and food accuracy. Use this as a starting point and adjust based on actual weight changes over 2-4 weeks.</p>
+                    <p>About 500 kcal a day. One pound of body weight is commonly estimated at 3,500 kcal, so 500 kcal × 7 days = 3,500 kcal. In metric terms, 1 kg is about 7,700 kcal, so losing 1 kg a week needs roughly 1,100 kcal a day, which is too aggressive for many people.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What is a calorie deficit?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A calorie deficit means eating fewer calories than you burn. If your TDEE is 2,300 kcal and you eat 1,800 kcal, your deficit is 500 kcal a day. A moderate deficit of 10 to 25% of maintenance is easier to sustain and protects muscle better than a crash diet.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What is the difference between BMR and TDEE?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>BMR (basal metabolic rate) is the energy you burn at rest. TDEE (total daily energy expenditure) is BMR multiplied by an activity factor, so it includes walking, work and exercise. TDEE is the number that matters for weight management. For example, a BMR of 1,500 kcal can mean a TDEE of about 2,300 kcal at moderate activity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I calculate calories to reach a goal weight by a date?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Subtract your goal weight from your current weight, multiply by 3,500 (per pound) and divide by the number of days. Losing 10 lb in 10 weeks needs 35,000 ÷ 70 = 500 kcal a day below maintenance. Enter a goal weight and the number of weeks in the calculator above and it does the sum, with a warning if the pace is too fast.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is 1,200 calories a day enough?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>For most adults, 1,200 kcal is very low and hard to keep up. It is often cited as a minimum for women and 1,500 kcal for men, and only under medical or dietitian supervision. A smaller deficit over a longer time is safer and easier to maintain.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How many calories should I eat to build muscle?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Aim for a small surplus of about 250 to 500 kcal above maintenance, together with strength training and enough protein (roughly 1.6 to 2.2 g per kg of body weight). A larger surplus mostly adds body fat rather than extra muscle.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Which formula is best: Mifflin-St Jeor, Harris-Benedict or Katch-McArdle?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Mifflin-St Jeor is the usual default because it has been validated in studies of healthy adults. Revised Harris-Benedict is an older equation that often gives a slightly higher result. Katch-McArdle uses lean body mass, so it can suit very lean or muscular people if you know your body fat percentage. The calculator shows all three so you can compare.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How accurate is this calorie calculator?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>It gives an estimate, not a measurement. In validation studies the Mifflin-St Jeor equation predicted resting energy use within 10% for most adults, but not for everyone. Use the result as a starting point, track your weight for 2 to 4 weeks, and adjust by 100 to 200 kcal if the trend does not match your goal.</p>
                 </div>
             </div>
 
@@ -602,7 +834,7 @@
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Common reasons: (1) Underestimating actual calorie intake (portion sizes are often larger than thought), (2) Activity level is lower than estimated, (3) Metabolic adaptation after prolonged dieting, (4) Medical conditions affecting metabolism. Try tracking more accurately for 2 weeks, then adjust down by 200-300 calories if not losing 1-2 lbs/week.</p>
+                    <p>Common reasons are underestimating how much you eat (portion sizes and cooking oils add up), overestimating activity, water-weight swings that hide fat loss for a week or two, and the fact that your needs fall as you lose weight. Track carefully for two weeks, then reduce intake by 100 to 200 kcal if your average weight has not moved.</p>
                 </div>
             </div>
 
@@ -612,27 +844,27 @@
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Recalculate every 10-15 pounds of weight change. As your weight changes, your calorie needs change—someone who weighs 150 lbs has different needs than when they weighed 180 lbs. This ensures your targets stay accurate for your current body.</p>
+                    <p>Recalculate every 10 to 15 lb (4.5 to 7 kg) of weight change, or when your activity changes a lot. Someone who weighs 150 lb burns fewer calories than they did at 180 lb, so old targets drift out of date.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Should macros be 30/40/30 (P/C/F)?</span>
+                    <span>Should macros be 30/40/30 (protein/carbs/fat)?</span>
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>The 30/40/30 split is a good starting point, but individual needs vary. More important: get 0.8-1g protein per pound for muscle building, then split remaining calories between carbs and fats based on preference. Some people thrive on higher carbs, others on higher fats. Experiment and adjust based on energy and results.</p>
+                    <p>It is a reasonable starting point, not a rule. Set protein first (about 1.6 to 2.2 g per kg if you lift weights), keep fat at about 20 to 35% of calories, and fill the rest with carbohydrates based on how you feel and train. The calculator offers a higher-protein and a lower-carb split too.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Can I eat different amounts on rest vs training days?</span>
+                    <span>Can I eat different amounts on rest days and training days?</span>
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Absolutely. Eat slightly more on training days (+300-500 calories) and slightly less on rest days (-300-500 calories). This averages to your TDEE over the week while supporting workouts with energy when needed. Many athletes use flexible daily calories for this reason.</p>
+                    <p>Yes. Some people eat a little more on training days and a little less on rest days, as long as the weekly average matches their target. Keeping calories steady is also fine, so choose whichever is easier to stick to.</p>
                 </div>
             </div>
 
@@ -642,9 +874,10 @@
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes. All calculations happen in your browser. We never see, store, or collect your height, weight, age, or any personal data. No login required. The site itself may show ads and use analytics, as described in our Privacy Policy. The numbers you enter are not sent to our server.</p>
+                    <p>Yes. All calculations happen in your browser. We never see, store or collect your height, weight, age or other personal data, and no login is required. The site itself may show ads and use analytics, as described in our Privacy Policy.</p>
                 </div>
             </div>
+
         </div>
 
         <!-- Real Examples -->
@@ -652,21 +885,21 @@
             <h2 style="color:var(--dark);margin-bottom:1.5rem">Real-World Examples</h2>
             
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
-                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Sedentary Office Worker</h3>
-                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Profile:</strong> 30-year-old Male, 180 lbs, 5'10", Sedentary (desk job)</p>
-                <p style="color:#4b5563"><strong>Results:</strong> BMR: 1,780 cal | TDEE: 2,136 cal | For weight loss: 1,636 cal/day | Protein: 180g, Carbs: 214g, Fat: 71g</p>
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Sedentary office worker who wants to lose weight</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Profile:</strong> 30-year-old man, 180 lb (81.6 kg), 5'10" (177.8 cm), desk job with little exercise (factor 1.2).</p>
+                <p style="color:#4b5563"><strong>Results (Mifflin-St Jeor):</strong> BMR 1,783 kcal, TDEE 2,139 kcal. A 500 kcal deficit gives <strong>1,639 kcal a day</strong>, about 1 lb (0.45 kg) of loss a week. On a 30/40/30 split that is 123 g protein, 164 g carbs and 55 g fat.</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
-                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Active Fitness Enthusiast</h3>
-                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Profile:</strong> 25-year-old Female, 140 lbs, 5'6", Very Active (6 days/week exercise)</p>
-                <p style="color:#4b5563"><strong>Results:</strong> BMR: 1,380 cal | TDEE: 2,379 cal | For muscle gain: 2,679 cal/day | Protein: 140g, Carbs: 268g, Fat: 79g</p>
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Very active woman who wants to gain muscle</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Profile:</strong> 25-year-old woman, 140 lb (63.5 kg), 5'6" (167.6 cm), hard training 6 days a week (factor 1.725).</p>
+                <p style="color:#4b5563"><strong>Results (Mifflin-St Jeor):</strong> BMR 1,397 kcal, TDEE 2,409 kcal. A lean-gain surplus of 250 kcal gives <strong>2,659 kcal a day</strong>. On a 30/40/30 split that is 199 g protein, 266 g carbs and 89 g fat.</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px">
-                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: Weight Loss Progress</h3>
-                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Starting Point:</strong> 200 lbs, TDEE 2,500 cal | Target deficit: 1,500 cal (2,000 cal/day diet)</p>
-                <p style="color:#4b5563"><strong>After 8 Weeks:</strong> -16 lbs | New TDEE: 2,350 cal | Recalculate and adjust diet to maintain progress</p>
+                <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: Losing 20 lb in 20 weeks</h3>
+                <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Profile:</strong> 35-year-old woman, 170 lb, 5'5", moderately active (factor 1.55), goal weight 150 lb.</p>
+                <p style="color:#4b5563"><strong>Plan:</strong> BMR 1,467 kcal, TDEE 2,274 kcal. Losing 20 lb takes about 70,000 kcal (20 × 3,500), which over 140 days is a 500 kcal daily deficit, so the target is <strong>1,774 kcal a day</strong>. That is 1 lb a week, about 0.6% of body weight, inside the commonly suggested limit of 1% a week. Because your needs fall as you lose weight, recalculate every 10 lb or so.</p>
             </div>
         </div>
 
@@ -682,83 +915,148 @@
         </div>
     </div>
 
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Estimates resting energy use with the Mifflin-St Jeor equation and multiplies it by an activity factor. Real needs vary from person to person, so treat the result as a starting point and adjust it based on how your body responds. Speak to a doctor or dietitian before a major diet change.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/nutrition-calculator.html">Nutrition Calculator</a>: log foods to see calories, protein, carbs, fat and fiber for the day.</li><li><a href="/stride-calculator.html">Stride Length Calculator</a>: work out your step length from your height and see steps per mile.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html&amp;text=Free%20Calorie%20Calculator%202026%20%7C%20TDEE%20%26%20Daily%20Calorie%20Needs" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Calorie%20Calculator%202026%20%7C%20TDEE%20%26%20Daily%20Calorie%20Needs%20https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html&amp;text=Free%20Calorie%20Calculator%202026%20%7C%20TDEE%20%26%20Daily%20Calorie%20Needs" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/calorie-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Estimates resting energy use with the Mifflin-St Jeor, revised Harris-Benedict or Katch-McArdle equation and multiplies it by an activity factor. Goal calories use about 3,500 kcal per pound (7,700 kcal per kg) of body weight change, which is a rule of thumb, and assume your needs stay constant. Real needs vary from person to person, so treat the result as a starting point and adjust it based on how your body responds. Speak to a doctor or dietitian before a major diet change.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/nutrition-calculator.html">Nutrition Calculator</a>: log foods to see calories, protein, carbs, fat and fiber for the day.</li><li><a href="/stride-calculator.html">Stride Length Calculator</a>: work out your step length from your height and see steps per mile.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html&amp;text=Free%20Calorie%20Calculator%202026%20%7C%20TDEE%20%26%20Daily%20Calorie%20Needs" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Calorie%20Calculator%202026%20%7C%20TDEE%20%26%20Daily%20Calorie%20Needs%20https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcalorie-calculator.html&amp;text=Free%20Calorie%20Calculator%202026%20%7C%20TDEE%20%26%20Daily%20Calorie%20Needs" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/calorie-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <script>
         let currentUnit = 'metric';
         let activityMultiplier = 1.2;
+        const KCAL_LB = 3500, KCAL_KG = 7700;
+        const GOALS = [
+            {d:-250, name:'Mild Weight Loss'},
+            {d:-500, name:'Weight Loss'},
+            {d:-750, name:'Fast Weight Loss'},
+            {d:0,    name:'Maintenance'},
+            {d:250,  name:'Lean Gain'},
+            {d:500,  name:'Muscle Gain'}
+        ];
+        function $(id){ return document.getElementById(id); }
+        function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
 
-        function setUnit(unit) {
+        function setUnit(unit, btn) {
             currentUnit = unit;
-            document.querySelectorAll('.unit-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            if (unit === 'metric') {
-                document.getElementById('heightUnit').textContent = 'cm';
-                document.getElementById('weightUnit').textContent = 'kg';
-                document.getElementById('height').placeholder = '170';
-                document.getElementById('weight').placeholder = '70';
-            } else {
-                document.getElementById('heightUnit').textContent = 'in';
-                document.getElementById('weightUnit').textContent = 'lbs';
-                document.getElementById('height').placeholder = '67';
-                document.getElementById('weight').placeholder = '154';
-            }
+            document.querySelectorAll('.unit-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const m = unit === 'metric';
+            $('heightUnit').textContent = m ? 'cm' : 'in';
+            $('weightUnit').textContent = m ? 'kg' : 'lb';
+            $('height').placeholder = m ? '170' : '67';
+            $('weight').placeholder = m ? '70' : '154';
+            $('goalWeight').placeholder = m ? '65' : '143';
+            document.querySelectorAll('.wUnit').forEach(e => e.textContent = m ? 'kg' : 'lb');
         }
-
         function setActivity(multiplier, btn) {
             activityMultiplier = multiplier;
             document.querySelectorAll('.activity-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         }
+        function toggleBf(){ $('bfGroup').style.display = $('formula').value === 'katch' ? 'block' : 'none'; }
+
+        function bmrMifflin(w,h,a,male){ return 10*w + 6.25*h - 5*a + (male ? 5 : -161); }
+        function bmrHarris(w,h,a,male){ return male ? 88.362 + 13.397*w + 4.799*h - 5.677*a : 447.593 + 9.247*w + 3.098*h - 4.330*a; }
+        function bmrKatch(w,bf){ return 370 + 21.6 * (w * (1 - bf/100)); }
+
+        function showMsg(t){ $('formMsg').textContent = t || ''; }
 
         function calculateCalories(e) {
             e.preventDefault();
-            
-            const age = parseInt(document.getElementById('age').value);
-            const sex = document.getElementById('sex').value;
-            const height = parseFloat(document.getElementById('height').value);
-            const weight = parseFloat(document.getElementById('weight').value);
-            
-            // Convert to metric if needed
-            let heightCm = currentUnit === 'metric' ? height : height * 2.54;
-            let weightKg = currentUnit === 'metric' ? weight : weight * 0.453592;
-            
-            // Mifflin-St Jeor formula
-            let bmr;
-            if (sex === 'male') {
-                bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
-            } else {
-                bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
-            }
-            
+            showMsg('');
+            const age = parseFloat($('age').value);
+            const sex = $('sex').value;
+            const height = parseFloat($('height').value);
+            const weight = parseFloat($('weight').value);
+            if (!sex) return showMsg('Please choose male or female.');
+            if (!(age >= 18 && age <= 100)) return showMsg('Enter an age between 18 and 100. This calculator is for adults.');
+            if (!(height > 0) || !(weight > 0)) return showMsg('Enter your height and weight.');
+            const heightCm = currentUnit === 'metric' ? height : height * 2.54;
+            const weightKg = currentUnit === 'metric' ? weight : weight * 0.453592;
+            if (heightCm < 100 || heightCm > 250) return showMsg('Check your height. It looks outside the 100 to 250 cm range.');
+            if (weightKg < 30 || weightKg > 300) return showMsg('Check your weight. It looks outside the 30 to 300 kg range.');
+            const male = sex === 'male';
+
+            const formula = $('formula').value;
+            const bf = parseFloat($('bodyfat').value);
+            const hasBf = bf >= 3 && bf <= 60;
+            if (formula === 'katch' && !hasBf) return showMsg('Katch-McArdle needs a body fat percentage between 3 and 60.');
+
+            const mif = bmrMifflin(weightKg, heightCm, age, male);
+            const har = bmrHarris(weightKg, heightCm, age, male);
+            const kat = hasBf ? bmrKatch(weightKg, bf) : null;
+            const names = {mifflin:'Mifflin-St Jeor', harris:'Revised Harris-Benedict', katch:'Katch-McArdle'};
+            const bmr = formula === 'harris' ? har : (formula === 'katch' ? kat : mif);
             const tdee = Math.round(bmr * activityMultiplier);
-            
-            // Goal calories
-            const lossCalories = Math.round(tdee - 500);
-            const maintenanceCalories = tdee;
-            const gainCalories = Math.round(tdee + 300);
-            const aggGainCalories = Math.round(tdee + 500);
-            
-            // Macros (30/40/30)
-            const protein = Math.round((tdee * 0.30) / 4);
-            const carbs = Math.round((tdee * 0.40) / 4);
-            const fat = Math.round((tdee * 0.30) / 9);
-            
-            // Update results
-            document.getElementById('tdee').textContent = tdee.toLocaleString();
-            document.getElementById('bmr').textContent = Math.round(bmr).toLocaleString();
-            document.getElementById('lossCalories').textContent = lossCalories.toLocaleString();
-            document.getElementById('maintenanceCalories').textContent = maintenanceCalories.toLocaleString();
-            document.getElementById('gainCalories').textContent = gainCalories.toLocaleString();
-            document.getElementById('aggGainCalories').textContent = aggGainCalories.toLocaleString();
-            
-            document.getElementById('proteinCals').textContent = protein + 'g';
-            document.getElementById('carbsCals').textContent = carbs + 'g';
-            document.getElementById('fatCals').textContent = fat + 'g';
-            
-            document.getElementById('result').classList.add('show');
-            document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            $('tdee').textContent = fmt(tdee);
+            $('bmr').textContent = fmt(bmr);
+            $('bmrName').textContent = names[formula];
+
+            // goal cards
+            const floor = male ? 1500 : 1200;
+            const planVal = parseInt($('planFor').value, 10);
+            const perWeek = d => currentUnit === 'metric' ? (Math.abs(d)*7/KCAL_KG).toFixed(2) + ' kg' : (Math.abs(d)*7/KCAL_LB).toFixed(1) + ' lb';
+            let anyLow = false, html = '';
+            GOALS.forEach(g => {
+                const cal = Math.round(tdee + g.d);
+                const low = cal < floor;
+                if (low) anyLow = true;
+                const desc = g.d === 0 ? 'Keep your current weight' : (g.d < 0 ? 'About ' + perWeek(g.d) + ' loss a week' : 'About ' + perWeek(g.d) + ' gain a week');
+                html += '<div class="goal-card' + (low ? ' low' : '') + (g.d === planVal ? ' sel' : '') + '"><h4>' + g.name + '</h4><div class="goal-value">' + fmt(cal) + '</div><div class="goal-desc">' + (g.d > 0 ? '+' : (g.d < 0 ? '\u2212' : '')) + (g.d === 0 ? '' : Math.abs(g.d) + ' kcal/day. ') + desc + '</div>' + (low ? '<div class="flag">Below ' + fmt(floor) + ' kcal</div>' : '') + '</div>';
+            });
+            $('goalCards').innerHTML = html;
+            $('floorNote').textContent = anyLow ? 'Highlighted targets fall below ' + fmt(floor) + ' kcal a day, the lowest level many guidelines suggest without medical supervision. Pick a gentler goal or a longer timeline.' : '';
+
+            // macros
+            const sp = $('split').value.split(',').map(Number);
+            const mCal = Math.max(0, Math.round(tdee + planVal));
+            const prot = Math.round(mCal * sp[0] / 100 / 4), carb = Math.round(mCal * sp[1] / 100 / 4), fat = Math.round(mCal * sp[2] / 100 / 9);
+            const pg = GOALS.find(g => g.d === planVal);
+            $('macroFor').textContent = pg ? pg.name.toLowerCase() : 'maintenance';
+            $('macroCal').textContent = fmt(mCal);
+            $('proteinCals').textContent = prot + 'g';
+            $('carbsCals').textContent = carb + 'g';
+            $('fatCals').textContent = fat + 'g';
+            $('pPct').textContent = sp[0]; $('cPct').textContent = sp[1]; $('fPct').textContent = sp[2];
+            $('pFill').style.width = sp[0] + '%'; $('cFill').style.width = sp[1] + '%'; $('fFill').style.width = sp[2] + '%';
+            const gkg = prot / weightKg;
+            $('proteinNote').textContent = 'That is ' + gkg.toFixed(1) + ' g of protein per kg (' + (prot / (weightKg * 2.20462)).toFixed(2) + ' g per lb) of body weight. Many sports nutrition guides suggest roughly 1.6 to 2.2 g per kg for people who lift weights.';
+
+            // comparison
+            let rows = '';
+            [['Mifflin-St Jeor', mif], ['Revised Harris-Benedict', har], ['Katch-McArdle', kat]].forEach(r => {
+                rows += '<tr><th scope="row">' + r[0] + '</th><td>' + (r[1] === null ? 'Add body fat % to see' : fmt(r[1])) + '</td><td>' + (r[1] === null ? '\u2014' : fmt(r[1] * activityMultiplier)) + '</td></tr>';
+            });
+            $('cmpTable').querySelector('tbody').innerHTML = rows;
+
+            // goal weight plan
+            const box = $('planBox');
+            const gwRaw = parseFloat($('goalWeight').value);
+            if (gwRaw > 0) {
+                const gwKg = currentUnit === 'metric' ? gwRaw : gwRaw * 0.453592;
+                const delta = gwKg - weightKg; // kg
+                const toU = kg => currentUnit === 'metric' ? kg.toFixed(1) + ' kg' : (kg / 0.453592).toFixed(1) + ' lb';
+                const weeksIn = parseFloat($('goalWeeks').value);
+                let out = '';
+                if (Math.abs(delta) < 0.05) {
+                    out = '<strong class="t">Goal weight plan</strong>You are already at your goal weight. Eat around your maintenance calories of ' + fmt(tdee) + ' kcal to stay there.';
+                } else if (weeksIn >= 1) {
+                    const dayChange = currentUnit === 'metric' ? delta * KCAL_KG / (weeksIn * 7) : (gwRaw - weight) * KCAL_LB / (weeksIn * 7);
+                    const target = Math.round(tdee + dayChange);
+                    const wk = delta / weeksIn;
+                    const pct = Math.abs(wk) / weightKg * 100;
+                    out = '<strong class="t">Goal weight plan</strong>To ' + (delta < 0 ? 'lose ' : 'gain ') + toU(Math.abs(delta)) + ' in ' + weeksIn + ' week' + (weeksIn === 1 ? '' : 's') + ', aim for about <strong>' + fmt(target) + ' kcal a day</strong> (' + (dayChange < 0 ? '\u2212' : '+') + fmt(Math.abs(dayChange)) + ' kcal against maintenance). That is roughly ' + toU(Math.abs(wk)) + ' a week, or ' + pct.toFixed(2) + '% of your body weight.';
+                    if (delta < 0 && pct > 1) out += '<span class="warn">This is faster than the commonly suggested limit of about 1% of body weight a week. Consider a longer timeline.</span>';
+                    if (delta < 0 && target < floor) out += '<span class="warn">This target is below ' + fmt(floor) + ' kcal a day. Choose a longer timeline or speak to a doctor or dietitian first.</span>';
+                    if (delta > 0 && pct > 0.5) out += '<span class="warn">Gaining faster than about 0.5% of body weight a week mostly adds fat. A longer timeline is usually better.</span>';
+                } else {
+                    const d = delta < 0 ? -500 : 300;
+                    const weeks = (currentUnit === 'metric' ? Math.abs(delta) * KCAL_KG : Math.abs(gwRaw - weight) * KCAL_LB) / (Math.abs(d) * 7);
+                    const when = new Date(Date.now() + weeks * 7 * 86400000).toLocaleDateString('en-US', {month: 'long', year: 'numeric'});
+                    out = '<strong class="t">Goal weight plan</strong>At ' + (d < 0 ? '500 kcal below' : '300 kcal above') + ' maintenance (' + fmt(tdee + d) + ' kcal a day), changing by ' + toU(Math.abs(delta)) + ' takes about <strong>' + Math.round(weeks) + ' weeks</strong>, around ' + when + '. Your needs shift as your weight changes, so recalculate every 10 lb (4.5 kg) or so.';
+                }
+                box.innerHTML = out; box.style.display = 'block';
+            } else { box.style.display = 'none'; box.innerHTML = ''; }
+
+            $('result').classList.add('show');
+            $('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function toggleFAQ(element) {
@@ -769,6 +1067,7 @@
             });
             element.parentElement.classList.toggle('open');
         }
+        if (typeof module !== 'undefined') module.exports = { bmrMifflin, bmrHarris, bmrKatch };
     </script>
 </body>
 </html>
