@@ -6,8 +6,8 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
      crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free currency converter tool - Convert between 20 major world currencies with approximate reference exchange rates.">
-    <meta name="keywords" content="currency converter, exchange rate calculator, forex converter, money converter, reference exchange rates, currency exchange, foreign exchange, money exchange calculator, online currency converter">
+    <meta name="description" content="Free currency converter with daily exchange rates for 40 currencies. Convert USD, EUR, GBP, PKR, INR and more, and add a bank fee to see what you receive.">
+    <meta name="keywords" content="currency converter, money converter, forex converter, currency calculator, exchange rate calculator, live exchange rates, currency convertor, usd to pkr, usd to inr, eur to usd, gbp to usd, currency exchange calculator">
     <meta name="author" content="ToolPond">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
@@ -15,8 +15,8 @@
     <link rel="canonical" href="https://toolpond.org/currency-converter.html">
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Free Currency Converter: Reference Rates for 20 Major Currencies">
-    <meta property="og:description" content="Convert 20 major currencies instantly with reference exchange rates. Free online currency converter for travel, business, and forex. No signup required.">
+    <meta property="og:title" content="Currency Converter: Live Exchange Rates, 40 Currencies">
+    <meta property="og:description" content="Free currency converter with daily exchange rates for 40 currencies. Convert USD, EUR, GBP, PKR, INR and more, and add a bank fee to see what you receive.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/currency-converter.html">
     <meta property="og:site_name" content="ToolPond">
@@ -24,15 +24,15 @@
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Currency Converter: 20 Major Currencies">
-    <meta name="twitter:description" content="Convert any currency instantly with approximate reference exchange rates. Perfect for travel and business.">
+    <meta name="twitter:title" content="Currency Converter: Live Exchange Rates, 40 Currencies">
+    <meta name="twitter:description" content="Free currency converter with daily exchange rates for 40 currencies. Convert USD, EUR, GBP, PKR, INR and more, and add a bank fee to see what you receive.">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Currency Converter",
-  "description": "Free online currency converter with approximate reference exchange rates supporting 20 major world currencies",
+  "description": "Free online currency converter with daily mid-market exchange rates for 40 currencies, plus a bank fee calculator",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web Browser",
   "offers": {
@@ -53,10 +53,50 @@
  "mainEntity": [
   {
    "@type": "Question",
-   "name": "What are exchange rates?",
+   "name": "What is a currency converter and how does it work?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Exchange rates represent the value of one currency when converted to another currency. They fluctuate continuously based on market conditions, economic indicators, interest rates, inflation, political stability, and supply and demand in the foreign exchange market."
+    "text": "A currency converter multiplies an amount by the exchange rate between two currencies. This one takes the daily rate of each currency against the US dollar and converts through it, so converting EUR to GBP equals amount × (GBP rate ÷ EUR rate)."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Are these live exchange rates?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The page loads the latest daily rates from ExchangeRate-API when you open it. They are mid-market reference rates updated about once a day, not tick-by-tick trading prices, so the rate can differ slightly from a live market screen. If the rate feed cannot load, the page tells you and falls back to approximate offline rates that may be out of date."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the mid-market rate?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is the midpoint between the buy and sell prices on the foreign exchange market, and the rate you see on a search engine or news site. Banks and transfer services usually quote a rate worse than this and keep the difference as their margin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why is my bank's exchange rate different from this converter?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Banks, card issuers and money transfer providers add a margin to the market rate, and some add a fixed fee. Enter their margin in the fee field to see what you would actually receive, or compare their rate with the rate on this page."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I convert USD to PKR?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Choose USD in the From box and PKR in the To box, then type the dollar amount. The page shows the rate and the rupee amount. Exchange houses and banks in Pakistan may quote slightly different rates from the interbank reference, so use the fee field to see what a quoted rate costs you."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How can I get a better exchange rate?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Compare the total cost of several providers, avoid airport exchange desks, pay by card in the local currency instead of your home currency, and check the rate when you pay. A difference of 2 to 3 percent adds up quickly on larger amounts."
    }
   },
   {
@@ -64,46 +104,38 @@
    "name": "How often do exchange rates change?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Exchange rates change constantly throughout the trading day. The forex market operates 24 hours a day, 5 days a week, with rates updating every few seconds during active trading periods. Weekend rates may remain static as major markets are closed."
+    "text": "Market rates move continuously on weekdays, and they pause when markets close at the weekend. Daily reference rates, like those on this page, are refreshed about once a day."
    }
   },
   {
    "@type": "Question",
-   "name": "Is this currency converter accurate?",
+   "name": "Which currencies does this converter support?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Our converter uses fixed, approximate reference rates that are not live and are not updated every day, so results can differ from the real market rate. Banks, exchange services, and credit cards may offer different rates that include fees, commissions, and margins. Always check with your financial institution for actual transaction rates."
+    "text": "40 currencies, including USD, EUR, GBP, JPY, INR, PKR, AED, SAR, CAD, AUD, CNY and many more. The full list is under Supported Currencies above."
    }
   },
   {
    "@type": "Question",
-   "name": "How many currencies does this converter support?",
+   "name": "Can I use it for business payments or investing?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "This free online currency converter supports 20 major world currencies, covering the main global currencies and a few emerging market currencies. The reference rates are approximate and are not updated every day."
+    "text": "Use it for planning and quick estimates. For invoices, payments and trading, use the exact rate quoted by your bank, payment provider or broker, since it includes their margin and can change before the transaction settles."
    }
   },
   {
    "@type": "Question",
-   "name": "Is this currency converter free to use?",
+   "name": "Is this currency converter free and private?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Yes, our currency converter is 100% free to use. No signup, no registration, and no hidden fees. Simply visit the page, enter your amount and currencies, and get instant conversion results."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Can I use this converter for business transactions?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "While our converter provides approximate, non-live reference rates for planning, we recommend consulting with your bank or forex provider for actual business transaction rates, as they may include additional fees and spreads."
+    "text": "Yes, it is free and needs no signup. The amounts you type stay in your browser. The page only requests the daily rate table from ExchangeRate-API, which, like any website you visit, can see your IP address."
    }
   }
  ]
 }
 </script>
     
-    <title>Free Currency Converter: 20 Major Currencies | ToolPond</title>
+    <title>Currency Converter: Live Exchange Rates, 40 Currencies | ToolPond</title>
     
     <style>
         :root {
@@ -675,6 +707,25 @@
         @media (prefers-reduced-motion: reduce) {
             * { animation: none !important; transition: none !important; }
         }
+    
+        .fx-adv{border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;margin-bottom:1rem;background:#fafafa}
+        .fx-adv summary{cursor:pointer;font-weight:700;color:var(--dark)}
+        .fx-hint{font-size:.85rem;color:var(--text-light);line-height:1.5;margin-top:.4rem}
+        .fx-status{font-size:.9rem;margin:.9rem 0 0;padding:.5rem .75rem;border-radius:8px;background:#f1f5f9;color:#334155}
+        .fx-status.ok{background:#ecfdf5;color:#065f46}
+        .fx-status.warn{background:#fffbeb;color:#92400e}
+        .fx-fee{margin-top:.75rem;font-weight:600;color:#92400e}
+        .fx-copy{margin-top:.9rem;padding:.5rem .9rem;border:1px solid var(--border);border-radius:8px;background:#fff;cursor:pointer;font-weight:600}
+        .fx-h3{margin:1.75rem 0 .6rem;font-size:1.1rem;color:var(--dark)}
+        .fx-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+        .fx-table{width:100%;border-collapse:collapse;background:#fff;font-size:.92rem}
+        .fx-table th,.fx-table td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+        .fx-table thead th{background:#eef2ff;color:var(--dark)}
+        .fx-table tbody th{font-weight:600;color:var(--dark);background:#f8fafc}
+        .fx-attr{font-size:.8rem;color:var(--text-light);margin-top:1rem}
+        .fx-steps{margin:0 0 1rem 1.3rem;line-height:1.8}
+        .tool-content>*{min-width:0}
+        .popular-item[role=button]:focus{outline:2px solid var(--primary);outline-offset:2px}
     </style>
 <meta property="og:image" content="https://toolpond.org/og-image.jpg">
 <meta name="twitter:image" content="https://toolpond.org/og-image.jpg">
@@ -714,26 +765,32 @@
   {
    "@type": "HowToStep",
    "position": 1,
-   "name": "Enter the amount",
+   "name": "Enter the amount.",
    "text": "Enter the amount."
   },
   {
    "@type": "HowToStep",
    "position": 2,
-   "name": "Choose the currency to convert from and to",
+   "name": "Choose the currency to convert from and to.",
    "text": "Choose the currency to convert from and to."
   },
   {
    "@type": "HowToStep",
    "position": 3,
-   "name": "Read the converted amount and the reference rate",
-   "text": "Read the converted amount and the reference rate."
+   "name": "Optionally add a bank or transfer fee percentage.",
+   "text": "Optionally add a bank or transfer fee percentage."
   },
   {
    "@type": "HowToStep",
    "position": 4,
-   "name": "Check an official or bank rate before you send or exchange money",
-   "text": "Check an official or bank rate before you send or exchange money."
+   "name": "Read the converted amount and the exchange rate.",
+   "text": "Read the converted amount and the exchange rate."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 5,
+   "name": "Compare the result with your bank or provider's quoted rate before you send or exchange money.",
+   "text": "Compare the result with your bank or provider's quoted rate before you send or exchange money."
   }
  ]
 }
@@ -743,7 +800,7 @@
  "@context": "https://schema.org",
  "@type": "WebPage",
  "url": "https://toolpond.org/currency-converter.html",
- "dateModified": "2026-10-08",
+ "dateModified": "2026-10-25",
  "speakable": {
   "@type": "SpeakableSpecification",
   "cssSelector": [
@@ -791,11 +848,11 @@
     <div class="tool-header">
         <div class="container">
             <h1>Free Currency Converter</h1>
-            <p class="subtitle">Convert 20 major currencies using approximate reference rates</p>
-            <p class="tagline">Instant conversion • Reference rates • No signup needed • 100% Free</p>
+            <p class="subtitle">Convert 40 currencies using daily mid-market exchange rates</p>
+            <p class="tagline">Daily exchange rates • 40 currencies • Fee calculator • No signup needed</p>
         </div>
     </div>
-<div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>Converted amount = amount × (rate of the target currency ÷ rate of the source currency). Using this page's reference rate of 0.92, <strong>100 USD is 92.00 EUR</strong>. The rates here are approximate and not live, so check your bank for the actual rate.</div><div class="tp-how"><h2>How to convert currencies</h2><ol><li>Enter the amount.</li><li>Choose the currency to convert from and to.</li><li>Read the converted amount and the reference rate.</li><li>Check an official or bank rate before you send or exchange money.</li></ol></div></div>
+<div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>Converted amount = amount × (target currency rate ÷ source currency rate). If 1 USD = 0.92 EUR, then <strong>100 USD = 92 EUR</strong>. This page loads daily mid-market rates for 40 currencies when you open it, so check your bank's quote for the rate you will actually get.</div><div class="tp-how"><h2>How to convert currencies</h2><ol><li>Enter the amount.</li><li>Choose the currency to convert from and to.</li><li>Optionally add a bank or transfer fee percentage.</li><li>Read the converted amount and the exchange rate.</li><li>Compare the result with your bank or provider's quoted rate before you send or exchange money.</li></ol></div></div>
 
 
     <div class="breadcrumb">
@@ -810,351 +867,478 @@
                 <div class="converter-grid">
                     <div class="input-group">
                         <label class="input-label" for="amount">Amount:</label>
-                        <input type="number" id="amount" class="input-field" placeholder="Enter amount (e.g., 100)" value="100" min="0" step="any" oninput="convertCurrency()" aria-label="Amount to convert">
+                        <input type="number" id="amount" class="input-field" placeholder="Enter amount (e.g., 100)" value="100" min="0" step="any" inputmode="decimal" oninput="convertCurrency()">
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="fromCurrency">From Currency:</label>
-                        <select id="fromCurrency" class="select-field" onchange="convertCurrency()" aria-label="Source currency">
-                            <option value="USD">🇺🇸 USD - US Dollar</option>
+                        <select id="fromCurrency" class="select-field" onchange="convertCurrency()">
+                            <option value="USD" selected>🇺🇸 USD - US Dollar</option>
                             <option value="EUR">🇪🇺 EUR - Euro</option>
                             <option value="GBP">🇬🇧 GBP - British Pound</option>
                             <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
                             <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                            <option value="PKR">🇵🇰 PKR - Pakistani Rupee</option>
+                            <option value="BDT">🇧🇩 BDT - Bangladeshi Taka</option>
                             <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
                             <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
                             <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
                             <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
-                            <option value="SEK">🇸🇪 SEK - Swedish Krona</option>
-                            <option value="NZD">🇳🇿 NZD - New Zealand Dollar</option>
-                            <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
                             <option value="HKD">🇭🇰 HKD - Hong Kong Dollar</option>
+                            <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
+                            <option value="NZD">🇳🇿 NZD - New Zealand Dollar</option>
                             <option value="KRW">🇰🇷 KRW - South Korean Won</option>
-                            <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
-                            <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
-                            <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
-                            <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+                            <option value="THB">🇹🇭 THB - Thai Baht</option>
+                            <option value="MYR">🇲🇾 MYR - Malaysian Ringgit</option>
+                            <option value="IDR">🇮🇩 IDR - Indonesian Rupiah</option>
+                            <option value="PHP">🇵🇭 PHP - Philippine Peso</option>
+                            <option value="VND">🇻🇳 VND - Vietnamese Dong</option>
                             <option value="AED">🇦🇪 AED - UAE Dirham</option>
                             <option value="SAR">🇸🇦 SAR - Saudi Riyal</option>
+                            <option value="QAR">🇶🇦 QAR - Qatari Riyal</option>
+                            <option value="KWD">🇰🇼 KWD - Kuwaiti Dinar</option>
+                            <option value="EGP">🇪🇬 EGP - Egyptian Pound</option>
+                            <option value="NGN">🇳🇬 NGN - Nigerian Naira</option>
+                            <option value="KES">🇰🇪 KES - Kenyan Shilling</option>
+                            <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
+                            <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+                            <option value="SEK">🇸🇪 SEK - Swedish Krona</option>
+                            <option value="NOK">🇳🇴 NOK - Norwegian Krone</option>
+                            <option value="DKK">🇩🇰 DKK - Danish Krone</option>
+                            <option value="PLN">🇵🇱 PLN - Polish Zloty</option>
+                            <option value="CZK">🇨🇿 CZK - Czech Koruna</option>
+                            <option value="HUF">🇭🇺 HUF - Hungarian Forint</option>
+                            <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
+                            <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
+                            <option value="COP">🇨🇴 COP - Colombian Peso</option>
+                            <option value="CLP">🇨🇱 CLP - Chilean Peso</option>
+                            <option value="ILS">🇮🇱 ILS - Israeli Shekel</option>
                         </select>
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="toCurrency">To Currency:</label>
-                        <select id="toCurrency" class="select-field" onchange="convertCurrency()" aria-label="Target currency">
+                        <select id="toCurrency" class="select-field" onchange="convertCurrency()">
                             <option value="USD">🇺🇸 USD - US Dollar</option>
                             <option value="EUR" selected>🇪🇺 EUR - Euro</option>
                             <option value="GBP">🇬🇧 GBP - British Pound</option>
                             <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
                             <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                            <option value="PKR">🇵🇰 PKR - Pakistani Rupee</option>
+                            <option value="BDT">🇧🇩 BDT - Bangladeshi Taka</option>
                             <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
                             <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
                             <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
                             <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
-                            <option value="SEK">🇸🇪 SEK - Swedish Krona</option>
-                            <option value="NZD">🇳🇿 NZD - New Zealand Dollar</option>
-                            <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
                             <option value="HKD">🇭🇰 HKD - Hong Kong Dollar</option>
+                            <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
+                            <option value="NZD">🇳🇿 NZD - New Zealand Dollar</option>
                             <option value="KRW">🇰🇷 KRW - South Korean Won</option>
-                            <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
-                            <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
-                            <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
-                            <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+                            <option value="THB">🇹🇭 THB - Thai Baht</option>
+                            <option value="MYR">🇲🇾 MYR - Malaysian Ringgit</option>
+                            <option value="IDR">🇮🇩 IDR - Indonesian Rupiah</option>
+                            <option value="PHP">🇵🇭 PHP - Philippine Peso</option>
+                            <option value="VND">🇻🇳 VND - Vietnamese Dong</option>
                             <option value="AED">🇦🇪 AED - UAE Dirham</option>
                             <option value="SAR">🇸🇦 SAR - Saudi Riyal</option>
+                            <option value="QAR">🇶🇦 QAR - Qatari Riyal</option>
+                            <option value="KWD">🇰🇼 KWD - Kuwaiti Dinar</option>
+                            <option value="EGP">🇪🇬 EGP - Egyptian Pound</option>
+                            <option value="NGN">🇳🇬 NGN - Nigerian Naira</option>
+                            <option value="KES">🇰🇪 KES - Kenyan Shilling</option>
+                            <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
+                            <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+                            <option value="SEK">🇸🇪 SEK - Swedish Krona</option>
+                            <option value="NOK">🇳🇴 NOK - Norwegian Krone</option>
+                            <option value="DKK">🇩🇰 DKK - Danish Krone</option>
+                            <option value="PLN">🇵🇱 PLN - Polish Zloty</option>
+                            <option value="CZK">🇨🇿 CZK - Czech Koruna</option>
+                            <option value="HUF">🇭🇺 HUF - Hungarian Forint</option>
+                            <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
+                            <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
+                            <option value="COP">🇨🇴 COP - Colombian Peso</option>
+                            <option value="CLP">🇨🇱 CLP - Chilean Peso</option>
+                            <option value="ILS">🇮🇱 ILS - Israeli Shekel</option>
                         </select>
                     </div>
                 </div>
-                
+
                 <div style="text-align: center; margin: 1rem 0;">
-                    <button class="swap-btn" onclick="swapCurrencies()" aria-label="Swap currencies" title="Swap currencies">⇄</button>
+                    <button type="button" class="swap-btn" onclick="swapCurrencies()" aria-label="Swap currencies" title="Swap currencies">⇄</button>
                 </div>
-                
-                <button class="btn" onclick="convertCurrency()">
+
+                <details class="fx-adv">
+                    <summary>Add a bank or transfer fee (optional)</summary>
+                    <div class="input-group" style="margin-top:.75rem">
+                        <label class="input-label" for="fee">Fee or exchange-rate markup (%)</label>
+                        <input type="number" id="fee" class="input-field" placeholder="0" value="0" min="0" max="30" step="any" inputmode="decimal" oninput="convertCurrency()">
+                        <p class="fx-hint">Banks and exchange services usually give you a rate below the market rate. Enter their margin to see what you would actually receive.</p>
+                    </div>
+                </details>
+
+                <button type="button" class="btn" onclick="convertCurrency()">
                     <span>💱</span> Convert Now
                 </button>
-                
-                <div class="result-box" id="result">
+
+                <p class="fx-status" id="rateStatus" role="status" aria-live="polite">Loading today's exchange rates…</p>
+
+                <div class="result-box" id="result" aria-live="polite">
                     <div class="result-label">Converted Amount</div>
                     <div class="result-value" id="conversionResult"></div>
                     <div class="result-detail" id="conversionDetail"></div>
                     <div class="rate-info" id="rateInfo"></div>
+                    <div class="fx-fee" id="feeResult"></div>
+                    <button type="button" class="fx-copy" onclick="copyLink()">Copy link to this conversion</button> <span id="copyStatus" class="fx-hint" role="status"></span>
                 </div>
-                
+
+                <h3 class="fx-h3">Convert <span id="multiAmount">100</span> <span id="multiFrom">USD</span> to popular currencies</h3>
+                <div class="fx-table-wrap"><table class="fx-table" id="multiTable"><thead><tr><th scope="col">Currency</th><th scope="col">Rate</th><th scope="col">Amount</th></tr></thead><tbody></tbody></table></div>
+
                 <div class="quick-conversions" id="quickConversions"></div>
+                <p class="fx-attr">Exchange rate data by <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">ExchangeRate-API</a>. Rates are mid-market reference rates, not an offer to trade.</p>
             </div>
 
             <article class="content-section">
-                <h2>What is a Currency Converter?</h2>
-                <p>A <strong>currency converter</strong> is a free online tool that instantly converts money between different currencies using approximate reference exchange rates. This <strong>forex converter</strong> helps travelers, businesses, investors, and students calculate the value of foreign currencies accurately and quickly.</p>
-                <p>Whether you're planning an international trip, managing overseas business transactions, or monitoring forex investments, our free money converter provides reliable exchange rate calculations without requiring any signup or registration.</p>
-                
-                <h3>Why Use Our Free Currency Converter?</h3>
+                <h2>Currency Converter With Daily Exchange Rates</h2>
+                <p>This <strong>currency converter</strong> turns an amount in one currency into another using the latest daily mid-market exchange rate. Pick two of 40 currencies, type an amount, and the result updates as you type. It works as a <strong>forex converter</strong>, a <strong>money converter</strong> for trips and transfers, and an <strong>exchange rate calculator</strong> for invoices and online shopping.</p>
+                <p>The mid-market rate is the midpoint between what buyers and sellers will pay on the foreign exchange market. It is the fairest reference point, but it is not the rate a bank, card or money transfer service will normally give you. The optional fee field shows the difference.</p>
+                <h3>Who uses a currency converter?</h3>
                 <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">✈️</div>
-                        <h4>For Travelers</h4>
-                        <p>Calculate foreign currency values before trips. Know exactly how much your money is worth abroad.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💼</div>
-                        <h4>For Businesses</h4>
-                        <p>Convert international transaction amounts instantly. Perfect for import/export and global trade.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h4>For Investors</h4>
-                        <p>Compare currency values quickly. Rates are approximate, so check your bank or an official source before you trade or transfer money.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎓</div>
-                        <h4>For Students</h4>
-                        <p>Understand exchange rates and conversions. Learn international finance concepts easily.</p>
-                    </div>
+                    <div class="feature-card"><div class="feature-icon">✈️</div><h4>Travelers</h4><p>Check what a hotel, meal or taxi costs at home before you pay.</p></div>
+                    <div class="feature-card"><div class="feature-icon">💸</div><h4>Remittances</h4><p>Compare the rate you are offered to the market rate and see the real cost of sending money.</p></div>
+                    <div class="feature-card"><div class="feature-icon">🛒</div><h4>Online shoppers</h4><p>Convert prices from overseas stores, and spot unfavorable card conversion.</p></div>
+                    <div class="feature-card"><div class="feature-icon">💼</div><h4>Freelancers and businesses</h4><p>Estimate invoices, salaries and supplier costs in another currency.</p></div>
                 </div>
             </article>
 
             <article class="content-section">
-                <h2>How to Use the Currency Converter</h2>
-                <p>Using our free online currency converter is simple and takes just seconds. Follow these easy steps:</p>
-                
-                <h3>Step 1: Enter the Amount</h3>
-                <p>Type the amount you want to convert in the "Amount" field (e.g., 100, 500, or 1000). You can enter any positive number with up to 2 decimal places.</p>
-                
-                <h3>Step 2: Select the Source Currency</h3>
-                <p>Choose the currency you're converting from using the "From Currency" dropdown. We support 20 major world currencies including USD, EUR, GBP, JPY and INR.</p>
-                
-                <h3>Step 3: Select the Target Currency</h3>
-                <p>Choose the currency you want to convert to using the "To Currency" dropdown. Use the swap button (⇄) to quickly reverse the currencies.</p>
-                
-                <h3>Step 4: View Your Conversion</h3>
-                <p>Click the "Convert Now" button or simply change any field to instantly see the converted amount using this page's fixed reference rates. The result shows both the converted value and the exchange rate used.</p>
+                <h2>How to Convert Currency</h2>
+                <ol class="fx-steps">
+                    <li><strong>Enter the amount</strong> you want to convert, such as 100 or 2,500.50.</li>
+                    <li><strong>Choose the currency you have</strong> in "From" and the one you want in "To". The swap button reverses them.</li>
+                    <li><strong>Read the result.</strong> You also see the exchange rate both ways and the amount for common values, so you can scale it yourself.</li>
+                    <li><strong>Add a fee if you know it.</strong> If your bank takes a 3% margin, enter 3 to see the amount you would really receive.</li>
+                </ol>
+                <p><strong>The formula:</strong> converted amount = amount × (target currency rate ÷ source currency rate). Every rate on this page is quoted against the US dollar, so converting EUR to GBP divides the GBP rate by the EUR rate. For example, if 1 USD = 0.92 EUR, then 100 USD = 92 EUR, and 100 EUR = 108.70 USD (100 ÷ 0.92).</p>
             </article>
 
             <article class="content-section">
                 <h2>Popular Currency Conversions</h2>
-                <p>Here are some of the most commonly searched currency exchange calculations:</p>
+                <p>Tap a pair to load it into the converter above with today's rate.</p>
                 <div class="popular-grid">
-                    <div class="popular-item" onclick="setConversion('USD','EUR')">
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('USD','EUR')" onkeydown="if(event.key==='Enter')setConversion('USD','EUR')">
                         <span class="flag">🇺🇸→🇪🇺</span>
                         <span class="conv-text"><strong>USD to EUR</strong> - US Dollar to Euro</span>
                     </div>
-                    <div class="popular-item" onclick="setConversion('EUR','USD')">
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('EUR','USD')" onkeydown="if(event.key==='Enter')setConversion('EUR','USD')">
                         <span class="flag">🇪🇺→🇺🇸</span>
                         <span class="conv-text"><strong>EUR to USD</strong> - Euro to US Dollar</span>
                     </div>
-                    <div class="popular-item" onclick="setConversion('USD','GBP')">
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('USD','GBP')" onkeydown="if(event.key==='Enter')setConversion('USD','GBP')">
                         <span class="flag">🇺🇸→🇬🇧</span>
                         <span class="conv-text"><strong>USD to GBP</strong> - US Dollar to British Pound</span>
                     </div>
-                    <div class="popular-item" onclick="setConversion('GBP','USD')">
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('GBP','USD')" onkeydown="if(event.key==='Enter')setConversion('GBP','USD')">
                         <span class="flag">🇬🇧→🇺🇸</span>
                         <span class="conv-text"><strong>GBP to USD</strong> - British Pound to US Dollar</span>
                     </div>
-                    <div class="popular-item" onclick="setConversion('USD','JPY')">
-                        <span class="flag">🇺🇸→🇯🇵</span>
-                        <span class="conv-text"><strong>USD to JPY</strong> - US Dollar to Japanese Yen</span>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('USD','PKR')" onkeydown="if(event.key==='Enter')setConversion('USD','PKR')">
+                        <span class="flag">🇺🇸→🇵🇰</span>
+                        <span class="conv-text"><strong>USD to PKR</strong> - US Dollar to Pakistani Rupee</span>
                     </div>
-                    <div class="popular-item" onclick="setConversion('USD','INR')">
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('USD','INR')" onkeydown="if(event.key==='Enter')setConversion('USD','INR')">
                         <span class="flag">🇺🇸→🇮🇳</span>
                         <span class="conv-text"><strong>USD to INR</strong> - US Dollar to Indian Rupee</span>
                     </div>
-                    <div class="popular-item" onclick="setConversion('EUR','GBP')">
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('USD','AED')" onkeydown="if(event.key==='Enter')setConversion('USD','AED')">
+                        <span class="flag">🇺🇸→🇦🇪</span>
+                        <span class="conv-text"><strong>USD to AED</strong> - US Dollar to UAE Dirham</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('USD','CAD')" onkeydown="if(event.key==='Enter')setConversion('USD','CAD')">
+                        <span class="flag">🇺🇸→🇨🇦</span>
+                        <span class="conv-text"><strong>USD to CAD</strong> - US Dollar to Canadian Dollar</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('EUR','GBP')" onkeydown="if(event.key==='Enter')setConversion('EUR','GBP')">
                         <span class="flag">🇪🇺→🇬🇧</span>
                         <span class="conv-text"><strong>EUR to GBP</strong> - Euro to British Pound</span>
                     </div>
-                    <div class="popular-item" onclick="setConversion('AUD','USD')">
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('AUD','USD')" onkeydown="if(event.key==='Enter')setConversion('AUD','USD')">
                         <span class="flag">🇦🇺→🇺🇸</span>
                         <span class="conv-text"><strong>AUD to USD</strong> - Australian Dollar to US Dollar</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('GBP','PKR')" onkeydown="if(event.key==='Enter')setConversion('GBP','PKR')">
+                        <span class="flag">🇬🇧→🇵🇰</span>
+                        <span class="conv-text"><strong>GBP to PKR</strong> - British Pound to Pakistani Rupee</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('AED','PKR')" onkeydown="if(event.key==='Enter')setConversion('AED','PKR')">
+                        <span class="flag">🇦🇪→🇵🇰</span>
+                        <span class="conv-text"><strong>AED to PKR</strong> - UAE Dirham to Pakistani Rupee</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('USD','JPY')" onkeydown="if(event.key==='Enter')setConversion('USD','JPY')">
+                        <span class="flag">🇺🇸→🇯🇵</span>
+                        <span class="conv-text"><strong>USD to JPY</strong> - US Dollar to Japanese Yen</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('SAR','PKR')" onkeydown="if(event.key==='Enter')setConversion('SAR','PKR')">
+                        <span class="flag">🇸🇦→🇵🇰</span>
+                        <span class="conv-text"><strong>SAR to PKR</strong> - Saudi Riyal to Pakistani Rupee</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('CAD','USD')" onkeydown="if(event.key==='Enter')setConversion('CAD','USD')">
+                        <span class="flag">🇨🇦→🇺🇸</span>
+                        <span class="conv-text"><strong>CAD to USD</strong> - Canadian Dollar to US Dollar</span>
+                    </div>
+                    <div class="popular-item" role="button" tabindex="0" onclick="setConversion('EUR','INR')" onkeydown="if(event.key==='Enter')setConversion('EUR','INR')">
+                        <span class="flag">🇪🇺→🇮🇳</span>
+                        <span class="conv-text"><strong>EUR to INR</strong> - Euro to Indian Rupee</span>
                     </div>
                 </div>
             </article>
 
             <article class="content-section">
-                <h2>Supported Currencies</h2>
-                <p>Our free currency converter supports 20 major world currencies, including the US dollar, euro, pound, yen and several emerging market currencies. Here are some of the most popular currencies available:</p>
+                <h2>Why Your Bank's Exchange Rate Is Different</h2>
+                <p>The rate on this page is the mid-market rate. Banks, card networks, airport kiosks and transfer apps make money by offering a worse rate than that, and sometimes by adding a fixed fee on top. The gap is a hidden cost, and it is easy to calculate.</p>
+                <div class="fx-table-wrap"><table class="fx-table"><thead><tr><th scope="col">Example: sending 1,000 USD to euros</th><th scope="col">Rate (EUR per USD)</th><th scope="col">You receive</th><th scope="col">Hidden cost</th></tr></thead><tbody>
+                <tr><th scope="row">Mid-market rate</th><td>0.9200</td><td>920 EUR</td><td>0</td></tr>
+                <tr><th scope="row">Provider with a 1% margin</th><td>0.9108</td><td>910.80 EUR</td><td>9.20 EUR</td></tr>
+                <tr><th scope="row">Provider with a 3% margin</th><td>0.8924</td><td>892.40 EUR</td><td>27.60 EUR</td></tr>
+                <tr><th scope="row">Provider with a 5% margin</th><td>0.8740</td><td>874.00 EUR</td><td>46 EUR</td></tr>
+                </tbody></table></div>
+                <p>The rate in the table is an illustration, not a quote. To check a real offer, compare the rate you are given with the rate on this page. The percentage gap is the margin.</p>
+                <h3>How to get a better rate</h3>
                 <ul>
-                    <li><strong>Major Currencies:</strong> USD (US Dollar), EUR (Euro), GBP (British Pound), JPY (Japanese Yen), CHF (Swiss Franc), CAD (Canadian Dollar), AUD (Australian Dollar)</li>
-                    <li><strong>Asian Currencies:</strong> CNY (Chinese Yuan), INR (Indian Rupee), KRW (South Korean Won), SGD (Singapore Dollar), HKD (Hong Kong Dollar), THB (Thai Baht)</li>
-                    <li><strong>European Currencies:</strong> SEK (Swedish Krona), NOK (Norwegian Krone), DKK (Danish Krone), PLN (Polish Zloty), HUF (Hungarian Forint)</li>
-                    <li><strong>Americas:</strong> MXN (Mexican Peso), BRL (Brazilian Real), ARS (Argentine Peso), CLP (Chilean Peso)</li>
-                    <li><strong>Middle East & Africa:</strong> AED (UAE Dirham), SAR (Saudi Riyal), ZAR (South African Rand), EGP (Egyptian Pound)</li>
+                    <li><strong>Compare total cost, not the headline fee.</strong> A "zero fee" transfer with a poor rate can cost more than a flat fee at a good rate.</li>
+                    <li><strong>Avoid airport and hotel exchange desks</strong> unless you need cash immediately. Their margins are usually among the highest.</li>
+                    <li><strong>Pay in the local currency by card.</strong> When a terminal offers to charge you in your home currency (dynamic currency conversion), the rate is often worse.</li>
+                    <li><strong>Exchange larger amounts less often</strong> if the provider charges a fixed fee per transaction.</li>
+                    <li><strong>Check the rate at the moment of payment.</strong> Rates move during the day, and some providers lock a quote only for a short time.</li>
+                </ul>
+            </article>
+
+            <article class="content-section">
+                <h2>Supported Currencies</h2>
+                <p>This converter covers 40 currencies. Each one is listed with its ISO code.</p>
+                <ul>
+                    <li><strong>Major currencies:</strong> USD (US Dollar), EUR (Euro), GBP (British Pound), JPY (Japanese Yen), CHF (Swiss Franc), CAD (Canadian Dollar), AUD (Australian Dollar), NZD (New Zealand Dollar)</li>
+                    <li><strong>South and Central Asia:</strong> INR (Indian Rupee), PKR (Pakistani Rupee), BDT (Bangladeshi Taka)</li>
+                    <li><strong>East and Southeast Asia:</strong> CNY (Chinese Yuan), HKD (Hong Kong Dollar), SGD (Singapore Dollar), KRW (South Korean Won), THB (Thai Baht), MYR (Malaysian Ringgit), IDR (Indonesian Rupiah), PHP (Philippine Peso), VND (Vietnamese Dong)</li>
+                    <li><strong>Middle East and Africa:</strong> AED (UAE Dirham), SAR (Saudi Riyal), QAR (Qatari Riyal), KWD (Kuwaiti Dinar), EGP (Egyptian Pound), NGN (Nigerian Naira), KES (Kenyan Shilling), ZAR (South African Rand), TRY (Turkish Lira), ILS (Israeli Shekel)</li>
+                    <li><strong>Europe:</strong> SEK (Swedish Krona), NOK (Norwegian Krone), DKK (Danish Krone), PLN (Polish Zloty), CZK (Czech Koruna), HUF (Hungarian Forint)</li>
+                    <li><strong>Latin America:</strong> MXN (Mexican Peso), BRL (Brazilian Real), COP (Colombian Peso), CLP (Chilean Peso)</li>
                 </ul>
             </article>
 
             <article class="content-section">
                 <h2>Frequently Asked Questions (FAQ)</h2>
-                
                 <div class="faq-item">
-                    <h4>What are exchange rates?</h4>
-                    <p>Exchange rates represent the value of one currency when converted to another currency. They fluctuate continuously based on market conditions, economic indicators, interest rates, inflation, political stability, and supply and demand in the foreign exchange market.</p>
+                    <h4>What is a currency converter and how does it work?</h4>
+                    <p>A currency converter multiplies an amount by the exchange rate between two currencies. This one takes the daily rate of each currency against the US dollar and converts through it, so converting EUR to GBP equals amount × (GBP rate ÷ EUR rate).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Are these live exchange rates?</h4>
+                    <p>The page loads the latest daily rates from ExchangeRate-API when you open it. They are mid-market reference rates updated about once a day, not tick-by-tick trading prices, so the rate can differ slightly from a live market screen. If the rate feed cannot load, the page tells you and falls back to approximate offline rates that may be out of date.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What is the mid-market rate?</h4>
+                    <p>It is the midpoint between the buy and sell prices on the foreign exchange market, and the rate you see on a search engine or news site. Banks and transfer services usually quote a rate worse than this and keep the difference as their margin.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Why is my bank's exchange rate different from this converter?</h4>
+                    <p>Banks, card issuers and money transfer providers add a margin to the market rate, and some add a fixed fee. Enter their margin in the fee field to see what you would actually receive, or compare their rate with the rate on this page.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do I convert USD to PKR?</h4>
+                    <p>Choose USD in the From box and PKR in the To box, then type the dollar amount. The page shows the rate and the rupee amount. Exchange houses and banks in Pakistan may quote slightly different rates from the interbank reference, so use the fee field to see what a quoted rate costs you.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How can I get a better exchange rate?</h4>
+                    <p>Compare the total cost of several providers, avoid airport exchange desks, pay by card in the local currency instead of your home currency, and check the rate when you pay. A difference of 2 to 3 percent adds up quickly on larger amounts.</p>
                 </div>
 
                 <div class="faq-item">
                     <h4>How often do exchange rates change?</h4>
-                    <p>Exchange rates change constantly throughout the trading day. The forex market operates 24 hours a day, 5 days a week, with rates updating every few seconds during active trading periods. Weekend rates may remain static as major markets are closed.</p>
+                    <p>Market rates move continuously on weekdays, and they pause when markets close at the weekend. Daily reference rates, like those on this page, are refreshed about once a day.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>Is this currency converter accurate?</h4>
-                    <p>Our converter uses fixed, approximate reference rates that are not live and are not updated every day, so results can differ from the real market rate. Banks, exchange services, and credit cards may offer different rates that include fees, commissions, and margins. Always check with your financial institution for actual transaction rates.</p>
+                    <h4>Which currencies does this converter support?</h4>
+                    <p>40 currencies, including USD, EUR, GBP, JPY, INR, PKR, AED, SAR, CAD, AUD, CNY and many more. The full list is under Supported Currencies above.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>How many currencies does this converter support?</h4>
-                    <p>This free online currency converter supports 20 major world currencies, covering the main global currencies and a few emerging market currencies. The reference rates are approximate and are not updated every day.</p>
+                    <h4>Can I use it for business payments or investing?</h4>
+                    <p>Use it for planning and quick estimates. For invoices, payments and trading, use the exact rate quoted by your bank, payment provider or broker, since it includes their margin and can change before the transaction settles.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h4>Is this currency converter free to use?</h4>
-                    <p>Yes, our currency converter is 100% free to use. No signup, no registration, and no hidden fees. Simply visit the page, enter your amount and currencies, and get instant conversion results.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I use this converter for business transactions?</h4>
-                    <p>While our converter provides approximate, non-live reference rates for planning, we recommend consulting with your bank or forex provider for actual business transaction rates, as they may include additional fees and spreads.</p>
+                    <h4>Is this currency converter free and private?</h4>
+                    <p>Yes, it is free and needs no signup. The amounts you type stay in your browser. The page only requests the daily rate table from ExchangeRate-API, which, like any website you visit, can see your IP address.</p>
                 </div>
             </article>
         </div>
     </main>
 
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Converts between 20 major currencies using fixed, approximate reference rates. These are not live market rates and are not updated every day. Banks and exchange services use different rates and add fees, so check the actual rate before you send or exchange money.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/amount-in-words-converter.html">Amount in Words Converter</a>: write any number or cheque amount in words, in US or Indian numbering.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html&amp;text=Free%20Currency%20Converter%3A%2020%20Major%20Currencies" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Currency%20Converter%3A%2020%20Major%20Currencies%20https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html&amp;text=Free%20Currency%20Converter%3A%2020%20Major%20Currencies" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/currency-converter.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Converts between 40 currencies using daily mid-market reference rates from ExchangeRate-API, loaded when you open the page. If the feed cannot load, the page says so and shows approximate offline rates that may be out of date. Banks and exchange services add margins and fees, so check the actual rate before you send or exchange money. Your amounts stay in your browser; only the rate table is requested.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/amount-in-words-converter.html">Amount in Words Converter</a>: write any number or cheque amount in words, in US or Indian numbering.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html&amp;text=Free%20Currency%20Converter%3A%2020%20Major%20Currencies" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Currency%20Converter%3A%2020%20Major%20Currencies%20https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcurrency-converter.html&amp;text=Free%20Currency%20Converter%3A%2020%20Major%20Currencies" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/currency-converter.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
     <script>
-        // Extended exchange rates (base: USD)
-        const exchangeRates = {
-            "USD": 1.0,
-            "EUR": 0.92,
-            "GBP": 0.79,
-            "JPY": 149.50,
-            "INR": 83.12,
-            "AUD": 1.53,
-            "CAD": 1.36,
-            "CHF": 0.88,
-            "CNY": 7.24,
-            "SEK": 10.65,
-            "NZD": 1.65,
-            "SGD": 1.35,
-            "HKD": 7.82,
-            "KRW": 1345.0,
-            "MXN": 17.05,
-            "BRL": 4.95,
-            "ZAR": 18.75,
-            "TRY": 32.15,
-            "AED": 3.67,
-            "SAR": 3.75
-        };
+        const CURRENCIES = [
+            ['USD','US Dollar','🇺🇸',1],
+            ['EUR','Euro','🇪🇺',0.92],
+            ['GBP','British Pound','🇬🇧',0.79],
+            ['JPY','Japanese Yen','🇯🇵',149.5],
+            ['INR','Indian Rupee','🇮🇳',83.12],
+            ['PKR','Pakistani Rupee','🇵🇰',280],
+            ['BDT','Bangladeshi Taka','🇧🇩',122],
+            ['AUD','Australian Dollar','🇦🇺',1.53],
+            ['CAD','Canadian Dollar','🇨🇦',1.36],
+            ['CHF','Swiss Franc','🇨🇭',0.88],
+            ['CNY','Chinese Yuan','🇨🇳',7.24],
+            ['HKD','Hong Kong Dollar','🇭🇰',7.82],
+            ['SGD','Singapore Dollar','🇸🇬',1.35],
+            ['NZD','New Zealand Dollar','🇳🇿',1.65],
+            ['KRW','South Korean Won','🇰🇷',1345],
+            ['THB','Thai Baht','🇹🇭',34],
+            ['MYR','Malaysian Ringgit','🇲🇾',4.4],
+            ['IDR','Indonesian Rupiah','🇮🇩',16300],
+            ['PHP','Philippine Peso','🇵🇭',57],
+            ['VND','Vietnamese Dong','🇻🇳',25400],
+            ['AED','UAE Dirham','🇦🇪',3.6725],
+            ['SAR','Saudi Riyal','🇸🇦',3.75],
+            ['QAR','Qatari Riyal','🇶🇦',3.64],
+            ['KWD','Kuwaiti Dinar','🇰🇼',0.307],
+            ['EGP','Egyptian Pound','🇪🇬',49],
+            ['NGN','Nigerian Naira','🇳🇬',1550],
+            ['KES','Kenyan Shilling','🇰🇪',129],
+            ['ZAR','South African Rand','🇿🇦',18.75],
+            ['TRY','Turkish Lira','🇹🇷',32.15],
+            ['SEK','Swedish Krona','🇸🇪',10.65],
+            ['NOK','Norwegian Krone','🇳🇴',10.7],
+            ['DKK','Danish Krone','🇩🇰',6.9],
+            ['PLN','Polish Zloty','🇵🇱',3.9],
+            ['CZK','Czech Koruna','🇨🇿',23],
+            ['HUF','Hungarian Forint','🇭🇺',360],
+            ['MXN','Mexican Peso','🇲🇽',17.05],
+            ['BRL','Brazilian Real','🇧🇷',4.95],
+            ['COP','Colombian Peso','🇨🇴',4100],
+            ['CLP','Chilean Peso','🇨🇱',940],
+            ['ILS','Israeli Shekel','🇮🇱',3.6]
+        ];
+        const FALLBACK = {}, NAMES = {};
+        CURRENCIES.forEach(c => { FALLBACK[c[0]] = c[3]; NAMES[c[0]] = c[1]; });
+        let rates = Object.assign({}, FALLBACK);
+        let rateLive = false;
+        const POPULAR = ['USD','EUR','GBP','INR','PKR','AED','CAD','AUD','JPY','SAR'];
+        const $ = id => document.getElementById(id);
 
-        const currencyNames = {
-            "USD": "US Dollar",
-            "EUR": "Euro",
-            "GBP": "British Pound",
-            "JPY": "Japanese Yen",
-            "INR": "Indian Rupee",
-            "AUD": "Australian Dollar",
-            "CAD": "Canadian Dollar",
-            "CHF": "Swiss Franc",
-            "CNY": "Chinese Yuan",
-            "SEK": "Swedish Krona",
-            "NZD": "New Zealand Dollar",
-            "SGD": "Singapore Dollar",
-            "HKD": "Hong Kong Dollar",
-            "KRW": "South Korean Won",
-            "MXN": "Mexican Peso",
-            "BRL": "Brazilian Real",
-            "ZAR": "South African Rand",
-            "TRY": "Turkish Lira",
-            "AED": "UAE Dirham",
-            "SAR": "Saudi Riyal"
-        };
+        function fmtMoney(n){ return n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+        function fmtRate(r){ return r >= 100 ? r.toLocaleString('en-US', {maximumFractionDigits: 2}) : (r >= 1 ? r.toFixed(4) : r.toFixed(6)); }
+
+        async function getJson(url, ms) {
+            const ctl = new AbortController();
+            const t = setTimeout(() => ctl.abort(), ms);
+            try { const r = await fetch(url, {signal: ctl.signal}); if (!r.ok) throw new Error('bad status'); return await r.json(); }
+            finally { clearTimeout(t); }
+        }
+        function setStatus(text, cls){ const el = $('rateStatus'); el.textContent = text; el.className = 'fx-status ' + (cls || ''); }
+        function applyLive(map, label, dateText, partialNote) {
+            const next = Object.assign({}, FALLBACK);
+            let n = 0;
+            CURRENCIES.forEach(c => { const v = map[c[0]]; if (typeof v === 'number' && v > 0) { next[c[0]] = v; n++; } });
+            if (!(n >= 20)) throw new Error('too few rates');
+            next.USD = 1;
+            rates = next;
+            rateLive = true;
+            const missing = CURRENCIES.length - n;
+            setStatus('Live daily rates from ' + label + (dateText ? ', updated ' + dateText : '') + '.' + (missing > 0 ? ' ' + missing + ' currencies use approximate offline rates.' : ''), missing > 0 ? 'warn' : 'ok');
+        }
+        async function loadRates() {
+            try {
+                const cached = JSON.parse(localStorage.getItem('tp_fx') || 'null');
+                if (cached && Date.now() - cached.t < 6 * 3600 * 1000) { applyLive(cached.map, cached.label, cached.date); convertCurrency(); return; }
+            } catch (e) {}
+            try {
+                const d = await getJson('https://open.er-api.com/v6/latest/USD', 8000);
+                if (d.result !== 'success' || !d.rates) throw new Error('bad data');
+                const dt = d.time_last_update_utc ? new Date(d.time_last_update_utc) : null;
+                const date = dt && !isNaN(dt) ? dt.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'}) : '';
+                applyLive(d.rates, 'ExchangeRate-API', date);
+                try { localStorage.setItem('tp_fx', JSON.stringify({t: Date.now(), map: d.rates, label: 'ExchangeRate-API', date: date})); } catch (e) {}
+            } catch (e1) {
+                try {
+                    const d = await getJson('https://api.frankfurter.dev/v1/latest?base=USD', 8000);
+                    if (!d.rates) throw new Error('bad data');
+                    applyLive(d.rates, 'the European Central Bank', d.date || '');
+                } catch (e2) {
+                    rateLive = false;
+                    setStatus('Live rates could not be loaded, so these are approximate offline rates that may be out of date. Check your bank or a trusted source before you exchange money.', 'warn');
+                }
+            }
+            convertCurrency();
+        }
 
         function convertCurrency() {
-            const amount = parseFloat(document.getElementById('amount').value) || 0;
-            const from = document.getElementById('fromCurrency').value;
-            const to = document.getElementById('toCurrency').value;
-            const resultBox = document.getElementById('result');
-
-            if (amount <= 0) {
-                resultBox.classList.remove('show');
-                return;
-            }
-
-            const fromRate = exchangeRates[from];
-            const toRate = exchangeRates[to];
-            const rate = toRate / fromRate;
-            const converted = (amount * rate).toFixed(2);
-            const inverseRate = (1 / rate).toFixed(6);
-
-            // Format numbers with commas
-            const formattedAmount = amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            const formattedConverted = parseFloat(converted).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-            document.getElementById('conversionResult').textContent = `${formattedConverted} ${to}`;
-            document.getElementById('conversionDetail').textContent = 
-                `${formattedAmount} ${currencyNames[from]} equals ${formattedConverted} ${currencyNames[to]}`;
-            document.getElementById('rateInfo').textContent = 
-                `1 ${from} = ${rate.toFixed(6)} ${to} | 1 ${to} = ${inverseRate} ${from}`;
-
-            resultBox.classList.add('show');
-            
-            // Generate quick conversions
-            generateQuickConversions(from, to, rate);
-        }
-
-        function generateQuickConversions(from, to, rate) {
-            const amounts = [1, 10, 50, 100, 500, 1000];
-            const container = document.getElementById('quickConversions');
-            let html = '';
-            
-            amounts.forEach(amt => {
-                const converted = (amt * rate).toFixed(2);
-                const formatted = parseFloat(converted).toLocaleString('en-US', {minimumFractionDigits: 2});
-                html += `<div class="quick-conv-item"><strong>${amt} ${from}</strong> = ${formatted} ${to}</div>`;
+            const amount = parseFloat($('amount').value) || 0;
+            const from = $('fromCurrency').value, to = $('toCurrency').value;
+            const fee = Math.min(30, Math.max(0, parseFloat($('fee').value) || 0));
+            const box = $('result');
+            if (amount <= 0) { box.classList.remove('show'); $('multiTable').querySelector('tbody').innerHTML = ''; $('quickConversions').innerHTML = ''; return; }
+            const rate = rates[to] / rates[from];
+            const out = amount * rate;
+            $('conversionResult').textContent = fmtMoney(out) + ' ' + to;
+            $('conversionDetail').textContent = fmtMoney(amount) + ' ' + NAMES[from] + ' equals ' + fmtMoney(out) + ' ' + NAMES[to];
+            $('rateInfo').textContent = '1 ' + from + ' = ' + fmtRate(rate) + ' ' + to + '  |  1 ' + to + ' = ' + fmtRate(1 / rate) + ' ' + from + (rateLive ? '' : '  (offline reference rate)');
+            if (fee > 0) {
+                const net = out * (1 - fee / 100);
+                $('feeResult').textContent = 'After a ' + fee + '% fee or margin you would receive about ' + fmtMoney(net) + ' ' + to + ' (' + fmtMoney(out - net) + ' ' + to + ' lost to the fee).';
+            } else { $('feeResult').textContent = ''; }
+            box.classList.add('show');
+            $('multiAmount').textContent = amount.toLocaleString('en-US', {maximumFractionDigits: 2});
+            $('multiFrom').textContent = from;
+            let rows = '';
+            POPULAR.filter(c => c !== from).slice(0, 9).forEach(c => {
+                const r = rates[c] / rates[from];
+                rows += '<tr><th scope="row">' + c + ' - ' + NAMES[c] + '</th><td>1 ' + from + ' = ' + fmtRate(r) + '</td><td>' + fmtMoney(amount * r) + ' ' + c + '</td></tr>';
             });
-            
-            container.innerHTML = html;
+            $('multiTable').querySelector('tbody').innerHTML = rows;
+            let q = '';
+            [1, 10, 50, 100, 500, 1000].forEach(a => { q += '<div class="quick-conv-item"><strong>' + a + ' ' + from + '</strong> = ' + fmtMoney(a * rate) + ' ' + to + '</div>'; });
+            $('quickConversions').innerHTML = q;
         }
-
         function swapCurrencies() {
-            const from = document.getElementById('fromCurrency');
-            const to = document.getElementById('toCurrency');
-            const temp = from.value;
-            from.value = to.value;
-            to.value = temp;
-            convertCurrency();
+            const f = $('fromCurrency'), t = $('toCurrency'), x = f.value;
+            f.value = t.value; t.value = x; convertCurrency();
         }
-
         function setConversion(from, to) {
-            document.getElementById('fromCurrency').value = from;
-            document.getElementById('toCurrency').value = to;
+            $('fromCurrency').value = from; $('toCurrency').value = to;
             convertCurrency();
-            document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            $('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function copyLink() {
+            const u = new URL(location.href); u.search = ''; u.hash = '';
+            u.searchParams.set('amount', $('amount').value || '1'); u.searchParams.set('from', $('fromCurrency').value); u.searchParams.set('to', $('toCurrency').value);
+            const f = parseFloat($('fee').value); if (f > 0) u.searchParams.set('fee', f);
+            const done = () => { $('copyStatus').textContent = 'Link copied'; setTimeout(() => { $('copyStatus').textContent = ''; }, 2500); };
+            if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(u.toString()).then(done, () => { $('copyStatus').textContent = u.toString(); }); }
+            else { $('copyStatus').textContent = u.toString(); }
         }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function toggleMenu() { const n = $('navLinks'); if (n) n.classList.toggle('active'); }
+        window.addEventListener('scroll', () => { const b = $('backToTop'); if (b) b.classList.toggle('show', window.scrollY > 300); });
 
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        // Back to top button
-        window.addEventListener('scroll', () => {
-            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
-        });
-
-        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            const p = new URLSearchParams(location.search);
+            const ok = c => c && NAMES[c.toUpperCase()] ? c.toUpperCase() : null;
+            if (p.get('amount') && parseFloat(p.get('amount')) > 0) $('amount').value = parseFloat(p.get('amount'));
+            if (ok(p.get('from'))) $('fromCurrency').value = ok(p.get('from'));
+            if (ok(p.get('to'))) $('toCurrency').value = ok(p.get('to'));
+            if (parseFloat(p.get('fee')) > 0) { $('fee').value = Math.min(30, parseFloat(p.get('fee'))); document.querySelector('.fx-adv').open = true; }
             convertCurrency();
+            loadRates();
         });
-
-        // Keyboard shortcut (Ctrl+Enter to convert)
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === 'Enter') {
-                convertCurrency();
-            }
-        });
+        document.addEventListener('keydown', e => { if (e.ctrlKey && e.key === 'Enter') convertCurrency(); });
     </script>
 </body>
 </html>
