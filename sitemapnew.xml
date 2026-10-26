@@ -227,7 +227,7 @@
        ============================================   -->
 <url>
 <loc>https://toolpond.org/calorie-calculator.html</loc>
-<lastmod>2026-10-08</lastmod>
+<lastmod>2026-10-26</lastmod>
 <priority>0.85</priority>
 </url>
 <url>
@@ -277,7 +277,7 @@
 </url>
 <url>
 <loc>https://toolpond.org/stride-calculator.html</loc>
-<lastmod>2026-10-08</lastmod>
+<lastmod>2026-10-26</lastmod>
 <priority>0.7</priority>
 </url>
 <url>
@@ -588,6 +588,21 @@
 <url>
 <loc>https://toolpond.org/blog/how-exchange-rates-work-and-currency-conversion.html</loc>
 <lastmod>2026-10-25</lastmod>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/how-many-steps-a-day.html</loc>
+<lastmod>2026-10-26</lastmod>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/calorie-deficit-how-many-calories-to-cut.html</loc>
+<lastmod>2026-10-26</lastmod>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/bmr-formulas-compared-mifflin-harris-katch.html</loc>
+<lastmod>2026-10-26</lastmod>
 <priority>0.7</priority>
 </url>
 </urlset>
