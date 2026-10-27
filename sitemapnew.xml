@@ -325,7 +325,7 @@
 </url>
 <url>
 <loc>https://toolpond.org/credit-card.html</loc>
-<lastmod>2026-10-08</lastmod>
+<lastmod>2026-10-27</lastmod>
 <priority>0.8</priority>
 </url>
 <url>
@@ -603,6 +603,11 @@
 <url>
 <loc>https://toolpond.org/blog/bmr-formulas-compared-mifflin-harris-katch.html</loc>
 <lastmod>2026-10-26</lastmod>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/which-credit-card-to-pay-off-first.html</loc>
+<lastmod>2026-10-27</lastmod>
 <priority>0.7</priority>
 </url>
 </urlset>
