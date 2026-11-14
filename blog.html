@@ -856,12 +856,11 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
         <!-- Category Filters -->
         <div class="categories" role="group" aria-label="Blog categories">
-            <a href="#all" class="category-pill active" role="button" aria-pressed="true">All Posts</a>
-            <a href="#health" class="category-pill" role="button" aria-pressed="false">💪 Health</a>
-            <a href="#finance" class="category-pill" role="button" aria-pressed="false">💰 Finance</a>
-            <a href="#productivity" class="category-pill" role="button" aria-pressed="false">⚡ Productivity</a>
-            <a href="#tutorials" class="category-pill" role="button" aria-pressed="false">📖 Tutorials</a>
-            <a href="#tools" class="category-pill" role="button" aria-pressed="false">🛠️ Tools</a>
+            <button type="button" data-cat="all" class="category-pill active" aria-pressed="true">All Posts</button>
+            <button type="button" data-cat="health" class="category-pill" aria-pressed="false">💪 Health</button>
+            <button type="button" data-cat="finance" class="category-pill" aria-pressed="false">💰 Finance</button>
+            <button type="button" data-cat="math" class="category-pill" aria-pressed="false">🧮 Math &amp; Study</button>
+            <button type="button" data-cat="design" class="category-pill" aria-pressed="false">🎨 Design</button>
         </div>
     </header>
 
@@ -872,7 +871,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         <section class="featured-section" aria-labelledby="featured-heading">
             <div class="section-header">
                 <h2 id="featured-heading" class="section-title">⭐ Featured Article</h2>
-                <a href="#all-posts" class="view-all">View All →</a>
+                <a href="#latest-heading" class="view-all">View All →</a>
             </div>
             <a href="https://toolpond.org/blog/how-to-use-bmi-calculator.html" class="featured-card">
                 <div class="featured-image">
@@ -896,7 +895,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         <section aria-labelledby="latest-heading">
             <div class="section-header">
                 <h2 id="latest-heading" class="section-title">🆕 Latest Articles</h2>
-                <a href="#all-posts" class="view-all">View All →</a>
+                <a href="#latest-heading" class="view-all">View All →</a>
             </div>
                         <div class="blog-grid">
 
@@ -1451,6 +1450,46 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                     </a>
                 </article>
 
+                <article class="blog-card">
+                    <a href="https://toolpond.org/blog/body-fat-percentage-guide.html" style="text-decoration:none;color:inherit;">
+                        <div class="blog-card-image">
+                            <span class="placeholder-icon" aria-hidden="true">💪</span>
+                            <span class="tag">💪 Health</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <time datetime="2026-06-05">June 5, 2026</time>
+                            </div>
+                            <h3>Body Fat Percentage: Complete Guide for Men &amp; Women</h3>
+                            <p>Healthy ranges, how to measure body fat, and how it compares to BMI.</p>
+                            <div class="blog-card-footer">
+                                <span class="read-time">⏱️ 9 min read</span>
+                                <span class="card-link">Read →</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="blog-card">
+                    <a href="https://toolpond.org/blog/daily-calorie-needs.html" style="text-decoration:none;color:inherit;">
+                        <div class="blog-card-image">
+                            <span class="placeholder-icon" aria-hidden="true">🍎</span>
+                            <span class="tag">🥗 Nutrition</span>
+                        </div>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <time datetime="2026-06-05">June 5, 2026</time>
+                            </div>
+                            <h3>How to Calculate Your Daily Calorie Needs</h3>
+                            <p>BMR, TDEE and activity multipliers, adjusted for weight loss, maintenance or muscle gain.</p>
+                            <div class="blog-card-footer">
+                                <span class="read-time">⏱️ 10 min read</span>
+                                <span class="card-link">Read →</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
             </div>
 
     </section>
@@ -1473,18 +1512,32 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
             document.getElementById('backToTop').classList.toggle('show', window.scrollY > 300);
         });
 
-        // Category Filter (visual toggle)
-        document.querySelectorAll('.category-pill').forEach(pill => {
-            pill.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.category-pill').forEach(p => {
-                    p.classList.remove('active');
-                    p.setAttribute('aria-pressed', 'false');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-pressed', 'true');
+        // Category filter and search
+        (function () {
+            var map = {health:['health','fitness','walking','weight loss','nutrition'], finance:['finance','money','debt','pay &','pay &amp;'], math:['math','percent','study'], design:['design']};
+            var cards = Array.prototype.slice.call(document.querySelectorAll('.blog-card'));
+            cards.forEach(function (c) {
+                var t = (c.querySelector('.tag') || {textContent: ''}).textContent.toLowerCase(), cat = 'other';
+                Object.keys(map).forEach(function (k) { map[k].forEach(function (w) { if (t.indexOf(w) > -1) cat = k; }); });
+                c.setAttribute('data-cat', cat);
             });
-        });
+            var active = 'all', q = '';
+            function apply() {
+                cards.forEach(function (c) {
+                    var okCat = active === 'all' || c.getAttribute('data-cat') === active;
+                    var okQ = !q || c.textContent.toLowerCase().indexOf(q) > -1;
+                    c.style.display = (okCat && okQ) ? '' : 'none';
+                });
+            }
+            document.querySelectorAll('.category-pill').forEach(function (pill) {
+                pill.addEventListener('click', function () {
+                    document.querySelectorAll('.category-pill').forEach(function (p) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+                    pill.classList.add('active'); pill.setAttribute('aria-pressed', 'true');
+                    active = pill.getAttribute('data-cat'); apply();
+                });
+            });
+            document.getElementById('blog-search').addEventListener('input', function () { q = this.value.trim().toLowerCase(); apply(); });
+        })();
 
         // Search Focus
         document.getElementById('blog-search').addEventListener('focus', function() {
