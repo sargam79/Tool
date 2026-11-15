@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (GA4) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
+gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-adsense-account" content="ca-pub-7280526621945427">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
+     crossorigin="anonymous"></script>
+  <title>How to Calculate Age in Days, Months and Years [2026]</title>
+  <meta name="description" content="Calculate age in years, months, days and on a specific date, with worked examples, a month-end rule, spreadsheet formulas and practice problems." />
+  <meta name="author" content="ToolPond" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="canonical" href="https://toolpond.org/blog/how-to-calculate-age-in-days-months-and-years.html" />
+  <meta property="og:title" content="How to Calculate Age in Days, Months and Years [2026]" />
+  <meta property="og:description" content="Calculate age in years, months, days and on a specific date, with worked examples, a month-end rule, spreadsheet formulas and practice problems." />
+  <meta property="og:image" content="https://toolpond.org/og-image.jpg" />
+  <meta property="og:url" content="https://toolpond.org/blog/how-to-calculate-age-in-days-months-and-years.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ToolPond" />
+  <meta property="article:published_time" content="2026-11-15T10:00:00+00:00" />
+  <meta property="article:modified_time" content="2026-11-15T10:00:00+00:00" />
+  <meta property="article:section" content="Dates" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Calculate Age in Days, Months and Years [2026]" />
+  <meta name="twitter:description" content="Calculate age in years, months, days and on a specific date, with worked examples, a month-end rule, spreadsheet formulas and practice problems." />
+  <meta name="twitter:image" content="https://toolpond.org/og-image.jpg" />
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "How to Calculate Age in Days, Months and Years",
+ "description": "Calculate age in years, months, days and on a specific date, with worked examples, a month-end rule, spreadsheet formulas and practice problems.",
+ "datePublished": "2026-11-15",
+ "dateModified": "2026-11-15",
+ "mainEntityOfPage": "https://toolpond.org/blog/how-to-calculate-age-in-days-months-and-years.html",
+ "author": {
+  "@type": "Organization",
+  "name": "ToolPond",
+  "url": "https://toolpond.org/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "ToolPond",
+  "url": "https://toolpond.org/",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://toolpond.org/assets/logo.png"
+  }
+ },
+ "image": "https://toolpond.org/assets/logo.png"
+}
+  </script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do you calculate age in years, months and days?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Subtract the birth year from the current year, subtract 1 if the birthday has not happened yet, then count whole months from the last birthday and finally the remaining days. Example: 15 May 1990 to 8 October 2026 is 36 years, 4 months and 23 days."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do you calculate age in days between two dates?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Subtract the earlier date from the later one. In a spreadsheet, enter =B2-A2 with the dates in cells A2 and B2. By hand, count the days left in the start month, add the full months in between, then add the days in the final month."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do you calculate someone's age on a specific date?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Use that date in place of today. Subtract the birth year from the year of that date, subtract 1 if the birthday falls after the date in that year, then count months and days forward from the last birthday before it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How many days are in a year when calculating age?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A common year has 365 days and a leap year has 366. Over the long run the Gregorian calendar averages 365.2425 days a year, so multiplying years by 365 under-counts the days of an adult by several days."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the DATEDIF formula for age in Excel or Google Sheets?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "=DATEDIF(A2,TODAY(),\"Y\") gives completed years, \"YM\" gives the remaining months and \"MD\" gives the remaining days. The \"MD\" unit can give odd results around month-ends, so many people prefer an age calculator for edge cases."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does age in months sometimes look wrong at month-ends?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Months have different lengths, so a birth day of 29, 30 or 31 has no match in shorter months. The usual fix is to treat the last day of the shorter month as the matching day, so 31 January plus 1 month is 28 or 29 February."
+   }
+  }
+ ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://toolpond.org/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Blog",
+   "item": "https://toolpond.org/blog.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "How to Calculate Age",
+   "item": "https://toolpond.org/blog/how-to-calculate-age-in-days-months-and-years.html"
+  }
+ ]
+}
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.75; color: #222; background: #fff; }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    body > nav { background: #0a2540; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { color: #fff; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: #ccd6f6; font-size: 0.88rem; text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+
+    .breadcrumb { background: #f4f6f8; padding: 10px 24px; font-size: 0.84rem; color: #666; }
+    .breadcrumb a { color: #0066cc; }
+
+    .hero { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
+    .hero .badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 4px 14px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(1.55rem, 4vw, 2.3rem); font-weight: 800; max-width: 780px; margin: 0 auto 14px; line-height: 1.25; }
+    .hero .meta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; font-size: 0.84rem; opacity: 0.85; }
+    .hero .subtitle { font-size: 1rem; opacity: 0.9; max-width: 620px; margin: 14px auto 0; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 64px; }
+
+    .toc { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 28px 0 36px; }
+    .toc h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; color: #0a2540; }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 5px; font-size: 0.88rem; }
+
+    h2 { font-size: 1.5rem; font-weight: 800; color: #0a2540; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #eee; }
+    h3 { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin: 26px 0 10px; }
+    p { margin-bottom: 15px; color: #333; }
+    ul, ol { margin: 10px 0 18px 22px; }
+    li { margin-bottom: 7px; color: #333; }
+    strong { color: #0a2540; }
+
+    .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: #0a2540; color: #fff; padding: 11px 15px; text-align: left; font-weight: 600; }
+    td { padding: 10px 15px; border-bottom: 1px solid #f0f0f0; }
+    tr:nth-child(even) td { background: #f8f9fa; }
+    tr:last-child td { border-bottom: none; }
+
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 22px 0; }
+    .callout-tip { background: #e8f5e9; border-left: 4px solid #43a047; }
+    .callout-info { background: #e3f2fd; border-left: 4px solid #1e88e5; }
+    .callout-warning { background: #fff8e1; border-left: 4px solid #f9a825; }
+    .callout-title { font-weight: 700; margin-bottom: 7px; font-size: 0.93rem; }
+    .callout p, .callout ul { margin-bottom: 0; }
+
+    .formula-box { background: #1a1a2e; color: #e2e8f0; border-radius: 10px; padding: 22px 26px; margin: 22px 0; font-family: 'Courier New', monospace; font-size: 0.92rem; line-height: 1.8; }
+    .formula-box .formula-title { font-family: -apple-system, sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #f5576c; margin-bottom: 10px; }
+    .formula-box .highlight { color: #63f5c8; font-weight: 700; }
+
+    .goal-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+    .goal-card { border-radius: 10px; padding: 18px; text-align: center; border: 2px solid; }
+    .goal-card.loss { background: #fff0f3; border-color: #f5576c; }
+    .goal-card.maintain { background: #e8f5e9; border-color: #43a047; }
+    .goal-card.gain { background: #e3f2fd; border-color: #1e88e5; }
+    .goal-card .goal-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .goal-card h4 { font-size: 0.95rem; font-weight: 700; color: #0a2540; margin-bottom: 6px; }
+    .goal-card .goal-cal { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+    .goal-card.loss .goal-cal { color: #f5576c; }
+    .goal-card.maintain .goal-cal { color: #43a047; }
+    .goal-card.gain .goal-cal { color: #1e88e5; }
+    .goal-card p { font-size: 0.82rem; color: #555; margin: 0; }
+
+    .cta-box { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; border-radius: 12px; padding: 26px 30px; margin: 34px 0; text-align: center; }
+    .cta-box h3 { font-size: 1.15rem; margin-bottom: 8px; color: #fff; border: none; padding: 0; }
+    .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #fff; color: #b45309; font-weight: 700; padding: 11px 26px; border-radius: 6px; font-size: 0.93rem; }
+    .cta-btn:hover { text-decoration: none; opacity: 0.95; }
+
+    .steps { margin: 20px 0; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .step-num { background: #d97706; color: #fff; font-weight: 800; min-width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px; font-size: 0.95rem; }
+    .step-body h4 { font-size: 0.98rem; font-weight: 700; color: #0a2540; margin-bottom: 5px; }
+    .step-body p { margin: 0; color: #444; font-size: 0.93rem; }
+
+    .faq-item { border-bottom: 1px solid #eee; padding: 16px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-weight: 700; color: #0a2540; margin-bottom: 7px; font-size: 0.97rem; }
+    .faq-a { color: #444; font-size: 0.93rem; }
+
+    .share-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 28px 0; }
+    .share-bar span { font-weight: 600; color: #444; font-size: 0.88rem; }
+    .share-btn { display: inline-block; padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; color: #fff; text-decoration: none; }
+    .tw { background: #1da1f2; } .fb { background: #1877f2; } .li { background: #0077b5; } .wa { background: #25d366; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 14px; }
+    .related-card { border: 1px solid #e4e4e4; border-radius: 10px; padding: 16px; display: block; text-decoration: none; transition: box-shadow 0.2s; }
+    .related-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.1); text-decoration: none; }
+    .related-card h4 { font-size: 0.92rem; font-weight: 700; color: #0a2540; margin-bottom: 5px; }
+    .related-card p { font-size: 0.83rem; color: #666; margin: 0; }
+
+    footer { background: #0a2540; color: #8892b0; padding: 40px 24px 24px; }
+    .footer-grid { max-width: 960px; margin: 0 auto 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; }
+    .footer-col h4 { color: #ccd6f6; font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 6px; }
+    .footer-col a { color: #8892b0; font-size: 0.83rem; text-decoration: none; }
+    .footer-col a:hover { color: #ccd6f6; }
+    .footer-bottom { text-align: center; padding-top: 18px; border-top: 1px solid #1d3557; font-size: 0.8rem; }
+    .footer-bottom a { color: #8892b0; }
+
+    @media (max-width: 600px) {
+      nav { height: auto; padding: 10px 16px; flex-wrap: wrap; gap: 6px; } .nav-links { gap: 12px; flex-wrap: wrap; }
+      .hero { padding: 38px 16px 34px; }
+      .container { padding: 26px 16px 48px; }
+    }
+    details.practice { border: 1px solid #e4e4e4; border-radius: 8px; padding: 12px 16px; margin: 10px 0; background: #fafafa; }
+    details.practice summary { cursor: pointer; font-weight: 600; color: #0a2540; }
+    details.practice p { margin: 10px 0 0; }
+    .toc a { text-decoration: underline; }
+    h2[id], h3[id] { scroll-margin-top: 80px; }
+
+  </style>
+<style id="tp-style">
+.tp-hdr{background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);position:sticky;top:0;z-index:2000;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.4}
+.tp-hdr *{box-sizing:border-box}
+.tp-hdr-in{max-width:1200px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tp-logo{font-weight:800;font-size:1.3rem;color:#0f4c81;text-decoration:none;letter-spacing:-.02em}
+.tp-links{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+.tp-links a{color:#374151;text-decoration:none;font-weight:500;font-size:.95rem;padding:.25rem 0;border-bottom:2px solid transparent}
+.tp-links a:hover{color:#0f4c81;border-color:#0f4c81}
+.tp-burger{display:none;background:none;border:1px solid #d1d5db;border-radius:8px;font-size:1.3rem;padding:.2rem .6rem;cursor:pointer;color:#374151}
+@media(max-width:760px){.tp-burger{display:block}.tp-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb;flex-direction:column;gap:0;padding:.4rem 1.25rem .8rem}.tp-links.open{display:flex}.tp-links a{display:block;padding:.65rem 0;border-bottom:1px solid #f3f4f6}}
+.tp-share{max-width:1000px;margin:2rem auto 0;padding:1.1rem 1.25rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;text-align:center;color:#374151}
+.tp-share strong{display:block;margin-bottom:.6rem;font-size:1rem}
+.tp-share-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.tp-sb{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;border-radius:8px;border:0;font-size:.9rem;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.2}
+.tp-sb:hover{opacity:.9}.tp-x{background:#111827}.tp-fb{background:#1877f2}.tp-li{background:#0a66c2}.tp-wa{background:#128c4a}.tp-tg{background:#229ed9}.tp-cp{background:#4b5563}
+.tp-share small{display:block;margin-top:.5rem;color:#6b7280;min-height:1em}
+.tp-ftr{background:#111827;color:#d1d5db;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;margin-top:3rem;padding:2.2rem 1.25rem 1.5rem;line-height:1.6;font-size:.92rem}
+.tp-ftr-in{max-width:1200px;margin:0 auto}
+.tp-ftr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5rem}
+.tp-ftr h4{color:#fff;margin:0 0 .6rem;font-size:1rem}
+.tp-ftr ul{list-style:none;margin:0;padding:0}.tp-ftr li{margin:.3rem 0}
+.tp-ftr a{color:#cbd5e1;text-decoration:none}.tp-ftr a:hover{color:#fff;text-decoration:underline}
+.tp-ftr p{margin:.4rem 0;color:#9ca3af}
+.tp-ftr-bot{border-top:1px solid #374151;margin-top:1.5rem;padding-top:1rem;text-align:center;color:#9ca3af;font-size:.85rem}
+.tp-note{max-width:1000px;margin:1.5rem auto 0;padding:1rem 1.25rem;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:8px;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:.92rem;color:#374151;line-height:1.6}
+.tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
+@media print{.tp-hdr,.tp-share{display:none}}
+</style>
+<style id="tp-share-extra">.tp-rd{background:#ff4500}.tp-pn{background:#e60023}.tp-bs{background:#0085ff}</style>
+</head>
+<body>
+<div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
+
+
+
+
+<div class="breadcrumb">
+  <a href="https://toolpond.org/">Home</a> / <a href="https://toolpond.org/blog.html">Blog</a> / How to Calculate Age
+</div>
+
+<header class="hero">
+  <div class="badge">🎂 Dates &amp; Everyday Calculations</div>
+  <h1>How to Calculate Age in Days, Months and Years</h1>
+  <div class="meta"><span>📅 Updated November 15, 2026</span><span>⏱️ 10 min read</span><span>✍️ ToolPond</span></div>
+  <p class="subtitle">Whole years first, then months, then days. Learn the method, the month-end rule and the formulas, with worked examples and practice problems.</p>
+</header>
+
+<main class="container">
+  <article>
+
+<p><strong>Calculating age sounds easy until you need it in months, days or on a specific date.</strong> This guide shows how to do all of it by hand, with worked examples, a rule for tricky month-ends, ready-made spreadsheet formulas and practice problems. When you just want the answer, the free <a href="https://toolpond.org/age-calculator.html">age calculator</a> does it instantly and also lets you pick any date to measure to.</p>
+
+<div class="formula-box" id="quick-answer" style="margin:18px 0"><div class="formula-title">⚡ Quick answer</div><p style="margin:0"><strong>Age = completed years + completed months + remaining days.</strong> Subtract the birth year from the current year (minus 1 if the birthday has not happened yet), then count forward from the last birthday in whole months, then days. Example: 15 May 1990 to 8 October 2026 = <strong>36 years, 4 months, 23 days</strong>.</p></div>
+
+<div class="toc" role="navigation" aria-label="On this page"><h3>📑 On this page</h3><ol><li><a href="#years">Age in years</a></li><li><a href="#ymd">Years, months and days</a></li><li><a href="#days">Age in days</a></li><li><a href="#weeks-hours">Weeks, hours and seconds</a></li><li><a href="#specific-date">Age on a specific date</a></li><li><a href="#month-end">The month-end rule</a></li><li><a href="#leap">Leap years</a></li><li><a href="#spreadsheets">Excel, Google Sheets and code</a></li><li><a href="#practice">Practice problems</a></li><li><a href="#faq">FAQ</a></li></ol></div>
+
+<h2 id="years">How to calculate age in years</h2>
+<div class="formula-box"><div class="formula-title">📐 Formula</div>Age in years = <span class="highlight">current year − birth year</span>, minus 1 if the birthday has not yet occurred this year</div>
+<p>Someone born on 12 March 2000 is 26 on 12 March 2026 and for the rest of that year. On 1 January 2026 they are still 25, because the 2000 → 2026 year gap is 26 but the March birthday has not arrived. Forgetting that last adjustment is the most common mistake.</p>
+
+<h2 id="ymd">How to calculate age in years, months and days</h2>
+<p>To get a precise age, add two more steps after the years.</p>
+<ol>
+<li><strong>Find the last birthday</strong> on or before the date you are measuring to.</li>
+<li><strong>Count whole months</strong> from that birthday until the same day-of-month is reached again, without going past the end date.</li>
+<li><strong>Count the remaining days</strong> from that point to the end date.</li>
+</ol>
+<p><strong>Example: 15 May 1990 to 8 October 2026.</strong> The last birthday is 15 May 2026, so the age is 36 years. From 15 May to 15 September is 4 whole months. From 15 September to 8 October is 15 days left in September plus 8 days in October, so 23 days. The answer is <strong>36 years, 4 months, 23 days</strong>.</p>
+<div class="callout callout-tip"><div class="callout-title">💡 Borrowing days</div><p>If the end day-of-month is smaller than the birth day-of-month, you cannot get a full month from the last matching date. Step back one month and count the days from there instead. Born 28 November 1995, measured on 5 March 2026: 30 years, then 3 months to 28 February 2026, then 5 days to 5 March, giving <strong>30 years, 3 months, 5 days</strong>.</p></div>
+
+<h2 id="days">How to calculate age in days</h2>
+<p>Age in days is the number of calendar days between two dates. It is the cleanest measure because it ignores uneven month lengths.</p>
+<ol>
+<li>Count the days left in the birth month after the birth day.</li>
+<li>Add the days of every full month between the two dates.</li>
+<li>Add the day number of the end date within its month.</li>
+<li>Add 365 or 366 for every full year, using 366 for leap years.</li>
+</ol>
+<p>Done by hand, this is error-prone over decades, which is why most people use a date function or the <a href="https://toolpond.org/age-calculator.html">age calculator</a>. For reference, 15 May 1990 to 8 October 2026 is <strong>13,295 days</strong>. Do not shortcut with years × 365: for an adult that is several days short because leap days are left out. Use the average of 365.2425 days a year only for estimates.</p>
+
+<h2 id="weeks-hours">Age in weeks, hours, minutes and seconds</h2>
+<p>Everything else is a conversion from total days.</p>
+<div class="table-wrap"><table><thead><tr><th>Unit</th><th>How to get it</th><th>For 13,295 days</th></tr></thead><tbody>
+<tr><td>Weeks</td><td>Total days ÷ 7 (round down)</td><td>1,899 weeks and 2 days</td></tr>
+<tr><td>Hours</td><td>Total days × 24</td><td>319,080 hours</td></tr>
+<tr><td>Minutes</td><td>Total days × 1,440</td><td>19,144,800 minutes</td></tr>
+<tr><td>Seconds</td><td>Total days × 86,400</td><td>1,148,688,000 seconds</td></tr>
+</tbody></table></div>
+<p>These figures assume you count from midnight at the start of the birth date. Add the hours since midnight today for a "to the minute" figure. If you know your birth time and time zone you can be more exact, but the day-based number is usually all you need.</p>
+
+<h2 id="specific-date">How to calculate age on a specific date</h2>
+<p>Replace "today" with the date you care about and use the same steps. This matters for school entry dates, application deadlines, eligibility rules and "as of" fields on forms. Always use the date the organisation publishes, because cut-offs differ by school, region and sport. In the <a href="https://toolpond.org/age-calculator.html#age-on-date">age calculator</a>, type that date into the "Age at the date of" box and read the result.</p>
+
+<h2 id="month-end">The month-end rule for 29th, 30th and 31st birthdays</h2>
+<p>A birth day of 29, 30 or 31 has no match in some months. The simplest consistent rule is to <strong>use the last day of the shorter month</strong>. Under that rule, someone born on 31 January reaches "1 month" on 28 February (or 29 in a leap year), "2 months" on 31 March, "3 months" on 30 April and so on. The rule keeps month counts moving forward and never skips a month. Other tools may round differently, which is one reason two calculators can disagree by a day or two at month-ends.</p>
+
+<h2 id="leap">Leap years and 29 February</h2>
+<p>A year is a leap year if it is divisible by 4, except century years, which must also be divisible by 400. So 2000 and 2024 are leap years while 1900 and 2100 are not. A leap year has 366 days, which is why the calendar averages 365.2425 days a year.</p>
+<p>People born on 29 February are sometimes called leaplings. In non-leap years their birthday is observed on 28 February or 1 March, depending on the person and, for legal purposes, the country. The age calculator counts 28 February. If a legal deadline depends on it, check the local rule.</p>
+
+<h2 id="spreadsheets">Age formulas for Excel, Google Sheets and code</h2>
+<p>With the date of birth in cell A2:</p>
+<div class="table-wrap"><table><thead><tr><th>Goal</th><th>Formula</th></tr></thead><tbody>
+<tr><td>Completed years</td><td><code>=DATEDIF(A2,TODAY(),"Y")</code></td></tr>
+<tr><td>Months after the last birthday</td><td><code>=DATEDIF(A2,TODAY(),"YM")</code></td></tr>
+<tr><td>Days after the last full month</td><td><code>=DATEDIF(A2,TODAY(),"MD")</code></td></tr>
+<tr><td>Total days</td><td><code>=TODAY()-A2</code></td></tr>
+<tr><td>Age on a date in B2</td><td><code>=DATEDIF(A2,B2,"Y")</code></td></tr>
+</tbody></table></div>
+<p>DATEDIF works in both Excel and Google Sheets, but its "MD" unit is known to give unexpected results around month-ends, so cross-check important results. In Python, <code>dateutil.relativedelta</code> returns years, months and days between two dates, and subtracting two <code>date</code> objects gives total days.</p>
+
+<h2 id="practice">Practice problems</h2>
+<p>Try each one first, then open the answer.</p>
+<details class="practice"><summary>1. How old is someone born on 12 March 2000 on 1 January 2026?</summary><p><strong>25 years, 9 months, 20 days</strong> (9,426 days). The birthday has not happened yet in 2026.</p></details>
+<details class="practice"><summary>2. How many days are there from 1 January 2024 to 1 January 2025?</summary><p><strong>366 days.</strong> 2024 is a leap year.</p></details>
+<details class="practice"><summary>3. Born 31 January 2020: what is the age on 28 February 2020?</summary><p><strong>0 years, 0 months, 28 days.</strong> Under the month-end rule the first month completes on 29 February 2020, so 28 February is still 28 days.</p></details>
+<details class="practice"><summary>4. Born 29 February 2004: what is the age on 28 February 2026 and on 1 March 2026?</summary><p><strong>22 years, 0 months, 0 days</strong> on 28 February 2026 and <strong>22 years, 0 months, 1 day</strong> on 1 March 2026. Treating 28 February as the birthday in non-leap years, the 22nd birthday falls on 28 February 2026. Some jurisdictions use 1 March instead, so check the local rule for legal purposes.</p></details>
+<details class="practice"><summary>5. Born 31 August 1985: what is the age on 14 November 2026?</summary><p><strong>41 years, 2 months, 14 days</strong> (15,050 days).</p></details>
+
+<div class="cta-box"><h3>🎂 Check your own age</h3><p>Enter your date of birth and any date to see years, months, days, weeks, hours and your next birthday.</p><a href="https://toolpond.org/age-calculator.html" class="cta-btn">Open the age calculator →</a></div>
+
+<h2>Conclusion</h2>
+<p>Whole years first, then whole months, then days: that order gives a correct age every time. Add a clear month-end rule, remember leap years, and use total days when you need to compare ages precisely. For an age that follows a different counting tradition, read <a href="https://toolpond.org/blog/western-vs-korean-age-explained.html">Western vs Korean age explained</a>.</p>
+
+<h2>📚 Related articles</h2>
+<div class="related-grid">
+  <a class="related-card" href="https://toolpond.org/blog/western-vs-korean-age-explained.html"><h4>Western vs Korean Age Explained</h4><p>Why one person can have two ages.</p></a>
+  <a class="related-card" href="https://toolpond.org/blog/how-to-calculate-pregnancy-due-date.html"><h4>How to Calculate a Pregnancy Due Date</h4><p>Weeks, trimesters and due-date methods.</p></a>
+  <a class="related-card" href="https://toolpond.org/blog/how-to-calculate-percentage.html"><h4>How to Calculate Percentages</h4><p>Formulas and worked examples.</p></a>
+</div>
+
+    <h2 id="faq">Frequently asked questions</h2>
+    <div class="faq-item"><div class="faq-q">How do you calculate age in years, months and days?</div><div class="faq-a">Subtract the birth year from the current year, subtract 1 if the birthday has not happened yet, then count whole months from the last birthday and finally the remaining days. Example: 15 May 1990 to 8 October 2026 is 36 years, 4 months and 23 days.</div></div><div class="faq-item"><div class="faq-q">How do you calculate age in days between two dates?</div><div class="faq-a">Subtract the earlier date from the later one. In a spreadsheet, enter =B2-A2 with the dates in cells A2 and B2. By hand, count the days left in the start month, add the full months in between, then add the days in the final month.</div></div><div class="faq-item"><div class="faq-q">How do you calculate someone's age on a specific date?</div><div class="faq-a">Use that date in place of today. Subtract the birth year from the year of that date, subtract 1 if the birthday falls after the date in that year, then count months and days forward from the last birthday before it.</div></div><div class="faq-item"><div class="faq-q">How many days are in a year when calculating age?</div><div class="faq-a">A common year has 365 days and a leap year has 366. Over the long run the Gregorian calendar averages 365.2425 days a year, so multiplying years by 365 under-counts the days of an adult by several days.</div></div><div class="faq-item"><div class="faq-q">What is the DATEDIF formula for age in Excel or Google Sheets?</div><div class="faq-a">=DATEDIF(A2,TODAY(),"Y") gives completed years, "YM" gives the remaining months and "MD" gives the remaining days. The "MD" unit can give odd results around month-ends, so many people prefer an age calculator for edge cases.</div></div><div class="faq-item"><div class="faq-q">Why does age in months sometimes look wrong at month-ends?</div><div class="faq-a">Months have different lengths, so a birth day of 29, 30 or 31 has no match in shorter months. The usual fix is to treat the last day of the shorter month as the matching day, so 31 January plus 1 month is 28 or 29 February.</div></div>
+  </article>
+</main>
+
+<div class="tp-share" role="group" aria-label="Share this page"><strong>Share this guide</strong><div class="tp-share-row" data-u="https://toolpond.org/blog/how-to-calculate-age-in-days-months-and-years.html" data-t="How to Calculate Age in Days, Months and Years"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button&amp;text=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dlinkedin%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years%20https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dwhatsapp%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dtelegram%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button&amp;text=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years" target="_blank" rel="noopener noreferrer">Telegram</a><a class="tp-sb tp-rd" href="https://www.reddit.com/submit?url=https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dreddit%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button&amp;title=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years" target="_blank" rel="noopener noreferrer">Reddit</a><a class="tp-sb tp-pn" href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dpinterest%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button&amp;description=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years" target="_blank" rel="noopener noreferrer">Pinterest</a><a class="tp-sb tp-x" href="https://www.threads.net/intent/post?text=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years%20https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dthreads%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button" target="_blank" rel="noopener noreferrer">Threads</a><a class="tp-sb tp-bs" href="https://bsky.app/intent/compose?text=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years%20https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Dbluesky%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button" target="_blank" rel="noopener noreferrer">Bluesky</a><a class="tp-sb tp-cp" href="mailto:?subject=How%20to%20Calculate%20Age%20in%20Days,%20Months%20and%20Years&amp;body=https%3A%2F%2Ftoolpond.org%2Fblog%2Fhow-to-calculate-age-in-days-months-and-years.html%3Futm_source%3Demail%26utm_medium%3Dsocial%26utm_campaign%3Dshare_button" target="_blank" rel="noopener noreferrer">Email</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/blog/how-to-calculate-age-in-days-months-and-years.html" data-title="How to Calculate Age in Days, Months and Years" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url')+'?utm_source=copy&amp;utm_medium=social&amp;utm_campaign=share_button';function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button><button class="tp-sb tp-cp" type="button" style="display:none" data-more onclick="navigator.share({title:this.parentNode.getAttribute('data-t'),url:this.parentNode.getAttribute('data-u')+'?utm_source=share&amp;utm_medium=social&amp;utm_campaign=share_button'}).catch(function(){})">More…</button></div><small role="status" aria-live="polite"></small><script>(function(){if(navigator.share){var b=document.querySelector(".tp-share [data-more]");if(b)b.style.display="inline-flex"}})()</script></div>
+<footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+
+</body>
+</html>
