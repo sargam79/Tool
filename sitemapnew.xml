@@ -252,7 +252,7 @@
 </url>
 <url>
 <loc>https://toolpond.org/age-calculator.html</loc>
-<lastmod>2026-10-08</lastmod>
+<lastmod>2026-11-15</lastmod>
 <priority>0.75</priority>
 </url>
 <url>
@@ -417,7 +417,7 @@
        ============================================   -->
 <url>
 <loc>https://toolpond.org/blog.html</loc>
-<lastmod>2026-11-14</lastmod>
+<lastmod>2026-11-15</lastmod>
 <priority>0.7</priority>
 </url>
 <url>
@@ -448,6 +448,16 @@
 <url>
 <loc>https://toolpond.org/blog/macros-breakdown-guide.html</loc>
 <lastmod>2026-11-13</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/how-to-calculate-age-in-days-months-and-years.html</loc>
+<lastmod>2026-11-15</lastmod>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://toolpond.org/blog/western-vs-korean-age-explained.html</loc>
+<lastmod>2026-11-15</lastmod>
 <priority>0.6</priority>
 </url>
 <url>
