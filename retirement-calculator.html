@@ -481,6 +481,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-top:1.5rem">
                         <p style="color:#4b5563;margin-bottom:0.5rem"><strong>💡 Important:</strong> This is an estimate based on your inputs. Actual returns vary yearly. Review and adjust your plan annually.</p>
+                        <p style="color:#4b5563;margin-bottom:0.5rem"><strong>How it is calculated:</strong> Savings grow at your annual return, with each year's contribution added at the start of the year. Expenses are raised by your inflation rate until retirement. The amount needed is 25 times the annual shortfall (the 4% rule). The calculator does not model taxes, fees or changing returns.</p>
                         <p style="color:#4b5563"><strong>Safety Tip:</strong> If results show shortfall, increase savings rate, delay retirement, or reduce expected expenses. Even small increases make a big difference.</p>
                     </div>
                 </div>
@@ -639,26 +640,27 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         <!-- Real Examples -->
         <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
             <h2 style="color:var(--dark);margin-bottom:1.5rem">Real Retirement Planning Examples</h2>
+            <p style="color:#4b5563;margin-bottom:1rem">Figures below use this calculator's method: 7% return, contributions at the start of each year, before inflation.</p>
             
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Early Retiree (Age 35, FIRE Goal)</h3>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Goal:</strong> Retire at 50 with $50,000/year</p>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Plan:</strong> Save $30,000/year for 15 years, 7% returns, $100,000 starting</p>
-                <p style="color:#4b5563"><strong>Result:</strong> ~$833,000 at retirement (enough with 4% rule: $33,320/year plus $20k SS = $53k)</p>
+                <p style="color:#4b5563"><strong>Result:</strong> about $1.08 million at retirement. The 4% rule gives roughly $43,300 a year, plus $20,000 of Social Security or pension, so about $63,000 a year against the $50,000 goal.</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Average Worker (Age 30, Retire at 67)</h3>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Goal:</strong> Retire at 67 with $60,000/year</p>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Plan:</strong> Save $15,000/year for 37 years, 7% returns, $50,000 starting</p>
-                <p style="color:#4b5563"><strong>Result:</strong> ~$2.5M at retirement (4% rule: $100k/year, comfortable lifestyle)</p>
+                <p style="color:#4b5563"><strong>Result:</strong> about $3.18 million at retirement. The 4% rule gives roughly $127,000 a year before inflation, comfortably above the $60,000 goal.</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: Late Start (Age 45, Retire at 67)</h3>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Goal:</strong> Retire at 67 with $60,000/year</p>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Plan:</strong> Save $30,000/year for 22 years, 7% returns, $200,000 starting</p>
-                <p style="color:#4b5563"><strong>Result:</strong> ~$2M at retirement (catch-up contributions help offset late start)</p>
+                <p style="color:#4b5563"><strong>Result:</strong> about $718,000 at retirement. The 4% rule gives roughly $28,700 a year before inflation, so a late start needs higher savings, a later retirement age or lower spending.</p>
             </div>
         </div>
 
@@ -715,7 +717,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
             // Update results
             document.getElementById('projectedSavings').textContent = '$' + Math.round(projectedSavings).toLocaleString();
             document.getElementById('totalNeeded').textContent = '$' + Math.round(fourPercentRule).toLocaleString();
-            document.getElementById('surplus').textContent = '$' + Math.round(surplus).toLocaleString();
+            document.getElementById('surplus').textContent = (surplus < 0 ? '-$' : '$') + Math.abs(Math.round(surplus)).toLocaleString();
             document.getElementById('yearsRetirement').textContent = yearsInRetirement;
             
             document.getElementById('yearsUntilRetirement').textContent = yearsUntilRetirement;
