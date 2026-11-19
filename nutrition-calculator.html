@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (GA4) -->
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
-gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
-
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="srQZGhXHmQzBnzWqOZOttu-hiXWULTA9sH76xsU2rxo" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
@@ -15,8 +9,8 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     <meta charset="UTF-8">
     <meta name="google-adsense-account" content="ca-pub-7280526621945427">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Calculator: Food Calories &amp; Meal Macros (Free)</title>
-    <meta name="description" content="Food calorie and meal macro calculator: search 60 foods, enter grams or servings, and total calories, protein, carbs, fat and fiber per meal. Free, no signup.">
+    <title>Nutrition Calculator: Calories, Protein, Carbs &amp; Fat</title>
+    <meta name="description" content="Free nutrition calculator with 60 foods built in. Search a food, enter grams or servings, and get calories, protein, carbs, fat, fiber and net carbs.">
     <meta name="author" content="ToolPond">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://toolpond.org/nutrition-calculator.html">
@@ -24,14 +18,14 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/nutrition-calculator.html">
-    <meta property="og:title" content="Nutrition Calculator: Food Calories &amp; Meal Macros (Free)">
-    <meta property="og:description" content="Food calorie and meal macro calculator: search 60 foods, enter grams or servings, and total calories, protein, carbs, fat and fiber per meal. Free, no signup.">
+    <meta property="og:title" content="Nutrition Calculator: Calories, Protein, Carbs &amp; Fat">
+    <meta property="og:description" content="Free nutrition calculator with 60 foods built in. Search a food, enter grams or servings, and get calories, protein, carbs, fat, fiber and net carbs.">
     <meta property="og:site_name" content="ToolPond">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nutrition Calculator: Food Calories &amp; Meal Macros (Free)">
-    <meta name="twitter:description" content="Food calorie and meal macro calculator: search 60 foods, enter grams or servings, and total calories, protein, carbs, fat and fiber per meal. Free, no signup.">
+    <meta name="twitter:title" content="Nutrition Calculator: Calories, Protein, Carbs &amp; Fat">
+    <meta name="twitter:description" content="Free nutrition calculator with 60 foods built in. Search a food, enter grams or servings, and get calories, protein, carbs, fat, fiber and net carbs.">
 
     <script type="application/ld+json">
 {
@@ -47,7 +41,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
   },
   "description": "Free browser-based nutrition calculator with a built-in food list. Get calories, protein, carbs, fat, fiber and net carbs for any meal or day, with calorie and macro goals.",
   "url": "https://toolpond.org/nutrition-calculator.html",
-  "dateModified": "2026-10-28",
+  "dateModified": "2026-10-06",
   "featureList": "Searchable food list, Grams or servings, Calories protein carbs fat, Fiber and net carbs, Daily calorie and macro goals, Custom foods, Saved in your browser, No signup"
 }
     </script>
@@ -229,7 +223,7 @@ details.custom summary{cursor:pointer;font-weight:600;color:var(--dark)}
 
 <div class="tool-header">
   <div class="container">
-    <h1>Nutrition Calculator: Food Calories &amp; Meal Macros</h1>
+    <h1>Nutrition Calculator</h1>
     <p>Calories, protein, carbs, fat, fiber and net carbs for any meal or day</p>
     <p style="opacity:0.9">Search a food • Enter grams or servings • Track your daily goal</p>
   </div>
@@ -298,7 +292,7 @@ details.custom summary{cursor:pointer;font-weight:600;color:var(--dark)}
     <div class="nutri-grid" style="margin-top:1rem">
       <div>
         <label class="input-label" for="goalKcal">Calorie target per day</label>
-        <input type="number" id="goalKcal" class="input-field" value="2000" min="500" max="10000" step="any" inputmode="numeric">
+        <input type="number" id="goalKcal" class="input-field" value="2000" min="500" max="10000" step="10" inputmode="numeric">
         <p class="note" style="margin-top:.4rem">Not sure? Use the <a href="calorie-calculator.html">calorie calculator</a> or read <a href="blog/daily-calorie-needs.html">how to calculate daily calorie needs</a>.</p>
       </div>
       <div>
@@ -356,17 +350,6 @@ details.custom summary{cursor:pointer;font-weight:600;color:var(--dark)}
       <li><strong>Set your goal</strong> and watch the bars. Orange means you went over that target.</li>
       <li><strong>Missing a food?</strong> Add it with the numbers from its label.</li>
     </ul>
-  </div>
-
-  <div class="content-section">
-    <h2>Meal macro calculator: a high-protein meal example</h2>
-    <p>To work out the macros of a whole meal, add each food and read the running total. For a simple high-protein meal such as one often used in bodybuilding or muscle-gain plans, add 150 g of cooked chicken breast and 1 cup (158 g) of cooked white rice:</p>
-    <div class="table-wrap"><table><thead><tr><th>Food</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th></tr></thead><tbody>
-      <tr><td>Chicken breast, cooked, 150 g</td><td>248</td><td>46.5</td><td>0</td><td>5.4</td></tr>
-      <tr><td>White rice, cooked, 1 cup (158 g)</td><td>205</td><td>4.3</td><td>44.6</td><td>0.5</td></tr>
-      <tr><td><strong>Meal total</strong></td><td><strong>453</strong></td><td><strong>50.8</strong></td><td><strong>44.6</strong></td><td><strong>5.9</strong></td></tr>
-    </tbody></table></div>
-    <p>Using 4 calories per gram for protein and carbs and 9 for fat, that meal splits into roughly 47% protein, 41% carbs and 12% fat. Add a food in the calculator above to see your own meal total and compare it with your daily goal. For a daily target, use the <a href="/calorie-calculator.html">calorie calculator</a> and the <a href="/macros-calculator.html">macros calculator</a>.</p>
   </div>
 
   <div class="content-section">
@@ -431,11 +414,7 @@ details.custom summary{cursor:pointer;font-weight:600;color:var(--dark)}
 </div>
 </div>
 
-<section class="tp-note" id="sources-verification" aria-label="Sources and verification"><h2>Sources &amp; verification</h2><p><strong>Method.</strong> Each food in the list has calories, protein, carbohydrate, fat and fiber per 100 g. The tool multiplies those values by the amount you enter (grams ÷ 100) and adds up your log. Food values are typical figures from USDA FoodData Central, the U.S. Department of Agriculture's food composition database, managed by the Agricultural Research Service and hosted by the National Agricultural Library: <a href="https://fdc.nal.usda.gov/" rel="noopener">USDA FoodData Central</a>. Calories per gram used for the macro split are 4 for protein and carbohydrate and 9 for fat.</p>
-<p><strong>Worked example.</strong> 150 g of cooked, skinless chicken breast (165 kcal, 31 g protein, 0 g carbs, 3.6 g fat per 100 g): 165 × 1.5 = <strong>247.5 kcal</strong>, 46.5 g protein, 0 g carbs and 5.4 g fat. The built-in list is limited to about 60 common foods.</p>
-
-<p><strong>Limits.</strong> Real foods vary by brand, ripeness, cooking method and cut, and the list is not a full database. Use the nutrition label on a package for exact figures. This is general information, not medical or nutrition advice, and the tool was built by <a href="/shahid-abbas.html">Shahid Abbas</a>, a developer, not a dietitian.</p><p><small>Formula, figures and worked example last checked: November 18, 2026, by running this tool with the example inputs. Found a mistake? <a href="/contact.html">Contact us</a>.</small></p></section>
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Adds up approximate nutrition values for common foods. Real values vary by brand, preparation and portion size. Check food labels for exact figures, and ask a dietitian for personal nutrition advice.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html&amp;text=Nutrition%20Calculator%3A%20Calories%2C%20Protein%2C%20Carbs%20%26%20Fat" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Nutrition%20Calculator%3A%20Calories%2C%20Protein%2C%20Carbs%20%26%20Fat%20https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html&amp;text=Nutrition%20Calculator%3A%20Calories%2C%20Protein%2C%20Carbs%20%26%20Fat" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/nutrition-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+<aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Adds up approximate nutrition values for common foods. Real values vary by brand, preparation and portion size. Check food labels for exact figures, and ask a dietitian for personal nutrition advice.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html&amp;text=Nutrition%20Calculator%3A%20Calories%2C%20Protein%2C%20Carbs%20%26%20Fat" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Nutrition%20Calculator%3A%20Calories%2C%20Protein%2C%20Carbs%20%26%20Fat%20https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fnutrition-calculator.html&amp;text=Nutrition%20Calculator%3A%20Calories%2C%20Protein%2C%20Carbs%20%26%20Fat" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/nutrition-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
 <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 

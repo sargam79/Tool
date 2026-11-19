@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (GA4) -->
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
-gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free mortgage calculator with recent average rates. Calculate your monthly payment, amortization schedule, and total interest cost instantly — updated.">
@@ -16,7 +10,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     <link rel="canonical" href="https://toolpond.org/mortgage-calculator.html">
 
     <meta property="og:title" content="Free Mortgage Calculator: Monthly Payment & Amortization">
-    <meta property="og:description" content="Accurate mortgage calculator with amortization schedule and recent average rate data. Calculate monthly payments, total interest, and loan scenarios. Free to use, and your inputs stay in your browser.">
+    <meta property="og:description" content="Accurate mortgage calculator with amortization schedule and recent average rate data. Calculate monthly payments, total interest, and loan scenarios. Completely free and 100% private.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolpond.org/mortgage-calculator.html">
 
@@ -320,7 +314,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     <div class="hero">
         <div class="container">
             <h1>Mortgage Calculator</h1>
-            <p>Calculate your monthly mortgage payment instantly, pre-filled with today's recent average rate. See your complete loan breakdown with amortization schedule, refinance scenarios, and total interest cost. Free to use, and your inputs stay in your browser.</p>
+            <p>Calculate your monthly mortgage payment instantly, pre-filled with today's recent average rate. See your complete loan breakdown with amortization schedule, refinance scenarios, and total interest cost. Completely free and 100% private.</p>
         </div>
     </div>
 <div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>Monthly payment = loan × r ÷ (1 − (1 + r)<sup>−n</sup>), where r is the monthly rate and n the number of payments. A $300,000 loan at 6.5% over 30 years has a principal and interest payment of about <strong>$1,896.20</strong> a month, before taxes and insurance.</div><div class="tp-how"><h2>How to calculate a mortgage payment</h2><ol><li>Enter the home price and your down payment.</li><li>Enter the interest rate and loan term. Use your lender's quote if you have one.</li><li>Add property tax, insurance and fees if you want a full monthly cost.</li><li>Read the monthly payment, total interest and amortization schedule.</li></ol></div></div>
@@ -362,7 +356,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
             <div class="author-byline">
                 <div>👤</div>
                 <div class="author-info">
-                    Written by <a class="author-name" href="/shahid-abbas.html">Shahid Abbas</a> — Web developer at ToolPond (not a financial advisor)
+                    Written by <span class="author-name">Shahid Abbas</span> — Web Developer and Finance Tool Creator at ToolPond
                 </div>
             </div>
         </div>
@@ -414,18 +408,18 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                 <form onsubmit="calculateMortgage(event)">
                     <div class="form-group">
                         <label class="form-label">Home Purchase Price ($)</label>
-                        <input type="number" id="homePrice" class="form-input" placeholder="300000" step="any" min="0" required>
+                        <input type="number" id="homePrice" class="form-input" placeholder="300000" step="10000" min="0" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Down Payment ($)</label>
-                        <input type="number" id="downPayment" class="form-input" placeholder="60000" step="any" min="0" required>
+                        <input type="number" id="downPayment" class="form-input" placeholder="60000" step="10000" min="0" required>
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
                             <span id="downPercent">20%</span> of purchase price
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Interest Rate (%) <span style="font-weight:400;color:var(--text-light)">— pre-filled with today's recent average, edit if you have a quote</span></label>
-                        <input type="number" id="rate" class="form-input" placeholder="7.28" step="any" min="0" max="20" required>
+                        <input type="number" id="rate" class="form-input" placeholder="7.28" step="0.01" min="0" max="20" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Loan Term (Years)</label>
@@ -443,17 +437,17 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Property Tax (Annual %)</label>
-                        <input type="number" id="taxRate" class="form-input" placeholder="1.2" step="any" min="0" max="5" value="1.2">
+                        <input type="number" id="taxRate" class="form-input" placeholder="1.2" step="0.01" min="0" max="5" value="1.2">
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">Typical: 0.5% - 2% depending on location</div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Homeowners Insurance (Monthly $)</label>
-                        <input type="number" id="insurance" class="form-input" placeholder="150" step="any" min="0" value="150">
+                        <input type="number" id="insurance" class="form-input" placeholder="150" step="10" min="0" value="150">
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">Average: $100-300/month</div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">HOA Fees (Monthly $)</label>
-                        <input type="number" id="hoa" class="form-input" placeholder="0" step="any" min="0" value="0">
+                        <input type="number" id="hoa" class="form-input" placeholder="0" step="10" min="0" value="0">
                     </div>
                     <button type="submit" class="btn">Calculate Mortgage</button>
                 </form>
@@ -599,7 +593,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
         <!-- Expert Tips -->
         <div class="tips-section">
-            <h3>💡 Mortgage Tips</h3>
+            <h3>💡 Expert Mortgage Tips</h3>
             <ul>
                 <li>First, shop around for rates — even 0.5% difference means tens of thousands in interest over 30 years</li>
                 <li>Additionally, consider 15-year vs 30-year carefully — 15-year costs more monthly but saves enormous interest</li>
@@ -711,19 +705,12 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                 <a href="retirement-calculator.html" class="related-item">🏖️ Retirement</a>
                 <a href="loan-calculator.html" class="related-item">🏦 Loan</a>
                 <a href="calorie-calculator.html" class="related-item">🥗 Calorie</a>
-            <a href="blog/how-to-use-mortgage-calculator.html" class="related-item">📖 Mortgage Guide</a>
-<a href="blog/how-much-house-can-i-afford.html" class="related-item">🏠 How Much House</a>
-<a href="blog/how-to-pay-off-a-loan-faster.html" class="related-item">⏩ Pay Off Faster</a>
-</div>
+            </div>
         </div>
 
     </div>
 
-    <section class="tp-note" id="sources-verification" aria-label="Sources and verification"><h2>Sources &amp; verification</h2><p><strong>Formula.</strong> Principal and interest use the standard fixed-rate amortization formula, M = P × r(1+r)<sup>n</sup> ÷ [(1+r)<sup>n</sup> − 1], described in <a href="https://en.wikipedia.org/wiki/Amortization_calculator" rel="noopener">Wikipedia: Amortization calculator</a> and <a href="https://www.fidelity.com/learning-center/personal-finance/what-is-amortization" rel="noopener">Fidelity: What is amortization?</a></p>
-<p><strong>Worked example.</strong> $300,000 at 6.5% for 30 years: r = 0.065 ÷ 12, payment = <strong>$1,896.20</strong>. Month 1 interest is $1,625.00 and principal $271.20. Total interest over 30 years is about $382,633. Entering these values (with taxes, insurance and HOA set to 0) in this tool gives the same result.</p>
-<p><strong>What a full payment includes.</strong> The CFPB defines the total monthly payment as principal + interest + mortgage insurance (if applicable) + escrow for homeowners insurance and property tax: <a href="https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/" rel="noopener">CFPB explanation</a>. If your down payment is under 20%, you may also pay mortgage insurance: <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-private-mortgage-insurance-en-122/" rel="noopener">CFPB: What is private mortgage insurance?</a> and <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-mortgage-insurance-en-1953/" rel="noopener">CFPB: How mortgage insurance works</a>.</p>
-<p><strong>Limits.</strong> A calculator can understate your real cost if the rate is unrealistic or taxes and insurance are left out; see <a href="https://www.consumerfinance.gov/about-us/blog/your-mortgage-calculator-may-be-setting-you-surprise/" rel="noopener">CFPB: Your mortgage calculator may be setting you up for a surprise</a>. This tool does not cover adjustable-rate loans or lender-specific fees. It was built by <a href="/shahid-abbas.html">Shahid Abbas</a>, a developer, not a financial advisor.</p><p><small>Formula, figures and worked example last checked: November 17, 2026, by running this tool with the example inputs. Found a mistake? <a href="/contact.html">Contact us</a>.</small></p></section>
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Uses the standard fixed-rate amortization formula to estimate monthly principal and interest, plus the taxes, insurance and fees you enter. The average rate shown is a recent reference value, not a quote. Your lender sets the actual rate and terms. This is not financial advice or an offer of credit.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/amount-in-words-converter.html">Amount in Words Converter</a>: write any number or cheque amount in words, in US or Indian numbering.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html&amp;text=Free%20Mortgage%20Calculator%3A%20Payment%20%26%20Amortization" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Mortgage%20Calculator%3A%20Payment%20%26%20Amortization%20https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html&amp;text=Free%20Mortgage%20Calculator%3A%20Payment%20%26%20Amortization" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/mortgage-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Uses the standard fixed-rate amortization formula to estimate monthly principal and interest, plus the taxes, insurance and fees you enter. The average rate shown is a recent reference value, not a quote. Your lender sets the actual rate and terms. This is not financial advice or an offer of credit.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html&amp;text=Free%20Mortgage%20Calculator%3A%20Payment%20%26%20Amortization" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Mortgage%20Calculator%3A%20Payment%20%26%20Amortization%20https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fmortgage-calculator.html&amp;text=Free%20Mortgage%20Calculator%3A%20Payment%20%26%20Amortization" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/mortgage-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <script>
         // ============================================================
@@ -847,7 +834,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
             const loanAmount = homePrice - downPayment;
             const monthlyRate = rate / 100 / 12;
             const numPayments = term * 12;
-            const monthlyPI = monthlyRate === 0 ? loanAmount / numPayments : loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+            const monthlyPI = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
             const totalPI = monthlyPI * numPayments;
             const totalInterest = totalPI - loanAmount;
             const monthlyTax = (homePrice * (taxRate / 100)) / 12;

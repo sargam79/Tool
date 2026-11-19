@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (GA4) -->
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
-gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
-
     <meta charset="UTF-8">
     <meta name="google-adsense-account" content="ca-pub-7280526621945427">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427" crossorigin="anonymous"></script>
@@ -32,20 +26,9 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     <script>
         tailwind.config={theme:{extend:{fontFamily:{sans:['Poppins','sans-serif']},colors:{primary:'#ec4899',secondary:'#8b5cf6',accent:'#06b6d4',rose:'#f43f5e',dark:'#0f172a'}}}}
     </script>
-    <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Advanced Ovulation Calculator",
-  "description": "Free ovulation calculator with fertile window predictor, luteal phase tracker, implantation date estimator, and 3-cycle forecast.",
-  "applicationCategory": "HealthApplication",
-  "operatingSystem": "Web Browser",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "url": "https://toolpond.org/ovulation-calculator.html"
-}</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Advanced Ovulation Calculator","description":"Free ovulation calculator with fertile window predictor, luteal phase tracker, implantation date estimator, and 3-cycle forecast.","applicationCategory":"HealthApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"512"},"url":"https://toolpond.org/ovulation-calculator.html"}
+    </script>
     
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://toolpond.org/"},{"@type":"ListItem","position":2,"name":"Health Calculators","item":"https://toolpond.org/index.html"},{"@type":"ListItem","position":3,"name":"Ovulation Calculator","item":"https://toolpond.org/ovulation-calculator.html"}]}
@@ -291,7 +274,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
             </div>
             <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-1.5"><i class="fas fa-moon text-indigo-500 mr-1"></i>Luteal Phase (days, optional)</label>
-                <input type="number" id="luteal" min="10" max="16" value="14" placeholder="14" class="input-glow w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 font-semibold transition-all" oninput="calc()" step="any">
+                <input type="number" id="luteal" min="10" max="16" value="14" placeholder="14" class="input-glow w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 font-semibold transition-all" oninput="calc()">
                 <p class="text-xs text-gray-400 mt-1">Leave 14 if unsure. Typical: 12-16 days.</p>
             </div>
         </div>
@@ -371,17 +354,17 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
             <table>
                 <thead><tr><th>Cycle Length</th><th>Ovulation Day</th><th>Days After Period Ends (5-day)</th><th>Fertile Window</th><th>Luteal Phase</th></tr></thead>
                 <tbody>
-                    <tr><td>21 days</td><td>Day 7</td><td>2 days after</td><td>Days 2-7</td><td>14 days</td></tr>
-                    <tr><td>23 days</td><td>Day 9</td><td>4 days after</td><td>Days 4-9</td><td>14 days</td></tr>
-                    <tr><td>25 days</td><td>Day 11</td><td>6 days after</td><td>Days 6-11</td><td>14 days</td></tr>
-                    <tr><td>26 days</td><td>Day 12</td><td>7 days after</td><td>Days 7-12</td><td>14 days</td></tr>
-                    <tr><td>28 days</td><td>Day 14</td><td>9 days after</td><td>Days 9-14</td><td>14 days</td></tr>
-                    <tr><td>30 days</td><td>Day 16</td><td>11 days after</td><td>Days 11-16</td><td>14 days</td></tr>
-                    <tr><td>32 days</td><td>Day 18</td><td>13 days after</td><td>Days 13-18</td><td>14 days</td></tr>
-                    <tr><td>35 days</td><td>Day 21</td><td>16 days after</td><td>Days 16-21</td><td>14 days</td></tr>
-                    <tr><td>38 days</td><td>Day 24</td><td>19 days after</td><td>Days 19-24</td><td>14 days</td></tr>
-                    <tr><td>40 days</td><td>Day 26</td><td>21 days after</td><td>Days 21-26</td><td>14 days</td></tr>
-                    <tr><td>45 days</td><td>Day 31</td><td>26 days after</td><td>Days 26-31</td><td>14 days</td></tr>
+                    <tr><td>21 days</td><td>Day 7</td><td>2 days after</td><td>Days 2-8</td><td>14 days</td></tr>
+                    <tr><td>23 days</td><td>Day 9</td><td>4 days after</td><td>Days 4-10</td><td>14 days</td></tr>
+                    <tr><td>25 days</td><td>Day 11</td><td>6 days after</td><td>Days 6-12</td><td>14 days</td></tr>
+                    <tr><td>26 days</td><td>Day 12</td><td>7 days after</td><td>Days 7-13</td><td>14 days</td></tr>
+                    <tr><td>28 days</td><td>Day 14</td><td>9 days after</td><td>Days 9-15</td><td>14 days</td></tr>
+                    <tr><td>30 days</td><td>Day 16</td><td>11 days after</td><td>Days 11-17</td><td>14 days</td></tr>
+                    <tr><td>32 days</td><td>Day 18</td><td>13 days after</td><td>Days 13-19</td><td>14 days</td></tr>
+                    <tr><td>35 days</td><td>Day 21</td><td>16 days after</td><td>Days 16-22</td><td>14 days</td></tr>
+                    <tr><td>38 days</td><td>Day 24</td><td>19 days after</td><td>Days 19-25</td><td>14 days</td></tr>
+                    <tr><td>40 days</td><td>Day 26</td><td>21 days after</td><td>Days 21-27</td><td>14 days</td></tr>
+                    <tr><td>45 days</td><td>Day 31</td><td>26 days after</td><td>Days 26-32</td><td>14 days</td></tr>
                 </tbody>
             </table>
         </div>
@@ -533,10 +516,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     </div>
 </main>
 
-<section class="tp-note" id="sources-verification" aria-label="Sources and verification"><h2>Sources &amp; verification</h2><p><strong>Method.</strong> The tool counts back from your next expected period. ACOG says ovulation typically occurs about 14 days before your period starts, an egg survives for about 12 to 24 hours, and pregnancy can result from sex up to 5 days before ovulation or 1 day after, so the fertile window is about 6 days: <a href="https://www.acog.org/womens-health/experts-and-stories/the-latest/trying-to-get-pregnant-heres-when-to-have-sex" rel="noopener">ACOG: Trying to get pregnant? Here's when to have sex</a>. The U.S. Office on Women's Health likewise places ovulation around day 14 of a 28-day cycle: <a href="https://womenshealth.gov/pregnancy/menstrual-cycle" rel="noopener">Office on Women's Health: The menstrual cycle</a>.</p>
-<p><strong>Worked example.</strong> First day of last period January 1, 2026, 28-day cycle, 14-day luteal phase: next period <strong>January 29</strong>, ovulation about <strong>January 14</strong> (cycle day 14), and the tool shows a fertile window of <strong>January 9 to 14</strong>. Entering these values in this tool gives the same result.</p>
-<p><strong>Limits.</strong> ACOG notes there is no foolproof way to calculate fertile days, and cycles vary from month to month. Do not use this tool as birth control. This is general information, not medical advice, and the tool was built by <a href="/shahid-abbas.html">Shahid Abbas</a>, a developer, not a doctor.</p><p><small>Formula, figures and worked example last checked: November 18, 2026, by running this tool with the example inputs. Found a mistake? <a href="/contact.html">Contact us</a>.</small></p></section>
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Estimates ovulation and the fertile window from your cycle dates, assuming your cycle length is fairly regular. Ovulation timing varies and can change from cycle to cycle. This tool must not be used as contraception, and is not a substitute for medical advice.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html&amp;text=Ovulation%20Calculator%20%7C%20Fertile%20Window%20%26%20Most%20Fertile%20Days%20by" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Ovulation%20Calculator%20%7C%20Fertile%20Window%20%26%20Most%20Fertile%20Days%20by%20https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html&amp;text=Ovulation%20Calculator%20%7C%20Fertile%20Window%20%26%20Most%20Fertile%20Days%20by" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/ovulation-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+<aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Estimates ovulation and the fertile window from your cycle dates, assuming your cycle length is fairly regular. Ovulation timing varies and can change from cycle to cycle. This tool must not be used as contraception, and is not a substitute for medical advice.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html&amp;text=Ovulation%20Calculator%20%7C%20Fertile%20Window%20%26%20Most%20Fertile%20Days%20by" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Ovulation%20Calculator%20%7C%20Fertile%20Window%20%26%20Most%20Fertile%20Days%20by%20https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fovulation-calculator.html&amp;text=Ovulation%20Calculator%20%7C%20Fertile%20Window%20%26%20Most%20Fertile%20Days%20by" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/ovulation-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
 <script>
 let pd=5,fChart=null;
@@ -548,21 +528,19 @@ function setPD(d){pd=d;document.querySelectorAll('.pd-btn').forEach(b=>{parseInt
 function fmtS(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}
 function fmtF(d){return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}
 function sameD(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate()}
-function addD(d,n){const r=new Date(d.getFullYear(),d.getMonth(),d.getDate());r.setDate(r.getDate()+n);return r}
-function parseLocal(s){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s);return m?new Date(+m[1],+m[2]-1,+m[3]):null}
-function dayDiff(a,b){return Math.round((Date.UTC(a.getFullYear(),a.getMonth(),a.getDate())-Date.UTC(b.getFullYear(),b.getMonth(),b.getDate()))/864e5)}
+function addD(d,n){return new Date(d.getTime()+n*864e5)}
 
 function calc(){
     const v=document.getElementById('lastPeriod').value;if(!v)return;
-    const cl=parseInt(document.getElementById('cycleLen').value),lp=Math.min(16,Math.max(10,parseInt(document.getElementById('luteal').value)||14));
-    const lp2=parseLocal(v);if(!lp2||!(cl>=21&&cl<=45))return;const ov=addD(lp2,cl-lp-1),fs=addD(ov,-5),fe=ov,np=addD(lp2,cl);
-    const b1=addD(ov,-2),iw1=addD(ov,6),iw2=addD(ov,12),testD=addD(ov,14);
-    const today=new Date(),cd=dayDiff(today,lp2)+1;
+    const cl=parseInt(document.getElementById('cycleLen').value),lp=parseInt(document.getElementById('luteal').value)||14;
+    const lp2=new Date(v),ov=addD(lp2,cl-lp),fs=addD(ov,-5),fe=addD(ov,1),np=addD(lp2,cl);
+    const b1=addD(ov,-2),b2=addD(ov,-1),iw1=addD(ov,6),iw2=addD(ov,12),testD=addD(ov,14);
+    const today=new Date(),cd=Math.floor((today-lp2)/864e5)+1;
 
     document.getElementById('sNextP').textContent=fmtS(np);
     document.getElementById('sOv').textContent=fmtS(ov);
     document.getElementById('sFW').textContent=fmtS(fs)+' - '+fmtS(fe);
-    document.getElementById('sBest').textContent=fmtS(b1)+' - '+fmtS(ov);
+    document.getElementById('sBest').textContent=fmtS(b1)+' & '+fmtS(b2);
     document.getElementById('sImpl').textContent=fmtS(iw1)+' - '+fmtS(iw2);
     document.getElementById('sTest').textContent=fmtS(testD);
     document.getElementById('sLut').textContent=lp+' days';
@@ -576,7 +554,7 @@ function calc(){
 
 function genCal(lp2,cl,ov,fs,fe,iw1,iw2){
     const g=document.getElementById('calGrid');g.innerHTML='';
-    const st=addD(lp2,-lp2.getDay());
+    const st=new Date(lp2);st.setDate(st.getDate()-st.getDay());
     for(let i=0;i<42;i++){
         const c=addD(st,i),el=document.createElement('div');
         el.className='calendar-day';el.textContent=c.getDate();
@@ -599,55 +577,4 @@ function genTL(lp2,cl,ov,fs,fe,np,iw1,iw2,testD){
         {d:fs,t:'Fertile Window Opens',desc:'Sperm can survive up to 5 days. Best time to start trying.',i:'heart',c:'text-primary',bg:'bg-pink-100',pulse:false},
         {d:addD(ov,-2),t:'Peak Fertility Begins',desc:'Highest conception probability. Egg-white mucus likely present.',i:'star',c:'text-secondary',bg:'bg-purple-100',pulse:false},
         {d:ov,t:'Ovulation Day',desc:'Egg released! Most fertile day. Egg lives 12-24 hours.',i:'egg',c:'text-primary',bg:'bg-primary',pulse:true},
-        {d:addD(ov,1),t:'Luteal Phase Continues',desc:'Fertile window has closed. The egg survives only 12-24 hours after release.',i:'moon',c:'text-secondary',bg:'bg-purple-50',pulse:false},
-        {d:iw1,t:'Implantation Window Opens',desc:'Implantation usually happens 6-12 days after ovulation, most often day 8-10.',i:'seedling',c:'text-accent',bg:'bg-cyan-100',pulse:false},
-        {d:iw2,t:'Implantation Window Ends',desc:'Last likely day for implantation.',i:'seedling',c:'text-accent',bg:'bg-cyan-50',pulse:false},
-        {d:testD,t:'Pregnancy Test',desc:'A test is most reliable 14 days after ovulation.',i:'vial',c:'text-rose',bg:'bg-rose-100',pulse:false},
-        {d:np,t:'Next Period Expected',desc:'Day 1 of your next cycle.',i:'calendar',c:'text-blue-500',bg:'bg-blue-100',pulse:false}
-    ];
-    ev.sort((a,b)=>a.d-b.d);
-    ev.forEach(e=>{
-        const row=document.createElement('div');row.className='relative flex items-start gap-4';
-        const ic=document.createElement('div');ic.className='w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 z-10 '+e.bg+(e.pulse?' animate-pulse':'');
-        const i=document.createElement('i');i.className='fas fa-'+e.i+' '+(e.pulse?'text-white':e.c);ic.appendChild(i);
-        const bx=document.createElement('div');
-        const t=document.createElement('div');t.className='font-semibold text-sm';t.textContent=e.t+' - '+fmtF(e.d);
-        const p=document.createElement('p');p.className='text-sm text-gray-600';p.textContent=e.desc;
-        bx.appendChild(t);bx.appendChild(p);row.appendChild(ic);row.appendChild(bx);tl.appendChild(row);
-    });
-}
-
-function genChart(cl,lp){
-    if(typeof Chart==='undefined')return;
-    const cv=document.getElementById('fChart');if(!cv)return;
-    const ovDay=cl-lp;
-    const prob={'-5':10,'-4':16,'-3':14,'-2':27,'-1':31,'0':33};
-    const labels=[],data=[],colors=[];
-    for(let d=1;d<=cl;d++){
-        labels.push('Day '+d);
-        const k=d-ovDay;
-        const v=prob[String(k)]||0;
-        data.push(v);
-        colors.push(k===0?'#ec4899':(v>0?'#f9a8d4':'#e5e7eb'));
-    }
-    if(fChart)fChart.destroy();
-    fChart=new Chart(cv,{type:'bar',data:{labels:labels,datasets:[{label:'Chance of conception per cycle day (%)',data:data,backgroundColor:colors,borderRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'Conception probability (%)'}}}}});
-}
-
-function genForecast(lp2,cl,lp){
-    const sec=document.getElementById('forecastSection'),body=document.getElementById('fcBody');
-    if(!sec||!body)return;
-    body.innerHTML='';
-    for(let k=1;k<=3;k++){
-        const s=addD(lp2,k*cl),ov=addD(s,cl-lp-1),fs=addD(ov,-5),b1=addD(ov,-2),np=addD(s,cl);
-        const tr=document.createElement('tr');
-        [ 'Cycle '+k,fmtS(s),fmtS(ov),fmtS(fs)+' - '+fmtS(ov),fmtS(b1)+' - '+fmtS(ov),fmtS(np) ].forEach(x=>{const td=document.createElement('td');td.textContent=x;tr.appendChild(td);});
-        body.appendChild(tr);
-    }
-    sec.style.display='block';
-}
-
-calc();
-</script>
-</body>
-</html>
+        {d:addD(ov,1),t

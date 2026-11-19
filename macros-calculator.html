@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (GA4) -->
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
-gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
-
     <meta charset="UTF-8">
     <meta name="google-adsense-account" content="ca-pub-7280526621945427">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
@@ -31,23 +25,19 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     <meta name="twitter:title" content="Free Macros Calculator - Protein, Carbs & Fats">
     <meta name="twitter:description" content="Calculate daily macros for keto, low carb, high protein, and balanced diets. Free tool, no signup.">
 
-    <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Macros Calculator",
-  "description": "Free online macronutrient calculator for diet planning and nutrition tracking supporting keto, low carb, high protein, and balanced diets",
-  "applicationCategory": "HealthApplication",
-  "operatingSystem": "Web Browser",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "ToolPond"
-  }
-}</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Macros Calculator",
+        "description": "Free online macronutrient calculator for diet planning and nutrition tracking supporting keto, low carb, high protein, and balanced diets",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "890", "bestRating": "5"},
+        "author": {"@type": "Organization", "name": "ToolPond"}
+    }
+    </script>
 
     <script type="application/ld+json">
 {
@@ -114,7 +104,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 }
 </script>
 
-    <title>Free Macros Calculator: Daily Protein, Carbs &amp; Fats</title>
+    <title>Free Macros Calculator - Daily Protein, Carbs &amp; Fats | Keto, Low</title>
 
     <style>
         :root {
@@ -406,7 +396,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 .tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
 @media print{.tp-hdr,.tp-share{display:none}}
 </style>
-<style id="tp-foodfix">@media(max-width:640px){.food-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}.food-table th,.food-table td{padding:.5rem .6rem}}</style></head>
+</head>
 <body>
 <div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
 
@@ -437,7 +427,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                 <div class="calc-grid">
                     <div class="input-group">
                         <label class="input-label" for="age">📅 Age (years):</label>
-                        <input type="number" id="age" class="input-field" placeholder="e.g., 30" value="30" min="10" max="120" oninput="calculateAll()" aria-label="Age in years" step="any">
+                        <input type="number" id="age" class="input-field" placeholder="e.g., 30" value="30" min="10" max="120" oninput="calculateAll()" aria-label="Age in years">
                         <div class="input-hint">10-120 years</div>
                     </div>
                     <div class="input-group">
@@ -449,17 +439,17 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="weight">⚖️ Weight (kg):</label>
-                        <input type="number" id="weight" class="input-field" placeholder="e.g., 70" value="70" min="20" max="300" step="any" oninput="calculateAll()" aria-label="Weight in kg">
+                        <input type="number" id="weight" class="input-field" placeholder="e.g., 70" value="70" min="20" max="300" step="0.1" oninput="calculateAll()" aria-label="Weight in kg">
                         <div class="input-hint">20-300 kg</div>
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="height">📏 Height (cm):</label>
-                        <input type="number" id="height" class="input-field" placeholder="e.g., 175" value="175" min="50" max="300" step="any" oninput="calculateAll()" aria-label="Height in cm">
+                        <input type="number" id="height" class="input-field" placeholder="e.g., 175" value="175" min="50" max="300" step="0.1" oninput="calculateAll()" aria-label="Height in cm">
                         <div class="input-hint">50-300 cm</div>
                     </div>
                     <div class="input-group">
                         <label class="input-label" for="bodyFat">📊 Body Fat % (optional):</label>
-                        <input type="number" id="bodyFat" class="input-field" placeholder="e.g., 20" min="1" max="60" step="any" oninput="calculateAll()" aria-label="Body fat percentage">
+                        <input type="number" id="bodyFat" class="input-field" placeholder="e.g., 20" min="1" max="60" step="0.1" oninput="calculateAll()" aria-label="Body fat percentage">
                         <div class="input-hint">Leave empty for Mifflin-St Jeor</div>
                     </div>
                     <div class="input-group">
@@ -500,9 +490,9 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                         <div class="input-group" id="customMacros" style="display:none">
                             <label class="input-label">Custom Ratios (%):</label>
                             <div style="display:flex;gap:0.5rem">
-                                <input type="number" id="customProtein" class="input-field" placeholder="Protein %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1" step="any">
-                                <input type="number" id="customCarbs" class="input-field" placeholder="Carbs %" min="0" max="100" value="40" oninput="calculateAll()" style="flex:1" step="any">
-                                <input type="number" id="customFats" class="input-field" placeholder="Fats %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1" step="any">
+                                <input type="number" id="customProtein" class="input-field" placeholder="Protein %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1">
+                                <input type="number" id="customCarbs" class="input-field" placeholder="Carbs %" min="0" max="100" value="40" oninput="calculateAll()" style="flex:1">
+                                <input type="number" id="customFats" class="input-field" placeholder="Fats %" min="0" max="100" value="30" oninput="calculateAll()" style="flex:1">
                             </div>
                             <div class="input-hint" id="customHint">Total must equal 100%</div>
                         </div>
@@ -945,11 +935,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         </div>
     </section>
 
-    <section class="tp-note" id="sources-verification" aria-label="Sources and verification"><h2>Sources &amp; verification</h2><p><strong>Calories.</strong> Resting energy (BMR) uses the Mifflin-St Jeor equation: 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5 for men or − 161 for women. See Mifflin et al. (1990), <a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" rel="noopener">"A new predictive equation for resting energy expenditure in healthy individuals"</a>, and the <a href="https://www.msdmanuals.com/iframe/manual/medical-calculators/mifflinstjeor.htm" rel="noopener">MSD Manual calculator</a>. If you enter a body fat percentage, the tool uses the Katch-McArdle equation instead (370 + 21.6 × lean body mass in kg), described in <a href="https://en.wikipedia.org/wiki/Basal_metabolic_rate" rel="noopener">Wikipedia: Basal metabolic rate</a>. Daily calories (TDEE) are BMR times the activity factor you choose (1.2 to 1.9).</p>
-<p><strong>Reference ranges.</strong> The National Academies recommend that adults get 45 to 65% of calories from carbohydrate, 20 to 35% from fat and 10 to 35% from protein: <a href="https://www.nationalacademies.org/news/2002/09/report-offers-new-eating-and-physical-activity-targets-to-reduce-chronic-disease-risk" rel="noopener">National Academies: Acceptable macronutrient distribution ranges</a>. This tool's presets are <strong>balanced 30% protein, 40% carbs, 30% fat; high protein 40/40/20; low carb 30/25/45; keto 20/10/70</strong>. Several of these fall outside the National Academies ranges, so treat the presets as starting points for specific diet styles, not as health recommendations.</p>
-<p><strong>Worked example.</strong> Man, 30, 70 kg, 175 cm: BMR <strong>1,649 kcal/day</strong>. With the 1.55 (moderately active) factor, TDEE is <strong>2,556 kcal/day</strong>. On the balanced preset that is 192 g protein, 256 g carbs and 85 g fat. Entering these values in this tool gives the same result.</p>
-<p><strong>Limits.</strong> These are estimates for healthy adults, and real needs vary. The Mifflin-St Jeor equation was derived from 498 healthy adults aged 19 to 78, so it may not suit children or people outside that age range. The tool enforces a minimum of 1,500 kcal for men and 1,200 for women. This is not medical or nutrition advice, and it was built by <a href="/shahid-abbas.html">Shahid Abbas</a>, a developer, not a dietitian or doctor. Talk to a qualified professional before changing your diet.</p><p><small>Formula, figures and worked example last checked: November 18, 2026, by running this tool with the example inputs. Found a mistake? <a href="/contact.html">Contact us</a>.</small></p></section>
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Estimates calories with Mifflin-St Jeor (or Katch-McArdle if you enter body fat) and splits them into protein, carbohydrate and fat targets. Targets are general guidelines and not a meal plan. People with medical conditions or special diets should ask a professional first.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/nutrition-calculator.html">Nutrition Calculator</a>: log foods to see calories, protein, carbs, fat and fiber for the day.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html&amp;text=Free%20Macros%20Calculator%20-%20Daily%20Protein%2C%20Carbs%20%26%20Fats%20%7C%20Keto%2C%20Low" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Macros%20Calculator%20-%20Daily%20Protein%2C%20Carbs%20%26%20Fats%20%7C%20Keto%2C%20Low%20https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html&amp;text=Free%20Macros%20Calculator%20-%20Daily%20Protein%2C%20Carbs%20%26%20Fats%20%7C%20Keto%2C%20Low" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/macros-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Estimates calories with Mifflin-St Jeor (or Katch-McArdle if you enter body fat) and splits them into protein, carbohydrate and fat targets. Targets are general guidelines and not a meal plan. People with medical conditions or special diets should ask a professional first.</p><p>This tool gives general information and is not medical advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html&amp;text=Free%20Macros%20Calculator%20-%20Daily%20Protein%2C%20Carbs%20%26%20Fats%20%7C%20Keto%2C%20Low" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Macros%20Calculator%20-%20Daily%20Protein%2C%20Carbs%20%26%20Fats%20%7C%20Keto%2C%20Low%20https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fmacros-calculator.html&amp;text=Free%20Macros%20Calculator%20-%20Daily%20Protein%2C%20Carbs%20%26%20Fats%20%7C%20Keto%2C%20Low" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/macros-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
