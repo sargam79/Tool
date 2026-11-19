@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (GA4) -->
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
-gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Compound Interest Calculator - Project investment growth with year-by-year breakdowns. Learn the Rule of 72, compound vs simple interest, and investing.">
@@ -162,7 +156,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 .tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
 @media print{.tp-hdr,.tp-share{display:none}}
 </style>
-<style id="tp-mobfix">@media(max-width:640px){.container table,main table,.content-section table,.result-box table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}</style></head>
+</head>
 <body>
 <div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
 
@@ -181,59 +175,9 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         <div class="content-section">
             <h2>Calculate Compound Growth</h2>
             <p>Enter your initial investment, monthly contributions, expected annual return, and time horizon to see how compounding builds wealth over time.</p>
-            <style id="tp-ci-style">
-.ci-box{background:var(--light);padding:1.5rem;border-radius:8px;margin:1.5rem 0;border:1px solid var(--border)}
-.ci-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.ci-grid label{display:block;font-weight:600;color:var(--dark);margin-bottom:.35rem;font-size:.95rem}
-.ci-grid input,.ci-grid select{width:100%;padding:.7rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:#fff}
-.ci-btn{margin-top:1.1rem;background:var(--primary);color:#fff;border:0;border-radius:8px;padding:.8rem 1.6rem;font-weight:700;font-size:1rem;cursor:pointer}
-.ci-btn:hover{filter:brightness(.92)}
-.ci-msg{color:#b91c1c;font-weight:600;margin-top:.8rem;min-height:1.2rem}
-.ci-res{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem}
-.ci-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center}
-.ci-card span{display:block;color:#6b7280;font-size:.85rem}
-.ci-card strong{display:block;font-size:1.45rem;color:var(--primary);margin-top:.25rem;overflow-wrap:anywhere}
-.ci-tbl{overflow-x:auto;margin-top:1.2rem;max-height:420px;overflow-y:auto}
-.ci-tbl table{width:100%;border-collapse:collapse;font-size:.92rem;background:#fff}
-.ci-tbl th{position:sticky;top:0;background:var(--primary);color:#fff;padding:.6rem;text-align:right}
-.ci-tbl th:first-child,.ci-tbl td:first-child{text-align:left}
-.ci-tbl td{padding:.55rem .6rem;border-bottom:1px solid var(--border);text-align:right}
-            </style>
-            <form class="ci-box" id="ciForm" novalidate aria-label="Compound interest calculator">
-                <div class="ci-grid">
-                    <div><label for="ciPrincipal">Initial investment ($)</label><input id="ciPrincipal" type="number" inputmode="decimal" min="0" step="any" value="10000"></div>
-                    <div><label for="ciMonthly">Monthly contribution ($)</label><input id="ciMonthly" type="number" inputmode="decimal" min="0" step="any" value="500"></div>
-                    <div><label for="ciRate">Annual return (%)</label><input id="ciRate" type="number" inputmode="decimal" min="0" max="100" step="any" value="7"></div>
-                    <div><label for="ciYears">Years to grow</label><input id="ciYears" type="number" inputmode="numeric" min="1" max="60" step="1" value="20"></div>
-                    <div><label for="ciFreq">Compounding</label><select id="ciFreq"><option value="1">Annually</option><option value="2">Semi-annually</option><option value="4">Quarterly</option><option value="12" selected>Monthly</option><option value="365">Daily</option></select></div>
-                </div>
-                <button type="submit" class="ci-btn">Calculate</button>
-                <div class="ci-msg" id="ciMsg" role="alert"></div>
-                <div class="ci-res" id="ciRes" aria-live="polite">
-                    <div class="ci-card"><span>Future value</span><strong id="ciFV">&ndash;</strong></div>
-                    <div class="ci-card"><span>Total you put in</span><strong id="ciPut">&ndash;</strong></div>
-                    <div class="ci-card"><span>Interest earned</span><strong id="ciInt">&ndash;</strong></div>
-                </div>
-                <div class="ci-tbl"><table><thead><tr><th scope="col">Year</th><th scope="col">Total contributed</th><th scope="col">Interest earned</th><th scope="col">Balance</th></tr></thead><tbody id="ciBody"></tbody></table></div>
-                <p style="color:#6b7280;font-size:.85rem;margin-top:.8rem">Contributions are added at the end of each month. Interest is compounded at the frequency you choose. Estimates only: no taxes, fees or inflation, and real returns vary.</p>
-            </form>
-            <script>
-(function(){
-  var $=function(id){return document.getElementById(id)};
-  var fmt=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
-  function run(e){
-    if(e)e.preventDefault();
-    var P=parseFloat($('ciPrincipal').value),M=parseFloat($('ciMonthly').value),R=parseFloat($('ciRate').value),Y=parseInt($('ciYears').value,10),N=parseInt($('ciFreq').value,10);
-    var msg=$('ciMsg');msg.textContent='';
-    if(isNaN(P)||P<0||isNaN(M)||M<0||isNaN(R)||R<0||R>100||isNaN(Y)||Y<1||Y>60){msg.textContent='Please enter a non-negative amount, a return between 0 and 100%, and 1 to 60 years.';return;}
-    var im=Math.pow(1+R/100/N,N/12)-1,bal=P,put=P,body='';
-    for(var m=1;m<=Y*12;m++){bal=bal*(1+im)+M;put+=M;
-      if(m%12===0){body+='<tr><td>'+(m/12)+'</td><td>'+fmt.format(put)+'</td><td>'+fmt.format(bal-put)+'</td><td>'+fmt.format(bal)+'</td></tr>';}}
-    $('ciFV').textContent=fmt.format(bal);$('ciPut').textContent=fmt.format(put);$('ciInt').textContent=fmt.format(bal-put);$('ciBody').innerHTML=body;
-  }
-  $('ciForm').addEventListener('submit',run);run();
-})();
-            </script>
+            <div style="background:var(--light);padding:2rem;border-radius:8px;text-align:center;margin:1.5rem 0;">
+                <p style="color:#6b7280">[Your existing compound interest calculator tool goes here]</p>
+            </div>
         </div>
 
         <div class="content-section">
@@ -290,8 +234,8 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                 <tr><td>Annually</td><td>$21,589</td><td>—</td></tr>
                 <tr><td>Semi-annually</td><td>$21,911</td><td>+$322</td></tr>
                 <tr><td>Quarterly</td><td>$22,080</td><td>+$491</td></tr>
-                <tr><td>Monthly</td><td>$22,196</td><td>+$607</td></tr>
-                <tr><td>Daily</td><td>$22,253</td><td>+$664</td></tr>
+                <tr><td>Monthly</td><td>$22,197</td><td>+$608</td></tr>
+                <tr><td>Daily</td><td>$22,254</td><td>+$665</td></tr>
             </table>
             <p>For most practical purposes, the difference between monthly and daily compounding is negligible. What matters far more is the interest rate and time invested.</p>
 
@@ -345,9 +289,6 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         </div>
     </div>
 
-    <section class="tp-note" id="sources-verification" aria-label="Sources and verification"><h2>Sources &amp; verification</h2><p><strong>Formula.</strong> Compound interest means you earn interest on your original amount and on interest already earned. The CFPB explains it with this example: $1,000 at 5% grows to $1,050 after one year and $1,102.50 after two. See <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-compound-interest-en-1683/" rel="noopener">CFPB: What is compound interest?</a> For a second check, use the SEC's <a href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" rel="noopener">Investor.gov compound interest calculator</a>.</p>
-<p><strong>Worked examples.</strong> (1) $1,000 at 5% compounded annually for 2 years with no deposits: <strong>$1,102.50</strong>. This tool shows it rounded to $1,103. (2) $10,000 start, $200 added each month, 7% a year compounded monthly for 20 years: <strong>$144,573</strong>, of which $58,000 is money you put in and $86,573 is interest. Entering these values in this tool gives the same results.</p>
-<p><strong>Limits.</strong> The tool assumes a constant rate and that deposits are made at the end of each month, and each deposit starts earning interest straight away. Other calculators handle deposits differently. For example, the Investor.gov calculator adds a full year of deposits at the end of each year when compounding annually, so for $10,000 plus $500 a month at 7% for 10 years compounded annually it shows $102,570.20, while this tool shows $105,197. Real investment returns vary from year to year and are not guaranteed, and the result is not adjusted for inflation or taxes. It is an estimate, not financial advice, and the tool was built by <a href="/shahid-abbas.html">Shahid Abbas</a>, a developer, not a financial advisor.</p><p><small>Formula, figures and worked example last checked: November 18, 2026, by running this tool with the example inputs. Found a mistake? <a href="/contact.html">Contact us</a>.</small></p></section>
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Projects growth at a constant assumed rate of return with the contributions you enter. Real returns vary, can be negative, and are not guaranteed. Taxes, fees and inflation are not included unless you enter them.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/percentage-calculator.html">Percentage Calculator</a>: percent of, percent change, discounts and tip splits with the steps shown.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html&amp;text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector%20https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html&amp;text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/compound-interest-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Projects growth at a constant assumed rate of return with the contributions you enter. Real returns vary, can be negative, and are not guaranteed. Taxes, fees and inflation are not included unless you enter them.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html&amp;text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector%20https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fcompound-interest-calculator.html&amp;text=Compound%20Interest%20Calculator%20-%20Investment%20Growth%20Projector" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/compound-interest-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 </body>
 </html>
