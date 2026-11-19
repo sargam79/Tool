@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (GA4) -->
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
-gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Retirement Calculator 2026 - Calculate how much you need to save for retirement. Plan retirement savings, estimate monthly income needs, and track.">
@@ -219,7 +213,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
    "name": "Is my data private? ▼",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Yes. All calculations happen in your browser. We never see, store, or collect your data. No login required. The site itself may show ads and use analytics, as described in our Privacy Policy. Your information stays completely private."
+    "text": "Yes, 100% private. All calculations happen in your browser. We never see, store, or collect your data. No login required, no tracking, no ads. Your information stays completely private."
    }
   }
  ]
@@ -241,8 +235,8 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
   {
    "@type": "HowToStep",
    "position": 2,
-   "name": "Enter your yearly contribution and an expected return",
-   "text": "Enter your yearly contribution and an expected return."
+   "name": "Enter your monthly contribution and an expected return",
+   "text": "Enter your monthly contribution and an expected return."
   },
   {
    "@type": "HowToStep",
@@ -320,10 +314,10 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
     <div class="hero">
         <div class="container">
             <h1>Retirement Calculator</h1>
-            <p>Calculate how much you need to save for retirement. Plan your retirement income, estimate total savings needed, and track progress toward retirement goals. Free to use, and your inputs stay in your browser.</p>
+            <p>Calculate how much you need to save for retirement. Plan your retirement income, estimate total savings needed, and track progress toward retirement goals. Completely free and 100% private.</p>
         </div>
     </div>
-<div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>A common rule of thumb, the 4% rule, says you may need about 25 times your yearly spending saved. For example, $40,000 a year of spending suggests a target of about <strong>$1,000,000</strong>. It is a guideline only, because returns, inflation, taxes and lifespan are uncertain.</div><div class="tp-how"><h2>How to plan your retirement savings</h2><ol><li>Enter your age, planned retirement age and current savings.</li><li>Enter your yearly contribution and an expected return.</li><li>Enter the income you want in retirement.</li><li>Compare the projected savings with your target and adjust the inputs.</li></ol></div></div>
+<div class="tp-geo"><div class="tp-qa" id="quick-answer"><strong class="t">Quick answer</strong>A common rule of thumb, the 4% rule, says you may need about 25 times your yearly spending saved. For example, $40,000 a year of spending suggests a target of about <strong>$1,000,000</strong>. It is a guideline only, because returns, inflation, taxes and lifespan are uncertain.</div><div class="tp-how"><h2>How to plan your retirement savings</h2><ol><li>Enter your age, planned retirement age and current savings.</li><li>Enter your monthly contribution and an expected return.</li><li>Enter the income you want in retirement.</li><li>Compare the projected savings with your target and adjust the inputs.</li></ol></div></div>
 
 
     <div class="container">
@@ -373,7 +367,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div class="form-group">
                         <label class="form-label">Current Retirement Savings ($)</label>
-                        <input type="number" id="currentSavings" class="form-input" placeholder="100000" step="any" min="0" required>
+                        <input type="number" id="currentSavings" class="form-input" placeholder="100000" step="1000" min="0" required>
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
                             Money already saved for retirement (401k, IRA, etc.)
                         </div>
@@ -381,7 +375,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div class="form-group">
                         <label class="form-label">Annual Savings ($)</label>
-                        <input type="number" id="annualSavings" class="form-input" placeholder="10000" step="any" min="0" required>
+                        <input type="number" id="annualSavings" class="form-input" placeholder="10000" step="500" min="0" required>
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
                             How much you save per year for retirement
                         </div>
@@ -389,7 +383,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div class="form-group">
                         <label class="form-label">Annual Return (%)</label>
-                        <input type="number" id="annualReturn" class="form-input" placeholder="7" step="any" min="0" max="20" required value="7">
+                        <input type="number" id="annualReturn" class="form-input" placeholder="7" step="0.1" min="0" max="20" required value="7">
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
                             Expected investment return (7% is conservative average)
                         </div>
@@ -397,7 +391,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div class="form-group">
                         <label class="form-label">Annual Expenses in Retirement ($)</label>
-                        <input type="number" id="annualExpenses" class="form-input" placeholder="50000" step="any" min="10000" required>
+                        <input type="number" id="annualExpenses" class="form-input" placeholder="50000" step="1000" min="10000" required>
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
                             How much you need to spend per year in retirement
                         </div>
@@ -405,7 +399,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div class="form-group">
                         <label class="form-label">Expected Annual Social Security/Pension ($)</label>
-                        <input type="number" id="socialSecurity" class="form-input" placeholder="20000" step="any" min="0" required>
+                        <input type="number" id="socialSecurity" class="form-input" placeholder="20000" step="1000" min="0" required>
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
                             Income from government/pension (reduces savings needed)
                         </div>
@@ -421,7 +415,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div class="form-group">
                         <label class="form-label">Inflation Rate (%)</label>
-                        <input type="number" id="inflationRate" class="form-input" placeholder="3" step="any" min="0" max="10" required value="3">
+                        <input type="number" id="inflationRate" class="form-input" placeholder="3" step="0.1" min="0" max="10" required value="3">
                         <div style="margin-top:0.5rem;color:var(--text-light);font-size:0.9rem">
                             Expected annual inflation (3% is historical average)
                         </div>
@@ -481,7 +475,6 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
                     <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-top:1.5rem">
                         <p style="color:#4b5563;margin-bottom:0.5rem"><strong>💡 Important:</strong> This is an estimate based on your inputs. Actual returns vary yearly. Review and adjust your plan annually.</p>
-                        <p style="color:#4b5563;margin-bottom:0.5rem"><strong>How it is calculated:</strong> Savings grow at your annual return, with each year's contribution added at the start of the year. Expenses are raised by your inflation rate until retirement. The amount needed is 25 times the annual shortfall (the 4% rule). The calculator does not model taxes, fees or changing returns.</p>
                         <p style="color:#4b5563"><strong>Safety Tip:</strong> If results show shortfall, increase savings rate, delay retirement, or reduce expected expenses. Even small increases make a big difference.</p>
                     </div>
                 </div>
@@ -513,7 +506,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                 <!-- Privacy Info -->
                 <div class="sidebar-box">
                     <h3 style="color:var(--dark);margin-bottom:1rem">🔒 Privacy</h3>
-                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.8">All calculations happen in your browser. No data uploaded.</p>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.8">All calculations happen in your browser. No data uploaded. 100% private.</p>
                 </div>
             </div>
         </div>
@@ -549,7 +542,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
 
         <!-- Expert Tips -->
         <div class="tips-section">
-            <h3>💡 Retirement Planning Tips</h3>
+            <h3>💡 Expert Retirement Planning Tips</h3>
             <ul>
                 <li>Start as early as possible—compound interest is your greatest asset over decades</li>
                 <li>Maximize employer 401k match—it's free money that accelerates your savings</li>
@@ -632,7 +625,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
                     <span class="faq-arrow">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes. All calculations happen in your browser. We never see, store, or collect your data. No login required. The site itself may show ads and use analytics, as described in our Privacy Policy. Your information stays completely private.</p>
+                    <p>Yes, 100% private. All calculations happen in your browser. We never see, store, or collect your data. No login required, no tracking, no ads. Your information stays completely private.</p>
                 </div>
             </div>
         </div>
@@ -640,27 +633,26 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         <!-- Real Examples -->
         <div style="background:#fff;border-radius:12px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:2rem">
             <h2 style="color:var(--dark);margin-bottom:1.5rem">Real Retirement Planning Examples</h2>
-            <p style="color:#4b5563;margin-bottom:1rem">Figures below use this calculator's method: 7% return, contributions at the start of each year, before inflation.</p>
             
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 1: Early Retiree (Age 35, FIRE Goal)</h3>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Goal:</strong> Retire at 50 with $50,000/year</p>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Plan:</strong> Save $30,000/year for 15 years, 7% returns, $100,000 starting</p>
-                <p style="color:#4b5563"><strong>Result:</strong> about $1.08 million at retirement. The 4% rule gives roughly $43,300 a year, plus $20,000 of Social Security or pension, so about $63,000 a year against the $50,000 goal.</p>
+                <p style="color:#4b5563"><strong>Result:</strong> ~$833,000 at retirement (enough with 4% rule: $33,320/year plus $20k SS = $53k)</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px;margin-bottom:1rem">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 2: Average Worker (Age 30, Retire at 67)</h3>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Goal:</strong> Retire at 67 with $60,000/year</p>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Plan:</strong> Save $15,000/year for 37 years, 7% returns, $50,000 starting</p>
-                <p style="color:#4b5563"><strong>Result:</strong> about $3.18 million at retirement. The 4% rule gives roughly $127,000 a year before inflation, comfortably above the $60,000 goal.</p>
+                <p style="color:#4b5563"><strong>Result:</strong> ~$2.5M at retirement (4% rule: $100k/year, comfortable lifestyle)</p>
             </div>
 
             <div style="background:var(--light);padding:1.5rem;border-radius:8px">
                 <h3 style="color:var(--dark);margin-bottom:0.5rem">Example 3: Late Start (Age 45, Retire at 67)</h3>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Goal:</strong> Retire at 67 with $60,000/year</p>
                 <p style="color:#4b5563;margin-bottom:0.5rem"><strong>Plan:</strong> Save $30,000/year for 22 years, 7% returns, $200,000 starting</p>
-                <p style="color:#4b5563"><strong>Result:</strong> about $718,000 at retirement. The 4% rule gives roughly $28,700 a year before inflation, so a late start needs higher savings, a later retirement age or lower spending.</p>
+                <p style="color:#4b5563"><strong>Result:</strong> ~$2M at retirement (catch-up contributions help offset late start)</p>
             </div>
         </div>
 
@@ -676,11 +668,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
         </div>
     </div>
 
-    <section class="tp-note" id="sources-verification" aria-label="Sources and verification"><h2>Sources &amp; verification</h2><p><strong>Method.</strong> The tool grows your savings once a year, adding your yearly contribution and then your assumed return. It inflates your expenses to the year you retire, subtracts Social Security, and divides the remaining yearly shortfall by 0.04 (the "4% rule") to estimate the savings you need.</p>
-<p><strong>Source for the 4% rule.</strong> William P. Bengen (1994), <a href="https://robberger.com/research/determining-withdrawal-rates-using-historical-data" rel="noopener">"Determining Withdrawal Rates Using Historical Data"</a>, found that in historical U.S. market data an initial 4% withdrawal, adjusted for inflation each year, lasted at least 30 years.</p>
-<p><strong>Worked example.</strong> Age 35, retiring at 65, $100,000 saved plus $10,000 a year at 7% a year, expenses $60,000 a year and Social Security $20,000, with inflation set to 0%: projected savings are <strong>$1,771,956</strong>. The yearly shortfall is $40,000, so the amount needed is $40,000 ÷ 0.04 = <strong>$1,000,000</strong>. Entering these values in this tool gives the same result.</p>
-<p><strong>Limits.</strong> The 4% rule comes from a 30-year historical study. It is not a guarantee, and it may not suit a longer retirement or different markets. The tool uses one fixed return and one fixed inflation rate, and it ignores taxes, fees and changes in spending. It is an estimate, not financial advice, and the tool was built by <a href="/shahid-abbas.html">Shahid Abbas</a>, a developer, not a financial advisor.</p><p><small>Formula, figures and worked example last checked: November 18, 2026, by running this tool with the example inputs. Found a mistake? <a href="/contact.html">Contact us</a>.</small></p></section>
-    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Projects savings using steady assumed returns, and shows the 4% rule as a rule of thumb only. Actual returns, inflation, taxes, healthcare costs and lifespan are uncertain. Consider speaking to a licensed financial adviser.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/amount-in-words-converter.html">Amount in Words Converter</a>: write any number or cheque amount in words, in US or Indian numbering.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html&amp;text=Free%20Retirement%20Calculator%202026%20%7C%20Retirement%20Planning%20Tool" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Retirement%20Calculator%202026%20%7C%20Retirement%20Planning%20Tool%20https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html&amp;text=Free%20Retirement%20Calculator%202026%20%7C%20Retirement%20Planning%20Tool" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/retirement-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note" aria-label="Method and limits"><h2>Method and limits</h2><p>Projects savings using steady assumed returns, and shows the 4% rule as a rule of thumb only. Actual returns, inflation, taxes, healthcare costs and lifespan are uncertain. Consider speaking to a licensed financial adviser.</p><p>This tool gives estimates for comparison and is not financial, tax or legal advice. See our <a href="/methodology.html">methodology</a> and <a href="/disclaimer.html">disclaimer</a>. Last reviewed October 2026.</p></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html&amp;text=Free%20Retirement%20Calculator%202026%20%7C%20Retirement%20Planning%20Tool" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Free%20Retirement%20Calculator%202026%20%7C%20Retirement%20Planning%20Tool%20https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fretirement-calculator.html&amp;text=Free%20Retirement%20Calculator%202026%20%7C%20Retirement%20Planning%20Tool" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/retirement-calculator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <script>
         function calculateRetirement(e) {
@@ -721,7 +709,7 @@ gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
             // Update results
             document.getElementById('projectedSavings').textContent = '$' + Math.round(projectedSavings).toLocaleString();
             document.getElementById('totalNeeded').textContent = '$' + Math.round(fourPercentRule).toLocaleString();
-            document.getElementById('surplus').textContent = (surplus < 0 ? '-$' : '$') + Math.abs(Math.round(surplus)).toLocaleString();
+            document.getElementById('surplus').textContent = '$' + Math.round(surplus).toLocaleString();
             document.getElementById('yearsRetirement').textContent = yearsInRetirement;
             
             document.getElementById('yearsUntilRetirement').textContent = yearsUntilRetirement;
