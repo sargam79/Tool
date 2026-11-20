@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (GA4) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']});
+gtag('js',new Date());gtag('config','G-GTHVDKTSML');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTHVDKTSML"></script>
+
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="srQZGhXHmQzBnzWqOZOttu-hiXWULTA9sH76xsU2rxo" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280526621945427"
@@ -10,7 +16,7 @@
     <meta name="google-adsense-account" content="ca-pub-7280526621945427">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate hashtags for Instagram, TikTok, and Twitter. Enter a topic to get platform-specific tags. Free, no signup, works in your browser.">
-    <meta name="author" content="ToolPond">
+    <meta name="author" content="Shahid Abbas">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://toolpond.org/hashtag-generator.html">
 
@@ -55,7 +61,7 @@
           "name": "How many hashtags should I use per platform?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Instagram: up to 30 hashtags, but 15-20 well-chosen tags often perform better. TikTok: 3-5 hashtags is the sweet spot; too many dilute the algorithm's understanding of your content. Twitter: 1-2 hashtags maximum; more looks spammy and reduces engagement. LinkedIn: 3-5 hashtags. YouTube: 3-5 in the description."
+            "text": "Instagram: Instagram announced in December 2025 that it is gradually limiting captions to 5 hashtags per post or reel, so choose your best 5. TikTok: 3-5 is a common choice, and reports say TikTok caps captions at 5, so check the limit in the app. X (Twitter): one or two keeps the post readable; this is a style habit, not a rule."
           }
         },
         {
@@ -63,7 +69,7 @@
           "name": "Does this tool use real trending data?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. This tool uses a pre-built library of common hashtags organized by platform. It does not pull live trending data from Instagram, TikTok, or Twitter. For real-time trends, check each platform's native search or trending pages."
+            "text": "No. The tags are built from your keyword plus a few general tags, and the tool does not know how many posts each tag has or whether it is trending. Search each tag in the app to check that it is active and not restricted before you use it."
           }
         },
         {
@@ -71,7 +77,7 @@
           "name": "Should I use popular or niche hashtags?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Use both. Popular hashtags (1M+ posts) give reach but high competition. Niche hashtags (under 100K posts) have lower competition and attract targeted audiences. A mix of 60% niche and 40% popular is a common strategy."
+            "text": "Use both. Popular hashtags (1M+ posts) reach more people but have more competition. Niche hashtags (under 100K posts) have less competition and reach a more targeted audience. With only 5 slots on Instagram, favor specific tags and add at most one broad one."
           }
         }
       ]
@@ -144,6 +150,7 @@
 .tp-note h2{font-size:1.05rem;margin:0 0 .4rem;color:#111827}.tp-note p{margin:.35rem 0}.tp-note a{color:#0f4c81}
 @media print{.tp-hdr,.tp-share{display:none}}
 </style>
+<script src="/cookie-consent.js" defer></script>
 </head>
 <body>
 <div class="tp-hdr" role="navigation" aria-label="Main navigation"><div class="tp-hdr-in"><a class="tp-logo" href="/index.html">ToolPond</a><button class="tp-burger" type="button" aria-label="Open menu" aria-expanded="false" onclick="var l=document.getElementById('tpLinks');var o=l.classList.toggle('open');this.setAttribute('aria-expanded',o)">&#9776;</button><ul class="tp-links" id="tpLinks"><li><a href="/index.html">Home</a></li><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></div>
@@ -182,20 +189,20 @@
             <div class="hashtag-container" id="resultsContainer">
                 <div><strong>Generated Tags:</strong></div>
                 <div class="hashtag-tags" id="hashtags"></div>
-                <p style="margin-top:1rem;font-size:0.9rem;color:#0B5394">Click any tag to copy it</p>
+                <p style="margin-top:1rem;font-size:0.9rem;color:#0B5394">Click any tag to copy it</p><p id="platformNote" style="margin-top:.4rem;font-size:0.9rem;color:#0B5394"></p>
             </div>
 
             <div class="content-section">
                 <h2>What This Tool Does</h2>
-                <p>Enter any topic and get a list of <strong>platform-specific hashtags</strong>. The tool draws from a pre-built library of common tags used on Instagram, TikTok, and Twitter. Select your platform to get tags tailored to that network's conventions.</p>
+                <p>Enter any topic and get a list of <strong>platform-specific hashtags</strong>. The tool builds tags from the words you type (for example, <em>home workout</em> becomes #homeworkout, #home, #workout, #homeworkouttips and similar variations) and adds a few general tags for the platform you choose. The result is a pool to choose from, not a set to paste in full: up to 20 tags for Instagram, up to 10 for TikTok and up to 3 for X (Twitter). Pick the few that fit your post.</p>
 
                 <p>Click any tag to copy it individually, or use <strong>Copy All</strong> to grab the full list. All processing happens in your browser — no data is sent to any server.</p>
 
                 <h3>Platform-Specific Limits</h3>
                 <ul>
-                    <li><strong>Instagram:</strong> Up to 30 hashtags per post. Most users see best results with 15–20 well-chosen tags.</li>
-                    <li><strong>TikTok:</strong> 3–5 hashtags is the sweet spot. The algorithm uses hashtags to categorize content; too many dilute the signal.</li>
-                    <li><strong>Twitter:</strong> 1–2 hashtags maximum. More than 2 reduces engagement by 17% on average (Twitter data, 2023).</li>
+                    <li><strong>Instagram:</strong> Instagram announced in December 2025 that it is gradually limiting captions to <strong>5 hashtags</strong> per post or reel (it had been testing a limit of 3). The rollout is gradual, so your account may still allow more. Choose your best 5 from the pool. <a href="https://www.socialmediatoday.com/news/instagrams-implementing-new-limits-on-hashtag-use/808309/" rel="noopener">Source: Social Media Today</a>.</li>
+                    <li><strong>TikTok:</strong> Use 3–5. Industry reports say TikTok now caps captions at 5 hashtags, but I could not find a TikTok announcement, so check the limit in the app when you post.</li>
+                    <li><strong>X (Twitter):</strong> One or two is a common habit, so the post still reads naturally. This is a style choice, not a platform rule.</li>
                 </ul>
             </div>
 
@@ -203,16 +210,16 @@
                 <h2>Hashtag Strategy by Platform</h2>
 
                 <h3>Instagram</h3>
-                <p>Instagram's algorithm uses hashtags for discovery and categorization. Mix three types:</p>
+                <p>Instagram says more targeted hashtags work better than many generic ones. With a 5-hashtag limit, a simple mix is:</p>
                 <ul>
-                    <li><strong>Broad (1M+ posts):</strong> #fitness, #travel, #food — high reach, high competition</li>
-                    <li><strong>Medium (100K–1M):</strong> #fitnessmotivation, #travelphotography — balanced reach</li>
-                    <li><strong>Niche (under 100K):</strong> #homeworkouttips, #solotravelasia — targeted, engaged audiences</li>
+                    <li><strong>1 broad (1M+ posts):</strong> #fitness, #travel, #food — high reach, high competition</li>
+                    <li><strong>2 medium (100K–1M):</strong> #fitnessmotivation, #travelphotography — balanced reach</li>
+                    <li><strong>2 niche (under 100K):</strong> #homeworkouttips, #solotravelasia — targeted audiences</li>
                 </ul>
-                <p>Place hashtags in the caption (first comment no longer helps). Use Instagram's search to check hashtag volume before posting.</p>
+                <p>The limit applies to the caption. Use Instagram's search to check a hashtag's post count before posting. The split above is a rule of thumb, not an Instagram rule.</p>
 
                 <h3>TikTok</h3>
-                <p>TikTok's For You Page (FYP) algorithm weighs hashtags less than watch time and engagement, but they still matter for categorization. Include:</p>
+                <p>On TikTok, a hashtag helps describe what the video is about. A simple mix is:</p>
                 <ul>
                     <li>1 broad hashtag (#fyp, #viral, #trending)</li>
                     <li>1–2 niche hashtags specific to your content</li>
@@ -220,7 +227,7 @@
                 </ul>
 
                 <h3>Twitter</h3>
-                <p>Twitter is conversational, not discovery-based. Hashtags should be:</p>
+                <p>X (Twitter) posts read best when hashtags are part of the conversation. Try to keep them:</p>
                 <ul>
                     <li>Specific to the conversation (e.g., #WWDC2026, not just #tech)</li>
                     <li>Used in sentences, not appended at the end</li>
@@ -233,11 +240,11 @@
                 <div class="use-cases">
                     <div class="use-case">
                         <h4>📸 Instagram Posts</h4>
-                        <p>Planning a post? Generate 20–30 tags, then narrow to the 15 most relevant. Check each hashtag's post count in Instagram search to verify it's active but not oversaturated.</p>
+                        <p>Planning a post? Generate the pool, then narrow it to the 5 most relevant. Check each hashtag's post count in Instagram search to see that it is active.</p>
                     </div>
                     <div class="use-case">
                         <h4>🎬 TikTok Videos</h4>
-                        <p>Before uploading, generate 5–10 tags and pick the 3–4 most relevant to your video's theme. Avoid generic #fyp-only posts — the algorithm prioritizes content signals over hashtags.</p>
+                        <p>Before uploading, generate the pool and pick the 3–5 most relevant to your video's theme. Tags like #fyp say nothing about the content, so add specific ones too.</p>
                     </div>
                     <div class="use-case">
                         <h4>🐦 Twitter Threads</h4>
@@ -253,11 +260,11 @@
             <div class="content-section">
                 <h2>Hashtag Research Tips</h2>
                 <ul>
-                    <li><strong>Check volume before using:</strong> A hashtag with 50 posts is too small; one with 500M posts is too competitive. Aim for 100K–10M for balance.</li>
+                    <li><strong>Check volume before using:</strong> A hashtag with only a few posts reaches few people; one with hundreds of millions is crowded. Many creators aim for the middle, but there is no official number.</li>
                     <li><strong>Monitor competitors:</strong> Check which hashtags successful accounts in your niche use regularly.</li>
-                    <li><strong>Rotate your tags:</strong> Using the same 30 hashtags on every post can trigger spam filters. Rotate 3–4 sets.</li>
-                    <li><strong>Match content to tags:</strong> Misleading hashtags (e.g., #food on a fitness post) hurt engagement and may violate platform policies.</li>
-                    <li><strong>Test and track:</strong> Note which hashtag sets correlate with higher reach. Most platforms show reach data in post analytics.</li>
+                    <li><strong>Match each post:</strong> Choose tags for each post instead of pasting the same set every time.</li>
+                    <li><strong>Keep tags honest:</strong> Hashtags that do not describe the post (for example #food on a fitness post) mislead viewers and can break platform rules.</li>
+                    <li><strong>Test and track:</strong> Note which tags you used and compare reach in each platform's post analytics.</li>
                 </ul>
             </div>
 
@@ -265,22 +272,23 @@
                 <h2>Frequently Asked Questions</h2>
                 <div class="faq-item">
                     <h4>How many hashtags should I use per platform?</h4>
-                    <p>Instagram: up to 30 hashtags, but 15-20 well-chosen tags often perform better. TikTok: 3-5 hashtags is the sweet spot; too many dilute the algorithm's understanding of your content. Twitter: 1-2 hashtags maximum; more looks spammy and reduces engagement. LinkedIn: 3-5 hashtags. YouTube: 3-5 in the description.</p>
+                    <p>Instagram: Instagram announced in December 2025 that it is gradually limiting captions to 5 hashtags per post or reel, so choose your best 5. TikTok: 3-5 is a common choice, and reports say TikTok caps captions at 5, so check the limit in the app. X (Twitter): one or two keeps the post readable; this is a style habit, not a rule.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Does this tool use real trending data?</h4>
-                    <p>No. This tool uses a pre-built library of common hashtags organized by platform. It does not pull live trending data from Instagram, TikTok, or Twitter. For real-time trends, check each platform's native search or trending pages.</p>
+                    <p>No. The tags are built from your keyword plus a few general tags, and the tool does not know how many posts each tag has or whether it is trending. Search each tag in the app to check that it is active and not restricted before you use it.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Should I use popular or niche hashtags?</h4>
-                    <p>Use both. Popular hashtags (1M+ posts) give reach but high competition. Niche hashtags (under 100K posts) have lower competition and attract targeted audiences. A mix of 60% niche and 40% popular is a common strategy.</p>
+                    <p>Use both. Popular hashtags (1M+ posts) reach more people but have more competition. Niche hashtags (under 100K posts) have less competition and reach a more targeted audience. With only 5 slots on Instagram, favor specific tags and add at most one broad one.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Can banned hashtags hurt my account?</h4>
-                    <p>Yes. Some hashtags are banned or restricted by platforms due to spam or policy violations. Using them can reduce your post's visibility or trigger account review. Always check a hashtag's search page before using it — if it shows a warning or no recent posts, avoid it.</p>
+                    <p>Yes. Some hashtags are banned or restricted by platforms due to spam or policy violations. Platforms can restrict banned tags, and using them can limit how far your post is shown. Always check a hashtag's search page before using it — if it shows a warning or no recent posts, avoid it.</p>
                 </div>
             </div>
 
+<div class="content-section"><h2>How the tags are built (with an example)</h2><p>The tool does not look up trends or post counts. It uses a fixed recipe on the words you type:</p><ol><li>It lowercases your text, removes punctuation and keeps the first 4 words.</li><li>It joins the words into one tag (<em>home workout</em> becomes #homeworkout).</li><li>It adds one tag for each word of 3 or more letters (#home, #workout).</li><li>For Instagram it adds the joined tag plus a suffix such as tips, ideas, daily or goals, then 5 general tags (#instagood, #explore, #reels, #instadaily, #photooftheday). For TikTok it adds tips, tok, hacks and tutorial endings, then #fyp, #foryou and #viral. For X it keeps only the first 3 tags.</li></ol><p><strong>Example, "home workout" on TikTok</strong> gives 10 tags: #homeworkout #home #workout #homeworkouttips #homeworkouttok #homeworkouthacks #homeworkouttutorial #fyp #foryou #viral. With the 5-tag limit you might keep #homeworkout, #homeworkouttips, #workout, #homeworkouthacks and #fyp.</p><p><strong>Same input on X (Twitter)</strong> gives 3 tags: #homeworkout #home #workout. A one-letter or two-letter word such as "a" is skipped in step 3, so "a b" gives only #ab.</p></div><section class="tp-note" id="sources-verification" aria-label="Sources and verification"><h2>Sources &amp; verification</h2><p>Written by <a href="/shahid-abbas.html">Shahid Abbas</a>, a developer who builds and maintains ToolPond. I am not a social media professional, and this tool gives suggestions only.</p><ul><li><a href="https://www.socialmediatoday.com/news/instagrams-implementing-new-limits-on-hashtag-use/808309/" rel="noopener">Social Media Today: Instagram limits captions to 5 hashtags (December 18, 2025)</a>, which quotes Instagram's own announcement.</li></ul><p>The example outputs above were produced by running this tool. Hashtag limits change often, and the TikTok limit is reported by industry sources, not confirmed by TikTok, so check each app before you post. No hashtag guarantees reach.</p><p><small>Last checked: November 20, 2026. Found a mistake? <a href="/contact.html">Tell me</a> and I will check and correct it.</small></p></section>
             <div class="related-section">
                 <h3>Related Tools</h3>
                 <div class="tools-grid">
@@ -309,29 +317,63 @@
         </div>
     </div>
 
-    <div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html&amp;text=Hashtag%20Generator%20%E2%80%94%20Tags%20for%20Instagram%2C%20TikTok%20%26%20Twitter" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Hashtag%20Generator%20%E2%80%94%20Tags%20for%20Instagram%2C%20TikTok%20%26%20Twitter%20https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html&amp;text=Hashtag%20Generator%20%E2%80%94%20Tags%20for%20Instagram%2C%20TikTok%20%26%20Twitter" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/hashtag-generator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
+    <aside class="tp-note tp-related" aria-label="Related tools"><h2>Related tools</h2><ul style="margin:.4rem 0 .2rem 1.2rem;padding:0"><li><a href="/comma-separator-tool.html">Comma Separator Tool</a>: turn a column or list into a comma-separated line.</li></ul></aside><div class="tp-share" role="group" aria-label="Share this page"><strong>Share this page</strong><div class="tp-share-row"><a class="tp-sb tp-x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html&amp;text=Hashtag%20Generator%20%E2%80%94%20Tags%20for%20Instagram%2C%20TikTok%20%26%20Twitter" target="_blank" rel="noopener noreferrer">X</a><a class="tp-sb tp-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html" target="_blank" rel="noopener noreferrer">Facebook</a><a class="tp-sb tp-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="tp-sb tp-wa" href="https://api.whatsapp.com/send?text=Hashtag%20Generator%20%E2%80%94%20Tags%20for%20Instagram%2C%20TikTok%20%26%20Twitter%20https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="tp-sb tp-tg" href="https://t.me/share/url?url=https%3A%2F%2Ftoolpond.org%2Fhashtag-generator.html&amp;text=Hashtag%20Generator%20%E2%80%94%20Tags%20for%20Instagram%2C%20TikTok%20%26%20Twitter" target="_blank" rel="noopener noreferrer">Telegram</a><button class="tp-sb tp-cp" type="button" data-url="https://toolpond.org/hashtag-generator.html" onclick="var b=this,s=b.parentNode.nextElementSibling,u=b.getAttribute('data-url');function ok(){s.textContent='Link copied'};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(u).then(ok,function(){s.textContent=u})}else{var a=document.createElement('textarea');a.value=u;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){s.textContent=u}document.body.removeChild(a)}">Copy link</button></div><small role="status" aria-live="polite"></small></div><footer class="tp-ftr"><div class="tp-ftr-in"><div class="tp-ftr-grid"><div><h4>ToolPond</h4><p>Free online calculators, converters, games and tools that run in your browser. Created and maintained by Shahid Abbas.</p></div><div><h4>Explore</h4><ul><li><a href="/index.html#calculators">Calculators</a></li><li><a href="/games.html">Games</a></li><li><a href="/blog.html">Guides</a></li><li><a href="/sitemap.html">Site map</a></li></ul></div><div><h4>About</h4><ul><li><a href="/about.html">About ToolPond</a></li><li><a href="/methodology.html">How we build and review tools</a></li><li><a href="/contact.html">Contact and corrections</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="/privacy-policy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Use</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div></div><div class="tp-ftr-bot">&copy; 2026 ToolPond. Results are estimates for information only and are not professional advice.</div></div></footer>
 
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
     <script>
-        const hashtags = {
-            instagram: ['#instagram', '#insta', '#photo', '#photooftheday', '#picoftheday', '#instagood', '#instadaily', '#instamood', '#instalike', '#follow', '#likes', '#instafashion', '#instastyle', '#instabeauty', '#lifestyle', '#content', '#viral', '#trending', '#popular', '#explore'],
-            tiktok: ['#tiktok', '#tiktoktrend', '#fyp', '#foryou', '#viral', '#trending', '#dance', '#challenge', '#fun', '#entertainment', '#comedy', '#music', '#creative', '#content', '#relatable', '#aesthetic', '#mood', '#vibe', '#viral'],
-            twitter: ['#Twitter', '#Follow', '#News', '#Trending', '#Viral', '#Hashtag']
+        const general = {
+            instagram: ['#instagood', '#explore', '#reels', '#instadaily', '#photooftheday'],
+            tiktok: ['#fyp', '#foryou', '#viral'],
+            twitter: []
         };
-        const niche = ['#community', '#authentic', '#engagement', '#reach', '#visibility', '#growth', '#quality', '#value', '#interaction', '#connection'];
+        const suffixes = ['tips', 'ideas', 'inspiration', 'lovers', 'community', 'daily', 'goals', 'life', 'vibes', 'tutorial', 'motivation', 'for beginners'];
+
+        function cleanWords(text) {
+            return text.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean).slice(0, 4);
+        }
+
+        function buildTags(keyword, platform) {
+            const words = cleanWords(keyword);
+            if (!words.length) return [];
+            const joined = words.join('');
+            const single = words.filter(w => w.length >= 3);
+            let tags = ['#' + joined];
+            if (platform === 'twitter') {
+                tags = tags.concat(single.map(w => '#' + w));
+                return [...new Set(tags)].slice(0, 3);
+            }
+            if (platform === 'tiktok') {
+                tags = tags.concat(single.map(w => '#' + w), ['#' + joined + 'tips', '#' + joined + 'tok', '#' + joined + 'hacks', '#' + joined + 'tutorial']);
+                return [...new Set(tags.concat(general.tiktok))].slice(0, 10);
+            }
+            tags = tags.concat(single.map(w => '#' + w));
+            suffixes.forEach(s => tags.push('#' + joined + s.replace(/ /g, '')));
+            tags = tags.concat(general.instagram);
+            return [...new Set(tags)].slice(0, 25);
+        }
 
         function generateHashtags() {
-            const keyword = document.getElementById('keywordInput').value.toLowerCase();
-            if (!keyword) { document.getElementById('resultsContainer').classList.remove('show'); return; }
+            const keyword = document.getElementById('keywordInput').value.trim();
+            if (!keyword || !cleanWords(keyword).length) { document.getElementById('resultsContainer').classList.remove('show'); return; }
             const platform = document.getElementById('platformSelect').value;
             let tags = [];
-            if (platform === 'instagram' || platform === 'all') tags = tags.concat(hashtags.instagram.slice(0, 15));
-            if (platform === 'tiktok' || platform === 'all') tags = tags.concat(hashtags.tiktok.slice(0, 10));
-            if (platform === 'twitter' || platform === 'all') tags = tags.concat(hashtags.twitter);
-            tags = tags.concat(niche.slice(0, 5));
-            tags = [...new Set(tags)];
-            document.getElementById('hashtags').innerHTML = tags.map(tag => `<span class="hashtag-tag" onclick="copyTag('${tag}')">${tag}</span>`).join('');
+            if (platform === 'all') {
+                tags = [...new Set(buildTags(keyword, 'instagram').slice(0, 15).concat(buildTags(keyword, 'tiktok').slice(0, 8)))];
+            } else {
+                tags = buildTags(keyword, platform);
+            }
+            const el = document.getElementById('hashtags');
+            el.innerHTML = '';
+            tags.forEach(tag => {
+                const s = document.createElement('span');
+                s.className = 'hashtag-tag';
+                s.textContent = tag;
+                s.onclick = () => copyTag(tag);
+                el.appendChild(s);
+            });
+            var notes = {instagram: 'Instagram is limiting captions to 5 hashtags. Pick your best 5 from this list.', tiktok: 'Use 3-5 of these. Check the limit in the app.', twitter: 'One or two tags is usually enough.', all: 'This is a pool. Pick only a few for each platform (Instagram: 5).'};
+            document.getElementById('platformNote').textContent = notes[platform] || '';
             document.getElementById('resultsContainer').classList.add('show');
         }
 
